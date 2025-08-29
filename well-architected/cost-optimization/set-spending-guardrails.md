@@ -1,5 +1,5 @@
 ---
-title: Recommendations for setting spending guardrails
+title: Architecture strategies for setting spending guardrails
 description: Learn best practices for setting spending guardrails.  
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for setting spending guardrails
+# Architecture strategies for setting spending guardrails
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -25,11 +25,10 @@ This guide describes the recommendations for setting spending guardrails. Spendi
 | Infrastructure as code (IaC) | A descriptive model for defining and deploying infrastructure, including networks, virtual machines, load balancers, and connection topologies. |
 | Release gate  | A condition or checkpoint in a release pipeline that must be satisfied before the deployment can proceed. A release gate helps to ensure that specific criteria are met before software is released. |
 
-## Key design strategies
 
 Set spending guardrails by implementing measures to control and manage your costs within a specified budget. These measures include governance policies, access controls, release gates, budget thresholds, and alerts. Automation reduces the risk of human error, improves efficiency, and assists the consistent application of spending guardrails. Prioritize platform automation over manual processes. Automation tools and services the platform provides can streamline resource provisioning, configuration, and management.
 
-### Use governance policies
+## Use governance policies
 
 Governance policies can act as spending guardrails on various aspects of resources such as resource types, configurations, tags, location, and data management. Many cloud platforms have a service that automates the enforcement of governance policies. Use automated policies to control resource usage, enforce accountability, and eliminate spending on restricted resource types. Here are some of the policies you should consider enforcing:
 
@@ -49,7 +48,7 @@ Governance policies can act as spending guardrails on various aspects of resourc
 
 > ![Risk icon](../_images/risk.svg) **Risk**: If you implement automatic scaling, set a maximum scaling threshold based on testing. Maximum thresholds can help you avoid massive scaling spikes that cause cost overruns, but a threshold that’s set too low might negatively affect performance. For more information, see [Recommendations for optimizing scaling costs](optimize-scaling-costs.md).
 
-### Configure access controls
+## Configure access controls
 
 Configure access controls to set restrictions that prevent overspending and to help ensure that only authorized individuals can consume resources. Access controls can help reduce the risk of accidental or unnecessary changes that negatively affect cost optimization. To implement access controls for cost optimization, follow these steps:
 
@@ -63,7 +62,7 @@ Configure access controls to set restrictions that prevent overspending and to h
 
 1. *Review and update controls.* Regularly review and update access controls to ensure that they align with the changing needs of the organization. Remove unnecessary access permissions and adjust access levels as needed.
 
-### Use release gates
+## Use release gates
 
 Release gates are checkpoints or conditions that must be met before a release or deployment can proceed. Use release gates to help ensure that the release is cost-effective and aligns with optimization goals. Release gates offer a structured approach to the identification and implementation of cost-saving measures. To implement release gates for workload cost optimization, consider the following steps:
 
@@ -73,7 +72,7 @@ Release gates are checkpoints or conditions that must be met before a release or
 
 1. *Monitor spending.* Continuously monitor spending and resource usage against the defined criteria. If the organization exceeds spending thresholds, the release gates should prevent further deployments until the issue is addressed.
 
-### Configure cost alerts
+## Configure cost alerts
 
 It's important to set alerts for budgets, cost anomalies, and commitment-based plan utilization to optimize costs. These alerts provide visibility into your cloud spending and enable proactive cost management. Be careful to manage notification recipients for alerts and keep the recipient list up to date with current responsibilities and access. Some alerts that you might create to optimize costs include:
 
@@ -83,7 +82,7 @@ It's important to set alerts for budgets, cost anomalies, and commitment-based p
 
 - *Commitment-based plan utilization alerts*: Implement commitment-based plan utilization alerts to monitor your plan usage. If you have commitment-based plans, setting alerts on plan utilization can help you effectively manage and maximize the value of these commitments. You can configure these alerts to notify stakeholders if the utilization of commitment-based resources drops below a desired threshold. Optimize your commitment-based resources and ensure that you use the benefits of your commitments.
 
-### Use IaC
+## Use IaC
 
 Infrastructure as code is the practice of managing and provisioning infrastructure resources by using code, typically in the form of configuration files. Implement this strategy to define and automate the deployment and configuration of infrastructure resources, such as virtual machines, networks, and storage, by using code-based templates.
 

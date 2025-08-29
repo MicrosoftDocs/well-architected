@@ -65,12 +65,12 @@ Start your design strategy based on the [design review checklist for Reliability
 | Recommendation | Benefit |
 |--------|----|
 |(Cluster and workload) Control pod scheduling by using node selectors and affinity. <br><br>In AKS, the Kubernetes scheduler can logically isolate workloads by hardware in the node. Unlike [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), pods that don't have a matching node selector can be scheduled on labeled nodes, but priority is given to pods that define the matching node selector.| Node affinity results in more flexibility, which allows you to define what happens if the pod can't be matched with a node.|
-|(Cluster) Choose the appropriate network plugin based on network requirements and cluster sizing. <br><br>Different network plugins provide varying levels of functionality. Azure Container Networking Interface (Azure CNI) is required for specific scenarios, such as Windows-based node pools, some networking requirements, and Kubernetes network policies. <br><br> For more information, see [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models).|The right network plugin can help ensure better compatibility and performance.|
+|(Cluster) Choose the appropriate network plugin based on network requirements and cluster sizing. <br><br>Different network plugins provide varying levels of functionality. Azure Container Networking Interface (Azure CNI) is required for specific scenarios, such as Windows-based node pools, some networking requirements, and Kubernetes network policies. <br><br>For enhanced IP address management, consider [Azure CNI with static block allocation](/azure/aks/configure-azure-cni-static-block-allocation) which improves network planning and reduces IP address exhaustion while maintaining network security integration with firewall rules and network policies. <br><br> For more information, see [Kubenet versus Azure CNI](/azure/aks/concepts-network#compare-network-models).|The right network plugin can help ensure better compatibility and performance. Static block allocation enables consistent IP ranges for better security policy configuration and capacity planning.|
 |(Cluster and workload) Use the [AKS uptime SLA](/azure/aks/free-standard-pricing-tiers#uptime-sla-terms-and-conditions) for production-grade clusters.|The workload can support higher availability targets because of the higher availability guarantees of the Kubernetes API server endpoint for AKS clusters.|
 |(Cluster) Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS agent nodes across physically separate datacenters.<br><br>If colocality requirements exist, use a regular virtual machine scale sets-based AKS deployment into a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.|By spreading node pools across multiple zones, nodes in one node pool continue to run even if another zone goes down.|
 |(Cluster and workload) Define pod resource requests and limits in application deployment manifests. Enforce those limits by using Azure Policy.| Container CPU and memory resource limits are necessary to prevent resource exhaustion in your Kubernetes cluster.|
 |(Cluster and workload) Keep the system node pool isolated from application workloads.<br><br>System node pools require a virtual machine (VM) SKU of at least 2 vCPUs and 4 GB of memory. We recommend that you use 4 vCPU or more. For more information, see [System and user node pools](/azure/aks/use-system-pools#system-and-user-node-pools).|The system node pool hosts critical system pods that are essential for the control plane of your cluster. By isolating these system pods from application workloads, you help ensure that the essential services are unaffected by the resource demands or potential problems caused by a workload.|
-|(Cluster and workload) Separate applications to dedicated node pools based on specific requirements. Avoid large numbers of node pools to reduce management overhead.|Applications can share the same configuration and need GPU-enabled VMs, CPU or memory-optimized VMs, or the ability to scale to zero. By dedicating node pools to specific applications, you can help ensure that each application gets the resources it needs without overprovisioning or underutilizing resources.|
+|(Cluster and workload) Separate applications to dedicated node pools based on specific requirements and be intentional about that segmentation. <br><br> Avoid large numbers of node pools to reduce management overhead. For example, you can colocate [multiple Virtual Machines SKUs in a single node pool](/azure/aks/use-multiple-node-pools) as long as they meet the same requirement. |Applications can share the same configuration and need GPU-enabled VMs, CPU or memory-optimized VMs, or the ability to scale to zero. By dedicating node pools to specific applications, you can help ensure that each application gets the resources it needs without overprovisioning or underutilizing resources.|
 |(Cluster) Use a [NAT gateway](/azure/aks/nat-gateway) for clusters that run workloads that make many concurrent outbound connections.|Azure NAT Gateway supports reliable egress traffic at scale and helps you avoid reliability problems by applying Azure Load Balancer limitations to high concurrent outbound traffic.|
 | (Cluster and workload) Use Azure Backup to [protect AKS cluster and restore](/azure/backup/azure-kubernetes-service-backup-overview) to alternate regions during disaster.  Azure Backup supports the backup and restore operations of containerized applications and data running for both cluster state and application data.<br><br> You can [use the backups in a regional disaster scenario and recover backups](/azure/backup/azure-kubernetes-service-cluster-restore).  | Azure Backup with Azure Kubernetes Service (AKS) offers a fully managed, scalable, secure, and cost-effective solution. Enhances the reliability of the workload without the complexities of setting up and maintaining backup infrastructure. |
 
@@ -103,6 +103,8 @@ Start your design strategy based on the [design review checklist for Security](.
 > - (Cluster and workload) **Implement extra protection for specialized secure workloads.** If your cluster needs to run a sensitive workload, you might need to deploy a private cluster. Here are some examples:
 >   - Payment Card Industry Data Security Standard (PCI-DSS 3.2.1):  [AKS regulated cluster for PCI-DSS 3.2.1](/azure/architecture/reference-architectures/containers/aks-pci/aks-pci-intro)
 >   - DoD Impact Level 5 (IL5) support and requirements with AKS: [Azure Government IL5 isolation requirements](/azure/azure-government/documentation-government-impact-level-5#azure-kubernetes-service). 
+>
+> - (Cluster) **Leverage enhanced security from cluster extensions managed in the control plane.** The [Extension Manager](/azure/aks/cluster-extensions) runs in the Azure-managed control plane, reducing attack surface for worker nodes and simplifying cluster networking requirements while maintaining extension functionality. This centralized extension management eliminates the need to secure and maintain extension components on customer worker nodes. 
 
 ### Configuration recommendations
 
@@ -278,13 +280,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of AKS.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#azure-kubernetes-service-aks)
-- [Security](/azure/defender-for-cloud/plan-multicloud-security-get-started)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#containers)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#containers)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
@@ -304,4 +302,9 @@ Build implementation expertise by using the following product documentation:
 
 -  [AKS product documentation](/azure/aks)
 
+
 <!-- Updated: August 17, 2025 for Azure Update 498166, 491880 -->
+<!-- Updated: August 17, 2025 for Azure Update 498166 -->
+<!-- Updated: August 17, 2025 for Azure Update 498258 -->
+<!-- Updated: August 17, 2025 for Azure Update 498242 -->
+

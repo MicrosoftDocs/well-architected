@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Disk Storage
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Disk Storage.
 author: roygara
 ms.author: rogarana
-ms.date: 12/3/2024
+ms.date: 8/8/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -196,8 +196,24 @@ Start your design strategy based on the [design review checklist for Performance
 | For workloads and solutions that require the lowest latency, such as e-commerce workloads or databases, use a Premium SSD OS disk and [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) or [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) data disks. | This configuration offers the best reliability and highest SLA and performance. |
 | Use [Azure metrics](/azure/virtual-machines/disks-metrics) to monitor your environment and help prevent disk throttling. | Use Azure metrics to identify disks that are being throttled and address them. Throttling leads to suboptimal performance and problems like increased latency. |
 | For disks that are being throttled, evaluate whether changing to a larger disk size or changing to a more performant disk is better for your needs. <br></br> For Premium SSD disks that are being throttled, if you have short-term bursts of demand, [enable on-demand bursting](/azure/virtual-machines/disks-enable-bursting). For longer-term extended demand, [change the tier of the disk](/azure/virtual-machines/disks-change-performance) or evaluate whether [Premium SSD v2](/azure/virtual-machines/disks-types#premium-ssd-v2) or [Ultra Disk Storage](/azure/virtual-machines/disks-types#ultra-disks) disks better fit your needs. | Place applications on disks that aren't being throttled to help ensure optimal performance without increased latency. |
+| Review the [expand without downtime](/azure/virtual-machines/linux/expand-disks?tabs=ubuntu#expand-without-downtime) limitations, to ensure your data disks qualify. Expanding without downtime allows you to dynamically increase your storage capacity without deallocating attached VMs. <br><br>Start with smaller disk sizes and expand based on actual demand to implement just-in-time capacity provisioning strategies. | Dynamic disk expansion eliminates downtime traditionally associated with storage expansion while enabling elastic storage scaling. <br><br> You can reduce upfront costs by avoiding overprovisioning and increasing the size of your disk if you need the additional capacity or performance. |
 | When you upload a virtual hard disk (VHD), use the [Add-AzVHD Azure PowerShell](/azure/virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell) command. | The *Add-AzVHD* Azure PowerShell command automates most of the upload process to help streamline the process. |
 | For existing deployments that are on-premises or in another public cloud provider, use [Azure Migrate and Modernize](/azure/migrate/migrate-services-overview). | Azure Migrate and Modernize can evaluate your deployment and provide curated suggestions for the best sizing of disks and VMs in a prospective Azure deployment. |
+
+## Tradeoffs
+
+You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Disk type selection and performance versus cost**
+
+- **Higher performance disk types:** Premium SSD v2 and Ultra Disk Storage provide the highest performance with customizable IOPS and throughput. These disk types offer higher availability with lower latency, making them ideal for mission-critical workloads. Premium SSDs provide built-in redundancy and zone-redundant storage options.
+
+  However, Premium disk types can cost significantly more than Standard SSDs or HDDs. Ultra Disk Storage and Premium SSD v2 have limited regional availability and specific VM type requirements. For workloads with predictable, moderate performance needs, the additional cost might not justify the performance gains. Evaluate whether Standard SSD or even Standard HDD can meet your performance requirements at a lower cost.
+
+- **Lower cost disk types:** Standard SSD and Standard HDD provide cost-effective storage for development, testing, and workloads with less demanding performance requirements. These options help reduce overall infrastructure costs and are suitable for backup storage, archival data, or applications that don't require high IOPS.
+
+  These disk types have lower performance ceilings, higher latency, and reduced SLAs compared to premium options. Standard HDDs are particularly unsuitable for performance-sensitive workloads and can become bottlenecks in production environments.
+
 
 ## Azure policies
 
@@ -216,13 +232,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure Disk Storage.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#virtual-machines)
-- [Security](/azure/defender-for-cloud/recommendations-reference)
-- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations#consider-azure-managed-disk-reserved-instances-to-save-over-your-on-demand-costs)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#use-managed-disks-to-prevent-disk-io-throttling)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
@@ -232,3 +244,5 @@ Foundational architecture that demonstrates the key recommendations: [Azure Virt
 
 > [!div class="nextstepaction"]
 > [Azure Virtual Machines baseline architecture](/azure/architecture/virtual-machines/baseline)
+
+<!-- Updated: August 8, 2025 for Azure Update 495106 -->

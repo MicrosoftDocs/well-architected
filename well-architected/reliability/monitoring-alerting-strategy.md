@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing a reliable monitoring and alerting strategy
+title: Architecture strategies for designing a reliable monitoring and alerting strategy
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 2/13/2024
 ms.topic: conceptual
 ---
 
-# Recommendations for designing a reliable monitoring and alerting strategy
+# Architecture strategies for designing a reliable monitoring and alerting strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -24,7 +24,6 @@ This guide describes the recommendations for designing a reliable monitoring and
 | Resource logs | Data that a system generates. It provides information about the state of the system. |
 | Traces | Data that provides information about the path that a request travels through services and components. |
 
-## Key design strategies
 
 Before you create a monitoring and alerting strategy, perform the following tasks for your workload as part of your reliability planning:
 
@@ -44,7 +43,7 @@ Create a monitoring and alerting strategy to ensure that your workload operates 
 
 Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
 
-### Implement an overall monitoring strategy
+## Implement an overall monitoring strategy
 
 - Understand the difference between [metrics](/azure/azure-monitor/essentials/data-platform-metrics), [logs](/azure/azure-monitor/logs/data-platform-logs), and [traces](/azure/azure-monitor/app/asp-net-trace-logs).
 
@@ -86,7 +85,7 @@ Implement the following recommendations to design a monitoring and alerting stra
   
   - The recovery duration to inform your [disaster recovery planning](disaster-recovery.md).
 
-### Monitor applications
+## Monitor applications
 
 - Create health probes or [check functions](/azure/architecture/patterns/health-endpoint-monitoring) and run them regularly from outside the application. Ensure that you test from multiple locations that are geographically close to your customers.
 
@@ -107,7 +106,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 > [!NOTE]
 > For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
 
-### Monitor data and storage
+## Monitor data and storage
 
 - Monitor the availability metrics of your storage containers. When this metric drops below 100 percent, it indicates failing writes. Transient drops in availability might happen when your cloud provider manages the load. Track the availability trends to determine if there's an issue with your workload.
 

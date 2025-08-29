@@ -6,6 +6,7 @@ ms.author: prwilk
 ms.date: 11/01/2024
 ms.topic: conceptual
 ms.service: azure-waf
+ms.update-cycle: 180-days  
 ---
 
 # MLOps and GenAIOps for AI workloads on Azure

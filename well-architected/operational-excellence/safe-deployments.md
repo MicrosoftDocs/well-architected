@@ -1,5 +1,5 @@
 ---
-title: Recommendations for safe deployment practices
+title: Architecture strategies for safe deployment practices
 description: Learn about recommendations for safe deployment practices (SDP). Define how to safely make any change to your workload through deployments.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for safe deployment practices
+# Architecture strategies for safe deployment practices
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -16,7 +16,6 @@ ms.topic: conceptual
 
 This guide describes the recommendations for using safe deployment practices (SDP). Safe deployment processes and procedures define how to safely make and deploy changes to your workload. Implementing SDP requires you to think about deployments through the lens of managing risk. You can minimize the risk of human error in your deployments and limit the effects of problematic deployments on your users by implementing SDP.
 
-## Key design strategies
 
 There are four important guidelines to keep in mind when implementing safe deployment practices:
 
@@ -30,13 +29,13 @@ There are four important guidelines to keep in mind when implementing safe deplo
 
 The following sections provide detailed recommendations on each of these points.
 
-### Ensure safety and consistency of deployments
+## Ensure safety and consistency of deployments
 
 Whether you're deploying an update to your application code, infrastructure as code (IaC), feature flag, or a configuration update, you're introducing risk to the workload. There are no *low-risk* deployments to production. Every deployment must follow a standard pattern and should be automated to enforce consistency and minimize the risk of human error. It's critical that your workload supply chain and deployment pipelines are reliable, secure, and have clearly defined deployment standards. Treat every deployment as a possible risk and subject every deployment to the same level of risk management. Despite the risks, you should continue to deploy regular changes to your workload. Failing to deploy regular updates introduces other risks, like security vulnerabilities that must be addressed through deployments. For more information, see [Recommendations for designing a workload development supply chain](workload-supply-chain.md).
 
 Frequent small deployments are preferable to infrequent large deployments. Small changes are easier to resolve when issues arise and frequent deployments help your team build confidence in the deployment process. It's also important that you learn from production by reviewing your workload processes when you encounter an anomaly during deployment. You might find weaknesses in the design of your infrastructure or rollout. When issues occur during deployments, ensure that *blameless* postmortems are part of your SDP process to capture lessons about the incident.
 
-### Adopt a progressive exposure model
+## Adopt a progressive exposure model
 
 When deployment issues occur, the goal is to catch them as early as possible to minimize the effect on end users. Implement a gradual rollout deployment model, also known as a *progressive exposure model*, to accomplish this goal. Canary deployments are a common example of progressive exposure. In this deployment model, a small group of internal or external users receive the new feature first. After the first group runs the new version without issue, the feature is deployed to successively larger groups until the entire user population is running the new version. Feature flags are typically used to enable the new version for the target users in canary deployments.
 
@@ -44,11 +43,11 @@ Another common deployment model is a blue-green approach. In this model, two ide
 
 In both of these models, the time between each phase of the rollout should be long enough to enable you to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
 
-### Develop robust workload health models
+## Develop robust workload health models
 
 Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user-reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../design-guides/health-modeling.md).
 
-### Implement failure-detection mechanisms
+## Implement failure-detection mechanisms
 
 When your deployment causes an issue in one of the rollout groups, the rollout must stop immediately. An investigation into the cause of the issue and the severity of the effects must be performed as soon as the alert is received. Recovery from the issue can include:
 
@@ -60,7 +59,7 @@ When your deployment causes an issue in one of the rollout groups, the rollout m
 
 Rolling back changes, especially database, schema, or other stateful component changes, can be complex. Your SDP guidelines should provide clear instructions on how to deal with data changes according to the data estate design for your workload. Similarly, rolling forward must be handled carefully to ensure that SDP isn't neglected and that the hotfix or other minimizing efforts are performed safely.
 
-### Establish protocols for emergency deployments
+## Establish protocols for emergency deployments
 
 - Implement versioning across your build artifacts to help ensure that you can roll back and roll forward when necessary.
 
@@ -78,7 +77,7 @@ Rolling back changes, especially database, schema, or other stateful component c
 
 - Implement circuit breakers to automatically halt traffic to a service that's experiencing issues. Doing so can help to prevent further degradation of the system.
 
-### Emergency SDP protocols
+## Emergency SDP protocols
 
 Establish prescriptive protocols that define how your SDP can be adjusted for a hotfix or for emergency issues like a security breach or vulnerability exposure. For example, your emergency SDP protocols might include:
 

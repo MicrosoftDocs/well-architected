@@ -226,6 +226,12 @@ Azure provides an extensive set of built-in policies related to SQL Database. A 
 
 For comprehensive governance, review the built-in definitions for SQL Database policies that are listed in [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
 
+## Azure Advisor recommendations
+
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+
+For more information, see [Azure Advisor](/azure/advisor).
+
 ## Example architecture
 
 Foundational architecture that demonstrates the key recommendations: [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).

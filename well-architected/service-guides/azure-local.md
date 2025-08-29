@@ -84,7 +84,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - Use industry-standard high-availability patterns for workloads, for example a design that provides active/passive synchronous or asynchronous data replication [(_such as SQL Server Always On_)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Another example is an external network load balancing (_NLB_) technology that can route user requests across the multiple workload instances that run on Azure Local instances that you deploy in separate physical locations. Consider using a partner external NLB device. Or evaluate the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) that support traffic routing for hybrid and on-premises services, such as an Azure Application Gateway instance that uses Azure ExpressRoute or a VPN tunnel to connect to an on-premises service.
 >
->       For more information, see [Deploy workloads instances across multiple Azure Local instances](../reliability/redundancy.md#key-design-strategies).
+>       For more information, see [Deploy workloads instances across multiple Azure Local instances](../reliability/redundancy.md).
 >
 > - (Workload architecture) **Plan and test recoverability** based on your workload recovery point objective (RPO) and recovery time objective (RTO) targets.
 >
@@ -341,13 +341,9 @@ Consider creating custom policies to provide extra governance for both the Azure
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your VMs.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 

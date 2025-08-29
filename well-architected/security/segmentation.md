@@ -1,5 +1,5 @@
 ---
-title: Recommendations for building a segmentation strategy
+title: Architecture strategies for building a segmentation strategy
 description: Learn about the recommendations for building a unified segmentation strategy using perimeters and isolation boundaries. 
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for building a segmentation strategy
+# Architecture strategies for building a segmentation strategy
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
@@ -29,7 +29,6 @@ This guide describes the recommendations for **building a unified segmentation s
 | Role                   | A set of permissions needed to complete a job function.                                         |
 | Segment                | A logical unit that's isolated from other entities and protected by a set of security measures. |
 
-## Key design strategies
 
 The concept of segmentation is commonly used for networks. However, the same underlying principle can be used throughout a solution, including segmenting resources for management purposes and access control.
 
@@ -58,7 +57,7 @@ Isolation doesn't mean creating silos in the organization. **A unified segmentat
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Micro-segmentation beyond a reasonable limit loses the benefit of isolation. When you create too many segments, it becomes difficult to identify points of communication or to allow for valid communication paths within the segment.
 
-### Establish identity as the primary security perimeter
+## Establish identity as the primary security perimeter
 
 Various identities such as people, software components, or devices access workload segments. Identity is a perimeter that should be the primary line of defense to **authenticate and authorize access across isolation boundaries**, regardless of where the access request originates. Use identity as a perimeter to:
 
@@ -85,7 +84,7 @@ For information about identity controls, see [Identity and access management](id
 
 In contrast to network access controls, identity validates access control at access time. It's highly recommended to conduct regular access review and require an approval workflow to obtain privileges for critical impact accounts. For example, see [Identity segmentation patterns](#identity-segmentation-patterns).
 
-### Enhance with networking as a perimeter
+## Enhance with networking as a perimeter
 
 Identity perimeters are network agnostic while network perimeters augment identity but never replace it. Network perimeters are established to control blast radius, block unexpected, prohibited, and unsafe access, and obfuscate workload resources.
 
@@ -113,7 +112,7 @@ For common patterns related to networking segmentation, see [Networking segmenta
 
 For information about network controls, see [Networking and connectivity](networking.md).
 
-### Define roles and clear lines of responsibility
+## Define roles and clear lines of responsibility
 
 Segmentation that prevents confusion and security risks is achieved by **clearly defining lines of responsibility** within a workload team.
 
@@ -123,7 +122,7 @@ Consider consistency while accommodating several organizational models when assi
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Membership of groups can change over time as employees join or leave teams or change roles. Management of roles across segments can result in management overhead.
 
-### Organize resources to promote segmentation
+## Organize resources to promote segmentation
 
 Segmentation allows you to **isolate workload resources from other parts of the organization** or even within the team. Azure constructs, such as management groups, subscriptions, environments, and resource groups, are ways of organizing your resources that promote segmentation. Here are some examples of resource-level isolation:
 

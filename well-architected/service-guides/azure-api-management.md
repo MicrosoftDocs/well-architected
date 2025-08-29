@@ -76,7 +76,7 @@ These reliability recommendations can apply either to the service itself or to t
 
 | Recommendation | Benefit |
 | :------------- | :------ |
-| (Service) Enable [zone redundancy](/azure/api-management/high-availability#availability-zones) in the Premium tier and have a minimum of three units deployed. <br/><br/> In this configuration, under normal operating conditions, all scale units in all configured zones are active and serve gateway traffic. <br/><br/> In any active-active scenario, plan to support scaling out in the remaining active zones to handle traffic that units originally processed in the faulted zone. | Resiliency is ensured during a datacenter outage within a region. During a complete datacenter loss, API traffic will continue to flow through the remaining units deployed in other zones. |
+| (Service) Enable [zone redundancy](/azure/api-management/high-availability#availability-zones) in the Premium tier and have a minimum of two units deployed. <br/><br/> In this configuration, under normal operating conditions, all scale units in all configured zones are active and serve gateway traffic. <br/><br/> In any active-active scenario, plan to support scaling out in the remaining active zones to handle traffic that units originally processed in the faulted zone. | Resiliency is ensured during a datacenter outage within a region. During a complete datacenter loss, API traffic will continue to flow through the remaining units deployed in other zones. |
 | (Service) Enable [automatic scale-out](/azure/api-management/api-management-howto-autoscale) based on traffic demands. <br/><br/> In multiregion deployments, secondary regions don't have automatic scale-out or scale-in capabilities. You need to implement a custom function or Logic App that activates in response to Azure Monitor metric alerts to manage unit adjustments based on demand. | Sufficient resources are guaranteed to meet demand from API clients, which prevents failures because of insufficient capacity. |
 | (Service) Use a [multiregion topology](/azure/api-management/api-management-howto-deploy-multi-region) to support resiliency against a complete regional failure. <br/><br/> This approach requires you to coordinate with other components in your workload and to understand their planned failover characteristics. In any active-active scenario, plan to support scaling out in remaining active regions to handle traffic that the now-inactive region originally processed. <br/><br/> Ensure that your multiregion topology aligns with any compliance requirements for data in transit or data in cache residency. | Robust resiliency is provided during a complete regional outage, which helps ensure uninterrupted API traffic through units deployed in other regions. |
 | (Service) Isolate unrelated APIs with [workspaces](/azure/api-management/workspaces-overview) or additional API Management instances. | The impact of failures caused by misconfiguration or outages is minimized by separating APIs across different compute instances. |
@@ -275,14 +275,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-For more information, see [Azure Advisor](/azure/advisor/advisor-reference-operational-excellence-recommendations#api-management).
-
-Advisor might surface other recommendations in your production system as well, such as:
-
-- Failure to require long JWT key sizes in the validate-jwt policy.
-- You used a legacy Resource Manager API version to deploy the resource.
-- API key tokens are close to their expiration date.
-- Failure in a certificate rotation operation.
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Tradeoffs
 

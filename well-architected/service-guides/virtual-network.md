@@ -285,13 +285,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions](/az
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your virtual network.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 

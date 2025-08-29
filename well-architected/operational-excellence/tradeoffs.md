@@ -5,6 +5,7 @@ author: ferantivero
 ms.author: chkittel
 ms.date: 10/10/2024
 ms.topic: conceptual
+ms.update-cycle: 1095-days  
 ---
 
 # Operational Excellence tradeoffs
@@ -110,7 +111,7 @@ A workload team purchases tools and hardware to support activities that are perf
 
 - Many deployment models require the use of gateway routing access patterns, which can introduce latency. This latency draws against the performance target budget for the related flows.
 
-- Some cloud design patterns that support "independent change over time" approaches to support the ideals of incremental improvement can introduce latency due to the traversal of additional components. This latency can be introduced by gateways, messaging brokers, or anti-corruption layers.
+- Some Architecture design patterns that support "independent change over time" approaches to support the ideals of incremental improvement can introduce latency due to the traversal of additional components. This latency can be introduced by gateways, messaging brokers, or anti-corruption layers.
 
 ## Related links
 

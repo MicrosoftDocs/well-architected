@@ -5,6 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.date: 02/24/2025
 ms.topic: conceptual
+ms.update-cycle: 1095-days  
 ---
 
 # Recommendations for developing background jobs

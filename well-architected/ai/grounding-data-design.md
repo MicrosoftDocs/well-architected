@@ -5,6 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 05/28/2025
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Grounding Data Design for AI Workloads on Azure

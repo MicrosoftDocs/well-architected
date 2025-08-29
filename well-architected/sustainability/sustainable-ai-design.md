@@ -6,6 +6,7 @@ ms.author: srrakhun
 ms.reviewer: csiemens
 ms.topic: best-practice
 ms.date: 03/24/2025
+ms.update-cycle: 180-days  
 ---
 
 # Sustainable AI design for workloads on Azure
