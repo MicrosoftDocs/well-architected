@@ -4,7 +4,7 @@ description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: conceptual
-ms.date: 10/25/2024
+ms.date: 08/17/2025
 products: 
   - azure-expressroute
 azure.category:
@@ -213,6 +213,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Review metrics with Network Insights. [ExpressRoute Insights with Network Insights](/azure/expressroute/expressroute-network-insights) allow you to review and analyze ExpressRoute circuits, gateways, connections metrics and health dashboards. ExpressRoute Insights also provide a topology view of your ExpressRoute connections where you can view details of your peering components all in a single place. | Network Insights offers a centralized platform to monitor various metrics across ExpressRoute circuits, gateways, and connections, providing a comprehensive view of network health and performance. |
 | Review ExpressRoute resource metrics. Use [Azure Monitor](/azure/monitoring-and-diagnostics/monitoring-overview) to collect metrics and create alerts based on your configuration. | Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
 | Review ExpressRoute [metrics and create alerts](/azure/expressroute/expressroute-monitoring-metrics-alerts). ExpressRoute uses Azure Monitor to collect metrics and create alerts based on your configuration. Follow the [recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to implement your monitoring strategy for ExpressRoute and your workloads.|  Metrics are collected for ExpressRoute circuits, ExpressRoute gateways, ExpressRoute gateway connections, and ExpressRoute Direct. These metrics are useful for diagnosing connectivity problems and understanding the performance of your ExpressRoute connection. |
+| Use [auto-assigned Public IP addresses](/azure/expressroute/expressroute-about-virtual-network-gateways) for ExpressRoute gateway deployment to simplify infrastructure provisioning. <br><br> Eliminate manual Public IP assignment requirements for ExpressRoute gateways across multiple virtual networks and streamline deployment processes. | Reduces operational complexity and deployment time by removing the need to pre-provision IP resources. Simplifies ExpressRoute gateway configuration and reduces potential configuration errors. |
 
 ## Performance Efficiency
 
@@ -271,3 +272,5 @@ Consider the following articles as resources that demonstrate the recommendation
   - [Azure ExpressRoute product documentation](/azure/expressroute/expressroute-introduction). 
   - [Architect ExpressRoute for Resiliency](/azure/expressroute/design-architecture-for-resiliency) to ensure your setup is robust and reliable.
   - For low-code application architectures, review the guidance on [Enabling ExpressRoute for Power Platform](/power-platform/guidance/expressroute/overview) when planning and configuring ExpressRoute for use with Microsoft Power Platform.
+
+<!-- Updated: August 17, 2025 for Azure Update 498361 -->

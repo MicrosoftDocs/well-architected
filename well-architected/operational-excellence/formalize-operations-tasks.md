@@ -1,5 +1,5 @@
 ---
-title: Recommendations for formalizing routine and nonroutine tasks
+title: Architecture strategies for formalizing routine and nonroutine tasks
 description: Learn how to formalize routine and nonroutine tasks by using documentation, checklists, or automation.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for formalizing routine and nonroutine tasks
+# Architecture strategies for formalizing routine and nonroutine tasks
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -16,11 +16,10 @@ ms.topic: conceptual
 
 This guide describes the recommendations for formalizing routine and nonroutine tasks. Efficient and successful workload teams have consistent and predictable workload management practices. Optimize efficiency and consistency by adopting industry-proven tools and practices and by automating processes when it's practical. By being consistent about how routine, improvised, and emergency tasks are handled, you minimize the risk of being unprepared when issues arise. By taking a continuous improvement approach to workload management, you increase your team's consistency and efficiency throughout the workload's lifecycle.
 
-## Key design strategies
 
 Consistent processes make your work quality predictable, and predictable work quality makes workload support smoother. To achieve consistency in your processes, you need to be intentional and explicit about how you run processes in standard patterns. Use strategies like automation and shift-left approaches to minimize potential areas of unpredictability.
 
-### Standardize processes
+## Standardize processes
 
 Process standardization takes many shapes. Describing every way that you might approach standardization is out of scope for this guide, but some general recommendations include:
 
@@ -40,7 +39,7 @@ Process standardization takes many shapes. Describing every way that you might a
 
    Improvised and emergency operations are also good opportunities to learn how to improve your standard operating procedures. Ask the workload team to reflect on ways that the operations could have gone smoother, and determine whether an update to existing processes could be beneficial going forward.
 
-### Adopt industry-proven practices
+## Adopt industry-proven practices
 
 - Adopt industry-proven practices to minimize the time your team spends on inventing processes and standards. Following Agile practices with Scrum, organizing your work through Kanban boards, and adopting a shift-left ethos are all examples of practices that have been developed over many years and have been proven effective for organizations of any size. Many mature organizations use version-controlled standard operating procedures, wikis, new employee manuals, and operations manuals to enforce consistency.
 
@@ -50,7 +49,7 @@ Process standardization takes many shapes. Describing every way that you might a
 
   For example, an exploratory test might uncover an area for improvement in security that might not have been discovered until it was exposed by security scans, which happen monthly or even less frequently. Encourage the workload team to take ownership of the workload in all aspects of its lifecycle and to contribute to its continuous improvement proactively, rather than relying on other teams.
 
-### Take advantage of centralized standards and resources
+## Take advantage of centralized standards and resources
 
 - Incorporate organizational requirements and cross-cutting functions into your standard operating procedures. Your organization might have standards for some processes that you should adopt. However, you might also be empowered to develop your own standards for other processes, so look for ways to incorporate required standards into your processes. The processes that you own are likely to intersect with other teams' processes, so strive to align standards to a practicable extent.
 
@@ -58,11 +57,11 @@ Process standardization takes many shapes. Describing every way that you might a
 
 - Incorporate compliance requirements into your standard operating procedures. Depending on your industry and the regions in which you operate, there might be strict requirements about how to perform and document tasks. Make sure that you understand and incorporate those requirements while you build your standards. Regularly train the workload team on those requirements.
 
-### Implement automation
+## Implement automation
 
 Use automation to help achieve consistency. Automate tasks that are repetitive and prone to human error to relieve management burden from your team. Look for opportunities to automate processes, like generating ITSM tickets, for example. For more information, see the [Recommendations for implementing automation](automate-tasks.md).
 
-### Govern open-source use
+## Govern open-source use
 
 Be intentional about your approach to open-source adoption. Standardize the rules about when the use of open-source tools is allowed, and ensure that you align with organizational and compliance requirements. You might want to create standards about workload team members' contributions to open-source projects and decide whether to open your in-house code to other development teams in the organization.
 

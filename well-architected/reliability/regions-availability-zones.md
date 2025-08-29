@@ -1,5 +1,5 @@
 ---
-title: Recommendations for using availability zones and regions 
+title: Architecture strategies for using availability zones and regions 
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for using availability zones and regions
+# Architecture strategies for using availability zones and regions
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -52,7 +52,6 @@ However you design your solution, the Security pillar applies. Usually, decision
 | Zonal (pinned) deployment | A deployment model in which a resource is deployed into a specific availability zone. |
 | Zone-redundant deployment | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
 
-## Key design strategies
 
 Azure has a large global footprint. An Azure *region* is a geographic perimeter that contains a set of datacenters. You need to have a complete understanding of Azure regions and availability zones.
 
@@ -78,7 +77,7 @@ Many regions also have a [*paired region*][azure-region-pairs]. Paired regions s
 
 For more information about how Azure uses regions and availability zones, see [What are Azure regions and availability zones?][availability-zones-overview]
 
-### Understand shared responsibilities
+## Understand shared responsibilities
 
 The [shared responsibility principle](/azure/security/fundamentals/shared-responsibility) describes how responsibilities are divided between the cloud provider (Microsoft) and you. Depending on the type of services you use, you might take on more or less responsibility for operating the service.
 
@@ -86,11 +85,11 @@ Microsoft provides availability zones and regions to give you flexibility in how
 
 Your own code needs to [recommended practices and design patterns for handling failures gracefully](handle-transient-faults.md). These practices are even more important during failover operations, such as those that happen when an availability zone or region failover occurs, because failover between zones or regions usually requires that your application retry connections to services.
 
-### Identify key business and workload requirements
+## Identify key business and workload requirements
 
 To make an informed decision about how to use availability zones and regions in your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
 
-##### Risk tolerance
+#### Risk tolerance
 
 Different organizations have different degrees of risk tolerance. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extremely high availability. However, some workloads are so important that it's even worth mitigating risks that are unlikely to occur, like major natural disasters that affect a wide geographic area.
 
@@ -107,11 +106,11 @@ It would be ideal to mitigate every possible risk for every workload, but it's n
 > [!TIP]
 > Regardless of reliability targets, all workloads must have some mitigation for disaster recovery. If your workload demands high reliability targets, then your mitigation strategies should be comprehensive and you should reduce the risk of even low-likelihood events. For other workloads, make an informed decision on which risks you’re prepared to accept and which you need to mitigate.
 
-##### Resiliency requirements
+#### Resiliency requirements
 
 It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Target functional and nonfunctional requirements](identify-flows.md). 
 
-##### Service-level objectives
+#### Service-level objectives
 
 You should understand your solution's expected uptime service-level objective (SLO). For example, you might have a business requirement that your solution needs to meet 99.9% uptime.
 
@@ -119,14 +118,14 @@ Azure provides service level agreements (SLAs) for each service. An SLA indicate
 
 Your architectural decisions affect your solution's [composite SLO][composite-slos]. In general, the more redundancy you build into your solution, the higher your SLO is likely to be. Many Azure services provide higher SLAs when you deploy services in a zone-redundant or multi-region configuration. Review the SLAs for each of the Azure services you use to ensure that you understand how to maximize the resiliency and SLA of the service.
 
-##### Data residency
+#### Data residency
 
 Some organizations place restrictions on the physical locations into which their data can be stored and processed. Sometimes these requirements are based on legal or regulatory standards. In other situations, an organization might decide to adopt a data residency policy to avoid customer concerns. If you have strict data residency requirements, you might need to use a single-region deployment or use a subset of Azure regions and services.
 
 > [!NOTE]
 > Avoid making unfounded assumptions about your data residency requirements. If you need to comply with specific regulatory standards, verify what those standards actually specify.
 
-##### User location
+#### User location
 
 By understanding where your users are located, you can make an informed decision about how to optimize latency and reliability for your needs. Azure provides many options to support a geographically dispersed user base.
 
@@ -136,11 +135,11 @@ If your users are geographically dispersed, it might make sense to deploy your w
 
 Even if your users are in different geographical areas, consider whether you need a multi-region deployment. Consider whether you can achieve your requirements within a single region by using global traffic acceleration, like the acceleration provided by [Azure Front Door][front-door-global-traffic-acceleration].
 
-##### Budget
+#### Budget
 
 If you operate under a constrained budget, it's important to consider the costs involved in deploying redundant workload components. These costs can include additional resource charges, networking costs, and the operational costs of managing more resources and a more complex environment. 
 
-##### Complexity
+#### Complexity
 
 It's a good practice to avoid unnecessary complexity in your solution architecture. The more complexity you introduce, the harder it becomes to make decisions about your architecture. Complex architectures are harder to operate, harder to secure, and often less performant.  Follow the [principle of simplicity](principles.md#keep-it-simple).
 

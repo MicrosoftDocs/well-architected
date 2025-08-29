@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Front Door
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Front Door.
 author: halkazwini
 ms.author: halkazwini
-ms.date: 02/26/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 products:
   - azure-front-door
@@ -42,7 +42,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > 
 >   Azure Front Door supports several routing methods, which you can configure to distribute traffic in an active-active or active-passive model.
 >
->   The preceding models have many variations. For example, you can deploy the active-passive model with a warm spare. In this case, the secondary hosted service deploys with the minimum possible compute and data sizing and runs without load. Upon failover, the compute and data resources scale to handle the load from the primary region. For more information, see [Key design strategies for multiregion design](/azure/well-architected/reliability/highly-available-multi-region-design#key-design-strategies).
+>   The preceding models have many variations. For example, you can deploy the active-passive model with a warm spare. In this case, the secondary hosted service deploys with the minimum possible compute and data sizing and runs without load. Upon failover, the compute and data resources scale to handle the load from the primary region. For more information, see [Architecture strategies for multiregion design](/azure/well-architected/reliability/highly-available-multi-region-design#key-design-strategies).
 >
 >   Some applications need the user connections to stay on the same origin server during the user session. From a reliability perspective, we don't recommend keeping user connections on the same origin server. Avoid session affinity as much as possible.
 >
@@ -103,7 +103,8 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Protect data in transit**. Enable end-to-end Transport Layer Security (TLS), HTTP to HTTPS redirection, and managed TLS certificates when applicable. For more information, see [TLS best practices for Azure Front Door](/azure/frontdoor/best-practices#23tls-best-practices).
 >
-> - **Monitor anomalous activity**. Regularly review the logs to check for attacks and false positives. Send [WAF logs from Azure Front Door](/azure/web-application-firewall/afds/waf-front-door-monitor) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. 
+> - **Monitor anomalous activity**. Regularly review the logs to check for attacks and false positives. Send [WAF logs from Azure Front Door](/azure/web-application-firewall/afds/waf-front-door-monitor) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. Where possible, explore capabilities that enhance threat analysis with AI-powered security capabilities.
+
 
 ### Configuration recommendations
 
@@ -114,6 +115,7 @@ Start your design strategy based on the [design review checklist for Security](.
 |Send the [host header](/azure/frontdoor/origin?pivots=front-door-standard-premium#origin-host-header) to the origin. |The back-end services should be aware of the host name so that they can create rules to accept traffic only from that host. |
 | [Secure the connections](/azure/frontdoor/origin-security) from Azure Front Door to your origins. [Enable Private Link connectivity](/azure/frontdoor/private-link) to supported origins. If your origin doesn't support Private Link connectivity, use service tags and the `X-Azure-FDID` header to verify the source of the request is your Azure Front Door profile. | Ensure that all traffic flows through Azure Front Door, and gets the security benefits such as DDoS protection and WAF inspection. |
 | Enable end-to-end TLS, HTTP to HTTPS redirection, and managed TLS certificates when applicable. <br><br> Review the [TLS best practices for Azure Front Door](/azure/frontdoor/best-practices#23tls-best-practices). <br><br> Use TLS version 1.2 as the minimum allowed version with ciphers that are relevant for your application. <br><br> Azure Front Door managed certificates should be your default choice for ease of operations. However, if you want to manage the lifecycle of the certificates, use your own certificates in [Azure Front Door custom domain](/azure/frontdoor/standard-premium/how-to-configure-https-custom-domain) endpoints and store them in Key Vault.|TLS ensures that data exchanges between the browser, Azure Front Door, and the origins are encrypted to prevent tampering. <br><br> Key Vault offers managed certificate support and simple certificate renewal and rotation.|
+|Use AI-powered threat analysis and response capabilities for WAF events with [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/waf-copilot). |This integration enables automatic threat identification, contextual analysis, and response suggestions to reduce alert fatigue in security operations centers handling hundreds of WAF alerts daily.|
 
 ## Cost Optimization
 
@@ -191,7 +193,7 @@ Start your design strategy based on the [design review checklist for Operational
 |[Capture logs and metrics](/azure/frontdoor/front-door-diagnostics). <br><br> Include resource activity logs, access logs, health probe logs, and WAF logs. <br><br>[Set up alerts](/azure/frontdoor/standard-premium/how-to-monitor-metrics#configure-alerts-in-the-azure-portal).|Monitoring ingress flow is a crucial part of monitoring an application. You want to track requests and make performance and security improvements. You need data to debug your Azure Front Door configuration. <br><br> With alerts in place, you can get instant notifications of any critical operational issues.|
 |Review the [built-in analytics reports](/azure/frontdoor/standard-premium/how-to-reports).|A holistic view of your Azure Front Door profile helps drive improvements based on traffic and security reports through WAF metrics.|
 | [Use managed TLS certificates](/azure/frontdoor/domain#azure-front-door-managed-tls-certificates) when possible. | Azure Front Door can issue and manage certificates for you. This feature eliminates the need for certificate renewals and minimizes the risk of an outage due to an invalid or expired TLS certificate.|
-|[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain).|  You don't need to modify the configuration to add or specify each subdomain separately. |
+|[Use wildcard TLS certificates](/azure/frontdoor/front-door-wildcard-domain) with managed certificate support for automatic provisioning and renewal. <br><br> Configure managed certificates for wildcard domains to enable automatic certificate lifecycle management for multiple subdomains under a single certificate.|  You don't need to modify the configuration to add or specify each subdomain separately. Managed wildcard certificates provide automatic provisioning and renewal for all subdomains, reducing operational overhead for organizations with multiple branded storefronts or services. |
 
 ## Performance Efficiency
 
@@ -281,3 +283,8 @@ Consider the following articles as resources that demonstrate the recommendation
 - Build implementation expertise by using the following product documentation:
    - [Azure Front Door](/azure/frontdoor/)
    - [Best practices for Azure Front Door](/azure/frontdoor/best-practices)
+
+<!-- Updated: August 17, 2025 for Azure Update 496631 -->
+<!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, 496536>
+
+
