@@ -103,6 +103,14 @@ GitHub Actions goes beyond just DevOps and enables you to run workflows when oth
 
 **Azure Update Manager**: [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
 
+**Network infrastructure automation**: Azure provides automated management capabilities for networking services that reduce operational overhead. Here are some examples:
+
+- **Azure Firewall customer-controlled maintenance**: Configure [predictable maintenance schedules](/azure/firewall/customer-controlled-maintenance) with minimum 5-hour windows and daily recurrence. Plan maintenance around business requirements and low-traffic periods to ensure firewall infrastructure receives necessary security updates without unexpected downtime.
+
+- **Azure Firewall FQDN filtering in DNAT rules**: Use [domain name-based routing](/azure/firewall/firewall-faq#how-can-i-use-fqdn-filtering-in-dnat-rules) instead of static IP addresses in destination NAT configurations. This reduces operational overhead when backend infrastructure changes IP addresses due to scaling operations, deployments, or infrastructure updates.
+
+- **Azure Front Door managed certificates**: Implement [automatic certificate provisioning and renewal](/azure/frontdoor/front-door-custom-domain-https) for wildcard domains. This automation supports multiple subdomains under a single certificate, simplifying SSL certificate management for organizations with complex domain structures and reducing manual certificate lifecycle management tasks.
+
 - Oversee compliance on your entire fleet of machines.
 - Schedule recurring updates
 - Deploy critical updates
@@ -144,3 +152,7 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Operational Excellence checklist](checklist.md)
+
+<!-- Azure Update: 497160 - 2025-01-23 -->
+<!-- Azure Update: 497428 - 2025-01-22 -->
+<!-- Azure Update: 496631 - 2025-05-21 -->

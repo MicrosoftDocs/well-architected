@@ -152,6 +152,8 @@ For smaller cost data sets, you can use [Usage Details API](/azure/cost-manageme
 
 **Automating alerts**: Cost Management enables you to set up [automated alerts and actions](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) based on spending thresholds or budgets. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use [Cost analysis](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
 
+**Optimize log analytics costs**: For high-traffic services generating significant log volumes, implement [ingestion-time transformation](/azure/azure-monitor/data-collection/data-collection-transformations) to selectively process and store relevant data. For example, Azure Firewall supports advanced filtering and data transformation before log storage, enabling cost reductions in log analytics expenses while preserving security-relevant events for analysis. Configure filtering rules to retain critical security events while reducing routine traffic logs in high-volume environments.
+
 ## Related links
 
 - [Group and filter options in cost analysis and budgets](/azure/cost-management-billing/costs/group-filter)
@@ -166,3 +168,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Cost Optimization checklist](checklist.md)
+
+<!-- Azure Update: 498568 - 2025-01-23 -->

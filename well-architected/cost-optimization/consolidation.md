@@ -122,6 +122,8 @@ Offloading workload responsibilities to external teams refers to using expert ce
 
 Log Analytics provides centralized log management and analysis. You can collect, analyze, and visualize log data from various Azure resources, which helps to identify issues, troubleshoot problems, and gain operational insight.
 
+**Centralized network management:** [Azure Virtual Network Manager IP address management](/azure/virtual-network-manager/concept-ip-address-management) provides centralized IP planning and allocation across complex virtual network environments. This consolidates IP management responsibilities and prevents resource conflicts across multiple subscriptions and virtual networks. Centralized management reduces operational overhead by providing visibility and control over IP allocation, essential for managing large enterprise environments with hundreds of virtual networks.
+
 ## Related links
 
 - [Azure Monitor](/azure/azure-monitor/overview)
@@ -133,3 +135,6 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Cost Optimization checklist](checklist.md)
+
+<!-- Azure Update: 484347 - 2025-07-23 -->
+<!-- Azure Update: 498568 - 2025-01-23 -->

@@ -120,6 +120,8 @@ Start your design strategy based on the [design review checklist for Security](.
 |(Cluster) Secure clusters and pods by using [Azure Policy](/azure/aks/use-azure-policy). | Azure Policy can help apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. It can also control what functions pods are granted and detect whether anything is running against company policy. |
 |(Cluster) Secure container access to resources. Limit access to actions that containers can perform. Provide the least number of permissions, and avoid the use of root or privileged escalation.<br><br>For Linux based containers, see [Security container access to resources using built-in Linux security features](/azure/aks/secure-container-access).|By restricting permissions and avoiding the use of root or privileged escalation, you help reduce the risk of security breaches. You can help ensure that, even if a container is compromised, the potential damage is minimized.|
 |(Cluster) Control cluster egress traffic by ensuring that your cluster's outbound traffic passes through a network security point such as [Azure Firewall](/azure/aks/limit-egress-traffic#restrict-egress-traffic-using-azure-firewall) or an [HTTP proxy](/azure/aks/http-proxy).|By routing outbound traffic through Azure Firewall or an HTTP proxy, you can help enforce security policies that prevent unauthorized access and data exfiltration. This approach also simplifies the administration of security policies and makes it easier to enforce consistent rules across your entire AKS cluster.|
+|(Cluster) Configure [HTTP proxy support](/azure/aks/http-proxy) for existing AKS clusters in proxy-dependent environments. <br><br> Enable HTTP proxy configuration for both AKS nodes and pods to integrate with existing enterprise network security architectures and compliance requirements. | Critical for financial services and other regulated industries requiring all internet traffic to flow through corporate HTTP proxies for security scanning and compliance monitoring. Enables seamless integration with existing enterprise network security infrastructure. |
+|(Cluster) Implement [custom certificate authority support](/azure/aks/custom-certificate-authority) to establish trust relationships between AKS clusters and enterprise PKI infrastructure. <br><br> Configure custom CA to enable trust for private registries, proxies, and firewalls within existing organizational certificate management frameworks. | Essential for enterprises with internal certificate authority infrastructure. Enables AKS clusters to trust organizational private registries and internal services while maintaining corporate security policies and compliance requirements. |
 |(Cluster) Use the open-source [Microsoft Entra Workload ID](https://github.com/Azure/azure-workload-identity) and [Secrets Store CSI Driver](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage) with Key Vault.| These features help you protect and rotate secrets, certificates, and connection strings in Key Vault by using strong encryption. They provide an access audit log and keep core secrets out of the deployment pipeline.|
 |(Cluster) Use [Microsoft Defender for Containers](/azure/defender-for-cloud/defender-for-containers-introduction). |Microsoft Defender for Containers helps you monitor and maintain the security of your clusters, containers, and their applications.|
 
@@ -215,6 +217,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Recommendation | Benefit |
 |--------|----|
 |(Cluster) Operationalize cluster and pod configuration standards by using [Azure policies for AKS](/azure/aks/use-azure-policy). | Azure policies for AKS can help you apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. Use policies to define the permissions granted to pods and ensure compliance with company policies.|
+|(Cluster) Configure [Azure CNI static block allocation](/azure/aks/configure-azure-cni) for predictable pod subnet allocation and improved IP address management in AKS clusters. <br><br> Implement static block allocation to provide predictable IP address assignment for Kubernetes pods within defined subnet ranges, enabling integration with existing network security policies. | Essential for development teams running multiple AKS clusters needing predictable IP address allocation to integrate with existing network security policies and firewall rules. Enhances operational excellence through predictable network addressing and simplified IP management. |
 |(Workload) Use [Kubernetes Event Driven Autoscaler (KEDA)](/azure/aks/keda-about).|KEDA allows your applications to scale based on events, like the number of events being processed. You can choose from a rich catalog of more than 50 KEDA scalers.|
 
 ## Performance Efficiency
@@ -299,6 +302,9 @@ Build implementation expertise by using the following product documentation:
 
 -  [AKS product documentation](/azure/aks)
 
+
+<!-- Updated: August 17, 2025 for Azure Update 498166, 491880 -->
 <!-- Updated: August 17, 2025 for Azure Update 498166 -->
 <!-- Updated: August 17, 2025 for Azure Update 498258 -->
 <!-- Updated: August 17, 2025 for Azure Update 498242 -->
+

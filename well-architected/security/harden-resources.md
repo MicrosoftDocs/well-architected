@@ -168,3 +168,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496536 -->
