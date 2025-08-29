@@ -50,10 +50,10 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 > - When publishing events frequently, use the AMQP protocol when possible.
 > - The number of partitions reflect the degree of downstream parallelism you can achieve.
 > - Ensure each consuming application uses a separate consumer group and only one active receiver per consumer group is in place.
-> - When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.
 > - Plan to address nontransient errors processing specific events. Event Hubs does not have a built-in dead-letter queue.
 >
 >   Create a custom dead-letter mechanism within your workload. If processing a event results in a nontransient failure, copy the event onto a custom dead-letter queue. Replicating the event into an dedicated queue allows you to retry processing the event later, apply a compensating transaction, or take some other action.
+> - When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.
 
 ## Configuration recommendations
 
