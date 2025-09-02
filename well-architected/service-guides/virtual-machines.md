@@ -200,7 +200,9 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Monitor the health of the VMs and their dependencies.**
 >   - Deploy monitoring components to collect logs and metrics that give a comprehensive view of your VMs, guest OS, and boot diagnostics data. Virtual Machine Scale Sets roll up telemetry, which allows you to view health metrics at an individual VM level or as an aggregate. Use Azure Monitor to view this data for each VM or aggregated across multiple VMs. For more information, see [Recommendations on monitoring agents](#configuration-recommendations-3).
+>
 >   - Take advantage of networking components that check the health status of VMs. For example, Azure Load Balancer pings VMs to detect unhealthy VMs and reroute traffic accordingly.
+>
 >   - Set up Azure Monitor alert rules. Determine important conditions in your monitoring data to identify and address problems before they affect the system.
 >
 > - **Create a maintenance plan** that includes regular system patching as a part of routine operations. Include emergency processes that allow for immediate patch application. You can have custom processes to manage patching or partially delegate the task to Azure.
