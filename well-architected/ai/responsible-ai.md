@@ -5,6 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/08/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Responsible AI in Azure workloads

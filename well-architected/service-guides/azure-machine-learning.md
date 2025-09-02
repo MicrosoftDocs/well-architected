@@ -4,13 +4,13 @@ description: See Azure Well-Architected Framework design considerations and conf
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 03/11/2024
-ms.update-cycle: 180-days
 ms.topic: conceptual
 ms.collection: ce-skilling-ai-copilot
 products:
   - azure-machine-learning
 azure.category:
   - ai-machine-learning
+ms.update-cycle: 180-days  
 ---
 
 # Architecture best practices for Azure Machine Learning
@@ -275,21 +275,11 @@ Consider the following policies that are related to operational excellence:
 For comprehensive governance, review the
 [Azure Policy built-in definitions for Machine Learning]( /azure/governance/policy/samples/built-in-policies#machine-learning).
 
-## Advisor recommendations
+## Azure Advisor recommendations
 
-Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Advisor recommendations can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Machine Learning.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-Consider the following [Advisor](https://azure.microsoft.com/products/advisor) recommendations for security:
-
-- Workspaces should be encrypted with a customer-managed key (CMK).
-- Workspaces should use private link.
-- Workspaces should disable public network access.
-- Compute should be in a virtual network.
-- Compute instances should be recreated to get the latest software updates.
-
-Consider the following [Advisor](https://azure.microsoft.com/products/advisor) recommendation for operational excellence: 
-
-- Resource logs in Machine Learning workspaces should be enabled.
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next steps
 

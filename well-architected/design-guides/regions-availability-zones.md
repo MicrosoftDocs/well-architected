@@ -1,5 +1,5 @@
 ---
-title: Recommendations for using availability zones and regions 
+title: Architecture strategies for using availability zones and regions 
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions.
 author: johndowns
 ms.author: jodowns
@@ -7,7 +7,7 @@ ms.date: 11/13/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for using availability zones and regions
+# Architecture strategies for using availability zones and regions
 
 This guide describes the recommendations for determining when to deploy workloads across availability zones or regions.
 
@@ -45,7 +45,10 @@ However you design your solution, the Security pillar applies. Usually, decision
 | Zonal (pinned) deployment | A deployment model in which a resource is deployed into a specific availability zone. |
 | Zone-redundant deployment | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
 
+<<<<<<< HEAD:well-architected/design-guides/regions-availability-zones.md
 ## Understand how regions and availability zones are organized in Azure
+=======
+>>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40:well-architected/reliability/regions-availability-zones.md
 
 Azure has a large global footprint. An Azure *region* is a geographic perimeter that contains a set of datacenters. You need to have a complete understanding of Azure regions and availability zones.
 
@@ -83,7 +86,11 @@ Your own code needs to [recommended practices and design patterns for handling f
 
 To make an informed decision about how to use availability zones and regions in your solution, you need to understand your requirements. These requirements should be driven by discussions between solution designers and business stakeholders.
 
+<<<<<<< HEAD:well-architected/design-guides/regions-availability-zones.md
 ### Risk tolerance
+=======
+#### Risk tolerance
+>>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40:well-architected/reliability/regions-availability-zones.md
 
 Different organizations have different degrees of risk tolerance. Even within an organization, risk tolerance is often different for each workload. Most workloads don't need extremely high availability. However, some workloads are so important that it's even worth mitigating risks that are unlikely to occur, like major natural disasters that affect a wide geographic area.
 

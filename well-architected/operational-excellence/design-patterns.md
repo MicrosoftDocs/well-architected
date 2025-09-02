@@ -1,5 +1,5 @@
 ---
-title: Cloud design patterns that support operational excellence
+title: Architecture design patterns that support operational excellence
 description: Learn about industry patterns that support operational excellence and can help you address common challenges in cloud workloads.  
 author: ckittel
 ms.author: chkittel
@@ -7,15 +7,13 @@ ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
-# Cloud design patterns that support operational excellence
+# Architecture design patterns that support operational excellence
 
 When you design workload architectures, you should use industry patterns that address common challenges. Patterns can help you make intentional tradeoffs within workloads and optimize for your desired outcome. They can also help mitigate risks that originate from specific problems, which can affect reliability, security, performance, and cost. Because operations cut across all those areas, risks will eventually affect workload operations. These patterns are backed by real-world experience, are designed for cloud scale and operating models, and are inherently vendor agnostic. Using well-known patterns as a way to standardize your workload design is itself a component of operational excellence.
 
 Many design patterns directly support one or more architecture pillars. Design patterns that support the Operational Excellence pillar use topologies that provide a solid foundation for safe deployment practices and facilitate architecture evolution over time, migration scenarios, and observability.
 
-## Design patterns for operational excellence
-
-The following table summarizes cloud design patterns that support the goals of operational excellence.
+The following table summarizes Architecture design patterns that support the goals of operational excellence.
 
 |Pattern|Summary|
 |-|-|
@@ -36,9 +34,9 @@ The following table summarizes cloud design patterns that support the goals of o
 
 ## Next steps
 
-Review the cloud design patterns that support the other Azure Well-Architected Framework pillars:
+Review the Architecture design patterns that support the other Azure Well-Architected Framework pillars:
 
-- [Cloud design patterns that support reliability](../reliability/design-patterns.md)
-- [Cloud design patterns that support security](../security/design-patterns.md)
-- [Cloud design patterns that support cost optimization](../cost-optimization/design-patterns.md)
-- [Cloud design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
+- [Architecture design patterns that support reliability](../reliability/design-patterns.md)
+- [Architecture design patterns that support security](../security/design-patterns.md)
+- [Architecture design patterns that support cost optimization](../cost-optimization/design-patterns.md)
+- [Architecture design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)

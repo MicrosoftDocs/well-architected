@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing component costs.
+title: Architecture strategies for optimizing component costs.
 description: Learn how to optimize component costs by eliminating sources of wasted spending from an existing workload.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing component costs
+# Architecture strategies for optimizing component costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -24,15 +24,14 @@ This guide describes the recommendations for optimizing workload component costs
 | Platform feature | A specific functionality or capability provided by a platform. It can vary depending on the platform, but generally, platform features are designed to enhance the user experience, improve productivity, or enable specific tasks or actions. |
 | Resource | A single entity or component that you can create, configure, and utilize within a cloud service provider. |
 
-## Key design strategies
 
 Optimizing workload components is about refining the various elements of a workload, including application features, platform capabilities, and resource. The goal is to ensure the workload uses all components efficiently and cost-effectively. Strategies include removing, modifying, and avoiding components that cause you to spend more than you need. The component cost optimization process ensures you allocate resources to features and components that deliver the most value, avoiding unnecessary expenses.
 
-### Optimize application features
+## Optimize application features
 
 Optimizing application features is the process of either removing, reinvesting, or monetizing application features based on value. It ensures you allocate resources to application features that provide the most value to customers. Optimizing application features helps avoid investing in features that contribute to technical debt or don't yield enough return on investment.
 
-#### Evaluate application feature value
+### Evaluate application feature value
 
 To determine the value of a feature, consider its effects on the overall application and the value it provides to the customers. Some factors to consider include:
 
@@ -44,7 +43,7 @@ To determine the value of a feature, consider its effects on the overall applica
 
 - *Differentiation*: Assess whether the feature provides a unique selling point or competitive advantage compared to other applications in the market.
 
-#### Evaluate application feature cost
+### Evaluate application feature cost
 
 It's essential that you understand the cost associated with each feature for effective resource allocation and optimization. Consider various aspects when evaluating costs, such as:
 
@@ -58,11 +57,11 @@ It's essential that you understand the cost associated with each feature for eff
 
 - *Performance considerations*: Evaluate the effect of the feature on the application's performance, including scalability, response time, and resource usage.
 
-#### Review application feature value with stakeholders
+### Review application feature value with stakeholders
 
 Review the value of application features with stakeholders by engaging key personnel, such as product managers, software developers, and business analysts, to assess the value of specific features on business objectives. This collaboration is essential for cost optimization as it provides insights into maintenance efforts and identifies features that might hinder productivity or detract from developing new, valuable features. Your development team can give you important information about how much work it takes to maintain certain features. Encourage them to speak up about features that might be more trouble than they're worth, especially if these features distract the team from creating new ones.
 
-#### Determine the future of the feature
+### Determine the future of the feature
 
 Based on your analysis and evaluation, determine the future of the application features. Remove, reinvest, or monetize any application feature that doesn't provide a return on investment:
 
@@ -74,7 +73,7 @@ Based on your analysis and evaluation, determine the future of the application f
 
 - *Monetize*: Turn application features into a revenue-generating opportunity via monetization. Sometimes features provide value to users but aren’t worth the current investment. Explore opportunities to monetize these features, such as offering them as separate paid add-ons or licensing them to other companies.
 
-### Optimize workload resources
+## Optimize workload resources
 
 Optimizing workload resources involves removing any resources that unused and optimizing any underutilized resources that the workload needs. This effort can save money, avoid waste, and ensure that the workload only uses the resources that add value.
 
@@ -120,7 +119,7 @@ After you make these adjustments, test to make sure everything still works as it
 
 - *Active-redeploy*: This strategy uses infrastructure as code. When a failover event occurs, you deploy the secondary environment, using predefined templates and scripts. With no predeployed compute resources in the disaster recovery environment, you save on the costs associated with maintaining idle resources. You only incur costs during the actual deployment in a failover scenario. Like the cold approach, this model might introduce longer recovery times, especially if the infrastructure's complexity is high. You should test and measure the recovery time to ensure it meets your recovery time objective.
 
-### Optimize platform features
+## Optimize platform features
 
 Optimizing platform features involves eliminating or updating platform features, such as performance tiers and configuration settings, to optimize costs. It helps align spending with the requirements of the workload and avoids unnecessary expenses on unneeded features. Here are some tips to optimize the cost of platform features:
 
@@ -136,7 +135,7 @@ Optimizing platform features involves eliminating or updating platform features,
 
 - *Eliminate tool redundancy*: Get rid of tools that you don't need or tools that provide the same function. Evaluate potential redundancy in the tools you use for building software, writing code, security, and monitoring. For example, if you use GitHub Actions to build your software, you don't need to buy another tool that builds software. Before you buy features or tools, check if there's already a tool in your workload that can do the job. Eliminate tool redundancy to avoid wasted money and make the most of what you already have.
 
-### Be methodical in optimization efforts
+## Be methodical in optimization efforts
 
 Preventing unoptimized components is about proactively ensuring components are essential and optimized before adding or modifying. The best way to get rid of waste is to avoid it in the first place. Use strategies that prevent unnecessary expenses by addressing inefficiencies at the root, ensuring a workload runs cost-effectively from the outset. To help prevent waste, consider these strategies:
 

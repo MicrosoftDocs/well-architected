@@ -5,6 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 11/01/2024
 ms.topic: conceptual
+ms.update-cycle: 1095-days
 ---
 
 # Solution architect's fundamentals
@@ -62,11 +63,11 @@ To design a system that will last until its planned end of life, you must design
 
 For more information on cloud design patterns, see:
 
-- [Cloud design patterns that support reliability](../reliability/design-patterns.md)
-- [Cloud design patterns that support security](../security/design-patterns.md)
-- [Cloud design patterns that support cost optimization](../cost-optimization/design-patterns.md)
-- [Cloud design patterns that support operational excellence](../operational-excellence/design-patterns.md)
-- [Cloud design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
+- [Architecture design patterns that support reliability](../reliability/design-patterns.md)
+- [Architecture design patterns that support security](../security/design-patterns.md)
+- [Architecture design patterns that support cost optimization](../cost-optimization/design-patterns.md)
+- [Architecture design patterns that support operational excellence](../operational-excellence/design-patterns.md)
+- [Architecture design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
 
 ## Design for supportability
 

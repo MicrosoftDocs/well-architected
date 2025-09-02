@@ -11,6 +11,21 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## August 2025
+
+### Updated article
+
+- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
+- [Architecture best practices for Azure SQL Database](./service-guides/azure-sql-database.md): We clarified how zone redundancy works in Azure SQL Database by specifying that both compute and storage components are distributed across two or three availability zones, rather than just spreading data. This update emphasizes that Azure selects the optimal zone configuration for resilience and that these zones are physically separate with independent infrastructure. The change provides a more complete picture of how zone redundancy ensures high availability.
+
+## July 2025
+
+### Updated articles
+
+- [Responsible AI in Azure workloads](./ai/responsible-ai.md): We refreshed this article with new guidance for agentic AI systems, including safeguards for retrieval and autonomous agents, auditability, and human oversight. Content safety recommendations now include watermarking, metadata tagging, and clear disclosure of AI-generated media. Ethical updates emphasize the ability to contest AI decisions and ensure transparency in system changes. These additions support more responsible and secure deployment of advanced AI solutions.
+- [Architecture best practices for Azure Local](./service-guides/azure-local.md): We updated this guidance to reflect the latest platform version (2311), refreshed documentation links, clarified pricing details, clarified role definitions, and simplified terminology. We also improved how we describe security, monitoring, and licensing features to make the guidance easier to follow and more relevant to current deployments.
+- [Application design for AI workloads on Azure](./ai/application-design.md) We added a link to common AI agent orchestration patterns to help teams explore proven strategies before designing their own.
+
 ## June 2025
 
 ### Maturity models
@@ -175,15 +190,15 @@ This month, we added a new workload for SaaS on Azure. This documentation provid
 
 We reviewed all tradeoff and design pattern articles for alignment with the content structure and to ensure that the guidance is up to date. Tradeoffs are an essential part of the Well-Architected Framework, as they help you understand the implications of design decisions on other pillars. Design patterns are reusable solutions to common problems that you might encounter when designing a workload. They help you understand how to design your workload to meet the goals of the Well-Architected Framework. Check out the updated articles:
 
-- [Cloud design patterns that support cost optimization](./cost-optimization/design-patterns.md)
+- [Architecture design patterns that support cost optimization](./cost-optimization/design-patterns.md)
 - [Cost Optimization tradeoffs](./cost-optimization/tradeoffs.md)
-- [Cloud design patterns that support reliability](./reliability/design-patterns.md)
+- [Architecture design patterns that support reliability](./reliability/design-patterns.md)
 - [Reliability tradeoffs](./reliability/tradeoffs.md)
-- [Cloud design patterns that support security](./security/design-patterns.md)
+- [Architecture design patterns that support security](./security/design-patterns.md)
 - [Security tradeoffs](./security/tradeoffs.md)
-- [Cloud design patterns that support operational excellence](./operational-excellence/design-patterns.md)
+- [Architecture design patterns that support operational excellence](./operational-excellence/design-patterns.md)
 - [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
-- [Cloud design patterns that support performance efficiency](./performance-efficiency/design-patterns.md)
+- [Architecture design patterns that support performance efficiency](./performance-efficiency/design-patterns.md)
 - [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
 
 ## September 2024
@@ -195,38 +210,3 @@ We reviewed all tradeoff and design pattern articles for alignment with the cont
 ### Updated articles
 
 - [Azure Well-Architected Framework perspective on Azure Firewall](./service-guides/azure-firewall.md): We made significant updates to the guidance about Azure Firewall. Explore the fully updated content including new recommendations for configuring Azure Firewall to protect your workloads.
-
-## August 2024
-
-### Updated articles
-
-- [Recommendations for defining reliability targets](./reliability/metrics.md): We made significant updates, including new guidance on composite SLOs. The updated content links to guidance about how to focus on realistic expectations and build a health model to define system states.
-
-We added guidance about ensuring that the VMs in your backup environment run on [OSs that have supportability](/azure/virtual-machines/enable-nvme-interface):
-
-- [Operations considerations for Azure VMware Solution workloads](azure-vmware/operations.md)
-- [Optimize business continuity and disaster recovery](oracle-iaas/optimize-business-continuity-disaster-recovery.md)
-
-### Hybrid retirement
-
-- This month, we announced the deprecation of Hybrid documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
-
-## July 2024
-
-### New articles
-
-- [Azure Well-Architected Framework perspective on Azure Local](./service-guides/azure-local.md): Explore design considerations and configuration recommendations for Azure Local. Azure Local is a hyperconverged infrastructure (HCI) solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid on-premises environment. Learn how you can use Azure Local and Azure Arc capabilities to keep business systems and application data on-premises to address data sovereignty, regulation and compliance, and latency requirements.
-
-### Updated articles
-
-- [Workload architecture design specification](./architect-role/architecture-design-specification.md): Learn about best practices for creating functional and technical specifications and the importance of consistency in your workload design documentation.
-- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance to include Microsoft Entra ID architecture icons.
-
-Find updated guidance on using flexible virtual machine scale sets instead of availability sets for deployment across multiple zones:
-
-- [Application platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-application-platform.md)
-- [Application delivery considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/application-delivery.md)
-
-### Carrier Grade retirement
-
-- This month, we announced the deprecation of the Carrier Grade documentation. The content was outdated and no longer relevant to the Azure Well-Architected Framework.

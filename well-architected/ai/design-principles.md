@@ -5,6 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
 ms.topic: conceptual
+ms.update-cycle: 180-days  
 ---
 
 # Design principles for AI workloads on Azure
