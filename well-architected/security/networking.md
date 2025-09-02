@@ -1,5 +1,5 @@
 ---
-title: Recommendations for networking and connectivity
+title: Architecture strategies for networking and connectivity
 description: Learn about network security controls that can filter, block, and detect adversaries who cross network boundaries at various depths of your architecture.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for networking and connectivity
+# Architecture strategies for networking and connectivity
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -31,7 +31,6 @@ You can strengthen your identity controls by implementing network-based access c
 |Network transformation | A mechanism that mutates network packets to obscure them. |
 |North-south traffic | Network traffic that moves from a trusted boundary to external networks that are potentially hostile, and vice versa. |
 
-## Key design strategies
 
 Network security uses **obscurity to protect workload assets from hostile networks**. Resources that are behind a network boundary are hidden until the boundary controls mark the traffic as safe to move forward. Network security design is built on three main strategies:
 
@@ -49,7 +48,7 @@ Network security uses **obscurity to protect workload assets from hostile networ
 
 - **Transform**. **Mutate packets at the boundary as a security measure.** For example, you can remove HTTP headers to eliminate the risk of exposure. Or you can turn off Transport Layer Security (TLS) at one point and reestablish it at another hop with a certificate that's managed more rigorously.
 
-### Classify the traffic flows
+## Classify the traffic flows
 
 The first step in classifying flows is to study a schematic of your workload architecture. From the schematic, **determine the intent and characteristics of the flow** with respect to the functional utility and operational aspects of your workload. Use the following questions to help classify the flow:
 
@@ -59,7 +58,7 @@ The first step in classifying flows is to study a schematic of your workload arc
 
 There are many ways to classify traffic flows. The following sections discuss commonly used criteria.
 
-##### Visibility from external networks
+#### Visibility from external networks
 
 - **Public**. A workload is public facing if its application and other components are reachable from the public internet. The application is exposed through one or more public IP addresses and public Domain Name System (DNS) servers.
 
@@ -69,7 +68,7 @@ There are many ways to classify traffic flows. The following sections discuss co
 
 Even with public workloads, **strive to keep as much of the workload private as possible**. This approach forces packets to cross through a private boundary when they arrive from a public network. A gateway in that path can function as a transition point by acting as a reverse proxy.
 
-#### Traffic direction
+### Traffic direction
 
 - **Ingress**. Ingress is inbound traffic that flows toward a workload or its components. To help secure ingress, apply the preceding set of key strategies. Determine what the traffic source is and whether it's expected, allowed, and safe. Attackers who scan public cloud provider IP address ranges can successfully penetrate your defenses if you don't check ingress or implement basic network security measures.
 
@@ -79,7 +78,7 @@ Even with public workloads, **strive to keep as much of the workload private as 
 
 You can also **determine your level of exposure by considering your workload's proximity to the public internet**. For example, the application platform typically serves public IP addresses. The workload component is the face of the solution.
 
-#### Scope of influence
+### Scope of influence
 
 - **North-south**. Traffic that flows between a workload network and external networks is north-south traffic. This traffic crosses the edge of your network. External networks can be the public internet, a corporate network, or any other network that's outside your scope of control.
 
@@ -100,7 +99,7 @@ The preceding diagram illustrates network defense in depth in the private cloud.
 
 After you classify flows, perform a segmentation exercise to identify firewall injection points on the communication paths of your network segments. When you **design your network defense in depth across all segments and all traffic types, assume a breach at all points**. Use a combination of various localized network controls at all available boundaries. For more information, see [Segmentation strategies](segmentation.md).
 
-### Apply firewalls at the edge
+## Apply firewalls at the edge
 
 Internet edge traffic is north-south traffic and includes ingress and egress. To detect or block threats, an edge strategy must mitigate as many attacks as possible to and from the internet.
 
@@ -118,7 +117,7 @@ For egress, **send all internet-bound traffic through a single firewall** that p
 
 Any technological options that you consider should provide security controls and monitoring for both ingress and egress flows. To see options that are available for Azure, see the [Edge security](#edge-security) section in this article.
 
-### Design virtual network and subnet security
+## Design virtual network and subnet security
 
 The primary objective of a private cloud is to obscure resources from the public internet. There are several ways of achieving this goal:
 
@@ -128,7 +127,7 @@ The primary objective of a private cloud is to obscure resources from the public
 
 - **Add ingress and egress network flow control**. Don't allow traffic that's not trusted.
 
-##### Segmentation strategy
+#### Segmentation strategy
 
 To minimize network visibility, **segment your network and start with least-privilege network controls**. If a segment isn't routable, it can't be accessed. Broaden the scope to include only segments that need to communicate with each other through network access.
 
@@ -138,15 +137,15 @@ You can base your segmentation on many factors. For example, you can place diffe
 
 For more information, see [Segmentation strategies](segmentation.md).
 
-##### Subnet firewalls
+#### Subnet firewalls
 
-It's important to inspect each subnet's inbound and outbound traffic. Use the three main strategies discussed earlier in this article, in [Key design strategies](#key-design-strategies). Check whether the flow is expected, allowed, and safe. To verify this information, **define firewall rules that are based on the protocol, source, and destination** of the traffic.
+It's important to inspect each subnet's inbound and outbound traffic. Use the three main strategies discussed earlier in this article. Check whether the flow is expected, allowed, and safe. To verify this information, **define firewall rules that are based on the protocol, source, and destination** of the traffic.
 
 On Azure, you set firewall rules in network security groups. For more information, see the [Network security groups](#network-security-groups) section in this article.
 
 For an example of a subnet design, see [Azure Virtual Network subnets](/azure/virtual-network/quick-create-portal).
 
-### Use controls at the component level
+## Use controls at the component level
 
 After you minimize the visibility of your network, map out your Azure resources from a network perspective and evaluate the flows. The following types of flows are possible:
 
@@ -158,14 +157,14 @@ Distinguishing between planned and management traffic helps you build localized,
 
 As a starting point, determine whether each service is exposed to the internet. If it is, plan how to restrict access. If it isn't, place it in a virtual network.
 
-##### Service firewalls
+#### Service firewalls
 
 If you expect a service to be exposed to the internet, **take advantage of the service-level firewall that's available for most Azure resources**. When you use this firewall, you can set rules based on access patterns. For more information, see the [Azure service firewalls](#azure-service-firewalls) section in this article.
 
 > [!NOTE]
 > When your component isn't a service, use a host-based firewall in addition to network-level firewalls. A virtual machine (VM) is an example of a component that's not a service.
 
-#### Connectivity to platform as a service (PaaS) services
+### Connectivity to platform as a service (PaaS) services
 
 Consider using **private endpoints to help secure access to PaaS services**. A private endpoint is assigned a private IP address from your virtual network. The endpoint allows other resources in the network to communicate with the PaaS service over the private IP address.
 
@@ -186,7 +185,7 @@ Another advantage of using private endpoints is that you don't need to open the 
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Azure Private Link is a paid service that has meters for inbound and outbound data that's processed. You're also charged for private endpoints.
 
-### Protect against distributed denial of service (DDoS) attacks
+## Protect against distributed denial of service (DDoS) attacks
 
 A DDoS attack attempts to exhaust an application's resources to make the application unavailable to legitimate users. DDoS attacks can target any endpoint that's publicly reachable through the internet.
 
@@ -352,6 +351,14 @@ Keep the following recommendations in mind when you use private endpoints:
 
 DNS management can be complex in common network topologies. You might have to introduce DNS forwarders and other components.
 
+### Azure Network Security Perimeter
+
+While private endpoints provide direct virtual network integration for PaaS services, [**Azure Network Security Perimeter**](/azure/private-link/network-security-perimeter-concepts) offers logical network isolation for PaaS services outside your  virtual networks. This is beneficial when you need to group related PaaS services under unified access policies without requiring individual private endpoints for each service. 
+
+For example you can use this logical segmentation around all PaaS services supporting a specific workload or business unit. Or, implement uniform perimeter policies for development, staging, and production environments, allowing appropriate access levels while maintaining isolation.
+
+Be aware of the limitations around logging, scalability, and others aspects that comes with this feature. For more information, see [Limitations of a network security perimeter?](/azure/private-link/network-security-perimeter-concepts#limitations-of-a-network-security-perimeter)
+
 ### Virtual network injection
 
 You can use the **virtual network injection process** to deploy some Azure services into your network. Examples of such services include Azure App Service, Functions, Azure API Management, and Azure Spring Apps. This process **isolates the application** from the internet, systems in private networks, and other Azure services. Inbound and outbound traffic from the application is allowed or denied based on network rules.
@@ -442,3 +449,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496002, 497535 -->

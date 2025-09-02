@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing data costs
+title: Architecture strategies for optimizing data costs
 description: Learn how to optimize data costs for a workload by aligning data spending to data priority.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing data costs
+# Architecture strategies for optimizing data costs
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -25,13 +25,12 @@ This guide describes the recommendations for optimizing data costs for a workloa
 | Data tiering | A storage strategy that involves categorizing data based on its access frequency and storing it on storage tiers accordingly. |
 | Retention policy | The duration for which data should be retained before it can be deleted. It specifies the time period during which data must be preserved to meet legal, regulatory, or business requirements. |
 
-## Key design strategies
 
 Within a specific workload, you optimize data costs by reducing the expenses associated with storing and managing data. There are various strategies and best practices to minimize data storage and processing costs. The goal is to align data costs with data priority. You need to assign cost tiers to types of data based on their importance or frequency of access.
 
 The primary drivers for the cost of workload data are access frequency, access latency, and storage amount. The following guidance contains strategies for optimizing costs across these cost drivers.
 
-### Take an inventory of data
+## Take an inventory of data
 
 Before you can optimize the cost of your data, you need to generate an inventory of data. Examine data access and determine its importance within your workload and its operations. Identify which data is accessed frequently and which data is accessed less frequently. The following inventory actions can help you allocate storage resources effectively:
 
@@ -41,7 +40,7 @@ Before you can optimize the cost of your data, you need to generate an inventory
 
 - *Identify access patterns:* Identify the patterns in data access, such as daily, weekly, or monthly usage patterns. You should understand latency, file sizes, and data freshness requirements for that data.
 
-### Prioritize data
+## Prioritize data
 
 Data prioritization is the process of categorizing and assigning importance levels to types of data based on sensitivity and criticality. Data priority should align with the importance of the environment. For example, production data is more important than preproduction data.
 
@@ -51,11 +50,11 @@ Assess the importance of various types of data to your workload by using these s
 
 1. *Assign labels:* Label each data set with its sensitivity and criticality. You can apply labels at the row, column, or file level, depending on the data structure and usage. For databases, you can use a special tool to label and relate the sensitivity and criticality of data to specific rows and columns. This approach provides granular control over the management and access of data.
 
-### Optimize data management
+## Optimize data management
 
 Data management is the process of storing, moving, and securing workload data. By optimizing data management, you can align spending to data priority and derive more value from your data. Consider the following strategies for data management.
 
-#### Optimize data lifecycle management
+### Optimize data lifecycle management
 
 It's important to manage data throughout its lifecycle. Stages of the lifecycle include data creation (or acquisition), storage, usage, sharing, retention, and disposal (deletion or archiving). The goal of data lifecycle management is to optimize data storage solutions while complying with relevant regulations and policies.
 
@@ -85,7 +84,7 @@ The following considerations are foundational to data lifecycle management:
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: A poor implementation of data lifecycle management could lead to data loss or limited access to critical data. You should have proper backup and recovery mechanisms in place to mitigate the risk of data loss.
 
-#### Optimize data segmentation
+### Optimize data segmentation
 
 Optimizing data segmentation involves strategically organizing data into distinct segments and consolidate similar data types to efficiently allocate storage resources. It allows you to tailor allocation of storage resources to data priority.
 
@@ -93,7 +92,7 @@ To effectively optimize data segmentation, you categorize data by type and usage
 
 This approach ensures that high-demand data uses faster storage for optimal performance and less accessed data uses cheaper storage. Similarly, when data types share usage patterns, you should group them together on a single resource to reduce overhead, simplify management, and improve data handling.
 
-#### Minimize data transfer
+### Minimize data transfer
 
 Minimizing data transfer refers to the reduction of data movement across networks to decrease data transfer costs. It reduces the volume of data that the workload moves and lowers network usage fees. To minimize data transfer, consider the following recommendations:
 
@@ -101,13 +100,13 @@ Minimizing data transfer refers to the reduction of data movement across network
 - *Use caching.* Consider the benefits of caching to minimize data transfer.
 - *Use a content delivery network.* A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
 
-#### Optimize security and compliance
+### Optimize security and compliance
 
 Certain production data demands higher security and compliance requirements. These measures might impose extra costs related to data protection, encryption, backup, retention, and auditing.
 
 You must ensure that changes in data storage solutions adhere to these requirements. Data that has lower security and compliance requirements often presents an opportunity to optimize cost.
 
-### Optimize data volume
+## Optimize data volume
 
 Finding strategies to decrease the amount of data that you store can help reduce costs. By changing the accessibility of the data and implementing the following techniques, you can effectively optimize the volume of your stored data:
 
@@ -123,7 +122,7 @@ Finding strategies to decrease the amount of data that you store can help reduce
 
 - *Optimize user behavior*: In workloads that collect user-generated data, educate users on the importance of efficient data storage. Encourage them to regularly review and delete unnecessary files and data. Implement storage quotas or pricing models that discourage excessive data storage.
 
-### Optimize data replication
+## Optimize data replication
 
 Data replication involves creating multiple copies of data and storing them in other geographic locations or zones for reliability. Replication ensures that if one location or zone experiences a failure or outage, you can still access the data from the replicated copies in other locations.
 
@@ -141,7 +140,7 @@ To optimize data replication for cost optimization, consider the following guide
 
 - *Monitor and optimize replication frequency*: Regularly review and adjust the replication frequency based on the changing needs of your workload. Fine-tuning the replication frequency can help optimize costs by reducing unnecessary replication overhead.
 
-### Optimize backups
+## Optimize backups
 
 A backup is a periodic snapshot or copy of data that you can create and store separately from the primary storage. If there's data corruption, accidental deletion, or system failure, you can use backups to restore the data to its previous state.
 
@@ -161,7 +160,7 @@ Here are some techniques for optimizing backups:
 
 - *Backup frequency*: Analyze the backup frequency for various types of data. Adjust the backup schedule based on the frequency of data changes and the importance of the data. These practices help eliminate unnecessary backups and reduce storage costs.
 
-### Optimize file formats
+## Optimize file formats
 
 File formats influence cost optimization by optimizing input/output (I/O) patterns and query patterns of your data. Some file formats cater to particular scenarios. Aligning the file format with your workload requirements can improve the workload's performance.
 
@@ -173,7 +172,7 @@ Here are considerations for common formats:
 
   Both formats are columnar storage, which means that data is stored column by column rather than row by row. Columnar storage allows for improved compression and efficient read operations. Only the required columns need to be fetched, so you avoid unnecessary I/O for irrelevant data.
 
-### Optimize storage solutions
+## Optimize storage solutions
 
 Evaluate and select the most appropriate storage methods and systems for your data. This effort might include switching databases, using different storage types, or adding caching mechanisms. Ease of management is another factor to consider when you're choosing a storage solution.
 

@@ -1,5 +1,5 @@
 ---
-title: Data classification recommendations
+title: Architecture strategies for data classification
 description: Learn about data classification and how to apply it to your workloads. Categorize data based on its sensitivity levels, information type, and scope of compliance so that you can apply the correct level of protection.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for data classification
+# Architecture strategies for data classification
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -25,7 +25,6 @@ This guide describes the recommendations for data classification. Most workloads
 | Taxonomy | A system to organize classified data by using an agreed upon structure. Typically, a hierarchical depiction of data classification. It has named entities that indicate categorization criteria. |
 
 
-## Key design strategies
 
 Data classification is a crucial exercise that often drives building a system of record and its function. Classification also helps you correctly size security assurances and helps the triage team expediate discovery during incident response. A prerequisite to the design process is to clearly understand whether data should be treated as confidential, restricted, public, or any other sensitivity classification. It's also essential to determine the locations where data is stored, because the data might be distributed across multiple environments.
 
@@ -35,7 +34,7 @@ Data classification is often a cumbersome exercise. There are tools available th
 
 Along with these best practices, see [Create a well-designed data classification framework](/compliance/assurance/assurance-create-data-classification-framework).
 
-### Understand organization-defined taxonomy
+## Understand organization-defined taxonomy
 
 *Taxonomy* is a hierarchical depiction of data classification. It has named entities that indicate the categorization criteria.
 
@@ -49,7 +48,7 @@ Here are some example classification labels for sensitivity levels, information 
 
 As a workload owner, rely on your organization to provide you with a well-defined taxonomy. All workload roles must have a shared understanding of the structure, nomenclature, and definition of the sensitivity levels. Don't define your own classification system.  
 
-### Define the classification scope
+## Define the classification scope
 
 Most organizations have a diverse set of labels.
 
@@ -67,15 +66,15 @@ Start with these simple questions and expand as necessary based on your system c
 - What information is expected in the audit reports?
 - Do you need to classify preproduction data?
 
-#### Take inventory of your data stores
+### Take inventory of your data stores
 
 If you have an existing system, take inventory of all data stores and components that are in scope. On the other hand, if you're designing a new system, create a data flow dimension of the architecture and have an initial categorization per taxonomy definitions. Classification applies to the system as a whole. It's distinctly different from classifying configuration secrets and nonsecrets.
 
-#### Define your scope
+### Define your scope
 
 Be granular and explicit when defining the scope. Suppose your data store is a tabular system. You want to classify sensitivity at the table level or even the columns within the table. Also, be sure to extend classification to nondata store components that might be related or have a part in processing the data. For example, have you classified the backup of your highly sensitive data store? If you're caching user-sensitive data, is the caching data store in scope? If you use analytical data stores, how is the aggregated data classified?
 
-### Design according to classification labels
+## Design according to classification labels
 
 Classification should influence your architectural decisions. The most obvious area is your segmentation strategy, which should consider the varied classification labels.
 
@@ -91,7 +90,7 @@ If you need to protect data in use, you might want to incorporate confidential c
 
 It also impacts the data lifecycle management operations, such as data retention and decommissioning schedules.
 
-### Apply taxonomy for querying
+## Apply taxonomy for querying
 
 There are many ways to apply taxonomy labels to the identified data. Using a classification schema with metadata is the most common way to indicate the labels. Standardization through schema makes sure that reporting is accurate, minimizes chances of variation, and avoids the creation of custom queries. Build automated checks to catch invalid entries.
 

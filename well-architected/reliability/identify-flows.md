@@ -1,5 +1,5 @@
 ---
-title: Recommendations for identifying and rating flows
+title: Architecture strategies for identifying and rating flows
 description: Learn how to create a catalog of user and system flows for your workload to better understand the basis for your design decisions as they relate to reliability.
 author: claytonsiemens77
 ms.author: csiemens
@@ -8,7 +8,7 @@ ms.date: 12/01/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for identifying and rating flows
+# Architecture strategies for identifying and rating flows
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -24,13 +24,12 @@ This guide describes the recommendations for identifying and prioritizing worklo
 | User flow | The paths or sequences of actions that users take within an application or system. |
 | System flow | The flow of information and processes within a system. The system automatically follows this flow to enable user flows or workload functionality. |
 
-## Key design strategies
 
 When you design your workload, it's essential to define the user flows and system flows. User flows chart the movement of a user through your application. They focus on the user interface, interactions, decisions, and the steps required to complete a task. User flows provide a user-centric perspective on user experience and interface design. System flows chart the internal workings of your workload. They focus on data movement, input processing, output processing, and interactions among workload components, backend services, and external APIs. System flows indicate the intricate details of how the workload operates internally.
 
 You should identify and define flows early in the design phase of your workload. It gives you a clearer understanding of what affects the reliability of your workload. It aligns your architectural decisions closely with the reliability goals of your workload.
 
-### Identify all user and system flows
+## Identify all user and system flows
 
 The output of identifying all user and system flows is a catalog of all the flows in your workload. This identification process requires you to map out every user interaction and process within a system from beginning to end. This mapping is a prerequisite for identifying critical flows. Here are recommendations for identifying all user and system flows in a workload:
 
@@ -52,7 +51,7 @@ The output of identifying all user and system flows is a catalog of all the flow
 
 - *Update flow mapping iteratively.* Flow mapping is an iterative process. Flows can change, split, or combine, especially in the design phase. As the workload flows become more clearly defined, you should update the catalog of flows to match. Validate and refine your flow diagrams with feedback from stakeholders to ensure accuracy and completeness.
 
-### Identify business processes for each flow
+## Identify business processes for each flow
 
 Business processes are a series of tasks to achieve an output, such as order fulfillment, customer service management, or inventory control. The identification of business processes for each flow involves mapping flows to one or more business processes. This mapping helps you understand the importance of each flow to the business.
 
@@ -66,19 +65,19 @@ You might have existing documentation or business plans that provide a mapping o
 
 - *Connect the output to a business process.* Connect the dots from the flow outputs to the overall business process they support. For example, if a flow step involves processing customer orders, then it directly supports the business process of order fulfillment. Order fulfillment contributes to the business objective of maintaining customer satisfaction and generating revenue. Finally, use the flow breakdown to help determine which flow created the sales report.
 
-### Identify process owners and stakeholders for each flow
+## Identify process owners and stakeholders for each flow
 
 The process owner for a flow is the individual that's responsible for the successful execution of a given process. They're responsible for that process and the flows that support it. You should identify the process owner for each workload flow. You should also identify the stakeholders for each flow. Stakeholders can be involved in the workload, have dependencies on a flow, or manage a dependency that the flow has.
 
 You might have a responsibility assignment matrix (RAM) or RACI matrix that already identifies process owners and stakeholders. Typically, process owners are responsible or accountable for a process, and you consult or inform stakeholders.
 
-### Identify escalation paths for each flow
+## Identify escalation paths for each flow
 
 The identification of escalation paths is about determining channels for escalating issues related to a flow. Issues that need escalation could be urgent updates, security concerns, degradations, or technical incidents. The goal of identifying an escalation path is to ensure timely and effective resolution of issues.
 
 The escalation path you map out should start with the person or group most likely to resolve a particular issue. If this person or group can't resolve the issue, the escalation path should identify the next point of contact. The next point of contact has broader responsibilities and is able to coordinate mitigation strategies with more parts of the organization. The number of people on an escalation path varies by flow and organization. Too many people on an escalation path can slow the resolution efforts.
 
-### Identify business impact of each flow
+## Identify business impact of each flow
 
 The identification of the business impact of each flow is essential for understanding how each flow contributes to key business objectives. Business impact could include revenue generation, customer satisfaction, or operational efficiency. By understanding both the positive and negative impact of each flow, you can prioritize efforts to ensure the reliability of the flows that matter the most to your business. It's important to consider the direct impact of flow failure and its indirect effect on other interconnected processes. Here are steps to identify the business impact of each flow:
 
@@ -90,7 +89,7 @@ The identification of the business impact of each flow is essential for understa
 
 By systematically evaluating these aspects, you can gain a comprehensive view of how each flow impacts the business and make strategic decisions about reliability optimization.
 
-### Assign a criticality rating to each flow
+## Assign a criticality rating to each flow
 
 A detailed evaluation of flow importance relative to the overall business impacts allows you to assign a criticality rating to each flow. You can use quantitative or qualitative criticality ratings. The purpose is to sort the flows by priority and assign a label that allows you to identify the critical flows. This process is a logical continuation of identifying, mapping, and aligning with business processes and impact. Use the following criticality descriptions to assign your critical ratings:
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for optimizing scaling and partitioning
+title: Architecture strategies for optimizing scaling and partitioning
 description: Learn best practices for optimizing scaling and partitioning to achieve performance efficiency in workloads.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for optimizing scaling and partitioning
+# Architecture strategies for optimizing scaling and partitioning
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -35,15 +35,14 @@ This guide describes the recommendations for scaling and partitioning a workload
 | State affinity | The storage of client session data on a single server so that the same server handles subsequent requests from the same client. |
 | Vertical scaling| A scaling approach that adds compute capacity to existing resources.|
 
-## Key design strategies
 
 Both scaling and partitioning contribute to performance efficiency by ensuring that resources are used effectively and the workload can handle varying loads. These practices are especially important in cloud environments where applications need to be flexible and adaptable to changing demands. Scaling ensures you can expand workload capacity to meet increasing demands. Partitioning allows you to divide tasks or data efficiently to handle these growing needs. The foundation of both these processes is the scale unit design of the workload. It dictates how your workload should grow and distribute tasks. By incorporating a reliable and controlled approach to scaling and partitioning, you can sidestep potential workload inefficiencies.
 
-### Optimize scaling
+## Optimize scaling
 
 Optimize scaling is the process of adjusting the number of servers, instances, or resources to meet the fluctuating demands of a workload. It ensures that the workload can handle increased traffic or demands without experiencing performance degradation or downtime.
 
-#### Choose a scaling strategy
+### Choose a scaling strategy
 
 Choosing a scaling strategy involves deciding between vertical or horizontal methods to enhance the capacity of a workload based on its specific requirements. Selecting the right strategy ensures that resources are adjusted efficiently to meet workload demands without overuse or waste. To choose the right scaling strategy, you need to understand the uses cases for vertical and horizontal scaling and how they meet the needs of your workload.
 
@@ -59,7 +58,7 @@ Choosing a scaling strategy involves deciding between vertical or horizontal met
 
 - *Architecture*: Assess the design of the application architecture. Some applications might be inherently designed to scale horizontally, with stateless components that can be easily distributed across multiple instances. Other applications might have stateful components or dependencies that make vertical scaling more appropriate. Evaluate the scalability and elasticity requirements of the workload.
 
-#### Design infrastructure to scale
+### Design infrastructure to scale
 
 Designing infrastructure to scale is the process of creating an architecture that can handle increasing demands and workload by adding or adjusting resources as needed. It involves planning and implementing solutions that can scale horizontally or vertically to accommodate growth. Strategies include avoiding singletons that can become bottlenecks and decoupling application components to ensure independent scalability. When you design a workload to be scalable, it can effectively distribute the workload across multiple resources, which prevents bottlenecks and maximizes resource utilization.
 
@@ -83,7 +82,7 @@ Decoupled components are easier to maintain and update. Changes or updates to on
 
 - *Microservices*: Consider implementing microservices, which are small, independent services that focus on specific business functionalities. Each microservice can be developed, deployed, and scaled independently, providing greater flexibility and scalability.
 
-#### Design application to scale
+### Design application to scale
 
 As you scale a workload, you should design the application to distribute the load. Just because you can add more replicas at the infrastructure level doesn't mean your application can use the replicas. Designing an application to scale is about structuring an application so it can handle increased demands by distributing its workload across resources. Avoid solutions that require client affinity, data locking, or state affinity for a single instance if possible. You want to route a client or process to a resource that has available capacity. To design for application scalability, consider the following strategies:
 
@@ -115,7 +114,7 @@ As you scale a workload, you should design the application to distribute the loa
 
 1. Distribute background tasks if there are many of them, or if the tasks require substantial time or resources. For one possible solution, see the [Competing Consumers pattern](/azure/architecture/patterns/competing-consumers).
 
-#### Configure scaling
+### Configure scaling
 
 Configuring scaling is the process of setting up and adjusting parameters to dynamically allocate resources based on workload demands. It encompasses strategies such as using autoscaling features, understanding service scaling boundaries, and implementing meaningful load metrics. Proper configuration ensures that an application can respond to varying demands while maximizing efficiency. When you configure scaling, consider the following strategies:
 
@@ -143,7 +142,7 @@ It's important to choose an adequate margin between the scale-out and scale-in t
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: While scaling helps optimize costs by adjusting capacity to meet demand, it can result in overall increased cost during long periods of high demand.
 
-#### Test scaling
+### Test scaling
 
 Testing scaling involves simulating various workload scenarios in a controlled environment to evaluate how a workload responds to different levels of demand. It helps ensure the workload scales efficiently, maximizing performance efficiency during varied loads.
 
@@ -167,11 +166,11 @@ You need to ensure that your workload scales efficiently under real-world condit
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Consider the budget constraints and cost-efficiency goals of your workload. Vertical scaling might involve higher costs due to the need for larger and more powerful resources. Horizontal scaling offers cost savings by using smaller instances that can be added or removed based on demand.
 
-### Partition workload
+## Partition workload
 
 Partitioning is the process of dividing a large dataset or workload into smaller, more manageable parts called partitions. Each partition contains a subset of the data or workload and is typically stored or processed separately. Partitioning enables parallel processing and reduces contention. Dividing the workload into smaller units allows the application to process each unit independently. The result is better use of resources and faster processing times. Partitioning also helps distribute the data across multiple storage devices, reducing the load on individual devices and improving overall performance.
 
-#### Understand partitioning
+### Understand partitioning
 
 The specific partitioning approach you use depends on the type of data or workload you have and the technology you're using. Some common strategies for partitioning include:
 
@@ -181,11 +180,11 @@ The specific partitioning approach you use depends on the type of data or worklo
 
 - *Functional partitioning*: In this approach, the data or workload is divided based on the specific functions or operations that need to be performed. Each partition contains the data or components necessary for a specific function, enabling optimized processing and performance.
 
-#### Plan partitioning
+### Plan partitioning
 
 It's important to consider factors such as data distribution, query patterns, data growth, and workload requirements when partitioning. Proper planning and design are essential to help ensure the effectiveness of partitioning and maximize performance efficiency. If you address partitioning as an afterthought, it's more challenging because you already have a live workload to maintain. You might need to change data access logic, distribute large quantities of data across partitions, and support continued usage during data distribution.
 
-#### Implement partitioning
+### Implement partitioning
 
 It's important to analyze the characteristics of your data, access patterns, concurrency requirements, and scalability goals when deciding which type of partitioning to use. Each type of partitioning has its own advantages and considerations. Here are some factors to consider for each type of partitioning:
 
@@ -195,7 +194,7 @@ It's important to analyze the characteristics of your data, access patterns, con
 
 - *Functional partitioning* is appropriate when different functions require different subsets of the data and can be processed independently. Functional partitioning can optimize performance by allowing each partition to focus specific operations.
 
-#### Test and optimize partitioning
+### Test and optimize partitioning
 
 Test the partitioning scheme to verify the effectiveness and efficiency of the strategy so you can make adjustments to improve performance. Measure factors such as response time, throughput, and scalability. Compare the results against performance goals and identify any bottlenecks or issues. Based on the analysis, identify potential optimization opportunities. You might need to redistribute data across partitions, adjust partition sizes, or change the partitioning criteria.
 
