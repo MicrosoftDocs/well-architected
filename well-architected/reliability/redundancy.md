@@ -27,7 +27,6 @@ This guide describes the recommendations for adding redundancy throughout critic
 | Partitioning | The process of physically dividing data into separate data stores. |
 | Shard | A horizontal database partitioning strategy that supports multiple storage instances with a common schema. Data isn't replicated in all instances. |
 
-
 In the context of reliability, use redundancy to contain problems that affect a single resource and ensure that those problems don't affect the reliability of the entire system. Use the information that you identified about your critical flows and reliability targets to make informed decisions that are required for each flow's redundancy.
 
 For example, you might have multiple web server nodes running at once. The criticality of the flow that they support might require that all of them have replicas that are ready to accept traffic if there's a problem that affects the entire pool, for example a full datacenter outage. Alternatively, because large-scale problems are rare and it's costly to deploy an entire set of replicas, you might deploy a limited number of replicas so the flow operates in a degraded state until you resolve the problem.
@@ -42,35 +41,19 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 > - Different flows within the same workload might have different reliability requirements. Flow-specific redundancy designs can potentially introduce complexity into the overall design.
 
-<<<<<<< HEAD
 > - Using a low-latency redundancy design means that you accept the risk of losing those components in the event of a large-scale event, like a geographic disaster, that takes all instances offline. Having a geo-distant disaster recovery environment helps mitigate this risk, while increasing costs.
-=======
-### Redundant architecture design
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 ### Prefer serverless and fully managed services to reduce operational burden
 
-<<<<<<< HEAD
 Take advantage of [serverless](https://azure.microsoft.com/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, removing the operational burden of designing and maintaining your own redundancy mechanisms. When evaluating service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
-=======
-### Deployment stamps and units of scale
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 Azure managed services provide redundancy through different models, each offering varying levels of abstraction and operational simplicity:
 
-<<<<<<< HEAD
 **Global services with built-in redundancy**: Services like Azure Active Directory, Azure DNS, and Azure Key Vault operate as global services with automatic redundancy across multiple regions. These services provide inherent resilience without requiring any redundancy configuration from you. They automatically handle failover and recovery scenarios transparently.
-=======
-### Availability zones within Azure regions
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 **Abstracted capacity models**: Services like Azure Cosmos DB, Azure Databricks, and Azure OpenAI managed endpoints abstract the underlying infrastructure complexity behind capacity units, DTUs, or other logical metrics. These services automatically distribute your workload across multiple instances, zones, and regions while presenting a simplified billing and management model. You specify capacity requirements rather than managing individual redundant instances.
 
-<<<<<<< HEAD
 When architecting your solution, evaluate whether a managed service option exists for each component before implementing infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they may involve tradeoffs in control and potentially higher costs per unit of capacity.
-=======
-## Implement zone redundancy for compute resources
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 ### Build redundancy into your workload with multiple component instances
 
@@ -86,21 +69,7 @@ When deploying redundant infrastructure components, determine how many instances
 
 - Design and test your scaling strategy to match your redundancy approach.
 
-<<<<<<< HEAD
 **Data resources**
-=======
-- Overprovision critical resources to mitigate failures of redundant instances, even before autoscaling operations begin, so the system continues to operate after a component failure. Calculate the acceptable effect of a fault when you incorporate overprovisioning into your redundancy design. As with your redundancy decision-making process, your reliability targets and financial tradeoff decisions determine the extent that you add spare capacity with overprovisioning. Overprovisioning specifically refers to *scaling out*, which means adding extra instances of a given compute resource type, rather than increasing the compute capabilities of any single instance. For example, if you change a VM from a lower-tier SKU to a higher-tier SKU.
-
-- Deploy IaaS services manually or via automation in each availability zone or region in which you intend to implement your solution. Some PaaS services have built-in capabilities that are automatically replicated across availability zones and regions.
-
-## Implement zone redundancy for data resources
-
-- Determine whether synchronous or asynchronous data replication is necessary for your workload's functionality. To help you make this determination, see [Recommendations for using availability zones and regions](regions-availability-zones.md).
-
-- Consider the growth rate of your data. For capacity planning, plan for data growth, data retention, and archiving to ensure your reliability requirements are met as the amount of data in your solution increases.  
-
-- Distribute data geographically, as supported by your service, to minimize the effect of geographically localized failures.
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 - Replicate data across geographical regions to provide resilience to regional outages and catastrophic failures.
 
@@ -120,13 +89,7 @@ When deploying redundant infrastructure components, determine how many instances
 
 - If sharding isn't an option, you can use the [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to separate your read-write and read-only data models. Add more redundant read-only database instances to provide more resilience.  
 
-<<<<<<< HEAD
 **Networking resources**
-=======
-- Understand the built-in replication and redundancy capabilities of the stateful platform services that you use. For specific redundancy capabilities of stateful data services, see [Related links](#related-links).
-
-## Implement zone redundancy for networking resources
->>>>>>> c5877594f43712b012fdf1e54e4ee898302cbd40
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
 
