@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.update-cycle: 180-days  
 ---
 
-# Test and evaluate GenAI workloads on Azure
+# Test and evaluate AI workloads on Azure
 This article focuses on two distinct aspects: evaluating the models and testing the entire system. Evaluation and testing are often used interchangeably, but they should be considered separate processes that use distinct datasets. 
 
 _Evaluation_ is an iterative activity that you do during the development phase. It focuses on experimentation to find the best model with the right level of tuning. Then, evaluate the model based on various metrics.
@@ -30,18 +30,18 @@ Select and prioritize metrics based on your specific use case, monitor them cont
 For information about metrics, see [Monitoring evaluation metrics descriptions and use cases](/azure/machine-learning/prompt-flow/concept-model-monitoring-generative-ai-evaluation-metrics).
 
 
-## Use the right data set
+## Use the right data for evaluation
 
 Refine your model through an iterative process using evaluation data. This dataset, often referred to as the _golden dataset_ consists of trusted input-output pairs, typically created or validated by humans. It serves as the objective benchmark to assess model performance against defined quality metrics.
 
-Ensure the dataset is representative of the domain or task, with diverse, high-quality examples and minimal noise. A limited sample size can lead to poor evaluation quality, so consider generating synthetic data to improve balance and coverage.
+Ensure the dataset is representative of the domain or task, with diverse, high-quality examples and minimal noise. A limited sample size can lead to poor evaluation quality, so consider generating synthetic data when the sample data lacks sufficient diversity or coverage to improve balance and completeness.
 
 
 ## Validate agentic workflows 
 
 As architectures are evolving to use AI, functionality that was once handled by deterministic code is now offloaded to *autonomous agents*. These agents make decisions often with dynamic behavior.
 
-Consider a RAG application where the *orchestrator* itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
+Consider an agentic application where the *orchestrator* itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
 
 This type of architecture introduces new challenges for testing and evaluation. Because agents operate non-deterministically, traditional static tests are insufficient. Testing strategy should validate the complete flow from user input to final response, including *grounding data* retrieval, tool invocation, and response generation. For example, 
 
@@ -116,7 +116,7 @@ Poorly tested data pipelines can lead to inconsistent results and lead to cross-
 - **Security testing.** If documents are partitioned with access controls, rigorously test those controls. Ensure that each user or role only accesses permitted content to maintain confidentiality and compliance.
 
 
-## Guidance for testing training models
+## Guidance for testing model training and fine-tuning
 
 Similar to generative AI models, the strategy of baselining also applies to model training for measuring model quality, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
 
@@ -147,7 +147,7 @@ Integrate data testing into CI/CD pipelines by automating unit and functional te
 
 ### Testing for model decay
 
-Model performance degrades over time mainly due to data drift: 
+All models degrade over time due to internal and external changes in the workload. This decline in model quality, known as model decay, can occur in two ways:
 
 - **Data drift** happens when input data changes, making the model outdated. For example, a model that predicts voting patterns becomes irrelevant because of demographic shifts after redistricting. 
 
