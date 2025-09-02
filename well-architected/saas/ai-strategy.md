@@ -106,7 +106,7 @@ ms.collection: learn-startups
 
 ## Choose initial AI use cases
 
-<!-- Not sure whether this belongs here. Essentially what I would love to do is have a way to say "think of AI as being a lot more than just chatbots - look at all the things you can do with it!". But I'm not sure how best to convey that.-->
+<!-- Priyanka: I'm not sure whether this belongs here. Essentially what I would love to do is have a way to say "think of AI as being a lot more than just chatbots - look at all the things you can do with it!". But I'm not sure how best to convey that.-->
 - Consider a wide variety of places where AI can be useful within your solution. 
     - Chatbots are where a lot of conversations begin, and they can be useful, especially when they can orchestrate a complex application’s functionality in novel ways. However, they are only one use case.
     - Summarization, document analysis, extraction, enrichment
