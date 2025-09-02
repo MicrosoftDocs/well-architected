@@ -1,5 +1,5 @@
 ---
-title: Recommendations for continuous performance optimization
+title: Architecture strategies for continuous performance optimization
 description: Get recommendations for continuous performance optimization.
 author: stephen-sumner
 ms.author: ssumner
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for continuous performance optimization
+# Architecture strategies for continuous performance optimization
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
@@ -24,35 +24,34 @@ This guide describes the recommendations for continuous performance optimization
 |Technical debt |The accumulated inefficiencies, suboptimal design choices, or shortcuts intentionally taken during the development process to deliver code faster.|
 | Time-to-live | A mechanism that sets an expiration time for data.
 
-## Key design strategies
 
 Performance efficiency is when workload capacity aligns to actual usage. A workload that overperforms is as problematic as one that underperforms. The tradeoffs differ. Overperformance affects cost optimization. Poor performance affects users. The key to performance efficiency is monitoring, adjusting, and testing over time. You need to regularly review performance metrics and make adjustments as necessary to ensure that the workload is efficient. Testing all changes pre- and post-implementation is required to reach performance targets.
 
-### Develop a performance culture
+## Develop a performance culture
 
 A performance culture is an environment in which continuous improvement is expected and the team learns from production. Performance optimization requires specialized skills. Workload teams need the right skills and mindset to optimize their performance to meet increases and decreases in demand. You also need to allocate their time to support the required monitoring and remediation of performance issues as they arise. These teams need clear expectations. For example, performance targets, baselines, and deviation thresholds (how far from baseline is acceptable) need to be highly visible and socialized.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Continuous performance optimizations require a team that has the right skills and time to find and fix performance issues. Dedicating personnel to performance adds operational cost. If you have limited personnel resources, continuous performance optimization could take time away from other operational tasks.
 
-### Evaluate new platform features
+## Evaluate new platform features
 
 Evaluating new platform features involves examining the new functionalities and tools of a platform that can improve performance efficiency, such as optimized storage solutions, caching mechanisms, or resource management tools. New platform features can open avenues for enhancing performance efficiency. Keep your platform and tools up-to-date to ensure you're using the latest innovations and best practices. Consistently monitor feedback and performance metrics from these new additions to refine your approach.
 
-### Prioritize optimization efforts
+## Prioritize optimization efforts
 
 Proactively optimizing performance means taking proactive measures to improve and enhance the performance of the workload before any performance issues arise. Using proactive measures involves identifying potential bottlenecks, monitoring performance metrics, and implementing optimizations to ensure that the workload operates efficiently and meets the desired performance goals. Based on the analysis of deteriorating components, critical flows, and technical debt, you can implement performance optimizations specific to each area. Improvements might involve code changes, infrastructure adjustments, or configuration updates.
 
-#### Prioritize deteriorating components
+### Prioritize deteriorating components
 
 A workload often has components such as databases and networking components that are prone to performance degradations over time. As the workload evolves and usage patterns change, these changes often affect the performance of individual components in the workload. Increased data in databases can lead to longer query run times and slower data retrieval. Changes in usage patterns might result in suboptimal query design. Queries that were once efficient can become inefficient as the workload evolves. Inefficient queries can consume excessive resources and degrade database performance. Increased workload usage can lead to higher network traffic, causing congestion and latency issues.
 
 It's important to make continuous efforts to optimize the performance of these components. Proactively identify and address performance issues in your workload. By prioritizing known deteriorating components, you can proactively address potential performance issues and ensure the smooth operation of your workload. It might involve implementing performance tuning techniques, optimizing resource allocation, or upgrading hardware or software components as needed.
 
-#### Prioritize critical flows
+### Prioritize critical flows
 
 Critical flows are the most important and high-priority processes or workflows in the workload. By prioritizing these critical flows, you ensure that the most essential parts of the workload are optimized for performance. Knowing which flows are critical helps prioritize optimization efforts. Optimizing the performance efficiency of the most important areas of your application provides the highest return on investment. You should monitor critical flows and the most popular pages. Look for ways to make them more efficient.
 
-### Automate performance optimization
+## Automate performance optimization
 
 Automation can eliminate repetitive and time-consuming manual processes, allowing them to be performed efficiently. Automation reduces the chances of human error and ensures consistency in running optimization tasks. By automating these tasks, you can also free up people to focus on more complex activities and activities that add value. You can apply automation to various tasks, such as performance testing, deployment, and monitoring:
 
@@ -70,11 +69,11 @@ Automation can eliminate repetitive and time-consuming manual processes, allowin
 
 - *Self-healing systems*: Build self-healing capabilities into your system by automating the recovery process for known performance issues. This capability can involve automatically fixing or adjusting the system configuration to restore optimal performance.
 
-### Address technical debt
+## Address technical debt
 
 Technical debt refers to the accumulated inefficiencies, suboptimal design choices, or shortcuts taken during the development process that can affect performance. Technical debt, unclear code, and overly complex implementations can make performance efficiency more difficult to attain. Addressing technical debt involves identifying and resolving these issues to improve the overall performance and maintainability of the workload. This work might include refactoring code, optimizing database queries, improving architectural design, or implementing best practices. Perhaps you introduced technical debt to meet a deadline, but you need to address the technical debt as you optimize performance efficiency over time.
 
-### Optimize databases
+## Optimize databases
 
 Continuously optimizing databases involves identifying and implementing optimizations to ensure that databases can handle loads, deliver fast response times, and minimize resource utilization. By regularly optimizing databases, you can improve application performance, reduce downtime, and enhance the overall user experience.
 
@@ -86,7 +85,7 @@ Continuously optimizing databases involves identifying and implementing optimiza
 
 - *Optimize database configuration*: Optimize database configuration settings such as memory allocation, disk I/O, and concurrency settings to maximize performance and resource utilization.
 
-### Optimize data efficiency
+## Optimize data efficiency
 
 Optimizing data efficiency is the process of ensuring that data is stored, processed, and accessed in the most efficient way possible. Data tiering and using time-to-live (TTL) are techniques that can be used to optimize data efficiency. You can apply these techniques in various data storage scenarios, such as databases, file systems, or object storage.
 

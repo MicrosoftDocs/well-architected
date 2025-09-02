@@ -4,7 +4,7 @@ description: Learn how to take advantage of features in Azure Traffic Manager an
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.date: 01/09/2025
+ms.date: 08/17/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-traffic-manager
@@ -48,7 +48,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Account for potential failures.** Traffic Manager is designed to be resilient. But it can still be a single point of failure for your workload. To mitigate this risk, define a secondary path to an alternate service that becomes active if Traffic Manager is unavailable. To avoid routing problems, don't use Traffic Manager and the alternate service together.
 >
-> - **Have a good understanding of service-level agreement (SLA) coverage.** When you evaluate [Traffic Manager SLAs](https://www.azure.cn/en-us/support/sla/traffic-manager/), understand the coverage related to the published percentile. For example, your DNS lookups might fail multiple times. Those failures aren't considered downtime until a full minute of continuous DNS lookup failures occur.
+> - **Have a good understanding of service-level agreement (SLA) coverage.** When you evaluate [Traffic Manager SLAs](https://www.azure.cn/en-us/support/sla/traffic-manager/), understand the coverage related to the published percentile. For example, SLA ensures all DNS queries consistently resolve to healthy endpoints with zero tolerance for DNS failures. However, your DNS lookups might fail multiple times. Those failures aren't considered downtime until a full minute of continuous DNS lookup failures occur.
 >
 > - **Incorporate redundancy in your workload architecture.** If your service is exposed through a public IP address, use Traffic Manager to implement redundancy across Azure regions, on-premises, and other clouds. For example, you might have an on-premises application that has a secondary instance in the cloud. If the on-premises system fails, the cloud instance can become active, which helps ensure continuity.
 >
@@ -211,13 +211,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your web application instances.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Tradeoffs
 
@@ -246,3 +242,5 @@ Consider the following resources that demonstrate the recommendations in this ar
 
 - Use the following product documentation to improve your implementation expertise:
   - [Traffic Manager](/azure/traffic-manager/)
+
+<!-- Updated: August 17, 2025 for Azure Update 493002 -->

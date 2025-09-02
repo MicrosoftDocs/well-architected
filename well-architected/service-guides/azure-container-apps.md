@@ -233,7 +233,7 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. 
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
 For more information, see [Azure Advisor](/azure/advisor).
 
@@ -244,7 +244,7 @@ Foundational architecture that demonstrates the key recommendations: [Microservi
 ## Next steps
 
 - [Deploy your first container app by using the Azure CLI](/azure/container-apps/get-started)
-- [Cloud design patterns that support reliability](/azure/well-architected/reliability/design-patterns)
+- [Architecture design patterns that support reliability](/azure/well-architected/reliability/design-patterns)
 - [Mission-critical workloads](/azure/well-architected/mission-critical/mission-critical-overview)
 - [Site reliability engineering resources](/azure/site-reliability-engineering/)
 - [Container Apps overview](/azure/container-apps/overview)

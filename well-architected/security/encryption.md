@@ -1,5 +1,5 @@
 ---
-title: Encryption strategy recommendations
+title: Architecture strategies for encryption
 description: Learn about recommendations for encryption, including encryption mechanisms, encryption keys, encryption algorithms, hashes, checksums, and secret management.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for data encryption
+# Architecture strategies for data encryption
 
 **Applies to Well-Architected Framework Security checklist recommendation:**
 
@@ -34,7 +34,6 @@ This guide describes the recommendations for encrypting and protecting your data
 |Signing|The process of verifying data's authenticity by using a signature.|
 |X.509| A standard that defines the format of public key certificates.|
 
-## Key design strategies
 
 Organizational mandates or regulatory requirements might enforce encryption mechanisms. For example, there might be a requirement that data must remain only in the selected region, and copies of the data are maintained in that region.
 
@@ -56,7 +55,7 @@ Encryption mechanisms likely need to secure the data in three stages:
 
 The preceding choices aren't mutually exclusive. They're often used together in the context of the entire solution. One stage might act as a compensating control. For example, you might need to isolate data to prevent tampering when data is read from memory.
 
-### Determine encryption requirements
+## Determine encryption requirements
 
 **Classify data by its purpose and sensitivity level** to determine what data you need to encrypt. For data that should be encrypted, determine the required level of protection. Do you need end-to-end TLS encryption for all data in transit? For data at rest, which Azure features can meet your requirements? Do you need to double encrypt data at every storage point? How do you implement information protection?
 
@@ -72,7 +71,7 @@ Strong encryption mechanisms shouldn't be your only form of defense. Implement d
 
 For information about classification, see [Recommendations on data classification](./data-classification.md).
 
-### Use native encryption mechanisms
+## Use native encryption mechanisms
 
 Most Azure services provide a base level of encryption. **Explore platform-provided encryption options**.
 
@@ -82,7 +81,7 @@ For rare occasions, if you need to replace the platform-provided encryption, eva
 
 Developers should use cryptography APIs that are built into the operating system rather than nonplatform cryptography libraries. For .NET, follow the [.NET cryptography model](/dotnet/standard/security/cryptography-model).
 
-### Choose an encryption keys approach
+## Choose an encryption keys approach
 
 By default, Azure services use Microsoft-managed encryption keys to encrypt and decrypt data. Azure is responsible for key management.
 
@@ -94,7 +93,7 @@ You should **pair strong encryption with strong decryption**. From a security pe
 
 Both stores are protected with identity-based access. This feature enables you to deny access, even to the platform.
 
-### Use standard encryption algorithms
+## Use standard encryption algorithms
 
 **Use cryptography algorithms that are well-established and follow industry standards** instead of creating custom implementations.
 
@@ -102,13 +101,13 @@ Industry standards for algorithms require encryption schemes to have a certain l
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: If you choose an algorithm that's highly complex or injects more than a reasonable amount of entropy, it degrades your system's performance.
 
-### Use hashes and checksums
+## Use hashes and checksums
 
 Typically, hashing is an error detection technique. You can also use hashing for security because it **detects changes to data that might be caused by tampering**. Hash functions are based on cryptography, but they don't use keys. Hash functions use algorithms to produce checksums. Checksums can compare data to verify the integrity of it.
 
 Applications should use the SHA-2 family of hash algorithms, such as SHA-256, SHA-384, or SHA-512.
 
-### Encrypt data at rest
+## Encrypt data at rest
 
 Classify and protect information storage objects in accordance with the internal and external compliance requirements. See the following recommendations:
 
@@ -130,7 +129,7 @@ Classify and protect information storage objects in accordance with the internal
 
 - **Store limited amount of data** so that you only encrypt what's necessary. Your data shouldn't live longer than your encryption cycle. When data is no longer needed, delete the encrypted data without spending decryption cycles.
 
-### Encrypt data in transit
+## Encrypt data in transit
 
 - **Use secure protocols for client-server communication**. Transport protocols have a built-in layer of security. TLS is the industry standard for exchanging data between client and server endpoints.
 
@@ -166,7 +165,7 @@ Classify and protect information storage objects in accordance with the internal
 
 - **Implement logging and monitoring processes**. Keep track of access sign-in resources that store information about clients, like their source IP, port, and protocol. Use this information to detect anomalies.
 
-### Encrypt data in use
+## Encrypt data in use
 
 For high security workloads, segmentation, isolation and least-priviledge are recommended design patterns. 
 
