@@ -22,6 +22,15 @@ azure.category:
 
 To learn more about how Azure Databricks improves the security of big data analytics, reference [Azure Databricks concepts](/azure/databricks/getting-started/concepts).
 
+## Recent enhancements
+
+<!-- keeping this to make sure it's included in the refactored guide. -->
+
+Azure Databricks continues to evolve with new integration capabilities that enhance operational excellence while maintaining security:
+
+### Operational Excellence improvements
+- **Unity Catalog mirroring to Microsoft OneLake**: Azure Databricks now supports real-time data mirroring between Unity Catalog and Microsoft Fabric through OneLake, eliminating data silos while maintaining unified governance and security. This integration enables data science teams to share datasets with business analysts using Power BI without requiring data duplication or complex ETL processes, reducing operational complexity through centralized Unity Catalog management.
+
 The following sections include design considerations, a configuration checklist, and recommended configuration options specific to Azure Databricks.
 
 ## Design considerations
@@ -55,6 +64,7 @@ Explore the following table of recommendations to optimize your Azure Databricks
 |Restrict and monitor your virtual machines.|Clusters, which execute queries, should have SSH and network access restricted to prevent installation of arbitrary packages. Clusters should use only images that are periodically scanned for vulnerabilities.|
 |Use the [VNet injection](/azure/databricks/administration-guide/cloud-configurations/azure/vnet-inject) functionality to enable more secure scenarios.|Such as: <br>- Connecting to other Azure services using service endpoints. <br>- Connecting to on-premises data sources, taking advantage of user-defined routes. <br>- Connecting to a network virtual appliance to inspect all outbound traffic and take actions according to allow and deny rules. <br>- Using custom DNS. <br>-  Deploying Azure Databricks clusters in existing virtual networks.|
 |Use [diagnostic logs](/azure/databricks/administration-guide/account-settings/azure-diagnostic-logs) to audit workspace access and permissions.|Use audit logs to see privileged activity in a workspace, cluster resizing, files, and folders shared on the cluster.|
+|Enable [Unity Catalog mirroring to Microsoft OneLake](/fabric/onelake/onelake-unity-catalog) for unified data analytics while maintaining security governance. Real-time data mirroring between Azure Databricks and Microsoft Fabric eliminates data silos without requiring data duplication or complex ETL processes.|Unity Catalog mirroring enables seamless data sharing between data science teams and business analysts while maintaining centralized governance and security through Unity Catalog management, reducing operational complexity.|
 
 ## Source artifacts
 
@@ -64,3 +74,5 @@ Azure Databricks source artifacts include the Databricks blog: [Best practices t
 
 > [!div class="nextstepaction"]
 > [Azure Database for MySQL and cost optimization](azure-db-mysql-cost-optimization.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 498573 -->
