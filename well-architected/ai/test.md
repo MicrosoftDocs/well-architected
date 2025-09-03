@@ -59,13 +59,6 @@ From a tooling perspective, consider [Azure AI Evaluation SDK](/azure/ai-foundry
 
 In addition, conduct regular performance and load testing. Assess the agent's ability to scale under concurrent requests, handle long execution paths, and manage interactions across multiple agents. Continuously monitor for regressions in both logic and performance as the system evolves through iterative releases.
 
-
-### Test the deterministic behavior
-
-In some architectures, you might use deterministic logic within the agent workflows. For example, instead of an agent, you can choose to have an orchestrator that uses static code to interpret user intent, query the index for grounding data, and call the model *inference endpoint*. 
-
-From a testing perspective, treat this code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Apply unit testing to deterministic components, especially if you're using agent frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
-
 ### Test the security aspects
 
 Secure agentic workflows by controlling access, validating all inputs, and monitoring agent behavior to prevent misuse or unintended actions.
@@ -79,6 +72,13 @@ Secure agentic workflows by controlling access, validating all inputs, and monit
 There are other open source libraries available such as Scikit-learn, PyTorch's torch.testing module, FairML for bias and fairness testing, and TensorFlow Model Analysis for model evaluation.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint by using tools like [Dev Proxy](/microsoft-cloud/dev/dev-proxy/how-to/simulate-azure-openai).
+
+
+### Test the deterministic behavior
+
+In some architectures, you might use deterministic logic within the agent workflows. For example, instead of an agent, you can choose to have an orchestrator that uses static code to interpret user intent, query the index for grounding data, and call the model *inference endpoint*. 
+
+From a testing perspective, treat this code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Apply unit testing to deterministic components, especially if you're using agent frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
 
 
 ## Test the inference endpoint 
@@ -127,9 +127,7 @@ Apply a baselining strategy during model training to measure and compare model q
 
 For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
-Partition source data into three distinct datasets: training, evaluation, and testing.
-
-Use the training dataset to build the model, the evaluation dataset to tune it, and the test dataset to validate final performance. 
+Partition source data into three distinct datasets: training, evaluation, and testing. Use the training dataset to build the model, the evaluation dataset to tune it, and the test dataset to validate final performance. 
 
 Ensure each dataset contains high-quality data to reduce noise. Use test cases in data pipelines to enforce quality, and supplement with synthetic data when real samples are limited, in domains like fraud detection, where real fraud instances are rare and provide limited data for training reliable models.
 
