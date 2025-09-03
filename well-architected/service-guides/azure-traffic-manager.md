@@ -62,7 +62,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Avoid sending traffic to unhealthy or compromised instances.** Review the built-in health probing features in Traffic Manager.
 >
->   For HTTPS and HTTP applications, implement the Health Endpoint Monitoring pattern to provide a custom page within your application. Based on specific checks, the page returns an appropriate HTTPS status code. In addition to the availability of the endpoint, your health check should monitor all dependencies of your application. Don't report errors for services where your workload performs graceful degradation automatically. Otherwise, the health probe might trigger failover when it's not needed.
+>   For HTTPS and HTTP applications, implement the Health Endpoint Monitoring pattern to provide a custom page within your application. Based on specific checks, the page returns an appropriate HTTPS status code. In addition to the availability of the endpoint, your health check should monitor all dependencies of your application. Don't report errors for services where your workload performs graceful degradation or recovery automatically. Otherwise, the health probe might trigger failover when it's not needed.
 >
 >   For other applications, Traffic Manager uses the Transmission Control Protocol (TCP) to determine the availability of the endpoint.
 >
