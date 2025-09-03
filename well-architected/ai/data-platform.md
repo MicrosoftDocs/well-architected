@@ -72,7 +72,7 @@ The following section provides guidance about the capabilities to consider when 
 
   In some cases, you might need to maintain copies of data for different use cases. To support this scenario, you might need to fork data. Each fork can independently mutate to enhance its quality and usability. Your data platform should be able to maintain proper versioning of those forks.
 
-  Your data platform should be able to store versions of data over time to provide historical context. This contetxt is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
+  Your data platform should be able to store versions of data over time to provide historical context. This context is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
 
 - **Does the platform have built-in data lifecycle management capabilities?**
 
