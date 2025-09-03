@@ -1,13 +1,13 @@
 ---
-title: Recommendations for security testing
-description: Learn about the key design strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
+title: Architecture strategies for security testing
+description: Learn about the Architecture strategies for security testing, including the tools and methodologies you can use to test the security posture of your workload.
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for security testing
+# Architecture strategies for security testing
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -33,7 +33,6 @@ This guide provides recommendations for testing the security posture of your wor
 |Software development lifecycle (SDLC)     |  A multistage, systematic process for developing software systems.       |
 |White-box testing| A testing methodology where the structure of the code is known to the practitioner.|
 
-## Key design strategies
 
 Testing is a nonnegotiable strategy, especially for security. It allows you to proactively discover and address security issues before they can be exploited and to verify that the security controls that you implemented are functioning as designed.
 
@@ -66,11 +65,11 @@ When you design your test plans, think about the following questions:
 
 - What are the different test types that you should run?
 
-### Test the workload regularly
+## Test the workload regularly
 
 Test the workload regularly to make sure changes don't introduce security risks and that there aren't any regressions. The team must also be ready to respond to organizational security validations that might be conducted at any time. There are also tests that you can run in response to a security incident. The following sections provide recommendations on the frequency of tests.
 
-#### Routine tests
+### Routine tests
 
 Routine tests are conducted at a regular cadence, as part of your standard operating procedures and to meet compliance requirements. Various tests might be run at different cadences, but the key is that they're conducted periodically and on a schedule.
 
@@ -82,7 +81,7 @@ Consider running security tests as part of an automated pipeline or scheduled te
 
 Don't rely only on automated tests. Use manual testing to detect vulnerabilities that only human expertise can catch. Manual testing is good for exploratory use cases and finding unknown risks.
 
-#### Improvised tests
+### Improvised tests
 
 Improvised tests provide point-in-time validation of security defenses. Security alerts that might affect the workload at that time trigger these tests. Organizational mandates might require a pause-and-test mindset to verify the effectiveness of defense strategies if the alert escalates to an emergency.
 
@@ -96,13 +95,13 @@ In other cases, you might be required to run tests and report the security state
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's risk of the unknown. Improvised tests might be one-time efforts without established processes or tools. But the predominant risk is the potential interruption of the rhythm of business. You need to evaluate those risks relative to the benefits.
 
-#### Security incident tests
+### Security incident tests
 
 There are tests that detect the cause of a security incident at its source. These security gaps must be resolved to make sure the incident isn't repeated.
 
 Incidents also improve test cases over time by uncovering existing gaps. The team should apply the lessons learned from the incident and routinely incorporate improvements.
 
-### Employ a variety of tests
+## Employ a variety of tests
 
 Tests can be categorized by **technology** and by **testing methodologies**. Combine those categories and approaches within those categories to get complete coverage.
 
@@ -118,7 +117,7 @@ A good threat modeling exercise can point to key areas to ensure test coverage a
 
 Most tests described in these sections can be run as routine tests. However, repeatability can incur costs in some cases and cause disruption. Consider those tradeoffs carefully.
 
-#### Tests that validate the technology stack
+### Tests that validate the technology stack
 
 Here are some examples of types of tests and their focus areas. This list isn't exhaustive. Test the entire stack, including the application stack, front end, back end, APIs, databases, and any external integrations.
 
@@ -130,7 +129,7 @@ Here are some examples of types of tests and their focus areas. This list isn't 
 
 - Identity: Evaluate whether the role assignments and conditional checks work as intended.
 
-#### Test methodology
+### Test methodology
 
 There are many perspectives on testing methodologies. We recommend tests that enable threat hunting by simulating real-world attacks. They can identify potential threat actors, their techniques, and their exploits that pose a threat to the workload. Make the attacks as realistic as possible. Use all the potential threat vectors that you identify during threat modeling.
 
@@ -144,13 +143,13 @@ Here are some advantages of testing through real-world attacks:
 
 Some examples of simulated tests include black-box and white-box testing, penetration testing, and war game exercises.
 
-##### Black-box and white-box testing
+#### Black-box and white-box testing
 
 These test types offer two different perspectives. In black-box tests, the internals of the system aren't visible. In white-box tests, the tester has a good understanding of the application and even has access to code, logs, resource topology, and configurations for conducting the experiment.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: The difference between the two types is upfront cost. White-box testing can be expensive in terms of time taken to understand the system. In some cases, white-box testing requires you to purchase specialized tools. Black-box testing doesn't need ramp-up time, but it might not be as effective. You might need to put in extra effort to uncover issues. It's a time investment tradeoff.
 
-##### Tests that simulate attacks through penetration testing
+#### Tests that simulate attacks through penetration testing
 
 Security experts who aren't part of the organization's IT or application teams conduct penetration testing, or *pentesting*. They look at the system in the way that malicious actors scope an attack surface. Their goal is to find security gaps by gathering information, analyzing vulnerabilities, and reporting the results.
 
@@ -160,7 +159,7 @@ Security experts who aren't part of the organization's IT or application teams c
 
 The practitioners might need access to sensitive data in the entire organization. Follow the rules of engagement to ensure that access isn't misused. See the resources listed in [Related links](#related-links).
 
-##### Tests that simulate attacks through war game exercises
+#### Tests that simulate attacks through war game exercises
 
 In this methodology of simulated attacks, there are two teams:
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for security incident response
+title: Architecture strategies for security incident response
 description: Learn how to reduce the time that's required to identify, manage, and mitigate security incidents that threaten the confidentiality and integrity of software systems.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/09/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for security incident response
+# Architecture strategies for security incident response
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -35,11 +35,10 @@ This guide provides recommendations for you and your workload team to help you r
 |Incident response| A process that detects, responds to, and mitigates risks that are associated with an incident.|
 |Triage|An incident response operation that analyzes security issues and prioritizes their mitigation.  |
 
-## Key design strategies
 
 You and your team perform incident response operations when there's a signal or alert for a potential compromise. High-fidelity alerts contain ample security context that makes it easy for analysts to make decisions. High-fidelity alerts result in a low number of false positives. This guide assumes that an alerting system filters low-fidelity signals and focuses on high-fidelity alerts that might indicate a real incident.
 
-### Designate incident notification contacts
+## Designate incident notification contacts
 
 Security alerts need to reach the appropriate people on your team and in your organization. Establish a designated point of contact on your workload team to receive incident notifications. These notifications should include as much information as possible about the resource that's compromised and the system. The alert must include the next steps, so your team can expedite actions.
 
@@ -47,7 +46,7 @@ We recommend that you log and manage incident notifications and actions by using
 
 Take advantage of security information event management (SIEM) solutions and security orchestration automated response (SOAR) solutions that your organization provides. Alternatively, you can procure incident management tools and encourage your organization to standardize them for all workload teams.
 
-### Investigate with a triage team
+## Investigate with a triage team
 
 The team member that receives an incident notification is responsible for setting up a triage process that involves the appropriate people based on the available data. The triage team, often called the *bridge team*, must agree on the mode and process of communication. Does this incident require asynchronous discussions or bridge calls? How should the team track and communicate the progress of investigations?  Where can the team access incident assets?
 
@@ -65,7 +64,7 @@ If you decide to shut down the system, the next steps lead to the workload's dis
 
 If you don't shut down the system, determine how to remediate the incident without affecting the functionality of the system.
 
-### Recover from an incident
+## Recover from an incident
 
 Treat a security incident like a disaster. If the remediation requires complete recovery, use proper DR mechanisms from a security perspective. The recovery process must prevent chances of recurrence. Otherwise, recovery from a corrupted backup reintroduces the issue. Redeploying a system with the same vulnerability leads to the same incident. Validate failover and failback steps and processes.
 
@@ -77,7 +76,7 @@ Recovery metrics measure how long it takes to fix an issue. In the event of a sh
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There's a tradeoff between reliability targets and remediation times. During an incident, it's likely that you don't meet other nonfunctional or functional requirements. For example, you might need to disable parts of your system while you investigate the incident, or you might even need to take the entire system offline until you determine the scope of the incident. Business decision-makers need to explicitly decide what the acceptable targets are during the incident. Clearly specify the person that's accountable for that decision.
 
-### Learn from an incident
+## Learn from an incident
 
 An incident uncovers gaps or vulnerable points in a design or implementation. It's an improvement opportunity that's driven by lessons in technical design aspects, automation, product development processes that include testing, and the effectiveness of the incident response process. Maintain detailed incident records, including actions taken, timelines, and findings.
 
@@ -87,7 +86,7 @@ Improvement plans should include updates to security drills and testing, like bu
 
 Conduct post-incident reviews, or postmortems, to identify weaknesses in the response process and areas for improvement. Based on the lessons you learn from the incident, update the incident response plan (IRP) and the security controls.
 
-### Define a communication plan
+## Define a communication plan
 
 Implement a communication plan to notify users of a disruption and to inform internal stakeholders about the remediation and improvements. Other people in your organization need to be notified of any changes to the workload's security baseline to prevent future incidents.
 

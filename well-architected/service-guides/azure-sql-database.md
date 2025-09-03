@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure SQL Database
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure SQL Database.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 03/21/2025
+ms.date: 08/17/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -40,21 +40,22 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of SQL Database. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
-> - **Familiarize yourself with SQL Database product reliability guidance:**    
->  For more information, see the following resources:
->    - [Business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview)
->    - [High availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy)
->    - [High availability and disaster recovery checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist)
->    - [Automated backups](/azure/azure-sql/database/automated-backups-overview)
+> - **Familiarize yourself with SQL Database product reliability guidance:**
+>   For more information, see the following resources:
+>   - [Business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview)
+>   - [High availability](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy)
+>   - [High availability and disaster recovery checklist](/azure/azure-sql/database/high-availability-disaster-recovery-checklist)
+>   - [Automated backups](/azure/azure-sql/database/automated-backups-overview)
 > - **Choose appropriate SKU configurations:** Use the Business Critical tier for critical workloads because it offers the highest reliability guarantees.
 >
->    Consider the SQL Database Hyperscale tier to meet strict recovery time objective and recovery point objective targets when the Business Critical tier isn't practical. The Hyperscale tier uses storage snapshots rather than traditional database backup mechanisms, which provide zero downtime and rapid recovery.
+>   Consider the SQL Database Hyperscale tier to meet strict recovery time objective and recovery point objective targets when the Business Critical tier isn't practical. The Hyperscale tier uses storage snapshots rather than traditional database backup mechanisms, which provide zero downtime and rapid recovery.
 > - **Build redundancy to improve resiliency:** Enhance the availability of your databases by using active geo-replication, failover groups, and zone-redundancy.
 > - **Use native disaster recovery and backup features:** Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or a managed instance in any Azure region. Restoration uses the most recent geo-replicated backups.
 >
 >   Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
 > - **Monitor reliability and overall health indicators of SQL Database:** Monitor SQL Database in near real-time to detect reliability incidents.
 > - **Implement retry logic and backoff logic:** Use these features to handle transient faults in your application.
+> - **Shard data:** Replicate your schema across multiple databases, storing a subset of your data in each instance. [Sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) can provide fault isolation, where the failure of one database instance does not impact the availability of other instances in the pool.
 > - **Back up your TDE encryption keys:** When you use customer-managed keys for Transparent Data Encryption (TDE), back up the keys to Azure Key Vault.
 
 ### Configuration recommendations
@@ -63,8 +64,9 @@ Start your design strategy based on the [design review checklist for Reliability
 |--------------|-----------|
 |Use [active geo-replication](/azure/azure-sql/database/active-geo-replication-overview) to create a readable secondary database in a different region.</br></br> If your application supports read-only connection strings, use the secondary database to handle read-only database actions. This method reduces burden on the primary instance.| If your primary database fails, you can perform a manual failover to the replicated database to ensure that your application continues to operate with minimal downtime. A secondary database that has a read-only connection improves overall performance and ensures higher availability for read operations.|
 |Use [failover groups](/azure/azure-sql/database/auto-failover-group-overview) to automate failover from primary to secondary database instances. Failover groups provide read-write and read-only listener endpoints that remain unchanged during geo-failovers. A geo-failover switches all secondary databases in the group to the primary role. After geo-failover finishes, the Domain Name System (DNS) record is automatically updated to redirect the endpoints to the new region. | Geo-failover groups simplify the deployment and management of geo-replicated databases, which ensures continuous availability without manual intervention. You don't have to change the connection string for your application after a geo-failover because connections are automatically routed to the new primary database.|
-|Configure your database for [zone redundancy](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy). Zone-redundant availability ensures your compute and storage components are distributed across multiple Azure availability zones within the primary region. Compute and storage components span two or three zones, as selected by Azure SQL Database for optimal resilience, in separate physical locations with independent power, cooling, and networking. If one of the availability zones experiences an outage, the SQL Database instance remains operational and automatically fails over to an operational zone without losing committed data.|
+|Configure your database for [zone redundancy](/azure/azure-sql/database/high-availability-sla-local-zone-redundancy).| Zone-redundant availability ensures your compute and storage components are distributed across multiple Azure availability zones within the primary region. Compute and storage components span two or three zones, as selected by Azure SQL Database for optimal resilience, in separate physical locations with independent power, cooling, and networking. If one of the availability zones experiences an outage, the SQL Database instance remains operational and automatically fails over to an operational zone without losing committed data.|
 |Implement [retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) in your applications. SQL Database is resilient to transitive infrastructure failures, but these failures might affect your connectivity. Implement backoff logic into your retry logic.| Retry logic improves an application's resilience to temporary failures and helps the application recover without manual intervention. When the application encounters a transient error while interacting with SQL Database, make sure that your code can retry the call.</br></br> Backoff logic adds delays between retries, which helps prevent network congestion and server overload.|
+|Configure [backups](/azure/azure-sql/database/automated-backups-overview) for point-in-time restore (PITR), geo-restore, and long-term retention.| Automated backups provide restore capabilities that you use as part of meeting your workload's [RTO and RPO](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview#rto-and-rpo) requirements. For example, you can use PITR to recover from human error while reserving geo-restore for full service outages. |
 |[Back up your encryption keys](/azure/azure-sql/database/transparent-data-encryption-byok-overview) when you use your own keys. When you use your own encryption keys, you get full and granular control of the keys, but you have to manage the keys and key rotation. Key Vault provides a centralized location to manage encryption keys.| Key Vault centrally manages your keys in one tool and helps prevent accidental key loss. |
 
 ## Security
@@ -121,7 +123,9 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 
 > [!div class="checklist"]
 > - **Familiarize yourself with SQL Database cost management resources:** Review the [Plan and manage costs for SQL Database](/azure/azure-sql/database/cost-management) article. This resource contains cost-saving strategies, including recommendations about how to optimize cost-effective instances and resources and how to choose the right billing model for your workload.
+>
 > - **Estimate the initial cost:** As part of your cost modeling exercise, use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator) to evaluate the approximate costs associated with SQL Database in your workload.
+>
 > - **Choose the right SQL Database service tier for your workload:** Evaluate the SQL Database [Serverless](/azure/azure-sql/database/serverless-tier-overview) and [Hyperscale](/azure/azure-sql/database/service-tier-hyperscale) tiers to better align pricing with your use case.
 >
 >   Consider [elastic pools](/azure/azure-sql/database/elastic-pool-overview) to manage and scale multiple databases.
@@ -131,6 +135,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 >   Fine-tune backup storage consumption to avoid charges for excess usage.
 >
 > - **Optimize application code costs:** Optimize queries and other operations to reduce resource consumption, minimize runtime, and improve overall performance.
+>
 > - **Optimize scaling costs:** Incorporate cost optimization considerations into your database scaling strategies.
 >
 >   To reduce costs, scale down databases during periods of low usage. Examples include seasonal workloads that have weeks or months of decreased load or workloads that are idle overnight.
@@ -200,6 +205,8 @@ Start your design strategy based on the [design review checklist for Performance
 >   Applications that connect to SQL Database should use the latest connection providers, for example the latest [OLE DB driver](/sql/connect/oledb/oledb-driver-for-sql-server) or [ODBC driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 >
 >   When you use elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
+>
+> - **Prefer native SQL functions:** You can improve query performance by reducing application processing overhead while providing SQL standard compliance. This is a concern for international applications that require Unicode support.
 
 ### Configuration recommendations
 
@@ -226,6 +233,12 @@ Azure provides an extensive set of built-in policies related to SQL Database. A 
 
 For comprehensive governance, review the built-in definitions for SQL Database policies that are listed in [Azure Policy built-in definitions](/azure/azure-sql/database/policy-reference).
 
+## Azure Advisor recommendations
+
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+
+For more information, see [Azure Advisor](/azure/advisor).
+
 ## Example architecture
 
 Foundational architecture that demonstrates the key recommendations: [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant).
@@ -237,3 +250,5 @@ Foundational architecture that demonstrates the key recommendations: [Baseline h
 - [Resolve Transact-SQL differences during migration to SQL Database](/azure/azure-sql/database/transact-sql-tsql-differences-sql-server)
 - [Azure Database Migration Guides](/data-migration/)
 - [Video: Data exposed](/shows/data-exposed/)
+
+<!-- Updated: August 17, 2025 for Azure Update 467635, 497258, 498943 -->

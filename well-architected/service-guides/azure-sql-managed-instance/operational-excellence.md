@@ -3,7 +3,7 @@ title: Azure SQL Managed Instance and operational excellence
 description: Focuses on the Azure SQL Managed Instance service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Operational Excellence.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 12/08/2021
+ms.date: 08/17/2025
 ms.topic: conceptual
 products:
   - azure-sql-managed-instance
@@ -56,6 +56,7 @@ Explore the following table of recommendations to optimize your Azure SQL Manage
 |Recommendation|Description|
 |--------------|-----------|
 |Use the Business Critical Tier.|This tier provides higher resiliency to failures and faster failover times because of the underlying HA architecture, among other benefits. For more information, reference [SQL Managed Instance High availability](/azure/azure-sql/database/high-availability-sla).|
+|Take advantage of faster [management operations](/azure/azure-sql/managed-instance/management-operations-overview) at no additional cost or configuration and is available across all service tiers.|Management operations can complete quickly for all configurations, significantly reducing deployment and scaling times.|
 |Configure a secondary instance and an Autofailover group to enable failover to another region.|If an outage impacts one or more of the databases in the managed instance, you can manually or automatically failover all the databases inside the instance to a secondary region. For more information, read the [Autofailover groups documentation for managed instance](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell).|
 |Implement Retry Logic.|Although Azure SQL MI is resilient to transitive infrastructure failures, these failures might affect your connectivity. When a transient error occurs while working with SQL MI, make sure your code can retry the call. For more information, reference how to [implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues).|
 |Monitor your SQL MI instance in near-real time to detect reliability incidents.|Use one of the available solutions to monitor your SQL MI to detect potential reliability incidents early and make your databases more reliable. Choose a near real-time monitoring solution to quickly react to incidents. For more information, check out the [Azure SQL Managed Instance monitoring options](https://techcommunity.microsoft.com/t5/azure-sql/monitoring-options-available-for-azure-sql-managed-instance/ba-p/1065416).
@@ -65,3 +66,5 @@ Explore the following table of recommendations to optimize your Azure SQL Manage
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB for NoSQL](../cosmos-db.md)
+
+<!-- Updated: August 17, 2025 for Azure Update 496292 -->

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for implementing automation
+title: Architecture strategies for implementing automation
 description: Learn how to automate tasks that are repetitive and prone to human error to gain efficiency, adhere to standards, and create consistency.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for implementing automation
+# Architecture strategies for implementing automation
 
 **Applies to this Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -16,11 +16,10 @@ ms.topic: conceptual
 
 This guide describes the recommendations for adopting automation in your workload. You can automate tasks that are repetitive and prone to human error to help your teams gain efficiency and adhere to standards. Automate tasks to make your workload streamlined and consistent. Automation enables your operations and engineering teams to be more efficient because it gives them more time to work on other improvements. Automation is a powerful tool in all aspects of workload management. Thoughtfully implement automation to empower your organization.
 
-## Key design strategies
 
 As you develop your workload, look for opportunities to take advantage of automation in order to reduce management burden and minimize human error. Evaluate these opportunities, and consider the value that they bring to your organization. To maximize the value of your investment in automation, prioritize tasks that are straightforward, procedural, and have a long shelf life. Applying automation isn't an all-or-nothing tactic. There are workstreams that might have operations that require human intervention, like decision-making points. These workstreams can still benefit from automation to perform other tasks.
 
-### Evaluate tasks to automate
+## Evaluate tasks to automate
 
 Consider the following recommendations to ensure that you prioritize tasks that benefit the most from automation:
 
@@ -32,7 +31,7 @@ Consider the following recommendations to ensure that you prioritize tasks that 
 
 - **Focus on your return on investment.** High-value automation requires minimal management overhead and adds a demonstrable degree of efficiency. If you can save your operations team an hour each day by automating database entries, for example, you give them time to find other areas for improvement.
 
-#### Areas to implement automation
+### Areas to implement automation
 
 Adopt automation throughout your entire workload lifecycle, from development to day-to-day management. Use the following list of examples to help you consider the broad areas of your workload lifecycle that can benefit from automation. You can automate:
 
@@ -58,13 +57,13 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Monitoring and alerting**: Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices to monitor and alert on anomalies.
 
-### Choose an appropriate automation tool
+## Choose an appropriate automation tool
 
 Developing your own automation in-house is time intensive and can introduce management burden to your development team. They need to maintain an in-house automation tool like they do any other in-house software. It's recommended that you use off-the-shelf tools whenever they can meet your needs. Between commercial, open source, and cloud platform provided tools, there are many options available.  It's likely that you'll use a variety of tools to build the automation that you need. Rely on your in-house expertise to help guide your decisions when evaluating tools. Your team might be more familiar with certain development languages and frameworks. You can initially focus on off-the-shelf tools that they can use without a high learning curve. Reflect on the tasks that you plan to address with automation, and invest in the tools that can specifically address those tasks. Don't procure tools that you generally prefer and then consider the tasks afterward.
 
 Be mindful of factors that can complicate your operations when you build your automation, like version lock-in and plugin overuse. Plugins, like Jenkins or Azure DevOps plugins, are a great way to add functionality. You should adopt plugins when it benefits your automation goals. But when you use multiple plugins to perform a single task, it can make automation updates and troubleshooting difficult. Be judicious in your use of plugins. Also avoid solutions that have framework version dependencies because they're a burden to maintain over time. To help minimize the risk of these types of issues, standardize your selection of automation tools and plugins, and use source control for all automation projects.
 
-### Integrate automation into your workload
+## Integrate automation into your workload
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
@@ -103,6 +102,14 @@ GitHub Actions goes beyond just DevOps and enables you to run workflows when oth
 - Integrate source control.
 
 **Azure Update Manager**: [Update Manager](/azure/update-manager/overview) is a unified service to help manage and govern updates for virtual machines. You can monitor Windows and Linux update compliance across your workload. You can also use Update Manager to make real-time updates or schedule them within a defined maintenance window. Use Update Manager to:
+
+**Network infrastructure automation**: Azure provides automated management capabilities for networking services that reduce operational overhead. Here are some examples:
+
+- **Azure Firewall customer-controlled maintenance**: Configure [predictable maintenance schedules](/azure/firewall/customer-controlled-maintenance) with minimum 5-hour windows and daily recurrence. Plan maintenance around business requirements and low-traffic periods to ensure firewall infrastructure receives necessary security updates without unexpected downtime.
+
+- **Azure Firewall FQDN filtering in DNAT rules**: Use [domain name-based routing](/azure/firewall/firewall-faq#how-can-i-use-fqdn-filtering-in-dnat-rules) instead of static IP addresses in destination NAT configurations. This reduces operational overhead when backend infrastructure changes IP addresses due to scaling operations, deployments, or infrastructure updates.
+
+- **Azure Front Door managed certificates**: Implement [automatic certificate provisioning and renewal](/azure/frontdoor/front-door-custom-domain-https) for wildcard domains. This automation supports multiple subdomains under a single certificate, simplifying SSL certificate management for organizations with complex domain structures and reducing manual certificate lifecycle management tasks.
 
 - Oversee compliance on your entire fleet of machines.
 - Schedule recurring updates
@@ -145,3 +152,7 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Operational Excellence checklist](checklist.md)
+
+<!-- Azure Update: 497160 - 2025-01-23 -->
+<!-- Azure Update: 497428 - 2025-01-22 -->
+<!-- Azure Update: 496631 - 2025-05-21 -->

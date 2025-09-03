@@ -4,7 +4,7 @@ description: Learn how to take advantage of features in Azure Traffic Manager an
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
-ms.date: 01/09/2025
+ms.date: 08/17/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-traffic-manager
@@ -48,7 +48,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Account for potential failures.** Traffic Manager is designed to be resilient. But it can still be a single point of failure for your workload. To mitigate this risk, define a secondary path to an alternate service that becomes active if Traffic Manager is unavailable. To avoid routing problems, don't use Traffic Manager and the alternate service together.
 >
-> - **Have a good understanding of service-level agreement (SLA) coverage.** When you evaluate [Traffic Manager SLAs](https://www.azure.cn/en-us/support/sla/traffic-manager/), understand the coverage related to the published percentile. For example, your DNS lookups might fail multiple times. Those failures aren't considered downtime until a full minute of continuous DNS lookup failures occur.
+> - **Have a good understanding of service-level agreement (SLA) coverage.** When you evaluate [Traffic Manager SLAs](https://www.azure.cn/en-us/support/sla/traffic-manager/), understand the coverage related to the published percentile. For example, SLA ensures all DNS queries consistently resolve to healthy endpoints with zero tolerance for DNS failures. However, your DNS lookups might fail multiple times. Those failures aren't considered downtime until a full minute of continuous DNS lookup failures occur.
 >
 > - **Incorporate redundancy in your workload architecture.** If your service is exposed through a public IP address, use Traffic Manager to implement redundancy across Azure regions, on-premises, and other clouds. For example, you might have an on-premises application that has a secondary instance in the cloud. If the on-premises system fails, the cloud instance can become active, which helps ensure continuity.
 >
@@ -60,15 +60,17 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Evaluate the caching duration of DNS responses.** The time-to-live (TTL) setting for DNS lookups in Traffic Manager determines how long downstream DNS resolvers cache DNS responses. The default TTL might result in longer caching times than necessary, potentially causing downtime if an endpoint fails. Reduce the TTL to increase the frequency of cache updates. This method can help mitigate downtime but increases the frequency of DNS lookups.
 >
-> - **Avoid sending traffic to unhealthy or compromised instances.** Review the built-in health probing features in Traffic Manager. 
+> - **Avoid sending traffic to unhealthy or compromised instances.** Review the built-in health probing features in Traffic Manager.
 >
->   For HTTPS and HTTP applications, implement the Health Endpoint Monitoring pattern to provide a custom page within your application. Based on specific checks, the page returns an appropriate HTTPS status code. In addition to the availability of the endpoint, your health check should monitor all dependencies of your application. 
+>   For HTTPS and HTTP applications, implement the Health Endpoint Monitoring pattern to provide a custom page within your application. Based on specific checks, the page returns an appropriate HTTPS status code. In addition to the availability of the endpoint, your health check should monitor all dependencies of your application. Don't report errors for services where your workload performs graceful degradation or recovery automatically. Otherwise, the health probe might trigger failover when it's not needed.
 >
 >   For other applications, Traffic Manager uses the Transmission Control Protocol (TCP) to determine the availability of the endpoint.
 >
+>   After a Traffic Manager failover, have a process where you verify that all workload subsystems are healthy before manually failing back. Otherwise, you might create a situation where the application flips back and forth between back ends.
+>
 >   For more information, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring) and [Understand Traffic Manager probes](/azure/traffic-manager/traffic-manager-troubleshooting-degraded#understanding-traffic-manager-probes).
 >
-> - **Determine your outage tolerance.** If a back end becomes unavailable, some time can pass before Traffic Manager recognizes the failure and stops directing traffic to the unavailable endpoint. There's  a period of time when client requests can't be served. Use this tolerance to configure probe settings, which determine how quickly you want to start your business-continuity operations.
+> - **Determine your outage tolerance.** If a back end becomes unavailable, some time can pass before Traffic Manager recognizes the failure and stops directing traffic to the unavailable endpoint. There's a period of time when client requests can't be served. Use this tolerance to configure probe settings, which determine how quickly you want to start your business-continuity operations.
 >
 > - **Include the endpoints as part of your resiliency testing.** Simulate unavailable endpoints to see how Traffic Manager handles failures. Suppose your workload uses a load balancer like Application Gateway in a private virtual network. You can use network security group (NSG) rules in Azure Chaos Studio to simulate failures of the endpoint. You can block access to the subnet where Application Gateway resides.
 
@@ -79,7 +81,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | [Deploy multiple endpoints](/azure/traffic-manager/traffic-manager-endpoint-types) in the Traffic Manager profiles, and enable them. If an endpoint isn't enabled, it's not probed for health checks or included in the traffic-routing rotation. Place these endpoints in different regions. | Redundant instances help ensure availability if one endpoint fails.|
 | Evaluate the various [traffic-routing methods](/azure/traffic-manager/traffic-manager-routing-methods). Configure one or a combination of methods to align with your deployment strategy. Traffic Manager applies the chosen method to each DNS query and uses the method to determine which endpoint is returned in the DNS response. <br><br> - The [weighted method](/azure/traffic-manager/traffic-manager-routing-methods#weighted-traffic-routing-method) distributes traffic based on the configured weight coefficient. This method supports active-active models. <br> - The [priority-based method](/azure/traffic-manager/traffic-manager-routing-methods#priority-traffic-routing-method) configures the primary region to receive traffic and send it to the secondary region as a backup. This method supports active-passive models. <br>- The [geographic method](/azure/traffic-manager/traffic-manager-routing-methods#geographic-traffic-routing-method) routes traffic based on the geographic origin of the DNS query. To cover all regions, configure at least one endpoint with the [All (World)](/azure/advisor/advisor-reference-reliability-recommendations#add-an-endpoint-configured-to-all-world) property.| An optimized routing method helps ensure that you distribute traffic efficiently across your endpoints. <br><br> You can support your active-active or active-passive deployment model goals. An efficient routing method helps ensure that secondary regions can handle traffic or act as a backup. <br><br> Geographical routing helps direct users to the nearest endpoint based on their location. It helps ensure that traffic is efficiently managed and not lost.|
 |Set the [DNS TTL interval](/azure/traffic-manager/traffic-manager-faqs#what-is-dns-ttl-and-how-does-it-impact-my-users) duration to a low value, preferably less than 60 seconds. To optimize performance, adjust the health probe timing and the DNS record TTL. | A low TTL duration helps ensure more frequent downstream DNS resolver cache updates and quicker failover. It also minimizes downtime and improves the overall responsiveness of your application. |
-|Set up health probes to [monitor the endpoint](/azure/traffic-manager/traffic-manager-monitoring). <br><br> - Don't enable `AlwaysServe`, which disables endpoint monitoring and sends requests to the endpoint, regardless of its health state. <br>- Set the `probing interval` value. Consider the tradeoff between how fast you can detect failures and the number of requests to the endpoint. The number of requests can be substantial because Traffic Manager is a global service that pings simultaneously from various locations. <br>- Set the `probe timeout` value. Consider how long to wait before declaring the endpoint unhealthy. Include false positives in the number of failures.|Health probes make sure that only healthy instances serve user requests. They also help determine whether failures are nontransient and how quickly failover operations should take place. 
+|Set up health probes to [monitor the endpoint](/azure/traffic-manager/traffic-manager-monitoring). <br><br> - Don't enable `AlwaysServe`, which disables endpoint monitoring and sends requests to the endpoint, regardless of its health state. <br>- Set the `probing interval` value. Consider the tradeoff between how fast you can detect failures and the number of requests to the endpoint. The number of requests can be substantial because Traffic Manager is a global service that pings simultaneously from various locations. <br>- Set the `probe timeout` value. Consider how long to wait before declaring the endpoint unhealthy. Include false positives in the number of failures.|Health probes make sure that only healthy instances serve user requests. They also help determine whether failures are nontransient and how quickly failover operations should take place.|
 
 ## Security
 
@@ -211,13 +213,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of your web application instances.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Tradeoffs
 
@@ -246,3 +244,5 @@ Consider the following resources that demonstrate the recommendations in this ar
 
 - Use the following product documentation to improve your implementation expertise:
   - [Traffic Manager](/azure/traffic-manager/)
+
+<!-- Updated: August 17, 2025 for Azure Update 493002 -->

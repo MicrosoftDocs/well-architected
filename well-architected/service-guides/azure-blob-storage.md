@@ -37,7 +37,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to read data from the secondary region during an outage of the primary region.
 >
-> - **Design applications**: [Design applications](/azure/storage/common/geo-redundant-design) to seamlessly shift to reading data from the secondary region if the primary region becomes unavailable for any reason. This only applies to geo-redundant storage (GRS) and geo-zone-redundant storage (GZRS) configurations. Designing applications to handle outages reduces downtime for end users.
+> - **Design applications**: [Design applications](/azure/storage/common/geo-redundant-design) to switch to reading data from the secondary region if the primary region becomes unavailable for any reason. This requires read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS) configurations. Both configurations provide read-only access to your data in the secondary region. Designing applications to handle outages reduces downtime for end users.
 >
 > - **Explore features to help you meet your recovery targets**: Make blobs restorable so that they can be recovered if they're corrupted, edited, or deleted by mistake.
 >
@@ -226,13 +226,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-[Azure Advisor](/azure/advisor/) is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Blob Storage.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-high-availability-recommendations)
-- [Security](/azure/defender-for-cloud/recommendations-reference)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Next step
 

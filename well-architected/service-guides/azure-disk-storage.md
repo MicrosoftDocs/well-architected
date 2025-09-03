@@ -232,13 +232,9 @@ For comprehensive governance, review the [Azure Policy built-in definitions for 
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure Disk Storage.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#virtual-machines)
-- [Security](/azure/defender-for-cloud/recommendations-reference)
-- [Cost Optimization](/azure/advisor/advisor-reference-cost-recommendations#consider-azure-managed-disk-reserved-instances-to-save-over-your-on-demand-costs)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#use-managed-disks-to-prevent-disk-io-throttling)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 

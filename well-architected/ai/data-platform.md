@@ -24,7 +24,8 @@ Ask yourself the following questions so that you can avoid designing an overly c
 
 If you answer yes to these questions, then you can simplify your architecture by allowing the application to access the data source directly. This approach eliminates the need for big data architecture components like data ingestion, analytical store integration, and external data processing. If the source database can handle the required searches, integrating the search index capability directly into the source database can be a practical approach. Make sure that the source can cost-effectively scale to meet new demands.
 
-For instance, Azure Cosmos DB supports vector search, so you might not need another index. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. Take advantage of the database's built-in capabilities to simplify the architecture as much as possible.
+For instance, Azure Cosmos DB and Azure SQL Databases support vector search, so you might not need another index. Built-in support for vector data types eliminates the need for separate vector databases reducing architectural complexity and data movement while improving query performance for machine learning operations. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. 
+
 
 A data platform architecture for large-scale workloads is more complex.
 
@@ -72,7 +73,7 @@ The following section provides guidance about the capabilities to consider when 
 
   In some cases, you might need to maintain copies of data for different use cases. To support this scenario, you might need to fork data. Each fork can independently mutate to enhance its quality and usability. Your data platform should be able to maintain proper versioning of those forks.
 
-  Your data platform should be able to store versions of data over time to provide historical context. This contetxt is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
+  Your data platform should be able to store versions of data over time to provide historical context. This context is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
 
 - **Does the platform have built-in data lifecycle management capabilities?**
 

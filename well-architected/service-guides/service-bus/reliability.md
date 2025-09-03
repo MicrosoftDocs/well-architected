@@ -69,7 +69,9 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 
 > [!div class="checklist"]
 > - Evaluate Premium tier benefits of Azure Service Bus.
-> - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly.
+> - Ensure that [Service Bus Messaging Exceptions](/azure/service-bus-messaging/service-bus-messaging-exceptions) are handled properly in all publisher and subscriber client code.
+>
+>   This is especially important in batch processing, where exception handling can be used to avoid losing an entire batch of messages.
 > - Connect to Service Bus with the Advanced Messaging Queue Protocol (AMQP) and use Service Endpoints or Private Endpoints when possible.
 > - Review the [Best Practices for performance improvements using Service Bus Messaging](/azure/service-bus-messaging/service-bus-performance-improvements?tabs=net-standard-sdk-2).
 > - Implement geo-replication on the sender and receiver side to protect against outages and disasters.
@@ -79,7 +81,11 @@ When deploying Service Bus with Geo-disaster recovery and in availability zones,
 > - Ensure related messages are delivered in guaranteed order.
 > - Evaluate different Java Messaging Service (JMS) features through the JMS API.
 > - Use .NET Nuget packages to communicate with Service Bus messaging entities.
+> - Pick a retry policy (maximum attempts and cooldown) that is best for your workload.
+>
+>   If a message cannot be processed or delivered to any receiver after multiple retries, it is moved to a dead letter queue. Implement a process to read messages from the dead letter queue, inspect them, and remediate the problem. Depending on the scenario, you might retry the message as-is, make changes and retry, or discard the message. For more information, see [Overview of Service Bus dead-letter queues](/azure/service-bus-messaging/service-bus-dead-letter-queues).
 > - Implement resilience for transient fault handling when sending or receiving messages.
+> - Handle duplicate messages.
 > - Implement auto-scaling of messaging units.
 
 ## Configuration recommendations
@@ -88,13 +94,14 @@ Consider the following recommendations to optimize reliability when configuring 
 
 |Recommendation|Description|
 |--------------|-----------|
-|Evaluate Premium tier benefits of Azure Service Bus.|Consider migrating to the Premium tier of Service Bus to take advantage of platform-supported outage and disaster protection.|
+|Evaluate Premium tier benefits of Azure Service Bus.|Using the Premium tier of Service Bus in your production workload will enable additional platform-supported outage and disaster protection.|
 |Connect to Service Bus with the AMQP protocol and use Service Endpoints or Private Endpoints when possible.|This recommendation keeps traffic on the Azure Backbone. *Note: The default connection protocol for `Microsoft.Azure.ServiceBus` and `Windows.Azure.ServiceBus` namespaces is `AMQP`.*|
 |Implement geo-replication on the sender and receiver side to protect against outages and disasters.|Standard tier supports only the implementation of sender and receiver-side geo-redundancy. An outage or disaster in an Azure Region could cause downtime for your solution.|
-|Configure Geo-Disaster.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- [Geo-Replication (Active/Passive with full data replication)](/azure/service-bus-messaging/service-bus-geo-replication) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/reliability/cross-region-replication-azure)*.|
-|If you need mission-critical messaging with queues and topics, Service Bus Premium is recommended with Geo-Disaster Recovery.| Choosing the pattern is dependent on the business requirements and the recovery time objective (RTO).|
-|Implement high availability for the Service Bus namespace.|Premium tier supports Geo-disaster recovery and replication at the namespace level. At this level, Premium tier provides high availability for metadata disaster recovery using primary and secondary disaster recovery namespaces.|
+|Configure geo-disaster recovery.|- [Active/Active](/azure/service-bus-messaging/service-bus-outages-disasters#active-replication) <br>- [Active/Passive](/azure/service-bus-messaging/service-bus-outages-disasters#passive-replication) <br>- [Paired Namespace (Active/Passive)](/azure/service-bus-messaging/service-bus-geo-dr) <br>- [Geo-Replication (Active/Passive with full data replication)](/azure/service-bus-messaging/service-bus-geo-replication) <br>- *Note: The secondary region should preferably be an [Azure paired region](/azure/reliability/cross-region-replication-azure)*.|
+|If you need mission-critical messaging with queues and topics, Service Bus Premium is recommended with geo-disaster recovery.| Choosing the pattern is dependent on the business requirements and the recovery time objective (RTO).|
+|Implement high availability for the Service Bus namespace.|Premium tier supports geo-disaster recovery and replication at the namespace level. At this level, Premium tier provides high availability for metadata disaster recovery using primary and secondary disaster recovery namespaces.|
 |Ensure related messages are delivered in guaranteed order.|Be aware of the requirement to set a Partition Key, Session ID, or Message ID on each message to ensure related messages send to the same partition in the messaging entity.|
+|Enable [duplicate detection](/azure/service-bus-messaging/duplicate-detection).|If a publisher fails immediately after sending a message, or experiences network or system issues, it may erroneously fail to record that the message was delivered, and may send the same message to the system twice. Service Bus handles this issue through its duplicate detection.|
 |Evaluate different JMS features through the JMS API.|Features available through the JMS 2.0 API (and its Software Development Kit (SDK)) are not the same as the features available through the native SDK. For example, Service Bus Sessions are not available in JMS.|
 |Implement resilience for transient fault handling when sending or receiving messages.|It is essential to implement suitable transient fault handling and error handling for send and receive operations to maintain throughput and to prevent message loss.|
 |Implement [auto-scaling of messaging units](/azure/service-bus-messaging/automate-update-messaging-units), to ensure that you have enough resources available for your workloads.|
