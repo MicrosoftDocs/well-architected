@@ -33,7 +33,7 @@ For example, you might have multiple web server nodes running at once. The criti
 
 When you design for redundancy in the context of performance efficiency, distribute the load across multiple redundant nodes to ensure that each node performs optimally. In the context of reliability, build in spare capacity to absorb failures or malfunctions that affect one or more nodes. Ensure that the spare capacity can absorb failures for the entire time that's needed to recover the affected nodes. With this distinction in mind, both strategies need to work together. If you spread traffic across two nodes for performance and they both run at 60 percent utilization and one node fails, your remaining node is at risk of becoming overwhelmed because it can't operate at 120 percent. Spread the load out with another node to ensure that your performance and reliability targets are upheld.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs**:
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoffs:**
 >
 > - More workload redundancy equates to more costs. Carefully consider adding redundancy and regularly review your architecture to ensure that you're managing costs, especially when you use overprovisioning. When you use overprovisioning as a resiliency strategy, balance it with a well-defined [scaling strategy](scaling.md) to minimize cost inefficiencies.
 
@@ -47,23 +47,23 @@ When you design for redundancy in the context of performance efficiency, distrib
 
 Take advantage of [serverless](https://azure.microsoft.com/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) services to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, removing the operational burden of designing and maintaining your own redundancy mechanisms. When evaluating service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
 
-Azure managed services provide redundancy through different models, each offering varying levels of abstraction and operational simplicity:
+Azure managed services provide redundancy through different models, each that provides varying levels of abstraction and operational simplicity:
 
-**Global services with built-in redundancy**: Services like Azure Active Directory, Azure DNS, and Azure Key Vault operate as global services with automatic redundancy across multiple regions. These services provide inherent resilience without requiring any redundancy configuration from you. They automatically handle failover and recovery scenarios transparently.
+**Global services with built-in redundancy:** Services like Azure Active Directory, Azure DNS, and Azure Key Vault operate as global services with automatic redundancy across multiple regions. These services provide inherent resilience without requiring any redundancy configuration from you. They automatically handle failover and recovery scenarios transparently.
 
-**Abstracted capacity models**: Services like Azure Cosmos DB, Azure Databricks, and Azure OpenAI managed endpoints abstract the underlying infrastructure complexity behind capacity units, DTUs, or other logical metrics. These services automatically distribute your workload across multiple instances, zones, and regions while presenting a simplified billing and management model. You specify capacity requirements rather than managing individual redundant instances.
+**Abstracted capacity models:** Services like Azure Cosmos DB, Azure Databricks, and Azure OpenAI managed endpoints abstract the underlying infrastructure complexity behind capacity units, DTUs, or other logical metrics. These services automatically distribute your workload across multiple instances, zones, and regions while presenting a simplified billing and management model. You specify capacity requirements rather than managing individual redundant instances.
 
-When architecting your solution, evaluate whether a managed service option exists for each component before implementing infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they may involve tradeoffs in control and potentially higher costs per unit of capacity.
+When architecting your solution, evaluate whether a managed service option exists for each component before implementing infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they might involve tradeoffs in control and potentially higher costs per unit of capacity.
 
 ### Build redundancy into your workload with multiple component instances
 
-Deploy multiple instances of your infrastructure components and services to achieve the resilience your workload needs. This fundamental redundancy strategy ensures that if one instance fails, other instances can continue to handle the workload. You can achieve multiple instances through different approaches: some scenarios require you to manually configure redundancy by deploying multiple resources individually (such as multiple ExpressRoute circuits or configuring Traffic Manager in multiple regions), while other services are designed to support multiple instances directly (such as setting VM Scale Sets to 5 instances or configuring App Service to run 10 instances). When possible, prefer services that offer built-in support for multiple instances and auto-scaling capabilities, as they simplify redundancy management and can respond to both reliability and performance needs.
+Deploy multiple instances of your infrastructure components and services to achieve the resilience your workload needs. This fundamental redundancy strategy ensures that if one instance fails, other instances can continue to handle the workload. You can achieve multiple instances through different approaches: some scenarios require you to manually configure redundancy by deploying multiple resources individually (such as multiple ExpressRoute circuits or configuring Traffic Manager in multiple regions), while other services are designed to support multiple instances directly (such as setting VM Scale Sets to 5 instances or configuring App Service to run 10 instances). When possible, prefer services that provide built-in support for multiple instances and auto-scaling capabilities, as they simplify redundancy management and can respond to both reliability and performance needs.
 
-When deploying redundant infrastructure components, determine how many instances of each component satisfies your reliability targets. Consider whether you need multiple instances of all components or only certain critical ones, and determine the geographical distribution of those instances to meet your resilience requirements. When deploying redundant infrastructure, consider the following recommendations.
+When you deploy redundant infrastructure components, determine how many instances of each component satisfies your reliability targets. Consider whether you need multiple instances of all components or only certain critical ones, and determine the geographical distribution of those instances to meet your resilience requirements. When you deploy redundant infrastructure, consider the following recommendations.
 
 **Compute resources**
 
-- Prefer services that have support for redundancy built-in. These services allow you to specify the number of instances you need and may handle the distribution and management of those instances for you.
+- Prefer services that have support for redundancy built-in. These services allow you to specify the number of instances you need and might handle the distribution and management of those instances for you.
 
 - Keep your compute layer *clean of any state* because individual nodes that serve requests might be deleted, faulted, or replaced at any time.
 
@@ -119,7 +119,7 @@ For example, an e-commerce platform during peak season can maintain seamless ope
 
 The following sections describe configuration options for active-active deployments.
 
-- **Active-active at capacity**: Mirrored deployment stamps in two or more locations, each configured to handle production workloads for the location or locations they serve and scalable to handle loads from other locations in case of a regional outage.
+- **Active-active at capacity:** Mirrored deployment stamps in two or more locations, each configured to handle production workloads for the location or locations they serve and scalable to handle loads from other locations if a regional outage occurs.
 
   - Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
 
@@ -129,7 +129,7 @@ The following sections describe configuration options for active-active deployme
 
   - Disadvantage of this design: Possible degradation of the user experience when scaling up to meet the demands of a full load if another location experiences an outage.
 
-- **Active-active overprovisioned**: Mirrored deployment stamps in two or more locations, each overprovisioned to handle production workloads for the location or locations they serve and to handle loads from other locations in case of a regional outage.
+- **Active-active overprovisioned:** Mirrored deployment stamps in two or more locations, each overprovisioned to handle production workloads for the location or locations they serve and to handle loads from other locations in case of a regional outage.
 
   - Networking: Use [latency](/azure/frontdoor/routing-methods#latency) or [weighted](/azure/frontdoor/routing-methods#weighted) global routing to spread traffic among locations.
 
@@ -143,15 +143,15 @@ The following sections describe configuration options for active-active deployme
 
 - Common disadvantages of both designs: Higher operating costs and management burden due to various factors, including the necessity of managing the synchronization of application state and data.
 
-#### Use an active-passive architecture design to provide disaster recovery reslience
+#### Use an active-passive architecture design to provide disaster recovery resilience
 
-Active-passive deployment configurations offer a cost-effective way to ensure disaster recovery by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary fails or undergoes maintenance, minimizing resource usage while still providing reliable failover capabilities.
+Active-passive deployment configurations provide a cost-effective way to ensure disaster recovery by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary fails or undergoes maintenance, minimizing resource usage while still providing reliable failover capabilities.
 
 For example, a financial trading platform can use this setup to maintain service continuity. The primary system manages all transactions, while the secondary remains synchronized in the background. If the primary goes down, the secondary quickly takes over, restoring operations with minimal disruption. This approach balances reliability and cost, making it ideal for workloads that can tolerate brief recovery times without the complexity or expense of active-active deployments.
 
 The following sections describe configuration options for active-passive deployments.
 
-- **Warm spare**: One primary location and one or more secondary locations. The secondary location is deployed with the minimum possible compute and data sizing and runs without load. This location is known as a *warm spare* location. Upon failover, the compute and data resources are scaled to handle the load from the primary location.
+- **Warm spare:** One primary location and one or more secondary locations. The secondary location is deployed with the minimum possible compute and data sizing and runs without load. This location is known as a *warm spare* location. Upon failover, the compute and data resources are scaled to handle the load from the primary location.
 
   - Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
@@ -161,7 +161,7 @@ The following sections describe configuration options for active-passive deploym
 
   - Disadvantage of this design: Highest operating cost among the active-passive designs.
 
-- **Cold spare**: One primary location and one or more secondary locations. The secondary location is scaled to handle full load, but all compute resources are stopped. This location is known as a *cold spare* location. You need to start the resources before failover.
+- **Cold spare:** One primary location and one or more secondary locations. The secondary location is scaled to handle full load, but all compute resources are stopped. This location is known as a *cold spare* location. You need to start the resources before failover.
 
   - Networking: Use [priority](/azure/frontdoor/routing-methods#priority) global routing.
 
@@ -173,13 +173,13 @@ The following sections describe configuration options for active-passive deploym
 
 ### Distribute workloads across proximate independent infrastructure
 
-Deploying workloads across nearby independent datacenters or datacenter sectors offers redundancy without sacrificing performance. By leveraging geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact—providing the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment. In Azure, this functionality is provide by availability zones, which are physically independent datacenters or datacenter sectors that are designed to let you easily deploy fault-tolerant, low-latency workloads.
+Deploying workloads across nearby independent datacenters or datacenter sectors provides redundancy without sacrificing performance. By leveraging geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact—providing the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment. In Azure, this functionality is provide by availability zones, which are physically independent datacenters or datacenter sectors that are designed to let you easily deploy fault-tolerant, low-latency workloads.
 
 For latency-sensitive applications like real-time gaming, this approach enables seamless failover and uninterrupted user experience. Game servers distributed across local datacenters can instantly reroute traffic during outages, with transparent load balancing and near real-time data replication preserving gameplay continuity. However, this strategy does carry some risk, as large-scale regional events could still impact all sites simultaneously.
 
 ### Strengthen fault tolerance with geo-distant deployments
 
-Deploying across geographically distributed datacenters offers the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that could impact entire metropolitan areas. In Azure, you can deploy workloads into regions, which are spread across the globe. When using this design approach, choose regions that are close to your users, but are geographically distant, like West US and East US for example.
+Deploying across geographically distributed datacenters provides the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that could impact entire metropolitan areas. In Azure, you can deploy workloads into regions, which are spread across the globe. When using this design approach, choose regions that are close to your users, but are geographically distant, like West US and East US for example.
 
 For example, a global financial platform can maintain uninterrupted service by routing traffic to unaffected regions if one area experiences a major outage. While this approach maximizes resilience and supports regulatory compliance across jurisdictions, it introduces higher latency, complex data consistency requirements, and increased operational overhead—factors that must be carefully weighed against the benefits of global redundancy.
 
@@ -191,17 +191,17 @@ The Azure platform helps you optimize the resiliency of your workload and add re
 
 - Providing built-in redundancy with many PaaS and SaaS solutions, some of which are configurable.
 
-- Offering global managed services like Azure Active Directory, Azure DNS, and Azure Key Vault that implement redundancy transparently without requiring configuration.
+- Provides global managed services like Azure Active Directory, Azure DNS, and Azure Key Vault that implement redundancy transparently without requiring configuration.
 
 - Allowing you to design and implement intra-region redundancy by using [availability zones](/azure/reliability/availability-zones-overview) and inter-region redundancy.
 
 - Providing zone-redundant compute solutions, like [Azure VM Scale Sets](/azure/reliability/reliability-virtual-machine-scale-sets), which can automatically spread your compute evenly across availability zones when you deploy virtual machines (VMs).
 
-- Offering replica-aware load balancing services like [Azure Application Gateway](/azure/application-gateway/), [Azure Front Door](/azure/frontdoor/), and [Azure Load Balancer](/azure/load-balancer/).
+- Provides replica-aware load balancing services like [Azure Application Gateway](/azure/application-gateway/), [Azure Front Door](/azure/frontdoor/), and [Azure Load Balancer](/azure/load-balancer/).
 
-- Offering easily implemented geo-replication solutions like [active geo replication](/azure/azure-sql/database/active-geo-replication-overview) for Azure SQL Database. Implement [global distribution](/azure/cosmos-db/distribute-data-globally) and transparent replication by using Azure Cosmos DB. Azure Cosmos DB offers two options for [handling conflicting writes](/azure/cosmos-db/conflict-resolution-policies). Choose the best option for your workload.
+- Provides easily implemented geo-replication solutions like [active geo replication](/azure/azure-sql/database/active-geo-replication-overview) for Azure SQL Database. Implement [global distribution](/azure/cosmos-db/distribute-data-globally) and transparent replication by using Azure Cosmos DB. Azure Cosmos DB provides two options for [handling conflicting writes](/azure/cosmos-db/conflict-resolution-policies). Choose the best option for your workload.
 
-- Offering point-in-time restore capabilities for many PaaS data services.
+- Provides point-in-time restore capabilities for many PaaS data services.
 
 - Mitigating port exhaustion via [Azure NAT Gateway](/azure/nat-gateway/nat-overview) or [Azure Firewall](/azure/firewall/overview).
 
