@@ -45,8 +45,6 @@ Consider an agentic application where the *orchestrator* itself is implemented a
 
 This type of architecture introduces new challenges for testing and evaluation. Because agents operate non-deterministically, traditional static tests are insufficient. Testing strategy should validate the complete flow from user input to final response, including *grounding data* retrieval, tool invocation, and response generation. For example, 
 
-- **Apply unit testing to deterministic components within the agent logic, especially if you're using agent frameworks like Semantic Kernel.** These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
-
 - **Verify that agents are calling external tools, APIs, and other agents correctly.** Use mock dependencies to validate that data is passed correctly. Simulate tool or agent failures to test reliability in behavior.
 
 - **Design scenario-based tests using predefined prompts and expected outputs.** Because outputs may vary, evaluate results using automated scoring with another model. Also use human-based review, especially for sensitive or subjective tasks.
@@ -55,19 +53,22 @@ This type of architecture introduces new challenges for testing and evaluation. 
 
 From a tooling perspective, consider [Azure AI Evaluation SDK](/azure/ai-foundry/how-to/develop/agent-evaluate-sdk), which supports checks like:
 
-- Does the agent/orchestrator correctly understand the user's request?
-- Are the correct tools called, with the right parameters?
-- Does the final output align with the assigned task and prior reasoning steps?
+- Intent resolution: Does the agent/orchestrator correctly understand the user's request?
+- Tool call accuracy: Are the correct tools called, with the right parameters?
+- Task adherence: Does the final output align with the assigned task and prior reasoning steps?
 
 In addition, conduct regular performance and load testing. Assess the agent's ability to scale under concurrent requests, handle long execution paths, and manage interactions across multiple agents. Continuously monitor for regressions in both logic and performance as the system evolves through iterative releases.
 
-## Test deterministic orchestration
 
-In some architectures, you might use static or deterministic code to coordinate tasks related to a user's request. In a RAG system, for example, the orchestrator interprets user intent, queries the index for grounding data, and calls the model *inference endpoint*. It may also handle tool calls (like REST APIs) required by agents, depending on the design.
+### Test the deterministic behavior
 
-You can build orchestration logic using any general-purpose language, or with frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain.
+In some architectures, you might use deterministic logic within the agent workflows. For example, instead of an agent, you can choose to have an orchestrator that uses static code to interpret user intent, query the index for grounding data, and call the model *inference endpoint*. 
 
-From a testing perspective, treat this orchestration code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Security applies equally to both orchestration code and the underlying model:
+From a testing perspective, treat this code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Apply unit testing to deterministic components, especially if you're using agent frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
+
+### Test the security aspects
+
+Secure agentic workflows by controlling access, validating all inputs, and monitoring agent behavior to prevent misuse or unintended actions.
 
 - **Jailbreak testing.** Always test for jailbreak attempts. Attackers typically target the orchestration layer first, which parses and forwards requests to the model. If malicious inputs aren't filtered, they can compromise model behavior.
 
@@ -80,7 +81,7 @@ There are other open source libraries available such as Scikit-learn, PyTorch's 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Testing this code has cost implications. For example, if you use Azure OpenAI to host your inference endpoint, stress testing is a common practice that can help you determine the system's limits. However, Azure OpenAI charges for every call, which can make extensive stress testing expensive. One way to optimize charges is to use unused PTUs of Azure OpenAI in a test environment. Alternatively, you can simulate the inference endpoint by using tools like [Dev Proxy](/microsoft-cloud/dev/dev-proxy/how-to/simulate-azure-openai).
 
 
-## Test the inferencing layer
+## Test the inference endpoint 
 
 Inference endpoints expose your generative models through REST APIs and must be tested beyond just model accuracy. Whether you're using PaaS platforms or self-hosted servers, test the endpoint like any other endpoint to ensure reliability, scalability, and security.
 
@@ -118,11 +119,23 @@ Poorly tested data pipelines can lead to inconsistent results and lead to cross-
 
 ## Guidance for testing model training and fine-tuning
 
-Similar to generative AI models, the strategy of baselining also applies to model training for measuring model quality, where various combinations of models, parameters, and features are evaluated using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
+Similar to generative AI models, use various types of tests at different stages of the development life cycle and across different system components and flows. As much as practical, develop workload assets with testing in mind. For instance, when you perform data manipulation and reshape source data for feature engineering, adhere to good coding practices and ensure that you structure the code to support testing.
+
+### Evaluate the model
+
+Apply a baselining strategy during model training to measure and compare model quality. Evaluate the peformance of various combinations of models, parameters, and features by using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
 
 For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
-### Training data workflow
+Partition source data into three distinct datasets: training, evaluation, and testing.
+
+Use the training dataset to build the model, the evaluation dataset to tune it, and the test dataset to validate final performance. 
+
+Ensure each dataset contains high-quality data to reduce noise. Use test cases in data pipelines to enforce quality, and supplement with synthetic data when real samples are limited, in domains like fraud detection, where real fraud instances are rare and provide limited data for training reliable models.
+
+Keep all datasets separate and non-overlapping to maintain objectivity and prevent bias in predictions. Don't reuse training data for evaluation or evaluation data for testing. 
+
+### Testing the workflow
 
 - **Data pipeline technologies.** Combine functional, load, and performance tests using synthetic data to assess scalability and make informed decisions about sizing or product suitability, required SKUs, and system integration.
 
@@ -137,6 +150,8 @@ For more information, see [Regression/forecasting metrics](/azure/machine-learni
 - **Hyperparameter testing.** Hyperparameter testing is an iterative process where model parameters are tuned to meet accuracy goals based on your workload's use case. This involves repeatedly training on selected data and evaluating on test data to validate performance. Start with a smaller dataset to quickly assess model behavior, then scale testing to the full set. Be mindful of the trade-off between model accuracy and the computational cost and time required for repeated training and evaluation.
 
 - **Code quality.** When training models using custom code, like with PyTorch script, run load tests during the design phase to evaluate compute requirements and select appropriate SKUs. Use unit tests to catch regressions during development, and rely on manual testing when automation isn't feasible. Since these scripts run within workflows, add integration tests to verify that scripts are executed reliably within the pipeline.
+
+- **Inference endpoint.** This REST API provides access to a trained machine learning model for making predictions. After training and selecting a model, it's deployed to an environment where the endpoint can receive real-time or batch input data, process it, and return predictions. Like any other API, make sure that the inference endpoint undergoesh functional, performance, and security testing validate that it returns accurate results, handles expected load, and remains secure against misuse.
 
 - **Live-site testing.** Extend functional testing into the live system. Run scheduled tests to validate data volumes, detect missing or duplicate records, and confirm data freshness. Use synthetic data to safely validate end-to-end transformations and logic under production conditions. Incorporate A/B tests to evaluate new experiences and prevent quality regressions before full deployment. Configure alerting to trigger immediate investigation when tests fail.
 
