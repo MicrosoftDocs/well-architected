@@ -17,7 +17,7 @@ _Testing_ includes verifying the entire system when a change is introduced, incl
 
 Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is non‑negotiable before production, we recommend that you conduct the process in production using a mix of real and synthetic data.
 
-The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [Guidance for testing training models](#guidance-for-testing-training-models).
+The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [Guidance for testing training models](#guidance-for-testing-model-training-and-fine-tuning).
 
 ## Use quality metrics for model evaluation
 
