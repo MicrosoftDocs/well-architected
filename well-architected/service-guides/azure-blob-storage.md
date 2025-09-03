@@ -37,7 +37,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to read data from the secondary region during an outage of the primary region.
 >
-> - **Design applications**: [Design applications](/azure/storage/common/geo-redundant-design) to shift to reading data from the secondary region if the primary region becomes unavailable for any reason. This requires read-access geo-redundant storage (RA-GRS) and read-access geo-zone-redundant storage (RA-GZRS) configurations. Both configurations provide read-only access to your data in the secondary region. Designing applications to handle outages reduces downtime for end users.
+> - **Design applications**: [Design applications](/azure/storage/common/geo-redundant-design) to switch to reading data from the secondary region if the primary region becomes unavailable for any reason. This requires read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS) configurations. Both configurations provide read-only access to your data in the secondary region. Designing applications to handle outages reduces downtime for end users.
 >
 > - **Explore features to help you meet your recovery targets**: Make blobs restorable so that they can be recovered if they're corrupted, edited, or deleted by mistake.
 >
