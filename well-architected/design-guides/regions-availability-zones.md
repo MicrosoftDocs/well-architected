@@ -488,7 +488,6 @@ The following Azure services provide guidance about how to use multiple availabi
 - [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
 
-
 [availability-zones-overview]: </azure/reliability/availability-zones-overview>
 [availability-zones-physical-logical]: </azure/reliability/availability-zones-overview#physical-and-logical-availability-zones>
 [azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-region-support>
