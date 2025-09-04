@@ -30,7 +30,7 @@ The Security pillar applies regardless of how you design your solution. Usually,
 >
 > Consider other workload approaches when you need the specific benefits that those approaches provide, but be aware of the trade-offs.
 
-**Definitions**
+**Definitions:**
 
 | Term | Definition |
 |-|-|

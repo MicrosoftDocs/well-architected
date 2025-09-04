@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime because of [potential failures](failure-mode-analysis.md).
 
-**Definitions**
+**Definitions:**
 
 | Term | Definition |
 |---------|---------|
@@ -36,11 +36,11 @@ When you design for redundancy in the context of performance efficiency, distrib
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-offs:**
 >
 > - More workload redundancy equates to more costs. Carefully consider adding redundancy and regularly review your architecture to ensure that you're managing costs, especially when you use overprovisioning. When you use overprovisioning as a resiliency strategy, balance it with a well-defined [scaling strategy](scaling.md) to minimize cost inefficiencies.
-
+>
 > - There can be performance trade-offs when you build in a high degree of redundancy. For example, resources that spread across availability zones or locations can affect performance because you have to send traffic over high-latency connections between redundant resources, like web servers or database instances.
-
+>
 > - Different flows within the same workload might have different reliability requirements. Flow-specific redundancy designs can potentially introduce complexity into the overall design.
-
+>
 > - Using a low-latency redundancy design means that you accept the risk of losing those components in the event of a large-scale event, like a geographic disaster, that takes all instances offline. Having a geo-distant disaster recovery (DR) environment helps mitigate this risk but increases costs.
 
 ### Prefer serverless and fully managed services to reduce operational burden
@@ -61,7 +61,7 @@ Deploy multiple instances of your infrastructure components and services to achi
 
 When you deploy redundant infrastructure components, determine how many instances of each component satisfies your reliability targets. Consider whether you need multiple instances of all components or only specific critical components, and determine the geographical distribution of those instances to meet your resilience requirements. When you deploy redundant infrastructure, consider the following recommendations.
 
-**Compute resources**
+**Compute resources:**
 
 - Prefer services that have support for redundancy built-in. These services allow you to specify the number of instances that you need and might handle the distribution and management of those instances for you.
 
@@ -69,7 +69,7 @@ When you deploy redundant infrastructure components, determine how many instance
 
 - Design and test your scaling strategy to match your redundancy approach.
 
-**Data resources**
+**Data resources:**
 
 - Replicate data across geographical regions to provide resilience to regional outages and catastrophic failures.
 
@@ -89,7 +89,7 @@ When you deploy redundant infrastructure components, determine how many instance
 
 - If sharding isn't an option, you can use the [Command and Query Responsibility Segregation (CQRS) pattern](/azure/architecture/patterns/cqrs) to separate your read-write and read-only data models. Add more redundant read-only database instances to provide more resilience.  
 
-**Networking resources**
+**Networking resources:**
 
 - Decide on a reliable and scalable network topology. Use a hub-and-spoke model or an Azure Virtual WAN model to help you organize your cloud infrastructure in logical patterns that make your redundancy design easier to build and scale.
 
