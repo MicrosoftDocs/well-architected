@@ -28,9 +28,9 @@ Self-preservation capabilities add resilience to your workload. They reduce the 
 
 ## Design for redundancy
 
-One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system. 
+One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system.
 
-Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage; and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redundancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md) and [regions and availability zones](../design-guides/regions-availability-zones.md) articles for in-depth guidance on this strategy.
+Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage, and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redundancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. For more information, see [Architecture strategies for designing for redundancy](./redundancy.md) and [Architecture strategies for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
 ## Design for self-preservation
 
