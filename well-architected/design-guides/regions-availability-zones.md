@@ -487,3 +487,18 @@ The following Azure services provide guidance about how to use multiple availabi
 - [Azure Site Recovery: Enable Azure VM DR between availability zones](/azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery)
 - [Azure NetApp Files: Understand cross-zone replication of Azure NetApp Files](/azure/azure-netapp-files/cross-zone-replication-introduction)
 - [Azure Storage redundancy](/azure/storage/common/storage-redundancy)
+
+
+[availability-zones-overview]: </azure/reliability/availability-zones-overview>
+[availability-zones-physical-logical]: </azure/reliability/availability-zones-overview#physical-and-logical-availability-zones>
+[azure-regions-with-availability-zone-support]: </azure/reliability/availability-zones-region-support>
+[azure-services-with-availability-zone-support]: </azure/reliability/availability-zones-service-support>
+[azure-region-pairs]: </azure/reliability/cross-region-replication-azure>
+[regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
+[metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
+[round-trip-latency]: </azure/networking/azure-network-latency>
+[composite-slos]: <metrics.md#define-composite-slo-targets>
+[front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
+[traffic-manager]: </azure/traffic-manager/traffic-manager-overview>
+[deployment-stamps-pattern]: </azure/architecture/patterns/deployment-stamp>
+[geode-pattern]: </azure/architecture/patterns/geodes>
