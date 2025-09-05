@@ -17,7 +17,7 @@ _Testing_ includes verifying the entire system when a change is introduced, incl
 
 Both practices are coupled in actual implementation. The entire process includes sending requests to the model, evaluating its responses, and making a go or no-go decision based on the test data. While the process is non‑negotiable before production, we recommend that you conduct the process in production using a mix of real and synthetic data.
 
-The primary focus here is on generative AI models. If you're working with discriminative models, skip ahead to [Guidance for testing training models](#guidance-for-testing-model-training-and-fine-tuning).
+The primary focus here is on solutions built using generative AI, particularly scenarios using foundation models. For guidance applicable to training and fine-tuning models, skip ahead to [Guidance for testing model training and fine-tuning](#guidance-for-testing-model-training-and-fine-tuning).
 
 ## Use quality metrics for model evaluation
 
@@ -39,7 +39,7 @@ Ensure the dataset is representative of the domain or task, with diverse, high-q
 
 ## Validate agentic workflows 
 
-As architectures are evolving to use AI, functionality that was once handled by deterministic code is now offloaded to *autonomous agents*. These agents make decisions often with dynamic behavior.
+As architectures are evolving to use AI, functionality that was once handled by deterministic code is now offloaded to *AI agents*. These agents make decisions often with dynamic behavior.
 
 Consider an agentic application where the *orchestrator* itself is implemented as an agent. Unlike traditional orchestration, agents can invoke tools, interpret prompts, collaborate with other agents, and adapt in real time, making them more flexible, but harder to validate.
 
@@ -76,7 +76,7 @@ There are other open source libraries available such as Scikit-learn, PyTorch's 
 
 ### Test the deterministic behavior
 
-In some architectures, you might use deterministic logic within the agent workflows. For example, instead of an agent, you can choose to have an orchestrator that uses static code to interpret user intent, query the index for grounding data, and call the model *inference endpoint*. 
+In some architectures, you might use deterministic logic to enable orchestration. For example, instead of a non-deterministic agent orchestrator, you can choose to have an orchestrator that uses static code to manage the execution flow, such as interpreting user intent, querying the index for grounding data, and calling the model *inference endpoint*. 
 
 From a testing perspective, treat this code like any critical system component: run performance, reliability, and functional tests, especially on its routing logic. Apply unit testing to deterministic components, especially if you're using agent frameworks like [Microsoft's Semantic Kernel](/semantic-kernel/overview/) or LangChain. These tests validate prompt templates, tool selection logic, data formatting, and decision trees, isolated from runtime variability.
 
@@ -102,7 +102,7 @@ Inference endpoints expose your generative models through REST APIs and must be 
 
 The relevance of a generative AI model depends on the quality and integrity of its *grounding data*. Grounding data can be seeded to the model by using data processing pipelines. This data is preprocessed, chunked, and indexed before reaching the model. The model queries the index in real time during user interaction, making indexing performance and accuracy critical to the user experience. Integrate testing early and maintain it throughout the system lifecycle.
 
-Poorly tested data pipelines can lead to inconsistent results and lead to cross-cutting concerns like security breaches. To ensure a high-quality experience, test the entire data flow, including source documents, preprocessing, orchestration logic, and the index itself. Key testing considerations include:
+Poorly tested data pipelines can lead to inconsistent results and cross-cutting concerns like security breaches. To ensure a high-quality experience, test the entire data flow, including source documents, preprocessing, orchestration logic, and the index itself. Key testing considerations include:
 
 - **Functional and integration testing.** Validate that all data loads correctly and completely. Ensure the pipeline handles missing, empty, or synthetic data as expected.
 
@@ -127,13 +127,15 @@ Apply a baselining strategy during model training to measure and compare model q
 
 For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
+### Data to evaluate and test
+
 Partition source data into three distinct datasets: training, evaluation, and testing. Use the training dataset to build the model, the evaluation dataset to tune it, and the test dataset to validate final performance. 
 
 Ensure each dataset contains high-quality data to reduce noise. Use test cases in data pipelines to enforce quality, and supplement with synthetic data when real samples are limited, in domains like fraud detection, where real fraud instances are rare and provide limited data for training reliable models.
 
 Keep all datasets separate and non-overlapping to maintain objectivity and prevent bias in predictions. Don't reuse training data for evaluation or evaluation data for testing. 
 
-### Testing the workflow
+### Testing the training and fine-tuning workflow
 
 - **Data pipeline technologies.** Combine functional, load, and performance tests using synthetic data to assess scalability and make informed decisions about sizing or product suitability, required SKUs, and system integration.
 
@@ -149,7 +151,7 @@ Keep all datasets separate and non-overlapping to maintain objectivity and preve
 
 - **Code quality.** When training models using custom code, like with PyTorch script, run load tests during the design phase to evaluate compute requirements and select appropriate SKUs. Use unit tests to catch regressions during development, and rely on manual testing when automation isn't feasible. Since these scripts run within workflows, add integration tests to verify that scripts are executed reliably within the pipeline.
 
-- **Inference endpoint.** This REST API provides access to a trained machine learning model for making predictions. After training and selecting a model, it's deployed to an environment where the endpoint can receive real-time or batch input data, process it, and return predictions. Like any other API, make sure that the inference endpoint undergoesh functional, performance, and security testing validate that it returns accurate results, handles expected load, and remains secure against misuse.
+- **Inference endpoint.** This REST API provides access to the trained machine learning model for making predictions. The model is deployed to an environment with an endpoint that can receive real-time or batch input data, process it, and return predictions. Like any other API, make sure that the inference endpoint undergoes functional, performance, and security testing validate that it returns accurate results, handles expected load, and remains secure against misuse.
 
 - **Live-site testing.** Extend functional testing into the live system. Run scheduled tests to validate data volumes, detect missing or duplicate records, and confirm data freshness. Use synthetic data to safely validate end-to-end transformations and logic under production conditions. Incorporate A/B tests to evaluate new experiences and prevent quality regressions before full deployment. Configure alerting to trigger immediate investigation when tests fail.
 
