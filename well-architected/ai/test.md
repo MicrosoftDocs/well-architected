@@ -123,7 +123,7 @@ Similar to generative AI models, use various types of tests at different stages 
 
 ### Evaluate the model
 
-Apply a baselining strategy during model training to measure and compare model quality. Evaluate the peformance of various combinations of models, parameters, and features by using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
+Apply a baselining strategy during model training to measure and compare model quality. Evaluate the performance of various combinations of models, parameters, and features by using well-defined metrics. These metrics provide objective, data-driven scores that you can iteratively compare across versions and configurations to identify the best-performing model. 
 
 For more information, see [Regression/forecasting metrics](/azure/machine-learning/how-to-understand-automated-ml#regressionforecasting-metrics). 
 
