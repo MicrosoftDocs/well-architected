@@ -193,8 +193,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right
-Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -357,7 +356,7 @@ Redundancy provides resiliency but also incurs costs. Service-level objectives (
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to App Service and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to App Service and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Proper network controls are in place. For example, you can incorporate network segmentation by placing App Service in Azure Virtual Network through virtual network injection to have greater control over network configuration. The application doesn't have public endpoints and connects to Azure services through private endpoints.
 
@@ -365,7 +364,7 @@ Azure provides an extensive set of built-in policies related to App Service and 
 
 - Features such as remote debugging and basic authentication are disabled to reduce the attack surface.
 
-For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect the security of the compute layer.
+For comprehensive governance, review the [Azure Policy built-in definitions for App Service](/azure/app-service/policy-reference) and other policies that might affect the security of the compute layer.
 
 ## Azure Advisor recommendations
 

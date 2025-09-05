@@ -88,14 +88,14 @@ These reliability recommendations can apply either to the service itself or to t
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design in protecting the API Management gateway.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of API Management.
 
 > [!NOTE]
 > The checklist and recommendations in this section focus on securing the API Management gateway resource. Securing the APIs themselves is only briefly addressed. For more information, see [Mitigate OWASP API security top 10 in API Management](/azure/api-management/mitigate-owasp-api-threats).
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
 
 > [!div class="checklist"]
 >
@@ -151,6 +151,9 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 ### Workload design checklist
 
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+
+
 > [!div class="checklist"]
 >
 > - **Consider the API Management cost model:** Use the [Azure pricing calculator](https://azure.microsoft.com/pricing/calculator/) with your organization's account benefits and criteria for SLA and scalability to develop accurate cost estimates of using an API Management service tier. Determine whether a charge-back model is necessary and determine how to calculate it based on metrics, tags, and tokens.
@@ -189,9 +192,9 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to API Management.
-
 ### Workload design checklist
+
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to API Management.
 
 > [!div class="checklist"]
 >
@@ -230,9 +233,9 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for API Management.
-
 ### Workload design checklist
+
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for API Management.
 
 > [!div class="checklist"]
 >

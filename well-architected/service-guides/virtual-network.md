@@ -42,7 +42,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of Virtual Network and its dependencies. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the nature of your application and the criticality of its components. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
 
 > [!div class="checklist"]
 >
@@ -173,7 +173,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your networking environment.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Virtual Network.
 
 > [!div class="checklist"]
 >
@@ -227,7 +227,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on the key performance indicators.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Virtual Network.
 
 > [!div class="checklist"]
 >
