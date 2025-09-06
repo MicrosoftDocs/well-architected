@@ -16,7 +16,7 @@ ms.topic: conceptual
 
 This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime because of [potential failures](failure-mode-analysis.md).
 
-**Definitions:**
+**Definitions**
 
 | Term | Definition |
 |---------|---------|
