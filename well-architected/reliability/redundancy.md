@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-| **RE:05** | **Add redundancy at different levels, especially for critical flows**, to help meet your reliability targets. Consider redundant infrastructure components such as compute and network, and multiple instances of your solution. |
+| **RE:05** | Add redundancy at different levels, especially for critical flows, to help meet your reliability targets. Consider redundant infrastructure components such as compute and network, and multiple instances of your solution. |
 |---|---|
 
 This guide describes the recommendations for adding redundancy throughout critical flows at different workload layers, which optimizes resiliency. Meet the requirements of your defined reliability targets by applying the proper levels of redundancy to your compute, data, networking, and other infrastructure tiers. Apply this redundancy to give your workload a strong, reliable foundation to build on. When you build your workload without infrastructure redundancy, there's a high risk of extended downtime because of [potential failures](failure-mode-analysis.md).
@@ -81,7 +81,7 @@ When you deploy redundant infrastructure components, determine how many instance
 
 - Automate failover after a database instance failure. You can configure automated failover in multiple Azure PaaS data services. Automated failover isn't required for data stores that support multi-region writes, like Azure Cosmos DB. For more information, see [Recommendations for designing a DR strategy](disaster-recovery.md).
 
-- Use the best [data store](/azure/architecture/guide/design-principles/use-best-data-store) for your data. Embrace polyglot persistence or solutions that use a combination of data store technologies. Data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
+- Use the best [data store](/azure/architecture/databases/) for your data. Embrace polyglot persistence or solutions that use a combination of data store technologies. Data includes more than just persisted application data. It also includes application logs, events, messages, and caches.
 
 - Consider data consistency requirements and use [eventual consistency](/azure/architecture/guide/design-principles/minimize-coordination#recommendations) when requirements allow it. When data is distributed, use appropriate coordination to enforce strong consistency guarantees. Coordination can reduce your throughput and make your systems tightly coupled, which can make them weaker. For example, if an operation updates two databases, instead of putting it into a single transaction scope, it's better if the system can accommodate eventual consistency.
 

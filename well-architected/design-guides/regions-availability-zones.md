@@ -480,8 +480,8 @@ Proseware, Inc., builds software that companies around the world use. The compan
 The following reference architectures and example scenarios are for multi-zone and multi-region solutions:
 
 - [Baseline highly available zone-redundant web application](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant)
-- [Highly available multi-region web application](/azure/architecture/web-apps/app-service/architectures/multi-region)
-- [Multi-region N-tier application](/azure/architecture/reference-architectures/n-tier/multi-region-sql-server)
+- [Highly available multi-region web application](/azure/architecture/web-apps/guides/enterprise-app-patterns/reliable-web-app/dotnet/guidance)
+- [Multi-region N-tier application](/azure/architecture/high-availability/reference-architecture-traffic-manager-application-gateway)
 - [Multi-tier web application built for high availability and DR](/azure/architecture/example-scenario/infrastructure/multi-tier-app-disaster-recovery)
 
 Use the following Azure services to implement solutions across multiple availability zones:
@@ -498,7 +498,7 @@ Use the following Azure services to implement solutions across multiple availabi
 [regions-with-availability-zones-and-no-region-pair]: </azure/reliability/cross-region-replication-azure#regions-with-availability-zones-and-no-region-pair>
 [metro-dr]: </azure/site-recovery/azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery>
 [round-trip-latency]: </azure/networking/azure-network-latency>
-[composite-slos]: <metrics.md#define-composite-slo-targets>
+[composite-slos]: <../reliability/metrics.md#define-composite-slo-targets>
 [front-door-global-traffic-acceleration]: </azure/frontdoor/front-door-overview>
 [traffic-manager]: </azure/traffic-manager/traffic-manager-overview>
 [deployment-stamps-pattern]: </azure/architecture/patterns/deployment-stamp>
