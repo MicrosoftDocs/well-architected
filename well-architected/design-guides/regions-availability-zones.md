@@ -13,7 +13,7 @@ This guide describes recommendations for determining when to deploy workloads ac
 
 When you design a solution for Azure, you need to decide whether to deploy across multiple availability zones in a region or deploy into multiple regions. This decision affects your solution's reliability, cost, and performance, and your team's ability to operate the solution. This guide provides information about the key business requirements that influence your decision, the approaches that you can consider, the trade-offs involved in each approach, and the effect of each approach on the core pillars of the Azure Well-Architected Framework.
 
-The Azure regions that you use for your solution is a critical choice. The [Select Azure Regions guide](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions) describes how to select and operate in multiple geographic regions. How you use regions and availability zones within your solution also affects several pillars of the Well-Architected Framework:
+The Azure regions that you use for your solution are a critical choice. The [Select Azure Regions guide](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions) describes how to select and operate in multiple geographic regions. How you use regions and availability zones within your solution also affects several pillars of the Well-Architected Framework:
 
 - **Reliability:** Your deployment approach can help you mitigate various types of risks. In general, by spreading your workload across a more geographically distributed area, you can achieve higher resiliency.
 
@@ -66,7 +66,7 @@ There are two ways to use availability zones in a solution:
 
 - **Zonal resources** are pinned to a specific availability zone. You can combine multiple zonal deployments across different zones to meet high reliability requirements. You're responsible for managing data replication and distributing requests across zones. If an outage occurs in a single availability zone, you're responsible for failover to another availability zone.
 
-- **Zone-redundant resources** are spread across multiple availability zones. Microsoft manages spreading requests across zones and the replication of data across zones. If an outage occurs in a single availability zone, Microsoft manages failover automatically.
+- **Zone-redundant resources** are spread across multiple availability zones. Microsoft manages the distribution of requests and the replication of data across zones. If an outage occurs in a single availability zone, Microsoft manages failover automatically.
 
 Azure services support one or both of these approaches. Platform as a service (PaaS) solutions typically support zone-redundant deployments. Infrastructure as a service (IaaS) solutions typically support zonal deployments. For more information about how Azure services work with availability zones, see [Azure services with availability zone support][azure-services-with-availability-zone-support].
 
@@ -403,7 +403,7 @@ You should combine multi-zone and multi-region statements if your business requi
 
 ## How Azure services support deployment approaches
 
-It's important to understand the specific details of the Azure services that you use. For example, some Azure services require you to setup their availability zone configuration when you first deploy the resource, while other services support changing the deployment approach later. Similarly, some service features might not be available with every deployment approach.
+It's important to understand the specific details of the Azure services that you use. For example, some Azure services require you to set up their availability zone configuration when you first deploy the resource, while other services support changing the deployment approach later. Similarly, some service features might not be available with every deployment approach.
 
 To learn more about the specific deployment options and approaches to consider for each Azure service, visit the [Reliability hub](/azure/reliability/reliability-guidance-overview).
 
