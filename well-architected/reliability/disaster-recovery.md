@@ -128,7 +128,7 @@ Backup is an important part of your overall recovery process. Oftentimes it is j
 
 -   Understand that one tool may not work for everything. Azure Backup tools can cover many resource types but not all.
 
--   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly-available repository. (Azure DevOps, GitHub or others)
+-   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly available repository. (Azure DevOps, GitHub or others)
 
 -   Data services will have different requirements than application related objects.
 
