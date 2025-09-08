@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Files
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Files and Azure File Sync.
 author: khdownie
 ms.author: kendownie
-ms.date: 09/04/2025
+ms.date: 09/08/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -27,7 +27,7 @@ The [Reliability design principles](/azure/well-architected/resiliency/principle
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md).
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the nature of your application and the criticality of its components. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -123,7 +123,7 @@ The [Cost Optimization design principles](/azure/well-architected/cost-optimizat
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. 
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that\'s allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time. 
 
 > [!div class="checklist"]
 >
