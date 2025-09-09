@@ -1,5 +1,5 @@
 ---
-title: Recommendations for identity and access management 
+title: Architecture strategies for identity and access management 
 description: Learn about recommendations for authenticating and authorizing identities that are attempting to access workload resources.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for identity and access management 
+# Architecture strategies for identity and access management 
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
@@ -73,7 +73,6 @@ Authorization is a process that allows or denies actions that are requested by t
 
 Authorization requires that you assign permissions to the identities, which you need to do by using the functionality provided by your IdP.
 
-## Key design strategies
 
 To get a holistic view of the identity needs for a workload, you need to catalog the flows, workload assets, and personas, and the actions the assets and personas will perform. Your strategy must cover all use cases that handle **the flows that reach the workload or its components (outside-in access) and flows that reach out from the workload to other sources (inside-out access)**.
 
@@ -81,7 +80,7 @@ Each use case will probably have its own set of controls that you need to design
 
 You need to log the identity access trail. Doing so helps validate the controls, and you can use the logs for compliance audits.
 
-### Determine all identities for authentication
+## Determine all identities for authentication
 
 -   **Outside-in access**. Your identity design must authenticate all users that access the workload for various purposes. For example, an end user who accesses the application by calling APIs.
 
@@ -99,7 +98,7 @@ Here's an example of how identity can be implemented in an architecture:
 
 :::image type="content" source="images/identity-access/architecture-identity.svg" alt-text="Diagram that shows how identity can be implemented in an architecture." border="false" lightbox="images/identity-access/architecture-identity-highres.png":::
 
-### Determine actions for authorization
+## Determine actions for authorization
 
 Next, you need to know what each authenticated identity is trying to do so that those actions can be authorized. The actions can be divided by the type of access that they require:
 
@@ -109,13 +108,13 @@ Next, you need to know what each authenticated identity is trying to do so that 
 
 Applications typically target data plane operations, while operations often access both control and data planes. To identify authorization needs, note the operational actions that can be performed on the resource. For information about the permitted actions for each resource, see [Azure resource provider operations](/azure/role-based-access-control/resource-provider-operations).
 
-### Provide role-based authorization
+## Provide role-based authorization
 
 Based on the responsibility of each identity, authorize actions that should be permitted. **An identity must not be allowed to do more than it needs to do**. Before you set authorization rules, you need to have a clear understanding of who or what is making requests, what that role is allowed to do, and to what extent it can do it. Those factors lead to choices that combine identity, role, and scope.
 
 Consider a workload identity as an example. The application must have data plane access to the database, so read and write actions to the data resource must be allowed. However, does the application need control plane access to the secret store? If the workload identity is compromised by a bad actor, what would the impact to the system be, in terms of confidentiality, integrity, and availability?
 
-##### Role assignment
+#### Role assignment
 
 A role is a *set of permissions* that's assigned to an identity. Assign roles that only allow the identity to complete the task, and no more. When user's permissions are restricted to their job requirements, it's easier to identify suspicious or unauthorized behavior in the system.
 
@@ -142,7 +141,7 @@ You assign roles to identities by using role-based access control (RBAC). **Alwa
 
 If you want fine-grained control on RBAC, add conditions on the role assignment based on context, such as actions and attributes.
 
-### Make conditional access choices
+## Make conditional access choices
 
 Don't give all identities the same level of access. Base your decisions on two main factors:
 
@@ -164,7 +163,7 @@ For example, your workload might need to be accessed by third-party identities l
 
 Your choice of IdP must be able to provide that differentiation, provide built-in features that grant permissions based on the least privilege, and provide built-in threat intelligence. This includes monitoring of access requests and sign-ins. The Azure IdP is Microsoft Entra ID. For more information, see the [Azure facilitation section](#azure-facilitation) of this article.
 
-### Protect critical impact accounts
+## Protect critical impact accounts
 
 Administrative identities introduce some of the highest impact security risks because the tasks they perform require privileged access to a broad set of these systems and applications. Compromise or misuse can have a detrimental effect on your business and its information systems. Security of administration is one of the most critical security areas.
 
@@ -186,7 +185,7 @@ Use a single identity across environments and associate a single identity with t
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: There's a risk associated with synchronizing high privilege identities. An attacker can get full control of on-premises assets, and this can lead to a successful compromise of a cloud account. Evaluate your synchronization strategy by filtering out accounts that can add to the attack surface.
 
-### Establish processes to manage the identity lifecycle
+## Establish processes to manage the identity lifecycle
 
 **Access to identities must not last longer than the resources that the identities access.** Ensure that you have a process for disabling or deleting identities when there are changes in team structure or software components.
 
@@ -194,7 +193,7 @@ This guidance applies to source control, data, control planes, workload users, i
 
 **Establish an identity governance process** to manage the lifecycle of digital identities, high-privileged users, external/guest users, and workload users. Implement access reviews to ensure that when identities leave the organization or the team, their workload permissions are removed.
 
-### Protect nonidentity based secrets
+## Protect nonidentity based secrets
 
 Application secrets like preshared keys should be considered vulnerable points in the system. In the two-way communication, if the provider or consumer is compromised, significant security risks can be introduced. Those keys can also be burdensome because they introduce operational processes.
 
@@ -210,13 +209,13 @@ The following list provides a summary of guidance. For more information, see [Re
 
 For information about rotation policies, see [Automate the rotation of a secret for resources that have two sets of authentication credentials](/azure/key-vault/secrets/tutorial-rotation-dual) and [Tutorial: Updating certificate auto-rotation frequency in Key Vault](/azure/key-vault/certificates/tutorial-rotate-certificates).
 
-### Keep development environments safe
+## Keep development environments safe
 
 All code and scripts, pipeline tooling, and source control systems should be considered workload assets. **Access to writes should be gated** with automation and peer review. **Read access to source code should be limited** to roles on a need-to-know basis. Code repositories must have versioning, and **security code reviews** by peers must be a regular practice that's integrated with the development lifecycle. You need to have a process in place that **scans resources regularly** and identifies the latest vulnerabilities.
 
 Use workload identities to grant access to resources from deployment environments, such as GitHub.
 
-### Maintain an audit trail
+## Maintain an audit trail
 
 One aspect of identity management is ensuring that the system is auditable. Audits validate whether assume-breach strategies are effective. Maintaining an audit trail helps you:
 

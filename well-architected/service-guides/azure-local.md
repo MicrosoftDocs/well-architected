@@ -84,7 +84,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - Use industry-standard high-availability patterns for workloads, for example a design that provides active/passive synchronous or asynchronous data replication [(_such as SQL Server Always On_)](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Another example is an external network load balancing (_NLB_) technology that can route user requests across the multiple workload instances that run on Azure Local instances that you deploy in separate physical locations. Consider using a partner external NLB device. Or evaluate the [load balancing options](/azure/architecture/guide/technology-choices/load-balancing-overview) that support traffic routing for hybrid and on-premises services, such as an Azure Application Gateway instance that uses Azure ExpressRoute or a VPN tunnel to connect to an on-premises service.
 >
->       For more information, see [Deploy workloads instances across multiple Azure Local instances](../reliability/redundancy.md#key-design-strategies).
+>       For more information, see [Deploy workloads instances across multiple Azure Local instances](../reliability/redundancy.md).
 >
 > - (Workload architecture) **Plan and test recoverability** based on your workload recovery point objective (RPO) and recovery time objective (RTO) targets.
 >

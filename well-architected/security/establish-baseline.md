@@ -1,5 +1,5 @@
 ---
-title: Recommendations for establishing a security baseline
+title: Architecture strategies for establishing a security baseline
 description: Learn about hardening resources recommendations for security. Reduce the attack surface and increase attackers' costs in the remaining area to limit the opportunities for malicious actors to exploit vulnerabilities.
 author: PageWriter-MSFT
 ms.author: prwilk 
@@ -7,7 +7,7 @@ ms.date: 10/11/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for establishing a security baseline
+# Architecture strategies for establishing a security baseline
 
 **Applies to Azure Well-Architected Framework Security checklist recommendation:** 
 
@@ -34,7 +34,6 @@ This guide provides recommendations about setting a security baseline that's bas
 | Controls | Technical or operational controls on the workload that help prevent attacks and increase attacker costs. |
 | Regulatory requirements | A set of business requirements, driven by industry standards, that laws and authorities impose. |
 
-## Key design strategies
 
 A security baseline is a structured document that defines a set of security criteria and capabilities that the workload must fulfill in order to increase security. In a more mature form, you can extend a baseline to include a set of policies that you use to set guardrails.
 
@@ -68,23 +67,23 @@ Creating a baseline is a methodical process. Here are some recommendations about
 
 - **Continuous monitoring**. Assess the effectiveness of the security baseline through observability and make improvements overtime.
 
-### Define the baseline
+## Define the baseline
 
 Here are some common categories that should be part of a baseline. The following list isn't exhaustive. It's intended as an overview of the document's scope.
 
-#### Regulatory compliance
+### Regulatory compliance
 
 A workload might be subject to regulatory compliance for specific industry segments, there might be some geographic restrictions, and so on. It's key to understand the requirements as given in the regulatory specifications because those influence the design choices and in some cases must be included in the architecture. 
 
 The baseline should include regular evaluation of the workload against regulatory requirements. Take advantage of the platform-provided tools, such as Microsoft Defender for Cloud, which can identify areas of noncompliance. Work with the organization's compliance team to make sure all requirements are met and maintained.
 
-#### Architecture components
+### Architecture components
 
 The baseline needs prescriptive recommendations for the main components of the workload. These usually include technical controls for networking, identity, compute, and data. Reference the security baselines provided by the platform and add the missing controls to the architecture.
 
 > Refer to [Example](#example).
 
-#### Development processes
+### Development processes
 
 The baseline must have recommendations about:
 
@@ -99,7 +98,7 @@ For more information, see [Recommendations on threat analysis](threat-model.md).
 
 The development process should also set standards on various testing methodologies and their cadence. For more information, see [Recommendations on security testing](test.md).
 
-#### Operations
+### Operations
 
 The baseline must set standards on using threat detection capabilities and raising alerts on anomalous activities that indicate actual incidents. Threat detection needs to include all layers of the workload, including all the endpoints that are reachable from hostile networks.
 
@@ -109,11 +108,11 @@ The incident response should also include a recovery plan and the requirements f
 
 You develop data breach plans by using industry standards and recommendations provided by the platform. The team then has a comprehensive plan to follow when a breach is discovered. Also, check with your organization to see if there's coverage through cyberinsurance.
 
-#### Training
+### Training
 
 Develop and maintain a security training program to ensure the workload team is equipped with the appropriate skills to support the security goals and requirements. The team needs fundamental security training, but use what you can from your organization to support specialized roles. Role-based security training compliance and participation in drills are part of your security baseline.
 
-### Apply the baseline
+## Apply the baseline
 
 Use the baseline to drive initiatives, such as:
 
@@ -129,7 +128,7 @@ Use the baseline to drive initiatives, such as:
 
 Explore Azure Policy for custom options or use built-in initiatives like CIS benchmarks or Azure Security Benchmark to enforce security configurations and compliance requirements. Consider creating Azure Policies and initiatives out of baselines.
 
-### Evaluate the baseline regularly
+## Evaluate the baseline regularly
 
 Continuously improve security standards incrementally towards the ideal state to ensure continual risk reduction. Conduct periodic reviews to ensure that the system is up-to-date and in compliance with external influences. Any change to the baseline must be formal, agreed upon, and sent through proper change management processes.
 

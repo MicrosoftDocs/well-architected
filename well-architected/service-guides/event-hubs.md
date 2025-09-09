@@ -50,6 +50,9 @@ Azure Event Hubs provides an uptime SLA. For more information, reference [SLA fo
 > - When publishing events frequently, use the AMQP protocol when possible.
 > - The number of partitions reflect the degree of downstream parallelism you can achieve.
 > - Ensure each consuming application uses a separate consumer group and only one active receiver per consumer group is in place.
+> - Plan to address nontransient errors processing specific events. Event Hubs does not have a built-in dead-letter queue.
+>
+>   Create a custom dead-letter mechanism within your workload. If processing a event results in a nontransient failure, copy the event onto a custom dead-letter queue. Replicating the event into an dedicated queue allows you to retry processing the event later, apply a compensating transaction, or take some other action.
 > - When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.
 
 ## Configuration recommendations
@@ -58,6 +61,7 @@ Consider the following recommendations to optimize reliability when configuring 
 
 |Recommendation|Description|
 |--------------|-----------|
+|Use [zone redundancy](/azure/reliability/reliability-event-hubs#availability-zone-support).|When zone redundancy is enabled on your namespace, Event Hubs replicates events between multiple availability zones. If one availability zone fails, failover happens automatically.|
 |When using the SDK to send events to Event Hubs, ensure the exceptions thrown by the retry policy (`EventHubsException` or `OperationCancelledException`) are properly caught.|When using `HTTPS`, ensure a proper retry pattern is implemented.|
 |In high-throughput scenarios, use batched events.|The service will deliver a `json` array with multiple events to the subscribers, instead of an array with one event. The consuming application must process these arrays.|
 |Every consumer can read events from one to maximum partitions supported by the Event Hubs [SKU](/azure/event-hubs/event-hubs-quotas#basic-vs-standard-vs-premium-vs-dedicated-tiers).|To achieve maximum scale on the side of the consuming application, every consumer should read from a single partition.|
@@ -68,12 +72,13 @@ Consider the following recommendations to optimize reliability when configuring 
 |When publishing events frequently, use the AMQP protocol when possible.| AMQP has higher network costs when initializing the session, but `HTTPS` requires TLS overhead for every request. AMQP has higher performance for frequent publishers.|
 |The number of partitions reflect the degree of downstream parallelism you can achieve.|For maximum throughput, use the maximum number of partitions supported by the SKU when creating the Event Hub. Increasing the number of partitions enables you to scale concurrent processing entities to match the partitions, ensuring optimal send and receive availability.|
 |When using the Capture feature, carefully consider the configuration of the time window and file size, especially with low event volumes.|Data Lake gen2 will charge for  minimal transaction size. If you set the time window so low that the file hasn't reached minimum size, you'll incur extra cost.|
+|Require that consumers [perform checkpointing](/azure/event-hubs/event-hubs-features#checkpointing).|Checkpointing allows consumers to keep track of the last successfully processed event, enabling them to resume from that point in case of processing failures. This is crucial for ensuring no events are lost and for maintaining processing efficiency so clients minimize duplicate processing to only those since the last checkpoint and the failure.|
 
 ## Source artifacts
 
 To find Event Hubs namespaces with **Basic** SKU, use the following query:
 
-```sql
+```kusto
 Resources 
 | where type == 'microsoft.eventhub/namespaces'
 | where sku.name == 'Basic'

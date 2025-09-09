@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing a disaster recovery strategy
+title: Architecture strategies for designing a disaster recovery strategy
 description: Learn how to design a disaster recovery strategy for a workload. 
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: conceptual
 ---
 
-# Recommendations for designing a disaster recovery strategy
+# Architecture strategies for designing a disaster recovery strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -23,7 +23,6 @@ This guide describes recommendations for designing a reliable disaster recovery 
 |Failover     | The automated and/or manual shifting of production workload traffic from an unavailable region to an unaffected geographical region.        |
 |Failback     | The automated and/or manual shifting of production workload traffic from a failover region back to the primary region.        |
 
-## Key design strategies
 
 This guide assumes that you have already performed the following tasks as part of your reliability planning:
 
@@ -39,7 +38,7 @@ This guide assumes that you have already performed the following tasks as part o
 
 A reliable disaster recovery (DR) strategy builds on the foundation of a reliable workload architecture. Address reliability at every stage of building your workload to ensure that necessary pieces for optimized recovery are in place before you start designing your DR strategy. This foundation ensures that your workload's reliability targets, like recovery time objective (RTO) and recovery point objective (RPO), are realistic and achievable.
 
-### Maintain a disaster-recovery plan
+## Maintain a disaster-recovery plan
 
 The cornerstone of a reliable DR strategy for a workload is the *DR plan*. Your plan should be a living document that's routinely reviewed and updated as your environment evolves. Present the plan to the appropriate teams (operations, technology leadership, and business stakeholders) regularly (every six months, for example). Store it in a highly available, secure data store such as OneDrive for Business.
 
@@ -81,10 +80,10 @@ Follow these recommendations to develop your DR plan:
 
     -   Capture the root cause of the incident and perform mitigation before you start recovery. For example, if the cause of the incident is a security issue, mitigate that issue before you recover the affected systems in your failover environment.
 
--   Depending on the [redundancy design](highly-available-multi-region-design.md) for your workload, you might need to do significant post-failover work before you make the workload available to your customers again. Post-failover work could include DNS updates, database connection string updates, and traffic routing changes. Capture all of the post-failover work in your recovery procedures.
+-   Depending on the [redundancy design](redundancy.md) for your workload, you might need to do significant post-failover work before you make the workload available to your customers again. Post-failover work could include DNS updates, database connection string updates, and traffic routing changes. Capture all of the post-failover work in your recovery procedures.
 
     > [!NOTE]
-    > Your redundancy design might allow you to automatically recover from major incidents fully or partially, so be sure that your plan includes processes and procedures around these scenarios. For example, if you have a fully active-active design that spans [availability zones or regions](highly-available-multi-region-design.md), you might be able to transparently fail over automatically after an availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you designed your workload by using [deployment stamps](/azure/architecture/patterns/deployment-stamp), you might suffer only a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
+    > Your redundancy design might allow you to automatically recover from major incidents fully or partially, so be sure that your plan includes processes and procedures around these scenarios. For example, if you have a fully active-active design that spans [availability zones or regions](../design-guides/regions-availability-zones.md), you might be able to transparently fail over automatically after an availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you designed your workload by using [deployment stamps](/azure/architecture/patterns/deployment-stamp), you might suffer only a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
 
 -   If you need to redeploy your app in the failover environment, use tooling to automate the deployment process as much as possible. Ensure that your DevOps pipelines have been predeployed and configured in the failover environments so that you can immediately begin your app deployments. Use automated end-to-end deployments, with manual approval gates where necessary, to ensure a consistent and efficient deployment process. The full deployment duration needs to align with your recovery targets.
 
@@ -101,7 +100,7 @@ Follow these recommendations to develop your DR plan:
 
     -   The need to fail back is situational. If you're routing traffic between regions for performance reasons, failing back the load originally in the failed-over region is important. In other cases, you might have designed your workload to function fully regardless of which production environment it's located in at any time.
 
-### Conduct disaster-recovery drills
+## Conduct disaster-recovery drills
 
 A DR testing practice is as important as a well-developed DR plan. Many industries have compliance frameworks that require a specified number of DR drills to be performed regularly. Regardless of your industry, regular DR drills are paramount to your success. 
 
@@ -111,7 +110,7 @@ Follow these recommendations for successful DR drills:
 
 -   Use tabletop drills not only to build familiarity for seasoned operators but also to educate new operators about DR processes and procedures. Senior operators should take time to let new operators perform their role and should watch for improvement opportunities. If a new operator is hesitant or confused by a step in a procedure, review that procedure to ensure that it's clearly written.
 
-#### Considerations
+### Considerations
 
 - Performing DR drills in production can cause unexpected catastrophic failures. Be sure to test recovery procedures in nonproduction environments during your initial deployments.
 
@@ -119,7 +118,7 @@ Follow these recommendations for successful DR drills:
 
 - As your DR drill practices mature, you learn which procedures you can run in parallel and which you must run in sequence. Early in your drill practices, assume that every procedure must be run in sequence and that you need extra time in each step to handle unanticipated issues.
 
-### Define and maintain Backup Plans for resources within critical flows
+## Define and maintain Backup Plans for resources within critical flows
 
 Backup is an important part of your overall recovery process. Oftentimes it is just a part of your environment that needs recovery. DR plans are usually application or even region wide. Accidental or malicious deletion of data, file corruption, malware, and targeted ransomware attacks can all affect the availability of your workload. Having solid backup plans for each part of your environment is just as important as having an effective DR plan, as a DR plan depends on a solid backup plan to be effective. Like your DR plan, backup plans also need to be agreed upon by the appropriate levels of management, revisited regularly for possible updates and documented in a highly available, secure data store.
 
@@ -129,9 +128,9 @@ Backup is an important part of your overall recovery process. Oftentimes it is j
 
 -   Understand that one tool may not work for everything. Azure Backup tools can cover many resource types but not all.
 
--   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly-available repository. (Azure DevOps, GitHub or others)
+-   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly available repository. (Azure DevOps, GitHub, or others)
 
--   Data services will have different requirements than application related objects.
+-   Data services have different requirements than application related objects.
 
 -   Be sure to consider a multi-region storage strategy for your backup data to create cross-region recoverability.
 
@@ -171,9 +170,7 @@ For IaaS (infrastructure as a service) systems, use [Azure Backup](/azure/backup
 
 -   [Recommendations for designing for redundancy](redundancy.md)
 
--   [Recommendations for highly available multi-region design](highly-available-multi-region-design.md)
-
--   [Recommendations for using availability zones and regions](regions-availability-zones.md)
+-   [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md)
 
 ## Reliability checklist  
 

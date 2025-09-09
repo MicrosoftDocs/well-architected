@@ -1,5 +1,5 @@
 ---
-title: Recommendations for designing a reliable scaling strategy 
+title: Architecture strategies for designing a reliable scaling strategy 
 description: Learn about recommendations for designing a reliable scaling strategy, including Azure facilitation and tradeoff considerations.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 05/29/2025
 ms.topic: conceptual
 ---
 
-# Recommendations for designing a reliable scaling strategy
+# Architecture strategies for designing a reliable scaling strategy
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -31,9 +31,8 @@ The system must be designed to be horizontally scalable. Avoid making assumption
 
 To use critical time in autoscaling decisions, it's helpful to have a library automatically add the relevant information to the headers of messages while they're sent and processed. One library that provides this functionality is [NServiceBus](https://docs.particular.net/monitoring/metrics/definitions#metrics-captured-critical-time).
 
-## Key design strategies
 
-### Design according to load patterns
+## Design according to load patterns
 
 To design a reliable scaling strategy for your workloads, focus on identifying load patterns for the user and system flows for each workload that leads to a scaling operation. Here are examples of different load patterns and their corresponding scaling strategies:
 
@@ -45,7 +44,7 @@ To design a reliable scaling strategy for your workloads, focus on identifying l
 
 - *Dynamic, Irregular, and Unpredictable:* A large-scale event causes a spike in demand for a product. For example, companies manufacturing and selling dehumidifiers can experience a sudden surge in traffic after a hurricane or other flooding event when people in affected areas need to dry rooms in their homes. To handle this, you can set autoscale thresholds to account for unplanned traffic spikes.
 
-### Adapt scaling strategies to fit individual components or flows
+## Adapt scaling strategies to fit individual components or flows
 
 There's no one-size-fits-all scaling strategy. Different cloud services have different degrees of support of scaling and different approaches to scaling. For that reason, it's important to understand how scaling is supported and implemented across all of your workload components to design your overall scaling strategy. You might apply scaling strategies at the individual component level or at the flow level, depending on your architectural design. When determining how you'll implement scaling across your workload, consider these factors:
 
@@ -59,7 +58,7 @@ There's no one-size-fits-all scaling strategy. Different cloud services have dif
 
 - **Handling long-running tasks**.  Design a long-running task to support both scaling out and scaling in. Without due care, such a task could prevent an instance of a process from being shut down cleanly when the system scales in. Or, it could lose data if the process forcibly terminates. Ideally, refactor a long-running task and break up the processing that it performs into smaller, discrete chunks. The [Pipes and Filters pattern](/azure/architecture/patterns/pipes-and-filters) provides an example of how you can achieve this solution.
 
-### Choose the right technology
+## Choose the right technology
 
 Making well-informed technology choices with scaling in mind will help you ensure that your workload can meet your reliability targets as your workload evolves. Research the scaling abilities offered for different resources that offer similar functionality and choose the best combination for your future growth plans. For example, you might have several options for data stores that can host the particular kind of databases you'll use. However, one choice might have better scaling functionality out-of-the-box than others, which could make it a better choice for your workload.
 
@@ -67,7 +66,7 @@ Making well-informed technology choices with scaling in mind will help you ensur
 
 - **Take advantage of services that offer out-of-the-box scaling.** Many PaaS services offer integrated, easy-to-use scaling features that you can configure to meet your reliability requirements. For example, you can configure [throughput scaling for Cosmos DB](/azure/cosmos-db/provision-throughput-autoscale) to meet your particular requirements.
 
-### Automate scaling 
+## Automate scaling 
 
 Automate the scaling operations for your workload components to extent practical. When using resources that have configurable autoscaling functionality, build the configuration logic into your infrastructure-as-code (IaC) deployment code. When using resources that don't have offer autoscaling out-of-the-box, build automation to perform scaling operations using native automation tooling and include the automation code in your IaC code.
 
@@ -78,7 +77,7 @@ Keep in mind that autoscaling might not be the most appropriate mechanism to han
 
 Conversely, if you need the capacity to process all requests when the volume fluctuates rapidly, and cost isn't a major contributing factor, consider using an aggressive autoscaling strategy that starts more instances more quickly. You can also use a scheduled policy that starts a sufficient number of instances to meet the maximum load before that load is expected.
 
-### Choose appropriate scale units
+## Choose appropriate scale units
 
 Base your scaling strategy on scale units, which are the logical grouping of components to scale together and the scale increments to use (like moving from one VM SKU to another). Options to consider are:
 
@@ -91,7 +90,7 @@ Base your scaling strategy on scale units, which are the logical grouping of com
 > [!IMPORTANT]
 > Set a maximum limit on the number of scale units that can be automatically allocated to avoid excess costs.
 
-### Optimize the scale unit initialization time
+## Optimize the scale unit initialization time
 
 When designing your scaling strategy, keep in mind that different services scale at different timescales. There are some services that scale near-instantaneously and others that scale much slower. For example, API Management instances can take up to 45 minutes to finish their scaling operations. To account for the scaling operation's timescale, properly plan to perform the scaling operation before the expected increased load hits your workload. Other recommendations to consider include:
 
@@ -103,7 +102,7 @@ When designing your scaling strategy, keep in mind that different services scale
 
 - Fine-tune your scaling thresholds with monitoring. Use your capacity monitoring to ensure that your scaling thresholds to trigger scaling operations.
 
-### Scale data stores using sharding and partitioning
+## Scale data stores using sharding and partitioning
 
 Optimize the reliability of your data estate by including it in your scaling strategy. Partitioning data spreads a database across logical or physical storage resources, removing single points of failure. Choose the best partitioning strategy for your use case.
 
@@ -119,7 +118,7 @@ Consider combining these strategies when you design a partitioning scheme. For e
 
 For detailed guidance on partitioning and sharding, see the [design guide](../design-guides/partition-data.md)
 
-### Monitor your scaling operations
+## Monitor your scaling operations
 
 The autoscaling mechanism should monitor the autoscaling process and log the details of each autoscaling event (what triggered it, what resources were added or removed, and when). If you create a custom autoscaling mechanism, ensure that it incorporates this capability. Proactively analyze the information to help measure the effectiveness of the autoscaling strategy, and tune it if necessary.
 

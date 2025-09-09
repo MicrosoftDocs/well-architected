@@ -1,12 +1,12 @@
 ---
-title: Failure mode analysis recommendations
+title: Architecture strategies for failure mode analysis
 description: Learn how to identify potential points of failure within your workload and the associated flows, and plan mitigation actions accordingly.
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 10/08/2024
 ms.topic: conceptual
 ---
-# Recommendations for performing failure mode analysis
+# Architecture strategies for performing failure mode analysis
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
@@ -28,7 +28,6 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 | Mitigation | The activities that you have identified to address problems either proactively or reactively. |
 | Detection | Your infrastructure, data, and app monitoring and alerting processes and procedures. |
 
-## Key design strategies
 
 Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
@@ -36,7 +35,7 @@ The data that you have gathered and the artifacts that you have created in your 
 
 After you determine the critical flows, you can plan their required components. Next, follow each flow step by step to identify dependencies, including third-party services and potential points of failure, and plan your mitigation strategies.
 
-### Decompose the workload
+## Decompose the workload
 
 As you move from ideation to design, you need to identify the component types that are required to support your workload. Your workload determines the necessary components that you must plan for. Typically, you need to plan for ingress control, networking, compute, data, storage, supporting services (like authentication, messaging, and secret or key management), and egress control. At this stage in your design work, you might not know the specific technologies that you'll deploy, so your design might look like the following example.
 
@@ -44,7 +43,7 @@ As you move from ideation to design, you need to identify the component types th
 
 After you create your initial architecture design, you can overlay your flows to identify the discrete components that are used in those flows and create lists or workflow diagrams that describe the flows and their components. To understand the criticality of the components, use the criticality definitions that you have assigned to the flows. Consider the effect of a component malfunction on your flows.
 
-### Identify dependencies
+## Identify dependencies
 
 Identify your workload dependencies to perform your single point-of-failure analysis. Decomposing your workload and overlaying flows provides insight into dependencies that are internal and external to the workload.
 
@@ -52,7 +51,7 @@ Internal dependencies are components in the workload scope that are required for
 
 Identify and document the dependencies in your workload, and include them in your flow documentation artifacts.
 
-### Evaluate failure points
+## Evaluate failure points
 
 In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. These failure modes include:
 
@@ -76,7 +75,7 @@ The analysis should always be in the context of the flow you're attempting to an
 
 Consider the likelihood of each type of failure mode. Some are very unlikely, like multi-zone or multi-region outages, and adding mitigation planning beyond redundancy isn't a good use of resources and time.
 
-#### Mitigation
+### Mitigation
 
 Mitigation strategies fall into two broad categories: building more resiliency and designing for degraded performance.
 
@@ -90,11 +89,11 @@ If the application has strong dependencies that it can't operate without, the av
 
 If the application lifecycle is closely coupled with the lifecycle of its dependencies, the operational agility of the application might be limited, particularly for new releases.
 
-#### Detection
+### Detection
 
 Failure detection is essential to ensure that you have correctly identified failure points in your analysis and properly planned your mitigation strategies. Detection in this context means the monitoring of your infrastructure, data and application, and alerting when issues arise. Automate detection as much as possible, and build redundancy into your operations processes to ensure that alerts are always caught and are responded to quickly enough to meet your business requirements. For more information, see the [Recommendations for monitoring](monitoring-alerting-strategy.md).
 
-#### Outcome
+### Outcome
 
 For the outcome of your analysis, create a set of documents that effectively communicate your findings, the decisions that you have made relative to the flow components and mitigation, and the effect of the failure on your workload.
 

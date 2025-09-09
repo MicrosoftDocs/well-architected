@@ -1,5 +1,5 @@
 ---
-title: Cloud design patterns that support security
+title: Architecture design patterns that support security
 description: Learn about industry patterns that support security and can help you address common challenges in cloud workloads.  
 author: ckittel
 ms.author: chkittel
@@ -7,15 +7,13 @@ ms.date: 10/10/2024
 ms.topic: conceptual
 ---
 
-# Cloud design patterns that support security
+# Architecture design patterns that support security
 
 When you design workload architectures, you should use industry patterns that address common challenges. Patterns can help you make intentional tradeoffs within workloads and optimize for your desired outcome. They can also help mitigate risks that originate from specific problems, which can affect reliability, performance, cost, and operations. Those risks might be indicative of lack of security assurances, if left unattended can pose significant risks to the business. These patterns are backed by real-world experience, are designed for cloud scale and operating models, and are inherently vendor agnostic. Using well-known patterns as a way to standardize your workload design is a component of operational excellence.
 
 Many design patterns directly support one or more architecture pillars. Design patterns that support the Security pillar prioritize concepts like segmentation and isolation, strong authorization, uniform application security, and modern protocols.
 
-## Design patterns for security
-
-The following table summarizes cloud design patterns that support the goals of security.
+The following table summarizes Architecture design patterns that support the goals of security.
 
 |Pattern|Summary|
 |-|-|
@@ -35,9 +33,9 @@ The following table summarizes cloud design patterns that support the goals of s
 
 ## Next steps
 
-Review the cloud design patterns that support the other Azure Well-Architected Framework pillars:
+Review the Architecture design patterns that support the other Azure Well-Architected Framework pillars:
 
-- [Cloud design patterns that support reliability](../reliability/design-patterns.md)
-- [Cloud design patterns that support cost optimization](../cost-optimization/design-patterns.md)
-- [Cloud design patterns that support operational excellence](../operational-excellence/design-patterns.md)
-- [Cloud design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
+- [Architecture design patterns that support reliability](../reliability/design-patterns.md)
+- [Architecture design patterns that support cost optimization](../cost-optimization/design-patterns.md)
+- [Architecture design patterns that support operational excellence](../operational-excellence/design-patterns.md)
+- [Architecture design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)

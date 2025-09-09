@@ -168,7 +168,7 @@ At Level 1, don't strive for completeness because there are always unforeseen fa
 
 In a cloud environment, transient failures are common. They indicate short-term problems that retries can usually resolve within seconds.
 
-Use built-in SDKs and configurations to handle these faults to keep the system active. Built-in configurations are often the default setting, so you might need to test to validate the implementation. Also, implement patterns that are designed to handle transient failures in your architecture. For more information, see [Cloud design patterns that support reliability](./design-patterns.md).
+Use built-in SDKs and configurations to handle these faults to keep the system active. Built-in configurations are often the default setting, so you might need to test to validate the implementation. Also, implement patterns that are designed to handle transient failures in your architecture. For more information, see [Architecture design patterns that support reliability](./design-patterns.md).
 
 Persistant problems might indicate a failure that isn't transient or the start of an outage. This scenario requires more than just fixing localized problems within the application. It involves examining the critical user and system flows of the system and adding self-preservation techniques and recovery efforts. These methods are mature practices that Level 2 describes.
 
@@ -399,7 +399,7 @@ DR mainly includes the following actions:
 
   Prepare specific recovery steps based on the chosen approach. Start with a concrete list of steps to restore operations. As the process matures, aim to define the DR plan as a script with minimal manual interaction. Use version control and store the script securely for easy access. This approach requires more up-front effort but minimizes stress during an actual incident.
 
-  > For more information, see [Deploy in active-passive for DR](./highly-available-multi-region-design.md#deploy-in-active-passive-for-disaster-recovery).
+  > For more information, see [Deploy in active-passive for DR](./redundancy.md#build-redundancy-into-your-workload-with-multiple-component-instances).
 
 - **Conduct post-incident analysis.** Identify the cause of the incident and find ways to prevent it in the future. Make changes to improve recovery processes. This exercise might also uncover new strategies. For example, if the system switched to the secondary environment, determine if the primary environment is still needed and what the failback process should be.
 

@@ -1,5 +1,5 @@
 ---
-title: Recommendations for creating a cost model
+title: Architecture strategies for creating a cost model
 description: Learn how to create an estimate that focuses on predicting the combined costs of services and their associated expenses.
 author: stephen-sumner
 ms.author: ssumner
@@ -8,7 +8,7 @@ ms.topic: conceptual
 ---
 
 
-# Recommendations for creating a cost model
+# Architecture strategies for creating a cost model
 
 **Applies to this Azure Well-Architected Framework Cost Optimization checklist recommendation:**
 
@@ -26,11 +26,10 @@ This guide describes the best practices for creating a cost model for your workl
 | Cost meter | A tracking mechanism that you use to measure the usage of resources over time. It tracks usage, such as compute hours, data transfer, and input-output operations. It emits the records that are used to calculate the bill for each resource based on its associated meter. |
 | Showback | An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them. |
 
-## Key design strategies
 
 A cost model provides a projection of the workload cost based on existing data. The purpose of a cost model isn't to gain visibility into expenses or control them. The goal is to forecast the predicted expenses, considering all available known factors. From that prediction, you determine the best solution for your workload. The best solution aligns spending to workload priorities. A cost model enables you to establish a workload budget, ensure alignment with this budget, and allocate funds for cloud resources.
 
-### Conduct workload assessment
+## Conduct workload assessment
 
 Conducting a workload assessment involves systematically evaluating and analyzing the workload. A workload assessment helps identify workload characteristics that can inform cost optimization strategies, such as choosing the most suitable discount options based on usage patterns. You need to assess the workload characteristics to determine which available discounts are most suitable for your workload. For example, if your workload has predictable usage patterns, you might consider using a commitment-based model (reservations) to optimize costs. When you assess a workload, consider these recommendations:
 
@@ -44,7 +43,7 @@ Conducting a workload assessment involves systematically evaluating and analyzin
 
     If you include these often-forgotten factors in your budgeting early on, your cost modeling will be thorough, effective, and prevent future unexpected expenses.
 
-### Estimate workload costs
+## Estimate workload costs
 
 Estimating workload costs involves assessing all potential expenditures and savings linked to the workload. It encompasses direct vendor costs, operational maintenance expenses, billing model choices, and potential savings from customer or enterprise agreements. By evaluating these factors, you can create a robust cost model, enabling precise forecasting and budgeting. To estimate workload costs, consider the following strategies:
 
@@ -64,27 +63,27 @@ Consider the cost advantages and disadvantages of each service. Service-level ob
 
 You should estimate the cost of regular testing activities such as load testing, security testing, and performance testing. These tests are essential for maintaining the integrity of your workload. Include the resources and tools that are required for testing the system's resilience, scalability, and security. You also need to include Regular maintenance tasks, such as applying software patches, updates, and security fixes, are necessary to keep the system up to date. Routine tasks like data backup, system optimization, and configuration management contribute to ongoing maintenance costs.
 
-### Develop the cost model
+## Develop the cost model
 
 The cost model is an estimate of all costs associated with the workload. These costs include infrastructure, software licenses, personnel, maintenance, and support costs.
 
-#### Align estimates to cost drivers
+### Align estimates to cost drivers
 
 Cost drivers are specific factors or variables that influence the overall cost. It includes any factors that have a direct impact on the cost of resources, services, or operations within the workload. These drivers can include variables such as usage volume, the number of customers served, storage capacity.
 
 Assign quantitative values to the identified cost drivers, such as estimating usage volumes or determining the number of customers or resources. Quantify the effect of each cost driver by using methods such as estimating usage volumes or determining the number of customers or resources. Based on the cost categories and drivers, establish mathematical models or formulas that relate the cost drivers to the associated costs. These models can include simple linear relationships or complex calculations, depending on the cost category.
 
-#### Associate costs with business metrics
+### Associate costs with business metrics
 
 Associating costs with business metrics means linking workload expenses to specific business indicators, like cost per customer served or cost per transaction processed. This practice provides a clearer understanding of how the workload consumes resources. It allows you to anticipate costs related to workload fluctuations and ensures efficient resource utilization based on demand. For example, if you expect the number of customers to grow, you can estimate how much it costs to support those customers.
 
 You should emphasize clear visibility in the workload cost models. While it can make the model more intricate, it also allows for adaptability. Such a flexible cost model aids in scenario analysis, helping to predict expenses tied to workload or business shifts. To estimate the cost associated with each customer, divide the total workload cost by the number of customers. For a precise cost per customer, account for specific resources and services they utilize, like cloud services or software licenses.
 
-### Publish the cost model
+## Publish the cost model
 
 Document the cost categories, drivers, and mathematical relationships that are used to calculate the costs. Create comprehensive and easily understood documentation for stakeholders. Ensure that the cost model is accessible to all relevant stakeholders. Publish the cost model in a format or on a platform that allows for seamless data exchange and enables efficient collaboration between stakeholders.
 
-### Set a budget
+## Set a budget
 
 The cost model provides a foundation for negotiating your workload budget. The cost model is an estimate. The budget is a reality. Sometimes you have to negotiate to align the two. It's important that everyone understands how the workload supports business objectives. Present the cost model in alignment with business objectives to help clarify the value of the workload.
 
@@ -96,7 +95,7 @@ The cost model provides a foundation for negotiating your workload budget. The c
 - *Set budget caps and quotas*: Define budget caps and quotas to control costs and limit spending. This practice ensures that you don't exceed the allocated budget for your workload. By setting budget caps and quotas, you can monitor and manage your spending effectively.
 - *Set budget alerts*: Implement alerts for cost management. Set up alerts to notify you when spending reaches certain thresholds. This practice allows you to take immediate action and make necessary adjustments to stay within the budget. Monitor usage and set alerts to help identify trends, peak usage times, and opportunities for cost optimization.
 
-### Use the cost model
+## Use the cost model
 
 A cost model isn't just an analytical tool. It's a decision-making aid. Use the cost model for budgeting, scenario analysis, and resource optimization. To maximize the use of the cost model, consider these strategies:
 
@@ -106,7 +105,7 @@ A cost model isn't just an analytical tool. It's a decision-making aid. Use the 
 
 - *Use cost model for resource optimization*: Use the cost model to help identify areas where cloud resources are underutilized and make adjustments for significant cost savings. The cost model can also forecast the financial implications of scaling up resources in response to increased customer traffic or processing needs. It also helps compare the costs that are associated with cloud providers’ billing models, which allows you to choose the most economical option.
 
-### Maintain the cost model
+## Maintain the cost model
 
 It's important to regularly update the cost model to reflect the latest data, business conditions, and any changes in the external environment. You should engage stakeholders, including product owners and the technical team, in discussions around the cost model to ensure its relevance and alignment with different teams' needs. Run simulations and review the findings to inform decision-making. Educate all team members on how to use the cost model to foster a culture of data-driven decision-making. Consider the following recommendations:
 

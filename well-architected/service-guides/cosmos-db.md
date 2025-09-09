@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: conceptual
 ms.subservice: waf-service-guide
-ms.date: 02/20/2025
+ms.date: 08/17/2025
 products:
   - azure-cosmos-db
 ---
@@ -69,7 +69,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | Recommendation | Benefit |
 | --- | --- |
 | Distribute your Azure Cosmos DB account across [availability zones](/azure/reliability/reliability-cosmos-db-nosql) when available. | Availability zones provide segregated power, networking, and cooling, which helps isolate hardware failures to a subset of your replicas. When you don't use the availability zones feature, Azure Cosmos DB spans multiple replicas across a single, randomly selected availability zone. |
-| Configure your Azure Cosmos DB account to span at least [two regions](/azure/cosmos-db/nosql/how-to-multi-master). | Spanning multiple regions helps ensure that your workload is resilient to regional outages. |
+| Configure your Azure Cosmos DB account to span at least [two regions](/azure/cosmos-db/distribute-data-globally). | Spanning multiple regions helps ensure that your workload is resilient to regional outages. If there is a failure in a  write region, you can read from another replica. You can also fail over the write region to another region. Using the client SDK enables your client to be isolated from the mechanics of these failovers. |
 | Enable [service-managed failover](/azure/cosmos-db/how-to-manage-database-account#enable-service-managed-failover-for-your-azure-cosmos-db-account) for your account. Understand the tradeoffs with service-managed failover, and plan for forced failover if necessary.<br><br>Temporarily disable service-managed failover to validate the end-to-end high availability of your application. You can start a manual failover by using a script or the Azure portal.| Service-managed failover allows Azure Cosmos DB to automatically change the write region of a multiple-region account to preserve availability. This change occurs without user interaction.|
 
 ## Security
@@ -91,6 +91,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Implement strict, conditional, and auditable identity and access management.** Use Microsoft Entra ID for your workload's authentication and authorization needs. Microsoft Entra ID provides centralized authorization and access management.
 >
 >   For control plane and data plane access to your account, create roles, groups, and assignments based on the principle of [least-privilege access](/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#privileged-access). Consider [disabling key-based authentication](/azure/cosmos-db/how-to-setup-rbac#disable-local-auth).
+>
 >
 > - **Encrypt data.** [Encrypt data](/azure/cosmos-db/database-encryption-at-rest) at rest or data in motion by using service-managed keys or customer-managed keys.
 >
@@ -243,7 +244,8 @@ Start your design strategy based on the [design review checklist for Performance
 | --- | --- |
 | Use tools like the [capacity calculator](https://cosmos.azure.com/capacitycalculator/) to determine the amount of throughput required for your performance baseline. Use features like [autoscale](/azure/cosmos-db/nosql/how-to-provision-autoscale-throughput) to scale your actual throughput to more closely match your actual workload. Monitor your actual throughput consumption afterwards and make adjustments. | Using the capacity calculator helps you make informed decisions about provisioning resources initially. You can ensure that your database can handle the expected load without unnecessary costs. Autoscale throughput automatically adjusts the provisioned throughput to match the actual workload needs.  |
 | Use optimization techniques on the client and server sides when appropriate. Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched, or *buffered*, and returned for each page. | Code optimization techniques can improve the user experience and make your client and server side application more efficient by helping reduce the RU charges for repeated reads and queries. These benefits can reduce costs.|
-| Deploy Azure Cosmos DB instances in the regions closest to your end users. Configure the [.NET](/azure/cosmos-db/nosql/best-practice-dotnet) or [Java](/azure/cosmos-db/nosql/best-practice-java) SDK to prefer regions closer to your end users.<br><br>Take advantage of read replication to provide optimized read performance regardless of how you configure write operations in single or multiple regions. | Deploying your database to the regions closest to your end users helps reduce latency and improve user experience. Read replication enables performant read operations regardless of how the write operations are configured.|
+| Use [global distribution](/azure/cosmos-db/distribute-data-globally) and deploy Azure Cosmos DB instances in all regions closest to your end users. | Deploying your database to the regions closest to your end users helps reduce *read* latency which can improve user experience. Read replication enables performant read operations regardless of how the write operations are configured. |
+| Use [multi-region writes](/azure/cosmos-db/nosql/how-to-multi-master) if your clients are geographically distributed. | Reduces *write* latency by allowing the client to write to a region that is closest to it. Your workload must support conflict resolution logic and your application needs to expect eventual consistency behavior. |
 | Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes) for the best performance. This mode allows your client to open Transmission Control Protocol (TCP) connections directly to partitions in the service and send requests directly with no intermediary gateway.| Direct mode provides better performance because there are fewer network hops. |
 | Use the [bulk feature](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of client SDKs in scenarios that require high throughput. The bulk feature automatically manages and batches operations to maximize throughput.| Using the bulk feature reduces the number of back-end requests and efficiently distributes tasks across partitions. This approach improves performance and resource usage.|
 | Disable indexing for bulk operations. If there are several insert, replace, or upsert operations, disable indexing to improve the speed of the operation while using the [bulk support](/azure/cosmos-db/nosql/tutorial-dotnet-bulk-import) of the corresponding SDK. You can immediately reenable indexing later. | Disabling indexing during bulk operations reduces the overhead associated with maintaining the index. You can better utilize resources for bulk operations, which accelerates data insertion and updates. |
@@ -276,4 +278,6 @@ For more information, see [Azure Advisor](/azure/advisor).
 - [Multitenancy and Azure Cosmos DB](/azure/architecture/guide/multitenant/service/cosmos-db)
 - [Common Azure Cosmos DB use cases](/azure/cosmos-db/use-cases)
 - [Serverless database computing by using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
+
+<!-- Updated: August 17, 2025 for Azure Update 470102 -->
 
