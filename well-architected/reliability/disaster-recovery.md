@@ -80,10 +80,10 @@ Follow these recommendations to develop your DR plan:
 
     -   Capture the root cause of the incident and perform mitigation before you start recovery. For example, if the cause of the incident is a security issue, mitigate that issue before you recover the affected systems in your failover environment.
 
--   Depending on the [redundancy design](highly-available-multi-region-design.md) for your workload, you might need to do significant post-failover work before you make the workload available to your customers again. Post-failover work could include DNS updates, database connection string updates, and traffic routing changes. Capture all of the post-failover work in your recovery procedures.
+-   Depending on the [redundancy design](redundancy.md) for your workload, you might need to do significant post-failover work before you make the workload available to your customers again. Post-failover work could include DNS updates, database connection string updates, and traffic routing changes. Capture all of the post-failover work in your recovery procedures.
 
     > [!NOTE]
-    > Your redundancy design might allow you to automatically recover from major incidents fully or partially, so be sure that your plan includes processes and procedures around these scenarios. For example, if you have a fully active-active design that spans [availability zones or regions](highly-available-multi-region-design.md), you might be able to transparently fail over automatically after an availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you designed your workload by using [deployment stamps](/azure/architecture/patterns/deployment-stamp), you might suffer only a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
+    > Your redundancy design might allow you to automatically recover from major incidents fully or partially, so be sure that your plan includes processes and procedures around these scenarios. For example, if you have a fully active-active design that spans [availability zones or regions](../design-guides/regions-availability-zones.md), you might be able to transparently fail over automatically after an availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you designed your workload by using [deployment stamps](/azure/architecture/patterns/deployment-stamp), you might suffer only a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
 
 -   If you need to redeploy your app in the failover environment, use tooling to automate the deployment process as much as possible. Ensure that your DevOps pipelines have been predeployed and configured in the failover environments so that you can immediately begin your app deployments. Use automated end-to-end deployments, with manual approval gates where necessary, to ensure a consistent and efficient deployment process. The full deployment duration needs to align with your recovery targets.
 
@@ -128,9 +128,9 @@ Backup is an important part of your overall recovery process. Oftentimes it is j
 
 -   Understand that one tool may not work for everything. Azure Backup tools can cover many resource types but not all.
 
--   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly-available repository. (Azure DevOps, GitHub or others)
+-   Sometimes the best option to restore certain types of objects is a redeployment from some level type of highly available repository. (Azure DevOps, GitHub, or others)
 
--   Data services will have different requirements than application related objects.
+-   Data services have different requirements than application related objects.
 
 -   Be sure to consider a multi-region storage strategy for your backup data to create cross-region recoverability.
 
@@ -170,9 +170,7 @@ For IaaS (infrastructure as a service) systems, use [Azure Backup](/azure/backup
 
 -   [Recommendations for designing for redundancy](redundancy.md)
 
--   [Recommendations for highly available multi-region design](highly-available-multi-region-design.md)
-
--   [Recommendations for using availability zones and regions](regions-availability-zones.md)
+-   [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md)
 
 ## Reliability checklist  
 
