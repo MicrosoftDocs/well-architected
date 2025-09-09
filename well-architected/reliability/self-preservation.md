@@ -28,9 +28,9 @@ Self-preservation capabilities add resilience to your workload. They reduce the 
 
 ## Design for redundancy
 
-One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system. 
+One of the most effective strategies to protect your workload from malfunctions is to build redundancy into all of its components and avoid single points of failure. Being able to fail components or the entire workload over to redundant resources provides an efficient way to handle most faults in your system.
 
-Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage; and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redundancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. See the [redundancy](./redundancy.md), [regions and availability zones](./regions-availability-zones.md), and [highly available multi-region design](./highly-available-multi-region-design.md) Reliability articles for in-depth guidance on this strategy.
+Build redundancy at different levels, consider redundant infrastructure components such as compute, network, and storage, and consider deploying multiple instances of your solution. Depending on your business requirements, you can build redundancy within a single region or across regions. You can also decide whether you need an active-active or an active-passive design to meet your recovery requirements. For more information, see [Architecture strategies for designing for redundancy](./redundancy.md) and [Architecture strategies for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
 ## Design for self-preservation
 
@@ -38,7 +38,7 @@ To design your workload for self-preservation, follow infrastructure and applica
 
 ### Infrastructure design guidance and patterns
 
-At the infrastructure level, a [redundant architecture design](metrics.md) should support your critical flows, with resources deployed across [availability zones](regions-availability-zones.md) or [regions](highly-available-multi-region-design.md). Implement [autoscaling](scaling.md) when possible. Autoscaling helps protect your workload against unanticipated bursts in activity, further reinforcing your infrastructure.
+At the infrastructure level, a [redundant architecture design](redundancy.md) should support your critical flows, with resources deployed across [availability zones or regions](../design-guides/regions-availability-zones.md). Implement [autoscaling](scaling.md) when possible. Autoscaling helps protect your workload against unanticipated bursts in activity, further reinforcing your infrastructure.
 
 Use the Deployment Stamps pattern or the Bulkhead pattern to minimize the blast radius when problems arise. These patterns help to keep your workload available if an individual component is unavailable. Use the following application design patterns in combination with your autoscaling strategy.
 
