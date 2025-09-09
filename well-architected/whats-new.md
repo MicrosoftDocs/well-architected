@@ -3,7 +3,7 @@ title: What's new in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 07/14/2025
+ms.date: 09/08/2025
 ms.topic: whats-new
 ---
 
@@ -13,10 +13,24 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ## August 2025
 
-### Updated article
+### Updated articles
 
-- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
+- [Architecture strategies for implementing automation](./operational-excellence/automate-tasks.md): We added Azure tools that you can use to automate tasks for your workload. Learn about automated management capabilities for networking services, including Azure Firewall customer-controlled maintenance, Azure Firewall fully qualified domain name filtering in destination network address translation rules, and Azure Front Door managed certificates.
+- [Architecture strategies for networking and connectivity](./security/networking.md): We added Azure Network Security Perimeter to the list of Azure services that you can use to add defense-in-depth capabilities to your network. 
+- [Architecture strategies for building a segmentation strategy](./security/segmentation.md): We added another network segmentation pattern: PaaS isolation. We recommend using Azure Network Security Perimeter with this pattern.
+- [Architecture Best Practices for Azure Firewall](./service-guides/azure-firewall.md): We added Microsoft Security Copilot as a tool for threat investigation and analysis and information about ingestion-time transformation in Log Analytics to help you reduce costs. We also added configuration recommendations for the Operational Excellence pillar.
+- [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We made changes to emphasize the use of AI-powered security capabilities, including Security Copilot integration for web application firewall event analysis. We also added guidance about managed wildcard Transport Layer Security (TLS) certificates.
+- [Architecture Best Practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We added guidance for AKS clusters, including recommendations for HTTP proxy support, custom certificate authority integration, and Azure CNI static block allocation to improve compliance, security, and network management.
+- [Architecture Best Practices for Azure Virtual Network](./service-guides/virtual-network.md): We added recommendations for using Network Security Perimeter for PaaS service isolation, centralized IP address management with Azure Virtual Network Manager, and integrated diagnostics with Network Watcher VM Network Troubleshooter.
+- [Architecture Best Practices for Azure Application Gateway v2](./service-guides/azure-application-gateway.md): We added AI-powered threat analysis and response recommendations for Azure Application Gateway, including integration with Microsoft Security Copilot. We also added links to reliability, security, cost optimization, performance, and operational excellence recommendations in the Azure Advisor section.
 - [Architecture best practices for Azure SQL Database](./service-guides/azure-sql-database.md): We clarified how zone redundancy works in Azure SQL Database by specifying that both compute and storage components are distributed across two or three availability zones, rather than just spreading data. This update emphasizes that Azure selects the optimal zone configuration for resilience and that these zones are physically separate with independent infrastructure. The change provides a more complete picture of how zone redundancy ensures high availability.
+- [Workload team personas for AI workloads](./ai/personas.md): We added a section about agentic personas to describe how autonomous agent roles require specialized management in AI workloads. We also expanded the example personas to include both human and automated agent roles in development and operations. The persona templates and examples now reflect dynamic, cross-system, and just-in-time access needs, emphasizing governance, accountability, and the unique requirements of agentic systems.
+- [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance about diagramming practices and architecture diagram types by adding new recommendations for clarity, accessibility, version control, and layered visuals. We also introduced new diagram categories and provided more detailed descriptions of diagram purposes and best practices.
+- [Architecture Best Practices for Azure Disk Storage](./service-guides/azure-disk-storage.md): We added a section that describes the design trade-offs that you might have to make if you use the approaches in the pillar checklists, including guidance about performance versus cost for Premium SSDs, Ultra Disk Storage, Standard SSDs, and HDDs. We also added recommendations for just-in-time capacity provisioning and dynamic disk expansion without downtime.
+- [Complete an Azure Well-Architected Review assessment](./design-guides/implementing-recommendations.md): We added a tip about selecting **Core Well-Architected Review** in the Azure Well-Architected Review assessment. We also added a section about specialized Well-Architected review assessments for specific technologies and workloads.
+- [Azure Well-Architected Framework workloads](.//workloads.md): We expanded the definition of workloads to include custom code and AI models, emphasized architectural practices like decomposing workloads and addressing technical debt, and added sections about the organization of workload teams, dependencies, budgeting, and continuous improvement. We also added guidance about shared responsibilities and governance within cloud environments.
+- [Architecture Best Practices for Log Analytics](./service-guides/azure-log-analytics.md): We expanded and restructured the guidance for Log Analytics workspaces and introduced detailed recommendations, checklists, and best practices for the Well-Architected Framework pillars.
+- [Performance Efficiency design principles](./performance-efficiency/principles.md): We updated this article to make the guidance clearer and more actionable. Updates also simplify technical language and streamline recommendations to help teams align performance goals with business needs. These changes make it easier to plan, build, and maintain systems that perform reliably over time.
 
 ## July 2025
 
