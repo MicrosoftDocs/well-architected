@@ -122,7 +122,7 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 	> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Multiregion, active-active designs with replication are the most resilient but are complex to build and test. For most active-active solutions, you need to design a conflict resolution approach that accounts for delays in data synchronization. Most solutions don't need this degree of resiliency.
 
-	Refer to [RE:05 Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md).
+	Refer to [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
 - **Use deployment stamps to isolate the blast radius of components.** The deployment stamps pattern is widely used in SaaS solutions because it provides benefits for deployment, management, performance, and resiliency. For instance, deploying one stamp in the United States and another stamp in Europe ensures that customers in one region are isolated from outages in the other region and can operate independently.
 
