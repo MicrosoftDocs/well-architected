@@ -111,7 +111,7 @@ Deployment stamps represent a shift from component-level to workload-level redun
 
 Whether you deploy stamps in an active-active model (where all stamps actively serve traffic simultaneously) or active-passive model (where one stamp serves traffic while others remain on standby), design each stamp to be a complete, self-sufficient deployment that can handle its designated workload independently.
 
-#### Achieve zero downtime through active-active redundancy
+### Achieve zero downtime through active-active redundancy
 
 Active-active deployments maximize service availability by running multiple instances of a workload simultaneously, each actively handling traffic. This setup ensures immediate failover, eliminates downtime, and optimizes resource use by keeping all instances productive. If one instance fails, traffic is automatically rerouted to healthy instances without disrupting service.
 
@@ -143,7 +143,7 @@ The following sections describe configuration options for active-active deployme
 
 - **Common disadvantages of both designs:** Higher operating costs and management burden because of various factors, including the necessity of managing the synchronization of application state and data.
 
-#### Use an active-passive architecture design to provide DR resilience
+### Use an active-passive architecture design to provide DR resilience
 
 Active-passive deployment configurations provide a cost-effective way to ensure DR by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary instance fails or undergoes maintenance. This approach minimizes resource usage while providing reliable failover capabilities.
 
