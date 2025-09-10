@@ -28,7 +28,7 @@
 		{
 			"source_path": "well-architected/service-guides/azure-openai.md",
 			"redirect_url": "/azure/ai-foundry/openai/overview",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},		
 		{
 			"source_path": "well-architected/security/security-patterns.md",
