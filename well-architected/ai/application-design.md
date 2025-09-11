@@ -179,8 +179,6 @@ Model routers add flexibility but introduce complexity. Use them selectively:
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Model routers provide flexibility and cost optimization but add non-deterministic behavior and complexity to testing and troubleshooting.
 
-
-
 ## Understanding agents as design components
 
 An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Azure Agent Service.
@@ -415,7 +413,7 @@ Go beyond preventing direct database access and implement security-aware knowled
 - **Auditable denials**. Log and audit when grounding requests are denied due to insufficient permissions.
 - **Authorization enforcement**. Require that code sits between agents and knowledge sources to enforce authorization policies.
 
-**Example**: Pass Entra group claims into the knowledge tool call so grounding never retrieves unauthorized documents, ensuring that cached results and AI responses respect user permissions.
+**Example**: Pass Microsoft Entra group claims into the knowledge tool call so grounding never retrieves unauthorized documents, ensuring that cached results and AI responses respect user permissions.
 
 ### Multi-tenant security considerations
 
