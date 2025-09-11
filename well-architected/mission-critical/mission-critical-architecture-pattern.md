@@ -76,7 +76,7 @@ These baseline examples serve as the recommended north star architecture for mis
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                  <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="./images/mission-critical-architecture-online.png">
              </figure>
@@ -92,7 +92,7 @@ These baseline examples serve as the recommended north star architecture for mis
             </article>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                  <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="./images/mission-critical-architecture-network.svg">
             </figure>
@@ -108,7 +108,7 @@ These baseline examples serve as the recommended north star architecture for mis
         </article>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
              <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="./images/mission-critical-architecture-landing-zone.svg">
           </figure>
