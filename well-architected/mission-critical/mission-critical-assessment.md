@@ -21,13 +21,7 @@ These questions are designed to help benchmark a workload’s maturity and align
 
 [![Screenshot of the guidance page in the mission-critical review tool.](./images/assessment-recommendations.png)](images/assessment-recommendations.png)
 
+## Next step
+
 > [!div class="nextstepaction"]
 > [Mission-critical review tool](/assessments/?mode=pre-assessment&id=23513bdb-e8a2-4f0b-8b6b-191ee1f52d34)
-
- 
-## Next steps
-
-See these reference architecture that describe design choices for production-ready implementations. 
-
-- [Baseline architecture of an internet-facing application](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro)
-- [Baseline architecture of an internet-facing application with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)

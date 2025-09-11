@@ -114,7 +114,7 @@ In some scenarios, applications can combine loose and tight coupling, depending 
 
 - Use patterns like Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#every-message-must-be-processed).
 
-##### Example: Event-driven approach
+#### Example: Event-driven approach
 
 The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker. Read operations are synchronous, with the result directly returned to the caller.
 
@@ -129,7 +129,6 @@ For non-transient failures that you can't fully mitigate in application logic, t
 Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) can help you query, correlate, and visualize application traces.
 
 ### Design considerations
-
 
 - **Proper configurations**. It's not uncommon for transient problems to cause cascading failures. For example, retry without appropriate back-off exacerbates the problem when a service is being throttled. You can space retry delays linearly or increase them exponentially to back off through growing delays.
 
@@ -149,17 +148,18 @@ Here are some [common software engineering patterns](/azure/architecture/pattern
 |[Retry](/azure/architecture/patterns/retry)|Handles transient failures elegantly and transparently.</br> - Cancel if the fault is unlikely to be transient and is unlikely to succeed if the operation is attempted again. </br> - Retry if the fault is unusual or rare and the operation is likely to succeed if attempted again immediately. </br>- Retry after a delay if the fault is caused by a condition that might need a short time to recover, like network connectivity or high-load failures. Apply a suitable back-off strategy as retry delays increase.|
 |[Throttling](/azure/architecture/patterns/throttling)| Controls the consumption of resources used by application components, protecting them from becoming over-encumbered. When a resource reaches a load threshold, it defers lower-priority operations and degrading non-essential functionality so that essential functionality can continue until sufficient resources are available to return to normal operation.|
 
-Here are some additional recommendations: 
+Here are some additional recommendations:
 
 - Use vendor-provided SDKs, like the Azure SDKs, to connect to dependent services. Use built-in resiliency capabilities instead of implementing custom functionality.
 
- - Apply a suitable back-off strategy when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
+- Apply a suitable back-off strategy when retrying failed dependency calls to avoid a self-inflicted DDoS scenario.
 
 - Define common engineering criteria for all application microservice teams to drive consistency and speed in the use of application-level resiliency patterns.
 
 - Consider implementing resiliency patterns by using proven standardized packages, like [Polly](https://www.pollydocs.org/) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java. Additionally, messaging frameworks like [NServiceBus](https://particular.net/) or [MassTransit](https://masstransit.io/) provide built-in resiliency features, which helps avoid needing additional reliability code.
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
+
 - Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/well-architected/devops/monitor-collection-data-storage).
 
 - Ensure that operational data is used together with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
