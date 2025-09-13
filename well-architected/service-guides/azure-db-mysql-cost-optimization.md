@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Database for MySQL and Cost Optimiz
 description: Focuses on the Azure Database for MySQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 12/08/2021
+ms.date: 09/13/2025
 ms.topic: conceptual
 products:
   - azure-database-mysql
@@ -46,6 +46,9 @@ Explore the following table of recommendations to optimize your Azure Database f
 |--------------|-----------|
 |Choose the appropriate server size for your workload.|Configuration options: [Single Server](/azure/mysql/concepts-pricing-tiers) and [Flexible Server](/azure/mysql/flexible-server/concepts-compute-storage).|
 |Consider Reserved Capacity for Azure Database for MySQL Single Server.|Compute costs associated with Azure Database For MySQL [Single Server Reservation Discount](/azure/mysql/concept-reserved-pricing). Once you've determined the total compute capacity and performance tier for Azure Database for MySQL in a region, this information can be used to reserve the capacity. The reservation can span one or three years. You can realize significant cost optimization with this commitment.|
+|Enable near-zero-downtime maintenance (Flexible Server).|For production Flexible Server deployments that require minimal disruption, enable or adopt the [near-zero-downtime maintenance capability](/azure/mysql/flexible-server/concepts-maintenance#near-zero-downtime-maintenance-preview). This feature uses a dedicated load balancer to keep connections healthy during planned maintenance, reducing transient disconnects and protecting SLA-driven workloads. Still implement retry logic in the data access layer because the feature doesn't eliminate all transient faults (for example, networking blips or failovers).|
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL and cost optimization](postgresql.md)
+
+<!-- Updated: 2025-09-13 for Azure Update 500765 (Near-zero-downtime maintenance capability) -->
