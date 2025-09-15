@@ -109,6 +109,8 @@ Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/az
 
 [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
+Use Network Insights to monitor the health of Azure networking resources across cloud and hybrid environments. 
+
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
 ## Example
