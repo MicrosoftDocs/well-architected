@@ -68,10 +68,6 @@ landingContent:
         links:
           - text: Design for redundancy
             url: redundancy.md
-          - text: Use availability zones and regions
-            url: regions-availability-zones.md
-          - text: Implement highly available multi-region design
-            url: highly-available-multi-region-design.md
           - text: Reliably scale
             url: scaling.md
           - text: Design for self-healing and preservation

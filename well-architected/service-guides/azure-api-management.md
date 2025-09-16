@@ -316,7 +316,6 @@ API Management is often combined with the following services. Be sure to review 
 - [Azure Cache for Redis](./azure-cache-redis/reliability.md)
 - [Azure Front Door](./azure-front-door.md)
 - [Key Vault](/azure/key-vault/general/basic-concepts)
-- [Azure OpenAI Service](./azure-openai.md)
 - [Azure Virtual Network](./virtual-network.md)
 - [Web Application Firewall](/azure/web-application-firewall/overview)
 

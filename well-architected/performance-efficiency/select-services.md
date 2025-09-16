@@ -177,7 +177,7 @@ Azure has many services that can accommodate any workload. Review the [selection
 
 - [Azure regions with availability zone support](/azure/reliability/availability-zones-region-support)
 - [Recommendations for defining performance targets](performance-targets.md)
-- [Recommendations for using availability zones and regions](../reliability/regions-availability-zones.md)
+- [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md)
 - [What are availability zones?](/azure/reliability/availability-zones-overview)
 - [Select Azure regions](/azure/cloud-adoption-framework/ready/azure-setup-guide/regions)
 
