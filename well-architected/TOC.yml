@@ -318,8 +318,6 @@
           href: service-guides/azure-machine-learning.md
         - name: Azure NetApp Files 
           href: service-guides/azure-netapp-files.md 
-        - name: Azure OpenAI
-          href: service-guides/azure-openai.md
         - name: Azure Service Bus
           items:
             - name: Reliability

@@ -76,8 +76,7 @@ landingContent:
         links:
           - text: Azure Machine Learning service guide
             url: /azure/well-architected/service-guides/azure-machine-learning         
-          - text: Azure OpenAI service guide
-            url: /azure/well-architected/service-guides/azure-openai              
+              
  # Card
   - title: Assessment
     linkLists:
