@@ -93,6 +93,25 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 - Avoid the use of resource locks on ephemeral regional resources. Instead, rely on the appropriate use of RBAC and CI/CD pipelines to control operational updates. You can apply resource locks to prevent the deletion of long-lived global resources.
 
+### Considerations for Azure confidential computing
+
+If your workload uses Azure confidential computing, plan for the additional operational constraints that trusted execution environments (TEEs) introduce. Confidential computing protects data and code in memory, but that protection comes with tradeoffs you must consider for mission-critical operations.
+
+- Limited tooling and runtime support. Not all operating systems, drivers, or monitoring agents run inside TEEs. You may need out-of-enclave agents or redesigned observability approaches.
+- Restricted debugging and diagnostics. Debugging inside a Trusted Execution Environment (TEE), core dumps, and standard tracing are often unavailable, which affects incident investigation and live troubleshooting.
+- Attestation and key provisioning requirements. Confidential workloads typically require integration with attestation services and hardware-protected key release (for example, Azure Attestation and Key Vault or managed HSM). Plan and test these flows as part of CI/CD and recovery procedures.
+- Image and dependency constraints. Images built for TEEs, base OS versions, and container runtimes that are TEE-compatible are more limited. Maintain validated build pipelines and image-signing processes for confidential images.
+- Performance and capacity impacts. TEEs can introduce CPU and memory overhead. Validate performance, autoscaling, and cost implications under realistic load.
+- Availability and regional limits. Confidential VM SKUs and TEE features aren't available in every region or size. Align capacity planning and DR/geo strategies with available SKUs and zones.
+
+#### Design recommendations for confidential computing
+
+- Integrate attestation into your CI/CD and deployment pipelines so that key provisioning and key rotation are automated and audited.
+- Prefer telemetry pipelines that run outside the TEE where possible. If sensitive data must be measured, extract only aggregated metrics or use secure telemetry proxies that protect secrets and sensitive state.
+- Treat confidential instances as immutable and ephemeral. Automate recovery by redeploying validated images rather than relying on in-place troubleshooting.
+- Validate and document operational playbooks for patching, image updates, emergency access, and forensic investigation for confidential workloads.
+- Include confidential computing SKU availability and cost in capacity and business-continuity planning.
+
 ## Update management
 
 Mission-critical design strongly endorses the principle of ephemeral stateless application resources. If you apply this principle, you can typically perform an update by using a new deployment and standard delivery pipelines.
@@ -163,7 +182,9 @@ There are three common approaches to secret management. Each approach reads secr
 
 - Apply a fully automated key-rotation process that runs periodically within the solution.
 
- - Use the [key near expiry notification in Azure Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerts about upcoming expirations.
+- If you use Azure confidential computing, design secret provisioning to use attestation-based key release and hardware-protected keys. Test key provisioning, rotation, and retrieval in TEE scenarios as part of your CI/CD and recovery procedures.
+
+- Use the [key near expiry notification in Azure Key Vault](/azure/key-vault/keys/how-to-configure-key-rotation#configure-key-near-expiry-notification) to get alerts about upcoming expirations.
 
 ## IaaS-specific considerations when using VMs
 

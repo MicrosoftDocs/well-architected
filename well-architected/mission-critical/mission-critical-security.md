@@ -217,6 +217,126 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 Encryption is a vital step toward ensuring data integrity and is ultimately one of the most important security capabilities that can be applied to mitigate a wide array of threats. This section will therefore provide key considerations and recommendations related to encryption and key management in order to safeguard data without compromising application reliability.
 
+### In-use data protection with confidential computing
+
+Azure can provide in-use data protection by running workloads inside Trusted Execution Environments (TEEs) through confidential computing. This capability can strengthen protection for sensitive code and data while it's being processed, but it also introduces design and operational constraints that you must plan for as part of a mission-critical architecture.
+
+#### Design considerations
+
+- Limited PaaS and SaaS support. Many Azure PaaS and SaaS services don't currently run inside TEEs or provide only limited integration. Don't assume in-use protection is available across managed services without explicit verification
+- VM constraints. Confidential VM SKUs that enable TEEs have important constraints—such as limited regional SKU availability, specialized images and drivers, attestation and key-provisioning flows, and operational differences for backup, snapshot, and debugging workflows. Evaluate these constraints against your availability, observability, and recovery requirements. See the [Azure confidential VM overview](/azure/confidential-computing/confidential-vm-overview) for details.
+- Observability and diagnostics. Debugging, tracing, and telemetry inside TEEs are often restricted. Plan telemetry that runs outside the TEE or uses secure proxies and validate your incident response playbooks
+- Performance and scaling. TEEs can add CPU and memory overhead and affect autoscale behavior. Validate performance and scaling under realistic load
+- Operational complexity. Build CI/CD and image pipelines that produce TEE-compatible images, and include attestation and hardware-protected key-release flows in your deployment and recovery procedures
+
+#### Design recommendations
+
+- Verify service-level support for confidential computing before assuming in-use protection for any PaaS or SaaS service
+- Integrate attestation and attestation-based key provisioning (for example, with Azure Attestation and Key Vault or managed HSM) into CI/CD and recovery processes, and test key-release and rotation under TEE scenarios
+- Minimize interactive access to TEE-protected workloads. Where possible, block RDP/SSH logins and other direct shells to preserve in-use protection. Rely instead on out-of-TEE telemetry and instrumentation, repeatable image builds, and CI/CD pipelines for maintenance, troubleshooting, and emergency recovery
+- Prefer out-of-TEE telemetry for routine monitoring. If sensitive measurements are required, extract only aggregated metrics or use secure telemetry proxies that protect sensitive state
+- Treat TEE-protected instances as immutable and ephemeral. Automate recovery by redeploying validated TEE-compatible images rather than relying on in-place troubleshooting
+- Include confidential SKU availability and operational impacts in capacity planning, runbooks, and support agreements
+
+#### Break-glass workflow example
+
+When interactive access to a TEE-protected workload is unavoidable, follow a strict break-glass process to preserve the security and in-use protections:
+
+- Initiation and justification: the operator opens an emergency ticket documenting the reason and expected actions. Include a business justification and estimated time required.
+- Approvals: require two approvers before access is granted — the service owner (or on-call infrastructure owner) and the security lead. Use Microsoft Entra Privileged Identity Management (PIM) or an equivalent just-in-time approval mechanism to enforce approvals.
+- Access method and controls: grant time-limited, least-privilege access through PIM or temporary role elevation. Avoid direct RDP/SSH; when interactive access is needed, route sessions through a bastion or session proxy that supports session recording and MFA.
+- Session limits and revocation: enforce short access windows (for example, 15–60 minutes) and automatic revocation. Require explicit closure of the session and immediate revocation if the scope changes.
+- Auditing and logging: record and export all activity to a central, immutable log store. Ensure collection includes at a minimum:
+  - Azure Activity Logs (control plane)
+  - Azure AD sign-in and audit logs (identity events)
+  - Bastion or session-proxy session recordings and logs
+  - Key Vault access logs and any HSM attestation events
+  - Relevant application and OS telemetry forwarded to the central Log Analytics workspace
+  - NSG flow logs and network telemetry where applicable
+- Post-access review: perform a mandatory post‑incident review that documents the actions taken, any manual changes, and required reconciliation back into the CI/CD pipelines and source repositories. Produce a short RCA and apply any required automation to avoid future manual intervention.
+
+##### Post-access RCA checklist
+
+- Executive summary: one-line reason for access and final outcome
+- Timeline: start/end times, key actions with timestamps
+- Approvals and participants: approver names, requestor, and accessing identities (include PIM evidence)
+- Actions performed: commands, scripts, and manual changes (include resource IDs and locations)
+- Logs and artifacts: pointers to Log Analytics queries, activity logs, session recordings, and Key Vault/HSM logs
+- Security impact assessment: any credential/key exposure and required rotations
+- Reconciliation plan: list of IaC/CI/CD changes to commit, owners, and deadlines
+- Remediation and verification steps: who does what, how to validate, and success criteria
+- Lessons learned and automation opportunities: actions to eliminate manual interventions in future
+
+###### Sample queries and PIM evidence
+
+Collect these artifacts to support RCA and auditing. Use the Learn docs for guidance on writing and running queries and for exporting PIM activity
+
+- Log Analytics query examples: [Log queries in Azure Monitor](/azure/azure-monitor/logs/log-queries)
+- PIM documentation and activity export: [Privileged Identity Management documentation](/azure/active-directory/privileged-identity-management/)
+
+Example queries (replace placeholders before running):
+
+```kusto
+AzureActivity
+| where ResourceId contains "REPLACE_WITH_RESOURCE_ID"
+| where TimeGenerated > ago(7d)
+| project TimeGenerated, OperationName, ActivityStatusValue, Caller
+| sort by TimeGenerated desc
+```
+
+```kusto
+SigninLogs
+| where TimeGenerated > ago(7d)
+| where UserPrincipalName == "REPLACE_WITH_USER"
+| project TimeGenerated, AppDisplayName, ResourceDisplayName, Status
+```
+
+```kusto
+AuditLogs
+| where ActivityDisplayName contains "Activate role"
+| where TimeGenerated > ago(30d)
+| project TimeGenerated, InitiatedBy, TargetResources, AuditData
+```
+
+Short PIM evidence export steps
+
+- In the Azure portal go to Microsoft Entra ID > Privileged Identity Management > Activity (or Audit history)
+- Filter for the activation or role assignment events that match the break-glass period
+- Use Export/Download to capture evidence (CSV) and attach to the incident ticket
+- If you route PIM logs to Log Analytics or a SIEM, run the AuditLogs query above and export results
+
+#### Emergency ticket and post-access RCA checklist (templates)
+
+Use these short templates to capture and standardize break-glass requests and the required post-access RCA
+
+##### Emergency ticket template
+
+- Title: Emergency access request — [one-line reason]
+- Severity: SEV1 / SEV2
+- Affected resources: subscription, resource IDs, and service names (include TEE identifier)
+- Business impact: brief description and estimated user/business impact
+- Justification: why automated/CI/CD workflows can't be used and why interactive access is required
+- Requested actions: precise, minimal steps required (be specific)
+- Estimated duration: suggested short window (for example, 15–60 minutes)
+- Required approvers: service owner and security approver (PIM/JIT approval evidence)
+- Requestor contact details: name, role, pager or phone, and email
+- Pre-access checklist: session recording enabled, telemetry pipelines validated, temporary roles provisioned
+- Linked artifacts: runbook link, runbook steps to follow, and related incident ticket
+
+##### Post-access RCA checklist
+
+- Executive summary: one-line reason for access and final outcome
+- Timeline: start/end times, key actions with timestamps
+- Approvals and participants: approver names, requestor, and accessing identities (include PIM evidence)
+- Actions performed: commands, scripts, and manual changes (include resource IDs and locations)
+- Logs and artifacts: pointers to Log Analytics queries, activity logs, session recordings, and Key Vault/HSM logs
+- Security impact assessment: any credential/key exposure and required rotations
+- Reconciliation plan: list of IaC/CI/CD changes to commit, owners, and deadlines
+- Remediation and verification steps: who does what, how to validate, and success criteria
+- Lessons learned and automation opportunities: actions to eliminate manual interventions in future
+
+See the operational procedures guidance for confidential computing for runbook details and CI/CD integration: [Considerations for Azure confidential computing](./mission-critical-operational-procedures.md#considerations-for-azure-confidential-computing)
+
 ### Design considerations
 
 - Azure Key Vault has transaction limits for keys and secrets, with throttling applied per vault within a certain period.
