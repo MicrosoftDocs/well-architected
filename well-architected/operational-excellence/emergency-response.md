@@ -121,6 +121,10 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
 [Incident readiness](/services-hub/unified/health/incident-readiness).
 
+Use [Connection Monitor](/azure/network-watcher/connection-monitor-overview) in Network Watcher to continuously track network connectivity and performance across Azure resources. During emergency incidents, custom workbooks built in Connection Monitor provide real-time visibility into connectivity health, latency trends, and alert status. To do an effective RCA and achieve faster resolution, use [Connection Troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) inside Network Watcher Suite of Diagnostics Tools.
+
+Use [Traffic Analytics](/azure/network-watcher/traffic-analytics) to analyse VNet flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in Traffic Analytics allows teams to monitor live traffic behaviour, receive alerts, and leverage timeline and topology views to quickly identify impacted network segments and respond effectively.
+
 ## Related links
 
 - [Recommendations for designing and creating an observability framework](observability.md)
