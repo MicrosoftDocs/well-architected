@@ -308,9 +308,7 @@ To summarize:
 
 - Understand that network security groups can differ slightly from one another. It's easy to overlook the intent of the differences. **To have granular filtering, it's safer to create extra network security groups.** Set up at least one network security group.
 
-  - Adding a network security group unlocks many diagnostics tools, such as flow logs and network traffic analytics.
-
-  - Use Azure Policy to help control traffic in subnets that don't have network security groups.
+- Use Azure Policy to help control traffic in subnets that don't have network security groups.
 
 - If a subnet supports network security groups, add a group, even if it's minimally impactful.
 
@@ -409,7 +407,7 @@ This example builds on the Information Technology (IT) environment established i
 
 12) **Microsoft Defender for Cloud**. Microsoft Defender for Cloud delivers many workload protection solutions, including Network recommendations for your environment.
 
-13) **Traffic Analytics**: Monitor your network controls with Traffic Analytics. This is configured through Network Watcher, part of Azure Monitor, and aggregates inbound and outbound hits in your subnets collected by NSG.
+13) **Traffic Analytics**: Use Traffic Analytics to detect suspicious or unexpected traffic patterns, identify top talkers, and surface actionable insights into potential threats, misconfigurations, and anomalous flows. With built-in queries, you can prevent duplication of data and quickly investigate traffic by source, destination, protocol, or port, helping you pinpoint security risks and policy violations across your Azure environment.
 
 
 ### Architecture for a containerized workload
