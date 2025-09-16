@@ -284,6 +284,8 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Azure Policy](/azure/governance/policy/overview) can help you enforce organizational standards and assess compliance at scale.
 
+- [Azure Network Watcher](/azure/network-watcher/network-watcher-overview) is a tool that can be used to monitor, manage, and audit your network for uncompromised security, compliance, and performance. Leverage diagnostic tools like [Connection Troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) for on-demand diagnostics and Packet Capture to investigate connectivity issues. Use [Connection Monitor](/azure/network-watcher/connection-monitor-overview) to run continuous synthetic tests and receive real-time alerts on connectivity and performance issues. Use [Traffic Analytics](/azure/network-watcher/traffic-analytics) to visualize traffic distribution, identify top talkers, and analyze bandwidth utilization trends. Together, these capabilities provide a single pane of glass for network health.
+
 ## Related links
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
