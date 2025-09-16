@@ -154,6 +154,8 @@ Network security groups (NSG): An access control mechanism for controlling traff
 
 [Azure Firewall](/azure/firewall/): A cloud-native service, which can be deployed in your virtual network or in [Azure Virtual WAN](/azure/virtual-wan/virtual-wan-about) hub deployments. Use Azure Firewall to filter traffic flowing between cloud resources, the internet, and on-premises resources. Use Azure Firewall or [Azure Firewall Manager](/azure/firewall-manager/overview) to create rules or policies that allow or deny traffic using layer 3 to layer 7 controls. Filter internet traffic using Azure Firewall and third parties by directing traffic through third-party security providers for advanced filtering and user protection. Azure supports network virtual appliance deployment, which helps segmentation from third-party firewalls.
 
+Azure [Network Watcher Traffic Analytics](/azure/network-watcher/traffic-analytics) enables continuous visibility into network segmentation by analysing and enriching VNet flow logs. This allows teams to validate segmentation policies, ensuring that traffic remains confined to intended segments and quickly detecting any violations or unexpected lateral movement. By enriching flow data with context from network configurations and security controls, organisations can gain deeper insight into network behaviour. Integrating Traffic Analytics helps actively monitor and enforce segmentation boundaries, refine micro-segmentation strategies, and maintain least-privilege access - strengthening the Zero Trust deployment.
+
 ## Example
 
 Here are some common patterns for segmenting a workload in Azure. Choose a pattern based on your needs.
