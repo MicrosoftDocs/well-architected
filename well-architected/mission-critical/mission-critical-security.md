@@ -109,8 +109,6 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that an additional threat mitigation layer through the provisioning of centralized security capabilities is provided by the landing zone implementation.
 
-### Design considerations
-
 [STRIDE](https://en.wikipedia.org/wiki/STRIDE_(security)) provides a lightweight risk framework for evaluating security threats across key threat vectors.
 
 - Spoofed Identity: Impersonation of individuals with authority. For example, an attacker impersonating another user by using their -
@@ -142,7 +140,17 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 - Conscious effort should be applied to ensure security mitigations are captured within a common engineering criteria to drive consistency across all application service teams.
   
-- Start with a service by service level threat modeling and unify the model by consolidating the thread model on application level.
+- Start with a service by service level threat modeling and unify the model by consolidating the threat model on application level.
+
+### Include the trusted compute base (TCB) in your threat model
+
+The trusted compute base (TCB) is the set of hardware, firmware, and software components that must be trusted for a system to meet its security goals. For confidential computing scenarios, explicitly include the TCB boundary in threat models. The size and composition of the TCB depend on the confidential computing technology you adopt:
+
+- Confidential virtual machines. The TCB typically includes platform hardware and firmware, the CPU/TEE runtime, attestation components, and any host components involved in key provisioning and attestation. Verify the exact boundary with vendor documentation (for example, see the [Azure confidential VM overview](/azure/confidential-computing/confidential-vm-overview)).
+- AKS worker nodes using confidential computing. The TCB may include the node OS, container runtime, kubelet, enclave/TEE runtime, and the attestation/key-release components. Orchestration interactions and node lifecycle operations affect the TCB risk profile.
+- Confidential Azure Container Instances. The TCB for containerized confidential workloads can include the container runtime and the underlying platform components used for attestation and isolation; container image provenance becomes part of the TCB discussion.
+
+Designers should document the TCB for each deployment option, model compromise scenarios that affect TCB components, and plan detection and recovery steps (for example, key revocation and image rebuilds).
 
 ## Network intrusion protection
 

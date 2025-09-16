@@ -290,6 +290,30 @@ If you want to protect the Container Registry instance from deletion, use [resou
 
  Use Microsoft Entra integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
 
+### Confidential computing and platform compatibility
+
+If your threat model requires protection of data while it's in use, confidential computing can provide that capability. However, not all application platforms or managed services support confidential computing, and each technology option has different operational constraints. Consider the following when you choose between PaaS, SaaS, and IaaS options.
+
+#### Design considerations
+
+- Platform support. Verify whether the specific PaaS or SaaS service supports confidential computing or a compatible attestation and key-provisioning model. Many managed services have limited or no in-TEE support. Don't assume in-use protection is available across managed services without explicit verification
+- Technology-dependent TCB and boundaries. The trusted compute base and operational surface vary with the chosen technology: confidential virtual machines, AKS worker nodes with confidential runtimes, and confidential container instances each have different TCB scopes and operational considerations
+- Regional and SKU availability. Confidential SKUs and features are not available in every region or VM size. Include SKU and region availability in capacity and business-continuity planning. See the Azure confidential VM overview feature support for details: /azure/confidential-computing/confidential-vm-overview#feature-support
+- Feature limitations. Some platform features aren't supported or are restricted when running inside TEEs—examples include certain VM extensions, guest debugging, or agent-based monitoring. Verify the specific feature support for your chosen platform and identify compensating controls
+- Observability and diagnostics. Instrumentation and telemetry agents may not run inside a TEE. Plan for out-of-TEE telemetry pipelines, secure proxies, or aggregated metrics to support monitoring and incident response
+- Image, runtime, and supply-chain constraints. Confidential workloads often require signed, validated images and attested runtimes. Protect build pipelines and image repositories, and validate that your container/runtime stack is TEE-compatible
+- Operational and recovery constraints. Consider backup, snapshot, and restore behavior, support limitations for support-engineer-driven recovery operations, and the need for redeployment-based recovery strategies
+- Cost and capacity trade-offs. Confidential SKUs can have different price and capacity characteristics. Factor this into your cost model and scale planning
+
+#### Design recommendations
+
+- Choose the platform that aligns with your threat model. Use confidential computing only for those components that require in-use protection; use standard PaaS services for other components to retain operational simplicity and platform capabilities
+- Verify service-level feature support and SKU availability before committing to a design. Build a simple compatibility matrix for candidate services that records supported features, limits, and regional availability
+- Prototype and performance-test the confidential configuration early. Measure performance overhead, autoscale behavior, and observability gaps
+- Automate image builds, code signing, and attestation integration in CI/CD. Ensure key release and attestation steps are part of automated pipelines and recovery playbooks
+- Design for ephemeral, immutable instances when possible. Prefer redeployments and immutable image rollouts over in-place changes; codify break-glass procedures and post-access RCA checklists
+- Document trade-offs and operational runbooks, including fallback paths to non-confidential platforms if SKU availability or feature gaps prevent a confidential deployment
+
 ## Serverless compute
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
