@@ -27,11 +27,11 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 ## Reliability
 
-The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures.**
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
 [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
-#### Workload design checklist
+### Workload design checklist
 
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of Application Gateway and its dependencies. Extend the strategy to include more approaches as needed.
 
@@ -78,7 +78,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
 
 > [!div class="checklist"]
 > - **Review the [security baseline for Application Gateway](/security/benchmark/azure/baselines/azure-web-application-firewall-security-baseline).**
@@ -143,7 +143,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 ## Operational Excellence
 
-Operational Excellence primarily focuses on procedures for **development practices, observability, and release management.**
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
 
 The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
@@ -175,6 +175,8 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ### Workload design checklist
 
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Gateway.
+
 > [!div class="checklist"]
 > - **Estimate capacity requirements for Application Gateway to support your workload requirements.** Take advantage of the autoscaling functionality in Application Gateway v2. Set appropriate values for the minimum and maximum number of instances. Appropriately size the dedicated subnet that Application Gateway requires. For more information, see [Recommendations for capacity planning](/azure/well-architected/performance-efficiency/capacity-planning).
 >
@@ -202,24 +204,19 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to App Service and its dependencies. A set of Azure policies can audit some of the preceding recommendations. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to Application Gateway and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - [You should enable WAF for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F564feb30-bf6a-4854-b4bb-0d2d2d1e6c66). Deploy WAF in front of public-facing web applications to add another inspection layer for incoming traffic. WAF provides centralized protection for your web applications. It helps prevent common exploits and vulnerabilities, such as SQL injections, cross-site scripting, and local and remote file executions. You can also use custom rules to restrict access to your web applications based on countries or regions, IP address ranges, and other HTTP or HTTPS parameters.
-
 - [WAF should use the specified mode for Application Gateway](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12430be1-6cc8-4527-a9a8-e3d38f250096). Ensure that all WAF policies for Application Gateway use *Detection* or *Prevention* mode.
 - [You should enable Azure DDoS Protection](https://ms.portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa7aca53f-2ed4-4466-a25e-0b45ade68efd). Enable DDoS Protection for all virtual networks that have a subnet that contains Application Gateway with a public IP.
 
-For comprehensive governance, review the [Azure Policy built-in definitions](/azure/app-service/policy-reference) and other policies that might affect networking.
+For comprehensive governance, review the [Azure Policy built-in definitions for Application Gateway](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect the security of the networking infrastructure.
  
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Application Gateway.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-- [Reliability](/azure/advisor/advisor-reference-reliability-recommendations#application-gateway)
-- [Security](/azure/defender-for-cloud/recommendations-reference#compute-recommendations)
-- [Cost Optimization](/azure/advisor/advisor-cost-recommendations)
-- [Performance](/azure/advisor/advisor-reference-performance-recommendations#make-sure-you-have-enough-instances-in-your-application-gateway-to-support-your-traffic)
-- [Operational Excellence](/azure/advisor/advisor-reference-operational-excellence-recommendations#networking)
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
