@@ -127,19 +127,13 @@ Implement standardized interfaces for tools and actions to decouple your intelli
 
 Adopt standardized tool protocols to improve governance and enable flexibility:
 
-- **MCP-style servers**. Use Model Context Protocol (MCP) or equivalent standards to wrap business capabilities as discoverable tool servers.
-- **OpenAPI specifications**. Define tools using OpenAPI specifications for consistent interface documentation and validation.
-- **Capability advertisement**. Design tools to advertise their capabilities, allowing orchestrators to discover and route requests appropriately.
-
-**Example**: Wrap ERP read/write operations as a tool server that advertises capabilities. This approach allows you to swap the ERP implementation without changing the agent logic.
+- **MCP-style servers**. Use Model Context Protocol (MCP) or other suitable standard to wrap business capabilities as discoverable tool servers.
+- **Use specifications that have broad SDK support**. For example, define tools using OpenAPI specifications for consistent interface documentation and validation.
+- **Capability advertisement**. Design tools to advertise their capabilities, allowing orchestrators to discover and route requests appropriately. For example, wrap enterprise resource planning (ERP) read/write operations as a tool server that advertises capabilities. This approach allows you to tune the ERP interactions without changing the agent logic.
 
 ### Protocol preferences
 
-When selecting protocols and standards:
-
-- **Open standards**. Prefer open, documented interfaces over proprietary formats.
-- **Emerging protocols**. Monitor agent-to-agent and control protocols without prescribing specific implementations due to rapid evolution.
-- **Interoperability**. Design for interoperability across different AI frameworks and providers.
+When selecting protocols and standards, prefer open, documented interfaces over proprietary formats. There are a lot of emerging protocols in the industry. As you consider your agent-to-agent and control use cases, you'll want to consider technical debt that could come from protocols that are under rapid evolution or deprecation. Layers of abstraction can help keep your design interoperable across different AI frameworks and providers.
 
 ## Plan for model lifecycle management
 
@@ -147,13 +141,13 @@ Design your application to handle model changes throughout their lifecycle:
 
 ### Model deprecation planning
 
-Models will eventually reach end-of-life. Design abstractions that minimize the impact of model transitions:
+Foundation models will eventually reach end-of-life and be retired by your model hosting platform. The models are replaced by models that perform better, are more cost effective, have updated training knowledge, and support new capabilities. Design abstractions that minimize the impact of your workload's future model transitions.
 
 - **Provider abstraction**. Use abstraction layers that allow switching between model providers without application changes.
 - **Version management**. Implement versioning strategies that support gradual migration between model versions.
 - **Fallback strategies**. Design fallback mechanisms for when preferred models become unavailable.
 
-For comprehensive guidance on model lifecycle management, see [Model lifecycle and MLOps for AI workloads](/azure/architecture/ai-ml/guide/machine-learning-operations-v2).
+For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
 
 ### Model router considerations
 
