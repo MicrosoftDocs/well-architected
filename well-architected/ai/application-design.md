@@ -10,7 +10,7 @@ ms.update-cycle: 180-days
 
 # Application design for AI workloads on Azure
 
-There are many choices to consider when you design intelligent capabilities into your workload. Your unique functional and nonfunctional requirements help you determine whether you need basic inferencing capabilities or true intelligence, and guide your high-level design decisions. You'll consider these choices as you move from high-level design areas to lower-level design areas.
+There are many choices to consider when you design intelligent capabilities into your workload. Your unique functional and nonfunctional requirements help you determine whether you need basic inferencing capabilities or more dynamic problem-solving capabilities. These requirements guide your high-level design decisions. You'll consider these choices as you move from high-level design areas to lower-level design areas.
 
 As discussed in the [Get started](./get-started.md) article, whether to build your own model or use a prebuilt model is one of the first important decisions to make. When you use a prebuilt model, consider these points:
 
@@ -18,7 +18,7 @@ As discussed in the [Get started](./get-started.md) article, whether to build yo
 
 - **Licensing**. Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
-- **Key components**. Look at the model's architecture, training data, performance, and licensing to determine whether it's fine-tuned for your task or domain.
+- **Key components**. Look at the model's architecture, training data, and performance to determine whether it's fine-tuned for your task or domain.
 
 For guidance on choosing a hosting platform, see [Considerations for the model hosting and inferencing platform](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
 
@@ -26,11 +26,11 @@ This article describes common design areas and factors to consider when you make
 
 ## Application layer architecture
 
-When designing intelligent capabilities, establish clear boundaries across these four key layers:
+When designing intelligent capabilities, establish clear boundaries in your design across these four key layers:
 
 :::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram showing the four application layers: Client, Intelligence, Knowledge, and Tools." lightbox="../_images/ai-application-layers.svg":::
 
-- **Client layer**. The user interface and client applications that interact with your intelligent capabilities. Keep this layer thin and push intelligence to backend services.
+- **Client layer**. The user interface and client applications where users or processes experience your workload's intelligent capabilities. Keep this layer thin and push most capabilities to other layers.
 
 - **Intelligence layer**. Routing, orchestration, and agent capabilities that coordinate AI operations. This layer includes model routing, conversation management, and intelligent decision-making.
 
@@ -38,7 +38,7 @@ When designing intelligent capabilities, establish clear boundaries across these
 
 - **Tools layer**. Business APIs, external services, and action capabilities that the intelligence layer can invoke. This layer should use standardized interfaces and enforce its own security policies.
 
-Each layer enforces its own policies, identities, and caching strategies to reduce blast radius and enable focused development, testing, and troubleshooting.
+Each layer enforces its own policies, identities, and caching strategies to achieve their own localized reliability, security, and performance requirements. The layers also enable focused development, testing, and troubleshooting.
 
 ## Recommendations
 
@@ -48,20 +48,20 @@ The following table summarizes the recommendations provided in this article.
 |---|---|
 | **Prioritize security and Responsible AI controls**. | Implement traditional application security plus AI-specific safety measures as a primary design driver. Enforce provider safety systems, input/output filtering, identity-bound rate limiting and quotas, and token/prompt caps. Security and safety controls must be verified and cannot be assumed from managed services. |
 | **Keep intelligence away from the client**. | Design back-end services to handle cross-cutting concerns like rate limiting, failover operations, and AI processing logic. Abstract behavior and intelligence away from the client to future-proof your design and improve maintainability. |
-| **Block direct access to data stores**. | Code in AI systems shouldn't directly access your data stores. Route all data requests through an API layer that enforces authorization and propagates user/tenant context into retrieval and filtering. Pass forward user identity using on-behalf-of flows. |
+| **Block direct access to data stores**. | Code in AI systems shouldn't directly access your data stores. Route all data requests through an API layer that enforces authorization and propagates user/tenant context into retrieval and filtering. Pass forward user identity so data level security can be applied. |
 | **Abstract your models and tools**. | Use abstraction layers to decouple your application from specific models, tools, and technologies. Implement standardized interfaces and protocols to provide flexibility as technologies evolve, making your design more maintainable and future-proof. |
 | **Isolate behaviors, actions, and tools**. | Design clear boundaries across client, intelligence (routing/orchestration/agents), knowledge (grounding data), and tools (business APIs) layers. Each layer should enforce its own policies, identities, and caching strategies to reduce blast radius and focus development efforts. |
-| **Evaluate PaaS and SaaS solutions appropriately**. | Consider platform-hosted solutions first when they meet security, safety, compliance, and quota needs. Implement compensating controls through gateways that enforce authentication, quotas, safety, and logging. Verify that security and safety controls meet your requirements. |
+| **Prioritize off-the-shelf solutions**. | Use software or platform as a service (SaaS or PaaS) to handle workload functions when they meet security, safety, compliance, and quota needs. Implement compensating controls through gateways that enforce authentication, quotas, safety, and logging. Use prebuilt and pre-trained models where possible to minimize the operational and development burden for your workload and operations teams. |
 
 ## Distinguish between inferencing and intelligent applications
 
-When designing your application architecture, first determine whether you're building an inferencing-focused application or an intelligence-focused application, as this distinction drives many design decisions.
+When designing your application architecture, first determine whether you're building an inferencing-focused application or an intelligence-focused application, as this distinction drives design decisions.
 
 ### Inferencing applications
 
 Inferencing applications perform single-step operations like classification, translation, or summarization. These applications have simpler architectures:
 
-**Typical architecture**: Client → AI Gateway (auth, quotas, safety) → Model Serving (Azure AI Foundry/AKS/AML) → Result Cache
+**Typical architecture:** Client communicates with an AI gateway which provides auth, quotas, safety, and routing. That gateway  calls into the model serving layer such as Azure AI Foundry, AKS, or managed online endpoints. Where practical, the results may be cached for future inferencing calls before being returned to the client.
 
 **Characteristics:**
 
@@ -72,9 +72,9 @@ Inferencing applications perform single-step operations like classification, tra
 
 ### Intelligent applications
 
-Intelligent applications perform planning, coordination, and multi-step reasoning. They require more sophisticated architectures:
+Intelligent applications perform planning, coordination, and multi-step reasoning and are typically handled through agents and agent orchestration. They require more concepts to be addressed in their architectures:
 
-**Typical architecture**: Client → Orchestrator/Agents (planning/routing) → Tools Layer (OpenAPI/MCP-described APIs) → Grounding Services (search/index/graph) → Multi-layer Caches
+**Typical architecture:** Client invokes an agent or agent orchestrator. Based on the design or autonomous capabilities, this layer will invoke a tools layer such as MCP servers, custom API. The agent might need to call into grounding knowledge services such as a search index, database, or graph. Models might be invoked at multiple points during this process. Caching can occur at multiple levels as well to optimize the process.
 
 **Characteristics:**
 
