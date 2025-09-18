@@ -7,6 +7,7 @@ ms.date: 08/10/2023
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
+ms.custom: sfi-image-nochange
 ---
 
 # Security considerations for Azure VMware Solution workloads
