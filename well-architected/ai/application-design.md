@@ -309,7 +309,7 @@ Modern AI applications access external knowledge sources to provide accurate, up
 
 ### Multi-model routing patterns
 
-Adding a model router ... Model routers add flexibility but introduce complexity. Use them selectively:
+Using a model router can improve your workload's availability by routing requests to a healthy model when another model is in an unhealthy state, or it can help improve the quality of responses by selecting the best model for a particular task in real time. Model routers add flexibility but introduce complexity. Use them selectively:
 
 **When to use model routers:**
 
