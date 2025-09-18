@@ -42,7 +42,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the features of Virtual Network and its dependencies. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the nature of your application and the criticality of its components. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ The [Security design principles](/azure/well-architected/security/security-princ
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
 
 > [!div class="checklist"]
 >
@@ -173,7 +173,7 @@ The [Operational Excellence design principles](../operational-excellence/princip
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your networking environment.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Virtual Network.
 
 > [!div class="checklist"]
 >
@@ -216,7 +216,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Use networking monitoring tools. <br><br> Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to identify changes in demand and patterns. <br> Use the [connection monitor feature](/azure/network-watcher/connection-monitor-overview) to analyze and identify problems like connection drops before they affect applications.|You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. |
 |When you define routes, use [service tags](/azure/virtual-network/service-tags-overview) instead of specific IP addresses. <br><br> Similarly, use ASGs when you define traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.|
 |Use [Azure Virtual Network Manager IP address management](/azure/virtual-network-manager/concept-ip-address-management) for centralized IP planning across complex virtual network environments. <br><br> Implement centralized visibility and control over IP allocation to prevent conflicts and simplify network planning across multiple subscriptions.|Prevents IP address conflicts in large enterprise environments with hundreds of virtual networks. Reduces operational overhead through centralized IP management and conflict detection.|
-|Leverage [Network Watcher VM Network Troubleshooter](/azure/network-watcher/network-watcher-monitoring-overview) for integrated network diagnostics in Azure Portal. <br><br> Use built-in troubleshooting tools to quickly identify connectivity issues and blocked ports without requiring external diagnostic tools.|Enhances operational efficiency through immediate network diagnostics. Reduces time to resolution for VM connectivity issues and simplifies troubleshooting workflows.|
+|Leverage [Network Watcher VM Network Troubleshooter](/azure/network-watcher/network-watcher-monitoring-overview) for integrated network diagnostics in Azure portal. <br><br> Use built-in troubleshooting tools to quickly identify connectivity issues and blocked ports without requiring external diagnostic tools.|Enhances operational efficiency through immediate network diagnostics. Reduces time to resolution for VM connectivity issues and simplifies troubleshooting workflows.|
 
 
 ## Performance Efficiency
@@ -227,7 +227,7 @@ The [Performance Efficiency design principles](../performance-efficiency/princip
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on the key performance indicators.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Virtual Network.
 
 > [!div class="checklist"]
 >
