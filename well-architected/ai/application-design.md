@@ -281,10 +281,6 @@ Several common design patterns have been established in the industry for AI appl
 
 - **Event-driven architecture**. Using events to trigger actions enables decoupled components and real-time processing to make the system more responsive and adaptable to changing data.
 
-- **Circuit breaker pattern**. Implement circuit breakers around AI service calls to prevent cascading failures when models are unavailable or performing poorly.
-
-- **Bulkhead pattern**. Isolate critical resources to prevent failure in one area from affecting the entire system. For example, separate inference resources from training resources.
-
 ### Grounding and knowledge integration patterns
 
 Modern AI applications access external knowledge sources to provide accurate, up-to-date information. Treat retrieval as an agent tool or knowledge call behind a service that enforces authorization rather than a special-case architecture approach.
@@ -301,29 +297,11 @@ Modern AI applications access external knowledge sources to provide accurate, up
 
 Using a model router can improve your workload's availability by routing requests to a healthy model when another model is in an unhealthy state, or it can help improve the quality of responses by selecting the best model for a particular task in real time. Model routers add flexibility but introduce complexity. Use them selectively:
 
-**When to use model routers:**
+**When to use model routers:** Consider using a model router when your workload can tolerate added variability and latency, the user experience expects breadth across model types, or you need to balance cost and capability across different model.
 
-- Your workload can tolerate added variability and latency
+**When to avoid model routers:** Using a model router is inappropriate in scenarios where the workload needs precise answers optimized for specific tasks, you're using fine-tuned models with narrow SLOs, or when deterministic behavior, including consistent performance, is critical for your use case.
 
-- The user experience expects breadth across model types
-
-- You need to balance cost and capability across different models
-
-**When to avoid model routers:**
-
-- The workload needs precise answers optimized for specific tasks.
-
-- You're using fine-tuned models with narrow SLOs
-
-- Deterministic behavior, including consistent performance, is critical for your use case
-
-**Implementation guidance:**
-
-- Prefer provider-native routing when available
-
-- Consider that routers make testing more complex
-
-- Monitor performance impacts and user satisfaction
+**Implementation guidance:** When adding a model router to your application prefer provider-native routing when available and monitor performance impacts and user satisfaction.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Model routers provide flexibility and cost optimization but add non-deterministic behavior and complexity to testing and troubleshooting.
 
