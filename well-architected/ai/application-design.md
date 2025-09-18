@@ -125,11 +125,6 @@ Implement standardized interfaces for tools and actions to decouple your intelli
 
 ### Tool protocol standardization
 
-Adopt standardized tool protocols to improve governance and enable flexibility:
-
-- **MCP-style servers**. Use Model Context Protocol (MCP) or other suitable standard to wrap business capabilities as discoverable tool servers.
-- **Use specifications that have broad SDK support**. For example, define tools using OpenAPI specifications for consistent interface documentation and validation.
-- **Capability advertisement**. Design tools to advertise their capabilities, allowing orchestrators to discover and route requests appropriately. For example, wrap enterprise resource planning (ERP) read/write operations as a tool server that advertises capabilities. This approach allows you to tune the ERP interactions without changing the agent logic.
 
 ### Protocol preferences
 
@@ -362,7 +357,7 @@ Consider using these design patterns when your use case meets the condition that
 > [!NOTE]
 > Smaller applications or POCs typically don't benefit from these design patterns. These applications should be designed for simplicity. Likewise, if you have resource (budget, time, or headcount) constraints, using a simple design that can be refactored later is a better approach than adopting a complex design pattern.
 
-## Choose the right frameworks and libraries
+## Choose the right frameworks, libraries, and protocols
 
 The choice of frameworks and libraries is closely intertwined with application design. They affect performance, scalability, and maintainability. However, design requirements can limit your framework choices. For example, use of the Semantic Kernel SDK often encourages a microservices-based design where each agent or function is encapsulated within its own service. Consider these factors when you choose frameworks and libraries:
 
@@ -375,6 +370,13 @@ The choice of frameworks and libraries is closely intertwined with application d
 - **Community and support**. Consider the maturity and support ecosystem of the framework. Active communities and comprehensive documentation reduce implementation risks.
 
 - **Performance characteristics**. Evaluate framework performance for your specific use case, including memory usage, startup time, and inference speed.
+
+Adopt standardized tool protocols to improve governance and enable flexibility:
+
+- **MCP-style servers**. Use Model Context Protocol (MCP) or other suitable standard to wrap business capabilities as discoverable tool servers.
+- **Use specifications that have broad SDK support**. For example, define tools using OpenAPI specifications for consistent interface documentation and validation.
+- **Capability advertisement**. Design tools to advertise their capabilities, allowing orchestrators to discover and route requests appropriately. For example, wrap enterprise resource planning (ERP) read/write operations as a tool server that advertises capabilities. This approach allows you to tune the ERP interactions without changing the agent logic.
+
 
 ## Design a comprehensive security strategy for AI applications
 
