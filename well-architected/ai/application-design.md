@@ -65,12 +65,7 @@ Inferencing applications perform single-step operations like classification, tra
 
 **Typical architecture:** Client communicates with an AI gateway which provides auth, quotas, safety, and routing. That gateway  calls into the model serving layer such as Azure AI Foundry, AKS, or managed online endpoints. Where practical, the results may be cached for future inferencing calls before being returned to the client.
 
-**Characteristics:**
-
-- Direct model usage similar to tool calls
-- Minimal orchestration requirements
-- Focus on performance and throughput
-- Less complex state management
+**Typical characteristics:** Inferencing applications typically feature direct model calls, require minimal orchestration, focus on performance and throughput, and don't require complex state management.
 
 ### Intelligent applications
 
@@ -78,12 +73,7 @@ Intelligent applications perform planning, coordination, and multi-step reasonin
 
 **Typical architecture:** Client invokes an agent or agent orchestrator. Based on the design or autonomous capabilities, this layer will invoke a tools layer such as MCP servers, custom API. The agent might need to call into grounding knowledge services such as a search index, database, or graph. Models might be invoked at multiple points during this process. Caching can occur at multiple levels as well to optimize the process.
 
-**Characteristics:**
-
-- Agent patterns and model routing
-- Complex workflow coordination
-- Integration with multiple data sources and tools
-- Conversation and context management
+**Typical characteristics:** Intelligent applications typically feature agentic patterns and model routing with complex workflow coordination, integration with multiple data sources and tools, and require conversation and context management.
 
 ## Fundamental AI application design guidelines
 
