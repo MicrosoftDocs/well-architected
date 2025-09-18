@@ -144,30 +144,6 @@ Foundation models will eventually reach end-of-life and be retired by your model
 
 For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
 
-## Understanding agents as design components
-
-An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Azure Agent Service.
-
-### When to use agents
-
-Consider using agents when your application needs:
-
-- **Multi-step reasoning**. Tasks that require planning and decision-making across multiple steps.
-- **Tool coordination**. Complex workflows that involve coordinating multiple specialized tools and services.
-- **Adaptive behavior**. Scenarios where the system needs to adjust its approach based on intermediate results or changing conditions.
-- **Context management**. Applications that need to maintain conversation state and user context across interactions.
-
-### Agent design considerations
-
-When designing agent-based systems:
-
-- **Isolation and boundaries**. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability.
-- **Communication patterns**. Use established patterns like topic-queue systems for agent communication.
-- **Tool abstraction**. Abstract tool capabilities using standardized interfaces to enable agent flexibility.
-
-> [!IMPORTANT]
-> Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
-
 ## Containerize components
 
 To ensure that your independently deployable components are fully self-contained and to streamline your deployments, consider containerization as part of your design strategy. The following components should be containerized:
@@ -241,19 +217,40 @@ Use custom-coded orchestration logic for workflows that need to behave determini
 
 ### When to use agent collaboration
 
+An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Azure Agent Service.
+
 Use agent-routed collaboration approaches for exploratory or composed tasks:
 
-- **Dynamic problem-solving**. Tasks that require adaptive reasoning and planning based on intermediate results.
-- **Knowledge discovery**. Scenarios where the optimal path isn't predetermined and requires exploration.
-- **Complex tool orchestration**. Workflows that involve coordinating multiple specialized tools and services.
-- **Conversational experiences**. Applications that need to maintain context and adapt to user goals over time.
+- **Multi-step reasoning**. Tasks that require planning and decision-making across multiple steps.
+
+- **Tool coordination**. Complex workflows that involve coordinating multiple specialized tools and services.
+
+- **Adaptive behavior**. Scenarios where the system needs to adjust its approach based on intermediate results or changing conditions.
+
+- **Context management**. Applications that need to maintain conversation state and user context across interactions.
+
+#### Agent design considerations
+
+When designing agent-based systems:
+
+- **Isolation and boundaries**. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability.
+
+- **Communication patterns**. Use established patterns like topic-queue systems for agent communication.
+
+- **Tool abstraction**. Abstract tool capabilities using standardized interfaces to enable agent flexibility.
+
+> [!IMPORTANT]
+> Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
+
 
 ### Hybrid approaches
 
 Consider hybrid designs where orchestrators delegate to agents for specific subtasks:
 
 - **Structured workflows with flexible steps**. Use orchestration for the overall workflow while allowing agents to handle complex individual steps.
+
 - **Escalation patterns**. Start with deterministic orchestration and escalate to agent-based reasoning when predetermined logic is insufficient.
+
 - **Domain-specific reasoning**. Use orchestration for cross-domain coordination while employing specialized agents for domain-specific tasks.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Orchestration provides predictability and control but limits adaptability. Agent collaboration enables dynamic problem-solving but introduces variability and complexity.
