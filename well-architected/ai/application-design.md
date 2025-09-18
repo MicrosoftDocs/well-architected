@@ -187,7 +187,7 @@ Implement semantic caching to identify and reuse responses for semantically simi
 
 ### Caching risks and mitigation
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Caching improves performance and reduces costs but introduces security and data freshness risks:
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
 
 **Risks:**
 
