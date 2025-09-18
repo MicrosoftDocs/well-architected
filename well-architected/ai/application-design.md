@@ -144,30 +144,6 @@ Foundation models will eventually reach end-of-life and be retired by your model
 
 For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
 
-### Model router considerations
-
-Model routers add flexibility but introduce complexity. Use them selectively:
-
-**When to use model routers:**
-
-- Your workload can tolerate added variability and latency
-- The user experience expects breadth across model types
-- You need to balance cost and capability across different models
-
-**When to avoid model routers:**
-
-- The workload needs precise answers optimized for specific tasks.
-- You're using fine-tuned models with narrow SLOs
-- Deterministic behavior, including consistent performance, is critical for your use case
-
-**Implementation guidance:**
-
-- Prefer provider-native routing when available
-- Consider that routers make testing more complex
-- Monitor performance impacts and user satisfaction
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Model routers provide flexibility and cost optimization but add non-deterministic behavior and complexity to testing and troubleshooting.
-
 ## Understanding agents as design components
 
 An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Azure Agent Service.
@@ -339,6 +315,30 @@ Modern AI applications access external knowledge sources to provide accurate, up
 - **Context layering**. Build systems that can combine multiple knowledge sources and context types to provide comprehensive responses.
 - **Dynamic grounding**. Implement systems that can adapt their knowledge sources and grounding strategies based on changing requirements or data availability.
 - **Authorization-aware retrieval**. Ensure that grounding services enforce user permissions and tenant context when retrieving information.
+
+### Multi-model routing patterns
+
+Adding a model router ... Model routers add flexibility but introduce complexity. Use them selectively:
+
+**When to use model routers:**
+
+- Your workload can tolerate added variability and latency
+- The user experience expects breadth across model types
+- You need to balance cost and capability across different models
+
+**When to avoid model routers:**
+
+- The workload needs precise answers optimized for specific tasks.
+- You're using fine-tuned models with narrow SLOs
+- Deterministic behavior, including consistent performance, is critical for your use case
+
+**Implementation guidance:**
+
+- Prefer provider-native routing when available
+- Consider that routers make testing more complex
+- Monitor performance impacts and user satisfaction
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Model routers provide flexibility and cost optimization but add non-deterministic behavior and complexity to testing and troubleshooting.
 
 These patterns provide flexible, adaptable approaches to knowledge integration while maintaining security and access control. For secure multi-tenant implementations, see [Guide to design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag).
 
