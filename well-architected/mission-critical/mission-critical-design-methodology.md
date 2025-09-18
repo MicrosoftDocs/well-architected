@@ -18,7 +18,7 @@ This article suggests a design methodology that's informed by insights gained fr
 ## Design for your reliability objectives
 
 
-Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use a Uptime/Downtime calculator to determine the tolerable downtime.  
+Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to determine the tolerable downtime.  
 
 This design methodology can serve as a starting point for architectural decisions and tradeoffs after objectives have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
 
