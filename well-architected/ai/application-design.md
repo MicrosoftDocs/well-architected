@@ -156,9 +156,9 @@ Model routers add flexibility but introduce complexity. Use them selectively:
 
 **When to avoid model routers:**
 
-- The workload needs precise answers optimized for specific tasks
+- The workload needs precise answers optimized for specific tasks.
 - You're using fine-tuned models with narrow SLOs
-- Deterministic behavior is critical for your use case
+- Deterministic behavior, including consistent performance, is critical for your use case
 
 **Implementation guidance:**
 
@@ -190,7 +190,7 @@ When designing agent-based systems:
 - **Tool abstraction**. Abstract tool capabilities using standardized interfaces to enable agent flexibility.
 
 > [!IMPORTANT]
-> Don't automatically add agents between your work and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area.
+> Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
 
 ## Containerize components
 
@@ -250,7 +250,7 @@ Implement semantic caching to identify and reuse responses for semantically simi
 - Apply security filters and authorization checks before serving cached results
 - Monitor cache hit rates, data quality metrics, and security audit logs
 
-## Evaluate orchestration versus agent collaboration
+## Evaluate the use of orchestration and agents in generative AI solutions
 
 Choose the appropriate coordination approach based on your application's requirements for determinism and exploratory capabilities.
 
