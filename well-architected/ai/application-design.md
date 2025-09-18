@@ -85,16 +85,18 @@ Intelligent applications perform planning, coordination, and multi-step reasonin
 - Integration with multiple data sources and tools
 - Conversation and context management
 
-## Design principles for AI applications
+## Fundamental AI application design guidelines
 
-When designing AI applications, apply these foundational principles to create resilient and maintainable systems:
+When designing AI applications, apply these foundational guidelines to create resilient and maintainable systems:
 
 ### Start with business outcomes
 
 Before selecting technologies or architectures, clearly define the business problem you're solving. This definition guides technology choices and helps avoid over-engineering. Consider these factors:
 
 - **Success metrics**. Define measurable outcomes that demonstrate value, such as accuracy improvements, cost reductions, or user satisfaction scores.
+
 - **User experience requirements**. Understand how users will interact with AI capabilities and what response times they expect.
+
 - **Regulatory constraints**. Identify compliance requirements that might affect your design choices, such as data residency or explainability requirements.
 
 ### Design for observability from day one
@@ -102,7 +104,9 @@ Before selecting technologies or architectures, clearly define the business prob
 AI applications require comprehensive monitoring beyond traditional application metrics. Build observability into your design from the start:
 
 - **Model performance tracking**. Monitor accuracy drift, inference latency, and prediction confidence scores.
+
 - **Data quality monitoring**. Track input data distribution changes that might affect model performance.
+
 - **User interaction analysis**. Understand how users interact with AI features to identify improvement opportunities.
 
 ### Plan for abstraction and future flexibility
@@ -110,7 +114,9 @@ AI applications require comprehensive monitoring beyond traditional application 
 Design your system with abstraction layers that allow you to adapt as AI technologies evolve:
 
 - **Model abstraction**. Abstract models behind consistent interfaces to enable swapping or upgrading without application changes.
+
 - **Standardized protocols**. Prefer open, documented interfaces and formats such as OpenAPI for tools, ONNX for model portability, and OpenTelemetry for telemetry.
+
 - **Capability-based design**. Design around capabilities rather than specific technologies to maintain flexibility.
 
 ### Externalize prompts and configuration
@@ -118,23 +124,19 @@ Design your system with abstraction layers that allow you to adapt as AI technol
 Treat prompts as configuration that should be externalized following 12-factor app design principles:
 
 - **Version control**. Keep prompts in version control with clear deployment tracking to correlate telemetry and safety results with specific prompt versions.
+
 - **Role separation**. Enable business analysts and domain experts to tune prompts without code changes.
+
 - **Safe deployment**. Implement controlled rollout processes for prompt changes, treating them as significant configuration updates.
 
-## Use standardized tool and action interfaces
-
-Implement standardized interfaces for tools and actions to decouple your intelligent capabilities from specific implementations:
-
-## Plan for model lifecycle management
-
-Design your application to handle model changes throughout their lifecycle:
-
-### Model deprecation planning
+## Plan for model deprecation
 
 Foundation models will eventually reach end-of-life and be retired by your model hosting platform. The models are replaced by models that perform better, are more cost effective, have updated training knowledge, and support new capabilities. Design abstractions that minimize the impact of your workload's future model transitions.
 
 - **Provider abstraction**. Use abstraction layers that allow switching between model providers without application changes.
+
 - **Version management**. Implement versioning strategies that support gradual migration between model versions.
+
 - **Fallback strategies**. Design fallback mechanisms for when preferred models become unavailable.
 
 For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
@@ -151,16 +153,14 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services**. Services that provide infrastructure support, like databases and caching layers, can also benefit from containerization. Containerizing these services helps maintain version consistency and facilitates easier scaling and management of these components.
 
-## Caching strategies for AI applications
+## Implement multi-layer caching strategies 
 
-Implement multi-layer caching strategies to improve performance and reduce costs in your AI applications.
-
-### Multi-layer caching approach
-
-Design caching at multiple levels of your application stack:
+A multi-layer caching approach can help improve performance and reduce costs in your AI applications. Consider implementing caching at multiple levels of your application stack:
 
 - **Result and answer caching**. Cache complete AI responses for identical or semantically similar queries.
+
 - **Retrieval and grounding snippet caching**. Cache retrieved knowledge fragments and grounding data to avoid repeated database or search operations.
+
 - **Model output caching**. Cache intermediate model outputs that can be reused across requests.
 
 ### Cache key design and policies
@@ -168,8 +168,11 @@ Design caching at multiple levels of your application stack:
 Implement comprehensive cache key strategies:
 
 - **Cache key components**. Include tenant/user identity, policy context, model version, and prompt version in cache keys.
+
 - **Time-to-live (TTL) policies**. Set appropriate expiration times based on data freshness requirements and content sensitivity.
+
 - **Invalidation hooks**. Implement cache invalidation triggers for data updates, model changes, and prompt modifications.
+
 - **User privacy protection**. Never cache user-private content unless properly scoped by key and policy.
 
 ### Semantic caching
@@ -177,25 +180,12 @@ Implement comprehensive cache key strategies:
 Implement semantic caching to identify and reuse responses for semantically similar queries:
 
 - **Similarity detection**. Use embedding models to identify semantically equivalent queries that can share cached results.
+
 - **Context awareness**. Consider user context and permissions when determining cache validity to ensure appropriate access control.
+
 - **Hit rate optimization**. Target healthy cache hit rates, especially for high-traffic paths like product catalog searches, while monitoring cache evictions.
 
-### Caching risks and mitigation
-
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
-
-**Risks:**
-
-- **Data leakage**. Accidentally serving cached answers containing sensitive or user-specific information to unauthorized users.
-- **Stale information**. Cached responses might become outdated or inaccurate over time.
-- **Privacy violations**. Cached data might contain personal or confidential information that shouldn't be shared across users.
-
-**Mitigation strategies:**
-
-- Implement cache partitioning based on user identity, tenant context, and security policies
-- Use cache expiration policies appropriate for your data freshness requirements
-- Apply security filters and authorization checks before serving cached results
-- Monitor cache hit rates, data quality metrics, and security audit logs
 
 ## Evaluate the use of orchestration and agents in generative AI solutions
 
@@ -229,13 +219,7 @@ Use agent-routed collaboration approaches for exploratory or composed tasks:
 
 #### Agent design considerations
 
-When designing agent-based systems:
-
-- **Isolation and boundaries**. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability.
-
-- **Communication patterns**. Use established patterns like topic-queue systems for agent communication.
-
-- **Tool abstraction**. Abstract tool capabilities using standardized interfaces to enable agent flexibility.
+When designing agent-based systems, consider isolation and boundaries, communication patterns, and tool abstraction strategies. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability. Use established patterns like topic-queue systems for agent communication. And, abstract tool capabilities using standardized interfaces to enable agent flexibility.
 
 > [!IMPORTANT]
 > Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
