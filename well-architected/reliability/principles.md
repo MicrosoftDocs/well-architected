@@ -25,7 +25,7 @@ If you don't apply these principles to your design, the workload most likely won
 |![Goal icon](../_images/goal.svg) Get clarity on the workload's scope, user growth, and most importantly promises the team has made to external customers and internal stakeholders.|
 |--| 
 
-Design isn't guesswork. This principle is about a deliberate process that brings alignment on user experience, design constraints, and on what success looks like and how it's measured. 
+Design isn't guesswork based on undefined or vague outcomes. Reliability requires a deliberate activity that achieves alignment on acceptable user experience, design constraints, and on what success looks like and how it's measured.
 
 Set clear, achievable, and documented goals, negotiated with business stakeholders and grounded in a realistic investment and forecasting. These requirements will directly inform your architectural choices, from resiliency strategies to observability tooling and scaling plans.
 
