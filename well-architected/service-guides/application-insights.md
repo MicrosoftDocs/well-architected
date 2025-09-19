@@ -31,9 +31,9 @@ This guide focuses on the interrelated decisions for the following Azure resourc
 
 ## Reliability
 
-The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover from failures quickly**.
+The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
+[Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Workload design checklist
 
@@ -72,13 +72,13 @@ Start your design strategy based on the [design review checklist for Reliability
 
 ## Security
 
-The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload. Security is one of the most important aspects of any architecture. Azure Monitor provides features to employ both the principle of least privilege and defense in depth.
+The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The **[Security design principles](/azure/well-architected/security/security-principles)** provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights. Use the following information to maximize the security of Application Insights and help ensure that only authorized users access collected data.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Application Insights.
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md). Identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
 
 > [!div class="checklist"]
 >
@@ -116,7 +116,7 @@ For more information on how data charges are calculated for the underlying Log A
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine tune the design so that the workload aligns with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -193,7 +193,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Use key performance indicators for Application Insights to define a baseline.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Application Insights.
 
 > [!div class="checklist"]
 >
@@ -220,7 +220,7 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to Application Insights and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Application Insights components should prevent log ingestion public networks, or sources that Microsoft Entra ID doesn't authenticate.
 - You should enforce linking of the Application Insights component to a Log Analytics workspace to encrypt logs.

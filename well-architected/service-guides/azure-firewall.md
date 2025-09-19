@@ -7,7 +7,7 @@ ms.reviewer: lnyswonger
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.date: 08/17/2025
+ms.date: 09/16/2025
 products: azure-firewall
 azure.category:
   - networking
@@ -63,6 +63,7 @@ as needed.
 |--------|----|
 |Deploy Azure Firewall across [multiple availability zones](/azure/firewall/deploy-availability-zone-powershell).| Deploy Azure Firewall across multiple availability zones to maintain a specific level of resiliency. If one zone experiences an outage, another zone continues to serve traffic.|
 |[Monitor Azure Firewall metrics](/azure/firewall/metrics#configure-metrics-to-a-log-analytics-workspace) in a Log Analytics workspace. Closely monitor metrics that indicate the Azure Firewall health state, such as *throughput*, *Firewall health state*, *SNAT port utilization*, and *AZFW latency probe* metrics. <br><br> Use Azure Service Health to [monitor Azure Firewall health](/azure/service-health/resource-health-alert-arm-template-guide). | Monitor resource metrics and service health so you can detect when a service state degrades and take proactive measures to prevent failures.|
+| Enable [Resource Health](/azure/service-health/resource-health-overview) monitoring to proactively monitor Azure Firewall health state and receive notifications about potential degradations. | Provides early warning of potential issues and recommended mitigation actions, improving operational responsiveness and reducing downtime. |
 
 ## Security
 
@@ -116,8 +117,7 @@ strategy to include more approaches as needed.
 | Use an [internal enterprise certification authority (CA)](/azure/firewall/premium-certificates) to generate certificates when you use [TLS inspection](/azure/firewall/premium-features#tls-inspection) with Azure Firewall Premium. Use self-signed certificates only for [testing and proof of concept (PoC) purposes](https://techcommunity.microsoft.com/t5/azure-network-security-blog/building-a-poc-for-tls-inspection-in-azure-firewall/ba-p/3676723). | Enable TLS inspection so that Azure Firewall Premium terminates and inspects TLS connections to detect, alert, and mitigate malicious activity in HTTPS. |
 | Use Firewall Manager to create and associate an [Azure DDoS Protection plan](/azure/firewall-manager/configure-ddos) with your hub virtual network. This approach doesn't apply to Virtual WAN. | Configure an Azure DDoS Protection plan so that you can centrally manage DDoS protection alongside your firewall policies. This approach streamlines how you manage your network security and simplifies how you deploy and monitor processes. |
 |Use [integration in Security Copilot](/azure/firewall/firewall-copilot) to do investigations of the malicious traffic. |This integration helps analysts perform detailed investigations of the malicious traffic intercepted by the IDPS feature.|
-
-
+| Configure [explicit proxy](/azure/firewall/explicit-proxy) for outbound traffic when UDRs can't be applied. Configure proxy settings on sending applications (such as web browsers) to direct traffic through Azure Firewall's private IP address without requiring user-defined routes. | Use explicit proxy to simplify traffic routing in scenarios where traditional UDR-based routing isn't feasible, while maintaining security inspection capabilities. |
 
 ## Cost Optimization
 
@@ -147,7 +147,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Identify and delete unused Azure Firewall deployments. Analyze [monitoring metrics](/azure/firewall/metrics#firewall-metrics) and UDRs that are associated with subnets that point to the firewall's private IP. Also consider other validations and internal documentation about your environment and deployments. For example, analyze any classic NAT, network, and application rules for Azure Firewall. And consider your settings. For example, you might configure the DNS proxy setting to **Disabled**. <br><br> For more information, see [Monitor Azure Firewall](/azure/firewall/monitor-firewall). | Use this approach to detect cost-effective deployments over time and eliminate unused resources, which prevents unnecessary costs.|
 | Review your Firewall Manager policies, associations, and inheritance carefully to optimize cost. Policies are billed based on firewall associations. A policy with zero or one firewall association is free. A policy with multiple firewall associations is billed at a fixed rate.<br><br> For more information, see [Firewall Manager pricing](https://azure.microsoft.com/pricing/details/firewall-manager).| Properly use Firewall Manager and its policies to reduce operational costs, increase efficiency, and reduce management overhead. |
 | Review all the public IP addresses in your configuration, and disassociate and delete the ones that you don't use. Evaluate source network address translation (SNAT) port usage before you remove any IP addresses. <br><br> For more information, see [Monitor Azure Firewall logs and metrics](/azure/firewall/firewall-diagnostics) and [SNAT port usage](/azure/firewall/metrics#firewall-metrics).| Delete unused IP addresses to reduce costs.|
-| Reduce cost through [ingestion-time transformation](/azure/firewall/firewall-logs) in Log Analytics for selective firewall log processing. <br><br> Configure advanced filtering and data transformation before log storage to optimize costs while maintaining security visibility. | Significant cost reduction in log analytics expenses for high-traffic environments while preserving relevant security events for analysis. |
+| Reduce cost through [ingestion-time transformation](/azure/azure-monitor/data-collection/data-collection-transformations#workspace-transformation-dcr) in Log Analytics for selective firewall log processing. <br><br> To optimize costs while maintaining security visibility, configure advanced filtering and data transformation before logs are stored in the tables prefixed with `AZFW`. | Significant cost reduction in log analytics expenses for high-traffic environments while preserving relevant security events for analysis. |
 
 ## Operational Excellence
 
@@ -173,6 +173,8 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Define alerts for key events** so that operators can quickly respond to them.
 >
 > - **Take advantage of platform-provided detection mechanisms in Azure to detect abuse.** Integrate Azure Firewall with [Microsoft Defender for Cloud](https://techcommunity.microsoft.com/t5/microsoft-defender-for-cloud/azure-network-security-using-microsoft-defender-for-cloud/ba-p/2228222) and [Microsoft Sentinel](https://azuremarketplace.microsoft.com/marketplace/apps/sentinel4azurefirewall.sentinel4azurefirewall) if possible. Integrate with Defender for Cloud so you can visualize the status of network infrastructure and network security in one place, including Azure network security across all virtual networks and virtual hubs in different regions in Azure. Integrate with Microsoft Sentinel to provide threat-detection and prevention capabilities.
+>
+> - **Configure customer-controlled maintenance** to align system updates with business requirements. Schedule maintenance during planned downtime windows to minimize disruption to critical operations, especially for applications that require persistent connections.
 
 ### Configuration recommendations
 
@@ -186,6 +188,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Configure [customer-controlled maintenance](/azure/firewall/customer-controlled-maintenance) with minimum 5-hour windows and daily recurrence. <br><br> Plan maintenance schedules around business requirements and low-traffic periods. Consider geographic distribution of maintenance windows for multi-region deployments. | Predictable maintenance reduces unexpected downtime while ensuring firewall infrastructure receives necessary security updates. Aligns infrastructure maintenance with business availability requirements. |
 | Use [FQDNs in DNAT rules](/azure/firewall/destination-nat-rules) to route inbound traffic to backend infrastructure instead of static IP addresses. | Reduces operational overhead when backend infrastructure changes IP addresses due to scaling operations, deployments, or infrastructure updates. |
 | Configure [DNAT on private IP addresses](/azure/firewall/destination-nat-rules) for complex hybrid and enterprise networking scenarios. <br><br> Enable connectivity between networks with overlapping IP address ranges through port translation capabilities. | This is especially useful in scenarios with overlapping IP ranges, common in mergers, partner networks, or multi-tenant environments. |
+| Implement [change tracking](/azure/firewall/monitor-firewall#change-tracking-preview) (preview) to monitor configuration changes made to Azure Firewall Rule Collection Groups. | Provides detailed visibility into configuration changes, enhancing security posture and simplifying troubleshooting by tracking who made what changes and when. |
 
 ## Performance Efficiency
 
