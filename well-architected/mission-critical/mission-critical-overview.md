@@ -68,7 +68,7 @@ Achieving high reliability imposes significant cost tradeoffs, which may not be 
 |[**Security**](mission-critical-security.md)|Protect the application against threats intended to directly or indirectly compromise its reliability.|
 |[**Operational procedures**](mission-critical-operational-procedures.md)|Adoption of DevOps and related deployment methods is used to drive effective and consistent operational procedures.|
 
-<br>
+
 > [!VIDEO 9e05a6bd-7d10-4a83-9436-370a75dc1919]
 
 ## Next step
