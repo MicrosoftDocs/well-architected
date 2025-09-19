@@ -196,14 +196,12 @@ Use policies to apply centralized safeguards to AKS clusters in a consistent way
 - Control which functions are granted to pods, and whether running contradicts policy, by using Azure Policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
 
 - Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations by using [Azure Policy](/azure/governance/policy/overview).
- 
+
 - Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, like root privileges, and to disallow pods that don't conform to policy.
 
 > [!NOTE]
-> 
-> When you deploy into an Azure landing zone, the Azure policies to help you ensure consistent reliability and security should be provided by the landing zone implementation.
 >
-> The mission-critical [reference implementations](mission-critical-overview.md#reference-architecture-examples) provide a suite of baseline policies to drive recommended reliability and security configurations.
+> When you deploy into an Azure landing zone, the Azure policies to help you ensure consistent reliability and security should be provided by the landing zone implementation.
 
 #### Design considerations and recommendations for Azure App Service
 

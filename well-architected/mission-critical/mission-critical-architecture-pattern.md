@@ -68,7 +68,6 @@ A system can have resources that are deployed in region but outlive the stamp re
 |Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
 |Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
 
-
 ## Baseline architectures for mission-critical workloads
 
 These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS).
@@ -77,12 +76,9 @@ These baseline examples serve as the recommended north star architecture for mis
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-                <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro">
                  <img role="presentation" alt="Diagram shows a baseline mission-critical application." src="./images/mission-critical-architecture-online.png">
-                </a>
              </figure>
              <div class="card-content has-text-overflow-ellipsis">
                  <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
@@ -96,31 +92,25 @@ These baseline examples serve as the recommended north star architecture for mis
             </article>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-               <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture">
                  <img role="presentation" alt="Diagram shows the baseline architecture extended with network controls." src="./images/mission-critical-architecture-network.svg">
-                </a>
-                </figure>
-                <div class="card-content has-text-overflow-ellipsis">
-                    <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-                      Baseline with network controls
-                      <hr>                      
-                    </div>
-                    <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                        <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to the workload resources.</p>
-                    </div>
+            </figure>
+            <div class="card-content has-text-overflow-ellipsis">
+                <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
+                    Baseline with network controls
+                    <hr>
                 </div>
-            </article>
+                <div class="is-size-7 has-margin-top-small has-line-height-reset">
+                    <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to the workload resources.</p>
+                </div>
+            </div>
+        </article>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-        <article class="card has-outline-hover is-relative is-fullheight">
+        <article class="card is-relative is-fullheight">
           <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-              <a class="is-undecorated is-full-height is-block"
-              href="/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone">
-                 <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="./images/mission-critical-architecture-landing-zone.svg">
-            </a>
+             <img role="presentation" alt="Diagram shows the baseline architecture deployed using Azure landing zones." src="./images/mission-critical-architecture-landing-zone.svg">
           </figure>
           <div class="card-content has-text-overflow-ellipsis">
              <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
