@@ -236,6 +236,9 @@ An AI gateway can address cross-cutting concerns in addition to being a layer of
 
 - **Header injection and transformation**. Add required headers, user context, and security tokens for downstream services.
 
+> [!TIP]
+> For an in-depth look at how an AI gateway can be used for cross-cutting concerns and how a gateway introduces additional complexity into your architecture, see [Access Azure OpenAI and other language models through a gateway](/azure/architecture/ai-ml/guide/azure-openai-gateway-guide).
+
 ### Multi-provider scenarios
 
 AI gateways are especially valuable when using multiple model providers or shared model hosting platforms. Often, you'll see these as centralized resources within your organization that your workload will be encouraged or required to take a dependency on. A sufficiently complex workload might also benefit from building this layer of abstraction within its own design.
