@@ -26,7 +26,7 @@ This article describes common design areas and factors to consider when you make
 
 ## Application layer architecture
 
-When designing intelligent capabilities, establish clear boundaries in your design across these four key layers:
+When designing intelligent capabilities, establish clear boundaries in your design across these five key layers:
 
 :::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram showing the four application layers: Client, Intelligence, Knowledge, and Tools." lightbox="../_images/ai-application-layers.svg":::
 
@@ -153,7 +153,7 @@ A multi-layer caching approach can help improve performance and reduce costs in 
 
 - **Model output caching**. Cache intermediate model outputs that can be reused across requests.
 
-When designing your caching approach in each layer you'll need to understand what data is frequently accessed and how the application's users' roles and permissions might influence what data they can access. For caching to be effective you must expect a healthy cache hit rates. Focus on caching for high-traffic paths like product catalog searches, while monitoring cache evictions.
+When designing your caching approach in each layer you'll need to understand what data is frequently accessed and how the application's users' roles and permissions might influence what data they can access. For caching to be effective you must expect a healthy cache hit rate. Focus on caching for high-traffic paths like product catalog searches, while monitoring cache evictions.
 
 - **Cache key components**. Cached values need to be tied to specific runtime factors within your workload. Include values such as tenant/user identity, policy context, model version, and prompt version in cache keys to ensure a cached value is only being returned when appropriate for the request.
 
@@ -161,7 +161,7 @@ When designing your caching approach in each layer you'll need to understand wha
 
 - **Invalidation hooks**. Implement cache invalidation triggers for data updates, model changes, and prompt modifications.
 
-- **User privacy protection**. Never cache user-private content unless properly scoped by key and policy. Generally speaking, caching is best implemented for data that would work across multiple users, focusing on caching for a single user is not practical in most situations. Avoid caching user-specific responses as a valid response for all users. For example, a cached response for "How many hours of paid time off do I have left?" would only ever be appropriate for the user that requested the data, even if other users present the same query.
+- **User privacy protection**. Never cache user-private content unless properly scoped by key and policy. Generally speaking, caching is best implemented for data that would work across multiple users. Focusing on caching for a single user isn't practical in most situations. Avoid caching user-specific responses as a valid response for all users. For example, a cached response for "How many hours of paid time off do I have left?" would only ever be appropriate for the user that requested the data, even if other users present the same query.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
 
@@ -214,25 +214,13 @@ Consider hybrid designs where orchestrators delegate to agents for specific subt
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Orchestration provides predictability and control but limits adaptability. Agent collaboration enables dynamic problem-solving but introduces variability and complexity.
 
-## Plan for model deprecation
-
-Foundation models will eventually reach end-of-life and be retired by your model hosting platform. The models are replaced by models that perform better, are more cost effective, have updated training knowledge, and support new capabilities. Design abstractions that minimize the impact of your workload's future model transitions.
-
-- **Provider abstraction**. Use abstraction layers that allow switching between model providers without application changes.
-
-- **Version management**. Implement versioning strategies that support gradual migration between model versions.
-
-- **Fallback strategies**. Design fallback mechanisms for when preferred models become unavailable.
-
-For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
-
 ## Implement AI gateways for policy enforcement
 
 AI gateways are used in your design to provide [gateway offloading](/azure/architecture/patterns/gateway-offloading), [gateway routing](/azure/architecture/patterns/gateway-routing), and sometimes [gateway aggregation](/azure/architecture/patterns/gateway-aggregation) capabilities within your workload. Gateways are typically implemented using platforms like Azure API Management or through more custom-coded solutions, such as an Envoy or NGINX implementation. Gateways can be used to proxy requests to model providers, agent endpoints, tools, and knowledge stores.
 
 ### Core AI gateway capabilities
 
-An AI gateway can address cross-cutting concerns in addition to being a layer of abstraction and indirection from the target system, consider the following capabilities:
+An AI gateway can address cross-cutting concerns in addition to being a layer of abstraction and indirection from the target system. When designing an AI gateway strategy, consider the following capabilities:
 
 - **Protocol normalization**. Standardize interfaces across different providers (OpenAI API, Azure OpenAI, open-source models) to provide consistent client experiences.
 
@@ -254,7 +242,7 @@ AI gateways are especially valuable when using multiple model providers or share
 
 - **Unified interface**. Provide a single API surface that abstracts multiple backend providers.
 
-- **Failover and redundancy**. Route requests to alternative providers when primary services are unavailable.
+- **Failover and redundancy**. Route requests to alternate providers when primary services are unavailable.
 
 - **Cost optimization**. Route requests to the most cost-effective provider based on request characteristics.
 
@@ -284,11 +272,12 @@ Many AI applications access external knowledge sources to provide accurate, up-t
 - **Authorization-aware retrieval**. Ensure that grounding services enforce user permissions and tenant context when retrieving information.
 
 For a deeper understanding of designing a purpose-built vector index that supports your workload-specific grounding data for semantic retrieval, see [Design and develop a Retrieval-Augmented Generation (RAG) solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide).
+
 ### Multi-model routing patterns
 
 Using a model router can improve your workload's availability by routing requests to a healthy model when another model is in an unhealthy state, or it can help improve the quality of responses by selecting the best model for a particular task in real time. Model routers add flexibility but introduces additional variability. Use them selectively:
 
-**When to use model routers:** Consider using a model router when your workload can tolerate added variability and latency, the user experience expects breadth across model types, or you need to balance cost and capability across different model.
+**When to use model routers:** Consider using a model router when your workload can tolerate added variability and latency, the user experience expects breadth across model types, or you need to balance costs and capabilities across different models.
 
 **When to avoid model routers:** Using a model router is inappropriate in scenarios where the workload needs precise answers optimized for specific tasks, you're using fine-tuned models with narrow SLOs, or when deterministic behavior, including consistent performance, is critical for your use case.
 
@@ -300,15 +289,13 @@ If your workload is a multi-tenant application, see [Guide to design a secure mu
 
 ### When to use design patterns
 
-Consider using these design patterns when your use case meets the condition that's described:
+Consider using these design patterns in scenarios like these:
 
 - **Complex workflows**. When you have complex workflows or interactions between multiple AI models, patterns like RAG or microservices can help manage complexity and ensure clear communication between components.
 
 - **Scalability requirements**. If the demand on your application fluctuates, a pattern like microservices enables individual components to scale independently to accommodate varying loads without affecting the overall system performance.
 
 - **Data-driven applications**. If your application requires extensive data handling, an event-driven architecture can provide real-time responsiveness and efficient data processing.
-
-- **High availability requirements**. When your application needs to maintain availability even when some components fail, implement circuit breaker and bulkhead patterns.
 
 > [!NOTE]
 > Smaller applications or POCs typically don't benefit from these design patterns. These applications should be designed for simplicity. Likewise, if you have resource (budget, time, or headcount) constraints, using a simple design that can be refactored later is a better approach than adopting a complex design pattern.
