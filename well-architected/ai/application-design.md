@@ -163,7 +163,7 @@ When designing your caching approach in each layer you'll need to understand wha
 
 - **User privacy protection**. Never cache user-private content unless properly scoped by key and policy. Generally speaking, caching is best implemented for data that would work across multiple users. Focusing on caching for a single user isn't practical in most situations. Avoid caching user-specific responses as a valid response for all users. For example, a cached response for "How many hours of paid time off do I have left?" would only ever be appropriate for the user that requested the data, even if other users present the same query.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
 
 ## Evaluate the use of orchestration and agents in generative AI solutions
 
