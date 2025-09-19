@@ -114,12 +114,6 @@ In some scenarios, applications can combine loose and tight coupling, depending 
 
 - Use patterns like Outbox and Transactional Session to guarantee consistency so that [every message is processed correctly](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#every-message-must-be-processed).
 
-#### Example: Event-driven approach
-
-The [Mission-Critical Online](https://github.com/Azure/Mission-Critical-online) reference implementation uses microservices to process a single business transaction. It applies write operations asynchronously with a message broker and worker. Read operations are synchronous, with the result directly returned to the caller.
-
-:::image type="content" source="./images/mission-critical-event-driven.png " alt-text="Diagram that shows event-driven communication." lightbox="./images/mission-critical-event-driven.png":::
-
 ## Resiliency patterns and error handling in application code
 
 A mission-critical application must be designed to be resilient so that it addresses as many failure scenarios as possible. This resiliency maximizes service availability and reliability. The application should have self-healing capabilities, which you can implement by using design patterns like [Retries with Backoff](/dotnet/architecture/microservices/implement-resilient-applications/implement-http-call-retries-exponential-backoff-polly) and [Circuit Breaker](/dotnet/architecture/microservices/implement-resilient-applications/implement-circuit-breaker-pattern).
