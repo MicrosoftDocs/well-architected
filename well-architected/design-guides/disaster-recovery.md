@@ -71,7 +71,11 @@ Criticality is a business call and it's your responsibility to help guide that d
 
 Over-engineering low-impact services wastes resources; under-preparing high-impact ones risks serious consequences. The key is right-sizing your recovery strategy based on business impact. Use the following classification tiers as a starting point to assess criticality and align your disaster recovery investments appropriately.
 
-A common way to quantify tiers is through Service Level Objectives (SLOs), often expressed as 'five nines' (99.999%), 'four nines' (99.99%), and so on. These percentiles broadly represent the level of availability expected for a given workload. This article assumes that your SLOs have already been defined and will not cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [link].
+A common way to quantify tiers is through Service Level Objectives (SLOs), often expressed as 'five nines' (99.999%), 'four nines' (99.99%), and so on. These percentiles broadly represent the level of availability expected for a given workload. 
+
+From most important metrics in disaster recovery planning are Recovery Time Objective (RTO) and Recovery Point Objective (RPO), both quantified as time units. RTO defines how quickly a system must be restored after a disruption, it's about downtime tolerance. RPO defines how much data loss is acceptable, it reflects how frequently data must be backed up.
+
+This article assumes that your SLOs and recovery metrics have already been defined and will not cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [link].
 
 ![Multi-region disaster recovery strategy for Azure workloads](./_images/disaster-recovery-criticality-tiers.png)
 
