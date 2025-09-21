@@ -283,11 +283,6 @@ In cloud computing, shared responsibility defines the clear division of operatio
 ---
 
 
+## Fix the damn art
 
-## Understand your part in the shared responsibility model with Azure
-
-In cloud computing, shared responsibility defines the clear division of operational and security duties between the Azure platform and your organization. Azure guarantees the reliability, security, and availability of the underlying physical infrastructure, networking, and core platform services. Meanwhile, your organization is responsible for securing your data, managing identity and access controls, configuring workloads, and ensuring compliance. This collaborative model is essential for building resilient and reliable disaster recovery (DR) strategies.
-
-//TODO: The above is no good. Needs more. What does that have to do with recovery. what's shared responsibility in terms of recoverability look like.
-* Confirm recovery priority is appropriately categorized as Tier 3
-
+There's redudandant termininlogy.
