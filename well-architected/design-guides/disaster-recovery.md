@@ -10,7 +10,7 @@ ms.update-cycle: 1095-days
 
 # Develop a disaster recovery plan
 
-As a cloud solution architect, your job is to ensure that recovery from wide-scope failures isn't reactive but intentionally designed and documented as a disaster recovery (DR) plan. In case of failure, the effectiveness of that plan is what determines whether that failure is a temporary setback, or a reputational and financial crisis to the organization.
+As a cloud solution architect, your job is to ensure that recovery from wide-scope failures isn't reactive but intentionally designed and documented as a disaster recovery (DR) plan. In case of failure, the effectiveness of that plan is what determines whether that failure is a temporary setback for the organization, or a reputational and financial crisis.
 
 The plan is based stratgies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
 
@@ -53,7 +53,7 @@ _Disasters_, however, are a different class of event. They are broad in scope, a
 
 - Natural disasters or geopolitical events causing extended service unavailability
 
-Unattended blips can escalate into full-scale disasters if left unchecked. While advanced monitoring and health modeling can help detect and mitigate these issues early, that topic is beyond the scope of this article. For more information, see [Health Modeling].
+Unattended blips can escalate into full-scale disasters if left unchecked. While advanced monitoring and health modeling can help detect and mitigate these issues early, that topic is beyond the scope of this article. For more information, see [Health modeling](./health-modeling.md).
 
 Ultimate goal of DR is business continuity within defined quantitative metrics. Think of the plan as a coordinated effort that requires predefined procedures, clear communication protocols, and executive-level decision-making. 
 
@@ -61,7 +61,8 @@ Ultimate goal of DR is business continuity within defined quantitative metrics. 
 
 Not every workload needs a heroic recovery plan. Recovery should reflect the criticality of the workload or parts of it. 
 
-Criticality is a business call and it's your responsibility to help guide that decision. It depends on what your workload does, who relies on it, and what happens if it goes down. Azure doesn't decide what's mission critical, _you do_. If an outage would hit your revenue, damage customer trust, or put you out of compliance, then that's a critical system. Own that decision, and design with it in mind.
+> [!IMPORTANT]
+> Criticality is a business call and it's your responsibility to help guide that decision. It depends on what your workload does, who relies on it, and what happens if it goes down. Azure doesn't decide what's mission critical, _you do_. If an outage would hit your revenue, damage customer trust, or put you out of compliance, then that's a critical system. Own that decision, and design with it in mind.
 
 Over-engineering low-impact services wastes resources; under-preparing high-impact ones risks serious consequences. The key is right-sizing your recovery strategy based on business impact. Use the following classification tiers as a starting point to assess criticality and align your disaster recovery investments appropriately.
 
@@ -97,7 +98,6 @@ These systems generally target SLOs around 99.9%, with RTO and RPO measured in h
 
 Outages in this tier may not immediately impact customers, but longer disruptions can slow down the business. Timely recovery important, even if it's not immediate.
 
-
 #### Tier 3: Administrative
 
 Administrative systems are non-critical workloads that support background operations or serve low-urgency use cases. These typically include archival platforms, sandbox environments, training portals, or batch-processing tools where availability is not time-sensitive.
@@ -116,8 +116,7 @@ Get your business stakeholders to sign off on these classifications. Confirm RTO
 
 Review these classifications regularly. Business needs evolve, and your DR plan should too.
 
-
-## Do cost modeling on recovery infrastructure and operations
+## Estimate and optimize your recovery costs
 
 The cost of disaster recovery scales with the criticality of the workload. 
 
@@ -135,7 +134,44 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
-Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds are essential for accountability and chargeback models.
+Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to trakc.
+
+## Document your DR plan as a runbook
+
+A strong runbook replaces abstract strategies with structure and allows the team respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
+
+- **Activation criteria and approvals**. Establish what qualifies as a DR event. Identify who has authority to trigger the DR process. Document escalation paths and decision checkpoints.
+
+- **Create contact matrix and communication plan**. List key personnel, roles, and backup contacts. Assign clear ownership of internal and external communication. Prepare pre-approved messaging templates for email, status page, and incident channels.
+
+- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cut-back steps.
+
+- **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
+
+- **Plan post-recovery and review**. Outline actions to clean up temporary environments. Document data reconciliation if applicable. Schedule root cause analysis and DR debrief.
+
+> [!TIP]
+> Treat your DR runbook like production code: version it and make it accessible. Use version control tools like Git or a versioned wiki to track updates and ensure accuracy over time. Just as important, make sure the runbook is always reachable, even during an outage. Store it in multiple formats, including offline or printable versions, so teams can access it when it matters most.
+
+## Test regularly and improve the plan
+
+Disaster recovery is an operational discipline. A DR plan that's never tested stays theoretical and unproven.
+
+* Rehearse the runbook to simulate scenarios and clarify team roles.
+* Schedule full or partial failover drills to validate actual recovery steps and timings.
+* Capture any gaps or issues discovered, then update your architecture and runbooks promptly.
+
+## Watch out for these friction points
+
+Here are some key friction points that you should be cautious, otherwise DR planning can turn into a costly exercise without the right outcomes.
+
+- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgest can lead to risk and disappointment.
+
+- **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
+
+- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitatation to initiate recovery, which can cause unnecessary delays.
+
+- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback might be a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
 
 ## Recovery strategy for active-active deployments 
 
@@ -222,42 +258,7 @@ Backup and restore strategies are designed for Tier 3 administrative workloads t
 | **Maintain and audit backup systems** | • Perform quarterly audits of backup requirements<br>• Retire obsolete systems and adjust policies<br>• Review and update RPO/RTO requirements based on business changes | • Execute quarterly backup audits<br>• Verify system retirement procedures<br>• Validate requirement changes with stakeholders |
 | **Create communication plans and protocols** | • Establish clear chain of command for restore activation<br>• Document stakeholder notification procedures<br>• Create predefined messaging templates for restore events | • Test communication channels during restore drills<br>• Verify notification delivery mechanisms<br>• Validate escalation procedures |
 
-## Document your DR plan as a runbook
 
-A strong runbook replaces abstract strategies with structure and allows the team respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
-
-- **Activation criteria and approvals**. Establish what qualifies as a DR event. Identify who has authority to trigger the DR process. Document escalation paths and decision checkpoints.
-
-- **Create contact matrix and communication plan**. List key personnel, roles, and backup contacts. Assign clear ownership of internal and external communication. Prepare pre-approved messaging templates for email, status page, and incident channels.
-
-- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cut-back steps.
-
-- **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
-
-- **Plan post-recovery and review**. Outline actions to clean up temporary environments. Document data reconciliation if applicable. Schedule root cause analysis and DR debrief.
-
-> [!IMPORTANT]
-> Treat your DR runbook like production code: version it and make it accessible. Use version control tools like Git or a versioned wiki to track updates and ensure accuracy over time. Just as important, make sure the runbook is always reachable, even during an outage. Store it in multiple formats, including offline or printable versions, so teams can access it when it matters most.
-
-## Test regularly and improve the plan
-
-Disaster recovery is an operational discipline. A DR plan that's never tested stays theoretical and unproven.
-
-* Rehearse the runbook to simulate scenarios and clarify team roles.
-* Schedule full or partial failover drills to validate actual recovery steps and timings.
-* Capture any gaps or issues discovered, then update your architecture and runbooks promptly.
-
-## Watch out for these friction points
-
-Here are some key friction points that you should be cautious, otherwise DR planning can turn into a costly exercise without the right outcomes.
-
-- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgest can lead to risk and disappointment.
-
-- **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
-
-- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitatation to initiate recovery, which can cause unnecessary delays.
-
-- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback might be a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
 
 
 ## Next steps
