@@ -126,7 +126,7 @@ Implement the following recommendations to design a monitoring and alerting stra
 
   - Locks
  
-## Monitor Networks
+## Monitor network traffic
 
 - To maintain network reliability, it’s important to have continuous monitoring and diagnostics in place. Regularly test network connectivity and performance using synthetic probes and health checks across your critical network paths.
   
