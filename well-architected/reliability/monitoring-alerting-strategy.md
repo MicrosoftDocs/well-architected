@@ -103,8 +103,6 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - Use black box monitoring to measure platform services and the resulting customer experience. Black box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
 
-- Continuously track the health and performance of the applications on your network by collecting and analysing network logs and metrics. Use synthetic tests and health checks to detect connectivity issues early, and monitor traffic patterns to identify anomalies or potential bottlenecks. This helps ensure your network remains reliable and supports your applications effectively.
-
 > [!NOTE]
 > For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
 
@@ -128,7 +126,7 @@ Implement the following recommendations to design a monitoring and alerting stra
  
 ## Monitor network traffic
 
-- To maintain network reliability, it’s important to have continuous monitoring and diagnostics in place. Regularly test network connectivity and performance using synthetic probes and health checks across your critical network paths.
+- To maintain network reliability, it’s important to have continuous monitoring and diagnostics in place. Regularly test network connectivity and performance using synthetic tests and health checks across your critical network paths.
   
 - Collect and analyse network logs and metrics - such as latency, packet loss, and bandwidth utilisation. This helps you spot issues early and distinguish between temporary and ongoing faults. By correlating network events with platform-level metrics, you can quickly get to the root cause of problems and troubleshoot effectively.
 
@@ -154,9 +152,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
 
-- [Connection Monitor](https://learn.microsoft.com/en-us/azure/network-watcher/connection-monitor-overview) is a tool that can be used to continuously track network connectivity and performance across Azure resources. It runs synthetic tests and provides real-time alerts and diagnostics to detect failures early. Custom workbooks can be built to visualise connectivity health and aggregated performance metrics.
+- [Connection Monitor](/azure/network-watcher/connection-monitor-overview) is a tool that can be used to continuously track network connectivity and performance across Azure resources. It runs synthetic tests and provides real-time alerts and diagnostics to detect failures early. Custom workbooks can be built to visualise connectivity health and aggregated performance metrics.
 
-- VNET Flow Logs can be enabled across workloads to monitor network traffic. [Traffic Analytics](https://learn.microsoft.com/en-us/azure/network-watcher/traffic-analytics?tabs=Americas) can be used to analyse and enrich these flow logs to surface insights such as blocked traffic, malicious flows, and active ports exposed to the internet. Creating workbooks allows teams to monitor live traffic behaviour and receive alerts. Leverage timeline views and topology visualisations to easily monitor traffic patterns that may indicate performance degradation or security threats.
+- VNET Flow Logs can be enabled across workloads to monitor network traffic. [Traffic Analytics](/azure/network-watcher/traffic-analytics) can be used to analyse and enrich these flow logs to surface insights such as blocked traffic, malicious flows, and active ports exposed to the internet. Creating workbooks allows teams to monitor live traffic behaviour and receive alerts. Leverage timeline views and topology visualisations to easily monitor traffic patterns that may indicate performance degradation or security threats.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
 
