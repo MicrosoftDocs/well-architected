@@ -440,7 +440,7 @@ Network security groups at the subnet level of the compute resources restrict eg
 - [Private endpoints](/azure/private-link/private-endpoint-overview)
 - [Azure Bastion](/azure/bastion/bastion-overview)
 - [Azure DDoS Protection overview](/azure/ddos-protection/ddos-protection-overview)
-- [Traffic Analytics Overview](azure/network-watcher/traffic-analytics)
+- [Traffic Analytics Overview](/azure/network-watcher/traffic-analytics)
 
 ## Security checklist
 
