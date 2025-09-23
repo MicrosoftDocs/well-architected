@@ -276,7 +276,7 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 
 [Azure Monitor health models](/azure/azure-monitor/health-models/overview) let you easily create, manage, and interact with health models directly within Azure. They provide a unified data platform that seamlessly integrates with the rest of Azure Monitor, offering built-in alerting and ready-to-use visualizations—both graphical and tabular—for your health data. For advanced scenarios, the query and API data-plane capabilities enable flexible use of health states, making it easy to incorporate health insights into your existing operational tools, such as Grafana dashboards.
 
-![A screenshot showing the Azure Monitor health models.](./_images/azure-monitor-health-models-designer.png)
+:::image type="content" source="./_images/azure-monitor-health-models-designer.png" alt-text="A screenshot showing the Azure Monitor health models." lightbox="./_images/azure-monitor-health-models-designer.png":::
 
 ## Related links
 
