@@ -130,7 +130,7 @@ Implement the following recommendations to design a monitoring and alerting stra
   
 - Collect and analyze network logs and metrics, such as latency, packet loss, and bandwidth utilization. This approach helps you detect problems early and distinguish between temporary and ongoing faults. By correlating network events with platform-level metrics, you can quickly identify the underlying cause of problems and troubleshoot effectively.
 
-- Equip your network monitoring to deliver complete, end-to-end visibility. This approach enables your team to respond rapidly to incidents and keep your network running smoothly.
+- Equip your network monitoring to deliver end-to-end visibility. This approach enables your team to respond rapidly to incidents and keep your network running smoothly.
 
 - Effective network monitoring also requires deep visibility into traffic patterns. Continuously collect, analyze and enrich network flow logs to identify anomalies, blocked or malicious traffic, and bandwidth hotspots.
   
@@ -152,9 +152,9 @@ Implement the following recommendations to design a monitoring and alerting stra
 
 - [Azure Business Continuity Center](/azure/business-continuity-center/business-continuity-center-overview) gives you insights into your business continuity estate. As you apply the approaches given for business continuity and disaster recovery (BCDR), use Azure Business Continuity Center to centralize management of business continuity protection across Azure and hybrid workloads. Azure Business Continuity Center pinpoints resources that lack proper protection (via backup or disaster recovery) and takes corrective actions. The tool facilitates unified monitoring and lets you establish governance and auditing compliance through Azure Policy, all conveniently accessible in one location.
 
-- [Connection Monitor](/azure/network-watcher/connection-monitor-overview) is a tool for continuously tracking network connectivity and performance across Azure resources. It runs synthetic tests and provides real-time alerts and diagnostics to detect failures early. Custom workbooks can be built to visualize connectivity health and aggregated performance metrics.
+- [Connection monitor](/azure/network-watcher/connection-monitor-overview) is a tool for continuously tracking network connectivity and performance across Azure resources. It runs synthetic tests and provides real-time alerts and diagnostics to detect failures early. You can build custom workbooks to visualize connectivity health and aggregated performance metrics.
 
-- Virtual network flow logs can be enabled across workloads to monitor network traffic. [Traffic Analytics](/azure/network-watcher/traffic-analytics) can be used to analyze and enrich these flow logs to surface insights such as blocked traffic, malicious flows, and active ports exposed to the internet. Creating workbooks allows teams to monitor live traffic behavior and receive alerts. Use timeline views and topology visualizations to easily monitor traffic patterns that might indicate performance degradation or security threats.
+- Virtual network flow logs can be enabled across workloads to monitor network traffic. [Traffic analytics](/azure/network-watcher/traffic-analytics) can be used to analyze and enrich these flow logs to surface insights such as blocked traffic, malicious flows, and active ports exposed to the internet. Creating workbooks allows teams to monitor live traffic behavior and receive alerts. Use timeline views and topology visualizations to easily monitor traffic patterns that might indicate performance degradation or security threats.
 
 - For multiple workspace best practices, see [Design a Log Analytics workspace architecture](/azure/azure-monitor/logs/workspace-design).
 

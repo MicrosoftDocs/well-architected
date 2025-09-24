@@ -288,7 +288,7 @@ For detailed guidance on alerting use cases and other considerations, see [Desig
 
 - [Connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) is a diagnostic tool in Network Watcher. It provides on-demand diagnostics and packet capture (PCAP) to help investigate connectivity problems.
 
-- [Connection monitor](/azure/network-watcher/connection-monitor-overview) is a monitoring service in Network Watcher. It runs continuous synthetic tests and sends real-time alerts for connectivity and performance problems.
+- [Connection monitor](/azure/network-watcher/connection-monitor-overview) is a monitoring tool in Network Watcher. It runs continuous synthetic tests and sends real-time alerts for connectivity and performance problems.
 
 - [Traffic analytics](/azure/network-watcher/traffic-analytics) is a traffic analysis solution in Network Watcher. It visualizes traffic distribution, identifies top talkers, and reveals bandwidth utilization trends. These capabilities provide a unified view of network health.
 
