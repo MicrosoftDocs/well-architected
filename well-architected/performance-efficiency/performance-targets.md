@@ -97,7 +97,7 @@ Evaluating customer feedback involves actively seeking out and analyzing the res
 
 [Azure Monitor](/azure/azure-monitor/overview) is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources and measure performance targets. It collects platform metrics and provides ready-to-use dashboards. It allows you to configure alerts based on metrics. It also stores and correlates metrics to ensure a single source of truth.
 
-[Network Watcher](/azure/network-watcher/network-watcher-overview) can be used to establish and monitor performance targets across Azure infrastructure. Leverage [Connection Monitor](/azure/network-watcher/connection-monitor-overview) to measure latency and packet loss through continuous synthetic tests and diagnostics. Use [Traffic Analytics](/azure/network-watcher/traffic-analytics) to analyse flow logs and uncover trends in bandwidth usage and traffic patterns. Build custom workbooks in both tools to visualise performance metrics, track baselines, and support ongoing performance evaluation.
+[Azure Network Watcher](/azure/network-watcher/network-watcher-overview) can be used to establish and monitor performance targets across Azure infrastructure. Use [connection monitor](/azure/network-watcher/connection-monitor-overview) to measure latency and packet loss through continuous synthetic tests and diagnostics. Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze flow logs and uncover trends in bandwidth usage and traffic patterns. Build custom workbooks in both tools to visualize performance metrics, track baselines, and support ongoing performance evaluation.
 
 ## Related links
 
