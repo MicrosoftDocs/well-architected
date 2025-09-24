@@ -399,7 +399,7 @@ This example builds on the Information Technology (IT) environment established i
 
 8) **TLS communication**. Protect data in transit by communicating over TLS.
 
-9) **Network Security Group (NSG)**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
+9) **NSG**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
 
 10) **Log Analytics**. Azure resources emit telemetry that's  ingested in Log Analytics then used with a SIEM solution like Microsoft Sentinel for analysis.
 
