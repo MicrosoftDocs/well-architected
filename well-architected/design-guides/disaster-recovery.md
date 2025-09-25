@@ -10,9 +10,9 @@ ms.update-cycle: 1095-days
 
 # Develop a disaster recovery plan
 
-As a cloud solution architect, your job is to ensure that recovery from wide-scope failures isn't reactive but intentionally designed and documented as a disaster recovery (DR) plan. In case of failure, the effectiveness of that plan is what determines whether that failure is a temporary setback for the organization, or a reputational and financial crisis.
+As a cloud solution architect, your job is to ensure that recovery from wide-scope failures is intentionally designed and documented as a disaster recovery (DR) plan. In case of failure, the effectiveness of that plan is what determines whether that failure is a temporary setback for the organization, or a reputational and financial crisis.
 
-The plan is based stratgies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
+The plan is based strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
 
 ## Terminology
 
@@ -21,7 +21,7 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 | Term | Definition |
 |------|------------|
 |**Active-active**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
-|**Active-passive**| One primary environment handles all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
+|**Active-passive**| One or more primary environments handle all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
 | **Active-passive (cold standby)** | Environment that is not running and requires provisioning and data restoration when activated. Lowest cost, longest recovery time. |
 | **Active-passive (hot standby)** | Fully provisioned, running environment ready for immediate takeover. Continuously synchronized with active site, enabling near-instant failover. |
 | **Active-passive (warm standby)** | Partially provisioned environment running minimal services that can scale up quickly during failures. |
@@ -39,7 +39,7 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 
 Disaster recovery (DR) is a strategic and methodical approach to restoring systems or critical parts of them, after a major failure event.
 
-In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in availability of isolated components, unexpected drop in  performance. They're typically resolved through built-in self-healing mechanisms without human intervention, such as graceful degradation.
+In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through built-in self-healing mechanisms without human intervention, such as graceful degradation.
 
 _Disasters_, however, are a different class of event. They are broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
 
@@ -76,7 +76,7 @@ This article assumes that your SLOs and recovery metrics have already been defin
 
 #### Tier 0: Mission Critical
 
-The mission-critical tier includes entire workloads or specific components where downtime is not an option and cost saving is secondary to continuity. These systems form the core of the organization, directly driving revenue, safeguarding customer trust, or impacting lives. Common examples include financial platforms, healthcare systems, and security infrastructure.
+The mission-critical tier includes entire workloads or specific components where downtime is not an option and cost saving is secondary to continuity. These systems are fundamental to the organization, directly driving revenue, safeguarding customer trust, or impacting lives. Common examples include financial platforms, healthcare systems, and security infrastructure.
 
 This tier demands SLOs above 99.99%, with RTO measured in seconds and RPO approaching zero. To meet these requirements, an active-active, multi-region deployment is typically necessary, enabling instant recovery with no interruption to users.
 
@@ -88,13 +88,13 @@ Business-critical systems are essential to day-to-day operations and customer ex
 
 They typically require SLOs around 99.95%, with RTO and RPO measured in minutes. A mix of active-active or warm standby deployments is often used to balance resiliency with cost.
 
-While short outages may be survivable, extended downtime in this tier directly affects revenue, user satisfaction, and brand credibility. Predictability of recovery is critical.
+While short outages may be survivable, extended downtime in this tier directly affects revenue, user satisfaction, and brand credibility. Predictability and speed of recovery is critical.
 
 #### Tier 2: Business Operational
 
 Business-operational systems support internal teams and processes. While not directly customer-facing, they are essential for productivity and operational continuity. Typical examples include reporting platforms, internal dashboards, and administrative tools.
 
-These systems generally target SLOs around 99.9%, with RTO and RPO measured in hours. An acitve-passive with warm/cold deployment strategy is common, where secondary environments remain inactive until needed, optimizing for cost over speed.
+These systems generally target SLOs around 99.9%, with RTO and RPO measured in hours. An active-passive with warm/cold deployment strategy is common, where secondary environments remain inactive until needed, optimizing for cost over recovery speed.
 
 Outages in this tier may not immediately impact customers, but longer disruptions can slow down the business. Timely recovery important, even if it's not immediate.
 
@@ -110,13 +110,13 @@ While delays in this tier are generally acceptable, data integrity must still be
 
 Before you start your DR strategy, classify your workloads based on actual business impact and recovery requirements. 
 
-Start by listing every user flow in your workload. Document what it does, who relies on it, and what happens if it goes down.
+Start by listing every user flow in your workload. Document what it does, who relies on it, and what happens if it goes down. Different flows within the same workload may require different disaster recovery strategies based on their individual business impact and criticality.
 
 Get your business stakeholders to sign off on these classifications. Confirm RTO and RPO targets based on real business consequences, not just technical opinions. Their commitment sets the foundation and your DR strategy builds on that. Without alignment on business risk, a technical response lacks direction. 
 
 Review these classifications regularly. Business needs evolve, and your DR plan should too.
 
-## Estimate and optimize your recovery costs
+## Optimize your recovery costs
 
 The cost of disaster recovery scales with the criticality of the workload. 
 
