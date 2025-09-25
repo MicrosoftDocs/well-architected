@@ -309,9 +309,7 @@ To summarize:
 
 - Understand that network security groups can differ slightly from one another. It's easy to overlook the intent of the differences. **To have granular filtering, it's safer to create extra network security groups.** Set up at least one network security group.
 
-  - Adding a network security group unlocks many diagnostics tools, such as flow logs and network traffic analytics.
-
-  - Use Azure Policy to help control traffic in subnets that don't have network security groups.
+- Use Azure Policy to help control traffic in subnets that don't have network security groups (NSGs).
 
 - If a subnet supports network security groups, add a group, even if it's minimally impactful.
 
@@ -358,7 +356,7 @@ While private endpoints provide direct virtual network integration for PaaS serv
 
 For example you can use this logical segmentation around all PaaS services supporting a specific workload or business unit. Or, implement uniform perimeter policies for development, staging, and production environments, allowing appropriate access levels while maintaining isolation.
 
-Be aware of the limitations around logging, scalability, and others aspects that comes with this feature. For more information, see [Limitations of a network security perimeter?](/azure/private-link/network-security-perimeter-concepts#limitations-of-a-network-security-perimeter)
+Be aware of the limitations around logging, scalability, and other aspects that come with this feature. For more information, see [Limitations of a network security perimeter](/azure/private-link/network-security-perimeter-concepts#limitations-of-a-network-security-perimeter).
 
 ### Virtual network injection
 
@@ -402,7 +400,7 @@ This example builds on the Information Technology (IT) environment established i
 
 8) **TLS communication**. Protect data in transit by communicating over TLS.
 
-9) **Network Security Group (NSG)**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
+9) **NSG**: Protect segments within a VNet with NSG, a free resource that filters TCP/UDP inbound and outbound communication considering IP and port ranges. Part of NSG is the Application Security Group (ASG) that allows you to create tags for traffic rules for easier management.
 
 10) **Log Analytics**. Azure resources emit telemetry that's  ingested in Log Analytics then used with a SIEM solution like Microsoft Sentinel for analysis.
 
@@ -410,8 +408,7 @@ This example builds on the Information Technology (IT) environment established i
 
 12) **Microsoft Defender for Cloud**. Microsoft Defender for Cloud delivers many workload protection solutions, including Network recommendations for your environment.
 
-13) **Traffic Analytics**: Monitor your network controls with Traffic Analytics. This is configured through Network Watcher, part of Azure Monitor, and aggregates inbound and outbound hits in your subnets collected by NSG.
-
+13) **Traffic analytics**. Use traffic analytics to detect suspicious or unexpected traffic patterns, identify top talkers, and surface actionable insights into potential threats, misconfigurations, and anomalous flows. With built-in queries, you can prevent duplication of data and quickly investigate traffic by source, destination, protocol, or port. These queries help pinpoint security risks and policy violations across your Azure environment.
 
 ### Architecture for a containerized workload
 
@@ -443,6 +440,7 @@ Network security groups at the subnet level of the compute resources restrict eg
 - [Private endpoints](/azure/private-link/private-endpoint-overview)
 - [Azure Bastion](/azure/bastion/bastion-overview)
 - [Azure DDoS Protection overview](/azure/ddos-protection/ddos-protection-overview)
+- [Traffic analytics overview](/azure/network-watcher/traffic-analytics)
 
 ## Security checklist
 

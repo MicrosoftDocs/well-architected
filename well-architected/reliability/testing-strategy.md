@@ -141,6 +141,8 @@ Integrate the following recommendations and considerations to optimize your chao
 
 [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience. Azure Chaos Studio reached general availability at Ignite 2023 and has lots of features to help you get started with Fault injection and resiliency testing for your application using Azure infrastructure.
 
+[Connection monitor](/azure/network-watcher/connection-monitor-overview) is a feature of [Azure Network Watcher](/azure/network-watcher/network-watcher-overview) that you can use for synthetic monitoring and real-time testing of network connectivity across both Azure and hybrid environments. In chaos engineering scenarios, connection monitor can be used to inject faults into targeted network components and continuously measure key metrics such as latency and packet loss. This capability allows teams to observe how disruptions affect network reliability, both for individual flow components and across end-to-end network paths. To assess the impact of faults and identify areas for improvement, compare connection monitor telemetry with baseline metrics.
+
 ## Related links
 
 - [Backup and disaster recovery for Azure applications](../resiliency/backup-and-recovery.md)
