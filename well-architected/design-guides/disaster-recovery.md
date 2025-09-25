@@ -32,7 +32,7 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 | **Failback** | Process of returning workloads to the original primary environment after incident resolution. |
 | **Failover** | Process of shifting workloads from primary to standby environment during a disaster. |
 | **Graceful degradation** | Maintaining core functionality while less-critical components fail, preserving essential business capabilities. |
-| **Recovery point objective (RPO)** | Maximum acceptable data loss measured in time during a failure event. |
+| **Recovery point objective (RPO)** | Amount of time it can take your organization to restore essential functionalities and access to data before incurring major losses. RPO determines how often you should back up essential data. |
 | **Recovery time objective (RTO)** | Maximum acceptable downtime before business impact becomes unacceptable. |
 
 ## What is disaster recovery?
