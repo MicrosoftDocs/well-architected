@@ -10,9 +10,9 @@ ms.update-cycle: 1095-days
 
 # Develop a disaster recovery plan
 
-As a cloud solution architect, your job is to ensure that recovery from wide-scope failures is intentionally designed and documented as a disaster recovery (DR) plan. In case of failure, the effectiveness of that plan is what determines whether that failure is a temporary setback for the organization, or a reputational and financial crisis.
+As a cloud solution architect, you play a key part in ensuring that recovery from wide-scope failures is intentionally planned, designed, and documented as a disaster recovery (DR) plan. In case of failure, the quality of that plan influences whether the event is a temporary setback or becomes a reputational and financial crisis.
 
-The plan is based strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
+The plan should be based on strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
 
 ## Terminology
 
@@ -20,19 +20,19 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 
 | Term | Definition |
 |------|------------|
-|**Active-active**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
-|**Active-passive**| One or more primary environments handle all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
+| **Active-active**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
+| **Active-passive**| One primary environment that handles all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
 | **Active-passive (cold standby)** | Environment that is not running and requires provisioning and data restoration when activated. Lowest cost, longest recovery time. |
 | **Active-passive (hot standby)** | Fully provisioned, running environment ready for immediate takeover. Continuously synchronized with active site, enabling near-instant failover. |
 | **Active-passive (warm standby)** | Partially provisioned environment running minimal services that can scale up quickly during failures. |
 | **Business continuity** | Strategy for ensuring critical operations continue during and after disruptions, encompassing DR, personnel, communication, and processes. |
-|**Disaster recovery (DR) plan**| Detailed, executable procedures for recovering specific systems, including step-by-step actions, roles, responsibilities, failover sequences, and communication workflows. |
-|**Disaster recovery (DR) strategy**| High-level approach defining goals, principles, and recovery posture for responding to catastrophic failures across workloads. |
+| **Disaster recovery (DR) plan**| Detailed, executable procedures for recovering specific systems, including step-by-step actions, roles, responsibilities, failover sequences, and communication workflows. |
+| **Disaster recovery (DR) strategy**| High-level approach defining goals, principles, and recovery posture for responding to catastrophic failures across workloads. |
 | **DR activation** | Formal decision to initiate disaster recovery procedures, typically requiring executive authorization. |
 | **Failback** | Process of returning workloads to the original primary environment after incident resolution. |
 | **Failover** | Process of shifting workloads from primary to standby environment during a disaster. |
 | **Graceful degradation** | Maintaining core functionality while less-critical components fail, preserving essential business capabilities. |
-| **Recovery point objective (RPO)** | Amount of time it can take your organization to restore essential functionalities and access to data before incurring major losses. RPO determines how often you should back up essential data. |
+| **Recovery point objective (RPO)** | Amount of time it can take to restore essential functionalities and access to data before incurring major losses. RPO determines how often you should back up essential data. |
 | **Recovery time objective (RTO)** | Amount of time that it takes to restore essential access, data, and functionalities after a technology-related disaster. |
 
 ## What is disaster recovery?
@@ -41,7 +41,7 @@ Disaster recovery (DR) is a strategic and methodical approach to restoring syste
 
 In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through built-in self-healing mechanisms without human intervention, such as graceful degradation.
 
-_Disasters_, however, are a different class of event. They are broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
+_Disasters_, however, are a different class of event. They are broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention and specialized roles, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
 
 - Complete regional outages
 
@@ -53,16 +53,16 @@ _Disasters_, however, are a different class of event. They are broad in scope, a
 
 - Natural disasters or geopolitical events causing extended service unavailability
 
-Unattended blips can escalate into full-scale disasters if left unchecked. While advanced monitoring and health modeling can help detect and mitigate these issues early, that topic is beyond the scope of this article. For more information, see [Health modeling](./health-modeling.md).
+Unattended blips can escalate into full-scale disasters. While advanced monitoring and health modeling can help detect and mitigate these issues early, that topic is beyond the scope of this article. For more information, see [Health modeling](./health-modeling.md).
 
 Ultimate goal of DR is business continuity within defined quantitative metrics. Think of the plan as a coordinated effort that requires predefined procedures, clear communication protocols, and executive-level decision-making. 
 
 ## Select your criticality tier
 
-Not every workload needs a heroic recovery plan. Recovery should reflect the criticality of the workload or parts of it. 
+Not all workload (or parts of it) need a heroic recovery plan. Recovery should reflect its criticality. 
 
 > [!IMPORTANT]
-> Criticality is a business call and it's your responsibility to help guide that decision. It depends on what your workload does, who relies on it, and what happens if it goes down. Azure doesn't decide what's mission critical, _you do_. If an outage would hit your revenue, damage customer trust, or put you out of compliance, then that's a critical system. Own that decision, and design with it in mind.
+> Criticality is a business decision and it's your responsibility to help guide that decision. It depends on what your workload does, who relies on it, and what happens if it goes down. Azure doesn't decide what's mission critical, _you do_. If an outage would hit your revenue, damage customer trust, or put you out of compliance, then that's a critical system. Own that decision, and design with it in mind.
 
 Over-engineering low-impact services wastes resources; under-preparing high-impact ones risks serious consequences. The key is right-sizing your recovery strategy based on business impact. Use the following classification tiers as a starting point to assess criticality and align your disaster recovery investments appropriately.
 
@@ -112,9 +112,9 @@ Before you start your DR strategy, classify your workloads based on actual busin
 
 Start by listing every user flow in your workload. Document what it does, who relies on it, and what happens if it goes down. Different flows within the same workload may require different disaster recovery strategies based on their individual business impact and criticality.
 
-Get your business stakeholders to sign off on these classifications. Confirm RTO and RPO targets based on real business consequences, not just technical opinions. Their commitment sets the foundation and your DR strategy builds on that. Without alignment on business risk, a technical response lacks direction. 
+Work with your business stakeholders to get their sign off on these classifications. Confirm RTO and RPO targets based on real business consequences, not just technical opinions. Their commitment sets the foundation and your DR strategy builds on that. Without alignment on business risk, a technical response lacks direction. 
 
-Review these classifications regularly. Business needs evolve, and your DR plan should too.
+Review these classifications regularly. As business needs evolve, update your DR plan accordingly.
 
 ## Optimize your recovery costs
 
@@ -134,7 +134,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
-Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to trakc.
+Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to track.
 
 ## Document your DR plan as a runbook
 
@@ -285,4 +285,4 @@ In cloud computing, shared responsibility defines the clear division of operatio
 
 ## Fix the damn art
 
-There's redudandant termininlogy.
+There's redudant termininlogy.
