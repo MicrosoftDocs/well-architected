@@ -158,6 +158,8 @@ Test deployments thoroughly when you deploy to lower development environments. T
 
 - [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) is a cloud-based platform for running automated workflows that integrate apps, data, services, and systems. You can use Logic Apps to create a new version of your application whenever an update is made to it. Azure maintains a history of the versions and can revert or promote any previous version.
 
+- [Connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) in Azure Network Watcher can be used for on-demand diagnostics to isolate connectivity problems such as blocked traffic, misconfigured routes, and policy conflicts. Pair it with other tools in the Network Watcher diagnostic suite for deeper inspection to accelerate fault isolation and reduce mean time to recovery (MTTR) during failure scenarios. Use [connection monitor](/azure/network-watcher/connection-monitor-overview) to run continuous synthetic tests and receive real-time alerts about connectivity and performance failures. Enable virtual network flow logs and use [traffic analytics](/azure/network-watcher/traffic-analytics) to enrich logs and surface insights like blocked flows, malicious traffic, and exposed ports.
+
 - Many Azure database services provide point-in-time restore functionality that can help you when you need to roll back:
 
   - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
