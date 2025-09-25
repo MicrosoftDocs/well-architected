@@ -96,7 +96,7 @@ Business-operational systems support internal teams and processes. While not dir
 
 These systems generally target SLOs around 99.9%, with RTO and RPO measured in hours. An active-passive with warm/cold deployment strategy is common, where secondary environments remain inactive until needed, optimizing for cost over recovery speed.
 
-Outages in this tier may not immediately impact customers, but longer disruptions can slow down the business. Timely recovery important, even if it's not immediate.
+Outages in this tier may not immediately impact customers, but longer disruptions can slow down the business. Timely recovery is important, even if it's not immediate.
 
 #### Tier 3: Administrative
 
@@ -138,13 +138,13 @@ Whatever your tier might be, use the right tooling to review costs. Azure Cost M
 
 ## Document your DR plan as a runbook
 
-A strong runbook replaces abstract strategies with structure and allows the team respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
+A strong runbook replaces abstract strategies with structure and allows the team to respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
 
 - **Activation criteria and approvals**. Establish what qualifies as a DR event. Identify who has authority to trigger the DR process. Document escalation paths and decision checkpoints.
 
 - **Create contact matrix and communication plan**. List key personnel, roles, and backup contacts. Assign clear ownership of internal and external communication. Prepare pre-approved messaging templates for email, status page, and incident channels.
 
-- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cut-back steps.
+- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cutover steps.
 
 - **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
 
@@ -163,19 +163,19 @@ Disaster recovery is an operational discipline. A DR plan that's never tested st
 
 ## Watch out for these friction points
 
-Here are some key friction points that you should be cautious, otherwise DR planning can turn into a costly exercise without the right outcomes.
+Here are some key friction points that you should be cautious about, otherwise DR planning can turn into a costly exercise without the right outcomes.
 
-- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgest can lead to risk and disappointment.
+- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgets can lead to risk and disappointment.
 
 - **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
 
-- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitatation to initiate recovery, which can cause unnecessary delays.
+- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitation to initiate recovery, which can cause unnecessary delays.
 
-- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback might be a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
+- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback is a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
 
 ## Recovery strategy for active-active deployments 
 
-Active-active deployments maximize service availability by running multiple workload instances across regions, with each instance actively handling production traffic (hot standby). This design eliminates downtime and enables instant failover but it also demands precise planning to manage consistency, routing, and cost across distributed systems.
+Active-active deployments maximize service availability by running multiple workload instances across regions, with each instance actively handling production traffic. This design eliminates downtime and enables instant failover but it also demands precise planning to manage consistency, routing, and cost across distributed systems.
 
 Choose one of two deployment approaches:
 
@@ -194,7 +194,7 @@ Choose one of two deployment approaches:
 | **Set up data replication and maintain consistency** | • Set up multi-region read/write with configurable consistency levels, like for [Azure Cosmos DB](../service-guides/cosmos-db.md).<br>• Readable geo-replicas for relational databases with read-only connections<br>• CQRS<br>• Dual-writes with idempotent handling<br>• Define and enforce data consistency levels (strong, eventual, bounded staleness) | • Test data synchronization lag and consistency<br>• Verify failover data integrity<br>• Validate read/write operations during regional failures |
 | **Define and document recovery objectives** | • RTO: Typically measured in seconds<br>• RPO: As close to zero as architecture allows | • Conduct regular failover testing to validate against these metrics and surface gaps<br>• Measure actual recovery times during drills<br>• Document performance gaps and remediation plans |
 | **Monitor load behavior** | • Document load threshold each region handles during normal operation<br>• Expected performance and scale-up behavior if peer region fails<br>• Define system behavior under single-region failure, partial service disruption, network partitioning | • Test regional failure scenarios under load<br>• Validate auto-scaling behavior during failover<br>• Verify performance degradation limits<br>• Test network partition handling |
-| **Prepare operations** | • Infrastructure as Code: Bicep, Terraform, ARM templates<br>• Deployment automation: CI/CD pipelines for both regions<br>• Runbooks: Automated and manual steps for invoking DR procedures | • Scheduled chaos testing or failure injection to validate readiness<br>• Test IaC deployment consistency across regions<br>• Validate runbook execution and timing<br>• Verify CI/CD pipeline resilience |
+| **Prepare operations** | • Infrastructure as Code: Bicep, Terraform, ARM templates<br>• Deployment automation: CI/CD pipelines for both regions<br>• Runbooks: Automated and manual steps for invoking DR procedures | • Scheduled chaos engineering or failure injection to validate readiness<br>• Test IaC deployment consistency across regions<br>• Validate runbook execution and timing<br>• Verify CI/CD pipeline resilience |
 | **Secure DR environment and maintain compliance** | • Replicate data residency requirements in all regions<br>• Maintain identity and access parity between regions<br>• Test for audit trail continuity during and after failover | • Audit security configurations across regions<br>• Test identity failover scenarios<br>• Verify compliance during DR events<br>• Validate audit log continuity |
 | **Create communication plans and protocols** | • Establish clear chain of command for DR activation<br>• Establish stakeholder notification methods for internal and external communication<br>• Configure communication tools and create predefined messaging templates <br>•  Document escalation procedures | • Test communication channels during DR drills<br>• Verify notification delivery and escalation paths<br>• Validate external communication effectiveness<br>• Test messaging template accuracy |
 
