@@ -90,13 +90,6 @@ productDirectory:
         - devops
         - management-and-governance
     # Card
-    - title: Azure Cache for Redis
-      summary: Power applications with high-throughput, low-latency data access.
-      imageSrc: https://static.docs.com/ui/media/product/azure/cache-redis.svg
-      url: ./azure-cache-redis/reliability.md
-      azureCategories:
-        - databases
-    # Card
     - title: Azure Cosmos DB
       summary: Use a fast NoSQL database with open APIs for any scale.
       imageSrc: https://static.docs.com/ui/media/product/azure/cosmos-db.svg
