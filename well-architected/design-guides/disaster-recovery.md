@@ -122,7 +122,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 0 (Mission Critical)** comes with the highest cost, and that's expected. Active-active deployments and redundant infrastructure significantly increase your spend in exchange for near-zero downtime. When it comes to cost optimization, your best options are standard practices like reserved instances or Azure Hybrid Benefit where applicable.
 
-    Strive for simplicity in your design. Over-engineering beyond well-defined requirements is where hidden costs quietly build up. Keep in mind, foundational practices like infrastructure as code, automated deployments, and testing introduce upfront engineering effort. While that effort might compete with delivering new features in other tiers, for Tier 0, cutting corners is just not an option. 
+    Strive for simplicity in your design. Over-engineering beyond well-defined requirements is where hidden costs quietly build up. Keep in mind, foundational practices like infrastructure as code, automated deployments, and testing introduce upfront engineering effort. While that effort might compete with delivering new features, compromising investment in strong operations is just not an option. 
 
 - **Tier 1 (Business Critical)** offers a balance, typically using warm standby environments that reduce cost. 
 
@@ -130,19 +130,19 @@ The cost of disaster recovery scales with the criticality of the workload.
     
     Using manually triggered failover process with an orchestrated runbook to reduce complexity and ongoing operational costs compared to fully automated failover. Regular failover testing helps identify inefficiencies,
 
-- **Tier 2 (Business Operational)** focuses on cutting costs by using cold standby setups and pay-as-you-go options like spot instances and consumption pricing. Automate provisioning of PaaS compute in the secondary region only when needed to avoid paying for idle resources. Define clear disaster criteria and failover processes to prevent unnecessary failovers. Regular testing ensures recovery targets are met and highlights areas to trim costs.
+- **Tier 2 (Business Operational)** focuses on optimizing costs by using cold standby setups and pay-as-you-go options like spot instances and consumption pricing. Automate provisioning of PaaS compute in the secondary region only when needed to avoid paying for idle resources. Define clear disaster criteria and failover processes to prevent unnecessary failovers. Regular testing ensures recovery targets are met and highlights areas to trim costs.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
 Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to track.
 
-## Document your DR plan as a runbook
+## Document your DR plan
+
+A strong Disaster Recovery (DR) plan turns strategy into action. It should have three core components: runbook, communication plan, and escalation plan.
+
+#### DR runbook
 
 A strong runbook replaces abstract strategies with structure and allows the team to respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
-
-- **Activation criteria and approvals**. Establish what qualifies as a DR event. Identify who has authority to trigger the DR process. Document escalation paths and decision checkpoints.
-
-- **Create contact matrix and communication plan**. List key personnel, roles, and backup contacts. Assign clear ownership of internal and external communication. Prepare pre-approved messaging templates for email, status page, and incident channels.
 
 - **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cutover steps.
 
@@ -152,6 +152,33 @@ A strong runbook replaces abstract strategies with structure and allows the team
 
 > [!TIP]
 > Treat your DR runbook like production code: version it and make it accessible. Use version control tools like Git or a versioned wiki to track updates and ensure accuracy over time. Just as important, make sure the runbook is always reachable, even during an outage. Store it in multiple formats, including offline or printable versions, so teams can access it when it matters most.
+
+#### DR communication plan
+
+A communication plan ensures that the right information reaches the right people at the right time during a disruption. It supports coordination, reduces confusion, and keeps stakeholders informed throughout the recovery process. Your plan should cover these aspects:
+
+- **Activation criteria and approvals**. Establish what qualifies as a DR event. Identify who has authority to trigger the DR process. Document escalation paths and decision checkpoints.
+
+- **Roles and responsibilities**. Define who's responsible for communicating, and to whom.
+
+- **Key stakeholders**. Identify key internal and external audiences, such as, employees, leadership, partners, and customers.
+
+- **Communication channels**. Establish primary and backup methods like email, SMS, and others.
+
+- **Notifications and templates**. Outline when to send updates and prepare pre-approved messaging templates for email, status page, and incident channels.
+
+- **Escalation and continuity**. Ensure there's a structured way to escalate issues if someone is unavailable or things change quickly.
+
+#### DR escalation plan
+
+During disaster recovery, speed and clarity are everything. An escalation plan ensures that when things aren't going according to plan, the right people are alerted quickly. 
+
+- **Escalation triggers.** Define exactly when to escalate, whether it's a missed recovery milestone, a critical system failure, or an unresponsive vendor.
+
+- **Chain of command.** In the identified list of roles and contacts, lay out in what order to contact. That is, how to escalate issues through primary, secondary, and backup personnel. Also include response time expectations. For example, call the DR manager within 15 minutes on phone or emergency communications platform.
+
+- **Incident severity levels.** Categorize incidents by impact so that minor issues don't clog the system, and major ones get immediate attention from leadership.
+
 
 ## Test regularly and improve the plan
 
@@ -182,6 +209,9 @@ Choose one of two deployment approaches:
 - **Active-active (at capacity)**: Mirrored deployment stamps in two or more regions, where each region handles a share of the production load and can scale up to absorb full load during regional failure.
 
 -  **Active-active (overprovisioned)**: Mirrored deployment stamps in two or more regions, Each region is at full scale at all times to independently handle 100% of traffic.
+
+> [!NOTE]
+> In active-active scenarios, when a failure occurs, user experience may remain unaffected as the load shifts to the remaining instances. However, disaster recovery efforts are still necessary to restore the failed instance.
 
 #### Suggested actions
 
@@ -226,6 +256,15 @@ Active-passive cold standby deployments keeps the secondary region's compute res
 The primary region handles all production traffic while the secondary region maintains infrastructure readiness with minimal running resources, requiring manual activation during disaster scenarios.
 
 #### Suggested actions
+
+> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
+
+| Actions | Configuration | Validation |
+|---------|---------------|------------|
+| **Extend active to secondary region** | • Duplicate network topology, policies, and configurations from primary<br>• Ensure RBAC, security baselines, monitoring agents, and policies are consistent<br>• Deploy infrastructure as code with compute resources stopped | • Verify secondary region infrastructure readiness<br>• Test policy consistency across regions<br>• Validate network connectivity and routing |
+| **Configure priority-based traffic routing** | • [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with priority-based routing<br>• Route all production traffic to primary region under normal conditions<br>• Configure automated traffic redirection upon failover | • Test traffic failover scenarios<br>• Verify routing priority configurations<br>• Validate DNS propagation and cutover times |
+| **Set up cross-region data replication** | • Enable built-in replication, like for Azure SQL Database, PostgreSQL, MySQL, Cosmos DB<br>• Enable GZRS or RA-GZRS for paired-region storage replication<br>• Configure object replication for Blob Storage in non-paired regions | • Test data synchronization lag against RPO targets<br>• Verify replication health and latency metrics<br>• Validate data consistency between regions |
+| **Automate compute provisioning** | • Define IaC templates for provisioning PaaS services when activated<br>• Include service configurations, scaling parameters, and dependencies<br>• Pre-define scale targets to meet full load when activated | • Test automated provisioning procedures<br>• Verify compute startup times meet RTO targets<br>• Validate service dependency activation sequences |
 
 > Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
 
@@ -280,9 +319,4 @@ In cloud computing, shared responsibility defines the clear division of operatio
 //TODO: The above is no good. Needs more. What does that have to do with recovery. what's shared responsibility in terms of recoverability look like.
 * Confirm recovery priority is appropriately categorized as Tier 3
 
----
 
-
-## Fix the damn art
-
-There's redudant termininlogy.
