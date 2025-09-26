@@ -112,6 +112,8 @@ During your analysis, identify any inefficiencies or areas where resources aren'
 
 [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool that enables you to collect, analyze, and visualize log data from various sources. By using Log Analytics, you can gain insights into your application and infrastructure logs, identify trends, and optimize costs by managing usage and data retention. Consider colocating logs and using dedicated solutions instead of shared ones to better manage costs.
 
+Enable [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) across workloads to capture data about network activity. [Traffic analytics](/azure/network-watcher/traffic-analytics) is a cloud-based solution that provides visibility into user and application activity in your cloud networks. Traffic analytics can help optimize network resource allocation and support cost optimization by identifying top talkers, bandwidth hotspots, and routing inefficiencies. These insights eliminate unnecessary overprovisioning.
+
 ## Related links
 
 - [User Flow tool](/azure/azure-monitor/app/usage-flows)

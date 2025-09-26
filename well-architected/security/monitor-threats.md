@@ -186,16 +186,17 @@ Take advantage of **Azure Business Continuity Center** to identify gaps in your 
 
 Review all logs, including raw traffic, from your network devices.
 
-- Security group logs. Review [flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-portal) and diagnostic logs.
+- Virtual network flow logs. Review [flow logs](/azure/network-watcher/vnet-flow-logs-overview) and diagnostic logs.
 
 - Azure Network Watcher. Take advantage of the [packet capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture) feature to set alerts and gain access to real-time performance information at the packet level.
 
    Packet capture tracks traffic in and out of virtual machines. You can use it to run proactive captures based on defined network anomalies, including information about network intrusions.
 
-   For an example, see [Monitor networks proactively with alerts and Azure Functions using Packet Capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
+   For an example, see [Monitor networks proactively with alerts and Azure Functions by using packet capture](/azure/network-watcher/network-watcher-alert-triggered-packet-capture).
 
-- Use AI-powered security capabilities to improve threat detection. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for WAF events from both Azure Front Door and Azure Application Gateway. [Azure Firewall also integrates with Microsoft Security Copilot](/azure/firewall/firewall-copilot) to investigate malicious traffic intercepted by the IDPS feature.|
+- Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze and enrich virtual network flow logs and surface insights into the traffic flow. With built-in queries, you can obtain insights into blocked traffic, malicious flows, and active ports exposed to the internet across your Azure infrastructure. Use traffic analytics to support Zero Trust security by enabling segmentation, visibility into traffic flows, and detection of anomalous or unauthorized activity.  
 
+- Use AI-powered security capabilities to improve threat detection. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for Web Application Firewall events from both Azure Front Door and Azure Application Gateway. [Azure Firewall also integrates with Security Copilot](/azure/firewall/firewall-copilot) to investigate malicious traffic intercepted by the intrusion detection and prevention system (IDPS) feature.|
 
 ### Identity
 

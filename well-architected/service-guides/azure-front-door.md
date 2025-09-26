@@ -272,17 +272,12 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
-Foundational architecture that demonstrates the key recommendations: [Mission-critical baseline architecture with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture).
+Foundational architecture that demonstrates the key recommendations: [AKS baseline for multiregion clusters](/azure/architecture/reference-architectures/containers/aks-multi-region/aks-multi-cluster).
 
-## Next steps
+## Related content
 
-Consider the following articles as resources that demonstrate the recommendations highlighted in this article.
-
-- Use the following reference architectures as examples of how you can apply this article's guidance to a workload:
-   - [Mission-critical baseline with network controls](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture)
-- Build implementation expertise by using the following product documentation:
-   - [Azure Front Door](/azure/frontdoor/)
-   - [Best practices for Azure Front Door](/azure/frontdoor/best-practices)
+- [Azure Front Door](/azure/frontdoor/)
+- [Best practices for Azure Front Door](/azure/frontdoor/best-practices)
 
 <!-- Updated: August 17, 2025 for Azure Update 496631 -->
 <!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, 496536>

@@ -55,16 +55,10 @@ landingContent:
           - text: Operational procedures
             url: mission-critical-operational-procedures.md     
  # Card
-  - title: Reference examples
+  - title: Reference example
     linkLists:
       - linkListType: architecture
         links:
-          - text: Baseline reference architecture
-            url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-intro   
-          - text: Baseline with network controls
-            url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-network-architecture
-          - text: Baseline in Azure landing zones
-            url: /azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-landing-zone
           - text: Baseline with App Services
             url: /azure/architecture/guide/networking/global-web-applications/mission-critical-app-service
 

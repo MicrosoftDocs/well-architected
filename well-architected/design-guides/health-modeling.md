@@ -130,7 +130,7 @@ Begin this logical design exercise by evaluating the following components of you
 - Logical or physical dependencies between components
 
 - [User and system flows](../reliability/identify-flows.md) 
-   
+
 For example, the health model for an e-commerce application should represent the current state of critical processes like user sign-in, checkout, and payments.
 
 ### Contextualize using business requirements
@@ -270,8 +270,17 @@ Health data gradually diminishes in value over time. To optimize operational eff
 > [!NOTE]
 > When you archive health data, make sure you couple it with the configuration state of the model. Interpreting state changes can be challenging without this context.
 
+## Azure facilitation
+
+Health modeling is a logical exercise that is tooling and technology agnostic. However, it's an intensive process that is often complex and requires significant engineering investment.
+
+[Azure Monitor health models](/azure/azure-monitor/health-models/overview) let you easily create, manage, and interact with health models directly within Azure. They provide a unified data platform that seamlessly integrates with the rest of Azure Monitor, offering built-in alerting and ready-to-use visualizations—both graphical and tabular—for your health data. For advanced scenarios, the query and API data-plane capabilities enable flexible use of health states, making it easy to incorporate health insights into your existing operational tools, such as Grafana dashboards.
+
+:::image type="content" source="./_images/azure-monitor-health-models-designer.png" alt-text="A screenshot showing the Azure Monitor health models." lightbox="./_images/azure-monitor-health-models-designer.png":::
+
 ## Related links
 
+- For information on Azure-native health models, see [Azure Monitor health models overview](/azure/azure-monitor/health-models/overview).
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 - For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).

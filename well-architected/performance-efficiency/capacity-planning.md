@@ -128,6 +128,8 @@ For complex analytical workloads involving large historical datasets, [Log Analy
 
 Azure provides scalability options like autoscaling, which can automatically adjust resources based on workload demand. You can scale vertically by increasing the capacity of a resource by using a larger virtual machine size, or you can scale horizontally by adding new instances of a resource. Azure services that have autoscaling capabilities can automatically scale out to ensure capacity during workload peaks and return to normal when the load decreases. There are scaling limits within your configuration and services that you should be aware of. You can read the documentation or run tests. Azure provides tools like [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing), which can simulate load and different usage patterns to help you gather relevant data about your workload.
 
+Enable [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) across workloads to capture data about network activity. Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze and enrich these logs, which provides visibility into the behavior and performance of user flows. By identifying top talkers, bandwidth hotspots, and routing inefficiencies, traffic analytics can help optimize network resource allocation and enable smarter capacity planning.
+
 ## Related links
 
 - [Azure Monitor](/azure/azure-monitor/overview)

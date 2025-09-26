@@ -18,11 +18,11 @@ This article suggests a design methodology that's informed by insights gained fr
 ## Design for your reliability objectives
 
 
-Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to determine the tolerable downtime time.  
+Mission critical doesn't mean the same for everyone. The architecture will vary by the workload's business requirements and acceptable downtime. Those are often defined by Service Level Objectives (SLOs), such as 99.9% vs. 99.999% availability. Consider availability objectives to be more than just uptime. They represent consistent service relative to a healthy application state. As a starting point, teams should define how much downtime is acceptable. Use an Uptime/Downtime calculator to determine the tolerable downtime.  
 
 This design methodology can serve as a starting point for architectural decisions and tradeoffs after objectives have been set. As a draft target architecture takes shape and cost and complexity become clearer, the initial requirements may be revisited, challenged, adjusted, or addressed through alternative solutions.
 
-For example, while a single-region, multi-zone setup may suffice for many critical workloads, higher reliability demand more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
+For example, while a single-region, multi-zone setup may suffice for many critical workloads, higher reliability demands more engineering effort and complexity. Avoid defaulting to complex solutions like active-active multi-region unless there are strong requirements to do so.
 
 ![An image that shows the provisioned resources in a single region set up progressing to multi region as the SLO is set to a higher value](./images/mission-critical-slo.gif)
 
@@ -50,7 +50,7 @@ Consistency is key. The same artifacts and automated processes should be used ac
 
 ## Design for fast failure detection and recovery
 
-Fast failure detection starts with a well-defined health model. Because failures often cascade across components, early detection and clear dependency between workload components is a non-negotiable for minimizing the blast radius and speeding up recovery.
+Fast failure detection starts with a well-defined health model. Because failures often cascade across components, early detection and clear dependency between workload components are non-negotiable for minimizing the blast radius and speeding up recovery.
 
 This means clearly identifying what _healthy_ and _unhealthy_ look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
 
@@ -60,18 +60,14 @@ This means clearly identifying what _healthy_ and _unhealthy_ look like for each
 
 Design your architecture to be modular and flexible so it's easier to adopt new features without major changes. Regularly review your design to stay current with Azure's evolving services and capabilities. Prioritize Azure-native managed services for their lower operational overhead and better integration. Since Azure updates frequently, aligning your architecture with its roadmap helps ensure your application stays optimized and future-ready.
 
-> Refer to [Evolve with Azure](/azure/architecture/guide/design-principles/design-for-evolution) and [Azure updates](https://azure.microsoft.com/updates/) for the latest information about new services and features. 
+> Refer to [Evolve with Azure](/azure/architecture/guide/design-principles/design-for-evolution) and [Azure updates](https://azure.microsoft.com/updates/) for the latest information about new services and features.
 
- ## Next step
+## Next step
 
-Start your design journey by review how Well-Architected Framework pillars apply to mission-critical class of workloads.
+Start your design journey by reviewing how the Well-Architected Framework pillars apply to mission-critical class of workloads.
 
 - [Foundational design principles](mission-critical-design-principles.md)
 
 Design areas are interconnected, so changes in one area may impact others. Start with the area most critical to your business, then review the considerations and recommendations to understand how your choices create trade-offs across the architecture.
 
 - [Fundamental design areas](mission-critical-overview.md#mission-critical-design-areas)
-
-Refer to these reference architectures that describe the design decisions based on this methodology.
-
-- [Reference architecture examples](./mission-critical-overview.md#reference-architecture-examples)

@@ -109,6 +109,8 @@ Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/az
 
 [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
+Use [connection monitor](/azure/network-watcher/connection-monitor-overview) and [connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) in Azure Network Watcher to model and validate network connectivity scenarios before deployment. By simulating synthetic tests and troubleshooting potential routing paths, these tools help you anticipate and document possible failure modes in your network architecture. Also, by analyzing historical virtual network flow logs with [traffic analytics](/azure/network-watcher/traffic-analytics), you can identify patterns of blocked or anomalous traffic that might inform your FMA documentation across the Azure infrastructure.
+
 For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
 
 ## Example
