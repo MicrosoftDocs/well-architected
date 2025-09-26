@@ -1,5 +1,5 @@
 ---
-title: Develop a disaster recovery plan
+title: Develop a disaster recovery plan for multi-region deployments
 description: Learn about recommendations for creating a disaster recovery plan based on your reliability objectives. 
 author: PageWriter-MSFT 
 ms.author: prwilk 
@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.update-cycle: 1095-days  
 ---
 
-# Develop a disaster recovery plan
+# Develop a disaster recovery plan for multi-region deployments
 
 As a cloud solution architect, you play a key part in ensuring that recovery from wide-scope failures is intentionally planned, designed, and documented as a disaster recovery (DR) plan. In case of failure, the quality of that plan influences whether the event is a temporary setback or becomes a reputational and financial crisis.
 
@@ -39,7 +39,7 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 
 Disaster recovery (DR) is a strategic and methodical approach to restoring systems or critical parts of them, after a major failure event.
 
-In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through built-in self-healing mechanisms without human intervention, such as graceful degradation.
+In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through platform resiliency features and built-in self-healing mechanisms without human intervention.
 
 _Disasters_, however, are a different class of event. They're broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention and specialized roles, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
 
