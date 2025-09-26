@@ -134,7 +134,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
-Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to track.
+Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
 
 ## Document your DR plan
 
