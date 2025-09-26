@@ -22,10 +22,10 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 |------|------------|
 | **Active-active**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
 | **Active-passive**| One primary environment that handles all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
-| **Active-passive (cold standby)** | Environment that is not running and requires provisioning and data restoration when activated. Lowest cost, longest recovery time. |
+| **Active-passive (cold standby)** | Environment that isn't running and requires provisioning and data restoration when activated. Lowest cost, longest recovery time. |
 | **Active-passive (hot standby)** | Fully provisioned, running environment ready for immediate takeover. Continuously synchronized with active site, enabling near-instant failover. |
 | **Active-passive (warm standby)** | Partially provisioned environment running minimal services that can scale up quickly during failures. |
-| **Business continuity** | Strategy for ensuring critical operations continue during and after disruptions, encompassing DR, personnel, communication, and processes. |
+| **Business continuity** | Strategies for ensuring critical operations continue during and after disruptions, encompassing DR, personnel, communication, and processes. |
 | **Disaster recovery (DR) plan**| Detailed, executable procedures for recovering specific systems, including step-by-step actions, roles, responsibilities, failover sequences, and communication workflows. |
 | **Disaster recovery (DR) strategy**| High-level approach defining goals, principles, and recovery posture for responding to catastrophic failures across workloads. |
 | **DR activation** | Formal decision to initiate disaster recovery procedures, typically requiring executive authorization. |
@@ -41,7 +41,7 @@ Disaster recovery (DR) is a strategic and methodical approach to restoring syste
 
 In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through built-in self-healing mechanisms without human intervention, such as graceful degradation.
 
-_Disasters_, however, are a different class of event. They are broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention and specialized roles, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
+_Disasters_, however, are a different class of event. They're broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention and specialized roles, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
 
 - Complete regional outages
 
@@ -59,7 +59,7 @@ Ultimate goal of DR is business continuity within defined quantitative metrics. 
 
 ## Select your criticality tier
 
-Not all workload (or parts of it) need a heroic recovery plan. Recovery should reflect its criticality. 
+Not all workloads (or parts of it) need a heroic recovery plan. Recovery should reflect its criticality. 
 
 > [!IMPORTANT]
 > Criticality is a business decision and it's your responsibility to help guide that decision. It depends on what your workload does, who relies on it, and what happens if it goes down. Azure doesn't decide what's mission critical, _you do_. If an outage would hit your revenue, damage customer trust, or put you out of compliance, then that's a critical system. Own that decision, and design with it in mind.
@@ -70,13 +70,13 @@ A common way to quantify tiers is through Service Level Objectives (SLOs), often
 
 Most important metrics in DR strategy are Recovery Time Objective (RTO) and Recovery Point Objective (RPO), both quantified as time units. RTO defines how quickly a system must be restored after a disruption, it's about downtime tolerance. RPO defines how much data loss is acceptable, it reflects how frequently data must be backed up.
 
-This article assumes that your SLOs and recovery metrics have already been defined and will not cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
+This article assumes that your SLOs and recovery metrics have already been defined and won'tcover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
 
 :::image type="content" source="./_images/disaster-recovery-criticality-tiers.png" alt-text="A diagram that shows multi-region recovery targets." lightbox="./_images/disaster-recovery-criticality-tiers.png":::
 
 #### Tier 0: Mission Critical
 
-The mission-critical tier includes entire workloads or specific components where downtime is not an option and cost saving is secondary to continuity. These systems are fundamental to the organization, directly driving revenue, safeguarding customer trust, or impacting lives. Common examples include financial platforms, healthcare systems, and security infrastructure.
+The mission-critical tier includes entire workloads or specific components where downtime isn't an option and cost saving is secondary to continuity. These systems are fundamental to the organization, directly driving revenue, safeguarding customer trust, or impacting lives. Common examples include financial platforms, healthcare systems, and security infrastructure.
 
 This tier demands SLOs above 99.99%, with RTO measured in seconds and RPO approaching zero. To meet these requirements, an active-active, multi-region deployment is typically necessary, enabling instant recovery with no interruption to users.
 
@@ -92,7 +92,7 @@ While short outages may be survivable, extended downtime in this tier directly a
 
 #### Tier 2: Business Operational
 
-Business-operational systems support internal teams and processes. While not directly customer-facing, they are essential for productivity and operational continuity. Typical examples include reporting platforms, internal dashboards, and administrative tools.
+Business-operational systems support internal teams and processes. While not directly customer-facing, they're essential for productivity and operational continuity. Typical examples include reporting platforms, internal dashboards, and administrative tools.
 
 These systems generally target SLOs around 99.9%, with RTO and RPO measured in hours. An active-passive with warm/cold deployment strategy is common, where secondary environments remain inactive until needed, optimizing for cost over recovery speed.
 
@@ -100,7 +100,7 @@ Outages in this tier may not immediately impact customers, but longer disruption
 
 #### Tier 3: Administrative
 
-Administrative systems are non-critical workloads that support background operations or serve low-urgency use cases. These typically include archival platforms, sandbox environments, training portals, or batch-processing tools where availability is not time-sensitive.
+Administrative systems are non-critical workloads that support background operations or serve low-urgency use cases. These typically include archival platforms, sandbox environments, training portals, or batch-processing tools where availability isn't time-sensitive.
 
 With SLOs below 99.9%, these systems tolerate longer recovery windows, with RTO ranging from hours to days and RPO measured in hours. The most cost-effective approach here is typically backup and restore, minimizing ongoing infrastructure costs while still preserving recoverability.
 
@@ -251,7 +251,7 @@ The primary region handles all production traffic under normal conditions, while
 
 ## Recovery strategy for active-passive (cold standby)
 
-Active-passive cold standby deployments keeps the secondary region's compute resources stopped until needed. This approach is ideal for Tier 2 or Tier 3 workloads, where RTOs can tolerate longer delays but recovery must still be reliable and repeatable.
+Active-passive cold standby deployments keep the secondary region's compute resources stopped until needed. This approach is ideal for Tier 2 or Tier 3 workloads, where RTOs can tolerate longer delays but recovery must still be reliable and repeatable.
 
 The primary region handles all production traffic while the secondary region maintains infrastructure readiness with minimal running resources, requiring manual activation during disaster scenarios.
 
@@ -291,7 +291,7 @@ Backup and restore strategies are designed for Tier 3 administrative workloads t
 |---------|---------------|------------|
 | **Configure backup policies and retention** | • Use [Azure Backup](/azure/backup/) for VMs, Azure Files, and Blob Storage<br>• Store backups in Geo-Redundant Backup Vault in secondary region<br>• Define backup frequency and retention aligned with RPO requirements | • Test backup policy execution<br>• Verify backup completion and integrity<br>• Validate retention policy enforcement |
 | **Implement cost-effective storage tiers** | • Use Archive or Cool storage tiers for infrequently accessed data<br>• Apply backup tiering policies to transition older backups to lower-cost options<br>• Configure compression and deduplication to minimize storage costs | • Review storage cost optimization reports<br>• Verify tiering policy execution<br>• Test data retrieval from different storage tiers |
-| **Document restore procedures** | • Maintain runbooks with detailed recovery steps<br>• Define target environments for restoration<br>• Include contact lists for approvals and escalations | • Test restore procedure documentation accuracy<br>• Verify contact information currency<br>• Validate approval processes |
+| **Document restore procedures** | • Maintain runbooks with detailed recovery steps<br>• Define target environments for restoration<br>• Include contact lists for approvals and escalations | • Test restore procedures accuracy<br>• Verify contact information currency<br>• Validate approval processes |
 | **Test restore processes regularly** | • Schedule periodic restore drills to validate backup integrity<br>• Include restoration to staging environments<br>• Log time taken and compare against RTO targets | • Execute quarterly restore drills<br>• Verify data consistency post-restore<br>• Document performance against RTO targets |
 | **Monitor backup costs and compliance** | • Enable Azure Cost Management with backup-specific tags<br>• Set budget thresholds for backup-related resource groups<br>• Ensure retention meets regulatory compliance requirements | • Review backup cost reports monthly<br>• Verify budget threshold effectiveness<br>• Audit compliance with retention policies |
 | **Maintain and audit backup systems** | • Perform quarterly audits of backup requirements<br>• Retire obsolete systems and adjust policies<br>• Review and update RPO/RTO requirements based on business changes | • Execute quarterly backup audits<br>• Verify system retirement procedures<br>• Validate requirement changes with stakeholders |
