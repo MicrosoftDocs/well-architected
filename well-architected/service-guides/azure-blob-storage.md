@@ -222,7 +222,7 @@ You might have to make design tradeoffs if you use the approaches in the pillar 
 
 - **Cooler access tiers:** Moving data to cooler access tiers (cool, cold, or archive) can reduce storage costs, especially for infrequently accessed data. Archive tier offers the low storage cost but requires rehydration to access data, which takes time and incurs additional costs.
 
-  Consider the disadvantages of cooler tiers, including higher access costs and retrieval times. Archive tier can take significant time for standard-priority rehydration. The cost of frequent tier changes can exceed storage savings if access patterns are unpredictable. For critical data that needs immediate access, hot tier provides fastest access but at higher storage costs. Evaluate your access patterns carefully to avoid unnecessary costs from frequent tier transitions.
+  Consider the disadvantages of cooler tiers, including higher access costs and retrieval times. Archive tier can take significant time for standard-priority rehydration. The cost of frequent tier changes can exceed storage savings if access patterns are unpredictable. For critical data that needs immediate access, hot tier provides fastest access but at higher storage costs. Evaluate your access patterns carefully to avoid unnecessary costs from frequent tier transitions and early delete penalties.
 
 - **Lifecycle management policies:** Automated lifecycle policies can optimize costs by moving data to appropriate tiers based on age or access patterns. These policies reduce manual operational overhead and ensure consistent cost optimization across your storage accounts.
 
