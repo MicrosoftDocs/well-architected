@@ -72,7 +72,7 @@ Most important metrics in DR strategy are Recovery Time Objective (RTO) and Reco
 
 This article assumes that your SLOs and recovery metrics have already been defined and will not cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
 
-![Multi-region disaster recovery strategy for Azure workloads](./_images/disaster-recovery-criticality-tiers.png)
+:::image type="content" source="./_images/disaster-recovery-criticality-tiers.png" alt-text="A diagram that shows multi-region recovery targets." lightbox="./_images/disaster-recovery-criticality-tiers.png":::
 
 #### Tier 0: Mission Critical
 
@@ -289,7 +289,7 @@ Backup and restore strategies are designed for Tier 3 administrative workloads t
 
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
-| **Configure backup policies and retention** | • Use [Azure Backup](../service-guides/azure-backup.md) for VMs, Azure Files, and Blob Storage<br>• Store backups in Geo-Redundant Backup Vault in secondary region<br>• Define backup frequency and retention aligned with RPO requirements | • Test backup policy execution<br>• Verify backup completion and integrity<br>• Validate retention policy enforcement |
+| **Configure backup policies and retention** | • Use [Azure Backup](/azure/backup/) for VMs, Azure Files, and Blob Storage<br>• Store backups in Geo-Redundant Backup Vault in secondary region<br>• Define backup frequency and retention aligned with RPO requirements | • Test backup policy execution<br>• Verify backup completion and integrity<br>• Validate retention policy enforcement |
 | **Implement cost-effective storage tiers** | • Use Archive or Cool storage tiers for infrequently accessed data<br>• Apply backup tiering policies to transition older backups to lower-cost options<br>• Configure compression and deduplication to minimize storage costs | • Review storage cost optimization reports<br>• Verify tiering policy execution<br>• Test data retrieval from different storage tiers |
 | **Document restore procedures** | • Maintain runbooks with detailed recovery steps<br>• Define target environments for restoration<br>• Include contact lists for approvals and escalations | • Test restore procedure documentation accuracy<br>• Verify contact information currency<br>• Validate approval processes |
 | **Test restore processes regularly** | • Schedule periodic restore drills to validate backup integrity<br>• Include restoration to staging environments<br>• Log time taken and compare against RTO targets | • Execute quarterly restore drills<br>• Verify data consistency post-restore<br>• Document performance against RTO targets |
