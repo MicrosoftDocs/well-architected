@@ -28,7 +28,7 @@ This article describes common design areas and factors to consider when you make
 
 When designing intelligent capabilities, establish clear boundaries in your design across these five key layers:
 
-:::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram showing the four application layers: Client, Intelligence, Knowledge, and Tools." lightbox="../_images/ai-application-layers.svg":::
+:::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram showing the four application layers: Client, Intelligence, Inferencing, Knowledge, and Tools." lightbox="../_images/ai-application-layers.svg":::
 
 - **Client layer**. The user interface and client applications where users or processes experience your workload's intelligent capabilities. Keep this layer thin and delegate most capabilities to other layers.
 
@@ -222,7 +222,7 @@ AI gateways are used in your design to provide [gateway offloading](/azure/archi
 
 An AI gateway can address cross-cutting concerns in addition to being a layer of abstraction and indirection from the target system. When designing an AI gateway strategy, consider the following capabilities:
 
-- **Protocol normalization**. Standardize interfaces across different providers (OpenAI API, Azure OpenAI, open-source models) to provide consistent client experiences.
+- **Protocol normalization**. For shared AI capabilities across providers, normalize interfaces to a common protocol via the gateway to improve maintainability. For provider-specific features, use the gateway as a reverse proxy without normalization.
 
 - **Authentication and authorization**. Enforce identity-based access control and propagate user context to downstream services.
 
