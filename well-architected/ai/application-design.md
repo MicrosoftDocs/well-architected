@@ -89,7 +89,11 @@ Before selecting technologies, clearly define the business problem you're solvin
 
 - **Regulatory constraints**. Identify compliance requirements that might affect your design choices, such as data residency or explainability requirements.
 
-### Design for observability from day one
+### Design for security from day one
+
+AI workloads demand a security-first approach from the outset. Implement layered security across all components using identity propagation and auditable controls. Review the [security design strategies](#design-a-security-strategy-for-your-workloads-ai-components) for detailed guidance.
+
+## Design for observability from day one
 
 AI applications require monitoring beyond traditional application metrics. Build observability into your design from the start:
 
@@ -202,6 +206,10 @@ When designing agent-based systems, consider isolation and boundaries, communica
 > [!IMPORTANT]
 > Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
 
+#### Agent state persistence
+
+For multi-turn conversations and long-running tasks, design agents with durable state persistence so they can retain context across requests, sessions, or deployment cycles. Use secure, shared storage such as Azure Cosmos DB, Azure Managed Redis, or Azure Table Storage to store relevant metadata, conversation history, and task progress. Scope persisted state to the minimal necessary information to reduce privacy risks and token overhead, and implement time-to-live (TTL) policies to expire stale data. Ensure agents can rehydrate state on resumption to continue workflows without repeating completed steps.
+
 ### Hybrid approaches
 
 Consider hybrid designs where orchestrators delegate to agents for specific subtasks:
@@ -235,6 +243,8 @@ An AI gateway can address cross-cutting concerns in addition to being a layer of
 - **Model routing policies**. Route requests to appropriate models based on user permissions, request characteristics, or cost optimization goals. Gateways are often used to implement spillover between multiple models, when capacity or pricing is consumed on one model but is available on another model deployment.
 
 - **Header injection and transformation**. Add required headers, user context, and security tokens for downstream services.
+
+- **Chargeback management**. Allocate charges across departments who share AI workload components, like a single Azure Open AI instance.
 
 > [!TIP]
 > For an in-depth look at how an AI gateway can be used for cross-cutting concerns and how a gateway introduces additional complexity into your architecture, see [Access Azure OpenAI and other language models through a gateway](/azure/architecture/ai-ml/guide/azure-openai-gateway-guide).
