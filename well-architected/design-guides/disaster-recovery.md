@@ -20,10 +20,8 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 
 | Term | Definition |
 |------|------------|
-| **Active-active**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
-| **Active-passive**| One primary environment that handles all live traffic while a secondary environment remains on standby. The passive environment is kept updated through data replication and takes over when the primary fails. |
+| **Active-active (hot standby)**| Two or more environments fully operational and serving live traffic simultaneously across multiple regions. If one environment fails, others continue handling the load with zero or near-zero disruption. |
 | **Active-passive (cold standby)** | Environment that isn't running and requires provisioning and data restoration when activated. Lowest cost, longest recovery time. |
-| **Active-passive (hot standby)** | Fully provisioned, running environment ready for immediate takeover. Continuously synchronized with active site, enabling near-instant failover. |
 | **Active-passive (warm standby)** | Partially provisioned environment running minimal services that can scale up quickly during failures. |
 | **Business continuity** | Strategies for ensuring critical operations continue during and after disruptions, encompassing DR, personnel, communication, and processes. |
 | **Disaster recovery (DR) plan**| Detailed, executable procedures for recovering specific systems, including step-by-step actions, roles, responsibilities, failover sequences, and communication workflows. |
@@ -31,7 +29,6 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 | **DR activation** | Formal decision to initiate disaster recovery procedures, typically requiring executive authorization. |
 | **Failback** | Process of returning workloads to the original primary environment after incident resolution. |
 | **Failover** | Process of shifting workloads from primary to standby environment during a disaster. |
-| **Graceful degradation** | Maintaining core functionality while less-critical components fail, preserving essential business capabilities. |
 | **Recovery point objective (RPO)** | Amount of time it can take to restore essential functionalities and access to data before incurring major losses. RPO determines how often you should back up essential data. |
 | **Recovery time objective (RTO)** | Amount of time that it takes to restore essential access, data, and functionalities after a technology-related disaster. |
 
@@ -116,6 +113,7 @@ Work with your business stakeholders to get their sign off on these classificati
 
 Review these classifications regularly. As business needs evolve, update your DR plan accordingly.
 
+
 ## Watch out for these friction points
 
 Here are some key friction points that you should be cautious about, otherwise DR planning can turn into a costly exercise without the right outcomes.
@@ -146,7 +144,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
-Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tagging resources and setting budget thresholds  will make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
+Whatever your tier might be, use the right tooling to review costs. Azure Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tag resources and set budget thresholds  to make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
 
 ## Document your DR plan
 
@@ -240,6 +238,63 @@ Disaster recovery is an operational discipline. A DR plan that's never tested st
 - After every test, check data to confirm nothing was lost or corrupted. Capture any gaps or issues discovered, then update your architecture and runbooks promptly.
 
 
+## Recovery strategy for backup and restore
+
+Backup and restore strategies must be part of all recovery stratergies. 
+
+#### Suggested actions
+
+> Use this as a foundation for all the tiers. Each step should include a clear objective and a way to validate its effectiveness.
+
+
+| Actions | Configuration | Validation |
+|---------|---------------|------------|
+| **Configure backup policies and retention** | - Configure backup schedules and retention periods for infrastructure and databases aligned with RPO requirements<br> - Use [Azure Backup](/azure/backup) for VMs, Azure Files, and Blob Storage<br> - Store backups in Geo-Redundant Backup Vault in secondary region | - Test backup policy execution<br> - Verify backup completion and integrity<br> - Validate retention policy enforcement |
+| **Implement cost-effective storage tiers** | - Use Archive or Cool storage tiers for infrequently accessed data<br> - Apply backup tiering policies to transition older backups to lower-cost options<br>*Configure compression and deduplication to minimize storage costs | - Review storage cost optimization reports<br> - Verify tiering policy execution<br> - Test data retrieval from different storage tiers |
+| **Document restore procedures** | - Maintain runbooks with detailed recovery steps<br> - Define target environments for restoration<br> - Include contact lists for approvals and escalations | - Test restore procedure documentation accuracy<br> - Verify contact information currency<br> - Test escalation paths and approval workflows |
+| **Monitor backup costs and compliance** | - Set budget thresholds for backup-related resources<br> - Apply backup-specific tags to enable proper tracking<br> - Configure retention policies to meet regulatory compliance requirements | - Review backup cost reports monthly<br> - Verify budget threshold effectiveness<br> - Audit compliance with retention policies |
+| **Maintain and audit backup systems** | *Perform quarterly audits of backup requirements<br> - Retire obsolete systems and adjust policies<br> - Review and update RPO/RTO requirements based on business and technology changes | *Verify audit findings are addressed<br> - Confirm retired systems are properly decommissioned<br> - Validate RPO/RTO requirement changes are feasible |
+
+
+## Recovery strategy for active-passive (cold standby)
+
+Active-passive cold standby deployments keep the secondary region's compute resources stopped until needed. This approach is ideal for Tier 2 or Tier 3 workloads, where RTOs can tolerate longer delays but recovery must still be reliable and repeatable.
+
+The primary region handles all production traffic while the secondary region maintains infrastructure readiness with minimal running resources, requiring manual activation during disaster scenarios.
+
+#### Suggested actions
+
+> Build on [recovery strategies for backup and resstore](#recovery-strategy-for-backup-and-restore) and cover these points. Extend it as necessary.
+
+| Actions | Configuration | Validation |
+|---------|---------------|------------|
+| **Set up primary and secondary regions** | - Deploy full-scale workload in primary region<br> - Duplicate network topology, policies, and configurations from primary<br> - Ensure RBAC, security baselines, monitoring agents, and policies are consistent<br> - Deploy infrastructure as code with compute resources stopped | - Verify secondary region infrastructure readiness<br> - Test policy consistency across regions<br> - Validate network connectivity and routing | 
+| **Set up cross-region data replication** | - Enable built-in replication for Azure SQL Database, PostgreSQL, MySQL, Cosmos DB<br> - Enable GZRS or RA-GZRS for paired-region storage replication<br> - Configure object replication for Blob Storage in non-paired regions<br> - Set up multi-region read/write with configurable consistency levels for [Azure Cosmos DB](../service-guides/cosmos-db.md)<br> - Configure replication lag monitoring and data consistency validation processes | - Test data synchronization lag against RPO targets<br> - Verify replication health and latency metrics<br> - Validate data consistency between regions<br> - Validate data integrity during failover scenarios | 
+| **Secure DR environment and maintain compliance** | - Replicate data residency requirements in all regions<br> - Maintain identity and access parity between regions<br> - Test for audit trail continuity during and after failover | - Audit security configurations across regions<br> - Test identity failover scenarios<br> - Verify compliance during DR events<br> - Validate audit log continuity | 
+|**Automate provisioning and prepare operations** | - Define IaC templates for automated resource provisioning environment as needed<br> - Include service configurations, scaling parameters, and dependencies<br> - Pre-define scale targets to meet full load when activated<br> - For IaC: Bicep, Terraform, ARM templates<br> - Deployment automation: CI/CD pipelines for both regions<br>- Runbooks: Automated and manual steps for invoking DR procedures | - Test automated provisioning procedures<br> - Verify compute startup times meet RTO targets<br> - Validate service dependency activation sequences<br> - Test IaC deployment consistency across regions<br> - Validate runbook execution and timing | 
+| **Monitor readiness and health** | - Set alerts on replication health and latency metrics<br> - Monitor secondary region infrastructure status<br> - Track activation readiness across all components<br> - Implement health checks for replication status<br> - Configure alerts for auto-scale events and traffic routing<br>- Ensure observability tools cover both regions | - Test monitoring and alerting systems<br> - Verify infrastructure health checks<br> - Validate readiness indicators accuracy<br> - Validate observability coverage | 
+|**Configure load balancer with manual failover** | - [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with priority-based routing<br> - Route all production traffic to primary region under normal conditions<br> - Manually trigger traffic redirection upon failover | - Test traffic failover scenarios<br> - Verify routing priority configurations<br> - Validate DNS propagation and cutover times | 
+| **Define manual failover runbook and criteria** | - Establish clear failover triggers and activation criteria<br> - Document manual activation steps including compute startup and DNS updates<br> - Include rollback procedures for failed or temporary activations | - Test failover runbook execution<br> - Verify manual activation procedures<br> - Validate rollback processes and timing | 
+| **Test restore processes regularly** | - Schedule periodic restore drills to validate backup integrity<br> - Include restoration to staging environments<br> - Log time taken and compare against RTO targets | - Execute quarterly restore drills<br> - Verify data consistency post-restore<br> - Document performance against RTO targets | 
+
+
+## Recovery strategy for active-passive (warm standby)
+
+Active-passive warm standby deployments balance cost and resilience by maintaining a minimally provisioned secondary environment that can scale quickly during failure events. This approach reduces downtime while avoiding the full cost of always-on redundancy across regions.
+
+The primary region handles all production traffic under normal conditions, while the secondary region runs with minimal resources and scales up only when activated for disaster recovery.
+
+#### Suggested actions
+
+> Build on [recovery strategies for active-passive (cold standby)](#recovery-strategy-for-active-passive-cold-standby) and cover these points. Extend it as necessary.
+
+| Actions | Configuration | Validation |
+|---------|---------------|------------|
+| **Configure secondary region at partial scale** | - Deploy minimal viable compute footprint in secondary region | - Verify secondary region infrastructure readiness | 
+| **Enable auto-scaling in secondary region** | - Configure auto-scale rules to increase compute resources post-failover<br> - Set appropriate scaling thresholds and limits<br> - Define startup sequences for dependent services | - Test scaling behavior during failover drills<br> - Verify resource availability during scale-up | 
+| **Configure automated failover procedures** | - Enable auto-failover where supported<br> - Document manual failover procedures for other services<br> - Create orchestrated failover runbooks with step-by-step processes | - Test automated failover mechanisms<br> - Validate manual failover procedures<br> - Verify runbook execution timing and accuracy | 
+| **Configure load balancer with auto failover** | - [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with automatic failover enabled<br> - Configure health checks for automatic traffic redirection | - Test traffic failover scenarios<br> - Verify routing priority configurations | 
+
 ## Recovery strategy for active-active deployments 
 
 Active-active deployments maximize service availability by running multiple workload instances across regions, with each instance actively handling production traffic. This design eliminates downtime and enables instant failover but it also demands precise planning to manage consistency, routing, and cost across distributed systems.
@@ -255,87 +310,18 @@ Choose one of two deployment approaches:
 
 #### Suggested actions
 
-> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
+> Build on the [recovery strategies for active-passive (warm standby)](#recovery-strategy-for-active-active-deployments). Extend it as necessary.
 
+| Actions | Configuration | Validation |
+|---------|---------------|------------|
+|**Configure secondary region at full capacity** | - Deploy secondary region at full-scale capacity, at par with primary | - Validate secondary region is able to **instantly** support full load when primary fails | 
+|**Configure load balancer to distribute traffic across active instances** | - [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with latency-based or weighted routing<br> - Health probes configured per endpoint<br> - Automatic rerouting of traffic upon failure detection | - Test failover scenarios across regions<br> - Verify health probe accuracy and response times<br> - Validate traffic routing during simulated outages | 
+|**Configure load distribution behavior** | - Document load threshold each region handles during normal operation<br> - Expected performance and scale-up behavior if peer region fails<br> - Define system behavior under single-region failure, partial service disruption, network partitioning | - Test regional failure scenarios under load<br> - Verify performance degradation limits<br> - Test network partition handling | 
 
-
-## Recovery strategy for active-passive (warm standby)
-
-Active-passive warm standby deployments balance cost and resilience by maintaining a minimally provisioned secondary environment that can scale quickly during failure events. This approach reduces downtime while avoiding the full cost of always-on redundancy across regions.
-
-The primary region handles all production traffic under normal conditions, while the secondary region runs with minimal resources and scales up only when activated for disaster recovery.
-
-#### Suggested actions
-
-> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
-
-
-## Recovery strategy for active-passive (cold standby)
-
-Active-passive cold standby deployments keep the secondary region's compute resources stopped until needed. This approach is ideal for Tier 2 or Tier 3 workloads, where RTOs can tolerate longer delays but recovery must still be reliable and repeatable.
-
-The primary region handles all production traffic while the secondary region maintains infrastructure readiness with minimal running resources, requiring manual activation during disaster scenarios.
-
-#### Suggested actions
-
-> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
-
-> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
-
-## Recovery strategy for backup and restore
-
-Backup and restore strategies are designed for Tier 3 administrative workloads that are non-critical to daily business operations. These systems can tolerate longer recovery windows measured in hours to days, making cost-effective backup solutions the appropriate choice.
-
-#### Suggested actions
-
-> Use this as a foundation for your workload's disaster recovery strategy. Extend it as necessary, but keep the structure action-oriented and focused. Each step should include a clear objective and a way to validate its effectiveness.
-
-
-| Actions | Configuration | Validation | Deployment Model | Tier |
-|---------|---------------|------------|------------------|------|
-| **Tier 0: Mission Critical (Includes all actions from Tiers 1-3 + below)** | | | | |
-|(0)**Configure secondary region at full capacity** | * Deploy secondary region at full-scale capacity, at par with primary | * Validate secondary region is able to **instantly** support full load when primary fails | Active-active | Tier 0 |
-|(0)**Configure load balancer to distribute traffic across active instances** | * [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with latency-based or weighted routing<br>* Health probes configured per endpoint<br>* Automatic rerouting of traffic upon failure detection | * Test failover scenarios across regions<br>* Verify health probe accuracy and response times<br>* Validate traffic routing during simulated outages | Active-active | Tier 0 |
-|(0)**Configure load distribution behavior** | * Document load threshold each region handles during normal operation<br>* Expected performance and scale-up behavior if peer region fails<br>* Define system behavior under single-region failure, partial service disruption, network partitioning | * Test regional failure scenarios under load<br>* Verify performance degradation limits<br>* Test network partition handling | Active-active | Tier 0 |
-| **Tier 1: Business Critical (Includes all actions from Tiers 2-3 + below)** | | | | |
-|(1) **Configure secondary region at partial scale** | * Deploy minimal viable compute footprint in secondary region | * Verify secondary region infrastructure readiness | Active-passive (warm) | Tier 1 |
-|(1) **Enable auto-scaling in secondary region** | * Configure auto-scale rules to increase compute resources post-failover<br>* Set appropriate scaling thresholds and limits<br>* Define startup sequences for dependent services | * Test scaling behavior during failover drills<br>* Verify resource availability during scale-up | Active-passive (warm) | Tier 1 |
-|(1) **Configure automated failover procedures** | * Enable auto-failover where supported<br>* Document manual failover procedures for other services<br>* Create orchestrated failover runbooks with step-by-step processes | * Test automated failover mechanisms<br>* Validate manual failover procedures<br>* Verify runbook execution timing and accuracy | Active-passive (warm) | Tier 1 |
-|(1) **Configure load balancer with auto failover** | * [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with automatic failover enabled<br>* Configure health checks for automatic traffic redirection | * Test traffic failover scenarios<br>* Verify routing priority configurations | Active-passive (warm) | Tier 1 |
-| **Tier 2: Business Operational (Includes all actions from Tier 3 + below)** | | | | |
-|(1-2) **Set up primary and secondary regions** | * Deploy full-scale workload in primary region<br>* Duplicate network topology, policies, and configurations from primary<br>* Ensure RBAC, security baselines, monitoring agents, and policies are consistent<br>* Deploy infrastructure as code with compute resources stopped | * Verify secondary region infrastructure readiness<br>* Test policy consistency across regions<br>* Validate network connectivity and routing | Active-passive (cold) | Tier 2 |
-|(0-2) **Set up cross-region data replication** | * Enable built-in replication for Azure SQL Database, PostgreSQL, MySQL, Cosmos DB<br>* Enable GZRS or RA-GZRS for paired-region storage replication<br>* Configure object replication for Blob Storage in non-paired regions<br>* Set up multi-region read/write with configurable consistency levels for [Azure Cosmos DB](../service-guides/cosmos-db.md)<br>* Configure replication lag monitoring and data consistency validation processes | * Test data synchronization lag against RPO targets<br>* Verify replication health and latency metrics<br>* Validate data consistency between regions<br>* Validate data integrity during failover scenarios | Active-passive (cold) | Tier 2 |
-|(0-2) **Secure DR environment and maintain compliance** |* Replicate data residency requirements in all regions<br>* Maintain identity and access parity between regions<br>* Test for audit trail continuity during and after failover | * Audit security configurations across regions<br>* Test identity failover scenarios<br>* Verify compliance during DR events<br>* Validate audit log continuity | Active-passive (warm) | Tier 2 |
-|(0-2) **Automate provisioning and prepare operations** | * Define IaC templates for automated resource provisioning environment as needed<br>* Include service configurations, scaling parameters, and dependencies<br>_Pre-define scale targets to meet full load when activated<br>_For IaC: Bicep, Terraform, ARM templates<br>_Deployment automation: CI/CD pipelines for both regions<br>_ Runbooks: Automated and manual steps for invoking DR procedures | * Test automated provisioning procedures<br>* Verify compute startup times meet RTO targets<br>* Validate service dependency activation sequences<br>* Test IaC deployment consistency across regions<br>* Validate runbook execution and timing | Active-passive (cold) | Tier 2 |
-|(0-2) **Monitor readiness and health** |* Set alerts on replication health and latency metrics<br>*Monitor secondary region infrastructure status<br>* Track activation readiness across all components<br>*Implement health checks for replication status<br>* Configure alerts for auto-scale events and traffic routing<br>*Ensure observability tools cover both regions | * Test monitoring and alerting systems<br>* Verify infrastructure health checks<br>* Validate readiness indicators accuracy<br>* Validate observability coverage | Active-passive (cold) | Tier 2 |
-|(1-2)**Configure load balancer with manual failover** | * [Azure Front Door](../service-guides/azure-front-door.md) or [Traffic Manager](../service-guides/azure-traffic-manager.md) with priority-based routing<br>* Route all production traffic to primary region under normal conditions<br>* Manually trigger traffic redirection upon failover | * Test traffic failover scenarios<br>* Verify routing priority configurations<br>* Validate DNS propagation and cutover times | Active-passive (cold) | Tier 2 |
-|(2) **Define manual failover runbook and criteria** | * Establish clear failover triggers and activation criteria<br>* Document manual activation steps including compute startup and DNS updates<br>* Include rollback procedures for failed or temporary activations | * Test failover runbook execution<br>* Verify manual activation procedures<br>* Validate rollback processes and timing | Active-passive (cold) | Tier 2 <br>***<<<only>>>***|
-| **Tier 3: Administrative (Foundation for all tiers)** | | | | |
-|(3) **Configure backup policies and retention** | * Configure backup schedules and retention periods for infrastructure and databases aligned with RPO requirements<br>* Use [Azure Backup](../service-guides/azure-backup.md) for VMs, Azure Files, and Blob Storage<br>* Store backups in Geo-Redundant Backup Vault in secondary region | * Test backup policy execution<br>* Verify backup completion and integrity<br>* Validate retention policy enforcement | Backup/restore | Tier 3 |
-|(3) **Implement cost-effective storage tiers** | * Use Archive or Cool storage tiers for infrequently accessed data<br>* Apply backup tiering policies to transition older backups to lower-cost options<br>*Configure compression and deduplication to minimize storage costs | * Review storage cost optimization reports<br>* Verify tiering policy execution<br>* Test data retrieval from different storage tiers | Backup/restore | Tier 3 |
-|(3) **Document restore procedures** | * Maintain runbooks with detailed recovery steps<br>* Define target environments for restoration<br>* Include contact lists for approvals and escalations | * Test restore procedure documentation accuracy<br>* Verify contact information currency<br>* Test escalation paths and approval workflows | Backup/restore | Tier 3 |
-|(3) **Monitor backup costs and compliance** | * Set budget thresholds for backup-related resources<br>* Apply backup-specific tags to enable proper tracking<br>* Configure retention policies to meet regulatory compliance requirements | * Review backup cost reports monthly<br>* Verify budget threshold effectiveness<br>* Audit compliance with retention policies | Backup/restore | Tier 3 |
-|(3) **Maintain and audit backup systems** | *Perform quarterly audits of backup requirements<br>* Retire obsolete systems and adjust policies<br>* Review and update RPO/RTO requirements based on business and technology changes | *Verify audit findings are addressed<br>* Confirm retired systems are properly decommissioned<br>* Validate RPO/RTO requirement changes are feasible | Backup/restore | Tier 3 |
-|(0-3) **Create communication plans and protocols** | * Establish clear chain of command for DR activation<br>* Document escalation procedures<br>* Establish stakeholder notification methods for internal and external communication<br>* Configure communication tools and create predefined messaging templates | *Test communication channels during DR drills<br>* Verify notification delivery and escalation paths<br>* Validate external communication effectiveness| Backup/restore | Tier 3 |
-|(2) **Test restore processes regularly** | * Schedule periodic restore drills to validate backup integrity<br>* Include restoration to staging environments<br>* Log time taken and compare against RTO targets | * Execute quarterly restore drills<br>* Verify data consistency post-restore<br>* Document performance against RTO targets | Active-passive (cold) | Tier 2 |
 
 ## Next steps
 
 - [RE:09 Architecture strategies for designing a disaster recovery strategy](../reliability/disaster-recovery.md)
 
 - [RE:05 Architecture strategies for designing for redundancy](../reliability/redundancy.md)
-
-
-------
-
-## Dump zone
-
-
-### Understand your part in the shared responsibility model with Azure
-
-In cloud computing, shared responsibility defines the clear division of operational and security duties between the Azure platform and your organization. Azure guarantees the reliability, security, and availability of the underlying physical infrastructure, networking, and core platform services. Meanwhile, your organization is responsible for securing your data, managing identity and access controls, configuring workloads, and ensuring compliance. This collaborative model is essential for building resilient and reliable disaster recovery (DR) strategies.
-
-//TODO: The above is no good. Needs more. What does that have to do with recovery. what's shared responsibility in terms of recoverability look like.
-* Confirm recovery priority is appropriately categorized as Tier 3
-
 
