@@ -93,7 +93,7 @@ Before selecting technologies, clearly define the business problem you're solvin
 
 AI workloads demand a security-first approach from the outset. Implement layered security across all components using identity propagation and auditable controls. Review the [security design strategies](#design-a-security-strategy-for-your-workloads-ai-components) for detailed guidance.
 
-## Design for observability from day one
+### Design for observability from day one
 
 AI applications require monitoring beyond traditional application metrics. Build observability into your design from the start:
 
