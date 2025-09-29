@@ -116,6 +116,18 @@ Work with your business stakeholders to get their sign off on these classificati
 
 Review these classifications regularly. As business needs evolve, update your DR plan accordingly.
 
+## Watch out for these friction points
+
+Here are some key friction points that you should be cautious about, otherwise DR planning can turn into a costly exercise without the right outcomes.
+
+- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgets can lead to risk and disappointment.
+
+- **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
+
+- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitation to initiate recovery, which can cause unnecessary delays.
+
+- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback is a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
+
 ## Optimize your recovery costs
 
 The cost of disaster recovery scales with the criticality of the workload. 
@@ -138,20 +150,9 @@ Whatever your tier might be, use the right tooling to review costs. Azure Cost M
 
 ## Document your DR plan
 
-A strong Disaster Recovery (DR) plan turns strategy into action. It should have three core components: runbook, communication plan, and escalation plan.
+A strong Disaster Recovery (DR) plan turns strategy into decisive action. Activation begins with a combination of automated alerts and human oversight. Observability tools flag potential issues such as performance slowdowns and trigger alerts for the operations team to investigate. They review dashboards for anomalies and assess the situation. If the issue appears broader or more severe, it is escalated and additional teams may be involved. After there is enough evidence, the DR lead formally declares a disaster, initiating a structured failover process to maintain system continuity.
 
-#### DR runbook
-
-A strong runbook replaces abstract strategies with structure and allows the team to respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
-
-- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cutover steps.
-
-- **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
-
-- **Plan post-recovery and review**. Outline actions to clean up temporary environments. Document data reconciliation if applicable. Schedule root cause analysis and DR debrief.
-
-> [!TIP]
-> Treat your DR runbook like production code: version it and make it accessible. Use version control tools like Git or a versioned wiki to track updates and ensure accuracy over time. Just as important, make sure the runbook is always reachable, even during an outage. Store it in multiple formats, including offline or printable versions, so teams can access it when it matters most.
+To make this possible, every DR plan should include three essential components: a clear runbook, a well-defined communication plan, and a structured escalation path.
 
 #### DR communication plan
 
@@ -163,11 +164,51 @@ A communication plan ensures that the right information reaches the right people
 
 - **Key stakeholders**. Identify key internal and external audiences, such as, employees, leadership, partners, and customers.
 
-- **Communication channels**. Establish primary and backup methods like email, SMS, and others.
+- **Communication channels**. Establish primary and backup methods like email, SMS, and others. Also establish frequency of updates to those channels.
 
 - **Notifications and templates**. Outline when to send updates and prepare pre-approved messaging templates for email, status page, and incident channels.
 
 - **Escalation and continuity**. Ensure there's a structured way to escalate issues if someone is unavailable or things change quickly.
+
+#### DR runbook
+
+A strong runbook replaces abstract strategies with structure and allows the team to respond under pressure. Make it clear, make it practical, and make sure it works. Start with a simple outline and build gradually. Collaborate with business, security, and operations to ensure full coverage.
+
+- **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cutover steps.
+
+    Develop a step-by-step process for failover initiation:
+
+    | Action | Owner | Criteria |
+    |--------|-------|----------|
+    | 1. Detect incident | Monitoring/Operations | The incident is triggered by alerts or user reports. |
+    | 2. Assess severity | Incident Manager | Use the Incident Classification Table to determine severity level. |
+    | 3. Declare outage (if needed) | Senior Ops/BCDR Lead | Declare outage for High and Critical severity incidents only. |
+    | 4. Notify stakeholders | Communications Lead | Follow the established Communication Plan for notifications. |
+    | 5. Initiate failover automation | Operations Team | Use automation runbooks after outage has been confirmed. |
+    | 6. Validate service in secondary | Ops/QA Team | Complete health checks before communicating cutover completion. |
+    | 7. Close incident and document | Incident Manager | Conduct post-mortem and update incident records. |
+
+    Similarly, create a failback decision and initiation process (primary region available):
+
+    | Action | Owner | Criteria/decision point |
+    |--------|-------|-------------------------|
+    | 1. Monitor primary region health | Operations/Cloud Team | Verify that the primary region passes all health checks and is fully operational.<br>Use automated monitoring tools and manual validation to confirm readiness. |
+    | 2. Assess business impact | Application Owner/Business Continuity | Confirm business readiness for failback, including low-traffic windows and required approvals.<br>Coordinate with stakeholders to ensure timing aligns with business needs. |
+    | 3. Review data synchronization | Database/Infra Team | Ensure that data in the secondary region is synchronized with the primary and meets RPO/RTO requirements.<br>Use replication status dashboards to verify data consistency. |
+    | 4. Communicate failback plan | Incident Manager | Notify stakeholders of the planned failback, including timeline and potential impact.<br>Use email, Teams, or incident management tools for communication. |
+    | 5. Prepare primary region | Infra/Cloud Team | Validate that infrastructure, security, and application components are ready in the primary region.<br>Run pre-failback checklists to ensure complete readiness. |
+    | 6. Initiate failback | Operations/Cloud Team | Proceed only with approved change request and when all criteria are met.<br>Begin redirecting traffic and workloads to the primary region. |
+    | 7. Monitor failback progress | Operations/Cloud Team | Monitor for errors, latency, or data loss during the transition process.<br>Use dashboards and alerting systems to track progress. |
+    | 8. Validate application functionality | Application Owner/QA | Confirm that applications and services are fully functional in the primary region.<br>Run smoke tests and regression tests to validate functionality. |
+    | 9. Finalize & close incident | Incident Manager | Ensure all systems are stable, stakeholders are informed, and documentation is updated.<br>Complete post-mortem analysis and capture lessons learned. |
+
+- **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
+
+- **Plan post-recovery and review**. Outline actions to clean up temporary environments. Document data reconciliation if applicable. Schedule root cause analysis and DR debrief.
+
+> [!TIP]
+> Treat your DR runbook like production code: version it and make it accessible. Use version control tools like Git or a versioned wiki to track updates and ensure accuracy over time. Just as important, make sure the runbook is always reachable, even during an outage. Store it in multiple formats, including offline or printable versions, so teams can access it when it matters most.
+
 
 #### DR escalation plan
 
@@ -179,26 +220,25 @@ During disaster recovery, speed and clarity are everything. An escalation plan e
 
 - **Incident severity levels.** Categorize incidents by impact so that minor issues don't clog the system, and major ones get immediate attention from leadership.
 
+Here's an example template: 
+
+| Severity level | Description | Examples | Outage declaration trigger | Stakeholders notified |
+|----------------|-------------|----------|---------------------------|----------------------|
+| Low | Minor service degradation | Brief latency spike | No formal declaration | Operations Team |
+| Medium | Partial service degradation | Single service errors | Incident logged, under observation | Ops, Business Leads |
+| High | Major outage, widespread impact | Multi-service failure | Formal outage declaration | All stakeholders, Customers |
+| Critical | Total loss, business-critical | Complete regional Azure failure | Immediate declaration, C-level | All stakeholders, Exec Team |
 
 ## Test regularly and improve the plan
 
 Disaster recovery is an operational discipline. A DR plan that's never tested stays theoretical and unproven.
 
-* Rehearse the runbook to simulate scenarios and clarify team roles.
-* Schedule full or partial failover drills to validate actual recovery steps and timings.
-* Capture any gaps or issues discovered, then update your architecture and runbooks promptly.
+- Rehearse the runbook at a regular cadence to simulate scenarios and clarify team roles.  
 
-## Watch out for these friction points
+- Schedule full or partial failover drills to validate actual recovery steps and timings. A planned failover simulates a regional outage to practice smooth system transitions. Tools like Azure Chaos Studio are used to test unplanned failures and see how systems respond.
 
-Here are some key friction points that you should be cautious about, otherwise DR planning can turn into a costly exercise without the right outcomes.
+- After every test, check data to confirm nothing was lost or corrupted. Capture any gaps or issues discovered, then update your architecture and runbooks promptly.
 
-- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgets can lead to risk and disappointment.
-
-- **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
-
-- **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitation to initiate recovery, which can cause unnecessary delays.
-
-- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback is a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
 
 ## Recovery strategy for active-active deployments 
 
