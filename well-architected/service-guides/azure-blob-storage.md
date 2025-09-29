@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 04/18/2024
+ms.date: 08/18/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -93,7 +93,7 @@ Start your design strategy based on the [design review checklist for Security](.
 |Authorize access by using Azure role-based access control (RBAC). | With RBAC, there are no passwords or keys that can be compromised. The security principal (user, group, managed identity, or service principal) is authenticated by Microsoft Entra ID to return an OAuth 2.0 token. The token is used to authorize a request against the Blob Storage service.|
 |[Disallow shared key authorization](/azure/storage/common/shared-key-authorization-prevent). This disables not only account key access but also service and account shared access signature tokens because they're based on account keys. | Only secured requests that are authorized with Microsoft Entra ID are permitted. |
 |We recommend that you don't use an account key. If you must use account keys, then [store them in Key Vault](/azure/storage/common/storage-account-keys-manage#protect-your-access-keys), and make sure that you regenerate them periodically. | Key Vault lets you retrieve keys at runtime, instead of saving them by using your application. Key Vault also makes it easy to rotate your keys without interruption to your applications. Rotating the account keys periodically reduces the risk of exposing your data to malicious attacks.|
-|We recommend that you don't use shared access signature tokens. Evaluate whether you need shared access signature tokens to secure access to Blob Storage resources. If you must create one, then review this list of [shared access signature best practices](/azure/storage/common/storage-sas-overview#best-practices-when-using-sas) before you create and distribute it. | Best practices can help you prevent a shared access signature token from being leaked and quickly recover if a leak does occur. |
+|We recommend that you don't use shared access signature tokens. Define [SAS expiration policy](/azure/storage/common/sas-expiration-policy) and actions to control how such out-of-policy tokens are handled by logging their use or explicitly blocking them. <br><br>If you must create one, then review this list of [shared access signature best practices](/azure/storage/common/storage-sas-overview#best-practices-when-using-sas) before you create and distribute it. | Strong governance policy helps prevent overly long-lived or misconfigured tokens that could lead to security or compliance risks.  |
 |[Configure your storage account](/azure/storage/common/transport-layer-security-configure-minimum-version) so clients can send and receive data by using the minimum version of TLS 1.2. | TLS 1.2 is more secure and faster than TLS 1.0 and 1.1, which don't support modern cryptographic algorithms and cipher suites.|
 |Consider using your own encryption key to protect the data in your storage account. For more information, see [Customer-managed keys for Azure Storage encryption](/azure/storage/common/customer-managed-keys-overview). | Customer-managed keys provide greater flexibility and control. For example, you can store encryption keys in Key Vault and automatically rotate them. |
 
@@ -134,7 +134,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 > - **Monitor costs**: Ensure costs stay within budgets, compare costs against forecasts, and see where overspending occurs. You can use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) pane in the Azure portal to monitor costs. You also can export cost data to a storage account and analyze that data by using Excel or Power BI.
 >
 > - **Monitor usage**: Continuously monitor usage patterns and detect unused or underutilized accounts and containers. Use [Storage insights](/azure/storage/blobs/blob-storage-monitoring-scenarios#identify-storage-accounts-with-no-or-low-use) to identity accounts with no or low use. Enable blob inventory reports, and use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to analyze cost data. Watch out for unexpected increases in capacity, which might indicate that you're collecting numerous log files, blob versions, or soft-deleted blobs. Develop a strategy for expiring or transitioning objects to more cost-effective access tiers.Have a plan for expiring objects or moving objects to more affordable access tiers.
-
+>
+> - **Consider Azure Storage Actions for automated data lifecycle management**: [Azure Storage Actions](/azure/storage-actions/overview#supported-regions) enables automated data lifecycle management across your storage accounts with improved regional availability. This allows for consistent automated data archiving, deletion, and tier transition policies across regions while maintaining data residency compliance.
 ### Configuration recommendations
 
 |Recommendation|Benefit|
@@ -167,6 +168,8 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Enable blob inventory reports**: Enable blob inventory reports to review the retention, legal hold, or encryption status of your storage account contents. You can also use blob inventory reports to understand the total data size, age, tier distribution, or other attributes of your data. Use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to better visualize inventory data and to create reports for stakeholders.
 >
 > - **Set up policies that delete blobs or move them to cost-efficient access tiers**: Create a lifecycle management policy with an initial set of conditions. Policy runs automatically delete or set the access tier of blobs based on the conditions you define. Periodically analyze container use by using Monitor metrics and blob inventory reports so that you can refine conditions to optimize cost efficiency.
+>
+> - **Ensure policy consistency across regions**. When data is stored globally, have data lifecycle management strategies that meet data residency requirements. Take advantage of the native automation capabilities that enable  consistent storage policies across regions.
 
 ### Configuration recommendations
 
@@ -174,6 +177,7 @@ Start your design strategy based on the [design review checklist for Operational
 |------------------------------|-----------|
 |Use infrastructure as code (IaC) to define the details of your storage accounts in [Azure Resource Manager templates (ARM templates)](/azure/azure-monitor/logs/resource-manager-workspace), [Bicep](/azure/azure-monitor/logs/resource-manager-workspace), or [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace.html). | You can use your existing DevOps processes to deploy new storage accounts, and use [Azure Policy](/azure/governance/policy/overview) to enforce their configuration.|
 |Use Storage insights to track the health and performance of your storage accounts. Storage insights provides a unified view of the failures, performance, availability, and capacity for all your storage accounts. | You can track the health and operation of each of your accounts. Easily create dashboards and reports that stakeholders can use to track the health of your storage accounts.|
+|Take advantage of regional automation capabilities with [Azure Storage Actions](/azure/storage-actions/overview) for unified data lifecycle management that automatically segments data based on access patterns and delete expired content according to retention policies while meeting data residency requirements. | Enables automated storage management and lifecycle policies across more geographic regions, reducing manual operational overhead for global organizations.|
 
 ## Performance Efficiency
 
@@ -210,6 +214,26 @@ Start your design strategy based on the [design review checklist for Performance
 |Add a hash character sequence (such as three digits) as early as possible in the partition key of a blob. The partition key is the account name, container name, virtual directory name, and blob name. If you plan to use timestamps in names, then consider adding a seconds value to the beginning of that stamp. For more information, see [Partitioning](/azure/storage/blobs/storage-performance-checklist#partitioning).| Using a hash code or seconds value nearest the beginning of a partition key reduces the time required to list query and read blobs. |
 |When uploading blobs or blocks, use a blob or block size that's greater than 256 KiB. | Blob or block sizes above 256 KiB takes advantage of performance enhancements in the platform made specifically for larger blobs and block sizes. |
 
+## Tradeoffs
+
+You might have to make design tradeoffs if you use the approaches in the pillar checklists. Here are some examples of advantages and drawbacks.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Access tiers and cost optimization**
+
+- **Cooler access tiers:** Moving data to cooler access tiers (cool, cold, or archive) can reduce storage costs, especially for infrequently accessed data. Archive tier offers the low storage cost but requires rehydration to access data, which takes time and incurs additional costs.
+
+  Consider the disadvantages of cooler tiers, including higher access costs and retrieval times. Archive tier can take significant time for standard-priority rehydration. The cost of frequent tier changes can exceed storage savings if access patterns are unpredictable. For critical data that needs immediate access, hot tier provides fastest access but at higher storage costs. Evaluate your access patterns carefully to avoid unnecessary costs from frequent tier transitions and early delete penalties.
+
+- **Lifecycle management policies:** Automated lifecycle policies can optimize costs by moving data to appropriate tiers based on age or access patterns. These policies reduce manual operational overhead and ensure consistent cost optimization across your storage accounts.
+
+  As a disadvantage, overly aggressive lifecycle policies might move frequently accessed data to cooler tiers, resulting in higher access costs and slower performance. Policies that are too conservative might keep data in expensive tiers longer than necessary. Monitor your access patterns and adjust policies based on actual usage data rather than assumptions.
+
+:::image type="icon" source="../_images/trade-off.svg"::: **Data redundancy and regional distribution**
+
+A robust redundancy strategy ensures data durability and availability but involves cost and complexity tradeoffs. Geo-redundant storage (GRS) and geo-zone-redundant storage (GZRS) provide protection against regional outages but cost significantly more than locally redundant storage (LRS). Zone-redundant storage (ZRS) offers a middle ground with protection against availability zone failures within a region.
+
+  Consider the disadvantages of higher redundancy levels. GRS and GZRS require data synchronization across regions, which can introduce slight delays in data consistency. The cost can be higher than LRS. For applications that can tolerate some data loss or have alternative backup strategies, LRS might provide sufficient protection at lower cost. Evaluate your recovery time objectives (RTO) and recovery point objectives (RPO) to determine the appropriate redundancy level.
+
 ## Azure policies
 
 Azure provides an extensive set of built-in policies related to Blob Storage and its dependencies. Some of the preceding recommendations can be audited through Azure policies. For example, you can check if:
@@ -233,3 +257,5 @@ For more information, see [Azure Advisor](/azure/advisor).
 ## Next step
 
 For more information about Blob Storage, see [Blob Storage documentation](/azure/storage/blobs/).
+
+<!-- Updated: August 18, 2025 for Azure Update 498759 -->

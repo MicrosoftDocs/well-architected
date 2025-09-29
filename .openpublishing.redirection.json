@@ -771,6 +771,16 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/service-guides/azure-cache-redis/operational-excellence.md",
+			"redirect_url": "/azure/azure-cache-for-redis/cache-overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-cache-redis/reliability.md",
+			"redirect_url": "/azure/azure-cache-for-redis/cache-overview",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/services/compute/functions/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-functions-security",
 			"redirect_document_id": true
