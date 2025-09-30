@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure App Service (Web Apps)
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for the Web Apps feature of Azure App Service.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 02/12/2025
+ms.date: 09/12/2025
 ms.topic: conceptual
 ms.subservice: waf-service-guide
 products:
@@ -68,6 +68,8 @@ Start your design strategy based on the [design review checklist for Reliability
 >   You can sometimes scale up to handle the load. However, if the load continues to increase, scale out to new instances. Choose the automatic, or *autoscaling*, approach over the manual approach. Always maintain a buffer of extra capacity during scaling operations to prevent performance degradation.
 >
 >   The [App Service plan tier](/azure/app-service/overview-hosting-plans#how-does-my-app-run-and-scale) that you choose affects scaling in terms of the number of instances and the compute units.
+>
+>   Consider network protocol requirements when designing your scaling strategy, ensuring that both IPv4 and IPv6 traffic patterns are covered. App Service supports inbound IPv6 connectivity alongside IPv4. IPv6-only networks can overcome IPv4 address exhaustion issues. However, IPv6-only clients, require IPv4-to-IPv6 translation services when IPv6 is not enabled, creating potential network translation overhead. For more information, see [Inbound and outbound IP addresses in Azure App Service](/azure/app-service/overview-inbound-outbound-ips). 
 >
 > - **Ensure proper app initialization so that new instances warm up quickly and can receive requests.** Strive for stateless applications when possible. Reliably scaling state with new instances can increase complexity. Consider an external data store that you can scale independently if you need to store application state. Storing session state in memory can result in losing session state when there's a problem with the application or App Service. It also limits the possibility of spreading the load across other instances.
 >
@@ -389,3 +391,6 @@ Consider the following articles as resources that demonstrate the recommendation
 
   - [App Service](/azure/app-service/)
   - [App Service plan](/azure/app-service/overview-hosting-plans)
+
+
+<!-- Update 499998: App Service IPv6 Support added to Reliability pillar -->
