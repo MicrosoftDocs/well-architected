@@ -99,7 +99,7 @@ Outages in this tier may not immediately impact customers, but longer disruption
 
 Administrative systems are non-critical workloads that support background operations or serve low-urgency use cases. These typically include archival platforms, sandbox environments, training portals, or batch-processing tools where availability isn't time-sensitive.
 
-With SLOs below 99.9%, these systems tolerate longer recovery windows, with RTO ranging from hours to days and RPO measured in hours. The most cost-effective approach here is typically backup and restore, minimizing ongoing infrastructure costs while still preserving recoverability.
+With SLOs below 99.9%, these systems tolerate longer recovery windows, with RTO ranging from hours to days and RPO measured in hours. The most cost-effective approach here's typically backup and restore, minimizing ongoing infrastructure costs while still preserving recoverability.
 
 While delays in this tier are generally acceptable, data integrity must still be protected. These systems may not stop the business if they go down, but losing them entirely could still create compliance risks or knowledge gaps over time.
 
@@ -148,7 +148,7 @@ Whatever your tier might be, use the right tooling to review costs. Azure Cost M
 
 ## Document your DR plan
 
-A strong Disaster Recovery (DR) plan turns strategy into decisive action. Activation begins with a combination of automated alerts and human oversight. Observability tools flag potential issues such as performance slowdowns and trigger alerts for the operations team to investigate. They review dashboards for anomalies and assess the situation. If the issue appears broader or more severe, it is escalated and additional teams may be involved. After there is enough evidence, the DR lead formally declares a disaster, initiating a structured failover process to maintain system continuity.
+A strong Disaster Recovery (DR) plan turns strategy into decisive action. Activation begins with a combination of automated alerts and human oversight. Observability tools flag potential issues such as performance slowdowns and trigger alerts for the operations team to investigate. They review dashboards for anomalies and assess the situation. If the issue appears broader or more severe, it's escalated and additional teams may be involved. After there's enough evidence, the DR lead formally declares a disaster, initiating a structured failover process to maintain system continuity.
 
 To make this possible, every DR plan should include three essential components: a clear runbook, a well-defined communication plan, and a structured escalation path.
 
@@ -244,7 +244,7 @@ Disaster recovery is an operational discipline. A DR plan that's never tested st
 
 ## Recovery strategy for backup and restore
 
-Backup and restore strategies must be part of all recovery stratergies. 
+Backup and restore strategies must be part of all recovery strategies. 
 
 #### Suggested actions
 
