@@ -189,7 +189,6 @@ A strong runbook replaces abstract strategies with structure and allows the team
     | 4. Recover applications | Ops/QA Team | Deploy, if needed, and activate applications in secondary. Validate correct operation and all dependencies |
     | 5. Traffic cutover | Operations Team | Transition user to secondary environment. Update DNS records if necessary | 
     | 6. Transition monitoring and auditing | Operations Team | Transition all monitoring and auditing to the secondary environment.  Ensure the environment meets performance and user expectations |   
-    | 6. Validate service in secondary | Ops/QA Team | Complete health checks before communicating cutover completion. |
     | 7. Close incident and document | Incident Manager | Conduct post-mortem and update incident records. |
 
     Similarly, create a failback decision and execution process (primary region available):
