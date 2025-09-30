@@ -167,6 +167,7 @@ A communication plan ensures that the right information reaches the right people
 - **Notifications and templates**. Outline when to send updates and prepare pre-approved messaging templates for email, status page, and incident channels.
 
 - **Escalation and continuity**. Ensure there's a structured way to escalate issues if someone is unavailable or things change quickly.
+Communication plans must address both internal and external stakeholders with appropriate detail and frequency and using separate channels. Internal communication provides regular updates to executive leadership and business users, focusing on business impact, timelines, and resource needs. External communication coordinates with customers, partners, and regulatory bodies, and include current status and realistic timeframes for restoration.
 
 #### DR runbook
 
@@ -174,7 +175,7 @@ A strong runbook replaces abstract strategies with structure and allows the team
 
 - **Document failover and failback procedures**. Write step-by-step technical instructions for initiating failover. Reference tools and scripts to execute with links or references. Establish criteria for initiating failback and coordinated cutover steps.
 
-    Develop a step-by-step process for failover initiation:
+    Develop a step-by-step process for failover execution:
 
     | Action | Owner | Criteria |
     |--------|-------|----------|
@@ -186,7 +187,7 @@ A strong runbook replaces abstract strategies with structure and allows the team
     | 6. Validate service in secondary | Ops/QA Team | Complete health checks before communicating cutover completion. |
     | 7. Close incident and document | Incident Manager | Conduct post-mortem and update incident records. |
 
-    Similarly, create a failback decision and initiation process (primary region available):
+    Similarly, create a failback decision and execution process (primary region available):
 
     | Action | Owner | Criteria/decision point |
     |--------|-------|-------------------------|
@@ -250,10 +251,10 @@ Backup and restore strategies must be part of all recovery stratergies.
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
 | **Configure backup policies and retention** | - Configure backup schedules and retention periods for infrastructure and databases aligned with RPO requirements<br> - Use [Azure Backup](/azure/backup) for VMs, Azure Files, and Blob Storage<br> - Store backups in Geo-Redundant Backup Vault in secondary region | - Test backup policy execution<br> - Verify backup completion and integrity<br> - Validate retention policy enforcement |
-| **Implement cost-effective storage tiers** | - Use Archive or Cool storage tiers for infrequently accessed data<br> - Apply backup tiering policies to transition older backups to lower-cost options<br>*Configure compression and deduplication to minimize storage costs | - Review storage cost optimization reports<br> - Verify tiering policy execution<br> - Test data retrieval from different storage tiers |
+| **Implement cost-effective storage tiers** | - Use Archive or Cool storage tiers for infrequently accessed data<br> - Apply backup tiering policies to transition older backups to lower-cost options<br>* Configure compression and deduplication to minimize storage costs | - Review storage cost optimization reports<br> - Verify tiering policy execution<br> - Test data retrieval from different storage tiers |
 | **Document restore procedures** | - Maintain runbooks with detailed recovery steps<br> - Define target environments for restoration<br> - Include contact lists for approvals and escalations | - Test restore procedure documentation accuracy<br> - Verify contact information currency<br> - Test escalation paths and approval workflows |
 | **Monitor backup costs and compliance** | - Set budget thresholds for backup-related resources<br> - Apply backup-specific tags to enable proper tracking<br> - Configure retention policies to meet regulatory compliance requirements | - Review backup cost reports monthly<br> - Verify budget threshold effectiveness<br> - Audit compliance with retention policies |
-| **Maintain and audit backup systems** | *Perform quarterly audits of backup requirements<br> - Retire obsolete systems and adjust policies<br> - Review and update RPO/RTO requirements based on business and technology changes | *Verify audit findings are addressed<br> - Confirm retired systems are properly decommissioned<br> - Validate RPO/RTO requirement changes are feasible |
+| **Maintain and audit backup systems** | * Perform quarterly audits of backup requirements<br> - Retire obsolete systems and adjust policies<br> - Review and update RPO/RTO requirements based on business and technology changes | * Verify audit findings are addressed<br> - Confirm retired systems are properly decommissioned<br> - Validate RPO/RTO requirement changes are feasible |
 
 
 ## Recovery strategy for active-passive (cold standby)
