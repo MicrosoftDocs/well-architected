@@ -351,7 +351,7 @@
       - name: Handle transient faults
         href: ./design-guides/handle-transient-faults.md
       - name: Develop a disaster recovery plan
-      - href: ./design-guides/disaster-recovery.md
+        href: ./design-guides/disaster-recovery.md
       - name: Develop background jobs
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
