@@ -248,7 +248,7 @@ Backup and restore strategies must be part of all recovery strategies.
 
 #### Suggested actions
 
-> Use this as a foundation for all the tiers. Each step should include a clear objective and a way to validate its effectiveness.
+Use this as a foundation for all the tiers. Each step should include a clear objective and a way to validate its effectiveness.
 
 
 | Actions | Configuration | Validation |
@@ -268,7 +268,7 @@ The primary region handles all production traffic while the secondary region mai
 
 #### Suggested actions
 
-> Build on [recovery strategies for backup and resstore](#recovery-strategy-for-backup-and-restore) and cover these points. Extend it as necessary.
+Build on [recovery strategies for backup and resstore](#recovery-strategy-for-backup-and-restore) and cover these points. Extend it as necessary.
 
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
@@ -290,7 +290,7 @@ The primary region handles all production traffic under normal conditions, while
 
 #### Suggested actions
 
-> Build on [recovery strategies for active-passive (cold standby)](#recovery-strategy-for-active-passive-cold-standby) and cover these points. Extend it as necessary.
+Build on [recovery strategies for active-passive (cold standby)](#recovery-strategy-for-active-passive-cold-standby) and cover these points. Extend it as necessary.
 
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
@@ -314,7 +314,7 @@ Choose one of two deployment approaches:
 
 #### Suggested actions
 
-> Build on the [recovery strategies for active-passive (warm standby)](#recovery-strategy-for-active-active-deployments). Extend it as necessary.
+Build on the [recovery strategies for active-passive (warm standby)](#recovery-strategy-for-active-active-deployments). Extend it as necessary.
 
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
