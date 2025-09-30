@@ -117,7 +117,7 @@ productDirectory:
     - title: Azure Databricks
       summary: Use the fast, easy, and collaborative Apache Spark-based analytics platform.
       imageSrc: https://static.docs.com/ui/media/product/azure/databricks.svg
-      url: azure-databricks-security.md
+      url: azure-databricks.md
       azureCategories:
         - ai-machine-learning
         - analytics

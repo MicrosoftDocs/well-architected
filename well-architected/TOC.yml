@@ -273,7 +273,7 @@
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
-          href: service-guides/azure-databricks-security.md
+          href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
