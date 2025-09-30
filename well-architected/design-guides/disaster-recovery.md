@@ -183,13 +183,12 @@ A strong runbook replaces abstract strategies with structure and allows the team
     | 2. Assess severity | Incident Manager | Use the Incident Classification Table to determine severity level. |
     | 3. Declare outage (if needed) | Senior Ops/BCDR Lead | Declare outage for High and Critical severity incidents only. |
     | 4. Notify stakeholders | Communications Lead | Follow the established Communication Plan for notifications. |
-    | 1. Initiate runbook execution | Operations Team | Initiate execution of the DR runbook, including automated runbooks and manual steps. |
-    | 2. Prepare secondary infrastructure | Operations Team | Deploy and/or scale-up and validate infrastructure configuration in secondary. |
-    | 3. Ensure data integrity | Operations Team | Restore data from backups, if needed, and validate data integrity and adherence to RPO. |
-    | 4. Recover applications | Ops/QA Team | Deploy, if needed, and activate applications in secondary. Validate correct operation and all dependencies |
-    | 5. Traffic cutover | Operations Team | Transition user to secondary environment. Update DNS records if necessary | 
-    | 6. Transition monitoring and auditing | Operations Team | Transition all monitoring and auditing to the secondary environment.  Ensure the environment meets performance and user expectations |   
-    | 7. Close incident and document | Incident Manager | Conduct post-mortem and update incident records. |
+    | 5. Initiate runbook execution | Operations Team | Initiate execution of the DR runbook, including automated runbooks and manual steps. |
+    | 6. Prepare secondary infrastructure | Operations Team | Deploy and/or scale-up and validate infrastructure configuration in secondary. |
+    | 7. Ensure data integrity | Operations Team | Restore data from backups, if needed, and validate data integrity and adherence to RPO. |
+    | 8. Recover applications | Ops/QA Team | Deploy, if needed, and activate applications in secondary. Validate correct operation and all dependencies |
+    | 9. Traffic cutover | Operations Team | Transition user to secondary environment. Update DNS records if necessary | 
+    | 10. Close incident and document | Incident Manager | Conduct post-mortem and update incident records. |
 
     Similarly, create a failback decision and execution process (primary region available):
 
@@ -203,7 +202,7 @@ A strong runbook replaces abstract strategies with structure and allows the team
     | 6. Initiate failback | Operations/Cloud Team | Proceed only with approved change request and when all criteria are met.<br>Begin redirecting traffic and workloads to the primary region. |
     | 7. Monitor failback progress | Operations/Cloud Team | Monitor for errors, latency, or data loss during the transition process.<br>Use dashboards and alerting systems to track progress. |
     | 8. Validate application functionality | Application Owner/QA | Confirm that applications and services are fully functional in the primary region.<br>Run smoke tests and regression tests to validate functionality. |
-    | 9. Finalize & close incident | Incident Manager | Ensure all systems are stable, stakeholders are informed, and documentation is updated.<br>Complete post-mortem analysis and capture lessons learned. |
+    | 9. Finalize and close incident | Incident Manager | Ensure all systems are stable, stakeholders are informed, and documentation is updated.<br>Complete post-mortem analysis and capture lessons learned. |
 
 - **Establish health validation and readiness checks**. Define how you verify service functionality post-failover. Include application-level, infrastructure, and data integrity checks.
 
