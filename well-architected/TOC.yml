@@ -273,7 +273,7 @@
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
-          href: service-guides/azure-databricks-security.md
+          href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
@@ -344,6 +344,8 @@
         href: ./design-guides/optimize-workload-using-flows.md
       - name: Handle transient faults
         href: ./design-guides/handle-transient-faults.md
+      - name: Develop a disaster recovery plan
+        href: ./design-guides/disaster-recovery.md
       - name: Develop background jobs
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
