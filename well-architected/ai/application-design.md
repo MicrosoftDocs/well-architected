@@ -12,23 +12,23 @@ ms.update-cycle: 180-days
 
 There are many choices to consider when you design intelligent capabilities into your workload. Your unique functional and nonfunctional requirements help you determine whether you need basic inferencing capabilities or more dynamic problem-solving capabilities. These requirements guide your high-level design decisions. You consider these choices as you move from high-level design areas to lower-level design areas.
 
-As discussed in the [Get started](./get-started.md) article, whether to build your own model or use a prebuilt model is one of the first important decisions to make. When you use a prebuilt model, consider these points:
+As discussed in the [Get started](./get-started.md) article, whether to build your own model or use a prebuilt model is one of the first important decisions to make. When you use a prebuilt model, consider the following points:
 
 - **Catalog sources:** Explore repositories like the Hugging Face Model Hub, TensorFlow Hub, and the [Azure AI Foundry portal](https://ai.azure.com?cid=learnDocs) model catalog to find pretrained models. These platforms provide an extensive catalog of models for various tasks.
 
-- **Licensing:** Make sure the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
+- **Licensing:** Make sure that the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
 - **Key components:** Look at the model's architecture, training data, and performance to determine whether it's fine-tuned for your task or domain.
 
-For guidance on choosing a hosting platform, see [Considerations for the model hosting and inferencing platform](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
+For guidance about how to choose a hosting platform, see [Considerations for the model hosting and inferencing platform](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
 
-This article describes common design areas and factors to consider when you make decisions about technology and approach. The guidance applies to both traditional machine learning (ML) and generative AI workloads, covering frameworks like TensorFlow, Keras, and PyTorch, as well as various serving and hosting options including batch, stream, and online processing.
+This article describes common design areas and factors to consider when you make decisions about technology and approach. The guidance applies to both traditional machine learning and generative AI workloads. It covers frameworks like TensorFlow, Keras, and PyTorch, along with various serving and hosting options that include batch, stream, and online processing.
 
 ## Application layer architecture
 
-When designing intelligent capabilities, establish clear boundaries in your design across these five key layers:
+When you design intelligent capabilities, establish clear boundaries in your design across the following five key layers.
 
-:::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram showing the four application layers: Client, Intelligence, Inferencing, Knowledge, and Tools." lightbox="../_images/ai-application-layers.svg":::
+:::image type="content" source="../_images/ai-application-layers.svg" alt-text="Diagram that shows the five application layers: client, intelligence, inferencing, knowledge, and tools." lightbox="../_images/ai-application-layers.svg":::
 
 - **Client layer:** The user interface and client applications where users or processes experience your workload's intelligent capabilities. Keep this layer thin and delegate most capabilities to other layers.
 
@@ -46,24 +46,24 @@ Each layer enforces its own policies, identities, and caching strategies to achi
 
 The following table summarizes the recommendations provided in this article.
 
-|Recommendation|Description|
+| Recommendation | Description |
 |---|---|
 | **Prioritize security and Responsible AI controls.** | Implement traditional application security plus AI-specific safety measures as a primary design driver. Enforce provider safety systems, input/output filtering, identity-bound rate limiting and quotas, and token/prompt caps. Security and safety controls must be verified and can't be assumed from managed services. |
 | **Keep intelligence away from the client.** | Design back-end services to handle cross-cutting concerns like rate limiting, failover operations, and AI processing logic. Abstract behavior and intelligence away from the client to future-proof your design and improve maintainability. |
-| **Block direct access to data stores.** | Code in AI systems shouldn't directly access your data stores. Route all data requests through an API or similar data access abstraction that enforces authorization and propagates user/tenant context into retrieval and filtering. Pass forward user identity so data level security can be applied. |
-| **Abstract your models and tools.** | Use abstraction layers to decouple your application from specific models, tools, and technologies. Implement standardized interfaces and protocols to provide flexibility as technologies evolve, making your design more maintainable and future-proof. |
+| **Block direct access to data stores.** | Code in AI systems shouldn't directly access your data stores. Route all data requests through an API or similar data access abstraction that enforces authorization and propagates user or tenant context into retrieval and filtering. Pass forward user identity so that data level security can be applied. |
+| **Abstract your models and tools.** | Use abstraction layers to decouple your application from specific models, tools, and technologies. Implement standardized interfaces and protocols to provide flexibility as technologies evolve, which makes your design more maintainable and future-proof. |
 | **Isolate behaviors and actions.** | Design clear boundaries across client, intelligence (routing/orchestration/agents), knowledge (grounding data), and tools (business APIs) layers. Each layer should enforce its own policies, identities, and caching strategies to reduce blast radius and focus development efforts. |
-| **Prioritize off-the-shelf solutions.** | Use software or platform as a service (SaaS or PaaS) to handle workload functions when they meet security, safety, compliance, and quota needs. Implement compensating controls through gateways that enforce authentication, quotas, safety, and logging. Use prebuilt and pretrained models where possible to minimize the operational and development burden for your workload and operations teams. |
+| **Prioritize off-the-shelf solutions.** | Use software as a service (SaaS) or platform as a service (PaaS) to handle workload functions when they meet security, safety, compliance, and quota needs. Implement compensating controls through gateways that enforce authentication, quotas, safety, and logging. Use prebuilt and pretrained models where possible to minimize the operational and development burden for your workload and operations teams. |
 
 ## Distinguish between inferencing and intelligent applications
 
-When designing your application architecture, first determine whether you're building an inferencing-focused application or an intelligence-focused application, as this distinction drives design decisions.
+When you design your application architecture, first determine whether you're building an inferencing-focused application or an intelligence-focused application because this distinction drives design decisions.
 
 ### Inferencing applications
 
 Inferencing applications perform single-step operations like classification, translation, or summarization. These applications have simpler architectures:
 
-**Typical architecture:** Client communicates with an AI gateway which provides auth, quotas, safety, and routing. That gateway  calls into the model serving layer such as Azure AI Foundry, AKS, or managed online endpoints. Where practical, the results might be cached for future inferencing calls before being returned to the client.
+**Typical architecture:** Client communicates with an AI gateway which provides auth, quotas, safety, and routing. That gateway  calls into the model serving layer such as Azure AI Foundry, Azure Kubernetes Service (AKS), or managed online endpoints. Where practical, the results might be cached for future inferencing calls before being returned to the client.
 
 Inferencing applications typically feature direct model calls, require minimal orchestration, focus on performance and throughput, and don't require complex state management.
 
@@ -71,21 +71,21 @@ Inferencing applications typically feature direct model calls, require minimal o
 
 Intelligent applications perform planning, coordination, and multi-step reasoning and are typically handled through agents and agent orchestration. They require more concepts to be addressed in their architectures:
 
-**Typical architecture:** Client invokes an agent or agent orchestrator. Based on the design or autonomous capabilities, this layer invokes a tools layer such as MCP servers, custom API. The agent might need to call into grounding knowledge services such as a search index, database, or graph. Models might be invoked at multiple points during this process. Caching can occur at multiple levels as well to optimize the process.
+**Typical architecture:** Client invokes an agent or agent orchestrator. Based on the design or autonomous capabilities, this layer invokes a tools layer such as MCP servers, custom API. The agent might need to call into grounding knowledge services such as a search index, database, or graph. Models might be invoked at multiple points during this process. Caching can also occur at multiple levels to optimize the process.
 
 Intelligent applications typically feature agentic patterns and model routing with complex workflow coordination, integration with multiple data sources and tools, and require conversation and context management.
 
 ## Fundamental AI application design guidelines
 
-When designing AI applications, apply these foundational guidelines to create resilient and maintainable systems:
+When you design AI applications, apply the following foundational guidelines to create resilient and maintainable systems.
 
 ### Start with business outcomes
 
-Before selecting technologies, clearly define the business problem you're solving. This definition guides technology choices and architecture design. Consider these factors:
+Before you select technologies, clearly define the business problem you're solving. This definition guides technology choices and architecture design. Consider the following factors:
 
 - **Success metrics:** Define measurable outcomes that demonstrate value, such as accuracy improvements, cost reductions, or user satisfaction scores.
 
-- **User experience requirements:** Understand how users and processes will interact with AI capabilities and what response times they expect.
+- **User experience requirements:** Understand how users and processes will interact with AI capabilities and what response times that they expect.
 
 - **Regulatory constraints:** Identify compliance requirements that might affect your design choices, such as data residency or explainability requirements.
 
@@ -115,17 +115,17 @@ Design your system with abstraction layers that allow you to adapt as AI technol
 
 ### Externalize prompts and configuration
 
-Treat prompts as configuration that should be externalized following [The Twelve-Factor App](https://12factor.net/config) design principles:
+Treat prompts as configuration that should be externalized according to [The Twelve-Factor App](https://12factor.net/config) design principles:
 
 - **Version control:** Keep prompts in version control with clear deployment tracking to correlate telemetry and safety results with specific prompt versions.
 
 - **Role separation:** Enable business analysts and domain experts to tune prompts without code changes.
 
-- **Safe deployment:** Implement controlled rollout processes for prompt changes, treating them as significant configuration updates.
+- **Safe deployment:** Implement controlled rollout processes for prompt changes and treat them as significant configuration updates.
 
 ## Plan for model deprecation
 
-Foundation models will eventually reach end-of-life and be retired by your model hosting platform. The models are replaced by models that perform better, are more cost effective, have updated training knowledge, and support new capabilities. Design abstractions that minimize the impact of your workload's future model transitions.
+Foundation models eventually reach end-of-life and are retired by your model hosting platform. The models are replaced by models that perform better, are more cost effective, have updated training knowledge, and support new capabilities. Design abstractions that minimize the impact of your workload's future model transitions.
 
 - **Provider abstraction:** Use abstraction layers that allow switching between model providers without application changes.
 
@@ -133,7 +133,7 @@ Foundation models will eventually reach end-of-life and be retired by your model
 
 - **Fallback strategies:** Design fallback mechanisms for when preferred models become unavailable.
 
-For architecture design techniques to address model lifecycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
+For architecture design techniques to address model life cycle concerns, see [Design to support foundation model life cycles](/azure/architecture/ai-ml/guide/manage-foundation-models-lifecycle).
 
 ## Containerize components
 
@@ -147,7 +147,7 @@ To ensure that your independently deployable components are fully self-contained
 
 - **Infrastructure services:** Services that provide infrastructure support, like databases and caching layers, can also benefit from containerization. Containerizing these services helps maintain version consistency and facilitates easier scaling and management of these components.
 
-## Implement multi-layer caching strategies 
+## Implement multi-layer caching strategies
 
 A multi-layer caching approach can help improve performance and reduce costs in your AI applications. Consider implementing caching at multiple levels of your application stack:
 
@@ -157,9 +157,9 @@ A multi-layer caching approach can help improve performance and reduce costs in 
 
 - **Model output caching:** Cache intermediate model outputs that can be reused across requests.
 
-When you design your caching approach in each layer, you need to understand what data is frequently accessed and how the application's users' roles and permissions might influence what data they can access. For caching to be effective you must expect a healthy cache hit rate. Focus on caching for high-traffic paths like product catalog searches, while monitoring cache evictions.
+When you design your caching approach in each layer, you need to understand what data is frequently accessed and how the application's users' roles and permissions might influence what data they can access. For caching to be effective, you must expect a healthy cache hit rate. Focus on caching for high-traffic paths like product catalog searches, while monitoring cache evictions.
 
-- **Cache key components:** Cached values need to be tied to specific runtime factors within your workload. Include values such as tenant/user identity, policy context, model version, and prompt version in cache keys to ensure a cached value is only being returned when appropriate for the request.
+- **Cache key components:** Cached values need to be tied to specific runtime factors within your workload. Include values such as tenant or user identity, policy context, model version, and prompt version in cache keys to ensure that a cached value is only being returned when appropriate for the request.
 
 - **Time-to-live (TTL) policies:** Set appropriate expiration times based on data freshness requirements and content sensitivity.
 
@@ -167,7 +167,7 @@ When you design your caching approach in each layer, you need to understand what
 
 - **User privacy protection:** Never cache user-private content unless properly scoped by key and policy. Generally speaking, caching is best implemented for data that would work across multiple users. Focusing on caching for a single user isn't practical in most situations. Avoid caching user-specific responses as a valid response for all users. For example, a cached response for "How many hours of paid time off do I have left?" would only ever be appropriate for the user that requested the data, even if other users present the same query.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk.** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Caching improves performance and reduces costs but introduces security and data freshness risks. These risks include **data leakage**, **stale data**, and **privacy violations**.
 
 ## Evaluate the use of orchestration and agents in generative AI solutions
 
@@ -179,7 +179,7 @@ An orchestrator manages a workflow by coordinating the communication among the d
 
 - **Predictable workflows:** Multi-step processes with well-defined sequences and decision points.
 
-- **Compliance requirements:** Scenarios where you need to ensure that specific steps are performed in order for regulatory compliance.
+- **Compliance requirements:** Scenarios where you need to ensure that specific steps are performed for regulatory compliance.
 
 - **Performance-critical paths:** Workflows where latency and resource usage must be tightly controlled.
 
@@ -201,18 +201,18 @@ Use agent-routed collaboration approaches for exploratory or composed tasks:
 
 #### Agent design considerations
 
-When designing agent-based systems, consider isolation and boundaries, communication patterns, and tool abstraction strategies. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability. Use established patterns like topic-queue systems for agent communication. And, abstract tool capabilities using standardized interfaces to enable agent flexibility.
+When you design agent-based systems, consider isolation and boundaries, communication patterns, and tool abstraction strategies. Design clear boundaries between different agent capabilities to reduce blast radius and improve testability. Use established patterns like topic-queue systems for agent communication. Abstract tool capabilities using standardized interfaces to enable agent flexibility.
 
 > [!IMPORTANT]
 > Don't automatically add agents between the task to be completed and model calls. Evaluate whether the intelligence being delivered requires the complexity of agent patterns, or if direct model calls are sufficient for your use case. Agent layers add latency and surface area and testing complexity.
 
 #### Agent state persistence
 
-For multi-turn conversations and long-running tasks, design agents with durable state persistence so they can retain context across requests, sessions, or deployment cycles. Use secure, shared storage such as Azure Cosmos DB, Azure Managed Redis, or Azure Table Storage to store relevant metadata, conversation history, and task progress. Scope persisted state to the minimal necessary information to reduce privacy risks and token overhead, and implement TTL policies to expire stale data. Ensure agents can rehydrate state on resumption to continue workflows without repeating completed steps.
+For multi-turn conversations and long-running tasks, design agents with durable state persistence so that they can retain context across requests, sessions, or deployment cycles. Use secure, shared storage such as Azure Cosmos DB, Azure Managed Redis, or Azure Table Storage to store relevant metadata, conversation history, and task progress. Scope persisted state to the minimal necessary information to reduce privacy risks and token overhead, and implement TTL policies to expire stale data. Ensure that agents can rehydrate state on resumption to continue workflows without repeating completed steps.
 
 ### Hybrid approaches
 
-Consider hybrid designs where orchestrators delegate to agents for specific subtasks:
+Consider hybrid designs where orchestrators delegate to agents for specific subtasks.
 
 - **Structured workflows with flexible steps:** Use orchestration for the overall workflow while allowing agents to handle complex individual steps.
 
@@ -224,11 +224,11 @@ Consider hybrid designs where orchestrators delegate to agents for specific subt
 
 ## Implement AI gateways for policy enforcement
 
-AI gateways are used in your design to provide [gateway offloading](/azure/architecture/patterns/gateway-offloading), [gateway routing](/azure/architecture/patterns/gateway-routing), and sometimes [gateway aggregation](/azure/architecture/patterns/gateway-aggregation) capabilities within your workload. Gateways are typically implemented using platforms like Azure API Management or through more custom-coded solutions, such as an Envoy or NGINX implementation. Gateways can be used to proxy requests to model providers, agent endpoints, tools, and knowledge stores.
+AI gateways are used in your design to provide [gateway offloading](/azure/architecture/patterns/gateway-offloading), [gateway routing](/azure/architecture/patterns/gateway-routing), and sometimes [gateway aggregation](/azure/architecture/patterns/gateway-aggregation) capabilities within your workload. Gateways are typically implemented by using platforms like Azure API Management or through more custom-coded solutions, such as an Envoy or NGINX implementation. Gateways can be used to proxy requests to model providers, agent endpoints, tools, and knowledge stores.
 
 ### Core AI gateway capabilities
 
-An AI gateway can address cross-cutting concerns in addition to being a layer of abstraction and indirection from the target system. When designing an AI gateway strategy, consider the following capabilities:
+An AI gateway can address cross-cutting concerns in addition to being a layer of abstraction and indirection from the target system. When you design an AI gateway strategy, consider the following capabilities:
 
 - **Protocol normalization:** For shared AI capabilities across providers, normalize interfaces to a common protocol via the gateway to improve maintainability. For provider-specific features, use the gateway as a reverse proxy without normalization.
 
@@ -251,9 +251,9 @@ An AI gateway can address cross-cutting concerns in addition to being a layer of
 
 ### Multi-provider scenarios
 
-AI gateways are especially valuable when using multiple model providers or shared model hosting platforms. Often, you'll see these as centralized resources within your organization that your workload will be encouraged or required to take a dependency on. A sufficiently complex workload might also benefit from building this layer of abstraction within its own design.
+AI gateways are especially valuable when you use multiple model providers or shared model hosting platforms. These gateways are often centralized resources within your organization that your workload will be encouraged or required to take a dependency on. A sufficiently complex workload might also benefit from building this layer of abstraction within its own design.
 
-- **Unified interface:** Provide a single API surface that abstracts multiple backend providers.
+- **Unified interface:** Provide a single API surface that abstracts multiple back-end providers.
 
 - **Failover and redundancy:** Route requests to alternate providers when primary services are unavailable.
 
@@ -264,7 +264,7 @@ AI gateways are especially valuable when using multiple model providers or share
 
 ## Use AI application design patterns
 
-Several common design patterns have been established in the industry for AI applications. You can use them to simplify your design and implementation. These design patterns include:
+Several common design patterns have been established in the industry for AI applications. You can use them to simplify your design and implementation. These design patterns include the following types:
 
 - **Model ensembling:** This design pattern involves combining predictions from multiple models to improve accuracy and robustness by mitigating the weaknesses of individual models.
 
@@ -284,21 +284,21 @@ Many AI applications access external knowledge sources to provide accurate, up-t
 
 - **Authorization-aware retrieval:** Ensure that grounding services enforce user permissions and tenant context when retrieving information.
 
-For a deeper understanding of designing a purpose-built vector index that supports your workload-specific grounding data for semantic retrieval, see [Design and develop a Retrieval-Augmented Generation (RAG) solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide).
+For a deeper understanding of designing a purpose-built vector index that supports your workload-specific grounding data for semantic retrieval, see [Design and develop a retrieval-augmented generation (RAG) solution](/azure/architecture/ai-ml/guide/rag/rag-solution-design-and-evaluation-guide).
 
 ### Multi-model routing patterns
 
-Using a model router can improve your workload's availability by routing requests to a healthy model when another model is in an unhealthy state, or it can help improve the quality of responses by selecting the best model for a particular task in real time. Model routers add flexibility but introduces extra variability. Use them selectively:
+Using a model router can improve your workload's availability by routing requests to a healthy model when another model is in an unhealthy state, or it can help improve the quality of responses by selecting the best model for a specific task in real time. Model routers add flexibility but introduces extra variability. Use them selectively:
 
 **When to use model routers:** Consider using a model router when your workload can tolerate added variability and latency, the user experience expects breadth across model types, or you need to balance costs and capabilities across different models.
 
-**When to avoid model routers:** Using a model router is inappropriate in scenarios where the workload needs precise answers optimized for specific tasks, you're using fine-tuned models with narrow SLOs, or when deterministic behavior, including consistent performance, is critical for your use case.
+**When to avoid model routers:** Using a model router is inappropriate in scenarios where the workload needs precise answers optimized for specific tasks, when you use fine-tuned models with narrow SLOs, or when deterministic behavior, including consistent performance, is critical for your use case.
 
 When you add a model router to your application prefer provider-native routing when available and monitor performance impacts and user satisfaction.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Model routers provide flexibility and cost optimization but add non-deterministic behavior and complexity to testing and troubleshooting.
 
-If your workload is a multi-tenant application, see [Guide to design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) for recommendations on accessing per-tenant grounding data.
+If your workload is a multi-tenant application, see [Guide to design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag) for recommendations about accessing per-tenant grounding data.
 
 ### When to use design patterns
 
@@ -315,13 +315,13 @@ Consider using these design patterns in scenarios like these:
 
 ## Choose the right frameworks, libraries, and protocols
 
-The choice of frameworks and libraries is closely intertwined with application design. They affect performance, scalability, and maintainability. However, design requirements can limit your framework choices. For example, use of the Semantic Kernel SDK often encourages a microservices-based design where each agent or function is encapsulated within its own service. Consider these factors when you choose frameworks and libraries:
+The choice of frameworks and libraries is closely intertwined with application design. They affect performance, scalability, and maintainability. However, design requirements can limit your framework choices. For example, use of the Semantic Kernel SDK often encourages a microservices-based design where each agent or function is encapsulated within its own service. Consider the following factors when you choose frameworks and libraries:
 
-- **Application requirements:** The requirements of the application, like real-time processing or batch processing, might limit the choice of framework. For instance, if the application requires low latency, you might need to use a framework that has asynchronous capabilities.
+- **Application requirements:** The requirements of the application, like real-time processing or batch processing, might limit the choice of framework. For example, if the application requires low latency, you might need to use a framework that has asynchronous capabilities.
 
 - **Integration needs:** The design might require specific integrations with other systems or services. If a framework doesn't support the necessary protocols or data formats, you might need to reconsider the design or choose a different framework.
 
-- **Team expertise:** The skill set of the development team can limit framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, so you might want to use a more familiar tool.
+- **Team expertise:** The skill set of the development team can limit framework choices. A design that relies on a less familiar framework might lead to increased development time and complexity, so consider using a more familiar tool.
 
 - **Community and support:** Consider the maturity and support ecosystem of the framework. Active communities and comprehensive documentation reduce implementation risks.
 
@@ -329,15 +329,15 @@ The choice of frameworks and libraries is closely intertwined with application d
 
 Adopt standardized tool protocols to improve governance and enable flexibility:
 
-- **MCP-style servers:** Use Model Context Protocol (MCP) or other suitable standard to wrap business capabilities as discoverable tool servers.
+- **Model Context Protocol (MCP)-style servers:** Use MCP or other suitable standard to wrap business capabilities as discoverable tool servers.
 
-- **Use specifications that have broad SDK support.** For example, define tools using OpenAPI specifications for consistent interface documentation and validation.
+- **Use specifications that have broad SDK support.** For example, define tools by using OpenAPI specifications for consistent interface documentation and validation.
 
-- **Capability advertisement:** Design tools to advertise their capabilities, allowing orchestrators to discover and route requests appropriately. For example, wrap enterprise resource planning (ERP) read/write operations as a tool server that advertises capabilities. This approach allows you to tune the ERP interactions without changing the agent logic.
+- **Capability advertisement:** Design tools to advertise their capabilities, which allows orchestrators to discover and route requests appropriately. For example, wrap enterprise resource planning (ERP) read/write operations as a tool server that advertises capabilities. This approach allows you to tune the ERP interactions without changing the agent logic.
 
 ### Protocol preferences
 
-When you select protocols and standards, prefer open, documented interfaces over proprietary formats. There are a lot of emerging protocols in the industry. As you consider your agent-to-agent and control use cases, you want to consider technical debt that could come from protocols that are under rapid evolution or deprecation. Layers of abstraction can help keep your design interoperable across different AI frameworks and providers.
+When you select protocols and standards, prefer open, documented interfaces over proprietary formats. There are a lot of emerging protocols in the industry. As you consider your agent-to-agent and control use cases, consider technical debt that could come from protocols that are under rapid evolution or deprecation. Layers of abstraction can help keep your design interoperable across different AI frameworks and providers.
 
 ## Design a security strategy for your workload's AI components
 
@@ -345,11 +345,11 @@ AI components require security considerations beyond traditional application sec
 
 ### Core security principles
 
-Implement these foundational security practices:
+Implement the following foundational security practices:
 
 - **Standard authentication and authorization:** Use established identity providers and role-based access control (RBAC) systems.
 
-- **Data lineage security with user context propagation:** Ensure that access controls are maintained throughout the data pipeline. Pass forward user identity using on-behalf-of flows so that users can only access results based on data they're authorized to see.
+- **Data lineage security with user context propagation:** Ensure that access controls are maintained throughout the data pipeline. Pass forward user identity using on-behalf-of flows so that users can only access results based on data that they're authorized to see.
 
 - **Audit trails:** Implement detailed logging of AI interactions for compliance and security monitoring.
 
@@ -371,31 +371,31 @@ Address security challenges that are unique to AI applications:
 
 Go beyond preventing direct database access and implement security-aware knowledge retrieval:
 
-- **Identity propagation:** Pass Microsoft Entra group claims or equivalent identity information into knowledge tool calls so grounding services never retrieve unauthorized data or media.
+- **Identity propagation:** Pass Microsoft Entra group claims or equivalent identity information into knowledge tool calls so that grounding services never retrieve unauthorized data or media.
 
-- **Group and ACL-based trimming:** Implement filtering based on security groups and access control lists at the knowledge layer.
+- **Group and access control list (ACL)-based trimming:** Implement filtering based on security groups and ACLs at the knowledge layer.
 
-- **Auditable denials:** Log and audit when grounding requests are denied due to insufficient permissions.
+- **Auditable denials:** Log and audit when grounding requests are denied because of insufficient permissions.
 
 - **Authorization enforcement:** Require that code sits between agents and knowledge sources to enforce authorization policies.
 
-**Example:** Pass Microsoft Entra group claims into the knowledge tool call so grounding never retrieves unauthorized documents, ensuring that cached results and AI responses respect user permissions.
+**Example:** Pass Microsoft Entra group claims into the knowledge tool call to ensure that grounding never retrieves unauthorized documents. This configuration guarantees cached results and that AI responses respect user permissions.
 
 ## Consider nonfunctional requirements
 
-Your workload might have nonfunctional requirements that pose challenges because of factors that are inherent to AI technologies. Following are some common nonfunctional requirements and their challenges:
+Your workload might have nonfunctional requirements that pose challenges because of factors that are inherent to AI technologies. Consider the following common nonfunctional requirements and their challenges:
 
-- **Latency of model inferencing / timeouts:** AI applications often require real-time or near-real-time responses. Designing for low latency is crucial. It involves optimizing model architecture, data processing pipelines, and hardware resources. Implementing caching strategies and ensuring efficient model loading are also essential to avoid timeouts and provide timely responses.
+- **Latency of model inferencing or timeouts:** AI applications often require real-time or near-real-time responses. Designing for low latency is crucial. It involves optimizing model architecture, data processing pipelines, and hardware resources. Implementing caching strategies and ensuring efficient model loading are also essential to avoid timeouts and provide timely responses.
 
-- **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, particularly with cloud-based models. Designing for these limitations requires careful management of input sizes, batching of requests when necessary, and potentially implementing rate-limiting or queuing mechanisms to manage user expectations and prevent service disruptions.
+- **Token or request throughput limitations:** Many AI services impose limits on the number of tokens or the throughput of requests, especially with cloud-based models. Designing for these limitations requires careful management of input sizes, batching of requests when necessary, and potentially implementing rate-limiting or queuing mechanisms to manage user expectations and prevent service disruptions.
 
-- **Cost and chargeback scenarios:** Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models. These features enable organizations to allocate costs accurately across departments. Chargeback management is typically handled by an API gateway, like [Azure API Management](https://techcommunity.microsoft.com/blog/appsonazureblog/calculating-chargebacks-for-business-unitsprojects-utilizing-a-shared-azure-open/3909202).
+- **Cost and chargeback scenarios:** Designing for cost transparency involves implementing usage tracking and reporting features that facilitate chargeback models. These features enable organizations to allocate costs accurately across departments. Chargeback management is typically handled by an API gateway, like [API Management](https://techcommunity.microsoft.com/blog/appsonazureblog/calculating-chargebacks-for-business-unitsprojects-utilizing-a-shared-azure-open/3909202).
 
 - **Model accuracy and drift:** AI models can degrade over time as data patterns change. Design monitoring systems to detect accuracy drift and implement automated retraining pipelines when necessary.
 
 - **Compliance and explainability:** Some industries require explainable AI decisions. Design your system to capture and provide reasoning for AI-generated outputs when required.
 
-- **Data privacy and residency:** Ensure your design meets data protection requirements, including the ability to delete user data and comply with geographic data residency rules.
+- **Data privacy and residency:** Ensure that your design meets data protection requirements, including the ability to delete user data and comply with geographic data residency rules.
 
 ## Next step
 
