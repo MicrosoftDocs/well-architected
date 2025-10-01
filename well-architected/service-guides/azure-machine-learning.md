@@ -29,6 +29,11 @@ This review focuses on the interrelated decisions for these Azure resources:
 
 The review doesn't address connected resources such as data stores or Azure Key Vault.
 
+> [!NOTE]
+> For generative AI applications and AI agents, consider [Azure AI Foundry](/azure/ai-foundry/what-is-azure-ai-foundry) as the preferred development platform. Azure AI Foundry is specifically designed for building, testing, and deploying generative AI solutions, including RAG (Retrieval Augmented Generation) applications and multi-modal AI experiences. 
+>
+> Azure Machine Learning remains the comprehensive platform for traditional machine learning workloads, end-to-end MLOps pipelines, custom model training, and scenarios requiring advanced data preparation and feature engineering. If you're currently using Azure Machine Learning, continue to use it for your existing workloads and traditional ML scenarios.
+
 ## Reliability
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
@@ -113,33 +118,6 @@ Start your design strategy based on the [design review checklist for Security](.
 | **Restrict model catalog deployments**: [Restrict model deployments to specific registries](/azure/machine-learning/how-to-regulate-registry-deployments). | Restricting the deployments from the model catalog to specific registries ensures you only deploy models to approved registries. This approach helps regulate access to the open-source foundational models. |
 | **Encrypt data at rest**: Consider using [customer-managed keys with Machine Learning](/azure/machine-learning/how-to-setup-customer-managed-keys). | Encrypting data at rest enhances data security by ensuring that sensitive data is encrypted by using keys directly managed by you. If you have a regulatory requirement to manage your own encryption keys, use this feature to comply with that requirement. |
 | **Minimize the risk of data exfiltration**: [Implement data exfiltration prevention](/azure/machine-learning/how-to-prevent-data-loss-exfiltration). For example, create a service endpoint policy to filter egress virtual network traffic and permit data exfiltration only to specific Azure Storage accounts. | Minimize the risk of data exfiltration by limiting inbound and outbound requirements. |
-
-##### Advisor
-
-The following are some examples of the [Advisor](https://azure.microsoft.com/products/advisor) security best practice recommendations for Machine Learning:
-
-- Workspaces should be encrypted with a customer-managed key (CMK).
-- Workspaces should use Azure Private Link.
-- Workspaces should disable public network access.
-- Compute should be in a virtual network.
-- Compute instances should be recreated to get the latest software updates.
-
-##### Azure Policy
-
-The following are examples of [built-in Azure Policy definitions for Machine Learning](/azure/machine-learning/policy-reference) security:
-
-- [Configure allowed registries for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5853517a-63de-11ea-bc55-0242ac130003).
-- [Configure allowed Python packages for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752).
-- [Machine Learning Workspaces should disable public network access](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F438c38d2-3772-465a-a9cc-7a6666a275ce).
-- [Machine Learning compute instances should be recreated to get the latest software updates](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff110a506-2dcb-422e-bcea-d533fc8c35e2).
-- [Machine Learning computes should be in a virtual network](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7804b5c7-01dc-4723-969b-ae300cc07ff1).
-- [Machine Learning computes should have local authentication methods disabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe96a9a5f-07ca-471b-9bc5-6a0f33cbd68f).
-- [Machine Learning workspaces should be encrypted with a CMK](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8).
-- [Machine Learning workspaces should use Private Link](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F45e05259-1eb5-4f70-9574-baf73e9d219b).
-- [Machine Learning workspaces should use a user-assigned managed identity](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0c7d88-c7de-45b8-ac49-db49e72eaa78).
-- [Require an approval endpoint called prior to jobs running for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3948394e-63de-11ea-bc55-0242ac130003).
-- [Require code signing for training code for computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a6f7384-63de-11ea-bc55-0242ac130003).
-- [Restrict model deployment to specific registries](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F19539b54-c61e-4196-9a38-67598701be90).
 
 ## Cost Optimization
 
@@ -248,32 +226,20 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Machine Learning and its dependencies. Some of the preceding recommendations can be audited through Azure policies. Consider the following policies that are related to security:
+Azure provides an extensive set of built-in policies related to Azure Machine Learning and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
-- [Allowed registries for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5853517a-63de-11ea-bc55-0242ac130003).
-- [Configure allowed Python packages for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F77eeea86-7e81-4a7d-9067-de844d096752).
-- [Machine Learning computes should be in a virtual network](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7804b5c7-01dc-4723-969b-ae300cc07ff1).
-- [Machine Learning computes should have local authentication methods disabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fe96a9a5f-07ca-471b-9bc5-6a0f33cbd68f).
-- [Machine Learning workspaces should disable public network access](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F438c38d2-3772-465a-a9cc-7a6666a275ce).
-- [Machine Learning compute instances should be recreated to get the latest software updates](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff110a506-2dcb-422e-bcea-d533fc8c35e2).
-- [Machine Learning workspaces should be encrypted with a customer-managed key](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fba769a63-b8cc-4b2d-abf6-ac33c7204be8).
-- [Machine Learning workspaces should use private link](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F45e05259-1eb5-4f70-9574-baf73e9d219b).
-- [Machine Learning workspaces should use user-assigned managed identity](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5f0c7d88-c7de-45b8-ac49-db49e72eaa78).
-- [Require an approval endpoint called prior to jobs running for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F3948394e-63de-11ea-bc55-0242ac130003).
-- [Require code signing for training code for computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6a6f7384-63de-11ea-bc55-0242ac130003).
-- [Restrict model deployment to specific registries](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F19539b54-c61e-4196-9a38-67598701be90).
+- Machine Learning workspaces disable public network access
+- Machine Learning computes are deployed in virtual networks
+- Machine Learning computes have local authentication methods disabled
+- Machine Learning workspaces use private link connections
+- Machine Learning workspaces are encrypted with customer-managed keys
+- Machine Learning workspaces use user-assigned managed identities
+- Machine Learning compute instances have idle shutdown configured
+- Allowed registries are configured for specified Machine Learning computes
+- Model deployments are restricted to specific registries
+- Resource logs in Machine Learning workspaces are enabled
 
-Consider the following policy that's related to cost optimization:
-
-- [Machine Learning Compute instance should have idle shutdown](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F679ddf89-ab8f-48a5-9029-e76054077449).
-
-Consider the following policies that are related to operational excellence:
-
-- [Require log filter expressions and datastore to be used for full logs for specified Machine Learning computes](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1d413020-63de-11ea-bc55-0242ac130003).
-- [Resource logs in Machine Learning workspaces should be enabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fafe0c3be-ba3b-4544-ba52-0c99672a8ad6).
-
-For comprehensive governance, review the
-[Azure Policy built-in definitions for Machine Learning]( /azure/governance/policy/samples/built-in-policies#machine-learning).
+For comprehensive governance, review the [Azure Policy built-in definitions for Azure Machine Learning](/azure/governance/policy/samples/built-in-policies#machine-learning) and other policies that might affect the security of the machine learning infrastructure.
 
 ## Azure Advisor recommendations
 

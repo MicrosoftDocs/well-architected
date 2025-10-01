@@ -268,18 +268,12 @@
           href: service-guides/app-service-web-apps.md
         - name: Azure Blob Storage
           href: service-guides/azure-blob-storage.md
-        - name: Azure Cache for Redis
-          items:
-            - name: Reliability
-              href: service-guides/azure-cache-redis/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-cache-redis/operational-excellence.md
         - name: Azure Container Apps
           href: service-guides/azure-container-apps.md
         - name: Azure Cosmos DB
           href: service-guides/cosmos-db.md
         - name: Azure Databricks
-          href: service-guides/azure-databricks-security.md
+          href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
           href: service-guides/azure-db-mysql-cost-optimization.md
         - name: Azure Database for PostgreSQL
@@ -350,6 +344,8 @@
         href: ./design-guides/optimize-workload-using-flows.md
       - name: Handle transient faults
         href: ./design-guides/handle-transient-faults.md
+      - name: Develop a disaster recovery plan
+        href: ./design-guides/disaster-recovery.md
       - name: Develop background jobs
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
