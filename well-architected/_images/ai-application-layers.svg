@@ -128,7 +128,7 @@
     <text transform="translate(8.5536 320.3726)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Inferencing layer</tspan></text>
     <text transform="translate(499.7547 378.573)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Knowledge layer</tspan></text>
     <text transform="translate(224.8007 87.7727)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">End users</tspan></text>
-    <text transform="translate(356.3688 53.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Application interface </tspan><tspan x="2.3438" y="14.3999">User experience API</tspan></text>
+    <text transform="translate(356.3688 53.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Application Interface </tspan><tspan x="2.3438" y="14.3999">User Experience API</tspan></text>
     <text transform="translate(384.2067 104.4559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Processes:</tspan><tspan x="-55.4268" y="14.3999">• Application background tasks</tspan><tspan x="-14.7539" y="28.7998">• Data pipelines</tspan></text>
     <text transform="translate(375.9126 230.0559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent API</tspan><tspan x="-20.0586" y="14.3999">Orchestration API</tspan></text>
     <text transform="translate(543.7915 230.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent compute</tspan><tspan x="-20.0605" y="14.3999">Orchestration compute</tspan></text>
@@ -139,7 +139,7 @@
     <text transform="translate(74.186 406.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Model as a platform (MaaP)</tspan></text>
     <text transform="translate(73.6966 458.2559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Self-hosted inference server</tspan></text>
     <text transform="translate(29.7281 581.0553)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned or organization dependency</tspan></text>
-    <text transform="translate(43.2081 564.74)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">AI Model gateway or inferencing router</tspan></text>
+    <text transform="translate(43.2081 564.74)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">AI model gateway or inferencing router</tspan></text>
     <text transform="translate(98.4243 510.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">In-process hosting</tspan></text>
     <text transform="translate(103.6094 528.2559)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned</tspan></text>
     <text transform="translate(719.5384 229.0559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent state</tspan><tspan x="-20.0605" y="14.3999">Orchestration state</tspan><tspan x="-2.3789" y="28.7998">Thread state</tspan></text>
