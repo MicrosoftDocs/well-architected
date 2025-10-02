@@ -24,7 +24,6 @@ As discussed in the [Get started](./get-started.md) article, whether to build yo
 
 For guidance about how to choose a hosting platform, see [Considerations for the model hosting and inferencing platform](./application-platform.md#considerations-for-the-model-hosting-and-inferencing-platform).
 
-
 ## Application layer architecture
 
 When you design intelligent capabilities, establish clear boundaries in your design across the following five key layers.
