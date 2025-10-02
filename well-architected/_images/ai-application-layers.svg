@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- This SVG is intentionally responsive: it uses viewBox only (no width/height) so the page or lightbox controls sizing -->
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 906.1536 607.5696">
+<!-- This SVG is intentionally responsive: it includes an intrinsic width/height to help lightbox compute size,
+     and uses CSS to remain responsive on the page -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="906" height="608" viewBox="0 0 906.1536 607.5696" style="max-width:100%;height:auto;">
   <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
   <defs>
     <linearGradient id="linear-gradient" x1="375.1856" y1="103.9097" x2="375.1856" y2="95.3964" gradientUnits="userSpaceOnUse">
