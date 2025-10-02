@@ -188,7 +188,7 @@ An orchestrator manages a workflow by coordinating the communication among the d
 
 ### When to use agent collaboration
 
-An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Azure Agent Service.
+An **agent** is a way to wrap, extract, and define intelligent behavior in your application. Agents provide context-bound functionality and can work with orchestration frameworks like Semantic Kernel, Autogen, or Microsoft Agent Framework.
 
 Use agent-routed collaboration approaches for exploratory or composed tasks:
 
