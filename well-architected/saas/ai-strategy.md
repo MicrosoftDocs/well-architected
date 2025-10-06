@@ -10,18 +10,34 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is quickly becoming a transformational force that's reshaping how a SaaS is developed and experienced. As an ISVs, explore the possibilities to get move faster and and unlock value for your customers in ways that just weren't feasible before. The opportunities are real, but so are the stakes. With great potential comes real responsibility. Without clear intent, AI can easily create misalignment with your business goals and pull focus away from what truly matters to your customers. The key isn't just using AI, it's using it with purpose.
+AI is a transformational force reshaping how SaaS products are developed, delivered, and experienced. As an ISV, you have a unique opportunity that will help you  move faster and unlock value for your customers in ways that simply weren't possible before. But with that opportunity comes a certain level of urgency, because if you don't take steps to transform your product with AI, someone else will. And they may deliver your value proposition faster, smarter, and at scale.
 
-This article offers strategic guidance to help you make informed decisions as you navigate the B2B SaaS landscape, with takeaways that apply to B2C as well. We'll walk through how to approach AI with clarity, outlining both the opportunities it brings and the risks it can introduce, so you can make choices that strengthen, not compromise, your business. This guidance is relevant for product owners, technical leaders, and anyone driving AI strategy in the context of a SaaS product or workload.
+The upside of AI is real and so are the risks. Without a clear strategy, AI can create misalignment with your product vision, introduce complexity, and distract from what truly matters to your users. The goal isn't just to implement AI any which way, but to do it with intention, aligned to your business goals and customer needs.
+
+This article provides practical guidance to help you adopt AI strategically in your SaaS product. While it's oriented toward B2B, the insights are equally relevant to B2C. We'll explore where AI can create impact, where it can go wrong, and how to approach it with clarity so your decisions strengthen your product and position you for long-term success. This is especially valuable for product owners, technical leaders, and anyone responsible for shaping AI strategy within a SaaS workload.
 
 
 ## Opportunities and risks
 
-AI presents opportunities to evolve SaaS products beyond traditional human-centered design. Historically, SaaS has focused on helping their customers work smarter and more efficiently through intuitive interfaces and workflows built for people. If you don't take any action towards AI transformation, you run the risk of someone else delivering your business with AI. Designing with AI in mind means identifying design areas in your solution where AI can extend, automate, or transform your product. 
+AI offers a powerful opportunity to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
 
-This could mean introducing intelligent features, making internal operations more efficient, or enabling entirely new experiences for customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI can take on routine tasks (beyond just deterministic automation), people are freed up to focus on what really matters, strategic thinking, creative work, and complex decisions that drive real business value. It's not just about saving time or replacing human efforts; it's about unlocking human potential where it counts most.
+This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
 
-However, those opportunities come with risks if not approached strategically.  Without clear direction from senior leadership, AI efforts can quickly become fragmented. Given the hype in AI, individuals may experiment in isolation, leading to disconnected solutions and conflicting approaches. If unchecked, they can inadvertently shape your AI direction in ways that don't align with your broader business goals. This can result in short-term decisions that are hard to reverse and misaligned with long-term product strategy.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals.
+
+#### Recommendations
+
+- **Establish a clear AI strategy at the leadership level**. Senior leadership must define the role AI will play in your product and business. Set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
+
+-  **Encourage exploration within strategic guardrails**.  Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams, and also keeps business stakeholders informed.
+
+    They could also serve as reviewers of AI experiments and pilots. Their responsibiluty would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
+
+- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see [Example AI use cases](#choose-initial-ai-use-cases).
+
+- **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
+
+- **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
 
 
 ## SaaS is a business, not an application
