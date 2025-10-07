@@ -3,7 +3,7 @@ title: Networking and connectivity considerations for Azure Virtual Desktop work
 description: Understand Azure Virtual Desktop networking and connectivity concepts. See techniques for improving the security, operations, and scalability of networks.
 author: swathibhat1
 ms.author: swathibhat
-ms.date: 10/077/2025
+ms.date: 10/07/2025
 ms.topic: conceptual
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
