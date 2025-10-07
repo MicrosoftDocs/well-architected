@@ -81,7 +81,8 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How would you assess your maturity level with AI?**
 >
->   AI technologies and use cases are changing rapidly. It's quite possible that you're in the earlier stages in your AI journey. That's okay. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. Otherwise, <!-- John, this needs amid and advanced stage guidance. Doesn't have to be full blown but if we are talking about maturity, let's leave them with something similar to what we have for earlier stages>
+>   AI technologies and use cases are changing rapidly. It's entirely reasonable to be in the early stages of your AI journey. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. Otherwise, 
+>   <!-- John, this needs amid and advanced stage guidance. Doesn't have to be full blown but if we are talking about maturity, let's leave them with something similar to what we have for earlier stages -->
 >
 > - **How much AI do you use in your processes for productivity gains?**
 >
@@ -90,23 +91,20 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
 >   See [Example AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
-
-
-## Types of AI technology to consider
-
-<!-- Priyanka: I'm not sure about this section. I think we need to talk about buy vs. build but I'm not sure it should be in its own section. Leaving for now so you can think about it too. -->
-
-- There are many different types of AI.
-    - Some AI technologies are specialized for performing a constrained task. This is sometimes called *narrow AI*. These technologies can be highly efficient and effective at their task, and are often very cost effective too. Microsoft provides a set of narrow AI models for specific domains and tasks, e.g. Azure AI services like Vision, Document Recognition, etc.
-    - General-purpose AI models are often adept at a very wide variety of tasks. Frontier foundation language models can perform a variety of language tasks as well as reasoning. So they can be very flexible.
-    - You can also build your own ML models. Typically it only makes sense to do this if you have a large corpus of data *and* a defined use case for how to perform prediction or analysis based on that data. It also often requires specialist expertise in ML.
-    - It's common for an application to use a mix of approaches to enable different functionality.
-- Make strategic decisions about where it's valuable for you to build your own custom solutions, models, or components, and where it makes more sense to buy prebuilt components. Broadly, there are three approaches:
-    - Build - gives you a lot of flexibility, but can be unrealistic for some components. For example, you should never aim to build your own language model.
-    - Buy - often the most efficient, and has much lower risk because you can change later.
-    - Customize - for some components you can do things like fine tuning, if it makes sense.
-- Think about the user experience and how you will integrate with that too.
-    - Example: There are many different “AI ecosystems” emerging. For example, Microsoft Copilot is a set of products and capabilities that integrates across multiple places with a common UI. You need to decide whether you're aiming to integrate your solution into another ecosystem or if you're trying to create your own ecosystem.
+>
+> - **Do you want to build, buy, or customize?**
+>   
+>   AI technologies come in different forms, each suited to specific use cases. They range from models are optimized for focused tasks like image or document recognition to general-purpose models that offer flexibility across a wide range of tasks like reasoning and language understanding. There's also the option to build custom machine learning models for unique problems if you have the data and expertise.  Refer to [Familiarize yourself with the broad categories of models](../ai/get-started.md#familiarize-yourself-with-the-broad-categories-of-models) before you select the right approach for the right job. 
+>
+>   When deciding how to implement AI in your product, you typically have three options:
+>
+>   | Approach | Benefit | Tradeoff |
+>   |----------|---------|----------|
+>   | Buy prebuilt models | Most efficient and lowest-maintainence option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
+>   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation |
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills. In general, this option isn't recommended|
+>   Most SaaS products benefit from using a combination of those approaches.
+>   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
 
 ## Build an AI practice
 
