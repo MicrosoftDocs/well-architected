@@ -69,7 +69,7 @@ This could involve embedding intelligent features, improving internal operations
 
     They could also serve as reviewers of AI experiments and pilots. Their responsibiluty would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
 
-- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see [Example AI use cases](#choose-initial-ai-use-cases).
+- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#examples-saas-archetypes).
 
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
@@ -325,15 +325,3 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
     - They can also distract you from using AI in more compelling use cases.
     - However, they can be a good starting point, as long as you make sure the chatbot and its capabilities are useful to customers.
 
-
-Use this understanding to guide how you adopt AI. Rather than trying to replace your product with AI, look for ways AI can augment, enhance, or extend your core value.
-
-There are three suggested value archetypes:
-
-Application-focused – If your product's main value is the user experience or workflow (e.g. document editing, legal tools), use AI to enhance that experience—like summarization, suggestions, or automation inside the app.
-
-Data-as-a-platform – If your value is in the data you store (e.g. financial records), use AI to help customers access, interact with, or integrate that data—possibly enabling them to use their own AI agents with it.
-
-Insight and analytics – If your strength is in analyzing customer data (e.g. forecasting, benchmarking), explore building or fine-tuning AI models to deepen that value—if you have the data and expertise.
-
-Ultimately, this helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.
