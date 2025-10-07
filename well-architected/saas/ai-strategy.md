@@ -19,29 +19,6 @@ Without a clear strategy, AI can create misalignment with your product vision, i
 This article provides practical guidance to help you adopt AI strategically in your SaaS product. While it's oriented toward B2B, the insights are equally relevant to B2C. We'll explore where AI can create impact, where it can go wrong, and how to approach it with clarity so your decisions strengthen your product and position you for long-term success. This is especially valuable for product owners, technical leaders, and anyone responsible for shaping AI strategy within a SaaS workload.
 
 
-## Evaluate your opportunities and risks
-
-AI provides a powerful way to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
-
-This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
-
-> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals.
-
-#### Recommendations
-
-- **Establish a clear AI strategy at the leadership level**. Senior leadership must define the role AI will play in your product and business. Set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
-
--  **Encourage exploration within strategic guardrails**.  Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams, and also keeps business stakeholders informed.
-
-    They could also serve as reviewers of AI experiments and pilots. Their responsibiluty would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
-
-- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see [Example AI use cases](#choose-initial-ai-use-cases).
-
-- **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
-
-- **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
-
-
 ## Focus on the SaaS as a business, not an application
 
 As an ISV, it's common to have the mindset of "My SaaS application is my business". As AI reshapes the SaaS landscape, start thinking of the application just as one channel through which your business delivers value. 
@@ -69,6 +46,30 @@ By shifting your mindset from product builder to business partner, you ensure AI
 - **Ensure your roadmap reflects this elevated value proposition**. You don't need to rebuild everything, but you do need to realign priorities. Invest in capabilities that reinforce your strategic value, not just surface-level AI features.
 
 - **Communicate the shift internally and externally**. Your teams and your customers need to understand this change. Internally, it guides better product decisions. Externally, it strengthens your market position and helps you stand out in a crowded, AI-saturated space.
+
+## Evaluate your opportunities and risks
+
+AI provides a powerful way to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
+
+This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals.
+
+#### Recommendations
+
+- **Establish a clear AI strategy at the leadership level**. Senior leadership must define the role AI will play in your product and business. Set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
+
+-  **Encourage exploration within strategic guardrails**.  Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams, and also keeps business stakeholders informed.
+
+    They could also serve as reviewers of AI experiments and pilots. Their responsibiluty would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
+
+- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see [Example AI use cases](#choose-initial-ai-use-cases).
+
+- **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
+
+- **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
+
+
 
 ## Where to start
 
