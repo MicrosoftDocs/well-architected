@@ -10,16 +10,18 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is a transformational force reshaping how SaaS products are developed, delivered, and experienced. As an ISV, you have a unique opportunity that will help you  move faster and unlock value for your customers in ways that simply weren't possible before. But with that opportunity comes a certain level of urgency, because if you don't take steps to transform your product with AI, someone else will. And they may deliver your value proposition faster, smarter, and at scale.
+AI is a transformational force reshaping how SaaS products are developed, delivered, and experienced. As an ISV, you have a unique opportunity to help you  move faster and unlock value for your customers in ways that simply weren't possible before. Shift your mindset from being a vendor that just builds features to a partner who creates outcomes. Define how AI fits into the larger value proposition your business delivers.
 
-The upside of AI is real and so are the risks. Without a clear strategy, AI can create misalignment with your product vision, introduce complexity, and distract from what truly matters to your users. The goal isn't just to implement AI any which way, but to do it with intention, aligned to your business goals and customer needs.
+The upside of AI is real and so are the risks. AI brings a certain level of urgency, because if you don't take steps to transform your product with AI, someone else will. And they may deliver your value proposition faster, smarter, and at scale. 
+
+Without a clear strategy, AI can create misalignment with your product vision, introduce complexity, and distract from what truly matters to your users. The goal isn't just to implement AI any which way, but to do it with intention, aligned to your business goals and customer needs.
 
 This article provides practical guidance to help you adopt AI strategically in your SaaS product. While it's oriented toward B2B, the insights are equally relevant to B2C. We'll explore where AI can create impact, where it can go wrong, and how to approach it with clarity so your decisions strengthen your product and position you for long-term success. This is especially valuable for product owners, technical leaders, and anyone responsible for shaping AI strategy within a SaaS workload.
 
 
-## Opportunities and risks
+## Evaluate your opportunities and risks
 
-AI offers a powerful opportunity to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
+AI provides a powerful way to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
 
 This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
 
@@ -40,22 +42,33 @@ This could involve embedding intelligent features, improving internal operations
 - **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
 
 
-## SaaS is a business, not an application
+## Focus on the SaaS as a business, not an application
 
-- To make sure you continue to remain relevant, consider what value your customers get from your solution
-- Historically, the application has been a proxy for many SaaS businesses. But with AI, that's less the case.
-- Think about the core business problems you help them to solve, and how you can uplevel your whole value.
-- For example, suppose you build a bookkeeping SaaS solution. It includes features like financial transaction tracking and budgeting.
-    - If you adopt a limited perspective, you could say that you're building an application that stores and manages financial data, and it has business logic to control how that data is manipiulated and used.
-        - From that perpsective, AI could be an existential threat. Your customers might start to demand the ability to integrate your service into their AI toolchains. And then they no longer interact with your service directly, but they do it through an agent. You could even become commoditized.
-    - However, if you think of yourself as a *SaaS business* and not just an application, you could instead argue that you're a trusted business partner. You use their financial data to help them to run their operations more efficiently and effectively.
-        - From this perspective, AI represents a huge opportunity, because you could start to build or integrate AI capabilities that do things like:
-            - Proactively tell customers about how their spending is changing over time or highlight emerging issues
-            - Provide analysis, grounded in the latest financial trends and insights - for example, "I see your revenue is down this month. That's because you've been under-quoting. Material cost of goods has gone up"
-            - Give advice to customers when and where they need it, in different formats - not just in your application, but through agents, in the form of auto-generated daily podcasts, or other forms.
-            - Use the data across your entire portfolio of customers to glean insights, do predictive analytics, and so forth.
-- By adopting this mindset, you can start to form a strategy that determines how you integrate AI into each part of your business and solution.
-- Core goal is to own your agentic future, not let someone else take it.
+As an ISV, it's common to have the mindset of "My SaaS application is my business". As AI reshapes the SaaS landscape, start thinking of the application just as one channel through which your business delivers value. 
+
+Take use case as an example: a SaaS company that offers a bookkeeping application. If you define your value solely by the fact that you provide a financial data interface with some business logic, you risk becoming a commodity. That's because AI can now interact with software directly. An agent could use your tool, or replicate its functionality entirely, without a user ever opening your UI. And if customers only see your product as a tool, they'll be just as willing to replace it with another, or generate it themselves using AI.
+
+To stay relevant, elevate your identity. Evolve from being a software provider to a strategic partner helping your customers run smarter businesses. That means focusing on the core problems you help them solve, and exploring how AI can make that value even more tangible. Extending that example, provide experiences such as:
+
+- Let AI analyze customer financial data and proactively surface trends or risks
+
+- Offer real-time advice and insights grounded in current financial and market conditions
+
+- Deliver guidance through new formats—like embedded agents, personalized briefings, or even daily podcasts
+
+- Leverage aggregate data across your customer base to provide benchmarking, forecasting, and predictive analytics
+
+By shifting your mindset from product builder to business partner, you ensure AI becomes a source of strength, not a threat. This perspective may not radically change your roadmap, but it will change your impact. It allows you to design your product in ways that extend its value through AI, enabling agentic workflows that align with your customers' goals. Set vision such that customers unlock deeper insights, automation, and strategic outcomes, strengthening your core value proposition.
+
+#### Recommendations
+
+- **Reframe your role from product vendor to strategic partner**. Shift your focus from building features to solving core business problems. Your customers should see you as a long-term partner that helps them run more efficiently and make better decisions, not just a software provider.
+
+- **Design for AI-driven workflows, not just human interaction**. Don't assume all interaction happens through your UI. Build capabilities that allow AI agents to use your platform on behalf of users, which support agentic workflows that deliver value with or without direct user involvement.
+
+- **Ensure your roadmap reflects this elevated value proposition**. You don't need to rebuild everything, but you do need to realign priorities. Invest in capabilities that reinforce your strategic value, not just surface-level AI features.
+
+- **Communicate the shift internally and externally**. Your teams and your customers need to understand this change. Internally, it guides better product decisions. Externally, it strengthens your market position and helps you stand out in a crowded, AI-saturated space.
 
 ## Where to start
 
