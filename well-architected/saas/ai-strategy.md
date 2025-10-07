@@ -85,6 +85,8 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   This distinction will shape how you prioritize use cases, structure your teams, and measure success. If you're already positioned as an AI-native solution, your roadmap should reflect that at every layer. If not, your strategy should focus on where AI adds meaningful value without destabilizing what's already working.
 >
+>   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#examples-saas-archetypes).
+>
 > - **How would you assess your maturity level with AI?**
 >
 >   AI technologies and use cases are changing rapidly. It's entirely reasonable to be in the early stages of your AI journey. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. Otherwise, 
@@ -96,7 +98,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
->   See [Example AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
+>   See [Examples: AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
 >
 > - **Do you want to build, buy, or customize?**
 >   
@@ -132,24 +134,178 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 - **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 
-## SaaS value archetypes
+## Examples: SaaS archetypes
 
-- If you don't know where to start, it can be helpful to assess where your SaaS solution's value is, and find ways to use AI to complement your value rather than replace it.
-- A SaaS business might have different elements that map to different archetypes.
-    - If you have one giant application, use this as a way to think about how your business value is generated. Maybe think of these as archetypes:
-- **Use AI to augment an application:**
-    - In some SaaS solutions, the “secret sauce” is in the applications that users use, and the experiences they have while using your app.
-    - Examples:
-        - Tools like M365 are primarily about creating and working with documents and content (creation, collaboration)
-        - A legal document management system might be primarily about analyzing and processing legal documents through an application.
-        - Decision support systems.
-    - Think about ways that AI can enrich the user's experience and make your applications more compelling and useful.
-- **Use AI to enable customers to work with their data:**
-    - In some SaaS solutions, the “secret sauce” is the data they hold.
-    - For example, a bookkeeping system holds a huge amount of data about each customer's financial transactions. They could consider making the data available to customers so they can integrate it into their own AI solutions. They could expose an MCP server for integration with customer or third-party agent infrastructure.
-- **Use AI and ML for data analysis:**
-    - In some SaaS solutions, the value they provide is in the analysis of the data that their store on behalf of customers.
-    - Consider whether you have the right use case for creating your own models, including whether you have the expertise and resources necessary.
+In the context of SaaS value archetypes, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you understand:
+
+- What kind of value your SaaS product delivers
+
+- How your customers interact with that value
+
+- Where AI can best be applied to enhance it
+
+Having a clear understanding can help you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.
+
+### Application-focused
+
+For this type of SaaS product, core value comes from the user experience or workflow. These are solutions where users spend significant time interacting with your interface, like  editing, creating, analyzing, collaborating, or making decisions. Examples include document editors, legal tools, creative platforms, productivity apps, design software, or decision-support systems.
+
+#### Typical Use Cases
+
+- Summarize complex content such as legal documents, meeting transcripts, or customer interactions.
+
+- Generate intelligent suggestions or completions, including text, code, legal clauses, and design concepts.
+
+- Automatically classify and tag information for easier organization and retrieval.
+
+- Deliver contextual assistance and guidance throughout user workflows.
+
+- Automate repetitive tasks like formatting, data entry, calculations, and form completion.
+
+- Support natural language interfaces that allow users to perform tasks  within the application.
+
+#### AI opportunites
+
+- **Interface integration**. Implement AI features directly within existing user interfaces such as editors, dashboards, and core workflow components to minimize context switching.
+
+- **Contextual relevance**. Ensure AI outputs are generated based on user-specific data and the current application state to improve accuracy and usefulness.
+
+- **Performance and explainability**. Optimize for low latency to provide real-time or near real-time responses, and include mechanisms to explain AI decisions or outputs clearly.
+
+- **User interaction controls**. Provide explicit controls for users to accept, edit, or reject AI-generated results, maintaining transparency and enabling correction or override of AI outputs.
+
+#### Risks
+
+- **Performance and scalability.** Poorly designed APIs or infrastructure can lead to slow responses, downtime, or inconsistent data, degrading user experience. Mitigate by applying proven design patterns and thorough load testing.
+
+- **Over-customization.** Developing custom AI models without sufficient data or expertise may result in wasted resources and ineffective outcomes. Limit risk by starting with prebuilt models or fine-tuning before building custom solutions.
+
+- **Data versioning and consistency.** Inadequate data lifecycle management can cause customers' AI agents to operate on outdated or inconsistent data. Implement strict version control and synchronization mechanisms to maintain data accuracy.
+
+
+#### Build, buy, or customize?
+
+| Capabilities | Approach  | Recommendation|
+|--------------|-----------|---------------|
+| General-purpose LLMs | Buy | Utilize established models. Avoid building your own large language model. |
+| AI-enhanced features (summarization, classification) | Customize| Fine-tune existing models or craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. |
+| Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
+| Task-specific models (legal clause analysis, medical term tagging) | Buy or fine-tune| Purchase or fine-tune proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
+
+
+#### Data-as-a-platform
+
+In this archetype, the SaaS solution's primary value is in collecting, consolidating, storing, and analyzing customer data. Beyond providing AI-driven features directly, you can enable customers to connect their own AI agents to your platform, unlocking new opportunities for data-driven workflows and insights.
+
+#### Typical use cases
+
+- **Secure data access**. Providing secure, scalable access to large volumes of customer data (financial transactions, customer behavior logs, sensor data).
+
+- **AI-driven data interfaces**. Enabling customers to query, analyze, and visualize their data through AI-driven interfaces like natural language querying or automated reporting.
+
+- **Customer AI integration**. Allowing customers to build or integrate their own AI agents or workflows that operate on your data.
+
+- **Predictive analytics**. Offering predictive analytics, benchmarking, or trend insights based on aggregated customer data.
+
+#### AI opportunities
+
+- **Data access and APIs**. Build well-documented, secure APIs to expose data. This is necessary for customers or third-party tools to interact with your platform.
+
+- **Natural language interfaces**. Develop or customize AI-driven interfaces that enable non-technical users to query and interpret data using natural language.
+
+- **Integration points for AI agents**. Provide APIs, SDKs, or webhooks that allow customers to connect their own AI tools or agent workflows to your platform.
+
+- **Data governance**. Implement data security, privacy, and compliance controls to meet regulatory requirements and manage risk.
+
+- **Scalable data infrastructure**. Design the platform to support large-scale, real-time data processing and retrieval.
+
+
+#### Risks
+
+- **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Enforce encryption, access controls, and regular compliance checks.
+
+- **Performance and scalability.** Poorly designed APIs or infrastructure can lead to slow responses, downtime, or inconsistent data, degrading user experience. 
+
+- **Over-customization.** Developing custom AI models without sufficient data or expertise may result in wasted resources and ineffective outcomes. Start with starting with prebuilt models or fine-tuning before building custom solutions.
+
+- **Data versioning and consistency.** Inadequate data lifecycle management can cause customers' AI agents to operate on outdated or inconsistent data. Implement strict version control and synchronization mechanisms to maintain data accuracy.
+
+
+#### Build, buy, or customize?
+
+| Component | Approach | Recommendation |
+|-----------|----------|----------------|
+| Data access APIs | Build | Create robust, secure APIs to enable customers and third-party tools to access and query data. |
+| AI-powered data query interfaces | Build or customize | Develop or fine-tune natural language query tools that allow users to interact with data intuitively. |
+| Integration with external AI agents | Build or integrate | Support integration points (APIs, webhooks) to allow customers to connect their AI agents or workflows to your data. |
+| Data governance and privacy | Build | Implement strict controls and monitoring to ensure data security, compliance, and privacy. |
+| Custom ML models for data insights | Buy or build | Use prebuilt models when possible; build custom models only if you have proprietary data and expertise. |
+
+
+#### Insight and analytics
+
+This SaaS archetype focuses on delivering insight and analytics by leveraging customer data. The core value lies in analyzing the data stored on behalf of customers, such as forecasting trends or benchmarking performance, to provide actionable intelligence. 
+
+
+#### Typical Use Cases
+
+- Forecast customer demand, sales, or market trends based on historical data patterns.
+
+- Benchmark performance metrics across different customer segments or industries.
+
+- Detect anomalies or outliers in data to identify risks or opportunities.
+
+- Provide interactive dashboards and visualizations for deep data exploration.
+
+- Generate automated reports summarizing key insights and recommendations.
+
+- Support scenario analysis and "what-if" simulations to aid decision-making.
+
+- Enable natural language queries to let users explore data without technical skills.
+
+
+#### AI opportunities
+
+- **Advanced predictive analytics.** Leverage AI models to enhance forecasting accuracy and uncover deeper patterns in customer data beyond traditional statistical methods.
+
+- **Automated anomaly detection.** Use machine learning to identify unusual trends or outliers in large datasets quickly and accurately.
+
+- **Natural language querying.** Enable users to ask complex questions about their data in plain language and receive meaningful insights without technical expertise.
+
+- **Personalized insights delivery.** Tailor AI-generated recommendations and reports to individual user roles, preferences, or business contexts.
+
+- **Explainable AI.** Provide transparent explanations of AI-driven insights to build trust and facilitate decision-making.
+
+- **Seamless integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
+
+- **Continuous learning and model tuning.** Implement feedback loops where AI models improve over time based on user interactions and new data.
+
+
+#### Risks
+
+- **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Mitigate by enforcing encryption, access controls, and regular compliance checks.
+
+- **Performance and scalability.** Poorly designed data processing pipelines or infrastructure can lead to slow analysis, downtime, or inconsistent results, degrading user experience. Mitigate by applying scalable architectures and thorough testing.
+
+- **Over-customization.** Developing highly specialized AI models without sufficient data or expertise may result in wasted resources and ineffective insights. Limit risk by starting with established models and iterating based on feedback.
+
+- **Integration complexity.** Incorporating AI analytics within diverse customer workflows can increase system complexity and maintenance effort. Reduce risk through modular design, clear documentation, and automated testing.
+
+- **Data versioning and consistency.** Inconsistent or outdated data can cause inaccurate insights and undermine user trust. Implement strict data version control and synchronization to ensure accuracy.
+
+
+#### Build, buy, or customize?
+
+| Component   | Approach        | Recommendation                 |
+|-------------|-----------------|--------------------------------|
+| Data ingestion pipelines         | Build           | Develop tailored pipelines to collect, clean, and normalize diverse customer data for accurate analysis. |
+| Prebuilt analytics models        | Buy             | Leverage existing AI/ML models for common forecasting, anomaly detection, and benchmarking tasks.       |
+| Custom AI model training         | Build or customize | Fine-tune models on proprietary datasets to create unique, differentiated insights and predictions.     |
+| Interactive data visualization   | Build or customize | Create or enhance dashboards that allow dynamic exploration and real-time data interaction.             |
+| Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
+| Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
+| Automated report generation      | Build or buy    | Automate creation of insight reports; buy off-the-shelf solutions or build custom generators as needed.  |
+
 
 ## Choose initial AI use cases
 
@@ -168,3 +324,16 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
     - If improperly applied, they can frustrate customers, and provide minimal value.
     - They can also distract you from using AI in more compelling use cases.
     - However, they can be a good starting point, as long as you make sure the chatbot and its capabilities are useful to customers.
+
+
+Use this understanding to guide how you adopt AI. Rather than trying to replace your product with AI, look for ways AI can augment, enhance, or extend your core value.
+
+There are three suggested value archetypes:
+
+Application-focused – If your product's main value is the user experience or workflow (e.g. document editing, legal tools), use AI to enhance that experience—like summarization, suggestions, or automation inside the app.
+
+Data-as-a-platform – If your value is in the data you store (e.g. financial records), use AI to help customers access, interact with, or integrate that data—possibly enabling them to use their own AI agents with it.
+
+Insight and analytics – If your strength is in analyzing customer data (e.g. forecasting, benchmarking), explore building or fine-tuning AI models to deepen that value—if you have the data and expertise.
+
+Ultimately, this helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.
