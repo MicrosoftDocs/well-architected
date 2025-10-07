@@ -10,9 +10,15 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is a transformational force reshaping how SaaS products are developed, delivered, and experienced. As an ISV, you have a unique opportunity to help you  move faster and unlock value for your customers in ways that simply weren't possible before. Shift your mindset from being a vendor that just builds features to a partner who creates outcomes. Define how AI fits into the larger value proposition your business delivers.
+AI is a transformational force reshaping how SaaS products are developed, delivered, and experienced. As an ISV for SaaS solutions, you have a unique opportunity to help you move faster and unlock value for your customers in ways that simply weren't possible before. Shift your mindset from being a vendor that just builds features to a partner who creates outcomes. Define how AI fits into the larger value proposition your business delivers.
 
-The upside of AI is real and so are the risks. AI brings a certain level of urgency, because if you don't take steps to transform your product with AI, someone else will. And they may deliver your value proposition faster, smarter, and at scale. 
+The upside of AI is real and so are the risks. AI brings a certain level of urgency, because if you don't take steps to transform your product with AI, someone else will. And they may deliver your value proposition faster, smarter, and at scale. This is even more critical in SaaS, where you face additional complexity:
+
+- You serve multiple customers, each with different needs
+
+- You might run multiple models or experiences across different tenants
+
+- You're expected to move quickly to stay competitive without compromising on safety or quality
 
 Without a clear strategy, AI can create misalignment with your product vision, introduce complexity, and distract from what truly matters to your users. The goal isn't just to implement AI any which way, but to do it with intention, aligned to your business goals and customer needs.
 
@@ -86,7 +92,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How much AI do you use in your processes for productivity gains?**
 >
->   At minimum, start developing internal capabilities around AI. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build an AI practice section](#build-an-ai-practice).
+>   At minimum, start developing internal capabilities around AI. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build AI in your foundational practices](#build-an-ai-practice).
 >
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
@@ -104,21 +110,27 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation |
 >   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills. In general, this option isn't recommended |
 >
->   Most SaaS products benefit from using a combination of those approaches.
+>   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
 >   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
 
-## Build an AI practice
+## Build AI in your foundational practices
 
-- Focus on building out foundational practices.
-- AI isn't just a thing for developers. You need an AI practice that sets standards and has a strategy behind it.
-- An AI practice helps you along a number of areas:
-    - Identifying opportunities to use AI throughout your business and technology
-    - Governance, which is especially important given the fast pace of AI development. For example, you don't want to end up having implemented a large set of models, with no good path to manage their lifecycle as they get retired/replaced.
-    - Technical expertise, which is important because of the depth of the technologies - you can't have everyone understand everything
-    - Responsible AI principles, and how to ensure that your AI solutions align with your organization's values
-- Everyone implementing AI needs to do this stuff, but SaaS can make the problem worse.
-    - You might have to deal with multiple customers, multiple evaluations, multiple models, etc.
-    - You might also have to deal with more aggressive timelines to ensure you keep up with customer demand.
+If you're just getting started, begin by building internal capabilities around AI. It helps your team build skills fast while working with actual AI tools, not just theory. 
+
+To establish a strong AI practice, set clear standards and ensure that your AI efforts align with your long-term strategy of positioning your SaaS for your customers as the go-to solution for AI-driven experiences.
+
+#### Recommendations
+
+- **Map AI initiatives to measurable business outcomes**. Identify specific areas where AI can improve or automate your operational efficiency, reduce costs, or create customer value. Tie each initiative to a clear business metric.
+
+    > :::image type="icon" source="../_images/risk.svg"::: **Chasing full automation without oversight.**   Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
+
+- **Establish AI governance early**. Define clear policies for model lifecycle managemen with human-in-the loop, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relavent, maintainable, and compliant as the technology evolves.
+
+- **Centralize technical expertise**. AI is complex, and not everyone needs to be an expert. Build a core team that owns deep technical knowledge and can guide others across the organization in applying AI effectively.
+
+- **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
+
 
 ## SaaS value archetypes
 
