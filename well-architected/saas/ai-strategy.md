@@ -19,11 +19,11 @@ Without a clear strategy, AI can create misalignment with your product vision, i
 This article provides practical guidance to help you adopt AI strategically in your SaaS product. While it's oriented toward B2B, the insights are equally relevant to B2C. We'll explore where AI can create impact, where it can go wrong, and how to approach it with clarity so your decisions strengthen your product and position you for long-term success. This is especially valuable for product owners, technical leaders, and anyone responsible for shaping AI strategy within a SaaS workload.
 
 
-## Focus on SaaS as a business model, not an application
+## Focus on SaaS as a business model, not the application
 
 As an ISV, it's common to have the mindset of "My SaaS application is my business". As AI reshapes the SaaS landscape, start thinking of the application just as one channel through which your business delivers value. 
 
-Take use case as an example: a SaaS company that offers a bookkeeping application. If you define your value solely by the fact that you provide a financial data interface with some business logic, you risk becoming a commodity. That's because AI can now interact with software directly. An agent could use your tool, or replicate its functionality entirely, without a user ever opening your UI. And if customers only see your product as a tool, they'll be just as willing to replace it with another, or generate it themselves using AI.
+Take use case as an example: a SaaS company that offers a bookkeeping application. If you define your value only by the fact that you provide a financial data interface with some business logic, you risk becoming a commodity. That's because AI can now interact with software directly. An agent could use your tool, or replicate its functionality entirely, without a user ever opening your UI. And if customers only see your product as a tool, they'll be just as willing to replace it with another, or generate it themselves using AI.
 
 To stay relevant, elevate your identity. Evolve from being a software provider to a strategic partner helping your customers run smarter businesses. That means focusing on the core problems you help them solve, and exploring how AI can make that value even more tangible. Extending that example, provide experiences such as:
 
@@ -70,17 +70,27 @@ This could involve embedding intelligent features, improving internal operations
 - **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
 
 
-## Where to start
+## Start small, enhance iteratively
 
-- A key decision point is: Is your product strategy built around AI? Or are you adding AI to augment your product's capabilities?
-- You need to assess your business's maturity with AI. Many organizations don't have a lot of experience with AI yet, and that's ok.
-    - If you're starting, aim to start small and build on successes. Don't try to boil the ocean from the start. If this is all new to you, like if you're a an established SaaS vendor that has already got a product in the market that isn't using AI, you're probably not going to benefit from like completely pivoting your entire business around AI initially. You want to strategically select some places to use it, figure out as you go what's working, what's not, and then start building on that. Focus on building good foundational practices. Learn how to do it the right way.
-- At minimum, you should:
-    - Start to build an AI practice - see [Build an AI practice](#build-an-ai-practice)
-    - Use AI as part of your development practices, even if you're using it to develop conventional capabilities. Use it as an opportunity to get familiar with capabilities and tooling. we'll have a section on this in the second article in this series. <!-- Priyanka, you asked to note here that we might want to use some content from https://learn.microsoft.com/en-us/azure/well-architected/ai/test -->
-    - Identify the different ways your SaaS business's core value can be augmented with AI - see [SaaS value archetypes](#saas-value-archetypes) and [Choose initial AI use cases](#choose-initial-ai-use-cases).
-- Set expectations. AI isn't going to run everything autonomously, and if it did, it would be a huge risk. Instead, consider human-in-the-loop AI approaches.
-    - It's often beneficial to model your business processes/flows, integrate AI strategically into specific parts, and have humans validate the AI's work.
+Here are some decision points to get you started. Make those decisions keeping in mind your product, your team's experience, and your overall strategy.
+
+> [!div class="checklist"]
+> - **Is your product fundamentally built around AI, or are you using AI to augment and extend what you already offer?**
+>
+>   This distinction will shape how you prioritize use cases, structure your teams, and measure success. If you're already positioned as an AI-native solution, your roadmap should reflect that at every layer. If not, your strategy should focus on where AI adds meaningful value without destabilizing what's already working.
+>
+> - **How would you assess your maturity level with AI?**
+>
+>   AI technologies and use cases are changing rapidly. It's quite possible that you're in the earlier stages in your AI journey. That's okay. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. Otherwise, <!-- John, this needs amid and advanced stage guidance. Doesn't have to be full blown but if we are talking about maturity, let's leave them with something similar to what we have for earlier stages>
+>
+> - **How much AI do you use in your processes for productivity gains?**
+>
+>   At minimum, start developing internal capabilities around AI. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build an AI practice section](#build-an-ai-practice).
+>
+>   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
+>
+>   See [Example AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
+
 
 ## Types of AI technology to consider
 
