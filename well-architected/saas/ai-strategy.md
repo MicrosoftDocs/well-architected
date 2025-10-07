@@ -100,9 +100,10 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   | Approach | Benefit | Tradeoff |
 >   |----------|---------|----------|
->   | Buy prebuilt models | Most efficient and lowest-maintainence option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
+>   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
 >   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation |
->   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills. In general, this option isn't recommended|
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills. In general, this option isn't recommended |
+>
 >   Most SaaS products benefit from using a combination of those approaches.
 >   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
 
