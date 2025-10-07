@@ -19,7 +19,7 @@ Without a clear strategy, AI can create misalignment with your product vision, i
 This article provides practical guidance to help you adopt AI strategically in your SaaS product. While it's oriented toward B2B, the insights are equally relevant to B2C. We'll explore where AI can create impact, where it can go wrong, and how to approach it with clarity so your decisions strengthen your product and position you for long-term success. This is especially valuable for product owners, technical leaders, and anyone responsible for shaping AI strategy within a SaaS workload.
 
 
-## Focus on the SaaS as a business, not an application
+## Focus on SaaS as a business model, not an application
 
 As an ISV, it's common to have the mindset of "My SaaS application is my business". As AI reshapes the SaaS landscape, start thinking of the application just as one channel through which your business delivers value. 
 
@@ -68,7 +68,6 @@ This could involve embedding intelligent features, improving internal operations
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
 - **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
-
 
 
 ## Where to start
