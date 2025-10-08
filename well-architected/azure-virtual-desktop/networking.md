@@ -40,7 +40,7 @@ You should validate that latency and bandwidth meet requirements in development,
 
 ## Network Security 
 
-Network security is essential for protecting Azure Virtual Desktop (AVD) workloads from threats and ensuring compliance. As cloud environments become more complex and attackers target identity systems, traditional network controls based on a trusted-intranet approach are no longer sufficient. Modern security requires layered controls and continuous monitoring.
+Network security is essential for protecting Azure Virtual Desktop (AVD) workloads from threats and ensuring compliance. As cloud environments become more complex, traditional network controls based on a trusted-intranet approach are no longer sufficient. Modern security requires layered controls and continuous monitoring.
 
 For general information about protecting assets by placing controls on network traffic, see [Recommendations for networking and connectivity](/azure/well-architected/security/networking).
 
