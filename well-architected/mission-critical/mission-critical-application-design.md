@@ -17,7 +17,7 @@ When you design an application, both functional and non-functional application r
 ## Scale-unit architecture
 
 All functional aspects of a solution must be capable of scaling to meet changes in demand, ideally [autoscaling](/azure/architecture/best-practices/auto-scaling) in response to load.
-We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A *scale unit* is a logical unit or function that can be scaled independently. A unit can be made up of code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multi-tenant requirements.
+We recommend that you use a scale-unit architecture to optimize end-to-end scalability through compartmentalization, and also to standardize the process of adding and removing capacity. A *scale unit* is a logical unit or function that can be scaled independently. A unit can be made up of code components, application hosting platforms, the [deployment stamps](/azure/architecture/patterns/deployment-stamp) that cover the related components, and even subscriptions to support multitenant requirements.
 
 We recommend this approach because it addresses the scale limits of individual resources and the entire application. It helps with complex deployment and update scenarios because a scale unit can be deployed as one unit. Also, you can test and validate specific versions of components in a unit before directing user traffic to it.
 
@@ -150,7 +150,7 @@ Here are some additional recommendations:
 
 - Define common engineering criteria for all application microservice teams to drive consistency and speed in the use of application-level resiliency patterns.
 
-- Consider implementing resiliency patterns by using proven standardized packages, like [Polly](https://www.pollydocs.org/) for C# or [Sentinel](https://github.com/alibaba/Sentinel) for Java. Additionally, messaging frameworks like [NServiceBus](https://particular.net/) or [MassTransit](https://masstransit.io/) provide built-in resiliency features, which helps avoid needing additional reliability code.
+- Consider implementing resiliency patterns by using proven standardized packages, like Polly for C# or Sentinel for Java. Additionally, messaging frameworks like NServiceBus or MassTransit provide built-in resiliency features, which helps avoid needing additional reliability code.
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 
