@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- This SVG is intentionally responsive: it includes an intrinsic width/height to help lightbox compute size,
+     and uses CSS to remain responsive on the page -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="906" height="608" viewBox="0 0 906.1536 607.5696" style="max-width:100%;height:auto;">
+  <!-- Generator: Adobe Illustrator 29.8.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 2)  -->
+  <defs>
+    <linearGradient id="linear-gradient" x1="375.1856" y1="103.9097" x2="375.1856" y2="95.3964" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1b8ab3"/>
+      <stop offset=".16" stop-color="#1f9ac2"/>
+      <stop offset=".5" stop-color="#2abade"/>
+      <stop offset=".8" stop-color="#43c6e8"/>
+      <stop offset="1" stop-color="#50c8e9"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient1" x1="-312.1979" y1="1995.6306" x2="-312.1979" y2="1973.014" gradientTransform="translate(564 2049.1456) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset=".22" stop-color="#32d4f5"/>
+      <stop offset="1" stop-color="#198ab3"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient2" x1="-312.8475" y1="2007.764" x2="-311.1975" y2="1987.2306" xlink:href="#linear-gradient1"/>
+  </defs>
+  <g id="Shapes">
+    <rect width="906.1536" height="607.5696" fill="#fff"/>
+    <g>
+      <rect x="307.7536" y="26.1728" width="444.4" height="127.6" fill="#fff"/>
+      <rect x="307.7536" y="26.1728" width="444.4" height="127.6" fill="#f5f3f2" opacity=".8"/>
+      <rect x="307.7536" y="26.1728" width="444.4" height="127.6" fill="none" stroke="#9d9f9f" stroke-width=".25"/>
+    </g>
+    <g>
+      <rect x="307.7536" y="202.5728" width="519.2" height="132" fill="#fff"/>
+      <rect x="307.7536" y="202.5728" width="519.2" height="132" fill="#fff1cc" opacity=".35"/>
+      <rect x="307.7536" y="202.5728" width="519.2" height="132" fill="none" opacity=".5" stroke="#dfa626" stroke-width=".25"/>
+    </g>
+    <g>
+      <rect x="8.5536" y="325.7728" width="277.8146" height="272.8" fill="#fff"/>
+      <rect x="8.5536" y="325.7728" width="277.8146" height="272.8" fill="#cae4dd" opacity=".6"/>
+      <rect x="8.5536" y="325.7728" width="277.8146" height="272.8" fill="none" stroke="#9dd6c9" stroke-width=".25"/>
+    </g>
+    <g>
+      <rect x="171.3536" y="176.1728" width="114.4" height="101.2" fill="#fff"/>
+      <rect x="171.3536" y="176.1728" width="114.4" height="101.2" fill="#53b1e0" opacity=".1"/>
+      <rect x="171.3536" y="176.1728" width="114.4" height="101.2" fill="none" stroke="#53b1e0" stroke-width=".25"/>
+    </g>
+    <g>
+      <line x1="268.1536" y1="56.9727" x2="311.1714" y2="56.9727" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="310.0772 60.7124 316.5536 56.9727 310.0772 53.2329 310.0772 60.7124" fill="#3c3c41"/>
+    </g>
+    <line x1="505.7536" y1="56.9728" x2="523.3536" y2="56.9728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <line x1="488.1536" y1="233.3728" x2="505.7536" y2="233.3728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <line x1="624.5536" y1="56.9728" x2="636.7714" y2="56.9728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="635.6772 60.7125 642.1536 56.9728 635.6772 53.233 635.6772 60.7125" fill="#3c3c41"/>
+    </g>
+    <rect x="316.5536" y="87.7728" width="189.2" height="57.2" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="316.5536" y="268.5728" width="171.6" height="57.2" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="316.5536" y="34.9728" width="189.2" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="316.9661" y="211.3728" width="170.775" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="505.7536" y="211.3728" width="158.4" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="523.3536" y="34.9728" width="101.2" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="642.1636" y="34.9728" width="101.2" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <g>
+      <line x1="664.1536" y1="233.3728" x2="676.3714" y2="233.3728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="675.2772 237.1125 681.7536 233.3728 675.2772 229.633 675.2772 237.1125" fill="#3c3c41"/>
+    </g>
+    <g>
+      <line x1="285.7536" y1="215.7728" x2="297.9714" y2="215.7728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="296.8772 219.5126 303.3536 215.7728 296.8772 212.0331 296.8772 219.5126" fill="#3c3c41"/>
+    </g>
+    <rect x="681.7536" y="211.3728" width="136.4" height="57.2" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <g>
+      <path d="M381.1413,99.7598c.0021-1.6651-.6846-3.1696-1.7897-4.2451l-.4459.4501c.0211.0212.0423.0423.0634.0634.4839.486.8621,1.0502,1.1283,1.6777.2747.6508.4121,1.3396.4099,2.0518-.0021.7121-.1416,1.4009-.4163,2.0496-.2662.6276-.6466,1.1897-1.1305,1.6735-.2768.2768-.5811.5198-.9065.7269l-.4501-.5642-.1585,1.384,1.384.1585-.3803-.4796c1.6186-1.0523,2.6899-2.8737,2.692-4.9466Z" fill="#949494"/>
+      <path d="M376.4947,104.8712c-.4099.0993-.8304.1521-1.2594.1521h-.0085c-.7121-.0021-1.4031-.1416-2.0518-.4184-.6276-.2662-1.1896-.6487-1.6735-1.1326-.4628-.4649-.8304-1.0016-1.0924-1.5974l.6508-.0972-1.1199-.8304-.8304,1.1199.6508-.0972c.8769,2.1574,2.992,3.6809,5.4643,3.6851h.0106c.5008,0,.9889-.0634,1.4538-.1796l-.1944-.6043Z" fill="#949494"/>
+      <path d="M378.314,94.9335l-.5557-1.2784-.2536.6402c-.6952-.2895-1.458-.4501-2.2588-.4522h-.0106c-3.2224,0-5.8425,2.5821-5.9038,5.7918h.6339c.0148-.6741.1543-1.3291.4142-1.9461.2662-.6275.6466-1.1896,1.1305-1.6735.4839-.4839,1.0481-.8621,1.6756-1.1284.6487-.2747,1.3376-.4142,2.0496-.4142h.0085c.7037.0021,1.3862.1395,2.0285.4078l-.2388.6022,1.2805-.5494Z" fill="#949494"/>
+      <path d="M379.4402,100.2796l.0021-1.2382-.8959-.0021c-.0845-.486-.2705-.9361-.5388-1.327l.6276-.6254-.8727-.8769-.6233.6233c-.3909-.2726-.841-.4628-1.3291-.5515l.0021-.8832-1.2382-.0021-.0021.8917c-.4818.0909-.9276.2832-1.3143.5557l-.6381-.6402-.8769.8727.6466.6487c-.2599.3846-.4437.8283-.5283,1.3038l-.9297-.0021-.0021,1.2382.9445.0021c.0909.467.2768.9023.5367,1.2805l-.6762.6741.8727.8769.6783-.6762c.3761.2599.8093.4437,1.2763.5325v.953l1.2382.0021.0021-.9487c.4712-.0824.9086-.2641,1.2911-.5198l.6593.6635.8769-.8727-.6529-.655c.2705-.3825.4627-.822.5557-1.2995l.9086.0021ZM375.2015,101.7862c-1.196-.0021-2.1637-.9741-2.1616-2.1701s.972-2.1637,2.168-2.1616c1.196.0021,2.1637.9741,2.1616,2.1701,0,1.196-.972,2.1637-2.168,2.1616Z" fill="url(#linear-gradient)"/>
+    </g>
+    <line x1="402.3536" y1="153.7728" x2="402.3536" y2="169.3728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <line x1="402.3536" y1="255.3728" x2="402.3536" y2="268.5728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <line x1="402.3536" y1="189.3728" x2="402.3536" y2="205.9906" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="398.6138 204.8964 402.3536 211.3728 406.0933 204.8964 398.6138 204.8964" fill="#3c3c41"/>
+    </g>
+    <g>
+      <rect x="303.3536" y="387.3728" width="290.4" height="211.2" fill="#fff"/>
+      <rect x="303.3536" y="387.3728" width="290.4" height="211.2" fill="#fcb24f" opacity=".12"/>
+      <rect x="303.3536" y="387.3728" width="290.4" height="211.2" fill="none" opacity=".6" stroke="#ed7323" stroke-width=".25"/>
+    </g>
+    <line x1="378.1536" y1="334.5728" x2="378.1536" y2="347.9728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <line x1="378.1536" y1="367.9728" x2="378.1536" y2="381.9906" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="374.4139 380.8964 378.1536 387.3728 381.8934 380.8964 374.4139 380.8964" fill="#3c3c41"/>
+    </g>
+    <line x1="681.7536" y1="334.5728" x2="681.7536" y2="347.9728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <line x1="681.7536" y1="367.9728" x2="681.7536" y2="381.9906" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="678.0138 380.8964 681.7536 387.3728 685.4933 380.8964 678.0138 380.8964" fill="#3c3c41"/>
+    </g>
+    <line x1="307.7536" y1="303.7729" x2="285.7536" y2="303.7729" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <line x1="171.3536" y1="215.7728" x2="285.7536" y2="215.7728" fill="none" stroke="#53b1e0" stroke-width=".25"/>
+    <rect x="312.1536" y="396.1728" width="123.2448" height="70.4" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="312.1536" y="475.3728" width="272.8" height="52.8" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="17.9682" y="334.5728" width="258.9854" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="17.9682" y="387.3728" width="258.9854" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="17.9682" y="440.1728" width="258.9854" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="17.9682" y="492.9728" width="258.9854" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="17.9682" y="545.7728" width="258.9854" height="44" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="312.1536" y="536.9728" width="272.8" height="52.8" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="444.1536" y="396.1728" width="140.8" height="70.4" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <line x1="435.3536" y1="431.3728" x2="444.1536" y2="431.3728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <rect x="606.9536" y="387.3728" width="290.4" height="211.2" fill="#fff"/>
+      <rect x="606.9536" y="387.3728" width="290.4" height="211.2" fill="#53b1e0" opacity=".1"/>
+      <rect x="606.9536" y="387.3728" width="290.4" height="211.2" fill="none" stroke="#53b1e0" stroke-width=".25"/>
+    </g>
+    <rect x="615.7536" y="396.1728" width="132" height="70.4" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="615.7536" y="475.3728" width="272.8" height="52.8" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="615.7536" y="536.9728" width="272.8" height="52.8" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <rect x="756.5536" y="396.1728" width="132" height="70.4" fill="#fff" stroke="#4e4f4f" stroke-width=".25"/>
+    <line x1="747.7536" y1="431.3728" x2="756.5536" y2="431.3728" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+    <g>
+      <path d="M219.7536,303.7729h-21.4c-2.75,0-5,2.25-5,5v11.6178" fill="none" stroke="#3c3c41" stroke-miterlimit="10"/>
+      <polygon points="189.6139 319.2965 193.3536 325.7729 197.0933 319.2965 189.6139 319.2965" fill="#3c3c41"/>
+    </g>
+    <g>
+      <path d="M263.0028,72.0483c1.3347,0,2.4167-1.082,2.4167-2.4167h0c.0172-.0937.0172-.1897,0-.2833-.9667-7.6167-5.2833-13.8167-13.6167-13.8167s-12.7667,5.25-13.6167,13.8333c-.1444,1.3361.8217,2.5363,2.1578,2.6807.0085.0009.017.0018.0256.0026h22.6333Z" fill="url(#linear-gradient1)"/>
+      <path d="M251.8028,57.3316c-1.4659-.0012-2.9006-.4235-4.1333-1.2167l4.1333,10.7,4.0667-10.6333c-1.2184.7626-2.6293,1.1616-4.0667,1.15Z" fill="#fff" isolation="isolate" opacity=".8"/>
+      <circle cx="251.8195" cy="49.6816" r="7.6333" fill="url(#linear-gradient2)"/>
+    </g>
+  </g>
+  <g id="Text">
+    <text transform="translate(688.5967 21.2918)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Client layer</tspan></text>
+    <text transform="translate(729.882 193.7726)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Intelligence layer</tspan></text>
+    <text transform="translate(8.5536 320.3726)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Inferencing layer</tspan></text>
+    <text transform="translate(499.7547 378.573)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Knowledge layer</tspan></text>
+    <text transform="translate(224.8007 87.7727)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">End users</tspan></text>
+    <text transform="translate(356.3688 53.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Application interface </tspan><tspan x="2.3438" y="14.3999">User experience API</tspan></text>
+    <text transform="translate(384.2067 104.4559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Processes:</tspan><tspan x="-55.4268" y="14.3999">• Application background tasks</tspan><tspan x="-14.7539" y="28.7998">• Data pipelines</tspan></text>
+    <text transform="translate(375.9126 230.0559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent API</tspan><tspan x="-20.0586" y="14.3999">Orchestration API</tspan></text>
+    <text transform="translate(543.7915 230.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent compute</tspan><tspan x="-20.0605" y="14.3999">Orchestration compute</tspan></text>
+    <text transform="translate(78.2583 353.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Model as a service (MaaS)</tspan></text>
+    <text transform="translate(29.7281 369.0554)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned or organization dependency</tspan></text>
+    <text transform="translate(29.7281 421.4554)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned or organization dependency</tspan></text>
+    <text transform="translate(29.7281 474.4554)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned or organization dependency</tspan></text>
+    <text transform="translate(74.186 406.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Model as a platform (MaaP)</tspan></text>
+    <text transform="translate(73.6966 458.2559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Self-hosted inference server</tspan></text>
+    <text transform="translate(29.7281 581.0553)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned or organization dependency</tspan></text>
+    <text transform="translate(43.2081 564.74)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">AI model gateway or inferencing router</tspan></text>
+    <text transform="translate(98.4243 510.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">In-process hosting</tspan></text>
+    <text transform="translate(103.6094 528.2559)" fill="#2f2f2f" font-family="SegoeUI-Italic, &apos;Segoe UI&apos;" font-size="12" font-style="italic"><tspan x="0" y="0">Workload owned</tspan></text>
+    <text transform="translate(719.5384 229.0559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Agent state</tspan><tspan x="-20.0605" y="14.3999">Orchestration state</tspan><tspan x="-2.3789" y="28.7998">Thread state</tspan></text>
+    <text transform="translate(371.4579 286.2554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">MCP clients</tspan><tspan x="-43.0059" y="14.3999">Agent-to-agent frameworks</tspan><tspan x="-.1387" y="28.7998">Agent SDKs</tspan></text>
+    <text transform="translate(327.1477 421.2554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Workload owned:</tspan><tspan x="-1.7139" y="14.3999">Data retrieval APIs</tspan><tspan x="14.0859" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(378.9302 491.8559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Organization dependency:</tspan><tspan x="44.2617" y="14.3999">Data APIs</tspan><tspan x="37.1035" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(397.1753 553.6559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Public dependency:</tspan><tspan x="26.0156" y="14.3999">Data APIs</tspan><tspan x="18.8594" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(455.6622 413.8559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">OLTP or OLAP databases</tspan><tspan x="19.6602" y="14.3999">Search indexes</tspan><tspan x="29.3984" y="28.7998">Graph data</tspan><tspan x="31.0078" y="43.2002">COTS data</tspan></text>
+    <text transform="translate(835.7538 378.5734)" fill="#2f2f2f" font-family="SegoeUI-Bold, &apos;Segoe UI&apos;" font-size="12" font-weight="700"><tspan x="0" y="0">Tools layer</tspan></text>
+    <text transform="translate(635.1481 421.2554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Workload owned:</tspan><tspan x="-3.2988" y="14.3999">Compatibility APIs</tspan><tspan x="14.0859" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(682.5298 491.8559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Organization dependency:</tspan><tspan x="-22.5586" y="14.3999">System, process, and business APIs</tspan><tspan x="37.1035" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(700.7759 553.6554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Public dependency:</tspan><tspan x="25.8809" y="14.3999">SaaS APIs</tspan><tspan x="18.8574" y="28.7998">MCP servers</tspan></text>
+    <text transform="translate(771.6177 429.2554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Workload compute </tspan><tspan x="26.5078" y="14.3999">and state</tspan></text>
+    <text transform="translate(543.9017 53.6559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Application </tspan><tspan x="6.5039" y="14.3999">compute</tspan></text>
+    <text transform="translate(196.4029 192.1918)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Externalized </tspan><tspan x="9.3809" y="14.3999">prompts</tspan></text>
+    <text transform="translate(195.2311 235.6559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Prompt A v1</tspan><tspan x="0" y="17">Prompt A v2</tspan><tspan x="8.1816" y="34">Prompt B</tspan></text>
+    <text transform="translate(344.972 182.6559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Delegated processing</tspan></text>
+    <text transform="translate(324.7309 361.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">On-demand context</tspan></text>
+    <text transform="translate(636.8388 361.0554)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Work to be done</tspan></text>
+    <text transform="translate(663.7113 53.6559)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Application </tspan><tspan x="17.25" y="14.3999">state</tspan></text>
+    <text transform="translate(222.154 308.1729)" fill="#2f2f2f" font-family="SegoeUI, &apos;Segoe UI&apos;" font-size="12"><tspan x="0" y="0">Inferencing</tspan></text>
+  </g>
+</svg>
