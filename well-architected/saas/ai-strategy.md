@@ -12,7 +12,7 @@ ms.collection: learn-startups
 
 AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, you have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
 
-The benefits of AI are real, but so are the risks. There is urgency: if you do not embrace AI, competitors will deliver your value faster, smarter, and at scale. This is especially critical in SaaS, where complexity arises from:
+The benefits of AI are real, but so are the risks. There is urgency: if you do not embrace AI, competitors will deliver your value faster, smarter, and at scale. There's added complexity in SaaS that comes from:
 
 - Serving diverse customers with varying needs, 
 - Running multiple models or experiences across different tenants, and 
@@ -25,14 +25,14 @@ This article offers practical guidance to help you adopt AI strategically in you
 
 ## Focus on SaaS as a business model, not the application
 
-As an ISV, it is common to think of your SaaS application as your entire business. As AI reshapes the SaaS landscape, start viewing your application as just one channel through which your business delivers value.
+ISVs often think of their SaaS application as the entire business. As AI reshapes the SaaS landscape, vendors should start viewing the application as just one channel through which the business delivers value. How can you change that mindset for your business.
 
 Consider this example: a SaaS company offering a bookkeeping application. If you define your value solely as providing a financial data interface with some business logic, you risk becoming a commodity. AI can now interact with software directly. An agent could use your tool or even replicate its functionality without a user ever opening your interface. If customers see your product only as a tool, they may be just as willing to replace it or build their own solution using AI.
 
 To stay relevant, elevate your role. Move from being a software provider to a strategic partner helping customers run smarter businesses. Focus on the core problems you solve and explore how AI can make that value more tangible. For example, you might:
 
 - Let AI analyze customer financial data and proactively highlight trends or risks
-- Offer real-time advice and insights based on current financial and market conditions
+- Offer real-time recommendations and insights based on current financial and market conditions
 - Provide guidance in new formats such as embedded agents, personalized briefings, or daily podcasts
 - Use aggregated data across your customers to deliver benchmarking, forecasting, and predictive analytics
 
@@ -129,7 +129,7 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 - **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 
-## Put the strategy to practice for your SaaS archetype
+## Put strategy to practice for your SaaS archetype
 
 In the context of SaaS, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction. Document your research and capture your findings. Here's a simple template you can follow:
 
