@@ -12,11 +12,11 @@ ms.update-cycle: 1095-days
 
 As a cloud solution architect, you play a key part in ensuring that recovery from wide-scope failures is intentionally planned, designed, and documented as a disaster recovery (DR) plan. In case of failure, the quality of that plan influences whether the event is a temporary setback or becomes a reputational and financial crisis.
 
-The plan should be based on strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to mindset shift that defends business continuity under pressure.
+The plan should be based on strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to a mindset shift that defends business continuity under pressure.
 
 ## Terminology
 
-Before you start developing your plan, familiarize yourself with a common vocabulary. Establish these terms as shared language to enable clear communication and coordinated decision-making when activating the DR plan. 
+Before you start developing your plan, we recommend that you familiarize yourself with a common vocabulary. Establish these terms as shared language to enable clear communication and coordinated decision-making when activating the DR plan. 
 
 | Term | Definition |
 |------|------------|
@@ -36,7 +36,7 @@ Before you start developing your plan, familiarize yourself with a common vocabu
 
 Disaster recovery (DR) is a strategic and methodical approach to restoring systems or critical parts of them, after a major failure event.
 
-In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_, might result in unavailability of isolated components, unexpected drop in performance. They're typically resolved through platform resiliency features and built-in self-healing mechanisms without human intervention.
+In cloud environments, temporary failures are normal. These brief disruptions, often referred to as _blips_ or _transient faults_, might result in the unavailability of isolated components or unexpected drops in performance. They're typically resolved through platform resiliency features and built-in self-healing mechanisms without human intervention.
 
 _Disasters_, however, are a different class of event. They're broad in scope, affect multiple systems or services simultaneously, and can bring the system to a halt. These events require external intervention and specialized roles, guided by a well-defined DR plan that can be activated when the system's built-in self-healing resilience isn't enough. Some examples include:
 
@@ -52,7 +52,7 @@ _Disasters_, however, are a different class of event. They're broad in scope, af
 
 Unattended blips can escalate into full-scale disasters. While advanced monitoring and health modeling can help detect and mitigate these issues early, that topic is beyond the scope of this article. For more information, see [Health modeling](./health-modeling.md).
 
-Ultimate goal of DR is business continuity within defined quantitative metrics. Think of the plan as a coordinated effort that requires predefined procedures, clear communication protocols, and executive-level decision-making. 
+The ultimate goal of DR is to maintain business continuity within defined quantitative metrics. Think of the plan as a coordinated effort that requires predefined procedures, clear communication protocols, and executive-level decision-making.
 
 ## Select your criticality tier
 
@@ -65,9 +65,9 @@ Over-engineering low-impact services wastes resources; under-preparing high-impa
 
 A common way to quantify tiers is through Service Level Objectives (SLOs), often expressed as 'five nines' (99.999%), 'four nines' (99.99%), and so on. These percentiles broadly represent the level of availability expected for a given workload. 
 
-Most important metrics in DR strategy are Recovery Time Objective (RTO) and Recovery Point Objective (RPO), both quantified as time units. RTO defines how quickly a system must be restored after a disruption, it's about downtime tolerance. RPO defines how much data loss is acceptable, it reflects how frequently data must be backed up.
+The most important metrics in DR strategy are Recovery Time Objective (RTO) and Recovery Point Objective (RPO), both quantified as time units. RTO defines how quickly a system must be restored after a disruption. It represents the organization’s tolerance for downtime. RPO defines how much data loss is acceptable and reflects how frequently data must be backed up.
 
-This article assumes that your SLOs and recovery metrics have already been defined and won'tcover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
+This article assumes that your SLOs and recovery metrics have already been defined and won't cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
 
 :::image type="content" source="./_images/disaster-recovery-criticality-tiers.png" alt-text="A diagram that shows multi-region recovery targets." lightbox="./_images/disaster-recovery-criticality-tiers.png":::
 
@@ -118,7 +118,7 @@ Review these classifications regularly. As business needs evolve, update your DR
 
 Here are some key friction points that you should be cautious about, otherwise DR planning can turn into a costly exercise without the right outcomes.
 
-- **Mismatch between expectations and budget**. Set expectations properly so that  stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgets can lead to risk and disappointment.
+- **Mismatch between expectations and budget**. Set expectations properly so that stakeholders don't expect hot standby performance on a cold standby budget. The gap between RTO/RPO promises and budgets can lead to risk and disappointment.
 
 - **Shared service dependencies can break your chain**. Your DR plan is only as effective as its weakest component. If your workloads depend on shared or third-party resources, which lack proper failover strategies, it can create vulnerabilities during a disaster.
 
@@ -132,7 +132,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 0 (Mission Critical)** comes with the highest cost, and that's expected. Active-active deployments and redundant infrastructure significantly increase your spend in exchange for near-zero downtime. When it comes to cost optimization, your best options are standard practices like reserved instances or Azure Hybrid Benefit where applicable.
 
-    Strive for simplicity in your design. Over-engineering beyond well-defined requirements is where hidden costs quietly build up. Keep in mind, foundational practices like infrastructure as code, automated deployments, and testing introduce upfront engineering effort. While that effort might compete with delivering new features, compromising investment in strong operations is just not an option. 
+    Strive for simplicity in your design. Over-engineering beyond well-defined requirements is where hidden costs quietly build up. Keep in mind that foundational practices like infrastructure as code, automated deployments, and testing introduce upfront engineering effort. While that effort might compete with delivering new features, compromising investment in strong operations is just not an option. 
 
 - **Tier 1 (Business Critical)** offers a balance, typically using warm standby environments that reduce cost. 
 
@@ -144,7 +144,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
-Whatever your tier might be, use the right tooling to review costs. Microsoft Cost Management and Azure Advisor provide tools to monitor, forecast, and optimize spending across all tiers. Tag resources and set budget thresholds  to make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
+Whatever your tier might be, use the right tooling to review costs. Use tools such as Microsoft Cost Management and Azure Advisor to monitor, forecast, and optimize spending across all tiers. Tag resources and set budget thresholds to make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
 
 ## Document your DR plan
 
