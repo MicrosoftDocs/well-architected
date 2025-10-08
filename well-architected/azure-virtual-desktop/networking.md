@@ -17,10 +17,10 @@ Networking is a foundational element of Azure Virtual Desktop (AVD) workloads, i
 
 Azure Virtual Desktop (AVD) requires real-time, low-latency network connectivity to deliver a seamless user experience. High latency or jitter can result in lag, screen tearing, or slow input response. Optimizing your network helps ensure efficient bandwidth usage, reduces costs, and improves performance—especially in bandwidth-constrained environments. 
 
-You should test latency and bandwidth requirements in development, testing, and proof-of-concept environments. Always consider the actual user experience, including network conditions, end-user devices, and session host configuration.
+You should validate that latency and bandwidth meet requirements in development, testing, and proof-of-concept environments. Always consider the actual user experience, including network conditions, end-user devices, and session host configuration.
 
 > [!NOTE]
-> Latency is only one aspect of remote connectivity. Bandwidth and user workload also affect the end-user experience. To estimate bandwidth requirements, see [Remote Desktop Protocol (RDP) bandwidth requirements](/azure/virtual-desktop/rdp-bandwidth).
+> Latency is only one aspect of remote connectivity. Network throughput and user workload also affect the end-user experience. To estimate bandwidth requirements, see [Remote Desktop Protocol (RDP) bandwidth requirements](/azure/virtual-desktop/rdp-bandwidth).
 
 ### Recommendations
 
