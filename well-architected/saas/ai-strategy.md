@@ -134,23 +134,39 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 - **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 
-## Examples: SaaS archetypes
+## Define characterisitcs for your SaaS archetype
 
-In the context of SaaS value archetypes, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you understand:
+In the context of SaaS, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction. Document your research and capture your findings. Here's a simple template you can follow:
 
-- What kind of value your SaaS product delivers
+**Archetype requirements template**
 
-- How your customers interact with that value
+Briefly describe the SaaS archetype. 
 
-- Where AI can best be applied to enhance it
+- What is the core value delivered to customers?
+- How is that value consumed or experienced by users?
+- What differentiates this product in the market?
 
-Having a clear understanding can help you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.
+**Typical use cases**
 
-### Application-focused
+List typical use cases that form the core functionality. 
+
+**AI opportunites** 
+
+Identify where AI can add the most value based on the typical use cases of this archetype.
+
+**Risks**
+
+Identify the key challenges, limitations, and potential failure points related to applying AI within this archetype. Consider technical risks and quality risks.
+
+**Build/Buy/Customize**
+
+For core components, should you build, buy, or customize? What's the rationale?
+
+#### Example: Application-focused
 
 For this type of SaaS product, core value comes from the user experience or workflow. These are solutions where users spend significant time interacting with your interface, like  editing, creating, analyzing, collaborating, or making decisions. Examples include document editors, legal tools, creative platforms, productivity apps, design software, or decision-support systems.
 
-#### Typical Use Cases
+**Typical Use Cases**
 
 - Summarize complex content such as legal documents, meeting transcripts, or customer interactions.
 
@@ -191,6 +207,11 @@ For this type of SaaS product, core value comes from the user experience or work
 | AI-enhanced features (summarization, classification) | Customize| Fine-tune existing models or craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. |
 | Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
 | Task-specific models (legal clause analysis, medical term tagging) | Buy or fine-tune| Purchase or fine-tune proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
+
+
+--------------------------------------------
+
+## Dump zone
 
 
 #### Data-as-a-platform
