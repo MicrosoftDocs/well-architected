@@ -16,7 +16,7 @@ The benefits of AI are real, but so are the risks. There is urgency: if you do n
 
 - Serving diverse customers with varying needs, 
 - Running multiple models or experiences across different tenants, and 
-- The pressure to move quickly without sacrificing safety or quality.
+- The pressure to move quickly without sacrificing security or quality.
 
 Without a clear AI strategy, you risk misalignment with your product vision and distraction from what matters most to your users. The goal is not to add AI arbitrarily or as a box-checking exercise, but to implement it intentionally, aligned with your business goals and customer needs.
 
@@ -36,7 +36,9 @@ To stay relevant, elevate your role. Move from being a software provider to a st
 - Provide guidance in new formats such as embedded agents, personalized briefings, or daily podcasts
 - Use aggregated data across your customers to deliver benchmarking, forecasting, and predictive analytics
 
-By shifting your mindset from product builder to business partner, AI becomes a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that extend value through AI and enable agentic workflows aligned with customer goals. Set a vision where customers unlock deeper insights, automation, and strategic outcomes, strengthening your core value proposition.
+By shifting your mindset from product builder to business partner, AI becomes a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that extend value through AI and enable agentic workflows aligned with customer goals.  With a clear strategy, marketing your AI capabilities shifts from making vague promises to showcasing how you deliver and enhance real value.
+
+Set a vision where customers unlock deeper insights, automation, and strategic outcomes, strengthening your core value proposition.
 
 #### Recommendations
 
@@ -54,11 +56,11 @@ AI provides a powerful way to push SaaS products beyond traditional, human-cente
 
 This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals. They also introduce ongoing maintenance burdens for models, tools, and data that weren't planned for.
 
 #### Recommendations
 
-- **Establish a clear AI strategy at the leadership level**. Senior leadership must define the role AI will play in your product and business. Set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
+- **Establish a clear AI strategy at the leadership level**. Senior leadership should have sufficient knowledge of what's possible with AI so that they can make informed decisions and tradeoffs.  Work with them to set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
 
 -  **Encourage exploration within strategic guardrails**.  Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams, and also keeps business stakeholders informed.
 
@@ -84,7 +86,11 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How would you assess your maturity level with AI?**
 >
->   AI technologies and use cases are changing rapidly. It's entirely reasonable to be in the early stages of your AI journey. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. Otherwise, 
+>   AI technologies and use cases are changing rapidly. It's entirely reasonable to be in the early stages of your AI journey. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. 
+
+As you begin to mature, you'll start to understand where you can push the boundaries of the technology and your systems. You'll also understand how to model your flows in ways that make it possible to identify where AI fits and doesn't fit, and where it can create opportunities for brand new capabilities and experiences.
+
+But without having significant real-world experience, it's easy to get misled or convince yourself that something is possible or a good idea when it isn't. 
 >   <!-- John, this needs amid and advanced stage guidance. Doesn't have to be full blown but if we are talking about maturity, let's leave them with something similar to what we have for earlier stages -->
 >
 > - **How much AI do you use in your processes for productivity gains?**
@@ -104,8 +110,8 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   | Approach | Benefit | Tradeoff |
 >   |----------|---------|----------|
 >   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
->   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation |
->   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills. In general, this option isn't recommended |
+>   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. You have to actively test for model decay so that models remain relevant over time|
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
 >   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
@@ -124,14 +130,16 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 
 - **Establish AI governance early**. Define clear policies for model lifecycle managemen with human-in-the loop, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relavent, maintainable, and compliant as the technology evolves.
 
-- **Centralize technical expertise**. AI is complex, and not everyone needs to be an expert. Build a core team that owns deep technical knowledge and can guide others across the organization in applying AI effectively.
+- **Centralize technical expertise**. AI is complex; the field spans a wide range of areas such as model selection, evaluation, fine tuning, grounding, agent development, integration into other applications, and more. Not everyone needs to be an expert in every area. Build a core team that collectively has deep technical knowledge and individuals specialize in certain areas.
 
 - **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 
 ## Put strategy to practice for your SaaS archetype
 
-In the context of SaaS, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction. Document your research and capture your findings. Here's a simple template you can follow:
+In the context of SaaS, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.  Keep in mind a single SaaS solution can serve multiple archetypes, either because different user personas engage with it in different ways, or because it offers distinct features and capabilities tailored to various needs.
+
+Document your research and capture your findings. Here's a simple template you can follow:
 
 #### Archetype requirements template
 
@@ -179,7 +187,7 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - **Interface integration**. Implement AI features directly within existing user interfaces such as editors, dashboards, and core workflow components to minimize context switching.
 
-- **Contextual relevance**. Ensure AI outputs are generated based on user-specific data and the current application state to improve accuracy and usefulness.
+- **Contextual relevance**. Ensure AI outputs are generated based on customer or tenant-specific data and the current application state to improve accuracy and usefulness.
 
 - **Performance and explainability**. Optimize for low latency to provide real-time or near real-time responses, and include mechanisms to explain AI decisions or outputs clearly.
 
@@ -225,7 +233,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 
 #### AI opportunities
 
-- **Data access and APIs**. Build well-documented, secure APIs to expose data. This is necessary for customers or third-party tools to interact with your platform.
+- **Data access and APIs**. Build well-documented, secure APIs to expose data, and enable connectivity through MCP servers. This is necessary for customers or third-party tools to interact with your platform.
 
 - **Natural language interfaces**. Develop or customize AI-driven interfaces that enable non-technical users to query and interpret data using natural language.
 
