@@ -12,20 +12,20 @@ ms.collection: learn-startups
 
 AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, you have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
 
-The benefits of AI are real, but so are the risks. There is urgency: if you do not embrace AI, competitors will deliver your value faster, smarter, and at scale. There's added complexity in SaaS that comes from:
+The benefits of AI are real, but so are the risks. There is urgency: if you do not embrace AI, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
 
 - Serving diverse customers with varying needs, 
 - Running multiple models or experiences across different tenants, and 
 - The pressure to move quickly without sacrificing safety or quality.
 
-Without a clear AI strategy, you risk misalignment with your product vision and distraction from what matters most to your users. The goal is not to add AI arbitrarily but to implement it intentionally, aligned with your business goals and customer needs.
+Without a clear AI strategy, you risk misalignment with your product vision and distraction from what matters most to your users. The goal is not to add AI arbitrarily or as a box-checking exercise, but to implement it intentionally, aligned with your business goals and customer needs.
 
 This article offers practical guidance to help you adopt AI strategically in your SaaS product. While focused on B2B, the insights apply equally to B2C. We will cover where AI can create impact, potential pitfalls, and how to approach AI with clarity to strengthen your product and position you for long-term success. This guidance is for product owners, technical leaders, and anyone shaping AI strategy in SaaS.
 
 
 ## Focus on SaaS as a business model, not the application
 
-ISVs often think of their SaaS application as the entire business. As AI reshapes the SaaS landscape, vendors should start viewing the application as just one channel through which the business delivers value. How can you change that mindset for your business.
+ISVs often think of their SaaS application as the entire business. As AI reshapes the SaaS landscape, vendors should start viewing the application as just one channel through which the business delivers value. Consider how you can change that mindset for your business.
 
 Consider this example: a SaaS company offering a bookkeeping application. If you define your value solely as providing a financial data interface with some business logic, you risk becoming a commodity. AI can now interact with software directly. An agent could use your tool or even replicate its functionality without a user ever opening your interface. If customers see your product only as a tool, they may be just as willing to replace it or build their own solution using AI.
 
@@ -187,7 +187,7 @@ For this type of SaaS product, core value comes from the user experience or work
 
 #### Risks
 
-- **Performance and scalability.** Poorly designed APIs or infrastructure can lead to slow responses, downtime, or inconsistent data, degrading user experience. Mitigate by applying proven design patterns and thorough load testing.
+- **Performance and scalability.** Poorly designed AI experiences, APIs or infrastructure can lead to slow responses, downtime, or inconsistent data, degrading user experience. Mitigate by applying proven design patterns and thorough load testing.
 
 - **Over-customization.** Developing custom AI models without sufficient data or expertise may result in wasted resources and ineffective outcomes. Limit risk by starting with prebuilt models or fine-tuning before building custom solutions.
 
@@ -198,10 +198,10 @@ For this type of SaaS product, core value comes from the user experience or work
 
 | Capabilities | Approach  | Recommendation|
 |--------------|-----------|---------------|
-| General-purpose LLMs | Buy | Utilize established models. Avoid building your own large language model. |
-| AI-enhanced features (summarization, classification) | Customize| Fine-tune existing models or craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. |
+| General-purpose language models | Buy | Utilize established models. Avoid building your own language model. |
+| AI-enhanced features (summarization, classification) | Customize| Craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. If necessary, you can fine-tune existing models. |
 | Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
-| Task-specific models (legal clause analysis, medical term tagging) | Buy or fine-tune| Purchase or fine-tune proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
+| Task-specific models (legal clause analysis, medical term tagging) | Buy or customize | Purchase or customize proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
 
 
 --------------------------------------------
@@ -315,8 +315,8 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Component   | Approach        | Recommendation                 |
 |-------------|-----------------|--------------------------------|
 | Data ingestion pipelines         | Build           | Develop tailored pipelines to collect, clean, and normalize diverse customer data for accurate analysis. |
-| Prebuilt analytics models        | Buy             | Leverage existing AI/ML models for common forecasting, anomaly detection, and benchmarking tasks.       |
-| Custom AI model training         | Build or customize | Fine-tune models on proprietary datasets to create unique, differentiated insights and predictions.     |
+| Prebuilt analytics models        | Buy or customize             | Leverage existing AI/ML models for common forecasting, anomaly detection, and benchmarking tasks. Customize them if necessary for your domain. |
+| Custom AI model training         | Build | Create and train models on proprietary datasets to create unique, differentiated insights and predictions.     |
 | Interactive data visualization   | Build or customize | Create or enhance dashboards that allow dynamic exploration and real-time data interaction.             |
 | Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
