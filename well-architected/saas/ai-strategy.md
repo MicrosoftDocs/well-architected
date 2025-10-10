@@ -82,16 +82,18 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   This distinction will shape how you prioritize use cases, structure your teams, and measure success. If you're already positioned as an AI-native solution, your roadmap should reflect that at every layer. If not, your strategy should focus on where AI adds meaningful value without destabilizing what's already working.
 >
->   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#examples-saas-archetypes).
+>   :::image type="icon" source="../_images/risk.svg"::: **Over indexing on chatbots as the primary AI interface.** Chatbots are often a practical starting point for AI because easy to implement, well-supported, and capable of delivering quick wins. However, relying solely on chat interfaces can limit your strategy and lead to missed opportunities. AI has the potential to power much more, including personalization, automation, recommendations, and intelligent insights. Think beyond chat and consider how AI can best serve your users and product experience.
+>
+>   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#put-strategy-to-practice-for-your-saas-archetype).
 >
 > - **How would you assess your maturity level with AI?**
 >
 >   AI technologies and use cases are changing rapidly. It's entirely reasonable to be in the early stages of your AI journey. The goal isn't to pivot your entire business around AI on day one. Instead, pick a few focused areas where AI could enhance your product or used in your own operations. Learn what works, build on small wins, and use that momentum to grow a more scalable and confident AI capability. 
-
-As you begin to mature, you'll start to understand where you can push the boundaries of the technology and your systems. You'll also understand how to model your flows in ways that make it possible to identify where AI fits and doesn't fit, and where it can create opportunities for brand new capabilities and experiences.
-
-But without having significant real-world experience, it's easy to get misled or convince yourself that something is possible or a good idea when it isn't. 
->   <!-- John, this needs amid and advanced stage guidance. Doesn't have to be full blown but if we are talking about maturity, let's leave them with something similar to what we have for earlier stages -->
+>
+>    As you begin to mature, you'll start to understand where you can push the boundaries of the technology and your systems. You'll also understand how to model your flows in ways that make it possible to identify where AI fits and doesn't fit, and where it can create opportunities for brand new capabilities and experiences.
+>
+>    But without having significant real-world experience, it's easy to get misled or convince yourself that something is possible or a good idea when it isn't. 
+>
 >
 > - **How much AI do you use in your processes for productivity gains?**
 >
@@ -100,6 +102,10 @@ But without having significant real-world experience, it's easy to get misled or
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
 >   See [Examples: AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
+>
+> - **How can you improve customer operations with AI?**
+>
+>   Explore the operational use cases for AI. Take customer onboarding as an example especially in B2B scenarios. This process collecting data from various unstructured or semi-structured formats, PDFs, spreadsheets, handwritten forms, emails, and so on. AI can play a valuable role here by extracting, interpreting, and transforming that scattered information into structured data your systems need. This  reduces toil, and speeds up time-to-value for new customers.
 >
 > - **Do you want to build, buy, or customize?**
 >   
@@ -240,6 +246,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 
 - **Scalable data infrastructure**. Design the platform to support large-scale, real-time data processing and retrieval.
 
+- **Data processing and cleansing**. Automate tasks of data preparation by cleansing and normalizing  inconsistent data from multiple sources.
 
 #### Risks
 
@@ -267,6 +274,9 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 # [Analytics](#tab/archetype-analytics)
 
 This SaaS archetype focuses on delivering insight and analytics by leveraging customer data. The core value lies in analyzing the data stored on behalf of customers, such as forecasting trends or benchmarking performance, to provide actionable intelligence. 
+
+> [!NOTE]
+> SaaS providers, legally and ethically allowed, use aggregated data across many customers. This enables  cross-customer insights, benchmarking, and performance comparisons that individual clients can't access on their own. However, this approach must carefully account for data privacy, consent, and compliance risks.
 
 
 #### Typical Use Cases
@@ -298,7 +308,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 - **Explainable AI.** Provide transparent explanations of AI-driven insights to build trust and facilitate decision-making.
 
-- **Seamless integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
+- **Integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
 
 - **Continuous learning and model tuning.** Implement feedback loops where AI models improve over time based on user interactions and new data.
 
@@ -336,15 +346,6 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 ## Dump zone
 
 
-#### Data-as-a-platform
-
-
-
-#### Insight and analytics
-
-
-
-
 ## Choose initial AI use cases
 
 <!-- Priyanka: I'm not sure whether this belongs here. Essentially what I would love to do is have a way to say "think of AI as being a lot more than just chatbots - look at all the things you can do with it!". But I'm not sure how best to convey that.-->
@@ -357,9 +358,4 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
     - Decision support
     - Automated form entry, and other examples of turning unstructured data into structured data.
     - Agentic workflows
-- Chatbots are a common first step for many SaaS applications.
-    - But be cautious of applying them indiscriminately and without a broader strategy behind them.
-    - If improperly applied, they can frustrate customers, and provide minimal value.
-    - They can also distract you from using AI in more compelling use cases.
-    - However, they can be a good starting point, as long as you make sure the chatbot and its capabilities are useful to customers.
 
