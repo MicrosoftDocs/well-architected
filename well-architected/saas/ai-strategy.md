@@ -165,11 +165,13 @@ Identify the key challenges, limitations, and potential failure points related t
 
 For core components, should you build, buy, or customize? What's the rationale?
 
-#### Example: Application-focused
+Here are some examples for common SaaS archetypes. 
+
+# [Application-focused](#tab/archetype-applications)
 
 For this type of SaaS product, core value comes from the user experience or workflow. These are solutions where users spend significant time interacting with your interface, like  editing, creating, analyzing, collaborating, or making decisions. Examples include document editors, legal tools, creative platforms, productivity apps, design software, or decision-support systems.
 
-**Typical Use Cases**
+#### Typical use cases
 
 - Summarize complex content such as legal documents, meeting transcripts, or customer interactions.
 
@@ -212,12 +214,7 @@ For this type of SaaS product, core value comes from the user experience or work
 | Task-specific models (legal clause analysis, medical term tagging) | Buy or customize | Purchase or customize proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
 
 
---------------------------------------------
-
-## Dump zone
-
-
-#### Data-as-a-platform
+# [Data-as-a-platform](#tab/archetype-data)
 
 In this archetype, the SaaS solution's primary value is in collecting, consolidating, storing, and analyzing customer data. Beyond providing AI-driven features directly, you can enable customers to connect their own AI agents to your platform, unlocking new opportunities for data-driven workflows and insights.
 
@@ -266,7 +263,8 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 | Custom ML models for data insights | Buy or build | Use prebuilt models when possible; build custom models only if you have proprietary data and expertise. |
 
 
-#### Insight and analytics
+
+# [Analytics](#tab/archetype-analytics)
 
 This SaaS archetype focuses on delivering insight and analytics by leveraging customer data. The core value lies in analyzing the data stored on behalf of customers, such as forecasting trends or benchmarking performance, to provide actionable intelligence. 
 
@@ -329,6 +327,22 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
 | Automated report generation      | Build or buy    | Automate creation of insight reports; buy off-the-shelf solutions or build custom generators as needed.  |
+
+
+
+
+--------------------------------------------
+
+## Dump zone
+
+
+#### Data-as-a-platform
+
+
+
+#### Insight and analytics
+
+
 
 
 ## Choose initial AI use cases
