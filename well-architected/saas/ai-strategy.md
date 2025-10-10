@@ -110,7 +110,7 @@ But without having significant real-world experience, it's easy to get misled or
 >   | Approach | Benefit | Tradeoff |
 >   |----------|---------|----------|
 >   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
->   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. You have to actively test for model decay so that models remain relevant over time|
+>   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time|
 >   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
@@ -128,7 +128,7 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 
     > :::image type="icon" source="../_images/risk.svg"::: **Chasing full automation without oversight.**   Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
 
-- **Establish AI governance early**. Define clear policies for model lifecycle managemen with human-in-the loop, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relavent, maintainable, and compliant as the technology evolves.
+- **Establish AI governance early**. Define clear policies for model lifecycle management with accountability in place, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relevant, maintainable, and compliant as the technology evolves.
 
 - **Centralize technical expertise**. AI is complex; the field spans a wide range of areas such as model selection, evaluation, fine tuning, grounding, agent development, integration into other applications, and more. Not everyone needs to be an expert in every area. Build a core team that collectively has deep technical knowledge and individuals specialize in certain areas.
 
