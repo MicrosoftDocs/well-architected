@@ -12,7 +12,7 @@ ms.collection: learn-startups
 
 AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, you have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
 
-The benefits of AI are real, but so are the risks. There is urgency: if you do not embrace AI, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
+The benefits of AI are real, but so are the risks. There is urgency: if you don't adopt AI quickly, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
 
 - Serving diverse customers with varying needs, 
 - Running multiple models or experiences across different tenants, and 
@@ -36,7 +36,7 @@ To stay relevant, elevate your role. Move from being a software provider to a st
 - Provide guidance in new formats such as embedded agents, personalized briefings, or daily podcasts
 - Use aggregated data across your customers to deliver benchmarking, forecasting, and predictive analytics
 
-By shifting your mindset from product builder to business partner, AI becomes a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that extend value through AI and enable agentic workflows aligned with customer goals.  With a clear strategy, marketing your AI capabilities shifts from making vague promises to showcasing how you deliver and enhance real value.
+Shift your mindset from product builder to business partner to make AI a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that extend value through AI and enable agentic workflows aligned with customer goals.  With a clear strategy, marketing your AI capabilities shifts from making vague promises to showcasing how you deliver and enhance real value.
 
 Set a vision where customers unlock deeper insights, automation, and strategic outcomes, strengthening your core value proposition.
 
@@ -64,9 +64,9 @@ This could involve embedding intelligent features, improving internal operations
 
 -  **Encourage exploration within strategic guardrails**.  Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams, and also keeps business stakeholders informed.
 
-    They could also serve as reviewers of AI experiments and pilots. Their responsibiluty would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
+    They could also serve as reviewers of AI experiments and pilots. Their responsibility would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
 
-- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#examples-saas-archetypes).
+- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#put-strategy-to-practice-for-your-saas-archetype).
 
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
@@ -159,7 +159,7 @@ Briefly describe the SaaS archetype.
 
 List typical use cases that form the core functionality. 
 
-**AI opportunites** 
+**AI opportunities** 
 
 Identify where AI can add the most value based on the typical use cases of this archetype.
 
@@ -191,7 +191,7 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - Support natural language interfaces that allow users to perform tasks  within the application.
 
-#### AI opportunites
+#### AI opportunities
 
 - **Interface integration**. Implement AI features directly within existing user interfaces such as editors, dashboards, and core workflow components to minimize context switching.
 
