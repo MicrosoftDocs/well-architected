@@ -123,7 +123,6 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2) |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
->   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
 
 ## Build AI in your foundational practices
 
@@ -348,24 +347,4 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
 | Automated report generation      | Build or buy    | Automate creation of insight reports; buy off-the-shelf solutions or build custom generators as needed.  |
 
-
-
-
---------------------------------------------
-
-## Dump zone
-
-
-## Choose initial AI use cases
-
-<!-- Priyanka: I'm not sure whether this belongs here. Essentially what I would love to do is have a way to say "think of AI as being a lot more than just chatbots - look at all the things you can do with it!". But I'm not sure how best to convey that.-->
-- Consider a wide variety of places where AI can be useful within your solution. 
-    - Chatbots are where a lot of conversations begin, and they can be useful, especially when they can orchestrate a complex application's functionality in novel ways. However, they are only one use case.
-    - Summarization, document analysis, extraction, enrichment
-    - Content generation
-    - Automation of complex processes
-    - Hyperpersonalisation
-    - Decision support
-    - Automated form entry, and other examples of turning unstructured data into structured data.
-    - Agentic workflows
 
