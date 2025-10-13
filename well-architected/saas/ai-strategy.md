@@ -104,7 +104,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
->   See [Examples: AI use cases](#choose-initial-ai-use-cases) to guide this evaluation.
+>   See [Examples: AI use cases](#put-strategy-to-practice-for-your-saas-archetype) to guide this evaluation.
 >
 > - **How can you improve customer operations with AI?**
 >
@@ -120,7 +120,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   |----------|---------|----------|-----------------------|
 >   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | [Azure AI Foundry Models](/azure/ai-foundry/concepts/foundry-models-overview), including [Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/overview); Azure AI Services for specific tasks, like [Azure AI Vision](/azure/ai-services/computer-vision/overview), [Azure AI Document Intelligence](/azure/ai-services/document-intelligence/overview), and [Azure AI Speech](/azure/ai-services/speech-service/overview) |
 >   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time | [Fine-tuning in Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/how-to/fine-tuning); [Custom speech[(/azure/ai-services/speech-service/custom-speech-overview)] |
->   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2) |
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
 
@@ -347,4 +347,6 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
 | Automated report generation      | Build or buy    | Automate creation of insight reports; buy off-the-shelf solutions or build custom generators as needed.  |
 
+## Related links
 
+[Design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag)
