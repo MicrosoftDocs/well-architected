@@ -72,6 +72,9 @@ This could involve embedding intelligent features, improving internal operations
 
 - **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
 
+    > [!TIP]
+    > High-quality examples are a great starting point for understanding what's possible and realistic with AI. Carefully review examples of good AI integration from other products, and look for examples and details about how they're implemented at each layer including the application, data retrieval and grounding, and model interactions and prompting.
+
 
 ## Start small, enhance iteratively
 
@@ -82,7 +85,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   This distinction will shape how you prioritize use cases, structure your teams, and measure success. If you're already positioned as an AI-native solution, your roadmap should reflect that at every layer. If not, your strategy should focus on where AI adds meaningful value without destabilizing what's already working.
 >
->   :::image type="icon" source="../_images/risk.svg"::: **Over indexing on chatbots as the primary AI interface.** Chatbots are often a practical starting point for AI because easy to implement, well-supported, and capable of delivering quick wins. However, relying solely on chat interfaces can limit your strategy and lead to missed opportunities. AI has the potential to power much more, including personalization, automation, recommendations, and intelligent insights. Think beyond chat and consider how AI can best serve your users and product experience.
+>   :::image type="icon" source="../_images/risk.svg"::: **Risk: Over indexing on chatbots as the primary AI interface.** Chatbots are often a practical starting point for AI because easy to implement, well-supported, and capable of delivering quick wins. However, relying solely on chat interfaces can limit your strategy and lead to missed opportunities. AI has the potential to power much more, including personalization, automation, recommendations, and intelligent insights. Think beyond chat and consider how AI can best serve your users and product experience.
 >
 >   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#put-strategy-to-practice-for-your-saas-archetype).
 >
@@ -113,11 +116,11 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   When deciding how to implement AI in your product, you typically have three options:
 >
->   | Approach | Benefit | Tradeoff |
->   |----------|---------|----------|
->   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features |
->   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time|
->   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills |
+>   | Approach | Benefit | Tradeoff | Example Azure service |
+>   |----------|---------|----------|-----------------------|
+>   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | [Azure AI Foundry Models](/azure/ai-foundry/concepts/foundry-models-overview), including [Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/overview); Azure AI Services for specific tasks, like [Azure AI Vision](/azure/ai-services/computer-vision/overview), [Azure AI Document Intelligence](/azure/ai-services/document-intelligence/overview), and [Azure AI Speech](/azure/ai-services/speech-service/overview) |
+>   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time | [Fine-tuning in Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/how-to/fine-tuning); [Custom speech[(/azure/ai-services/speech-service/custom-speech-overview)] |
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning?view=azureml-api-2) |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
 >   <!-- John, this is a great place to expand on the example from before and suggest some Azure options -->
@@ -199,6 +202,9 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - **Performance and explainability**. Optimize for low latency to provide real-time or near real-time responses, and include mechanisms to explain AI decisions or outputs clearly.
 
+    > [!CAUTION]
+    > For high-stakes decisions, have a human-in-the-loop review approach and require human review before taking action.
+
 - **User interaction controls**. Provide explicit controls for users to accept, edit, or reject AI-generated results, maintaining transparency and enabling correction or override of AI outputs.
 
 #### Risks
@@ -216,6 +222,7 @@ For this type of SaaS product, core value comes from the user experience or work
 |--------------|-----------|---------------|
 | General-purpose language models | Buy | Utilize established models. Avoid building your own language model. |
 | AI-enhanced features (summarization, classification) | Customize| Craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. If necessary, you can fine-tune existing models. |
+| Agentic experiences | TODO | TODO |
 | Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
 | Task-specific models (legal clause analysis, medical term tagging) | Buy or customize | Purchase or customize proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
 
@@ -250,7 +257,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 
 #### Risks
 
-- **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Enforce encryption, access controls, and regular compliance checks.
+- **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Enforce encryption, access controls, logging the use of customer data, and regular compliance checks.
 
 - **Performance and scalability.** Poorly designed APIs or infrastructure can lead to slow responses, downtime, or inconsistent data, degrading user experience. 
 
@@ -276,7 +283,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 This SaaS archetype focuses on delivering insight and analytics by leveraging customer data. The core value lies in analyzing the data stored on behalf of customers, such as forecasting trends or benchmarking performance, to provide actionable intelligence. 
 
 > [!NOTE]
-> SaaS providers, legally and ethically allowed, use aggregated data across many customers. This enables  cross-customer insights, benchmarking, and performance comparisons that individual clients can't access on their own. However, this approach must carefully account for data privacy, consent, and compliance risks.
+> SaaS providers, when legally and ethically allowed, use aggregated data across many customers. This enables cross-customer insights, benchmarking, and performance comparisons that can't be derived from individual customers on their own. However, this approach must carefully account for data privacy, consent, and compliance risks.
 
 
 #### Typical Use Cases
@@ -306,7 +313,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 - **Personalized insights delivery.** Tailor AI-generated recommendations and reports to individual user roles, preferences, or business contexts.
 
-- **Explainable AI.** Provide transparent explanations of AI-driven insights to build trust and facilitate decision-making.
+- **Explainable AI.** Clearly disclose where AI is used to support or make decisions. Provide transparent explanations of AI-driven insights to build trust and facilitate decision-making.
 
 - **Integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
 
@@ -317,6 +324,9 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 - **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Mitigate by enforcing encryption, access controls, and regular compliance checks.
 
+    > [!CAUTION]
+    > Avoid training shared models on raw customer data unless explicitly permitted and anonymized.
+
 - **Performance and scalability.** Poorly designed data processing pipelines or infrastructure can lead to slow analysis, downtime, or inconsistent results, degrading user experience. Mitigate by applying scalable architectures and thorough testing.
 
 - **Over-customization.** Developing highly specialized AI models without sufficient data or expertise may result in wasted resources and ineffective insights. Limit risk by starting with established models and iterating based on feedback.
@@ -324,7 +334,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 - **Integration complexity.** Incorporating AI analytics within diverse customer workflows can increase system complexity and maintenance effort. Reduce risk through modular design, clear documentation, and automated testing.
 
 - **Data versioning and consistency.** Inconsistent or outdated data can cause inaccurate insights and undermine user trust. Implement strict data version control and synchronization to ensure accuracy.
-
+- **Bias.** Analytics or model creation based on aggregated data necessarily means that raw data is lost or smoothed over. This approach can accidentally introduce bias into your system. Regularly test your analytics and custom models for bias across different customer segments to ensure that you're not over-emphasizing the behavior of an average customer.
 
 #### Build, buy, or customize?
 
