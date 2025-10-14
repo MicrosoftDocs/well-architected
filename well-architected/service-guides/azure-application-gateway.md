@@ -60,7 +60,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >     If Application Gateway reaches the SNAT port limit, it affects the requests per second (RPS). For example, Application Gateway can't open a new connection to the back end, and the request fails.
 >
->   Where possible, consider CNI Overlay integration. For example, when using AKS, take advantage of Application Gateway for Containers support for overlay pod networking. This feature enables scaling multiple AKS clusters sharing ingress while conserving IP space, removing subnet exhaustion as a reliability and scaling blocker. It might introduce added network diagnostic complexity requiring enhanced observability. 
+>   Where possible, consider CNI Overlay integration. For example, when using AKS, take advantage of Application Gateway for Containers support for overlay pod networking. This feature enables scaling multiple AKS clusters sharing ingress while conserving IP space, removing subnet exhaustion as a reliability and scaling blocker. For more information, see [Container networking with Application Gateway for Containers](/azure/application-gateway/for-containers/container-networking).
 
 
 
