@@ -4,7 +4,7 @@ description: Learn about architectural best practices for the Azure Application 
 author: lnyswonger
 ms.author: lnyswonger
 ms.topic: conceptual
-ms.date: 10/02/2024
+ms.date: 09/22/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-application-gateway
@@ -59,6 +59,10 @@ Start your design strategy based on the [design review checklist for Reliability
 >   - Move your back ends into the same virtual network, and use private IP addresses for the back ends.
 >
 >     If Application Gateway reaches the SNAT port limit, it affects the requests per second (RPS). For example, Application Gateway can't open a new connection to the back end, and the request fails.
+>
+>   Where possible, consider CNI Overlay integration. For example, when using AKS, take advantage of Application Gateway for Containers support for overlay pod networking. This feature enables scaling multiple AKS clusters sharing ingress while conserving IP space, removing subnet exhaustion as a reliability and scaling blocker. For more information, see [Container networking with Application Gateway for Containers](/azure/application-gateway/for-containers/container-networking).
+
+
 
 ### Configuration recommendations
 
@@ -102,7 +106,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Reduce the attack surface and harden the configuration.** Remove default configurations that you don't need, and harden your Application Gateway configuration to tighten security controls. Comply with all network security group (NSG) restrictions for Application Gateway.
 >
 >     Use an appropriate Domain Name System (DNS) server for back-end pool resources. When the back-end pool contains a resolvable fully qualified domain name (FQDN), the DNS resolution is based on a private DNS zone or custom DNS server (if configured on the virtual network), or it uses the default Azure-provided DNS.
-> - **Monitor anomalous activity.** Regularly review logs to check for attacks and false positives. Send [WAF logs from Application Gateway](/azure/web-application-firewall/ag/application-gateway-waf-metrics) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. Where possible, use capabilities that perform threat analysis with AI-powered security capabilities.
+> - **Monitor anomalous activity.** Regularly review logs to check for attacks and false positives. Send [WAF logs from Application Gateway](/azure/web-application-firewall/ag/application-gateway-waf-metrics) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. Where possible, use capabilities that perform threat analysis with AI-powered security capabilities. For example, [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/waf-copilot) can expedite threat identification by summarizing contextual insights and threat mitigation suggestions.
 
 ### Configuration recommendations
 
@@ -112,7 +116,6 @@ Start your design strategy based on the [design review checklist for Security](.
 | Use Application Gateway for [TLS termination](/azure/application-gateway/ssl-overview). | Performance improves because requests that go to different back ends don't have to reauthenticate to each back end.<br><br> The gateway can access the request content and make intelligent routing decisions.<br><br> You only need to install the certificate on Application Gateway, which simplifies certificate management. |
 |Integrate [Application Gateway with Key Vault](/azure/application-gateway/key-vault-certs) to store TLS certificates.| This approach provides stronger security, easier separation of roles and responsibilities, support for managed certificates, and an easier certificate renewal and rotation process.|
 |Comply with all [NSG](/azure/application-gateway/configuration-infrastructure#network-security-groups) restrictions for Application Gateway. |The Application Gateway subnet supports NSGs, but there are some restrictions. For instance, some communication with certain port ranges is prohibited. Make sure you understand the implications of those restrictions.|
-|Use AI-powered threat analysis and response capabilities for WAF events with [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/waf-copilot). |This integration enables automatic threat identification, contextual analysis, and response suggestions to reduce alert fatigue in security operations centers handling hundreds of WAF alerts daily.|
 
 
 ## Cost Optimization
@@ -157,6 +160,7 @@ Start your design strategy based on the [design review checklist for Operational
 >    Use capacity metrics to monitor the use of the provisioned Application Gateway capacity. Set alerts on metrics to notify you of capacity problems or other problems either at Application Gateway or the back end. Use diagnostic logs to manage and troubleshoot problems with Application Gateway instances.
 > - **Use [Azure Monitor Network Insights](/azure/azure-monitor/insights/network-insights-overview)** to get a comprehensive view of health and metrics for network resources, including Application Gateway. Use centralized monitoring to quickly identify and resolve problems, optimize performance, and ensure the reliability of your applications.
 > - **Monitor Application Gateway recommendations in Azure Advisor.** Configure alerts to notify your team when you have new, critical recommendations for your Application Gateway instance. Advisor generates recommendations based on properties, such as the category, impact level, and recommendation type.
+> - **Plan for routine maintenance updates.** Take advantage of Application Gateway v2 [instance maintenance capability](/azure/application-gateway/application-gateway-faq#maintenance) that allows the production gateway to upgrade without dropping connections and avoiding transient performance degradation during these rolling updates. However, you need to allocate additional IP space, which is used for provisioning temporary instances.
 
 ### Configuration recommendations
 
@@ -232,3 +236,4 @@ Foundational architecture that demonstrates the key recommendations: [Baseline h
 - [Quickstart: Direct web traffic with Application Gateway via the Azure portal](/azure/application-gateway/quick-create-portal)
 
 <!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, 496536, -->
+<!-- Updated: September 22, 2025 for Azure Update 501017, 500991 -->

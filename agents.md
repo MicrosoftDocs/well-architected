@@ -1,4 +1,4 @@
-These instructions are for GitHub Copilot and must be followed when generating new content, updating existing content, or reviewing content and pull requests in this repository.
+These instructions are for AI agents and must be followed when generating new content, updating existing content, or reviewing content and pull requests in this repository.
 
 # Repo content
 
@@ -81,23 +81,21 @@ The Well-Architected Framework is structured in a layered approach: pillars, wor
 
 ## Writing style
 
-### Microsoft style guide (extracted from https://learn.microsoft.com/en-us/product-style-guide-msft-internal)
+### Key Microsoft style guide principles (subset)
+
+The following are essential style guidelines from the Microsoft style guide. This is a subset of the full guide, focusing on the most critical principles for Well-Architected Framework content.
 
 - Get to the point fast. Start with the key takeaway. Put the most important thing in the most noticeable spot. Make choices and next steps obvious. Give people just enough information to make decisions confidently. Don't get in the way.
 - Talk like a person. Choose optimistic, conversational language. Use short everyday words, contractions, and sentence-style capitalization. Shun jargon and acronyms. And never miss an opportunity to find a better word.
 - Simpler is better. Everyone likes clarity and getting to the point. Break it up. Step it out. Layer. Short sentences and fragments are easier to scan and read. Prune every excess word.
-- Use bigger ideas, fewer words Our modern design hinges on crisp minimalism. Shorter is always better. To learn more, see Brand voice.
-- Write like you speak Be friendly and conversational. No. Robot. Words. To learn more, see Brand voice.
-- Project friendliness Use contractions: it's, you'll, you're, we're, let's. To learn more, see Use contractions.
-- Get to the point fast Lead with what's most important. Front-load keywords for scanning. Make customer choices and next steps obvious. To learn more, see Scannable content.
-- Be brief Give customers just enough information to make decisions confidently. Prune every excess word. To learn more, see Word choice.
-- When in doubt, don't capitalize Default to sentence-style capitalization—capitalize only the first word of a heading or phrase and any proper nouns or names. Never Use Title Capitalization (Like This). Never Ever. To learn more, see Capitalization.
-- Skip periods (and : ! ?) Skip end punctuation on titles, headings, subheads, UI titles, and items in a list that are three or fewer words. Save the periods for paragraphs and body copy. To learn more, see Punctuation, Headings, and Lists.
-- Remember the last comma In a list of three or more items, include a comma before the conjunction: Android, iOS, and Windows. (The comma that comes before the conjunction is known as the Oxford or serial comma.) To learn more, see Commas.
-- Don't be spacey Use only one space after periods, question marks, and colons—and no spaces around dashes. To learn more, see Punctuation.
-- Revise weak writing  Most of the time, start each statement with a verb. Edit out you can, there is, there are, and there were. To learn more, see Verbs and Word choice.
+- Use bigger ideas, fewer words Our modern design hinges on crisp minimalism. Shorter is always better.
+- Write like you speak Be friendly and conversational. No. Robot. Words.
+- Project friendliness Use contractions: it's, you'll, you're, we're, let's.
+- Get to the point fast Lead with what's most important. Front-load keywords for scanning. Make customer choices and next steps obvious.
+- Be brief Give customers just enough information to make decisions confidently. Prune every excess word.
+- When in doubt, don't capitalize Default to sentence-style capitalization—capitalize only the first word of a heading or phrase and any proper nouns or names. Never Use Title Capitalization (Like This). Never Ever.
+- Skip periods (and : ! ?) Skip end punctuation on titles, headings, subheads, UI titles, and items in a list that are three or fewer words. Save the periods for paragraphs and body copy.
+- Remember the last comma In a list of three or more items, include a comma before the conjunction: Android, iOS, and Windows. (The comma that comes before the conjunction is known as the Oxford or serial comma.)
+- Don't be spacey Use only one space after periods, question marks, and colons—and no spaces around dashes.
+- Revise weak writing  Most of the time, start each statement with a verb. Edit out you can, there is, there are, and there were.
 
-## Multi-Agent Usage
-
-- Use GitHub Copilot for Azure's @azure query learn to query existing Microsoft Learn documentation as needed.
-- Use Web Search for Copilot's Web Search tool to query general knowledge from the Internet as needed.

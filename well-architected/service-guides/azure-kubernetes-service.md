@@ -253,6 +253,7 @@ Start your design strategy based on the [design review checklist for Performance
 |(Cluster and workload) Separate workloads into different node pools and consider [scaling user node pool](/azure/aks/scale-cluster)s.|Unlike system node pools that always require running nodes, user node pools allow you to scale up or scale down.|
 |(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features that the Kubernetes scheduler provides let you control which pods can be scheduled on certain nodes. They also let you control how multipod applications can be appropriately distributed across the cluster.|
 |(Workload) Use [KEDA](/training/modules/aks-app-scale-keda/) to build a meaningful autoscale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Scale considerations often come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
+|(Cluster) Enable [Azure Monitor High Scale mode for Container Insights](/azure/azure-monitor/containers/container-insights-high-scale#enable-high-scale-mode-for-monitoring-add-on) for large-scale Kubernetes deployments with hundreds of nodes. High Scale mode optimizes monitoring performance and reduces resource consumption while maintaining comprehensive observability.|High Scale mode enables efficient monitoring of large-scale Kubernetes deployments by reducing agent resource overhead and improving data collection performance. This optimization is essential for enterprise environments running hundreds of nodes where standard monitoring approaches can impact cluster performance and increase costs.|
 
 ## Azure policies
 
@@ -305,5 +306,12 @@ Build implementation expertise by using the following product documentation:
 -  [AKS product documentation](/azure/aks)
 
 
+
 <!-- Updated: October 13, 2025 for Azure Update 503263, 503235 -->
+<!-- Updated: August 17, 2025 for Azure Update 498166, 491880 -->
+<!-- Updated: August 17, 2025 for Azure Update 498166 -->
+<!-- Updated: August 17, 2025 for Azure Update 498258 -->
+<!-- Updated: August 17, 2025 for Azure Update 498242 -->
+<!-- Updated: October 13, 2025 for Azure Update 503034 -->
+
 
