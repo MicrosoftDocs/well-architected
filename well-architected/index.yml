@@ -9,6 +9,7 @@ metadata:
   author: PageWriter-MSFT
   ms.author: prwilk
   ms.date: 07/14/2025
+  ai-usage: ai-assisted
 sections:
   # Intro
   - componentType: text 
@@ -17,7 +18,7 @@ sections:
     links:
     - componentType: link
       url: what-is-well-architected-framework
-      text: What is Well-Architected Framework?   
+      text: Explore the Framework  
   # Navigation Section
   - componentType: navigation
     size: large # optionally make section larger
@@ -40,6 +41,10 @@ sections:
         icon: book-open
         url: service-guides/index.yml
         text: Azure service guides
+      - componentType: icon-link
+        icon: book-open
+        url: service-guides/index.yml
+        text: Design essentials
       - componentType: icon-link
         icon: topic-learn
         url: /training/modules/azure-well-architected-introduction/
@@ -66,15 +71,15 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/maturity-model.png
-        alt: "Diagram showing the maturity model levels with descriptions."
-      - title: Featured update - Adopt a maturity model
-        summary: "The Well-Architected Framework provides a structured five-level maturity model to help workload teams incrementally adopt best practices. Start with foundational Azure capabilities, then evolve through building workload assets, achieving production readiness, learning from operations, and finally future-proofing with agility. This phased approach works for all teams—from startups establishing foundational strategies to mature enterprises optimizing existing workloads—allowing you to balance architectural improvements with business requirements at every stage."
+        src: ./_images/disaster-recovery-criticality-tiers.png
+        alt: "Diagram that shows the disaster recovery criticality tiers."
+      - title: Featured update - Develop a multi-region disaster recovery plan
+        summary: "Disaster recovery is the set of strategies and processes used to restore critical workloads and data after major disruptions such as outages or natural disasters. These events surpass the capabilities of built-in cloud resiliency. A well-structured disaster recovery plan defines roles, procedures, and communication protocols to ensure business continuity, minimize downtime, and enable reliable recovery across multiple regions."
         componentType: text
         links:
           - componentType: link
-            url: what-is-well-architected-framework.md#adopt-a-maturity-model
-            text: Adopt a maturity model
+            url: disaster-recovery.md
+            text: Develop a multi-region disaster recovery plan
 # cards section (4)
   - componentType: grid
     title: Pillars
