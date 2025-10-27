@@ -82,8 +82,6 @@ landingContent:
             url: infrastructure-as-code-design.md
           - text: Design a reliable workload supply chain
             url: workload-supply-chain.md
-          - text: Handle deployment failures
-            url: mitigation-strategy.md
           - text: Design an incident response strategy 
             url: incident-response.md
   - title: Explore related resources

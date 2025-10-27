@@ -31,7 +31,7 @@ If you don't consider tradeoffs and recommendations for operational excellence, 
 | &#9744; | [OE:09](automate-tasks.md) | **Automate tasks that are repetitive, procedural, and provide a clear return on investment.** Prefer off-the-shelf automation tools over custom solutions. Apply the Well-Architected Framework pillars to the design and implementation of all automation efforts.|
 | &#9744; | [OE:10](enable-automation.md) | **Design and implement automation upfront** for tasks like lifecycle management, bootstrapping, and governance. Avoid retrofitting automation later. Simplify your design by adopting platform-native automation functionality.|
 | &#9744; | [OE:11](safe-deployments.md) | **Clearly define your workload's safe deployment practices.** Focus on small, incremental releases with quality gates. Use modern deployment patterns and progressive exposure to manage risk. Plan for both routine and emergency deployments.|
-| &#9744; | [OE:12](mitigation-strategy.md)  | **Implement a deployment failure mitigation strategy** to handle unexpected issues during rollout. Use approaches like rollback, feature disablement, or the native capabilities of your deployment pattern for quick recovery.|
+
 
 ## Next steps
 
