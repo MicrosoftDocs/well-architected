@@ -219,6 +219,8 @@ With [Key Vault](https://azure.microsoft.com/services/key-vault/#product-overvie
 
 - **Application Enclave** solutions are specially built applications taking advantage of specific CPU extensions offered by virtual machine SKUs that support Intel Software Guard Extensions (SGX), these offer a very granular [Trusted Compute Base (TCB)](/azure/confidential-computing/trusted-compute-base) but require applications to be specifically coded to take advantage of the features.
 
+- **Confidential Database Services** such as [Azure Database for PostgreSQL confidential computing](/azure/postgresql/flexible-server/concepts-confidential-computing) provide hardware-based encryption for database processing operations using Intel SGX or AMD SEV-SNP secure enclaves. This enables organizations processing sensitive data to meet regulatory requirements demanding data protection in use while maintaining database performance and compatibility with existing applications.
+
 - **Secure Key Release** can be [combined with these technologies](/azure/confidential-computing/concept-skr-attestation) to ensure that encrypted data is only ever decrypted inside a TEE which proves it provides the required level of protection through a process known as [Attestation](/azure/confidential-computing/attestation-solutions).
 
 
@@ -254,3 +256,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 [Security checklist](checklist.md)
+
+<!-- Updated: October 13, 2025 for Azure Update 500795 -->
