@@ -183,7 +183,7 @@
               href: operational-excellence/observability.md
             - name: OE:07 Instrument an application
               href: operational-excellence/instrument-application.md
-            - name: OE:08 Emergency response
+            - name: OE:08 Incident response
               href: operational-excellence/emergency-response.md
             - name: OE:09 Task automation
               href: operational-excellence/automate-tasks.md
