@@ -78,7 +78,7 @@ sections:
         componentType: text
         links:
           - componentType: link
-            url: disaster-recovery.md
+            url: design-guides/disaster-recovery.md
             text: Develop a multi-region disaster recovery plan
 # cards section (4)
   - componentType: grid
