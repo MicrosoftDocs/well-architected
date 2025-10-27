@@ -18,7 +18,7 @@ When incidents occur, the workload team should be prepared with clear, structure
 
 There are two key aspects to incident response. The first is architectural, focusing on designing systems that support effective response procedures and prevent failures from cascading across components. The second is procedural, covering detection, containment, and triage to manage issues quickly, followed by root cause analysis and postmortems to prevent recurrence. Regular drills help maintain readiness and ensure the plan can be executed effectively.
 
-This article outlines proven strategies for designing an architecture that helps in respons and a response plan that keeps the team calm, coordinated, and in control. 
+This article outlines proven strategies for designing an architecture that helps in response and a response plan that keeps the team calm, coordinated, and in control. 
 
 
 **Definitions**
@@ -29,7 +29,7 @@ This article outlines proven strategies for designing an architecture that helps
 | Containment | Limiting the impact of an incident to prevent it from affecting other components or systems. |
 | Detection | Identifying that an incident has occurred or is occurring. |
 | Postmortem | A structured, blameless review of an incident involving all relevant teams, capturing lessons learned and defining actionable improvements to processes, tools, and systems. |
-| RCA (Root Cause Analysis) | Investigating and identifying the underlying cause(s) of an incident, including contributing factors, to prevent recurrence. |
+| RCA (Root Cause Analysis) | Investigatiopn and identification of the underlying cause(s) of an incident, including contributing factors, to prevent recurrence. |
 | RPO (Recovery Point Objective) | The maximum acceptable amount of data loss measured in time. |
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
@@ -38,7 +38,7 @@ This article outlines proven strategies for designing an architecture that helps
 
 ## Build containment and isolation in the architecture
 
-Incidents are inevitable, so design your architecture to contain failure and limit their blast radius. Ensure that when a component fails, the impact is isolated and does not cascade to other parts of the system. 
+Incidents are inevitable, so design your architecture to contain failure and limit their blast radius. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
 
 Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads, publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
@@ -83,7 +83,7 @@ Without these tests, small failures can quickly escalate into prolonged outages 
 
 After each incident, conduct a thorough RCA to identify underlying causes and contributing factors. Follow this with a blameless postmortem led by an impartial facilitator, where each team involved shares observations, successes, and opportunities for improvement. 
 
-Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refining the incident response plan, enhancing observability to detect similar issues earlier, and improving workload design. 
+Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
 ## Bring agility and consistency through automation 
 
