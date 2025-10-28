@@ -152,9 +152,9 @@ Feature stores serve as centralized repositories for storing, managing, and serv
 
 - **Hybrid approaches** combine centralized governance with distributed implementation. Common features are managed centrally while domain-specific features remain with individual teams.
 
-Centralized patterns work well for organizations with strong data governance teams and standardized ML practices. Distributed patterns suit organizations where teams have distinct data requirements and operate with high autonomy.
+Workload teams in organizations with strong data governance teams and standardized ML practices will likely follow the centralized approach, or a hybrid model if they need to comply with the organization standards while still having some autonomy. Distributed patterns suit organizations where teams have distinct data requirements and operate with high autonomy.
 
-### Implementation considerations
+### Design considerations
 
 - Design clear separation between feature definition, storage, and serving layers
 - Organize features into logical groupings that align with business domains and model requirements
