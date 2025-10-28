@@ -38,9 +38,9 @@ This article outlines proven strategies for designing an architecture that helps
 
 ## Build containment and isolation in the architecture
 
-Incidents are inevitable, so design your architecture to contain failure and limit their blast radius. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
+Incidents are inevitable, so design your architecture to restrict failures and limit their blast radius. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
 
-Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads, publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
+Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads or publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
 
 ## Enable rapid detection through monitoring
