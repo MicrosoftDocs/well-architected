@@ -45,7 +45,7 @@ Achieve this through techniques such as segmentation of resources, decoupling co
 
 ## Enable rapid detection through monitoring
 
-A strong incident response plan depends on the architecture’s monitoring stack. Capabilities such as structured logging, targeted dashboards, and actionable alerts enable the team to respond quickly and avoid wasted effort or alert fatigue.
+A strong incident response plan depends on the workload's monitoring stack. Capabilities such as structured logging, targeted dashboards, and actionable alerts enable the team to respond quickly and avoid wasted effort or alert fatigue.
 
 There are two key aspects to this. First, the response process should receive notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, the solution itself must emit rich, structured telemetry with relevant logs and metrics, which support effective monitoring and fast troubleshooting. 
 
@@ -73,7 +73,7 @@ The plan must also include the **core procedures** the team will follow during d
 >
 > Similarly, automatic actions such as scaling or self-healing triggered by threshold breaches can incur extra costs and operational overhead. Since the optimal thresholds may not be obvious, validate them through testing in lower environments and carefully monitored production trials to align actions with your actual requirements.
 
-## Do dry runs of the plan
+## Test the plan
 
 Regularly test your incident response processes using dry runs or chaos engineering exercises. Simulate realistic incidents to validate recoverability, verify RTO and RPO targets, and ensure communication and escalation plans function under pressure. 
 
