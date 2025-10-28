@@ -60,7 +60,7 @@ Design your solution with auditing as a core requirement to support incident res
 ## Enable fast triage and incident analysis
 
 Design the system to support rapid triage and troubleshooting during incidents. Beyond monitoring health and performance, include telemetry and logging that enable deep analysis and root cause identification. Structure components to facilitate debugging, with options for adjustable log verbosity, memory dumps, and other diagnostic data. Ensure these capabilities can be accessed and shared securely across environments, so teams can react quickly and effectively when issues occur.
-
+When performing triage or RCA, use end-to-end traceability to follow the workflow from start to finish and locate the exact point of failure.
 ## Document the incident response plan
 
 An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identifying roles such as incident manager, technical lead, and communications lead creates accountability and supports consistent decision-making.
