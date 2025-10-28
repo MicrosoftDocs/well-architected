@@ -29,7 +29,7 @@ This article outlines proven strategies for designing an architecture that helps
 | Containment | Limiting the impact of an incident to prevent it from affecting other components or systems. |
 | Detection | Identifying that an incident has occurred or is occurring. |
 | Postmortem | A structured, blameless review of an incident involving all relevant teams, capturing lessons learned and defining actionable improvements to processes, tools, and systems. |
-| RCA (Root Cause Analysis) | Investigatiopn and identification of the underlying cause(s) of an incident, including contributing factors, to prevent recurrence. |
+| RCA (Root Cause Analysis) | Investigation and identification of the underlying cause(s) of an incident, including contributing factors, to prevent recurrence. |
 | RPO (Recovery Point Objective) | The maximum acceptable amount of data loss measured in time. |
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
@@ -49,21 +49,23 @@ A strong incident response plan depends on the workload's monitoring stack. Capa
 
 There are two key aspects to this. First, the response process should receive notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, the solution itself must emit rich, structured telemetry with relevant logs and metrics, which support effective monitoring and fast troubleshooting. 
 
-In addition, ensure that key business workflows are traceable end-to-end. This is a non negotiable for troubleshooting. For example, in an order-processing system, you should be able to reconstruct the full sequence of events, when an order was received, when payment authorization was attempted, and where the failure occurred. This level of visibility allows teams to quickly assess impact and determine contributing factors during triage and RCA.
+In addition, ensure that key business workflows are traceable end-to-end. This is a non-negotiable for troubleshooting. For example, in an order-processing system, you should be able to reconstruct the full sequence of events, when an order was received, when payment authorization was attempted, and where the failure occurred. This level of visibility allows teams to quickly assess impact and determine contributing factors during triage and RCA.
 
 Synthetic tests in production further strengthen detection by validating end-to-end transaction paths and confirming that key workflows perform as expected.
 
 ## Capture and store operational data
 
-Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they are equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
+Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
 ## Enable fast triage and incident analysis
 
 Design the system to support rapid triage and troubleshooting during incidents. Beyond monitoring health and performance, include telemetry and logging that enable deep analysis and root cause identification. Structure components to facilitate debugging, with options for adjustable log verbosity, memory dumps, and other diagnostic data. Ensure these capabilities can be accessed and shared securely across environments, so teams can react quickly and effectively when issues occur.
-When performing triage or RCA, use end-to-end traceability to follow the workflow from start to finish and locate the exact point of failure.
+
+When performing triage or RCA, use end-to-end correlated telemetry to trace the workflow and locate the exact point of failure.
+
 ## Document the incident response plan
 
-An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identifying roles such as incident manager, technical lead, and communications lead creates accountability and supports consistent decision-making.
+An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
 
 The plan must include a **communication and escalation structure** that outlines how incidents are reported, who is notified, and through which channels. This ensures that information moves quickly to the right people and prevents gaps or duplication during critical moments.
 
@@ -87,7 +89,7 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 
 ## Bring agility and consistency through automation 
 
-Incorporate automation throughout the incident response workflow to reduce manual effort, accelerate response, and minimize human error. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to automate detection, containment, alerting, and communication. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, the faster and more consistent your response will be.
+Incorporate automation throughout the incident response workflow to reduce manual effort, accelerate response, and minimize human error. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to automate detection, containment, alerting, and communication. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
 
 ## Azure facilitation
 
