@@ -11,7 +11,7 @@ ms.topic: conceptual
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:08**| **Establish a structured incident management process.** Create an incident response plan that clearly documents all procedures. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running postmortems. Enable design strategies in the architecture that promote rapid detection, troubleshooting, and fixes. |
+|**OE:08**| Establish a structured incident management process. Create an incident response plan that clearly documents all procedures. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running postmortems. Enable design strategies in the architecture that promote rapid detection, troubleshooting, and fixes. |
 |---|---|
 
 When incidents occur, the workload team should be prepared with clear, structured procedures.  
