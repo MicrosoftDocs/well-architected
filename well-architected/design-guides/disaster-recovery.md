@@ -29,7 +29,7 @@ Before you start developing your plan, we recommend that you familiarize yoursel
 | **DR activation** | Formal decision to initiate disaster recovery procedures, typically requiring executive authorization. |
 | **Failback** | Process of returning workloads to the original primary environment after incident resolution. |
 | **Failover** | Process of shifting workloads from primary to standby environment during a disaster. |
-| **Recovery point objective (RPO)** | Amount of time it can take to restore essential functionalities and access to data before incurring major losses. RPO determines how often you should back up essential data. |
+| **Recovery point objective (RPO)** | Amount of data loss that can be tolerated before incurring major losses. RPO determines how often you should back up essential data. |
 | **Recovery time objective (RTO)** | Amount of time that it takes to restore essential access, data, and functionalities after a technology-related disaster. |
 
 ## What is disaster recovery?
@@ -124,7 +124,7 @@ Here are some key friction points that you should be cautious about, otherwise D
 
 - **DR activation criteria must be crystal clear**. Everyone listed in the accountability list must be clear on the criteria. Without this, there might be hesitation to initiate recovery, which can cause unnecessary delays.
 
-- **Failback is just as important as failover**. While many focus on treating failover as a cutover, sometimes failback is a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
+- **Failback is just as important as failover**. While many focus on treating failover as a one-way cutover, sometimes failback is a viable option. However, returning operations to the primary site often involves more complexity. Make sure to plan and test failback procedures. A good guideline is to automate failover while managing failback through a controlled process.
 
 ## Optimize your recovery costs
 
@@ -142,7 +142,7 @@ The cost of disaster recovery scales with the criticality of the workload.
 
 - **Tier 2 (Business Operational)** focuses on optimizing costs by using cold standby setups and pay-as-you-go options like spot instances and consumption pricing. Automate provisioning of PaaS compute in the secondary region only when needed to avoid paying for idle resources. Define clear disaster criteria and failover processes to prevent unnecessary failovers. Regular testing ensures recovery targets are met and highlights areas to trim costs.
 
-- **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
+- **Tier 3 (Administrative)** prioritizes cost savings by relying on backup and archival storage with longer recovery windows. Use replicated backups and Azure Backup vaults in a secondary region to protect persistent data without running standby infrastructure. Regularly test restore processes to ensure reliability while keeping expenses to a minimum.
 
 Whatever your tier might be, use the right tooling to review costs. Use tools such as Microsoft Cost Management and Azure Advisor to monitor, forecast, and optimize spending across all tiers. Tag resources and set budget thresholds to make accountability and chargeback models easier to track. For information on Microsoft-recommended tags, see [Tagging mission-critical workloads](/azure/azure-resource-manager/management/tag-mission-critical-workload).
 
@@ -253,7 +253,7 @@ Use this as a foundation for all the tiers. Each step should include a clear obj
 
 | Actions | Configuration | Validation |
 |---------|---------------|------------|
-| **Configure backup policies and retention** | - Configure backup schedules and retention periods for infrastructure and databases aligned with RPO requirements<br> - Use [Azure Backup](/azure/backup) for VMs, Azure Files, and Blob Storage<br> - Store backups in Geo-Redundant Backup Vault in secondary region | - Test backup policy execution<br> - Verify backup completion and integrity<br> - Validate retention policy enforcement |
+| **Configure backup policies and retention** | - Configure backup schedules and retention periods for infrastructure and databases aligned with RPO requirements<br> - Use [Azure Backup](/azure/backup) for VMs, Azure Files, and Blob Storage<br> - Store backups in secondary region, such as by using Geo-Redundant Backup Vault where available | - Test backup policy execution<br> - Verify backup completion and integrity<br> - Validate retention policy enforcement |
 | **Implement cost-effective storage tiers** | - Use Archive or Cool storage tiers for infrequently accessed data<br> - Apply backup tiering policies to transition older backups to lower-cost options<br>* Configure compression and deduplication to minimize storage costs | - Review storage cost optimization reports<br> - Verify tiering policy execution<br> - Test data retrieval from different storage tiers |
 | **Document restore procedures** | - Maintain runbooks with detailed recovery steps<br> - Define target environments for restoration<br> - Include contact lists for approvals and escalations | - Test restore procedure documentation accuracy<br> - Verify contact information currency<br> - Test escalation paths and approval workflows |
 | **Monitor backup costs and compliance** | - Set budget thresholds for backup-related resources<br> - Apply backup-specific tags to enable proper tracking<br> - Configure retention policies to meet regulatory compliance requirements | - Review backup cost reports monthly<br> - Verify budget threshold effectiveness<br> - Audit compliance with retention policies |
@@ -305,9 +305,9 @@ Active-active deployments maximize service availability by running multiple work
 
 Choose one of two deployment approaches:
 
-- **Active-active (at capacity)**: Mirrored deployment stamps in two or more regions, where each region handles a share of the production load and can scale up to absorb full load during regional failure.
+- **Active-active (at capacity)**: Mirrored deployment stamps or geodes in two or more regions, where each region handles a share of the production load and can scale up to absorb full load during regional failure.
 
--  **Active-active (overprovisioned)**: Mirrored deployment stamps in two or more regions, Each region is at full scale at all times to independently handle 100% of traffic.
+-  **Active-active (overprovisioned)**: Mirrored deployment stamps or geodes in two or more regions. Each region is at full scale at all times to independently handle 100% of traffic.
 
 > [!NOTE]
 > In active-active scenarios, when a failure occurs, user experience may remain unaffected as the load shifts to the remaining instances. However, disaster recovery efforts are still necessary to restore the failed instance.
