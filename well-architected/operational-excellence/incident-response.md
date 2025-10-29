@@ -66,7 +66,7 @@ Build a centralized incident management dashboard or portal for real-time status
 Key components should include observability data, timelines, ownership details, and severity indicators. Visibility should be role-specific, with appropriate security controls such as RBAC, ensuring users can access the information they need without exposing sensitive or customer data. Include links to relevant resources and clear instructions to guide users on next steps and their responsibilities. Optionally, support on-demand subscriptions or alerts to notify stakeholders when incident status changes.
 
 ## Capture and store audit trails
-. 
+
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
 ## Document the incident response plan
