@@ -43,16 +43,30 @@ Incidents are inevitable, so design your architecture to **restrict failures and
 Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads or publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
 
-## Enable rapid detection, troubleshooting, and analysis through monitoring
+## Build monitoring capabilities for rapid detection
 
-A strong incident response plan depends on a well-designed monitoring stack that enables rapid detection, triage, and troubleshooting. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
+A strong incident response plan depends on a well-designed monitoring stack. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
 
 Effective monitoring has two key dimensions. First, the response process should receive timely notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, **the solution itself must emit rich, structured telemetry, logs, metrics, and traces**, which enable deep analysis, triage, and root cause identification.
 
 The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
 
-## Capture and store operational data
+## Facilitate with  diagnosic data and practices 
 
+Design the solution to make diagnosing and resolving issues faster, more reliable. The approach is to embed debuggability and observability into the system's design. 
+
+This begins with the proper collection of all relevant diagnostic data, such as crash and memory dumps. Make sure the necessary tooling is in place to securely collect, store, and share this data for effective correlation and analysis. Tools like network tracers and symbol servers should be integrated to support deeper debugging capabilities. Finally, ensure all diagnostic data is protected against tampering through secure storage, restricted access, and proper data governance controls.
+
+The system should also include built-in hooks and toggles that support incident management. Those mechanisms are useful in disabling or isolating faulty components in real time, without redeployments.  Additionally, failed resources should be preserved in a quarantined state for forensic analysis rather than immediately discarded. 
+
+## Visualize incident data in a single pane of glass
+
+Build a centralized incident management dashboard or portal for real-time status updates, visibility, and knowledge sharing. The dashboard should act as a shared source of truth, keeping everyone aligned on priorities, current actions, and dependencies. Incidents are stressful situations for teams and having just enough information to maintain focus and help in timely decision making. It also reinforces a culture of accountability and continuous learning.
+
+Key components should include observability data, timelines, ownership details, and severity indicators. Visibility should be role-specific, with appropriate security controls such as RBAC, ensuring users can access the information they need without exposing sensitive or customer data. Include links to relevant resources and clear instructions to guide users on next steps and their responsibilities. Optionally, support on-demand subscriptions or alerts to notify stakeholders when incident status changes.
+
+## Capture and store audit trails
+. 
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
 ## Document the incident response plan
