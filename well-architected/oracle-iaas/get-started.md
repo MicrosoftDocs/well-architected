@@ -3,7 +3,7 @@ title: Oracle workloads on Azure infrastructure as a service (IaaS)
 description: Learn about Well-Architected Framework best practices for an Oracle workload on Azure IaaS to help you create a performant, secure, and highly available solution.
 author: jessiehaessler
 ms.author: jhaessler
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 05/15/2024
 ms.service: azure-waf
 ms.subservice: waf-workload-oracle

@@ -4,7 +4,7 @@ description: Learn about Cost Optimization design principles that can help you a
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 05/27/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

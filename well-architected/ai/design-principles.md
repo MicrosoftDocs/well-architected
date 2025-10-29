@@ -4,7 +4,7 @@ description: Review the design principles of the Azure Well-Architected Framewor
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 04/15/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

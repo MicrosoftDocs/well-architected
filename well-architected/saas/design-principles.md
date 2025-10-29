@@ -4,7 +4,7 @@ description: Learn about the key design principles that serve as a compass for s
 author: johndowns
 ms.author: prwilk
 ms.date: 11/04/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

@@ -4,7 +4,7 @@ description: Understand Azure Virtual Desktop networking and connectivity concep
 author: swathibhat1
 ms.author: swathibhat
 ms.date: 10/07/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

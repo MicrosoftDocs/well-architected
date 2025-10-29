@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/04/2024
 ms.service: azure-waf
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

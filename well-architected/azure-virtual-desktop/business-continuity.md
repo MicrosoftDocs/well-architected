@@ -4,7 +4,7 @@ description: Understand Azure Virtual Desktop business continuity concepts. See 
 author: moisesjgomez
 ms.author: mgomezcortez
 ms.date: 09/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

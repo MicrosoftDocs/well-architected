@@ -3,7 +3,7 @@ title: "Architecture Best Practices for Azure Databricks"
 description: "Learn best practices for architecting Azure Databricks solutions with recommendations for reliability, security, cost optimization, operational excellence, and performance efficiency."
 author: khdownie
 ms.author: kendownie
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 09/30/2025
 products:
  - azure-databricks

@@ -4,7 +4,7 @@ description: See Azure Well-Architected Framework design considerations and conf
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 03/11/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: ce-skilling-ai-copilot
 products:
   - azure-machine-learning

@@ -4,7 +4,7 @@ description: Learn about the benefits of creating an architecture decision recor
 author: ckittel
 ms.author: chkittel
 ms.date: 10/10/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

@@ -4,7 +4,7 @@ description: Learn how to align usage to billing increments by adapting a resour
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for aligning usage to billing increments

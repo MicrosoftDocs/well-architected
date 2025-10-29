@@ -4,7 +4,7 @@ description: This design area describes architecture patterns and scaling strate
 author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Application design of mission-critical workloads on Azure

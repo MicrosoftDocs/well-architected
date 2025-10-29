@@ -4,7 +4,7 @@ description: Learn about architectural considerations, including common challeng
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

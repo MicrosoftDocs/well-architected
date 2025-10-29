@@ -4,7 +4,7 @@ description: Learn how to reduce the time that's required to identify, manage, a
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 10/09/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for security incident response

@@ -4,7 +4,7 @@ description: Learn about DevOps considerations for SaaS workloads, including eff
 author: brandonmartinez
 ms.author: prwilk
 ms.date: 11/22/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

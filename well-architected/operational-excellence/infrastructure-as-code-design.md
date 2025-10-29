@@ -4,7 +4,7 @@ description: Learn how to use infrastructure as code (IaC) as the standard for a
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for using infrastructure as code

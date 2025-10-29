@@ -4,7 +4,7 @@ description: Learn how to use continuous integration (CI) in release engineering
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 06/10/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

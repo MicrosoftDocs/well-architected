@@ -4,7 +4,7 @@ description: Learn how to reduce an attack surface and increase attackers' costs
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for hardening resources

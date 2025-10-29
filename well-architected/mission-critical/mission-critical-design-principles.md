@@ -4,7 +4,7 @@ description: Key design principles that serve as a compass for subsequent design
 author: nielsb
 ms.author: nielsb
 ms.date: 06/20/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Design principles of a mission-critical workload

@@ -4,7 +4,7 @@ description: Learn about hardening resources recommendations for security. Reduc
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 10/11/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for establishing a security baseline

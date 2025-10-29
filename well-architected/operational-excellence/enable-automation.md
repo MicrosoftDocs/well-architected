@@ -4,7 +4,7 @@ description: Learn how to design your workload to enable automation. Automation 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 03/28/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for enabling automation

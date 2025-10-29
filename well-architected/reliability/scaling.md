@@ -4,7 +4,7 @@ description: Learn about recommendations for designing a reliable scaling strate
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 05/29/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing a reliable scaling strategy
