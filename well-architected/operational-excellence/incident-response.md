@@ -38,30 +38,22 @@ This article outlines proven strategies for designing an architecture that helps
 
 ## Build containment and isolation in the architecture
 
-Incidents are inevitable, so design your architecture to restrict failures and limit their blast radius. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
+Incidents are inevitable, so design your architecture to **restrict failures and limit their blast radius**. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
 
 Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads or publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
 
-## Enable rapid detection through monitoring
+## Enable rapid detection, troubleshooting, and analysis through monitoring
 
-A strong incident response plan depends on the workload's monitoring stack. Capabilities such as structured logging, targeted dashboards, and actionable alerts enable the team to respond quickly and avoid wasted effort or alert fatigue.
+A strong incident response plan depends on a well-designed monitoring stack that enables rapid detection, triage, and troubleshooting. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
 
-There are two key aspects to this. First, the response process should receive notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, the solution itself must emit rich, structured telemetry with relevant logs and metrics, which support effective monitoring and fast troubleshooting. 
+Effective monitoring has two key dimensions. First, the response process should receive timely notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, **the solution itself must emit rich, structured telemetry, logs, metrics, and traces**, which enable deep analysis, triage, and root cause identification.
 
-In addition, ensure that key business workflows are traceable end-to-end. This is a non-negotiable for troubleshooting. For example, in an order-processing system, you should be able to reconstruct the full sequence of events, when an order was received, when payment authorization was attempted, and where the failure occurred. This level of visibility allows teams to quickly assess impact and determine contributing factors during triage and RCA.
-
-Synthetic tests in production further strengthen detection by validating end-to-end transaction paths and confirming that key workflows perform as expected.
+The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
 
 ## Capture and store operational data
 
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
-
-## Enable fast triage and incident analysis
-
-Design the system to support rapid triage and troubleshooting during incidents. Beyond monitoring health and performance, include telemetry and logging that enable deep analysis and root cause identification. Structure components to facilitate debugging, with options for adjustable log verbosity, memory dumps, and other diagnostic data. Ensure these capabilities can be accessed and shared securely across environments, so teams can react quickly and effectively when issues occur.
-
-When performing triage or RCA, use end-to-end correlated telemetry to trace the workflow and locate the exact point of failure.
 
 ## Document the incident response plan
 
@@ -77,19 +69,19 @@ The plan must also include the **core procedures** the team will follow during d
 
 ## Test the plan
 
-Regularly test your incident response processes using dry runs or chaos engineering exercises. Simulate realistic incidents to validate recoverability, verify RTO and RPO targets, and ensure communication and escalation plans function under pressure. 
+Regularly test your incident response processes using dry runs or chaos engineering exercises. **Simulate realistic incidents to validate recoverability**, verify RTO and RPO targets, and ensure communication and escalation plans function under pressure. 
 
 Without these tests, small failures can quickly escalate into prolonged outages or major data loss, leaving teams scrambling and business operations at risk. Testing gives you the ability to identify gaps before a real incident occurs, improve coordination.
 
 ## Turn RCA findings into system improvements
 
-After each incident, conduct a thorough RCA to identify underlying causes and contributing factors. Follow this with a blameless postmortem led by an impartial facilitator, where each team involved shares observations, successes, and opportunities for improvement. 
+After each incident, conduct a thorough RCA to identify underlying causes and contributing factors. Follow this with a **blameless postmortem** led by an impartial facilitator, where each team involved shares observations, successes, and opportunities for improvement. 
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
 ## Bring agility and consistency through automation 
 
-Incorporate automation throughout the incident response workflow to reduce manual effort, accelerate response, and minimize human error. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to automate detection, containment, alerting, and communication. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
+Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
 
 ## Azure facilitation
 
