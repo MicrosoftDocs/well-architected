@@ -51,7 +51,7 @@ Effective monitoring has two key dimensions. First, the response process should 
 
 The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
 
-## Facilitate with  diagnosic data and practices 
+## Facilitate with  diagnostic data and practices 
 
 Design the solution to make diagnosing and resolving issues faster, more reliable. The approach is to embed debuggability and observability into the system's design. 
 
