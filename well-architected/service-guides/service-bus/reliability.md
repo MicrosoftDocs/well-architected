@@ -4,7 +4,7 @@ description: Focuses on the Service Bus service used in the Messaging solution t
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 01/24/2022
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-service-bus
 azure.category:

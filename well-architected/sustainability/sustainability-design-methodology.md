@@ -4,7 +4,7 @@ description: Understand the architectural process of building a sustainable appl
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 05/16/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Design methodology for sustainable workloads on Azure
