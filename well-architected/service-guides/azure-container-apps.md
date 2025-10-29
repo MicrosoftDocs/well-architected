@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Container Apps
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Container Apps.
 author: igorjnzl
 ms.author: igorjovovic
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/05/2025
 ms.product: azure-container-apps
 azure.category:

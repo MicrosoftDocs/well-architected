@@ -4,7 +4,7 @@ description: See general guidance and resources for using Azure Virtual Desktop 
 author: BenMartinBaur
 ms.author: bebaur
 ms.date: 10/12/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

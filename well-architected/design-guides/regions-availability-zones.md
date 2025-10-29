@@ -4,7 +4,7 @@ description: This article provides guidance to help you understand when to deplo
 author: johndowns
 ms.author: jodowns
 ms.date: 11/13/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for using availability zones and regions

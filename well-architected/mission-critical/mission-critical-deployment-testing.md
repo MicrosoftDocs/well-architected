@@ -4,7 +4,7 @@ description: This design area focuses on how to minimize downtime and maintain a
 author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Deployment and testing for mission-critical workloads on Azure

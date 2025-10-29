@@ -4,7 +4,7 @@ description: Learn about industry principles that support operational excellence
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 05/05/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

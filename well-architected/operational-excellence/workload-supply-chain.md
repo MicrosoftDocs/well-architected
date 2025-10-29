@@ -4,7 +4,7 @@ description: Learn how to design a workload development supply chain based on CI
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing a workload development supply chain

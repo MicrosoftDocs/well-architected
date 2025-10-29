@@ -4,7 +4,7 @@ description: Learn how to implement a structured approach when you make architec
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 01/09/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

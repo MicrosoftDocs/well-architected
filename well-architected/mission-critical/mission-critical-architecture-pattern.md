@@ -4,7 +4,7 @@ description: The design areas represent the architecturally significant topics t
 author: calcof
 ms.author: prwilk
 ms.date: 05/06/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture pattern for mission-critical workloads on Azure

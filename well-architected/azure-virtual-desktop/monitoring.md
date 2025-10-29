@@ -4,7 +4,7 @@ description: See best practices for monitoring the performance and status of you
 author: peegee1184
 ms.author: jorodas
 ms.date: 10/12/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

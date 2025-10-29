@@ -4,7 +4,7 @@ description: Review the design area for compute and storage of the Azure Well-Ar
 author: jessiehaessler
 ms.author: jhaessler
 ms.date: 04/15/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-oracle
 

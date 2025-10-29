@@ -4,7 +4,7 @@ description: Learn how to establish standards for managing your workload team's 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for formalizing software development and management

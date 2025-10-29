@@ -4,7 +4,7 @@ description: Learn how to get information about events, capture information abou
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 2/13/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for monitoring and threat detection

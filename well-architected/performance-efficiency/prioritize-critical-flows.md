@@ -4,7 +4,7 @@ description: Learn about recommendations for prioritizing the performance of cri
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for prioritizing the performance of critical flows

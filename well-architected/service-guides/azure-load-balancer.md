@@ -4,7 +4,7 @@ description: Learn about reliability, security, cost optimization, operational e
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.subservice: waf-service-guide
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/04/2025
 ---
 

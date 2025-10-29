@@ -4,7 +4,7 @@ description: Overview of mission-critical workloads on Azure that are highly rel
 author: calcof
 ms.author: calcof
 ms.date: 05/30/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Mission-critical workloads

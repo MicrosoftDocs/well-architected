@@ -4,7 +4,7 @@ description: Learn how to design for redundancy in your workload to meet your re
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 08/13/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing for redundancy

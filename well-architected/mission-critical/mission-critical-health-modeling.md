@@ -4,7 +4,7 @@ description: This design area will focus on the process to define a robust healt
 author: calcof
 ms.author: calcof
 ms.date: 08/16/2022
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Health modeling and observability of mission-critical workloads on Azure

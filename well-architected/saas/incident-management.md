@@ -4,7 +4,7 @@ description: Learn about incident management considerations for implementing pro
 author: arsenvlad
 ms.author: prwilk
 ms.date: 11/04/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

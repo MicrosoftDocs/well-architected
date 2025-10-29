@@ -4,7 +4,7 @@ description: SAP workload networking and connectivity
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 12/19/2022
-ms.topic: conceptual
+ms.topic: concept-article
 
 ---
 

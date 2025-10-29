@@ -4,7 +4,7 @@ description: Examine Azure VMware Solution operational procedures. See how to us
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
 ---

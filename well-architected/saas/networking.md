@@ -4,7 +4,7 @@ description: Learn about the networking considerations, including deployment str
 author: senavar
 ms.author: prwilk
 ms.date: 11/26/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

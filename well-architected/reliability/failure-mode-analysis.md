@@ -4,7 +4,7 @@ description: Learn how to identify potential points of failure within your workl
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 10/08/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 # Architecture strategies for performing failure mode analysis
 

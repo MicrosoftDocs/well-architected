@@ -4,7 +4,7 @@ description: Check the readiness of your mission-critical workload by using an a
 author: calcof
 ms.author: prwilk
 ms.date: 03/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Well-Architected assessment for mission-critical workloads
