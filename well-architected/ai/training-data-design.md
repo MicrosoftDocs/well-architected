@@ -54,6 +54,8 @@ To build predictive power in models, you need to collect data, process it, and f
 
 - *Testing data* is used to validate the predictive power of a trained model. This data is sampled from source data that wasn't used for training. It contains observations from production so that the testing process is conclusive. From a data design perspective, you need to store this data. For information about testing models, see the [Testing](./test.md) design area.
 
+Data can be structured (databases, spreadsheets), semi-structured (JSON, XML), or unstructured (text documents, images). *Multi-modal data* combines different data types like text, images, audio, or video within the same training dataset. When working with multi-modal data, preserve cross-modal relationships and maintain semantic connections between different data types throughout processing and feature engineering. Ensure synchronized data processing so that related information across different modalities remains aligned during preprocessing and training.
+
 In some cases, information that's provided by users during interactions with the application can eventually become source data. In general, we recommend that user input used this manner is of high quality. Otherwise, the need to continuously handle quality issues downstream can become problematic. Guidance about handling user data isn't covered in this article.
 
 ## Data ingestion and analysis
@@ -74,6 +76,8 @@ Data can be collected from these sources:
 - **Proprietary data** is created or owned by the organization. It's not intended for public consumption. It serves internal purposes.
 
 - **Public sources** are accessible to anyone. These sources include websites, research papers, and publicly shared databases. It might be specific to a niche area. For example, content from Wikipedia and PubMed are considered publicly accessible.
+
+- **User-generated data** includes information captured from user interactions, expert feedback, and collaborative workflows. This proprietary data supports continuous learning architectures where are updated incrementally as new information becomes available. Design your data pipeline to accommodate feedback loops while maintaining data quality standards and preventing degradation from low-quality inputs.
 
 Your choice of data sources depends on workload requirements, available resources, and the quality of the data that's acceptable for training the model. Imbalanced datasets can lead to biased models, so you need to design data collection to get sufficient samples of representative data. You might need to oversample minority data or undersample majority data. If the data is scarce or imbalanced, consider techniques like [SMOTE](/azure/machine-learning/component-reference/smote) and [Synthetic data generation](/azure/ai-studio/concepts/concept-synthetic-data#synthetic-data-generation).
 
@@ -137,6 +141,39 @@ The preprocessing logic depends on the problem, data type, and desired outcomes.
 
 > [!NOTE]
 > Mixing large amounts of structured and unstructured data can increase processing time. Workload teams should measure the impact of processing diverse formats. As the window between retraining efforts becomes shorter, the amount of time spent on preprocessing becomes more critical.
+
+## Feature store design
+
+Feature stores serve as centralized repositories for storing, managing, and serving engineered features for machine learning models. They provide consistency across training and inference phases while enabling feature reuse across multiple models and teams. Organizations can implement multiple approaches to implement the feature stores:
+
+- **Centralized feature stores** provide a single source of truth for all features across an organization. All teams contribute to and consume from a shared feature repository. This approach promotes consistency and reduces duplication but requires strong governance and standardization practices.
+
+- **Distributed feature stores** allow teams to maintain their own feature repositories while providing mechanisms for controlled sharing. This pattern offers greater autonomy for individual teams but requires careful coordination to prevent feature inconsistencies across models.
+
+- **Hybrid approaches** combine centralized governance with distributed implementation. Common features are managed centrally while domain-specific features remain with individual teams.
+
+Workload teams in organizations with strong data governance teams and standardized ML practices will likely follow the centralized approach, or a hybrid model if they need to comply with the organization standards while still having some autonomy. Distributed patterns suit organizations where teams have distinct data requirements and operate with high autonomy.
+
+### Design considerations
+
+- Design clear separation between feature definition, storage, and serving layers
+- Organize features into logical groupings that align with business domains and model requirements
+- Establish consistent naming conventions and schema evolution practices
+- Make features immutable once published, with new versions created for changes
+- Integrate with data preprocessing, model training, and model serving infrastructure
+- Implement automated checks for data drift, feature distribution changes, and quality degradation
+
+## Foundation model fine-tuning
+
+Training data for foundation model fine-tuning follows different patterns than traditional model training from scratch. Instead of training entire models, you're adapting pre-trained capabilities to specific domains or tasks.
+
+**Domain-specific fine-tuning** requires high-quality, task-relevant training examples that represent the specific patterns you want the model to learn. The volume of training data is typically smaller than traditional training scenarios, but the quality and representativeness become more critical.
+
+For example, fine-tuning a general language model for medical documentation requires training examples that accurately represent medical terminology, clinical reasoning patterns, and documentation standards specific to your organization or domain.
+
+**Task-specific adaptation** focuses training data on particular capabilities or output formats. This approach might involve training the model to follow specific instructions, produce structured outputs, or integrate with particular workflows.
+
+Consider how your training data pipeline can efficiently provide curated, high-quality examples for fine-tuning while maintaining traceability and version control for different model variants.
 
 ## Data retention
 
