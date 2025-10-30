@@ -4,7 +4,7 @@ description: Use this checklist for Reliability to identify the best infrastruct
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

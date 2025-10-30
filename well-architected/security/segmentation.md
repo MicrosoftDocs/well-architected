@@ -4,7 +4,7 @@ description: Learn about the recommendations for building a unified segmentation
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for building a segmentation strategy

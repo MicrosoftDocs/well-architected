@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure API Management
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure API Management.
 author: dlepow
 ms.author: danlep
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 04/11/2025
 ms.subservice: waf-service-guide
 products:

@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure ExpressRoute
 description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/17/2025
 products: 
   - azure-expressroute

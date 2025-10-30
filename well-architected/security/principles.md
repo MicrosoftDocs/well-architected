@@ -4,7 +4,7 @@ description: Learn about design principles that can help you improve security, h
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

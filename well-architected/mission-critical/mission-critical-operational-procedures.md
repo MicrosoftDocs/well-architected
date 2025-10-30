@@ -4,7 +4,7 @@ description: Learn about implementing reliable and effective operations by using
 author: calcof
 ms.author: prwilk
 ms.date: 01/26/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Operational procedures for mission-critical workloads on Azure

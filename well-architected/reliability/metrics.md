@@ -4,7 +4,7 @@ description: Learn how to define reliability targets for your critical workloads
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 08/16/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for defining reliability targets

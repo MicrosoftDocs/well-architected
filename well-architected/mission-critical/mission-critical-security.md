@@ -4,7 +4,7 @@ description: This section provides detailed design considerations and recommenda
 author: calcof
 ms.author: calcof
 ms.date: 03/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Security considerations for mission-critical workloads on Azure

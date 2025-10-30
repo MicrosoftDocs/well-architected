@@ -4,7 +4,7 @@ description: Review recommendations for responding to live-site performance issu
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for responding to live performance issues

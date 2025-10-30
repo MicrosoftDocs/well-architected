@@ -4,7 +4,7 @@ description: Understand Azure Virtual Desktop storage concepts. See how to optim
 author: gaquamme
 ms.author: gaquamme
 ms.date: 10/12/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

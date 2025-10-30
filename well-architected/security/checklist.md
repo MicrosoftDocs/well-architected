@@ -4,7 +4,7 @@ description: Use this checklist for Security to identify the best infrastructure
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/14/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

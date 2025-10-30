@@ -4,7 +4,7 @@ description: Focuses on the Azure SQL Managed Instance service used in the Data 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-sql-managed-instance
 azure.category:

@@ -4,7 +4,7 @@ description: Learn how to instrument an application as it relates to the health 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for instrumenting an application

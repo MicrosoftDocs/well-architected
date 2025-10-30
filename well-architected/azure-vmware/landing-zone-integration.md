@@ -4,7 +4,7 @@ description: Examine Azure landing zones and cloud operating models. See the res
 author: Mahesh-MSFT
 ms.author: prwilk
 ms.date: 08/10/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
 ---

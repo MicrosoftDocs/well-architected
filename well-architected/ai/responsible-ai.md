@@ -4,7 +4,7 @@ description: Learn how to develop and implement policies that support responsibl
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/08/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

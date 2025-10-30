@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Cosmos DB for NoSQL
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Cosmos DB for NoSQL.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.topic: conceptual
+ms.topic: concept-article
 ms.subservice: waf-service-guide
 ms.date: 08/17/2025
 products:

@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Kubernetes Service (AKS)
 description: Learn how to use Azure Kubernetes Service (AKS) features to boost reliability, security, and scalability. Streamline your workload operations and control costs. 
 author: schaffererin
 ms.author: schaffererin
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide

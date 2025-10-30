@@ -4,7 +4,7 @@ description: Learn how to build self-healing and self-preservation capabilities 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for self-healing and self-preservation

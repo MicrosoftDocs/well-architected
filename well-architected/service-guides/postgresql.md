@@ -7,7 +7,7 @@ ms.reviewer: maghan
 ms.date: 10/13/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-database-postgresql
 azure.category:

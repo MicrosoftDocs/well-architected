@@ -4,7 +4,7 @@ description: Understand the architectural process of building a mature mission-c
 author: calcof
 ms.author: calcof
 ms.date: 06/09/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Design methodology for mission-critical workloads on Azure

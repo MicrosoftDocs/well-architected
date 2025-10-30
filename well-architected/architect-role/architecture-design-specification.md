@@ -4,7 +4,7 @@ description: Learn about the benefits of creating an architecture design specifi
 author: ckittel
 ms.author: chkittel
 ms.date: 07/25/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

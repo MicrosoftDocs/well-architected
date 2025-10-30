@@ -4,7 +4,7 @@ description: Learn about AI workload testing operations and metrics that help yo
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/27/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

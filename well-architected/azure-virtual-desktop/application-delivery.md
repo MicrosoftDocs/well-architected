@@ -4,7 +4,7 @@ description: Understand Azure Virtual Desktop application platforms. See how to 
 author: roarrioj
 ms.author: roarrioj
 ms.date: 04/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

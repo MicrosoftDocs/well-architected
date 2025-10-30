@@ -4,7 +4,7 @@ description: Learn how to select the appropriate services that best meet the req
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for selecting the right services

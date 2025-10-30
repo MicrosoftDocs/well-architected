@@ -4,7 +4,7 @@ description: Different personas work on different aspects of the workload. This 
 author: jostrm
 ms.author: prwilk
 ms.date: 08/06/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

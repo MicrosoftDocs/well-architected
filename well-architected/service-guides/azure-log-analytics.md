@@ -1,7 +1,7 @@
 ---
 title: Architecture Best Practices for Log Analytics
 description: Learn about the architectural best practices according to the Azure Well-Architected Framework for Log Analytics workspaces in Azure Monitor. 
-ms.topic: conceptual
+ms.topic: concept-article
 author: bwren
 ms.author: bwren
 ms.date: 08/11/2025

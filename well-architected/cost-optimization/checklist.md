@@ -4,7 +4,7 @@ description: Learn about recommendations that help you balance actual costs vers
 author: stephen-sumner 
 ms.author: ssumner 
 ms.date: 11/15/2023 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 # Design review checklist for Cost Optimization

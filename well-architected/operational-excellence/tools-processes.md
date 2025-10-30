@@ -4,7 +4,7 @@ description: Learn how to optimize development practices by standardizing tools 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 06/10/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for standardizing tools and processes

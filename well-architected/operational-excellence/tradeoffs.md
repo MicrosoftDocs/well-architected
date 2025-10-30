@@ -4,7 +4,7 @@ description: Learn about tradeoffs that you might encounter when you design work
 author: ferantivero
 ms.author: chkittel
 ms.date: 10/10/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

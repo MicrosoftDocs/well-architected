@@ -4,7 +4,7 @@ description: Learn about recommendations for authenticating and authorizing iden
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
 

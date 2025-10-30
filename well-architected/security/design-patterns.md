@@ -4,7 +4,7 @@ description: Learn about industry patterns that support security and can help yo
 author: ckittel
 ms.author: chkittel
 ms.date: 10/10/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture design patterns that support security
