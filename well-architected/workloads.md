@@ -4,7 +4,7 @@ description: Learn about the Well-Architected Framework workloads, which are app
 author: ckittel
 ms.author: chkittel
 ms.date: 08/12/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

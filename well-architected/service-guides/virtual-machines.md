@@ -4,7 +4,7 @@ description: See Azure Well-Architected Framework design considerations and conf
 author: PageWriter-MSFT
 ms.author: mattmcinnes
 ms.date: 08/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-virtual-machines
 azure.category:

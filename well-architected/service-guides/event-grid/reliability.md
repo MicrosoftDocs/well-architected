@@ -4,7 +4,7 @@ description: Focuses on the Event Grid service used in the Messaging solution to
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 12/08/2021
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-event-grid
 azure.category:

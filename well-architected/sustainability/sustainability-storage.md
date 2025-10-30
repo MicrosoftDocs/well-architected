@@ -3,7 +3,7 @@ title: Data and storage design considerations for sustainable workloads on Azure
 description: This design area explores considerations around storage design for sustainable workloads on Azure.
 author: lnyswonger
 ms.author: lnyswonger
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/12/2022
 ---
 

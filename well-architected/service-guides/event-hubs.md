@@ -4,7 +4,7 @@ description: Focuses on the Event Hubs service used in the Messaging solution to
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 01/12/2022
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-event-hubs
 azure.category:
