@@ -117,7 +117,7 @@ For more information, see:
 
 ### Implement a disaster recovery plan
 
-We recommend you invest in disaster recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools & methodology can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency.
+We recommend you invest in disaster recovery (DR) to improve the reliability of the SAP workload. Disaster recovery is achieved by replicating primary data to a secondary location. Several tools and methodologies can be used to the achieve goal. Disaster Recovery is required when the primary location isn't accessible due to technical or natural disaster. Disaster Recovery solutions can be across zones within region or across regions based on your business requirements, but we recommended DR across region for better resiliency.
 
 For more information, see:
 
