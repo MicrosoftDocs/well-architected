@@ -922,13 +922,13 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/service-bus/operational-excellence",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/service-bus/reliability",
-			"redirect_document_id": true
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/monitoring/application-insights/cost-optimization.md",
@@ -2386,6 +2386,16 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/service-guides/service-bus/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/service-bus/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
+			"redirect_document_id": false
+		},
+    {
 			"source_path": "well-architected/operational-excellence/mitigation-strategy.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
 			"redirect_document_id": false

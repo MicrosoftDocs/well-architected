@@ -207,7 +207,7 @@ productDirectory:
     - title: Azure Service Bus
       summary: Connect across private and public cloud environments.
       imageSrc: https://static.docs.com/ui/media/product/azure/service-bus.svg
-      url: ./service-bus/reliability.md
+      url: ./azure-service-bus.md
       azureCategories:
         - integration
     # Card
