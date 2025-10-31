@@ -166,7 +166,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Use layered deployment for hub-and-spoke architectures.** Deploy the hub first because it changes less frequently than the workload that's deployed in the spoke network. Deploy the load balancer with the workload. If you reuse a single load balancer across multiple workloads, consider placing it in the hub.
 >
-> - **Implement a comprehensive networking monitoring system.** Impelement diagnostic capabilities, like multidimensional metrics for real-time insights and alerts, resource logs based on the health event schema, and the Azure Monitor Insights dashboard for comprehensive load balancer monitoring.
+> - **Implement a comprehensive networking monitoring system.** Implement diagnostic capabilities, like multidimensional metrics for real-time insights and alerts, resource logs based on the health event schema, and the Azure Monitor Insights dashboard for comprehensive load balancer monitoring.
 
 ### Configuration recommendations
 

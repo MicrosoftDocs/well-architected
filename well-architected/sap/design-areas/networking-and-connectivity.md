@@ -10,7 +10,7 @@ ms.topic: concept-article
 
 # SAP workload networking and connectivity
 
-Networking for an SAP workload has many facets, but we want to focus on the performance affects of networking. The goal is to help you make the right networking decisions to ensure peak SAP workload performance.
+Networking for an SAP workload has many facets, but we want to focus on the performance effects of networking. The goal is to help you make the right networking decisions to ensure peak SAP workload performance.
 
 ## Networking performance
 

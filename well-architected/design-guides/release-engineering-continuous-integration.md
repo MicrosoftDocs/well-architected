@@ -120,7 +120,7 @@ To perform faster builds, you can:
 
 Your organization might choose to create several different kinds of builds to optimize build times. Possible builds include:
 
-- **Continuous integration (CI) build**: The purpose of this build is to ensure code is compiled and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team im_imagestely. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
+- **Continuous integration (CI) build**: The purpose of this build is to ensure code is compiled and unit tests are run. This build gets triggered at each commit. It serves as the heartbeat of the project and provides quality feedback to the team immediately. For more information, see [Specify events that trigger pipelines](/azure/devops/pipelines/build/triggers?tabs=yaml&view=azure-devops&preserve-view=true).
 
 - **Nightly build**: The purpose of a nightly build isn't only to compile the code, but also to ensure any larger test suites that are inefficient run on a regular cadence for each build. Usually, these tests include integration, UI, or smoke tests. For more information, see [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers).
 
