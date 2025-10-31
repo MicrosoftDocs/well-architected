@@ -35,7 +35,7 @@ Process standardization takes many shapes. Describing every way that you might a
 
    For example, an improvised task might deploy a new type of resource, such as a machine learning service, that has been approved for enhancing the workload functionality. There might not be a fully realized checklist for the deployment and testing of this type of resource. However, there should be general checklists for adding new resources to your infrastructure as code templates and standards that cover infrastructure testing for performance, security, and reliability at each stage of your promotion chain.
 
-   Likewise, your [emergency response plan](emergency-response.md) should clearly define roles and responsibilities and general processes and procedures. You must adhere to this plan in emergency situations to ensure that you handle them efficiently.
+   Likewise, your [incident response plan](incident-response.md) should clearly define roles and responsibilities and general processes and procedures. You must adhere to this plan in emergency situations to ensure that you handle them efficiently.
 
    Improvised and emergency operations are also good opportunities to learn how to improve your standard operating procedures. Ask the workload team to reflect on ways that the operations could have gone smoother, and determine whether an update to existing processes could be beneficial going forward.
 
