@@ -922,12 +922,12 @@
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/operational-excellence.md",
-			"redirect_url": "/azure/well-architected/service-guides/service-bus/operational-excellence",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
 			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/reliability.md",
-			"redirect_url": "/azure/well-architected/service-guides/service-bus/reliability",
+			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
 			"redirect_document_id": true
 		},
 		{
