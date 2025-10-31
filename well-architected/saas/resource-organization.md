@@ -4,7 +4,7 @@ description: Learn strategies for how to choose the right Azure regions for your
 author: MikeBazMSFT
 ms.author: prwilk
 ms.date: 11/04/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

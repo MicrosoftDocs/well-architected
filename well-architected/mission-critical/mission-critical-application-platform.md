@@ -4,7 +4,7 @@ description: This design area describes decision factors and provides recommenda
 author: calcof
 ms.author: prwilk
 ms.date: 07/30/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Application platform considerations for mission-critical workloads on Azure

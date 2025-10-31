@@ -4,7 +4,7 @@ description: Review the design area for BCDR of the Azure Well-Architected Frame
 author: jessiehaessler
 ms.author: jhaessler 
 ms.date: 07/30/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-oracle
 ---

@@ -4,7 +4,7 @@ description: See how an architect collaborates with the workload team during imp
 author: ckittel
 ms.author: chkittel
 ms.date: 11/01/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

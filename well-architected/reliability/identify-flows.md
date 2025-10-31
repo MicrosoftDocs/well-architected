@@ -5,7 +5,7 @@ author: claytonsiemens77
 ms.author: csiemens
 ms.reviewer: ssumner
 ms.date: 12/01/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for identifying and rating flows

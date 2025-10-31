@@ -4,7 +4,7 @@ description: Learn how to formalize routine and nonroutine tasks by using docume
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for formalizing routine and nonroutine tasks

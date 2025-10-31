@@ -4,7 +4,7 @@ description: Learn how to incorporate the Well-Architected Framework pillars whe
 author: tomvcassidy
 ms.author: tomcassidy
 ms.date: 02/19/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-service-fabric

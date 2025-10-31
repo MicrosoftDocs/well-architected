@@ -4,7 +4,7 @@ description: Learn how to optimize costs related to code with specific recommend
 author: stephen-sumner
 ms.author: ssumner
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for optimizing code costs

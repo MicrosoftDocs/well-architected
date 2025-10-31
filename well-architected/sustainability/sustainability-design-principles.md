@@ -4,7 +4,7 @@ description: Understand the design principles for building a sustainable applica
 author: lnyswonger
 ms.author: lnyswonger
 ms.date: 10/12/2022
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Design principles of a sustainable workload

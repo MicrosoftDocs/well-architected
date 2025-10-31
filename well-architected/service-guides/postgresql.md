@@ -4,10 +4,10 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 08/17/2025
+ms.date: 10/13/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-database-postgresql
 azure.category:
@@ -81,6 +81,7 @@ The [Security design principles](../security/principles.md) provide a high-level
 | Use [Microsoft Entra ID](/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication) for authentication and authorization to enhance identity management. | You can use Microsoft Entra authentication to connect to Azure Database for PostgreSQL by using managed identities in Microsoft Entra. |
 | Configure [row-level security](/azure/postgresql/flexible-server/concepts-security#row-level-security). | Row-level security is a PostgreSQL security feature that allows database administrators to define policies to control how specific rows of data display and operate for one or more roles. Row-level security is an extra filter that you can apply to a PostgreSQL database table. |
 | If needed for compliance, [use customer managed keys (CMKs)](/azure/postgresql/flexible-server/concepts-data-encryption#recommendations) for data encryption, and store your keys in Azure Key Vault. | CMKs give you full control of your encryption key's life cycle, including key rotation, to align with corporate policies. Key Vault enables centralized management and organization of your encryption keys within your own dedicated Key Vault instances. |
+| For the highest security requirements, enable [confidential computing](/azure/postgresql/flexible-server/concepts-confidential-computing) to protect data in use with hardware-based encryption. | Confidential computing provides hardware-based encryption for data processing operations. Organizations processing sensitive data in highly regulated industries can meet stringent regulatory requirements while maintaining database performance. |
 | Enable connection throttling for IP addresses that have excessive failed sign-in attempts. | Setting the `connection_throttling` server parameter to `enabled` helps protect your databases from malicious sign-in attempts and distributed denial of service (DDoS) attacks by limiting repeated connection attempts from the same IP address. |
 | Conduct security audits regularly. | Regularly conducting security audits helps identify and remediate potential vulnerabilities. |
 
@@ -193,4 +194,4 @@ Foundational architecture that demonstrates the key recommendations: [Reliable W
 
 - [Multitenancy and Azure Database for PostgreSQL](/azure/architecture/guide/multitenant/service/postgresql)
 
-<!-- Updated: August 17, 2025 for Azure Update 498180, 467663 -->
+<!-- Updated: October 13, 2025 for Azure Update 500795 -->

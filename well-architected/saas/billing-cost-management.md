@@ -4,7 +4,7 @@ description: Get guidance on billing customers within your SaaS business model, 
 author: dolevshor
 ms.author: prwilk
 ms.date: 11/04/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.collection: learn-startups
 ---
 

@@ -4,7 +4,7 @@ description: Understand the maturity model levels of the Operational Excellence 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 07/14/2025 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

@@ -4,7 +4,7 @@ description: Learn about data classification and how to apply it to your workloa
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for data classification
@@ -114,6 +114,8 @@ Microsoft Purview unifies Azure Purview and Microsoft Purview solutions to provi
 
 Azure SQL Database, Azure SQL Managed Instance, and Azure Synapse Analytics offer built-in classification features. Use these tools to discover, classify, label, and report the sensitive data in your databases. For more information, see [Data discovery and classification](/azure/azure-sql/database/data-discovery-and-classification-overview).
 
+For data classified as highly confidential or requiring protection during processing operations, Azure Database for PostgreSQL supports [confidential computing](/azure/postgresql/flexible-server/concepts-confidential-computing) to provide hardware-based encryption for data in use. This technology enables organizations to protect sensitive data during processing operations while maintaining database performance, supporting compliance with stringent regulatory requirements for data protection in highly regulated industries.
+
 ## Example
 
 This example builds on the Information Technology (IT) environment established in the [security baseline (SE:01)](./establish-baseline.md). The example diagram below shows data stores where data is classified.   
@@ -151,3 +153,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: October 13, 2025 for Azure Update 500795 -->

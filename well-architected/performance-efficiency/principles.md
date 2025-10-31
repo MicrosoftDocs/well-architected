@@ -4,7 +4,7 @@ description: Learn about Performance Efficiency design principles that can help 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 07/27/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

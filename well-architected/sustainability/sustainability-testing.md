@@ -3,7 +3,7 @@ title: Testing Considerations for Sustainable Workloads on Azure
 description: Learn about CI/CD optimization, performance testing, and sustainable DevOps practices for Azure workloads to reduce carbon emissions and energy usage.
 author: lnyswonger
 ms.author: lnyswonger
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/12/2022
 ---
 

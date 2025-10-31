@@ -4,7 +4,7 @@ description: Learn about AI workload operations on Azure and how to build operat
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

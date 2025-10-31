@@ -4,7 +4,7 @@ description: Learn the recommendations for designing and creating an observabili
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing and creating a monitoring system

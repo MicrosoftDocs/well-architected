@@ -4,7 +4,7 @@ description: Learn about network security controls that can filter, block, and d
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.custom: sfi-image-nochange
 ---
 

@@ -4,7 +4,7 @@ description: Explore various network topology topics at an application level, co
 author: calcof
 ms.author: calcof
 ms.date: 02/28/2022
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Networking and connectivity for mission-critical workloads on Azure

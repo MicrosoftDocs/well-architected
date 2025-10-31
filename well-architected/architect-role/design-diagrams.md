@@ -4,7 +4,7 @@ description: Learn about diagramming practices and types of architecture diagram
 author: ckittel
 ms.author: chkittel
 ms.date: 08/13/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 

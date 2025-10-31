@@ -4,7 +4,7 @@ description: Understand Azure VMware Solution infrastructure concepts. See how t
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/16/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
 ---

@@ -4,7 +4,7 @@ description: Focuses on the Azure Database for MySQL service used in the Data so
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 09/13/2025
-ms.topic: conceptual
+ms.topic: concept-article
 products:
   - azure-database-mysql
 azure.category:

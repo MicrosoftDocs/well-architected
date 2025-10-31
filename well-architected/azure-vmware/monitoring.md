@@ -4,7 +4,7 @@ description: See best practices for monitoring Azure VMware Solution workloads a
 author: Mahesh-MSFT
 ms.author: maksh
 ms.date: 08/10/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
 ---

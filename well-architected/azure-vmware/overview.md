@@ -4,7 +4,7 @@ description: See general guidance and resources for using Azure VMware Solution 
 author: sblair01
 ms.author: prwilk
 ms.date: 08/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-vmware
 ---

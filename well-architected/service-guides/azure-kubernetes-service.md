@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Kubernetes Service (AKS)
 description: Learn how to use Azure Kubernetes Service (AKS) features to boost reliability, security, and scalability. Streamline your workload operations and control costs. 
 author: schaffererin
 ms.author: schaffererin
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 10/13/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -219,6 +219,8 @@ Start your design strategy based on the [design review checklist for Operational
 |(Cluster) Operationalize cluster and pod configuration standards by using [Azure policies for AKS](/azure/aks/use-azure-policy). | Azure policies for AKS can help you apply at-scale enforcement and safeguards on your clusters in a centralized, consistent manner. Use policies to define the permissions granted to pods and ensure compliance with company policies.|
 |(Cluster) Configure [Azure CNI static block allocation](/azure/aks/configure-azure-cni) for predictable pod subnet allocation and improved IP address management in AKS clusters. <br><br> Implement static block allocation to provide predictable IP address assignment for Kubernetes pods within defined subnet ranges, enabling integration with existing network security policies. | Essential for development teams running multiple AKS clusters needing predictable IP address allocation to integrate with existing network security policies and firewall rules. Enhances operational excellence through predictable network addressing and simplified IP management. |
 |(Workload) Use [Kubernetes Event Driven Autoscaler (KEDA)](/azure/aks/keda-about).|KEDA allows your applications to scale based on events, like the number of events being processed. You can choose from a rich catalog of more than 50 KEDA scalers.|
+|(Cluster) Use the [KAITO AI Toolchain Operator](/azure/aks/ai-toolchain-operator) for efficient deployment and management of AI model serving workloads. | KAITO simplifies AI model deployment and scaling on Kubernetes while providing optimized infrastructure for machine learning inference workloads. Data science teams can deploy and scale large language models or other AI models on AKS using KAITO, which automatically handles GPU resources, model serving infrastructure, and scaling policies without manual Kubernetes configuration, reducing operational complexity.|
+|(Cluster) Enable [AKS Automatic](/azure/aks/intro-aks-automatic) for fully managed Kubernetes experience with automated cluster management. | AKS Automatic reduces operational overhead for Kubernetes cluster management by automating routine tasks while ensuring optimal configuration and security posture. Development teams can deploy applications to AKS without managing cluster configuration, updates, or optimization, allowing them to focus on application development while ensuring their Kubernetes infrastructure follows best practices automatically.|
 
 ## Performance Efficiency
 
@@ -304,9 +306,12 @@ Build implementation expertise by using the following product documentation:
 -  [AKS product documentation](/azure/aks)
 
 
+
+<!-- Updated: October 13, 2025 for Azure Update 503263, 503235 -->
 <!-- Updated: August 17, 2025 for Azure Update 498166, 491880 -->
 <!-- Updated: August 17, 2025 for Azure Update 498166 -->
 <!-- Updated: August 17, 2025 for Azure Update 498258 -->
 <!-- Updated: August 17, 2025 for Azure Update 498242 -->
 <!-- Updated: October 13, 2025 for Azure Update 503034 -->
+
 

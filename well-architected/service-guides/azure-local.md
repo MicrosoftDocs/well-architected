@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Local
 description: Learn how to deploy Azure Local so that you can create and manage Windows and Linux VMs, Kubernetes clusters, and other Azure Arc-enabled services.
 author: neilbird
 ms.author: nebird
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/18/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide

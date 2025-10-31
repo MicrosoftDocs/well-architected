@@ -4,7 +4,7 @@ description: See how to use the AI workload assessment to evaluate your workload
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/01/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

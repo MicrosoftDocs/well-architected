@@ -4,7 +4,7 @@ description: Learn about Well-Architected Framework Security recommendations for
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 10/09/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for securing a development lifecycle

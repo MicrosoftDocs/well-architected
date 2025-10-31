@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure IoT Hub
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for IoT Hub.
 author: asergaz
 ms.author: sergaz
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 02/18/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide

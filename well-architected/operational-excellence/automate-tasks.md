@@ -4,7 +4,7 @@ description: Learn how to automate tasks that are repetitive and prone to human 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for implementing automation

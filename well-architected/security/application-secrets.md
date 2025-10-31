@@ -4,7 +4,7 @@ description: Learn about recommendations for managing application secrets. Find 
 author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 10/09/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for protecting application secrets

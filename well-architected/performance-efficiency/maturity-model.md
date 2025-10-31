@@ -4,7 +4,7 @@ description: Understand the maturity model levels of the performance efficiency 
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 07/14/2025 
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 

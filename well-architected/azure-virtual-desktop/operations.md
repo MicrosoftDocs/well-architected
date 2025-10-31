@@ -4,7 +4,7 @@ description: Examine Azure Virtual Desktop operational procedures. Understand sh
 author: jszubryt
 ms.author: szubrytjim
 ms.date: 10/12/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

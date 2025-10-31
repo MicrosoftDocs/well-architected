@@ -4,7 +4,7 @@ description: Learn about design considerations for creating AI workloads on Azur
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/18/2024
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 

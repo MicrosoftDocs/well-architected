@@ -4,7 +4,7 @@ description: See how to use the Azure Virtual Desktop assessment to gauge how we
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 10/12/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-workload-azure-virtual-desktop
 ---

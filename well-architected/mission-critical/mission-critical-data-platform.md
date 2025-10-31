@@ -4,7 +4,7 @@ description: This design area provides key considerations and recommendations to
 author: calcof
 ms.author: calcof
 ms.date: 02/02/2022
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Data platform considerations for mission-critical workloads on Azure

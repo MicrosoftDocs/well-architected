@@ -4,7 +4,7 @@ description: Get recommendations for creating a culture of financial responsibil
 author: stephen-sumner 
 ms.author: ssumner 
 ms.date: 11/15/2023 
-ms.topic: conceptual 
+ms.topic: concept-article
 --- 
 
 # Architecture strategies for creating a culture of financial responsibility

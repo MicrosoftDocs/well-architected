@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Traffic Manager
 description: Learn how to take advantage of features in Azure Traffic Manager and how those features relate to the Azure Well-Architected Framework design pillars.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 08/17/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide

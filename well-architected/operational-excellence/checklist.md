@@ -4,7 +4,7 @@ description: Learn how to incorporate an operational excellence approach in your
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/15/2023
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
