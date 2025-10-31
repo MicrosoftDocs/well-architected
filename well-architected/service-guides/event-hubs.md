@@ -89,4 +89,4 @@ Resources
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Service Bus and reliability](./azure-service-bus#reliability)
+> [Service Bus and reliability](./azure-service-bus.md)

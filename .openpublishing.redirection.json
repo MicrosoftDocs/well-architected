@@ -923,12 +923,12 @@
 		{
 			"source_path": "well-architected/services/messaging/service-bus/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/service-bus/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/monitoring/application-insights/cost-optimization.md",
@@ -2386,12 +2386,12 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "service-guides/service-bus/reliability.md",
+			"source_path": "well-architected/service-guides/service-bus/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "/service-guides/service-bus/operational-excellence.md",
+			"source_path": "well-architected/service-guides/service-bus/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
 			"redirect_document_id": false
 		}			
