@@ -77,7 +77,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - (Cluster) Consider using your [existing load balancer](/azure/service-fabric/how-to-managed-cluster-networking#bring-your-own-azure-load-balancer) so that you can use an internal load balancer and define different load balancers and NSGs for each node type.
 > - (Cluster) Enable Microsoft Entra integration to help securely control access to the cluster. Users can authenticate with their Entra credentials. Alternatively, you can use cluster client and admin certificates. Don't distribute the cluster client certificates among Service Fabric Explorer users.
 > - (Cluster and workload) Create a process to monitor the expiration date of client certificates.
-> - (Cluster and workload) Maintain separate clusters for development, staging, and production. Production environments typically require stricter security controls than nonproduction environments. And isolating environments from each other adds a layer of secuirty if one environment is compromised. 
+> - (Cluster and workload) Maintain separate clusters for development, staging, and production. Production environments typically require stricter security controls than nonproduction environments. And isolating environments from each other adds a layer of security if one environment is compromised. 
 
 ### Configuration recommendations
 
@@ -158,7 +158,7 @@ Start your design strategy based on the [design review checklist for Performance
 > [!div class="checklist"]
 > - (Cluster) Take advantage of performance optimization and enhancing features that your workload requires. For recommendations about the underlying compute platform, see the [Virtual Machines service guide](./virtual-machines.md#performance-efficiency).
 >
-> - (Cluster) Deploy VMs and disk sizes that meet your perfomance requirements without incurring unnecessary expenses for unused capacity. Ensure that you can easily add capacity to meet your future growth plans.
+> - (Cluster) Deploy VMs and disk sizes that meet your performance requirements without incurring unnecessary expenses for unused capacity. Ensure that you can easily add capacity to meet your future growth plans.
 > - (Workload) Understand the programming models that Service Fabric supports. Choose the best model for your workload requirements. Each programming model has unique advantages and disadvantages, and your particular workload requirements might align with one model better than others.
 > - (Workload) Use established cloud architecture patterns to design your workload. Patterns that complement Service Fabric application designs include [microservice](/azure/architecture/guide/architecture-styles/microservices), [event-driven](/azure/architecture/guide/architecture-styles/event-driven), and [background-processing](/azure/architecture/guide/architecture-styles/web-queue-worker) architecture patterns.
 

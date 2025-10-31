@@ -113,7 +113,7 @@ In the following diagram, traffic from consumers travels to an API Management pu
 
 - To enhance the security and performance of your Azure VMware Solution applications, use Application Gateway with Azure VMware Solution back ends to distribute traffic to your application endpoints.
 - Ensure that there's connectivity between the back-end segments that host Azure VMware Solution and the subnet that contains Application Gateway or the load balancer.
-- Configure health proves to monitor the health of your back-end instances.
+- Configure health probes to monitor the health of your back-end instances.
 - Offload TLS/SSL termination to Application Gateway to reduce processing overhead on the back-end VMs.
 - Securely store TLS/SSL keys in vaults.
 - Streamline processes by automating tasks such as certificate updates and renewals.

@@ -34,7 +34,7 @@ Here are a few example topics that should be covered in this specification.
 
 - It's helpful to include the details on how this change is going to be measured. What measurements need to be collected and what business goals those measurements support.
 
-- User flows should be clearly described. Low-fedelity mockups can be helpful as well. If error handling situations are important for these flows, ensure the expected behavior described.
+- User flows should be clearly described. Low-fidelity mockups can be helpful as well. If error handling situations are important for these flows, ensure the expected behavior described.
 
 - Always include any specific requirements for accessibility, compliance, performance, privacy, or security.
 

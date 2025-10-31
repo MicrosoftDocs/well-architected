@@ -14,7 +14,7 @@ azure.category:
 
 # Event Grid and operational excellence
 
-[Azure Event Grid](/azure/event-grid/overview) lets you easily build applications with event-based architectures. This solution has build-in support for events coming from Azure services, like storage blobs and resource groups. Event Grid also has support for your own events, using custom topics.
+[Azure Event Grid](/azure/event-grid/overview) lets you easily build applications with event-based architectures. This solution has built-in support for events coming from Azure services, like storage blobs and resource groups. Event Grid also has support for your own events, using custom topics.
 
 For more information about using Event Grid, reference [Create and route custom events with Azure Event Grid](/azure/event-grid/custom-event-quickstart).
 

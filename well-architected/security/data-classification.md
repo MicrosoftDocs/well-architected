@@ -26,7 +26,7 @@ This guide describes the recommendations for data classification. Most workloads
 
 
 
-Data classification is a crucial exercise that often drives building a system of record and its function. Classification also helps you correctly size security assurances and helps the triage team expediate discovery during incident response. A prerequisite to the design process is to clearly understand whether data should be treated as confidential, restricted, public, or any other sensitivity classification. It's also essential to determine the locations where data is stored, because the data might be distributed across multiple environments.
+Data classification is a crucial exercise that often drives building a system of record and its function. Classification also helps you correctly size security assurances and helps the triage team expedite discovery during incident response. A prerequisite to the design process is to clearly understand whether data should be treated as confidential, restricted, public, or any other sensitivity classification. It's also essential to determine the locations where data is stored, because the data might be distributed across multiple environments.
 
 Data discovery is necessary to locate the data. Without that knowledge, most designs adopt a middle-ground approach, which might or might not serve the security requirements. Data can be overprotected, resulting in cost and performance inefficiencies. Or it might not be protected enough, which adds to the attack surface.
 
@@ -136,11 +136,11 @@ This example builds on the Information Technology (IT) environment established i
 
 7) In a hybrid environment, different personas may access workloads on-premises through different mechanisms to connect to different data storage technologies or databases. Access must be granted as per the classification labels.
 
-8) The on-premises servers connect to important data that need to be classified and protected such as file servers, object storage, and different types of databases, such as relational, no-SQL, and data warehouse.
+8) The on-premises servers connect to important data that need to be classified and protected such as file servers, object storage, and different types of databases, such as relational, NoSQL, and data warehouse.
 
 9) Microsoft Purview Compliance provides a solution to classify files and emails.
 
-10) Microsoft Defender for Cloud provides a solution that helps your company to track compliance in your environment, including many of your services used to store data, mentioned in these se cases above.
+10) Microsoft Defender for Cloud provides a solution that helps your company to track compliance in your environment, including many of your services used to store data, mentioned in these use cases above.
 
 ## Related links
 

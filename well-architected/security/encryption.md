@@ -167,7 +167,7 @@ Classify and protect information storage objects in accordance with the internal
 
 ## Encrypt data in use
 
-For high security workloads, segmentation, isolation and least-priviledge are recommended design patterns. 
+For high security workloads, segmentation, isolation and least-privilege are recommended design patterns. 
 
 In the context of in-use protection, hardware boundaries may require encryption of data while it's in use in the physical CPU and memory to ensure isolation of VMs, host management code and other components. Encryption and decryption of data must only be done within those isolation boundaries.
 
@@ -187,7 +187,7 @@ Key Vault treats the keys like any other secret. Azure role-based access control
 
 For more information, see [Provide access to Key Vault keys, certificates, and secrets by using RBAC](/azure/key-vault/general/rbac-guide).
 
-Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilites and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
+Azure Key Vault Premium and Managed-HSM further enhances the offering by including confidential computing capabilities and [Secure Key Release](/azure/confidential-computing/concept-skr-attestation) which supports a policy to ensure that a key is only ever released to a workload that can cryptographically prove it is executing inside a Trusted Execution Environment (TEE).
 
 ##### Data-at-rest protection
 

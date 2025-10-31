@@ -16,7 +16,7 @@ azure.category:
 
 Azure Virtual Network is a fundamental building block for establishing a private network on Azure. You can use it to enable communication between Azure resources and provide internet connectivity. Virtual Network also integrates with on-premises systems. It includes built-in filtering capabilities to ensure that only expected, allowed, and safe traffic reaches the components within the network boundaries.
 
-This article assumes that as an architect, you'are familiar with the networking constructs on Azure. The guidance is focused on architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
+This article assumes that as an architect, you're familiar with the networking constructs on Azure. The guidance is focused on architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
 **Technology scope**
 
@@ -76,7 +76,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >   - Use private DNS when possible and minimize the number of DNS zones.
 >   - Simplify routing configurations. Consider routing all traffic through the firewall, if it's used in the architecture.
 >
-> - **Test the resiliency of the network**. Use Azure Chaos Studio to simulate network connectivity disruptions. This approach ensures that your workloads remain redundant and helps you assesses the effect of potential failures.
+> - **Test the resiliency of the network**. Use Azure Chaos Studio to simulate network connectivity disruptions. This approach ensures that your workloads remain redundant and helps you assess the effect of potential failures.
 >
 > - **Monitor network traffic for reliability effects**. Traffic flow monitoring is a crucial operation for reliability. For example, you want to identify high-volume communicators in your network to determine whether they can cause disruptions. Azure provides flow logging capabilities. For more information, see [Operational Excellence](#operational-excellence).
 
@@ -103,7 +103,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Keep your network perimeter up to date**. Security settings, such as NSGs, ASGs, and IP address ranges must be updated regularly. Outdated rules might not align with current network architecture or traffic patterns. This security gap can leave your network exposed to potential attacks by lowering restrictions on ingress and egress traffic.
 >
-> - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all external traffic through an network virtual appliance, such as a firewall, by using user-defined routes for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
+> - **Use segmentation to enhance security**. Use NSGs as L4 firewalls at the subnet level. Route all external traffic through a network virtual appliance, such as a firewall, by using user-defined routes for monitoring and management. Use fully qualified domain names (FQDN) to filter internet access.
 >
 >    Secure platform as a service connectivity with private endpoints while blocking outbound connections.
 >
@@ -248,7 +248,7 @@ Start your design strategy based on the [design review checklist for Performance
 | Recommendation|Benefit|
 |-----------|-------- |
 |[Enable the Azure Network Watcher connection monitor](/azure/network-watcher/connection-monitor-overview). <br><br> Use the connection monitor during testing, which can generate synthetic traffic.|You're able to collect metrics that indicate loss and latency across networks. Also, you can trace the entire traffic path, which is important for detecting network bottlenecks.|
-|Keep the virtual network address space large enough to support scaling.|You’re able to accommodate projected growth without operational burden.|
+|Keep the virtual network address space large enough to support scaling.|You're able to accommodate projected growth without operational burden.|
 
 ## Trade-offs
 

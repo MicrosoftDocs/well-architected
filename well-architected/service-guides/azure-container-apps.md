@@ -78,7 +78,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > [!div class="checklist"]
 >
 > - **Review security baselines.** To enhance the security posture of your workload, review the [security baseline for Container Apps](/security/benchmark/azure/baselines/azure-container-apps-security-baseline).
-> - **Integrate with Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Use [role-based access control (RBAC)](/azure/aks/azure-ad-rbac) with Microsoft Entra ID for least privilege access.
+> - **Integrate with Microsoft Entra ID for [identity and access management](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Use [role-based access control (RBAC)](/azure/aks/azure-ad-rbac) with Microsoft Entra ID for least privilege access.
 >
 >   *Use managed identities with Microsoft Entra ID* for secure, credential-free access to Azure resources.  
 > - **Implement segmentation and network controls.** Deploy private container apps environments and use internal ingress mode for isolation from the public internet.  
