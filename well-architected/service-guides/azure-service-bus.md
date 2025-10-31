@@ -203,7 +203,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >    Match Service Bus capabilities to actual environment requirements. Production needs zone redundancy, geo-disaster recovery, and dedicated throughput. Non-production environments can use simplified feature sets, lower throughput, and reduced availability guarantees to minimize costs.
 >
-> - **Implement Service Bus consolidation strategies for cost reduction:** Share Service Bus resources across applications when security and operational boundaries permit. Consolidated namespaces improve messaging unit utilization through resource sharing, reducing overall costs. Implement resource tagging to enable cost allocation across departments and projects, supporting chargeback models in multi-tenant environments.
+> - **Implement Service Bus consolidation strategies for cost reduction:** Share Service Bus resources across applications when security and operational boundaries permit. Consolidated namespaces improve messaging unit utilization through resource sharing, reducing overall costs. Implement resource tagging to enable cost allocation across departments and projects, supporting chargeback models in multitenant environments.
 >   
 <!-- markdownlint-disable-next-line MD024 -->
 ### Configuration recommendations
@@ -331,7 +331,7 @@ Azure provides an extensive set of built-in policies related to Azure Service Bu
 
 - Azure Service Bus Premium namespaces use customer-managed keys for encryption at rest to provide additional control over encryption keys and meet compliance requirements.
 - Azure Service Bus namespaces exclusively require Microsoft Entra ID identities for authentication for increased security and less management overhead.
-- Azure Service Bus namespaces are confgure with private endpoints to reduce data leakage risks.
+- Azure Service Bus namespaces are configure with private endpoints to reduce data leakage risks.
 - Resource logs in Azure Service Bus are enabled to generate audit trails to use for investigation purposes when a security incident occurs
 
 For comprehensive governance, review the [Azure Policy built-in definitions for Service Bus](/azure/governance/policy/samples/built-in-policies#service-bus) and other policies that might affect the security of the messaging infrastructure.
