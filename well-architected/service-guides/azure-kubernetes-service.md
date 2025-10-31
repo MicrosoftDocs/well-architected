@@ -86,7 +86,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access mangement](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Centralize identity management for your cluster by using Microsoft Entra ID. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter). The developers and application owners of your Kubernetes cluster need access to different resources.
+> - (Cluster) **Integrate with  Microsoft Entra ID for [identity and access management](/azure/well-architected/security/identity-access#the-role-of-an-identity-provider).** Centralize identity management for your cluster by using Microsoft Entra ID. Any change in user account or group status is automatically updated in access to the AKS cluster. [Establish identity as the primary security perimeter](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter). The developers and application owners of your Kubernetes cluster need access to different resources.
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege access](/azure/aks/azure-ad-rbac). Protect configuration and secrets by minimizing the allocation of administrator privileges.
 >

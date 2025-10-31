@@ -183,16 +183,14 @@
               href: operational-excellence/observability.md
             - name: OE:07 Instrument an application
               href: operational-excellence/instrument-application.md
-            - name: OE:08 Emergency response
-              href: operational-excellence/emergency-response.md
+            - name: OE:08 Incident response
+              href: operational-excellence/incident-response.md
             - name: OE:09 Task automation
               href: operational-excellence/automate-tasks.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
             - name: OE:11 Safe deployment practices
               href: operational-excellence/safe-deployments.md
-            - name: OE:12 Failure mitigation
-              href: operational-excellence/mitigation-strategy.md
       - name: Performance Efficiency
         items: 
         - name: Quick links

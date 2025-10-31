@@ -39,7 +39,7 @@ For applications with a global presence, it's important to minimize the distance
 
 *Impact: Performance, Cost optimization*
 
-High-traffic applications require optimal retrieval of content. Optimization techniques such as compression and HTTP accelerators can improve the retrieval performance of assets within your Azure VMware Solution environment. You can use compression techniques on files before you transmit them. This practice can reduce costs by reducing the amount of data that you transmit. A content delivery network caches frequently accessed content. As a result, using a content delivery network with Azure VMware Solution can help you optimize retrieval and distribution. Content delivery networks can also help you save on costs in other ways. Because these networks cache date at edge locations that are close to users, they reduce the distance that data travels.
+High-traffic applications require optimal retrieval of content. Optimization techniques such as compression and HTTP accelerators can improve the retrieval performance of assets within your Azure VMware Solution environment. You can use compression techniques on files before you transmit them. This practice can reduce costs by reducing the amount of data that you transmit. A content delivery network caches frequently accessed content. As a result, using a content delivery network with Azure VMware Solution can help you optimize retrieval and distribution. Content delivery networks can also help you save on costs in other ways. Because these networks cache data at edge locations that are close to users, they reduce the distance that data travels.
 
 ### Recommendations
 

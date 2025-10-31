@@ -2384,6 +2384,16 @@
 			"source_path": "well-architected/reliability/regions-availability-zones.md",
 			"redirect_url": "/azure/well-architected/design-guides/regions-availability-zones",
 			"redirect_document_id": false
-		}			
+		},
+		{
+			"source_path": "well-architected/operational-excellence/mitigation-strategy.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/emergency-response.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
+			"redirect_document_id": false
+		}								
 	]
 }

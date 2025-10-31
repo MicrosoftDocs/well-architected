@@ -45,13 +45,13 @@ For links to the preceding assets, see [Related links](#related-links).
 
 Create the baseline by gaining consensus among business and technical leaders. The baseline shouldn't be restricted to technical controls. It should also include the operational aspects of managing and maintaining the security posture. So, the baseline document also serves as the organization's commitment to investment toward workload security. The security baseline document should be distributed widely within your organization to ensure there's awareness about the workload's security posture.
 
-As the workload grows and the ecosystem evolves, it's vital to keep your baseline in synch with the changes to ensure the fundamental controls are still effective.
+As the workload grows and the ecosystem evolves, it's vital to keep your baseline in sync with the changes to ensure the fundamental controls are still effective.
 
 Creating a baseline is a methodical process. Here are some recommendations about the process:
 
 - **Asset inventory**. Identify stakeholders of workload assets and the security objectives for those assets. In the asset inventory, classify by security requirements and criticality. For information about data assets, see [Recommendations on data classification](data-classification.md).
 
-- **Risk assessment**. Identity potential risks associated with each asset and prioritize them.
+- **Risk assessment**. Identify potential risks associated with each asset and prioritize them.
 
 - **Compliance requirements**. Baseline any regulatory or compliance for those assets and apply industry best practices.
 
@@ -65,7 +65,7 @@ Creating a baseline is a methodical process. Here are some recommendations about
 
 - **Enforcement and accountability**. Establish clear enforcement mechanisms and consequences for noncompliance with the security baseline. Hold individuals and teams accountable for maintaining security standards.
 
-- **Continuous monitoring**. Assess the effectiveness of the security baseline through observability and make improvements overtime.
+- **Continuous monitoring**. Assess the effectiveness of the security baseline through observability and make improvements over time.
 
 ## Define the baseline
 

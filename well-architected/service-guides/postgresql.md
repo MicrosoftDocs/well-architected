@@ -54,7 +54,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 | --- | --- |
 | Select the appropriate [high availability configuration](/azure/postgresql/flexible-server/how-to-configure-high-availability). | When high availability is configured, the Azure Database for PostgreSQL server automatically provisions and manages a standby replica. This setup ensures that the service remains available and doesn't lose data during a zone outage.  |
 | Configure [geo-redundant backups](/azure/postgresql/flexible-server/concepts-backup-restore#geo-redundant-backup-and-restore). | Cross-region read replicas can be deployed to protect your databases from region-level failures. Geo-redundant backups are enabled in selected regions and help with disaster recovery if the primary server region is unavailable. <br><br> Geo-redundancy can also be achieved by using an Azure Backup vault for long-term storage of the recovery points. If a regional outage or disaster occurs, you can use Backup to restore the database server to an Azure-paired region, which minimizes downtime. <br><br> Azure Backup also provides geo-redundancy for Azure Database for PostgreSQL. This feature increases efficiency and reduces downtime during disasters or regional outages.|
-| Test your backup and restore strategy reguarly. | Regularly testing your backup and restore strategy ensures that you can recover your databases and maintain operations if a failure occurs. |
+| Test your backup and restore strategy regularly. | Regularly testing your backup and restore strategy ensures that you can recover your databases and maintain operations if a failure occurs. |
 
 ## Security
 
@@ -102,7 +102,7 @@ The [Cost Optimization design principles](../cost-optimization/principles.md) pr
 > - **Take advantage of available discounts.** Consider one or three year compute reservations. Reserved instances can save you significant costs for compute resources.
 > - **Use your provisioned storage.** There's no extra charge for backup storage up to 100% of your total provisioned server storage.
 > - **Understand redundancy costs.** Using zone-redundant or zonal configurations doubles your instance costs, so carefully consider your redundancy design.
-> - **Understand protected instance and backup storage costs.** When you back up Azure Databse for PostgreSQL by using Azure Backup, you incur protected instance fees for every 250 GB and backup storage fees based on total data stored and redundancy type.
+> - **Understand protected instance and backup storage costs.** When you back up Azure Database for PostgreSQL by using Azure Backup, you incur protected instance fees for every 250 GB and backup storage fees based on total data stored and redundancy type.
 > - **Deploy to the same region as an app.** Deploy to the same region as your applications to minimize transfer costs.
 > - **Consolidate databases and servers.** When practical, consolidating multiple databases and servers into a single server can help reduce costs.
 
