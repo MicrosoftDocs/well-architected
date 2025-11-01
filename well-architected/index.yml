@@ -47,8 +47,8 @@ sections:
         text: Design essentials
       - componentType: icon-link
         icon: topic-learn
-        url: /training/modules/azure-well-architected-introduction/
-        text: Training    
+        url: ./design-essentials.md
+        text: Training
       - componentType: icon-link
         icon: developer-tools
         url: /assessments/azure-architecture-review/
