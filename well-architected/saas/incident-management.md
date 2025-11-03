@@ -3,7 +3,7 @@ title: Incident Management for SaaS Workloads on Azure
 description: Learn about incident management considerations for implementing processes and tools that support a SaaS solution on Azure.
 author: arsenvlad
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/03/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -32,8 +32,7 @@ Operating a SaaS solution means that you are your customers' 24x7 IT and operati
 
   Startups and smaller organizations might have a lightweight plan for live-site problems. Engineers might initially serve as frontline support by responding to customer support cases. Mature organizations, or SaaS providers with enterprise customers, need more structured support and dedicated teams.
 
-
-    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Operational excellence and cost.** Managing live-site events can detract from development time for new features or bug fixes. If development velocity is a concern, consider hiring dedicated live-site resources.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Operational excellence and cost.** Managing live-site events can detract from development time for new features or bug fixes. If development velocity is a concern, consider hiring dedicated live-site engineers.
 
 ### Design recommendations
 
