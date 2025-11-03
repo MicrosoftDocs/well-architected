@@ -43,7 +43,7 @@ sections:
         text: Azure service guides
       - componentType: icon-link
         icon: book-open
-        url: service-guides/index.yml
+        url: ./design-essentials.md
         text: Design essentials
       - componentType: icon-link
         icon: topic-learn
