@@ -56,7 +56,7 @@ To learn more about how Azure resources can be organized, see [Organize your Azu
 
 - **Decide which resources to share.** Determine which components to share and which to deploy individually for customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
-    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Sharing resources reduces costs and management but add complexities for isolation, security, and performance. 
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Sharing resources reduces costs and management but adds complexities for isolation, security, and performance. 
 
     Don't use shared production resources in your pre-production stages and environments. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
