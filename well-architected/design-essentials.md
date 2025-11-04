@@ -1,6 +1,10 @@
 ---
 title: Design Essentials Overview
-description:
+ms.author: PageWriter-MSFT
+ms.date: 11/04/2025
+author: prwilk
+description: Summary of design guides for the Azure Well-Architected Framework.
+ms.topic: concept-article
 ---
 
 # Design essentials overview
