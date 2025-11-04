@@ -3,7 +3,7 @@ title: DevOps Practices for SaaS Workloads on Azure
 description: Learn about DevOps considerations for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
 author: brandonmartinez
 ms.author: prwilk
-ms.date: 11/22/2024
+ms.date: 11/03/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -84,7 +84,6 @@ To enhance functionality, regularly update application code and configuration. C
 
 - **Standardize tooling and processes.** Industry-proven DevOps tooling helps ensure consistency across functions and maturity in processes for managing your application deployments. In most situations, developing your own tools is considered an antipattern. For more information, see [OE:03 Software development practices](../operational-excellence/formalize-development-practices.md).
 
-
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Complexity and cost.** Familiar DevOps tools can be cost-efficient in terms of money and skills. However, they add the operational burden of managing each tool separately. It's important to remain open to new technological innovations that could benefit your workload.
 
 - **Deploy updates progressively.** Roll out updates to customers in phases. Divide users into logical groups and deploy changes to one group at a time. Apply the same rigor to configuration changes because they can alter code behavior and cause outages. Follow a deployment process for these changes.
@@ -100,7 +99,7 @@ To enhance functionality, regularly update application code and configuration. C
   - Regular performance tests.
   - Regular security and penetration tests.
 
-Decide on a plan of action if any tests fail at any stage.
+  Decide on a plan of action if any tests fail at any stage.
 
 - **Failed deployments.** Plan for deployment failures by considering necessary actions and preparing a rollback strategy.
 
