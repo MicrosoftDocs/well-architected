@@ -3,7 +3,7 @@ title: Identity and Access Management for SaaS Workloads on Azure
 description: Learn about the design considerations for identity and access management in your SaaS workload environment.
 author: landonpierce
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/04/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -24,6 +24,8 @@ In the context of SaaS workloads, there are two distinct types of identity.
 
     > Refer to [SE:05 Identity and access management](/azure/well-architected/security/identity-access).
 
+A SaaS solution commonly uses both identity types together:
+
 :::image type="content" source="./images/identity-types.png" alt-text="Diagram that shows the relationship between application identity and enterprise identity." border="false":::
 
 Application and enterprise identities serve different purposes and might use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
@@ -32,13 +34,13 @@ Identity management involves two related concerns: authentication (verifying a u
 
 ## Identity in a multitenant application
 
-Keeping tenant data separate in a multitenant application is critical. That segmentation is driven by your choice of effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider. Prioritize identity as your primary perimeter. 
+Keeping tenant (customer) data separate in a multitenant application is critical. That segmentation is driven by your choice of effective user authentication and authorization. Also, the choice of tenancy model significantly influences your decisions about the identity provider. Prioritize identity as your primary perimeter. 
 
 > Refer to [SE:04 Recommendations for segmentation](/azure/well-architected/security/segmentation#establish-identity-as-the-primary-security-perimeter).
 
 ### Design considerations
 
-**Understand the tenancy and deployment models for your application.** There might be nuances that influence your identity strategy. For example, it's a misconception that the Deployment Stamps pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model.
+**Understand the tenancy and deployment models for your application.** There might be nuances that influence your identity strategy. For example, it's a misconception that the Deployment Stamps pattern requires an identity provider in each stamp. For most identity providers, you can often use an alternative isolation model, like sharing an identity provider across all your stamps.
   
 When you choose your identity provider for multitenancy, evaluate the impact of failures. Misconfigurations can potentially bring down your entire application for all tenants. Weigh the overhead costs against the risk of the potential radius of impact. 
 
@@ -62,7 +64,7 @@ Each identity provider offers unique features, limitations, pricing models, and 
 ### Design considerations
 
 - **Document your identity requirements.** Start by listing the features that your application needs now and will need in the future. Typical features to consider include:
-- 
+
     - Federated identity provider support to integrate with customers' identity solutions. This feature enables you to avoid creating new identities.
     - Customizable sign-in/sign-up flow to modify the look and feel to maintain your branding. This feature also provides the ability to inject custom business logic into the sign-in/sign-up process.
     - Separation of tenant data into distinct silos to maintain tenant isolation.
