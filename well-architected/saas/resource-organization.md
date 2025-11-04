@@ -46,7 +46,7 @@ The first step in planning your architecture is to choose the region where your 
 
 You can organize Azure resources in various ways. You can use a combination of resource groups, subscriptions, management groups, and Microsoft Entra tenants to group or separate your resources. Different resource organization strategies provide different sets of tradeoffs for manageability, complexity, security, and many other factors. When you create a SaaS solution, you need to consider how to organize your resources. This decision is informed by your tenancy model. Resource organization is perhaps the most fundamental part of properly architecting, deploying, and managing a SaaS solution.
 
-To learn more about how Azure resources can be organized, see [Azure fundamental concepts](/azure/cloud-adoption-framework/ready/considerations/fundamental-concepts).
+To learn more about how Azure resources can be organized, see [Organize your Azure resources effectively](/azure/cloud-adoption-framework/ready/azure-setup-guide/organize-resources).
 
 ### Design considerations
 
@@ -56,7 +56,7 @@ To learn more about how Azure resources can be organized, see [Azure fundamental
 
 - **Decide which resources to share.** Determine which components to share and which to deploy individually for customers. Sharing resources reduces costs and management but can lead to tradeoffs for isolation, security, and performance. It's common to have a mix of shared and per-customer components. At minimum, identity and billing components are typically shared among customers.
 
-    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Sharing resources reduces costs and management but can bring tradeoffs for isolation, security, and performance. 
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Sharing resources reduces costs and management but add complexities for isolation, security, and performance. 
 
     Don't use shared production resources in your pre-production stages and environments. Your resource organization strategy needs to accommodate parallel deployments for your resources, even if you share resources in production.
 
