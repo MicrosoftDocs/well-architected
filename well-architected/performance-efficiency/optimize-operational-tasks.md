@@ -14,7 +14,7 @@ ms.topic: concept-article
 |**PE:10**| Optimize operational tasks. Monitor and minimize the effects of the software development lifecycle and other routine operations on workload performance. These operations include virus scans, secret rotations, backups, reindexing databases, and deployments.|
 |---|---|
 
-This guide describes the recommendations for optimizing operational tasks. Optimizing operational tasks is the process of minimizing the effects of tasks that you perform as part of routing workload operations. Operations activities use the same compute resources as the workload itself. Failure to consider the effects of operations tasks can cause the workload to miss its performance targets. It can also negatively affect the performance of the workload for your customers.
+This guide describes the recommendations for optimizing operational tasks. Optimizing operational tasks is the process of minimizing the effects of tasks that you perform as part of routine workload operations. Operational activities use the same compute resources as the workload itself. Failure to consider the effects of operational tasks can cause the workload to miss its performance targets. It can also negatively affect the performance of the workload for your customers.
 
 **Definitions**
 
