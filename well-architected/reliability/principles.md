@@ -10,7 +10,7 @@ ms.update-cycle: 1095-days
 
 # Reliability design principles 
 
-Outages and malfunctions are serious concerns for all workloads. A reliable workload must survive those events and **continue to consistently provide its intended functionality**. It must be **resilient** so that it can detect, withstand, and recover from failures within an acceptable time period. It must also be **available** so that users can access the workload during the promised time period at the promised quality level.  
+Outages and malfunctions are serious concerns for all workloads. A reliable workload must survive those events and **continue to consistently provide its intended functionality**. It must be **resilient** so that it can detect and withstand faults while continuing to operate. It must be **recoverable** so that, if a disruption exceeds resiliency measures, the workload can be restored within agreed recovery targets. It must also be **available** so that users can access the workload during the promised time period at the promised quality level.  
 
 It's not realistic to assume failures won't occur, especially when the workload is built to run on distributed systems. Some components might fail while others continue to operate. At some point, the user experience might be affected, which compromises business goals.  
 
