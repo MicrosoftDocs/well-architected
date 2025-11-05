@@ -15,7 +15,7 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 
 | Well-Architected Framework pillar | Summary |
 | --- | --- |
-| Reliability | A reliable Oracle workload is both resilient and recoverable to maintain availability of the system. High availability reduces Oracle database and application downtime during critical maintenance. Recoverability addresses restoration after larger incidents. Design explicitly for each area.|
+| Reliability | A reliable Oracle workload is both resilient and recoverable, which maintains the availability of the system. High availability reduces Oracle database and application downtime during critical maintenance. Recoverability addresses restoration after larger incidents. Design explicitly for each area.|
 | Security | Security is about implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your Oracle applications, including identity and access management (IAM), input validation, data sovereignty, encryption, and distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
 | Cost Optimization | Cost Optimization is about keeping costs at a minimum while achieving required technical and business objectives.|
 | Performance Efficiency | Performance Efficiency is about accelerating digital transformation with less. The goal is to get the most out of your Oracle workload and meet user demand without overprovisioning or underprovisioning resources. Inefficient performance can degrade user experience and inflate costs. Performance affects productivity for both databases and applications.|

@@ -27,7 +27,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.
 
-Highly reliable network connectivity depends on designing for multiple concerns: resiliency and recoverability together with understanding the availability commitments from Azure. Resiliency minimizes the impact of failures by keeping traffic flowing within defined SLOs during circuit, gateway, or path issues. Recoverability focuses on restoring connectivity after larger site or regional disruptions within agreed RTO/RPO targets. Design each explicitly based on business needs and application requirements.
+Highly reliable network connectivity depends on designing for multiple concerns, including resiliency and recoverability together with understanding the availability commitments from Azure. Resiliency minimizes the impact of failures by keeping traffic flowing within defined SLOs during circuit, gateway, or path issues. Recoverability focuses on restoring connectivity after larger site or regional disruptions within agreed RTO/RPO targets. Design each explicitly based on business needs and application requirements.
 
 The [**Reliability design principles**](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
