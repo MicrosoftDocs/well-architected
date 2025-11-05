@@ -23,7 +23,6 @@ Without a clear AI strategy, you risk misalignment with your product vision and 
 
 This article offers practical guidance to help you adopt AI strategically in your SaaS product. While focused on B2B, the insights apply equally to B2C. We will cover where AI can create impact, potential pitfalls, and how to approach AI with clarity to strengthen your product and position you for long-term success. This guidance is for product owners, technical leaders, and anyone shaping AI strategy in SaaS.
 
-
 ## Focus on SaaS as a business model, not the application
 
 ISVs often think of their SaaS application as the entire business. As AI reshapes the SaaS landscape, vendors should start viewing the application as just one channel through which the business delivers value. Consider how you can change that mindset for your business.
@@ -76,7 +75,6 @@ This could involve embedding intelligent features, improving internal operations
     > [!TIP]
     > High-quality examples are a great starting point for understanding what's possible and realistic with AI. Carefully review examples of good AI integration from other products, and look for examples and details about how they're implemented at each layer including the application, data retrieval and grounding, and model interactions and prompting.
 
-
 ## Start small, enhance iteratively
 
 Here are some decision points to get you started. Make those decisions keeping in mind your product, your team's experience, and your overall strategy.
@@ -98,7 +96,6 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >    But without having significant real-world experience, it's easy to get misled or convince yourself that something is possible or a good idea when it isn't. 
 >
->
 > - **How much AI do you use in your processes for productivity gains?**
 >
 >   At minimum, start developing internal capabilities around AI. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build AI in your foundational practices](#build-ai-in-your-foundational-practices).
@@ -113,15 +110,24 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **Do you want to build, buy, or customize?**
 >   
->   AI technologies come in different forms, each suited to specific use cases. They range from models are optimized for focused tasks like image or document recognition to general-purpose models that offer flexibility across a wide range of tasks like reasoning and language understanding. There's also the option to build custom machine learning models for unique problems if you have the data and expertise.  Refer to [Familiarize yourself with the broad categories of models](../ai/get-started.md#familiarize-yourself-with-the-broad-categories-of-models) before you select the right approach for the right job. 
+>   AI technologies come in different forms, each suited to specific use cases. They range from *narrow AI*, which are models are optimized for focused tasks like image or document recognition, to general-purpose models built on *generative AI* that offer flexibility across a wide range of tasks like reasoning and language understanding. There's also the option to build custom machine learning models for unique problems if you have the data and expertise.  Refer to [Familiarize yourself with the broad categories of models](../ai/get-started.md#familiarize-yourself-with-the-broad-categories-of-models) before you select the right approach for the right job. 
 >
->   When deciding how to implement AI in your product, you typically have three options:
+>   When deciding how to implement AI in your product, the options you can choose are different depending on whether you're implementing narrow AI or generative AI.
+> 
+>   For narrow AI:
 >
 >   | Approach | Benefit | Tradeoff | Example Azure service |
 >   |----------|---------|----------|-----------------------|
->   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | [Azure AI Foundry Models](/azure/ai-foundry/concepts/foundry-models-overview), including [Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/overview); Azure AI Services for specific tasks, like [Azure AI Vision](/azure/ai-services/computer-vision/overview), [Azure AI Document Intelligence](/azure/ai-services/document-intelligence/overview), and [Azure AI Speech](/azure/ai-services/speech-service/overview) |
->   | Customize existing models (like with fine-tuning) | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time | [Fine-tuning in Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/how-to/fine-tuning); [Custom speech](/azure/ai-services/speech-service/custom-speech-overview)] |
->   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) |
+>   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | Azure AI Services for specific tasks, like [Azure AI Vision](/azure/ai-services/computer-vision/overview), [Azure AI Document Intelligence](/azure/ai-services/document-intelligence/overview), and [Azure AI Speech](/azure/ai-services/speech-service/overview) |
+>   | Customize existing models | Enables quick customization of model behavior without requiring expertise or complex training processes | Requires sufficient high-quality examples or data | [Custom speech](/azure/ai-services/speech-service/custom-speech-overview) |
+>   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) |> 
+> 
+>   For generative AI:
+> 
+>   | Approach | Benefit | Tradeoff | Example Azure service |
+>   |----------|---------|----------|-----------------------|
+>   | Buy and ground prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools; grounding models works for a large number of use cases | Limited ability to customize for unique business needs or differentiated features | [Azure AI Foundry Models](/azure/ai-foundry/concepts/foundry-models-overview), including [Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/overview) |
+>   | Fine-tuning | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time | [Fine-tuning in Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/how-to/fine-tuning) |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
 
@@ -141,10 +147,8 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 
 - **Centralize technical expertise**. AI is complex; the field spans a wide range of areas such as model selection, evaluation, fine tuning, grounding, agent development, integration into other applications, and more. Not everyone needs to be an expert in every area. Build a core team that collectively has deep technical knowledge and individuals specialize in certain areas.
 
-
 > [!CAUTION]
-> **Embed responsible AI principles**, so your AI efforts align with your brand and values, and avoid unintended harm. Develop expertise in the responsible use of AI and how that applies within your industry and to your customers and business. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
-
+> Embed responsible AI principles in your foundational practices. Align your AI efforts with your brand and values, and avoid unintended harm. Develop expertise in the responsible use of AI and how that applies within your industry and to your customers and business. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 ## Put strategy to practice for your SaaS archetype
 
@@ -217,7 +221,6 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - **Data versioning and consistency.** Inadequate data lifecycle management can cause customers' AI agents to operate on outdated or inconsistent data. Implement strict version control and synchronization mechanisms to maintain data accuracy.
 
-
 #### Build, buy, or customize?
 
 | Capabilities | Approach  | Recommendation|
@@ -278,8 +281,6 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 | Data governance and privacy | Build | Implement strict controls and monitoring to ensure data security, compliance, and privacy. |
 | Custom ML models for data insights | Buy or build | Use prebuilt models when possible; build custom models only if you have proprietary data and expertise. |
 
-
-
 # [Analytics](#tab/archetype-analytics)
 
 This SaaS archetype focuses on delivering insight and analytics by leveraging customer data. The core value lies in analyzing the data stored on behalf of customers, such as forecasting trends or benchmarking performance, to provide actionable intelligence. 
@@ -287,8 +288,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 > [!NOTE]
 > SaaS providers, when legally and ethically allowed, use aggregated data across many customers. This enables cross-customer insights, benchmarking, and performance comparisons that can't be derived from individual customers on their own. However, this approach must carefully account for data privacy, consent, and compliance risks.
 
-
-#### Typical Use Cases
+#### Typical use cases
 
 - Forecast customer demand, sales, or market trends based on historical data patterns.
 
@@ -303,7 +303,6 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 - Support scenario analysis and "what-if" simulations to aid decision-making.
 
 - Enable natural language queries to let users explore data without technical skills.
-
 
 #### AI opportunities
 
@@ -320,7 +319,6 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 - **Integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
 
 - **Continuous learning and model tuning.** Implement feedback loops where AI models improve over time based on user interactions and new data.
-
 
 #### Risks
 
