@@ -1,7 +1,7 @@
 ---
 title: Data for SaaS Workloads on Azure
 description: Learn about the data platform considerations for data integrity and performance for SaaS workloads on Azure.
-author: paulburpo
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/05/2025
 ms.topic: concept-article

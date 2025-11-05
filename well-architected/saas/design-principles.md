@@ -1,9 +1,10 @@
 ---
 title: Design Principles of SaaS Workloads on Azure
 description: Learn about the key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas for SaaS.
-author: johndowns
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/05/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---

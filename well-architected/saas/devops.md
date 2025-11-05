@@ -1,9 +1,10 @@
 ---
 title: DevOps Practices for SaaS Workloads on Azure
 description: Learn about DevOps considerations for SaaS workloads, including efficient customer lifecycle management and safe deployment practices.
-author: brandonmartinez
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/03/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
