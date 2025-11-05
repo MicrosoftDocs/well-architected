@@ -28,9 +28,9 @@ The data store in a software as a service (SaaS) solution affects its architectu
 
   Expect data to grow significantly over time. For SaaS solutions, growth occurs in multiple dimensions. Anticipate increases in the volume and types of data as the number of customers grow. Make sure that you plan for that growth and invest in technologies that can support it.
 
-	Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
+  Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
  
-	For more information, see [Relational versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
+  For more information, see [Relational versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
 
 - **Minimize the types of data stores.** Storing different types of data in multiple, distinct data stores can be beneficial for mature organizations that have expertise across various data platforms. However, this approach often introduces unnecessary complexity for startups and smaller organizations. It's more effective to focus on one or a small number of data stores.
   
