@@ -8,7 +8,7 @@ ms.topic: concept-article
 
 ---
 
-## SAP workload design principles
+# SAP workload design principles
 
 We built this guidance around the Azure Well-Architected Framework and its five pillars of architectural excellence. The table below lists each pillar and provides a general summary of the articles in this set.
 
