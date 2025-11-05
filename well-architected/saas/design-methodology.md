@@ -4,7 +4,7 @@ description: Learn how to implement a structured approach when you make architec
 author: landonpierce 
 ms.author: prwilk
 ms.topic: concept-article
-ms.date: 11/04/2024
+ms.date: 11/05/2025
 ms.collection: learn-startups
 ---
 
@@ -18,21 +18,21 @@ This article describes a design methodology that you can use to systematically d
 
 It's important to understand how your business requirements affect your solution downstream. Consider the following decision points:
 
-- The location where you deploy resources limits the architecture patterns that you can use. You can deploy all resources in your Azure subscriptions, or customers can purchase the solution and deploy it in their own Azure subscriptions. Alternatively, the workload can use resources that the customer deploys in their Azure subscriptions.
+- **The location where you deploy resources** limits the architecture patterns that you can use. You can deploy all resources in your Azure subscriptions, or customers can purchase the solution and deploy it in their own Azure subscriptions. Alternatively, the workload can use resources that the customer deploys in their Azure subscriptions.
 
   For example, if you deploy your software in the customer's environment, you can't use an architecture pattern that's based on only shared resources because each customer has their own standalone environment with dedicated resources.
 
   For more information, see [ISV deployment models](/azure/cloud-adoption-framework/ready/landing-zone/isv-landing-zone#isv-deployment-models).
   
-- Your pricing model determines your business's revenue, which in turn affects your allowable cost of goods sold. This dynamic directly affects your technical architecture.
+- **Your pricing model** determines your business's revenue, which in turn affects your allowable cost of goods sold. This dynamic directly affects your technical architecture.
 
   For more information, see [Pricing model](/azure/architecture/guide/multitenant/considerations/pricing-models).
   
-- The features or products that you provide can affect your architecture. You might need to make changes or additions to your technical architecture when you choose specific features. Providing different products to various customers can also lead to a more complex architecture because it must support these variations.
+- **The features or products that you provide** can affect your architecture. You might need to make changes or additions to your technical architecture when you choose specific features. Providing different products to various customers can also lead to a more complex architecture because it must support these variations.
 
 ## Design for your customer requirements
 
-Design your solution with customer requirements in mind. Customers might have extra requirements for their solution, which creates a superset that your solution must meet. These extra requirements can sometimes conflict with your business needs or the needs of other customers. When these requirements differ from your business needs or add more restrictions, making decisions for your solution can be tough. For instance, your solution might meet your security standards, but a customer might have stricter security requirements that you must fulfill to protect their business.
+Design your solution with customer requirements in mind. Customers might have extra requirements for their solution, which creates a superset that your solution must meet. These extra requirements can sometimes conflict with your business needs or the needs of other customers. When these requirements differ from your business needs or add more restrictions, making decisions for your solution can be tough. For instance, your solution might meet your own security standards, but a customer might have stricter security requirements that you must fulfill to protect their business.
 
 Create a flexible architecture to accommodate these extra requirements. If customer requirements don't affect your own requirements, try to integrate them into your business model. Calculate the cost of these adjustments. If a customer’s unique requirements incur extra costs, consider charging them accordingly.
 
@@ -40,7 +40,7 @@ Make sure that you have realistic [reliability targets](/azure/well-architected/
 
 ## Design your tenancy model
 
-Most SaaS solutions rely on multitenancy as the primary technical strategy to maximize cost efficiency. Multitenancy involves a range of choices that don't have standard patterns. Your tenancy model affects aspects of your architecture, including management overhead, cost, and data isolation. Find the right balance for your solution. The tenancy model that you choose is crucial because it must balance customer and business needs.
+Most SaaS solutions rely on *multitenancy* as the primary technical strategy to maximize cost efficiency. Multitenancy involves a range of choices that don't have standard patterns. Your tenancy model affects aspects of your architecture, including management overhead, cost, and data isolation. Find the right balance for your solution. The tenancy model that you choose is crucial because it must balance customer and business needs.
 
 To help you make informed decisions, refer to these articles:
 
