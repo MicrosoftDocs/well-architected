@@ -3,7 +3,7 @@ title: Compute for SaaS Workloads on Azure
 description: Learn about choosing a compute hosting model, its operational aspects, and how to optimize technology options to help you meet service-level agreements and objectives.
 author: paolosalvatori
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/05/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -22,7 +22,7 @@ Choosing the right compute platform for your SaaS workload is important, but the
 
 - **Hosting model**. Azure offers various hosting models, primarily infrastructure as a service (IaaS) and platform as a service (PaaS), each with its own benefits and tradeoffs. Evaluate your application's requirements and choose the most suitable model.
     
-    - IaaS provides virtual machines (VMs) and full control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
+    - IaaS provides virtual machines (VMs) and extensive control over them, including networking and storage. However, it requires managing and patching, which can be operationally intensive. Examples include virtual machine scale sets and Azure Kubernetes Service (AKS) clusters.   
 
     - PaaS allows you to deploy applications without managing the underlying infrastructure. It includes built-in features for autoscaling and load balancing. Examples are Azure App Service and Azure Container Apps.
 
