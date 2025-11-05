@@ -10,11 +10,12 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, you have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
+AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, AI represents the next frontier in your product strategy and development. You need to rethink your product strategy with AI at the core. You have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
 
 The benefits of AI are real, but so are the risks. There is urgency: if you don't adopt AI quickly, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
 
 - Serving diverse customers with varying needs, 
+- The potential need to redesign an existing architecture to make your applications and data suitable for AI and agentic experiences,
 - Running multiple models or experiences across different tenants, and 
 - The pressure to move quickly without sacrificing security or quality.
 
@@ -27,36 +28,36 @@ This article offers practical guidance to help you adopt AI strategically in you
 
 ISVs often think of their SaaS application as the entire business. As AI reshapes the SaaS landscape, vendors should start viewing the application as just one channel through which the business delivers value. Consider how you can change that mindset for your business.
 
-Consider this example: a SaaS company offering a bookkeeping application. If you define your value solely as providing a financial data interface with some business logic, you risk becoming a commodity. AI can now interact with software directly. An agent could use your tool or even replicate its functionality without a user ever opening your interface. If customers see your product only as a tool, they may be just as willing to replace it or build their own solution using AI.
+Consider this example: a SaaS company offering a bookkeeping application. If you define your value solely as providing a financial data interface with some business logic, you risk your application becoming a commodity. AI can now interact with software directly. An agent could use your application or even replicate its functionality without a user ever directly interacting with it. If customers see your product only as a tool, they may be just as willing to replace it or build their own solution using AI.
 
-To stay relevant, elevate your role. Move from being a software provider to a strategic partner helping customers run smarter businesses. Focus on the core problems you solve and explore how AI can make that value more tangible. For example, you might:
+To stay relevant, elevate the role of your application from being simply a tool to including AI to leverage the tools to provide greater value. Move from being a software provider to a strategic partner helping customers run smarter businesses. Focus on the core problems you solve and explore how AI can make that value more tangible. For example, you might:
 
 - Let AI analyze customer financial data and proactively highlight trends or risks
 - Offer real-time recommendations and insights based on current financial and market conditions
 - Provide guidance in new formats such as embedded agents, personalized briefings, or daily podcasts
 - Use aggregated data across your customers to deliver benchmarking, forecasting, and predictive analytics
 
-Shift your mindset from product builder to business partner to make AI a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that extend value through AI and enable agentic workflows aligned with customer goals.  With a clear strategy, marketing your AI capabilities shifts from making vague promises to showcasing how you deliver and enhance real value.
+Shift your mindset from product builder to business partner to make AI a source of strength rather than a threat. This perspective may not dramatically change your roadmap, but it will increase your impact. It allows you to design products that increase value through AI and enable agentic workflows aligned with customer goals.  With a clear strategy, marketing your AI capabilities shifts from making vague promises to showcasing how you deliver and enhance real business value.
 
 Set a vision where customers unlock deeper insights, automation, and strategic outcomes, strengthening your core value proposition.
 
 #### Recommendations
 
-- **Reframe your role from product vendor to strategic partner**. Shift your focus from building features to solving core business problems. Your customers should see you as a long-term partner that helps them run more efficiently and make better decisions, not just a software provider.
+- **Reframe your role from product vendor to strategic partner**. Shift your focus from building features to solving core business problems. Your customers should see you as a long-term partner that helps them operate more efficiently and make better decisions, not just a software provider.
 
-- **Design for AI-driven workflows, not just human interaction**. Don't assume all interaction happens through your UI. Build capabilities that allow AI agents to use your platform on behalf of users, which support agentic workflows that deliver value with or without direct user involvement.
+- **Design for AI-driven workflows, not just human interaction**. Don't assume all interaction happens through your UI. Build capabilities that allow AI agents to use your platform on behalf of users, which support agentic workflows that deliver value with or without direct user involvement. Agents don't need a user interface - they can interact directly with APIs, they can act, and they can access structured and unstructured data directly.
 
 - **Ensure your roadmap reflects this elevated value proposition**. You don't need to rebuild everything, but you do need to realign priorities. Invest in capabilities that reinforce your strategic value, not just surface-level AI features.
 
-- **Communicate the shift internally and externally**. Your teams and your customers need to understand this change. Internally, it guides better product decisions. Externally, it strengthens your market position and helps you stand out in a crowded, AI-saturated space.
+- **Communicate the strategic shift internally and externally**. Your teams and your customers need to understand this change. Internally, it guides better product decisions. Externally, it strengthens your market position and helps you stand out in a crowded, AI-saturated space.
 
 ## Evaluate your opportunities and risks
 
-AI provides a powerful way to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work smarter and more efficiently through intuitive interfaces and workflows designed for people. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
+AI provides a powerful way to push SaaS products beyond traditional, human-centered design. Historically, SaaS has been about helping customers work more efficiently, to enable value and innovation to be continuously added, and to shift the burden of running and operating software to the provider. SaaS has traditionally been designed for people, with intuitive interfaces and workflows. But building with AI in mind requires a shift. It means identifying the parts of your product where AI can extend functionality, automate workflows, or even redefine how your solution delivers value.
 
 This could involve embedding intelligent features, improving internal operations, or enabling entirely new, AI-driven experiences for your customers. For example, your customers can interact with AI-driven interfaces and workflows that work differently from traditional human-centered designs. When AI handles routine and complex tasks (beyond deterministic automation), it frees people to focus on what truly matters: strategic thinking, creative problem-solving, and high-impact decisions. It's not just about efficiency or cost savings, it's about unlocking human potential where it matters most.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals. They also introduce ongoing maintenance burdens for models, tools, and data that weren't planned for.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk: Localized experiments.** Without strong leadership and a clear plan, AI efforts can quickly become fragmented and might not evolve beyond a proof of concept. In today's hype-driven environment, teams and individuals may pursue isolated experiments that result in disconnected features and conflicting approaches. Left unchecked, these ad hoc efforts can silently shape the direction of your product, and even in ways that are difficult to undo and misaligned with your long-term goals. They also introduce ongoing maintenance burdens for models, tools, and data that weren't planned for.
 
 #### Recommendations
 
@@ -134,13 +135,15 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 
 - **Map AI initiatives to measurable business outcomes**. Identify specific areas where AI can improve or automate your operational efficiency, reduce costs, or create customer value. Tie each initiative to a clear business metric.
 
-    > :::image type="icon" source="../_images/risk.svg"::: **Chasing full automation without oversight.**   Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk: Chasing full automation without oversight.**   Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
 
 - **Establish AI governance early**. Define clear policies for model lifecycle management with accountability in place, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relevant, maintainable, and compliant as the technology evolves.
 
 - **Centralize technical expertise**. AI is complex; the field spans a wide range of areas such as model selection, evaluation, fine tuning, grounding, agent development, integration into other applications, and more. Not everyone needs to be an expert in every area. Build a core team that collectively has deep technical knowledge and individuals specialize in certain areas.
 
-- **Embed responsible AI principles**.  so your AI efforts align with your brand and values, and avoid unintended harm. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
+
+> [!CAUTION]
+> **Embed responsible AI principles**, so your AI efforts align with your brand and values, and avoid unintended harm. Develop expertise in the responsible use of AI and how that applies within your industry and to your customers and business. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
 
 ## Put strategy to practice for your SaaS archetype
@@ -191,7 +194,7 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - Automate repetitive tasks like formatting, data entry, calculations, and form completion.
 
-- Support natural language interfaces that allow users to perform tasks  within the application.
+- Support natural language interfaces that allow users to perform tasks within the application.
 
 #### AI opportunities
 
@@ -252,7 +255,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 
 - **Scalable data infrastructure**. Design the platform to support large-scale, real-time data processing and retrieval.
 
-- **Data processing and cleansing**. Automate tasks of data preparation by cleansing and normalizing  inconsistent data from multiple sources.
+- **Data processing and cleansing**. Automate tasks of data preparation by cleansing and normalizing  inconsistent data from multiple sources. Consider using AI to design and create transformation components within extract-transform-load (ETL) and extract-load-transform (ELT) pipelines.
 
 #### Risks
 
