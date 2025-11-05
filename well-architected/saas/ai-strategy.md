@@ -141,11 +141,13 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 
 - **Map AI initiatives to measurable business outcomes**. Identify specific areas where AI can improve or automate your operational efficiency, reduce costs, or create customer value. Tie each initiative to a clear business metric.
 
-    > :::image type="icon" source="../_images/risk.svg"::: **Risk: Chasing full automation without oversight.**   Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk: Chasing full automation without oversight.** Don't assuming that full automation is the goal.  Over-relying on AI without human oversight increases the risk of errors and accountability gaps. Instead, design human-in-the-loop systems where AI augments decision-making, but critical judgments remain in human hands.
 
 - **Establish AI governance early**. Define clear policies for model lifecycle management with accountability in place, including deployment, monitoring, updates, and retirement. You want to make sure that the AI parts remain relevant, maintainable, and compliant as the technology evolves.
 
 - **Centralize technical expertise**. AI is complex; the field spans a wide range of areas such as model selection, evaluation, fine tuning, grounding, agent development, integration into other applications, and more. Not everyone needs to be an expert in every area. Build a core team that collectively has deep technical knowledge and individuals specialize in certain areas.
+
+- **Adopt GenAIOps practices**. Generative AI technologies, including large language models, require specific operational processes and strategies to evaluate models, iterate on prompts, and keep up with changes in technology. You should build them into your DevOps practices and continuous integration/continuous delivery (CI/CD) processes.
 
 > [!CAUTION]
 > Embed responsible AI principles in your foundational practices. Align your AI efforts with your brand and values, and avoid unintended harm. Develop expertise in the responsible use of AI and how that applies within your industry and to your customers and business. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
@@ -230,7 +232,6 @@ For this type of SaaS product, core value comes from the user experience or work
 | Agentic experiences | TODO | TODO |
 | Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
 | Task-specific models (legal clause analysis, medical term tagging) | Buy or customize | Purchase or customize proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
-
 
 # [Data-as-a-platform](#tab/archetype-data)
 
@@ -350,4 +351,5 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 ## Related links
 
-[Design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag)
+- [Design a secure multitenant RAG inferencing solution](/azure/architecture/ai-ml/guide/secure-multitenant-rag)
+- [Advance your maturity level for Generative Artificial Intelligence Operations (GenAIOps)](/azure/machine-learning/prompt-flow/concept-llmops-maturity)
