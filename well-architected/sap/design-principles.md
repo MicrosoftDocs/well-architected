@@ -8,25 +8,25 @@ ms.topic: concept-article
 
 ---
 
-# Design principles of an SAP workload
+## SAP workload design principles
 
 We built this guidance around the Azure Well-Architected Framework and its five pillars of architectural excellence. The table below lists each pillar and provides a general summary of the articles in this set.
 
 | Well-architected framework pillar | Summary |
 | --- | --- |
-| Reliability |An SAP workload requires resiliency at the architecture layer. You’ll learn how to create an SAP application with high availability to process critical business data. |
-| Security| An SAP workload contains critical business data. You’ll learn to secure your SAP applications with multiple security layers, including identity, access, input validation, data sovereignty, and encryption.|
-| Cost Optimization | An SAP workload has several architecture layers and numerous resources supporting it. You’ll learn how to make sure your SAP application deployment meets performance expectations while reducing the total cost of ownership.|
-| Performance Efficiency | An SAP workload needs to be high performing resources to meet productivity requirements. You’ll learn how to make sure that your SAP workload meets user demands while managing costs.|
-| Operational Excellence | An SAP workload spends most of its lifecycle in operations. You’ll learn how to manage an SAP workload and to keep it running.|
+| Reliability | An SAP workload requires resiliency (withstanding faults and continuing to operate) and recoverability (restoring normal operations after a disruption). You'll learn how to design for each to keep critical business data processing reliable. |
+| Security| An SAP workload contains critical business data. You'll learn to secure your SAP applications with multiple security layers, including identity, access, input validation, data sovereignty, and encryption.|
+| Cost Optimization | An SAP workload has several architecture layers and numerous resources supporting it. You'll learn how to make sure your SAP application deployment meets performance expectations while reducing the total cost of ownership.|
+| Performance Efficiency | An SAP workload needs to be high performing resources to meet productivity requirements. You'll learn how to make sure that your SAP workload meets user demands while managing costs.|
+| Operational Excellence | An SAP workload spends most of its lifecycle in operations. You'll learn how to manage an SAP workload and to keep it running.|
 
 ## Reliability
 
-A reliable SAP workload is both resilient and available. Resiliency is the ability to recover from failures and continue to function. Availability is uptime. High availability reduces SAP application downtime during critical maintenance and improves recovery from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Failures happen on-premises and in the cloud, so it’s important to design your SAP workload for resiliency and availability.
+A reliable SAP workload is resilient and recoverable. Resiliency is the ability to withstand faults or disruptions and continue operating to maintain uptime. Recoverability is the ability to restore normal operations within objectives after a failure or broader disruption. High availability reduces SAP application downtime during critical maintenance and limits impact from failures such as VM crashes, backend updates, major downtime, or ransomware incidents. Failures happen on-premises and in the cloud, so it's important to design your SAP workload for resiliency and recoverability.
 
 **Conduct a reliability assessment.** Before you can standardize the reliability of an SAP workload and improve areas of weakness, you need to assess its reliability. It’s critical to know how reliable an SAP workload is so steps can be taken to fix issues or solidify those configurations. We recommend conducting a reliability assessment on your SAP workload. The assessment asks you questions about your workload and provides specific recommendations to focus on. The assessment builds on itself, so you can track your progress without restarting every time.
 
-For the assessment, start an [Azure Well-Architected Review](/assessments/azure-architecture-review/). Select "Start Assessment" and “SAP on Azure” when prompted.
+For the assessment, start an [Azure Well-Architected Review](/assessments/azure-architecture-review/). Select "Start Assessment" and "SAP on Azure" when prompted.
 
 ## Security
 
