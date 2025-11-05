@@ -3,7 +3,7 @@ title: SaaS Workloads
 description: Overview of SaaS workloads on Azure.
 author: johndowns
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/05/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---

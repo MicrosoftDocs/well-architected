@@ -3,7 +3,7 @@ title: Data for SaaS Workloads on Azure
 description: Learn about the data platform considerations for data integrity and performance for SaaS workloads on Azure.
 author: paulburpo
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/05/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -28,9 +28,9 @@ The data store in a software as a service (SaaS) solution affects its architectu
 
   Expect data to grow significantly over time. For SaaS solutions, growth occurs in multiple dimensions. Anticipate increases in the volume and types of data as the number of customers grow. Make sure that you plan for that growth and invest in technologies that can support it.
 
-  Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
-
-  For more information, see [SQL versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
+	Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
+ 
+	For more information, see [Relational versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
 
 - **Minimize the types of data stores.** Storing different types of data in multiple, distinct data stores can be beneficial for mature organizations that have expertise across various data platforms. However, this approach often introduces unnecessary complexity for startups and smaller organizations. It's more effective to focus on one or a small number of data stores.
   
@@ -45,7 +45,7 @@ The data store in a software as a service (SaaS) solution affects its architectu
 |Recommendation|Benefit|
 |---|---|
 |Separate transactional data stores for day-to-day operations from analytical and reporting data stores. | Mixing the intent of your data stores can lead to unnecessary complexity. Data segmentation enhances operational efficiency and maximizes the utilization of each data store. |
-|Choose between a relational or nonrelational data structure based your requirements. Start with one or a small number of data stores. <br><br>Prioritize managed data stores. Common choices include Azure Cosmos DB, Azure SQL, MySQL, MongoDB, and PostgreSQL.|This approach helps minimize complexity and ensures that you use the right product to maximize efficiency. Managed data stores provide flexibility in managing resources and costs elastically and scale with your needs. Using managed data stores creates less management burden than deploying your own data store on your own infrastructure.|
+|Choose between a relational or nonrelational data structure based your requirements. Start with one or a small number of data stores. <br><br>Prioritize managed data stores. Common choices include Azure Cosmos DB, Azure SQL Database, MySQL, MongoDB, and PostgreSQL.|This approach helps minimize complexity and ensures that you use the right product to maximize efficiency. Managed data stores provide flexibility in managing resources and costs elastically and scale with your needs. Using managed data stores creates less management burden than deploying your own data store on your own infrastructure.|
 |Invest in learning your chosen technology. Equip your team to manage the high scaling requirements and other complexities of SaaS solutions.| Learn about the tools that you use and their wider ecosystem so that you can effectively use your data platform as you scale.|
 |Adopt flexibility in your data design.|As your SaaS solution grows or your requirements change, you can adapt by adding or changing data stores. This flexibility allows you to start with one data store and evolve over time to meet your needs.|
 
@@ -80,7 +80,7 @@ For more information about how your tenancy model affects your data strategy, se
 
 ## Plan capacity
 
-Capacity planning refers to the management of resource utilization, with a focus on CPU, memory, storage, and disk operations like input and output operations per second (IOPS). Some data stores combine these resources into a simple, synthetic resource consumption metric, like a database throughput unit (DTU) in Azure SQL or a request unit (RU) in Azure Cosmos DB. Managed data stores provide flexibility in resource management, which allows changes over time. It's crucial to establish an initial plan and iterate as your needs evolve.
+Capacity planning refers to the management of resource utilization, with a focus on CPU, memory, storage, and disk operations like input and output operations per second (IOPS). Some data stores combine these resources into a simple, synthetic resource consumption metric, like a database throughput unit (DTU) in Azure SQL Database or a request unit (RU) in Azure Cosmos DB. Managed data stores provide flexibility in resource management, which allows changes over time. It's crucial to establish an initial plan and iterate as your needs evolve.
 
 ### Design considerations
 
@@ -114,26 +114,26 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 ### Design considerations
 
-- **Quantify reliability.** Capture separate targets for resiliency and recoverability. Resiliency targets describe acceptable behavior under faults (for example error rates, degraded feature sets, or queue latency thresholds) to achieve an uptime SLO. Recoverability targets define the recovery time objective (RTO) and recovery point objective (RPO). These targets are driven by both your business requirements and those of your customers, who may have varying needs. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
+- **Quantify reliability.** Measure your reliability requirements by using service-level objectives (SLOs), which include metrics like uptime, recovery time, and recovery point. These metrics are driven by both your business requirements and those of your customers, who may have varying needs. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
 
-   For more information about resiliency metrics, see [RE:04 Recommendations for defining reliability targets](../reliability/metrics.md).
+   For more information about reliability metrics, see [RE:04 Recommendations for defining reliability targets](../reliability/metrics.md).
 
-- **Use platform features.** Azure provides capabilities for resiliency within a datacenter, within a region by using availability zones, and across a wider geographic area by using multiple regions. Combine strategies like availability zones, cross-region backup, and multiregion deployments to achieve the right level of resiliency for your solution. For high resiliency requirements, consider a multiregion, active-passive architecture with asynchronous data replication between regions. This approach might result in some data loss during a catastrophic outage.
+- **Use platform features.** Azure provides capabilities for resiliency within a datacenter, within a region by using availability zones, and across a wider geographic area by using multiple regions. Combine strategies like availability zones, cross-region backup, and multiregion deployments to achieve the right level of resiliency and recoverability for your solution. For high resiliency requirements, consider a multiregion, active-passive architecture with asynchronous data replication between regions. This approach might result in some data loss during a catastrophic outage.
 
   > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Multiregion, active-active designs with replication are the most resilient but are complex to build and test. For most active-active solutions, you need to design a conflict resolution approach that accounts for delays in data synchronization. Most solutions don't need this degree of resiliency.
 
   Refer to [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
-- **Use deployment stamps to isolate the blast radius of components.** The deployment stamps pattern is widely used in SaaS solutions because it provides benefits for deployment, management, performance, and resiliency. For instance, deploying one stamp in the United States and another stamp in Europe ensures that customers in one region are isolated from outages in the other region and can operate independently.
+- **Use deployment stamps to isolate the blast radius of components.** The deployment stamps pattern is widely used in SaaS solutions because it provides benefits for deployment, management, performance, and reliability. For instance, deploying one stamp in the United States and another stamp in Europe ensures that customers in one region are isolated from outages in the other region and can operate independently.
 
 ### Design recommendations
 
 |Recommendation|Benefit|
 |---|---|
-|Focus on resiliency requirements while you think about the overall data requirements for your and your customers.|By grounding your design decisions in those requirements, you can ensure that you make the appropriate tradeoffs and avoid under- or over-engineering for your needs.|
-|Reflect varying levels of resiliency in your billing model. <br><br> Set expectations with your customers. Zero data loss during catastrophic outages or 100% uptime might be unrealistic.| Billing models can help your customers understand how much guaranteed resiliency they're signing up for. For example, with a lower tier, customers get minimal guarantees. In a higher tier, customers receive more resiliency because you can afford to replicate their resources across multiple regions.|
+|Focus on reliability requirements while you think about the overall data requirements for your and your customers.|By grounding your design decisions in those requirements, you can ensure that you make the appropriate tradeoffs and avoid under- or over-engineering for your needs.| 
+|Reflect varying levels of reliability in your billing model. <br><br> Set expectations with your customers. Zero data loss during catastrophic outages or 100% uptime might be unrealistic.| Billing models can help your customers understand how much guaranteed reliability they're signing up for. For example, with a lower tier, customers get minimal guarantees. In a higher tier, customers receive more reliability because you can afford to replicate their resources across multiple regions.|
 |Use Azure availability zones for production solutions. When possible, use zone redundant data stores.|Availability zones provide resiliency against datacenter outages, without significantly increasing the cost, latency, or complexity of your solution.|
-|Keep backups of your data stores in a globally redundant format by using cross-region replication where available.|Cross-region backups of data add an extra level of resiliency.|
+|Keep backups of your data stores in a globally redundant format by using cross-region replication where available.|Cross-region backups of data add an extra level of reliability.|
 |Use deployment stamps to create separate instances of your solution in geographically distributed locations.|By using deployment stamps to create separate instances of your solution in geographically distributed locations, you can increase resiliency and provide more benefits, like easier operations management.|
 |Evaluate if you need multiregion deployment and if you need an active-active design to meet the requirements. <br><br> Consider the tradeoffs that are involved. Stateless components are easier to replicate than stateful components like a data store. |Spreading your solution or stamps across regions provides higher levels of resiliency by replicating data between regions.|
 
@@ -157,7 +157,7 @@ You're responsible for ensuring the confidentiality and integrity of your custom
 |---|---|
 |Configure your data stores to use private endpoints, and disable public endpoints.|This approach enhances security by restricting access to your internal network. By restricting access, you can reduce the risk of unauthorized access and potential data breaches.|
 |Use managed identities and Microsoft Entra ID for authentication. Avoid the use of database keys or credentials.|Managed identities eliminate the need for database keys or credentials, which reduces the risk of credential theft and simplifies access management.|
-|When you work with shared data stores, ensure that the application scopes all requests to a single tenant by including the tenant identifier in `WHERE` clauses.|This process helps mitigate the risk of cross-tenant data leakage or impersonation.|
+|When you work with shared data stores, ensure that the application scopes all requests to a single tenant. For example, include the tenant identifier in `WHERE` clauses.|This process helps mitigate the risk of cross-tenant data leakage or impersonation.|
 |Plan your data retention strategy based on compliance and business needs. Avoid keeping unnecessary historical data. For long-term retention, move data from primary stores to archival storage.|By avoiding unnecessary retention, you maintain a smaller surface area.|
 |Use data store features to support your data lifecycle needs.<br><br>In Azure Cosmos DB, set the [time to live](/azure/cosmos-db/nosql/time-to-live) on documents. In Azure SQL, implement a sliding window strategy by using [table partitioning](/sql/relational-databases/partitions/partitioned-tables-and-indexes) to minimize the impact of the archival process on the database.|These approaches ensure efficient data lifecycle management, optimize storage by archiving or deleting outdated data, and reduce manual intervention when possible.|
 

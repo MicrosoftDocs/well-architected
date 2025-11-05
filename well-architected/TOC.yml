@@ -83,7 +83,7 @@
           items:
             - name: SE:01 Security baseline
               href: security/establish-baseline.md
-            - name: SE:02 Secured development lifecycle
+            - name: SE:02 Secure development lifecycle
               href: security/secure-development-lifecycle.md
             - name: SE:02 Threat analysis
               href: security/threat-model.md              
