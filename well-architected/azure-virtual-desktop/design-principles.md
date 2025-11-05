@@ -28,7 +28,7 @@ Guidance about Azure Virtual Desktop workloads is built on the Azure Well-Archit
 
 Reliability is a foundational pillar in an Azure Virtual Desktop environment. Disruptions can materialize on-premises and in the cloud. As a result, you need to pay meticulous attention to your virtual desktop components, which include Azure services and your on-premises infrastructure. Assess your workload's user data (profiles), applications, and compute availability requirements to determine your strategy for business continuity and disaster recovery. Take into account the different levels of availability that you achieve in Azure Virtual Desktop with different deployment options, such as active-active or active-passive host pools. Also assess your disaster recovery design considerations to help ensure smooth failovers during outages.
 
-- *Resiliency* is the ability to withstand disruptions (transient faults, infrastructure issues, demand spikes) and continue operating to avoid user‑impacting downtime.
+- *Resiliency* is the ability to withstand disruptions (transient faults, infrastructure issues, demand spikes) and continue operating to avoid user-impacting downtime.
 - *Availability* ensures uninterrupted uptime. High availability minimizes application downtime during critical maintenance activities. It also enhances recovery from incidents like VM crashes, back-end updates, extended downtimes, and ransomware attacks.
 
 Achieving reliability requires a comprehensive approach that spans architecture, operational procedures, automation, monitoring, regular testing, and validation.

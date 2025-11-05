@@ -114,7 +114,7 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 ### Design considerations
 
-- **Quantify reliability.** Capture separate targets for resiliency and recoverability. Resiliency targets describe acceptable behavior under faults (for example error rates, degraded feature sets, or queue latency thresholds) to achieve an uptime SLO. Recoverability targets define recovery time (RTO) and recovery point (RPO) objectives. These targets are driven by both your business requirements and those of your customers, who may have varying needs. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
+- **Quantify reliability.** Capture separate targets for resiliency and recoverability. Resiliency targets describe acceptable behavior under faults (for example error rates, degraded feature sets, or queue latency thresholds) to achieve an uptime SLO. Recoverability targets define the recovery time objective (RTO) and recovery point objective (RPO). These targets are driven by both your business requirements and those of your customers, who may have varying needs. If you store large amounts of data on behalf of your customers, your HA and DR solution might need to be more complex to meet stringent requirements.
 
    For more information about resiliency metrics, see [RE:04 Recommendations for defining reliability targets](../reliability/metrics.md).
 

@@ -25,7 +25,7 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 
 Because failures can occur on-premises and in the cloud, it's important to focus on resilience and availability when you design an Oracle on Azure IaaS workload.
 
-- *Resiliency* is the ability to withstand infrastructure faults, transient errors, and demand spikes while continuing to operate (possibly in a degraded mode) without user‑impacting downtime.
+- *Resiliency* is the ability to withstand infrastructure faults, transient errors, and demand spikes while continuing to operate (possibly in a degraded mode) without user-impacting downtime.
 - *Availability* ensures uninterrupted uptime. High availability minimizes application and database downtime during critical maintenance activities. High availability also enhances recovery from incidents like VM crashes, back-end updates, extended downtimes, and ransomware attacks.
 
 Failures can happen in the cloud. Instead of trying to prevent failures altogether, your goal should be to minimize the effects of a single failing component. Use the following information to minimize downtime and ensure that recommended practices for high availability are built into Azure and Oracle.
