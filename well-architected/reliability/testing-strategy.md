@@ -23,10 +23,8 @@ This guide describes the recommendations for designing a reliability testing str
 | Availability | The amount of time that an application workload runs in a healthy state without significant downtime. |
 | Chaos engineering | The practice of subjecting applications and services to real-world stresses and failures. The goal of chaos engineering is to build and validate resilience to unreliable conditions and missing dependencies. |
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
-| Recoverability | A synonym for resiliency. |
-| Resiliency | An application workload's ability to withstand and recover from failure modes. |
-
-
+| Recoverability | The ability to restore normal operations after a disruption within agreed recovery time (RTO) and recovery point (RPO) targets. |
+| Resiliency | The ability of a workload to withstand faults (transient errors, infrastructure outages, demand spikes) and continue operating within an acceptable user experience. |
 
 ## Test reliability preparedness
 
@@ -151,7 +149,7 @@ Integrate the following recommendations and considerations to optimize your chao
 
 ## Reliability checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)

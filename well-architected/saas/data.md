@@ -22,23 +22,23 @@ The data store in a software as a service (SaaS) solution affects its architectu
 
 - **Differentiate between your transactional and analytical operations.** Transactional data stores are designed to support your applications, and analytical data stores are used for reporting and tasks like machine learning. These stores are built with specialized products and have unique needs for performance, access patterns, schemas, and use cases.
 
-	This guide focuses on transactional data stores.
+  This guide focuses on transactional data stores.
 
 - **Understand your data needs.** Estimate the volume, frequency at which it can change, and type of data that you need to store.
 
-	Expect data to grow significantly over time. For SaaS solutions, growth occurs in multiple dimensions. Anticipate increases in the volume and types of data as the number of customers grow. Make sure that you plan for that growth and invest in technologies that can support it.
+  Expect data to grow significantly over time. For SaaS solutions, growth occurs in multiple dimensions. Anticipate increases in the volume and types of data as the number of customers grow. Make sure that you plan for that growth and invest in technologies that can support it.
 
-	Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
+  Decide between a relational or nonrelational data platform based on the nature of your data. For many transactional workloads, a relational database is a good option for modeling application entities as discrete tables. This approach allows queries to operate across the relational data model. Alternatively, if your data naturally fits a document model or follows a graph structure, a nonrelational approach might be more suitable.
  
-	For more information, see [Relational versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
+  For more information, see [Relational versus NoSQL data platforms](/dotnet/architecture/cloud-native/relational-vs-nosql-data).
 
 - **Minimize the types of data stores.** Storing different types of data in multiple, distinct data stores can be beneficial for mature organizations that have expertise across various data platforms. However, this approach often introduces unnecessary complexity for startups and smaller organizations. It's more effective to focus on one or a small number of data stores.
   
-	If you don't have the business justification for using multiple data stores, then focus your efforts on one or a small number of data stores.
+  If you don't have the business justification for using multiple data stores, then focus your efforts on one or a small number of data stores.
 
 - **Use what you know, and invest in it.** If your team already has expertise with a specific data store, it's often better to use that data store instead of investing in learning new skills. Data stores and platforms are complex, and design decisions can be difficult to reverse.
 
-	However, keep the potential growth in mind. If your current data store no longer meets your requirements, choose a data store that can enhance your solution's performance, resiliency, security, and operational efficiency. It should also help your team deepen their expertise.
+  However, keep the potential growth in mind. If your current data store no longer meets your requirements, choose a data store that can enhance your solution's performance, resiliency, security, and operational efficiency. It should also help your team deepen their expertise.
 
 ### Design recommendations
 
@@ -57,9 +57,9 @@ A key aspect of data design is the decision to host resources on behalf of your 
 
 - **Plan your database segmentation.** In business-to-business (B2B) SaaS solutions, we recommend that you create dedicated databases for each customer. This approach enhances data security by maintaining strict isolation between customers, which reduces the risk of data mixing and supports customer-managed encryption keys. It also helps you meet regulatory compliance requirements for some customers.
 
-	Separating customer data into individual databases can improve performance by minimizing [noisy neighbor problems](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor). Some managed data stores include resource allocation controls to mitigate these problems, provide cost efficiencies, and incorporate tools for managing multiple databases at scale.
+  Separating customer data into individual databases can improve performance by minimizing [noisy neighbor problems](/azure/architecture/antipatterns/noisy-neighbor/noisy-neighbor). Some managed data stores include resource allocation controls to mitigate these problems, provide cost efficiencies, and incorporate tools for managing multiple databases at scale.
 
-	In some cases, it's appropriate to store multiple customers' data in a single data store. For example, in business-to-consumer (B2C) solutions, you can save data in a single store with logical partitioning based on customer ID. In B2B solutions that share components, you can use a single data store for specific parts, such as an event store, while ensuring that you include customer IDs on each event.
+  In some cases, it's appropriate to store multiple customers' data in a single data store. For example, in business-to-consumer (B2C) solutions, you can save data in a single store with logical partitioning based on customer ID. In B2B solutions that share components, you can use a single data store for specific parts, such as an event store, while ensuring that you include customer IDs on each event.
 
 - **Collocate data stores with application components.** If you host resources on behalf of the customer, deploy in the same Azure region to avoid egress bandwidth charges and latency. When you host applications and data stores in a customer's environment, deploy them together in the same environment to avoid cross-environment complexities.
   
@@ -88,11 +88,11 @@ Capacity planning refers to the management of resource utilization, with a focus
 
 - **Understand the different capacity models that data platforms offer.** Cloud-based data platforms often provide multiple resource models. For example, some Azure services like Azure Cosmos DB provide provisioned, throughput-based models and serverless models. Azure SQL Database also provides elastic pools.
 
-	Provisioned throughput requires predetermined resource allocation, either from a single database or a group of databases. [Elastic pools](/azure/azure-sql/database/elastic-pool-overview) allow resource sharing among multiple databases. Elastic pools are commonly used in SaaS solutions.
-  
-	Even though provisioned throughput requires that you allocate resources ahead of time, services like Azure Cosmos DB provide [autoscale throughput](/azure/cosmos-db/provision-throughput-autoscale). You can set rules for dynamically adding or removing resources based on specified triggers.
-	
-	Serverless resource models automatically scale based on demand. This capability makes them a good starting point if you can't predict your capacity requirements ahead of time. However, they might support fewer features and become cost-inefficient as you grow. Serverless models are available in [Azure SQL Database](/azure/azure-sql/database/serverless-tier-overview) and [Azure Cosmos DB](/azure/cosmos-db/serverless).
+  Provisioned throughput requires predetermined resource allocation, either from a single database or a group of databases. [Elastic pools](/azure/azure-sql/database/elastic-pool-overview) allow resource sharing among multiple databases. Elastic pools are commonly used in SaaS solutions.
+
+  Even though provisioned throughput requires that you allocate resources ahead of time, services like Azure Cosmos DB provide [autoscale throughput](/azure/cosmos-db/provision-throughput-autoscale). You can set rules for dynamically adding or removing resources based on specified triggers.
+
+  Serverless resource models automatically scale based on demand. This capability makes them a good starting point if you can't predict your capacity requirements ahead of time. However, they might support fewer features and become cost-inefficient as you grow. Serverless models are available in [Azure SQL Database](/azure/azure-sql/database/serverless-tier-overview) and [Azure Cosmos DB](/azure/cosmos-db/serverless).
 
 ### Design recommendations
 
@@ -120,9 +120,9 @@ HA and DR aren't one-size-fits-all solutions and depend on various factors. Have
 
 - **Use platform features.** Azure provides capabilities for resiliency within a datacenter, within a region by using availability zones, and across a wider geographic area by using multiple regions. Combine strategies like availability zones, cross-region backup, and multiregion deployments to achieve the right level of resiliency and recoverability for your solution. For high resiliency requirements, consider a multiregion, active-passive architecture with asynchronous data replication between regions. This approach might result in some data loss during a catastrophic outage.
 
-	> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Multiregion, active-active designs with replication are the most resilient but are complex to build and test. For most active-active solutions, you need to design a conflict resolution approach that accounts for delays in data synchronization. Most solutions don't need this degree of resiliency.
+  > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Multiregion, active-active designs with replication are the most resilient but are complex to build and test. For most active-active solutions, you need to design a conflict resolution approach that accounts for delays in data synchronization. Most solutions don't need this degree of resiliency.
 
-	Refer to [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md).
+  Refer to [Recommendations for using availability zones and regions](../design-guides/regions-availability-zones.md).
 
 - **Use deployment stamps to isolate the blast radius of components.** The deployment stamps pattern is widely used in SaaS solutions because it provides benefits for deployment, management, performance, and reliability. For instance, deploying one stamp in the United States and another stamp in Europe ensures that customers in one region are isolated from outages in the other region and can operate independently.
 
@@ -149,7 +149,7 @@ You're responsible for ensuring the confidentiality and integrity of your custom
 
 - **Data retention:** Plan your data retention policies in advance. Maintaining more data increases storage costs and management complexity. For instance, large amounts of data in a transactional database can complicate querying and truncating processes.
 
-	For long-term data retention, such as for compliance or future analyses, consider relocating data to a store that's suitable for long-term retention.
+  For long-term data retention, such as for compliance or future analyses, consider relocating data to a store that's suitable for long-term retention.
 
 ### Design recommendations
 
@@ -175,7 +175,7 @@ SaaS solutions often include a large number of databases or other stores. It's i
   - Create or remove indexes based on changing query patterns.
   - Rebalance partitions.
 
-  Explore platform features that can help you perform regular maintenance and proactively look for new problems. For example, [SQL Database Advisor](/azure/azure-sql/database/database-advisor-implement-performance-recommendations) in Azure SQL Database monitors for problems. 
+  Explore platform features that can help you perform regular maintenance and proactively look for new problems. For example, [SQL Database Advisor](/azure/azure-sql/database/database-advisor-implement-performance-recommendations) in Azure SQL Database monitors for problems.
 
 - **Design for automation.** Automated operations are essential for a SaaS solution to scale effectively. Identify regular and occasional tasks and create playbooks or automation scripts for them. For tasks that you can't automate immediately, thoroughly document the processes to ensure consistency and clarity.
 
@@ -196,14 +196,13 @@ Some of your customers might request direct access to their data for custom repo
 
 - **Justify reasons for direct access.** Understand why customers need access to raw data by getting information about their business problem. Collaborate to find a solution that meets their needs without introducing risks to your platform.
 
-	Find alternate ways to meet the requirements rather than giving direct access. If access is needed for reporting purposes, application-tier approaches are preferable. For example, you might build reports for them by using Microsoft Power BI, or you can export a subset of your data to a file that you provide to them. You can also create APIs that they can use to access your data. 
+  Find alternate ways to meet the requirements rather than giving direct access. If access is needed for reporting purposes, application-tier approaches are preferable. For example, you might build reports for them by using Microsoft Power BI, or you can export a subset of your data to a file that you provide to them. You can also create APIs that they can use to access your data.
 
 - **Evaluate security and isolation implications.** Providing direct access to a data store poses significant security risks. Avoid exposing internal resources to external parties, including customers. In a SaaS environment that has many customers sharing a solution, the risks are even higher because the environment can be exploited to access other customers' data.
 
-	Consider providing customers access to their data in a secure, isolated manner that doesn't affect your production system and lets you make internal database design changes without breaking customers' queries.
+  Consider providing customers access to their data in a secure, isolated manner that doesn't affect your production system and lets you make internal database design changes without breaking customers' queries.
 
 - **Consider the effect on performance.** Allowing direct access to your transactional data store can lead to performance issues for your main application. For instance, a customer might run a resource-intensive query that disrupts the application's functionality.
-
 
 ### Design recommendations
 

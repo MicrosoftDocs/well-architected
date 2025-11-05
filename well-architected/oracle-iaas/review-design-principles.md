@@ -15,7 +15,7 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 
 | Well-Architected Framework pillar | Summary |
 | --- | --- |
-| Reliability | A reliable Oracle workload is both resilient and available. *Resiliency* is the ability to recover from failures and continue to function. *Availability* is uptime. High availability reduces Oracle database and Oracle application downtime during critical maintenance and improves recovery from failures. Failures happen on-premises and in the cloud, so it's important to design your Oracle workload for resiliency and availability.|
+| Reliability | A reliable Oracle workload is both resilient and recoverable, which maintains the availability of the system. High availability reduces Oracle database and application downtime during critical maintenance. Recoverability addresses restoration after larger incidents. Design explicitly for each area.|
 | Security | Security is about implementing measures that help protect your workload from threats. Examples include adding multiple security layers to your Oracle applications, including identity and access management (IAM), input validation, data sovereignty, encryption, and distributed denial-of-service (DDoS) mitigation. Other measures include blocking bad actors, preventing data exfiltration, and providing protection from operating system vulnerabilities. |
 | Cost Optimization | Cost Optimization is about keeping costs at a minimum while achieving required technical and business objectives.|
 | Performance Efficiency | Performance Efficiency is about accelerating digital transformation with less. The goal is to get the most out of your Oracle workload and meet user demand without overprovisioning or underprovisioning resources. Inefficient performance can degrade user experience and inflate costs. Performance affects productivity for both databases and applications.|
@@ -25,7 +25,7 @@ Guidance about well-architected Oracle on Azure infrastructure as a service (Iaa
 
 Because failures can occur on-premises and in the cloud, it's important to focus on resilience and availability when you design an Oracle on Azure IaaS workload.
 
-- *Resiliency* refers to recovering from failures and maintaining functionality.
+- *Resiliency* is the ability to withstand infrastructure faults, transient errors, and demand spikes while continuing to operate (possibly in a degraded mode) without user-impacting downtime.
 - *Availability* ensures uninterrupted uptime. High availability minimizes application and database downtime during critical maintenance activities. High availability also enhances recovery from incidents like VM crashes, back-end updates, extended downtimes, and ransomware attacks.
 
 Failures can happen in the cloud. Instead of trying to prevent failures altogether, your goal should be to minimize the effects of a single failing component. Use the following information to minimize downtime and ensure that recommended practices for high availability are built into Azure and Oracle.

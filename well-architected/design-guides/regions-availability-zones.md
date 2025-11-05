@@ -105,9 +105,9 @@ It's ideal to mitigate every possible risk for every workload. However, this app
 > [!TIP]
 > Regardless of reliability targets, all workloads must have some mitigation for disaster recovery (DR). If your workload demands high reliability targets, then your mitigation strategies should be comprehensive and you should reduce the risk of even low-likelihood events. For other workloads, make an informed decision on which risks are acceptable and which risks need mitigation.
 
-#### Resiliency requirements
+#### Reliability requirements
 
-It's important to understand the resiliency requirements for your workload, including the recovery time objective (RTO) and recovery point objective (RPO). These objectives help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Architecture strategies for identifying and rating flows](../reliability/identify-flows.md).
+It's important to understand the reliability requirements for your workload, for example agreeing on recovery targets such as recovery time objectives (RTO) and recovery point objectives (RPO). Reliability requirements help you decide which approaches to rule out. If you don't have clear requirements, you can't make an informed decision about which approach to follow. For more information, see [Architecture strategies for identifying and rating flows](../reliability/identify-flows.md).
 
 #### Service-level objectives
 
