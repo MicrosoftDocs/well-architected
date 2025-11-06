@@ -282,6 +282,7 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 |-----------|----------|----------------|
 | Data access APIs | Build | Create robust, secure APIs to enable customers and third-party tools to access and query data. |
 | AI-powered data query interfaces | Build or customize | Develop or fine-tune natural language query tools that allow users to interact with data intuitively. |
+| Agentic experiences | TODO | TODO |
 | Integration with external AI agents | Build or integrate | Support integration points (APIs, webhooks) to allow customers to connect their AI agents or workflows to your data. |
 | Data governance and privacy | Build | Implement strict controls and monitoring to ensure data security, compliance, and privacy. |
 | Custom ML models for data insights | Buy or build | Use prebuilt models when possible; build custom models only if you have proprietary data and expertise. |
@@ -348,6 +349,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Data ingestion pipelines         | Build           | Develop tailored pipelines to collect, clean, and normalize diverse customer data for accurate analysis. |
 | Prebuilt analytics models        | Buy or customize             | Leverage existing AI/ML models for common forecasting, anomaly detection, and benchmarking tasks. Customize them if necessary for your domain. |
 | Custom AI model training         | Build | Create and train models on proprietary datasets to create unique, differentiated insights and predictions.     |
+| Agentic experiences | TODO | TODO |
 | Interactive data visualization   | Build or customize | Create or enhance dashboards that allow dynamic exploration and real-time data interaction.             |
 | Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
