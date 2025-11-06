@@ -1,9 +1,10 @@
 ---
 title: Billing and Cost Management for SaaS Workloads on Azure
 description: Get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
-author: dolevshor
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/03/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---

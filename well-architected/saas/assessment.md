@@ -4,6 +4,7 @@ description: Learn how to assess key technical design areas in your SaaS workloa
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/05/2025
+ms.update-cycle: 1095-days
 ms.service: azure-waf
 ms.topic: concept-article
 ms.collection: learn-startups
