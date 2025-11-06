@@ -26,7 +26,7 @@ In the context of SaaS workloads, there are two distinct types of identity.
 
 A SaaS solution commonly uses both identity types together:
 
-:::image type="content" source="./images/identity-types.png" alt-text="Diagram that shows the relationship between application identity and enterprise identity." border="false":::
+:::image type="content" source="./images/identity-types.svg" alt-text="Diagram that shows the relationship between application identity and enterprise identity." border="false":::
 
 Application and enterprise identities serve different purposes and might use different identity providers. This article focuses on design considerations for application identity, though both types are likely to be present in your SaaS workload environment. 
 
@@ -97,7 +97,7 @@ Although implementing federated identity is initially simple, it becomes more co
 
 This image shows the relationship between your application, your application identity provider, and the downstream identity providers that you might choose to implement by using identity federation.  
 
-:::image type="content" source="./images/federated-identity.png" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers." border="false":::
+:::image type="content" source="./images/federated-identity.svg" alt-text="Diagram that shows an application trusting a single identity provider, which in turn federates with multiple customer identity providers." border="false":::
 
 ### Design considerations
 
