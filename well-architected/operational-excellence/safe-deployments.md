@@ -90,13 +90,17 @@ In some cases, the emergency might limit quality and testing gates, but gates sh
 
 ## Plan and execute safe decommissioning
 
-Retiring or deleting a component is a high-risk change because it's hard to undo once gone. A component can be a whole Azure resource or a configuration item like a DNS record, feature flag, or gateway route. Hidden or mostly dormant dependencies can still be critical. Follow a safe approach, such as:
+Removing or deprecating a component is one of the highest risk changes you can make. Once deleted, a resource is often gone for good, and recovery can be difficult. Even something that appears idle or insignificant may still support a critical hidden dependency. Treat every deletion as irreversible and follow a deliberate, safety-first approach, such as:
 
-1. Validate non‑use. Define signals (requests, route hits, queue depth, feature flag evaluations, DNS query volume) and meet explicit inactivity criteria over a full user cycle.
-1. Preserve state. Take a time‑boxed backup or snapshot and tag it with a disposal date.
-1. Disable first. Prefer an offline or disabled state before destructive removal to surface unexpected usage. Only skip this step if compliance mandates immediate deletion.
-1. Observe a watch window that spans normal and peak usage patterns.
-1. Remove residual references. Safely delete obsolete secrets, routes, feature flags, configuration entries, dashboard tiles, and alert rules tied to the component.
+- Validate inactivity. Confirm that the resource is truly unused. Define clear indicators of inactivity across a full user or business cycle. If you see any activity, such as requests, route hits, queue depth changes, feature flag evaluations, or DNS queries, investigate and confirm it's legitimate before proceeding.
+
+-  Preserve state before removal. Take a snapshot, export, or backup of the resource and tag it with a disposal or review date. 
+
+- Disable before deleting. When possible, move the component to a disabled or offline mode instead of immediately deleting it. This helps expose hidden dependencies safely. Only skip this step if compliance or security requirements demand immediate removal.
+
+- Monitor through a watch window. Observe over a watch window that covers both normal and peak usage patterns. Any unexpected activity during this period should reset the decommissioning process.
+
+- Clean up residual references. Once confident in full inactivity, clean up related references to the removed component.
 
 ## Considerations
 
