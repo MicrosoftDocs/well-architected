@@ -3,7 +3,7 @@ title: Billing and Cost Management for SaaS Workloads on Azure
 description: Get guidance on billing customers within your SaaS business model, and learn strategies for understanding and optimizing costs for your solution.
 author: dolevshor
 ms.author: prwilk
-ms.date: 11/04/2024
+ms.date: 11/03/2025
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
@@ -22,7 +22,7 @@ Most billing models are based on customer usage. A billing model typically requi
 
 ### Design considerations
 
-- **Align billing with costs.** You should use customer-friendly billing meters, even though your COGS relies on technical metrics like data volumes and API calls. Mismatches between billing and costs can be risky. Identify and address scenarios where high resource usage doesn't lead to higher customer bills, and adjust your pricing and cost model accordingly.
+- **Align billing with costs.** You should use customer-friendly billing meters, even though your *cost of goods sold (COGS)* relies on technical metrics like data volumes and API calls. Mismatches between billing and costs can be risky. Identify and address scenarios where high resource usage doesn't lead to higher customer bills, and adjust your pricing and cost model accordingly.
 
 - **Design for billing.** The way in which you bill your customers can influence your solution design.
 
@@ -35,13 +35,13 @@ Most billing models are based on customer usage. A billing model typically requi
 | Recommendation | Benefit |
 |---|---|
 | Design billing meters that are meaningful to your customers. <br><br> For example, the number of users or business transactions processed are meters that your customers can understand. <br> Avoid using metrics that are easy for you to measure but hard for customers to understand, like API requests. | This approach gives your customers confidence in their understanding of your service. It also helps them model their own costs effectively.|
-| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach. | This approach helps you avoid making last-minute changes to your solution. It also prevents the need for customizing your solution for a single customer, which could lead to operational complexity in the future.  |
+| Plan the implementation of billing plans or SKUs carefully. <br><br> If you offer multiple billing tiers, use a systematic approach and avoid pricing arrangements for individual customers. | This approach helps you avoid making last-minute changes to your solution. It also prevents the need for customizing your solution for a single customer, which could lead to operational complexity in the future.  |
 | Plan the implementation of discounts carefully. <br><br> Pricing discounts can be complex to manage, even if they only affect billing processes. | You'll prevent customer disappointment for  discounts that your solution or processes can't deliver. |
 | Consider publishing your solution through the Azure Marketplace, especially if you deploy into customer environments. | Azure Marketplace provides a range of services, including management of billing. |
 
 ## Develop a cost model
 
-Before you can optimize your costs, you need to itemize them. Your *cost of goods sold (COGS)* is the direct cost of delivering your solution. Azure spend is often a significant part of these costs. You might also consider third-party solutions, or you might choose to build custom software. Be aware that all of these options have varied levels of cost, including hidden costs.
+Before you can optimize your costs, you need to itemize them. Your COGS is the direct cost of delivering your solution. Azure spend is often a significant part of these costs. You might also consider third-party solutions, or you might choose to build custom software. Be aware that all of these options have varied levels of cost, including hidden costs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Cost efficiency, functionality, and complexity.** When you build your own tooling or supporting software, you can customize it to your needs. However, there are costs to building your own tooling, some of which might not be obvious, such as ongoing maintenance and keeping up with security standards. You offload the responsibility of specialized software to a third party, enabling you to focus on development efforts for your own core business value.
 
@@ -70,7 +70,8 @@ In SaaS development, understanding how customers affect costs is crucial. A cost
 
 - **Start simple and build gradually.** Having a rough cost model is better than not having one. Although cost modeling can be time-consuming and complex, it's crucial for business planning and optimizing costs. Start with a high-level model that uses approximate values, such as:
 
-    - Each customer requires resources X and Y, which cost $100 each.
+    - Each customer requires resources W and X, which cost $100 each.
+    - Five customers can share resource Y, so every fifth customer, deploy a new instance of Y, which costs $150.
     - Customers that have more than 500 users need resource Z, which costs $50.
     - 10% of customers require a new load balancing system, which costs $100.
 

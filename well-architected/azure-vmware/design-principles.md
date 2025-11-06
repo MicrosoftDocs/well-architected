@@ -25,7 +25,7 @@ Guidance about well-architected Azure VMware Solution workloads is built on the 
 
 Because failures can occur on-premises and in the cloud, it's important to focus on resilience and availability when you design an Azure VMware Solution workload.
 
-- *Resiliency* refers to recovering from failures and maintaining functionality.
+- *Resiliency* is the ability to withstand infrastructure faults, transient errors, and demand spikes while continuing to operate (possibly in a degraded mode) without user-impacting downtime.
   
 - *Availability* ensures uninterrupted uptime. High availability minimizes application downtime during critical maintenance activities. It also enhances recovery from incidents like virtual machine (VM) crashes, backend updates, extended downtimes, and ransomware attacks.
 

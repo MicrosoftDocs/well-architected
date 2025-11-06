@@ -13,10 +13,9 @@ ms.topic: concept-article
 |**RE:03**| **Use failure mode analysis (FMA) to identify potential failures in your workload.** Identify dependencies and failure points, and develop mitigation strategies for those failures.  |
 |---|---|
 
-
 This guide describes the best practices for performing failure mode analysis (FMA) for your workload. FMA is the practice of identifying potential points of failure within your workload and the associated flows and planning mitigation actions accordingly. At each step of the flow, you identify the blast radius of multiple failure types, which helps you design a new workload or refactor an existing workload to minimize the widespread effect of failures.
 
-A key tenet of FMA is that failures happen no matter how many layers of resiliency you apply. More complex environments are exposed to more types of failures. Given this reality, FMA allows you to design your workload to withstand most types of failures and recover gracefully when a failure occurs.
+A key tenet of FMA is that failures happen no matter how many layers of resiliency you apply. More complex environments are exposed to more types of failures. Given this reality, FMA allows you to design your workload to withstand most types of failures and recover gracefully within defined recovery objectives.
 
 If you skip FMA altogether or perform an incomplete analysis, your workload is at risk of unpredicted behavior and potential outages caused by suboptimal design.
 
@@ -27,7 +26,6 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 | Failure mode | A type of problem that can cause one or more workload components to be degraded or severely affected to the point of being unavailable. |
 | Mitigation | The activities that you have identified to address problems either proactively or reactively. |
 | Detection | Your infrastructure, data, and app monitoring and alerting processes and procedures. |
-
 
 Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
@@ -140,10 +138,10 @@ The following table shows an FMA example for an e-commerce website that's hosted
 
 - [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [Resiliency and dependencies](../resiliency/design-resiliency.md)
- 
+
 ## Reliability checklist  
 
-Refer to the complete set of recommendations. 
+Refer to the complete set of recommendations.
 
-> [!div class="nextstepaction"] 
-> [Reliability checklist](checklist.md) 
+> [!div class="nextstepaction"]
+> [Reliability checklist](checklist.md)
