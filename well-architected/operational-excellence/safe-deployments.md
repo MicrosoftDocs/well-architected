@@ -16,7 +16,6 @@ ms.topic: concept-article
 
 This guide describes the recommendations for using safe deployment practices (SDP). Safe deployment processes and procedures define how to safely make and deploy changes to your workload. Implementing SDP requires you to think about deployments through the lens of managing risk. You can minimize the risk of human error in your deployments and limit the effects of problematic deployments on your users by implementing SDP.
 
-
 There are four important guidelines to keep in mind when implementing safe deployment practices:
 
 - **Safety and consistency**: All changes to the production workload are inherently risky and must be made with a focus on safety and consistency.
@@ -88,6 +87,16 @@ Establish prescriptive protocols that define how your SDP can be adjusted for a 
 - Bake time reduction.
 
 In some cases, the emergency might limit quality and testing gates, but gates should still be run as quickly as possible as an out-of-band exercise. Make sure that you define who can approve SDP acceleration in an emergency and the criteria that must be met for acceleration to be approved. Align your emergency SDP protocols with your [emergency response plan](./emergency-response.md) to help ensure that all emergencies are handled according to the same protocols.
+
+## Plan and execute safe decommissioning
+
+Retiring or deleting a component is a high-risk change because it's hard to undo once gone. A component can be a whole Azure resource or a configuration item like a DNS record, feature flag, or gateway route. Hidden or mostly dormant dependencies can still be critical. Follow a safe approach, such as:
+
+1. Validate non‑use. Define signals (requests, route hits, queue depth, feature flag evaluations, DNS query volume) and meet explicit inactivity criteria over a full user cycle.
+1. Preserve state. Take a time‑boxed backup or snapshot and tag it with a disposal date.
+1. Disable first. Prefer an offline or disabled state before destructive removal to surface unexpected usage. Only skip this step if compliance mandates immediate deletion.
+1. Observe a watch window that spans normal and peak usage patterns.
+1. Remove residual references. Safely delete obsolete secrets, routes, feature flags, configuration entries, dashboard tiles, and alert rules tied to the component.
 
 ## Considerations
 
