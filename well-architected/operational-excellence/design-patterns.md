@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Architecture design patterns that support operational excellence
 
-When you design workload architectures, you should use industry patterns that address common challenges. Patterns help you make intentional tradeoffs, optimize for desired outcomes. The also help you mitigate risks that can impact reliability, security, performance, and cost. Because operations span all those areas, unmanaged risks eventually surface as operational toil or incidents. These patterns are proven in real-world cloud environments, scale with modern operating models, and are inherently vendor agnostic. Standardizing on well-known patterns is itself a practice of operational excellence.
+When you design workload architectures, you should use industry patterns that address common challenges. Patterns help you make intentional tradeoffs and optimize for desired outcomes. They also help you mitigate risks that can impact reliability, security, performance, and cost. Because operations span all those areas, unmanaged risks eventually surface as operational toil or incidents. These patterns are proven in real-world cloud environments, scale with modern operating models, and are inherently vendor agnostic. Standardizing on well-known patterns is itself a practice of operational excellence.
 
 Many patterns reinforce one or more Azure Well-Architected pillars. For operational excellence specifically, patterns often provide topologies that enable safe deployment practices, incremental evolution, controlled migration, and observability.
 
