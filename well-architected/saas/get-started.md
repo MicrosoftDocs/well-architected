@@ -1,9 +1,10 @@
 ---
 title: SaaS Workloads
 description: Overview of SaaS workloads on Azure.
-author: johndowns
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/05/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---
