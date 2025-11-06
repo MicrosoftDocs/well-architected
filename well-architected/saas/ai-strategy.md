@@ -68,6 +68,11 @@ This could involve embedding intelligent features, improving internal operations
 
 - **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#put-strategy-to-practice-for-your-saas-archetype).
 
+    Distinguish between foundational AI use cases and agentic use cases:
+    
+    - Foundational use cases use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, and enrichment.
+    - Agentic use cases use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities. Agentic use cases increasingly combine multiple agents, each with a defined purpose. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to discover and assess loan applications.
+
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
 - **Invest in AI education and awareness**. Equip your teams with a foundational understanding of what AI is (and isn't), how it applies to your business, and where it can add meaningful value. A shared understanding helps reduce misaligned initiatives.
@@ -270,7 +275,6 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 - **Over-customization.** Developing custom AI models without sufficient data or expertise may result in wasted resources and ineffective outcomes. Start with starting with prebuilt models or fine-tuning before building custom solutions.
 
 - **Data versioning and consistency.** Inadequate data lifecycle management can cause customers' AI agents to operate on outdated or inconsistent data. Implement strict version control and synchronization mechanisms to maintain data accuracy.
-
 
 #### Build, buy, or customize?
 
