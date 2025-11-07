@@ -4,7 +4,7 @@ description: "Architectural recommendations for Azure Virtual WAN mapped to the 
 author: josevarela
 ms.author: josev
 ms.topic: conceptual
-ms.date: 11/03/2025
+ms.date: 11/06/2025
 ms.subservice: waf-service-guide
 products:
  - azure-virtual-wan
