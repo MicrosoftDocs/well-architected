@@ -40,6 +40,8 @@ The first step of the hardening process is to gather a comprehensive inventory o
 
 - **Reduce the footprint**. Remove extraneous surface area or reduce the scope. **Eliminate easy targets**, or cheap and well-established attack vectors, such as unpatched software exploits and brute force attacks. Prior to the production deployment, you should clean identities, build components, and other nonrequired assets from the source tree.
 
+  > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Decommissioning resources, removing identities or role assignments, reducing protocol support, and deleting data could lead to accidental loss of critical functionality. Mitigate this risk by using a [safe decommissioning](../operational-excellence/safe-deployments.md#plan-and-execute-safe-decommissioning) process.
+
 - **Fine-tune configurations**. Evaluate and **tighten the remaining surface area**. When resources are hardened, tried and tested methods that attackers use are no longer successful. It forces attackers to acquire and use advanced or untested attack methods, which increases their costs.
 
 - **Maintain defenses**. Maintain protective measures by performing **continuous threat detection** to help ensure that hardening efforts are dependable over time.

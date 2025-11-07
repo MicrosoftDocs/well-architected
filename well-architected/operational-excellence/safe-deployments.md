@@ -16,7 +16,6 @@ ms.topic: concept-article
 
 This guide describes the recommendations for using safe deployment practices (SDP). Safe deployment processes and procedures define how to safely make and deploy changes to your workload. Implementing SDP requires you to think about deployments through the lens of managing risk. You can minimize the risk of human error in your deployments and limit the effects of problematic deployments on your users by implementing SDP.
 
-
 There are four important guidelines to keep in mind when implementing safe deployment practices:
 
 - **Safety and consistency**: All changes to the production workload are inherently risky and must be made with a focus on safety and consistency.
@@ -88,6 +87,20 @@ Establish prescriptive protocols that define how your SDP can be adjusted for a 
 - Bake time reduction.
 
 In some cases, the emergency might limit quality and testing gates, but gates should still be run as quickly as possible as an out-of-band exercise. Make sure that you define who can approve SDP acceleration in an emergency and the criteria that must be met for acceleration to be approved. Align your emergency SDP protocols with your [emergency response plan](./emergency-response.md) to help ensure that all emergencies are handled according to the same protocols.
+
+## Plan and execute safe decommissioning
+
+Removing or deprecating a component is one of the highest risk changes you can make. Once deleted, a resource is often gone for good, and recovery can be difficult. Even something that appears idle or insignificant may still support a critical hidden dependency. Treat every deletion as irreversible and follow a deliberate, safety-first approach, such as:
+
+- Validate inactivity. Confirm that the resource is truly unused. Define clear indicators of inactivity across a full user or business cycle. If you see any activity, such as requests, route hits, queue depth changes, feature flag evaluations, or DNS queries, investigate and confirm it's legitimate before proceeding.
+
+-  Preserve state before removal. Take a snapshot, export, or backup of the resource and tag it with a disposal or review date. 
+
+- Disable before deleting. When possible, move the component to a disabled or offline mode instead of immediately deleting it. This helps expose hidden dependencies safely. Only skip this step if compliance or security requirements demand immediate removal.
+
+- Monitor through a watch window. Observe over a watch window that covers both normal and peak usage patterns. Any unexpected activity during this period should reset the decommissioning process.
+
+- Clean up residual references. Once confident in full inactivity, clean up related references to the removed component.
 
 ## Considerations
 

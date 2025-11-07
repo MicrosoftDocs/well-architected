@@ -143,7 +143,7 @@ The following sections describe configuration options for active-active deployme
 
 - **Common disadvantages of both designs:** Higher operating costs and management burden because of various factors, including the necessity of managing the synchronization of application state and data.
 
-### Use an active-passive architecture design to provide DR resilience
+### Use an active-passive architecture design as a cost-effective DR approach
 
 Active-passive deployment configurations provide a cost-effective way to ensure DR by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary instance fails or undergoes maintenance. This approach minimizes resource usage while providing reliable failover capabilities.
 
@@ -216,6 +216,12 @@ The Azure platform helps you optimize the resiliency of your workload and add re
 - For hybrid name resolution scenarios between on-premises and cloud environments, use Azure DNS Private Resolver. This service supports zone redundancy if your workload is located in a region that supports availability zones. A zone-wide outage requires no action during zone recovery. The service automatically self-heals and rebalances to take advantage of the healthy zone. For more information, see [Resiliency in Azure DNS Private Resolver](/azure/dns/private-resolver-reliability).
 
 - To eliminate a single point of failure and achieve a more resilient hybrid name resolution across regions, deploy two or more Azure DNS private resolvers across different regions. DNS failover, in a conditional forwarding scenario, is achieved by assigning a resolver as your primary DNS server. Assign the other resolver in a different region as a secondary DNS server. For more information, see [Set up DNS failover by using private resolvers](/azure/dns/tutorial-dns-private-resolver-failover).
+
+### Apply delete protection to preserve redundancy
+
+Redundancy only helps if the components that provide it stay in place. Accidental deletion of a data store, DNS zone, or traffic routing layer collapses resiliency and forces full recovery actions. Reduce human error blast radius by applying Azure resource [*CanNotDelete* locks](/azure/azure-resource-manager/management/lock-resources).
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** Applying locks slows legitimate recovery actions and can create operational friction. Locks block resource deletion, not changes or data within the resource. Treat locks as a thin safety net that complements, never replaces, backups, replication, and access governance.
 
 ## Example
 
