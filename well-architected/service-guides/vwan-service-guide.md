@@ -62,9 +62,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >    The SLA excludes customer responsibilities including on-premises equipment failures, internet connectivity issues outside Azure's control, and customer configuration errors.
 >
 > - **Plan for multi-region redundancy for hub deployment:** Distribute virtual hubs across multiple Azure regions to achieve region-level redundancy.
-
+>
 > Region selection should prioritize:
-
+>
 > - Proximity to users and workloads.
 > - Paired regions for disaster recovery.
 > - Cross-region connectivity requirements.
@@ -73,7 +73,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > Configure routing to support automatic or manual region failover. Plan for asymmetric routing patterns during failures and document expected outage behavior. Regulatory and data residency requirements may constrain multi-region deployment strategies.
 >
 > - **Plan for layered redundancy:** Virtual WAN supports three redundancy layers, each addressing distinct failure scenarios:
-
+>
 > | Layer | Protection Against |
 > |-------|-------------------|
 > | Zone-level | Datacenter failures within a region. |
@@ -81,7 +81,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > | Route-level | Enables traffic engineering and failover control. |
 >
 > Balance redundancy decisions against availability needs, implementation complexity, and cost. Evaluate each failure domain's impact on workload operations. Choose routing patterns (symmetric or asymmetric) that match operational capabilities.
-
+>
 > - **Plan for reliable hub and gateway scaling:** Virtual WAN requires careful capacity planning. The hub router supports autoscaling but takes up to 25 minutes to complete scaling operations, while gateways require manual sizing and cannot scale dynamically.
 >
 >    Size infrastructure for expected growth, not current traffic. Overprovision capacity to maintain reliability. Reactive scaling risks capacity exhaustion during demand spikes, and gateway resizing requires scheduled maintenance.
@@ -99,7 +99,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > - Parallel path scenarios to identify asymmetric routing patterns.
 > - BGP route advertisement during failover events.
 >
-> - **configure monitoring and alerting for service health:** Set up monitoring for hub routers, gateways, and routing infrastructure to detect issues before users report outages. Configure alerts for performance degradation to enable early response.
+> - **Configure monitoring and alerting for service health:** Set up monitoring for hub routers, gateways, and routing infrastructure to detect issues before users report outages. Configure alerts for performance degradation to enable early response.
 >
 >    Enable diagnostic logs across all Virtual WAN components to support troubleshooting through event correlation. Resource Health distinguishes Azure service issues from customer-side connectivity problems.
 
@@ -153,7 +153,7 @@ Start your design strategy based on the [design review checklist for Security](.
 > - Certificate-based authentication requires PKI infrastructure and certificate lifecycle management.
 > - RADIUS authentication integrates with existing RADIUS infrastructure.
 >
-> Control Virtual WAN configuration access using Role-Based Access Control (RBAC) assignments:
+>     Control Virtual WAN configuration access using Role-Based Access Control (RBAC) assignments:
 >
 > - Apply RBAC assignments to control who can modify Virtual WAN configuration.
 > - Use built-in Network Contributor and Reader roles for most scenarios.
@@ -161,7 +161,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Control and filter network traffic using defense-in-depth approach:** Deploy security controls at multiple network layers. Use Virtual WAN Standard SKU to deploy Azure Firewall or partner security solutions in the hub for centralized application-aware filtering and threat protection. Deploy Network Security Groups in spoke networks for subnet-level filtering based on IPs, ports, and protocols.
 >
-> Each layer addresses different security requirements. Hub security controls enforce organization-wide policies and detect threats across all connected networks. Spoke NSGs provide workload-specific controls that teams configure based on their application requirements.
+>     Each layer addresses different security requirements. Hub security controls enforce organization-wide policies and detect threats across all connected networks. Spoke NSGs provide workload-specific controls that teams configure based on their application requirements.
 >
 > - **Ensure encrypted connectivity for your connections:** Select strong encryption algorithms like AES-256-GCM or AES-256-CBC to protect data confidentiality and strong integrity algorithms like SHA-256 or SHA-384 to prevent tampering. Align IPsec/IKE encryption policies for Site-to-Site VPN between Azure and on-premises VPN devices to prevent tunnel establishment failures.
 >
@@ -169,7 +169,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Harden architecture using Zero Trust principles:** Apply Zero Trust principles by assuming breach and limiting blast radius. Use deny-by-default network access controls with explicit permit rules for required traffic. Enable security monitoring for breach detection.
 >
-> Reduce attack surface by disabling unused features such as:
+>     Reduce attack surface by disabling unused features such as:
 >
 > - Legacy or weak VPN options and cipher suites.
 > - Unnecessary Point-to-Site authentication modes.
