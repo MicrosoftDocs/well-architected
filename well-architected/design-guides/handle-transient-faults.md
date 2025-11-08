@@ -173,7 +173,6 @@ Most Azure services and client SDKs provide a retry mechanism. However, these me
 | [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None |
 | [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None |
 | [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None |
-| [Azure Cache for Redis](/azure/architecture/best-practices/retry-service-specific#azure-cache-for-redis) |Native in the client |Programmatic |Client |TextWriter |
 | [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom |
 | [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW |
 | [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None |
