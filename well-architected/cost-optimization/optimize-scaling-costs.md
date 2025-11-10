@@ -147,7 +147,7 @@ Azure maintains a list of [subscription and service limits.](/azure/azure-resour
 
 **Optimizing demand and supply**: Azure Monitor provides insights into the performance and health of your applications and infrastructure. You can use Azure Monitor to monitor the load on your resources and analyze trends over time. By using metrics and logs collected by Azure Monitor, you can identify areas where scaling adjustments might be needed. This information can guide the refinement of your autoscaling policy to ensure it aligns with the nonfunctional requirements and cost optimization goals.
 
-- *Offloading supply*: Azure has a modern cloud Content Delivery Network (CDN) called [Azure Front Door](/azure/frontdoor/front-door-overview) and caching services ([Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview) and [Azure HPC Cache](/azure/hpc-cache/hpc-cache-overview)). The CDN caches content closer to the end-users, reducing network latency and improving response times. Caching stores a copy of the data in front of the main data store, reducing the need for repeated requests to the backend. By using CDN and caching services, you can optimize performance and reduce the load on servers for potential cost savings.
+- *Offloading supply*: Azure has a modern cloud Content Delivery Network (CDN) called [Azure Front Door](/azure/frontdoor/front-door-overview) and caching services ([Azure Managed Redis](/azure/redis/overview) and [Azure HPC Cache](/azure/hpc-cache/hpc-cache-overview)). The CDN caches content closer to the end-users, reducing network latency and improving response times. Caching stores a copy of the data in front of the main data store, reducing the need for repeated requests to the backend. By using CDN and caching services, you can optimize performance and reduce the load on servers for potential cost savings.
 
 - *Controlling supply*: Azure also allows you to set resource limits for your cloud workload. By defining resource limits, you can ensure that your workload stays within the allocated resources and avoid unnecessary costs. Azure provides various mechanisms for setting resource limits such as quotas, policies, and budget alerts. These mechanisms help you monitor and control resource usage.
 
@@ -161,7 +161,7 @@ Azure maintains a list of [subscription and service limits.](/azure/azure-resour
 - [Azure subscription and service limits, quotas, and constraints](/azure/azure-resource-manager/management/azure-subscription-service-limits)
 - [Resources not limited to 800 instances per resource group](/azure/azure-resource-manager/management/resources-without-resource-group-limit)
 - [What is Azure Front Door?](/azure/frontdoor/front-door-overview)
-- [What is Azure Cache for Redis?](/azure/azure-cache-for-redis/cache-overview)
+- [What is Azure Managed Redis?](/azure/redis/overview)
 - [What is Azure HPC Cache?](/azure/hpc-cache/hpc-cache-overview)
 - [Advanced request throttling with Azure API Management](/azure/api-management/api-management-sample-flexible-throttling)
 
