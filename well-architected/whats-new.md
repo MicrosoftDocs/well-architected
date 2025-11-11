@@ -29,15 +29,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Networking and connectivity considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/networking.md): We reorganized content into focused sections for traffic optimization, network security, network segmentation, multi-region connectivity, and hybrid networking. We consolidated recommendations into tables with clear benefits, added guidance about Azure Private Link and large subnet trade-offs, and removed outdated references. We also updated terminology and included current links to relevant Azure documentation for a more cohesive and actionable guide.
 
-### Azure feature updates
-
-We updated several articles to reflect new Azure features and capabilities that launched this month. Check out the updates in the following articles:
-
-- [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md): We added guidance about confidential computing for protecting data in use by using hardware-based encryption, which helps organizations in highly regulated industries meet stringent compliance requirements while maintaining database performance. We also corrected minor typographical errors to improve content accuracy.
-
-- [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We added guidance about the Kubernetes AI Toolchain Operator (KAITO) for efficient deployment and management of AI model serving workloads, which simplifies infrastructure provisioning for machine learning inference. We introduced AKS Automatic, which is a managed Kubernetes experience that automates cluster management tasks and reduces operational overhead. We also added guidance about Azure Monitor high-scale mode for Container Insights to support large-scale Kubernetes deployments that run hundreds of nodes. This mode optimizes monitoring performance and resource consumption.
-
-- [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md): We added guidance about short-term clones for rapid, space-efficient testing and development workflows. Short-term clones provide temporary volume copies with automatic cleanup capabilities, which reduces storage costs and administrative overhead. They also let you access production-like data for testing scenarios without affecting production systems.
+- This month, we incorporated newly released Azure features from the Azure updates feed into our guidance. Check out the updates in [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md), [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md), and more.
 
 ## September 2025
 
