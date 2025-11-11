@@ -1,15 +1,35 @@
 ---
-title: What's new in the Azure Well-Architected Framework
+title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/08/2025
+ms.date: 11/10/2025
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## October 2025
+
+### New articles
+
+- [Architecture strategies for designing an emergency response strategy](./operational-excellence/incident-response.md): Learn how to build effective incident response capabilities within workloads. This guidance describes how to design systems for containment and isolation, implement monitoring for rapid detection, facilitate diagnostics, establish incident management processes, conduct root cause analysis and postmortems, and use automation to improve response consistency. Learn how to create structured procedures to detect, contain, and resolve incidents while learning from failures to prevent recurrence.
+
+- [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md): Learn how to implement Service Bus by using architectural best practices across the five Well-Architected Framework pillars. This guidance describes zone redundancy and geo-disaster recovery, Microsoft Entra ID authentication and private endpoints, tier selection and resource rightsizing, infrastructure as code (IaC) and monitoring, and autoscaling and message batching. The guidance helps you design resilient, secure, and cost-effective messaging solutions for distributed applications.
+
+### Updated articles
+
+- [Application design for AI workloads on Azure](./ai/application-design.md): We improved clarity and consistency. We reorganized the opening paragraphs to better introduce the article's scope before diving into design decisions. We refined language throughout for better readability and updated terminology. We enhanced formatting in tables and lists, improved the flow of key sections for caching and security, and made minor technical corrections for accuracy.
+
+- [Design training data for AI workloads on Azure](./ai/training-data-design.md): We added guidance about multimodal data handling and user-generated data sources. We added a new section about feature store design that covers centralized, distributed, and hybrid implementation approaches. We also introduced guidance about foundation model fine-tuning that explains how training data requirements differ from traditional model training. It emphasizes the importance of high-quality, task-relevant examples for domain-specific and task-specific adaptation.
+
+- [Develop a disaster recovery plan for multi-region deployments](./design-guides/disaster-recovery.md): We improved clarity and consistency throughout the article. We corrected the recovery point objective (RPO) definition to emphasize data loss tolerance, clarified terminology for transient faults, and improved sentence structure in several sections. We updated backup configuration guidance to be more general rather than prescribing specific vault types. We also refined the description of active-active deployment patterns to include geodes as an alternative to deployment stamps.
+
+- [Networking and connectivity considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/networking.md): We reorganized content into focused sections for traffic optimization, network security, network segmentation, multi-region connectivity, and hybrid networking. We consolidated recommendations into tables with clear benefits, added guidance about Azure Private Link and large subnet trade-offs, and removed outdated references. We also updated terminology and included current links to relevant Azure documentation for a more cohesive and actionable guide.
+
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md), [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md), and more.
 
 ## September 2025
 
@@ -230,26 +250,3 @@ This month, we added a new workload for SaaS on Azure. This documentation provid
 - [DevOps Practices for SaaS Workloads on Azure](./saas/devops.md)
 - [Incident Management for SaaS Workloads on Azure](./saas/incident-management.md)
 - [Assessment Review Tool for SaaS Workloads on Azure](./saas/assessment.md)
-
-## October 2024
-
-### Updated articles
-
-- [Architecture decision record (ADR)](./architect-role/architecture-decision-record.md): We refreshed the guidance on what an ADR should include, including consistent elements like problem statements, options considered, and decision outcomes. Explore updates including a new section on suggested characteristics of an individual record with guidelines for maintaining consistent and useful ADRs.
-
-- [Azure Well-Architected Framework perspective on Azure Application Gateway v2](./service-guides/azure-application-gateway.md): We made significant updates to the guidance about Azure Application Gateway v2. Find important notes and links to additional resources for Azure Application Gateway configurations. Explore enhanced content with specific design principles, strategies, and recommendations for achieving architectural goals.
-
-- [Azure Well-Architected Framework perspective on Azure ExpressRoute](./service-guides/azure-expressroute.md): We made significant updates to provide more comprehensive and structured guidance on Azure ExpressRoute, enhancing and expanding upon best practices, design principles, and optimization strategies. The detailed checklists and recommendations help in better planning and implementation, ensuring improved reliability, security, and cost efficiency.
-
-We reviewed all tradeoff and design pattern articles for alignment with the content structure and to ensure that the guidance is up to date. Tradeoffs are an essential part of the Well-Architected Framework, as they help you understand the implications of design decisions on other pillars. Design patterns are reusable solutions to common problems that you might encounter when designing a workload. They help you understand how to design your workload to meet the goals of the Well-Architected Framework. Check out the updated articles:
-
-- [Architecture design patterns that support cost optimization](./cost-optimization/design-patterns.md)
-- [Cost Optimization tradeoffs](./cost-optimization/tradeoffs.md)
-- [Architecture design patterns that support reliability](./reliability/design-patterns.md)
-- [Reliability tradeoffs](./reliability/tradeoffs.md)
-- [Architecture design patterns that support security](./security/design-patterns.md)
-- [Security tradeoffs](./security/tradeoffs.md)
-- [Architecture design patterns that support operational excellence](./operational-excellence/design-patterns.md)
-- [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
-- [Architecture design patterns that support performance efficiency](./performance-efficiency/design-patterns.md)
-- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
