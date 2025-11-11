@@ -29,7 +29,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Networking and connectivity considerations for Azure Virtual Desktop workloads](./azure-virtual-desktop/networking.md): We reorganized content into focused sections for traffic optimization, network security, network segmentation, multi-region connectivity, and hybrid networking. We consolidated recommendations into tables with clear benefits, added guidance about Azure Private Link and large subnet trade-offs, and removed outdated references. We also updated terminology and included current links to relevant Azure documentation for a more cohesive and actionable guide.
 
-- This month, we incorporated newly released Azure features from the Azure updates feed into our guidance. Check out the updates in [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md), [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md), and more.
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md), [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md), and more.
 
 ## September 2025
 
