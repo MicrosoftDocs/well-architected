@@ -3,129 +3,85 @@ title: Data Platform for AI Workloads on Azure
 description: Learn about functional and nonfunctional data source considerations for your data platform for AI workloads on Azure.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 11/01/2024
+ms.date: 11/11/2025
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
 
 # Data platform for AI workloads on Azure
 
-A data platform is an integrated set of technologies that are designed to manage workload requirements by ingesting source data and then filtering, aggregating, and preparing it for consumption.
+Choosing a data platform involves understanding the unique data challenges that these solutions bring. GenAI models, especially those built on foundation models, depend on diverse, high-quality data, fast access to embeddings, and scalable storage that supports vector search. The goal is to meet these needs without adding unnecessary complexity to your architecture. Because GenAI models depend on large, diverse, and high-quality datasets, understanding the principles of effective data pipeline design is essential before evaluating platform options.
 
-Data has distinct characteristics that are based on its intended use. We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md) and [Grounding data design](./grounding-data-design.md).
+When evaluating platform choices, start by asking whether you truly need additional components. Simpler architectures are often faster to deploy, easier to manage, and more cost-effective. Ask yourself:
 
-The platform also fulfills storage needs when data rests at certain points in the pipeline. If the workload is complex and handles large-scale data, then you can distribute pipeline tasks among various components. For simpler use cases, evaluate whether you can use the source data in a store that offers those combined capabilities.
+- Can the model achieve its expected performance using data from a single source?
+- Does the chosen data store already provide the analytics or search capabilities you need?
+- Is the source data already structured and indexed for AI or vector search?
 
-Ask yourself the following questions so that you can avoid designing an overly complex architecture for your data platform. It's always best to keep things simple when you can.
+If the answer is yes to most of these questions, a complex architecture might not be necessary. For example, modern databases such as Azure Cosmos DB and Azure SQL Database already support native vector data types and vector search. These capabilities can reduce the need for separate indexing or specialized vector databases, minimizing data movement while improving performance.
 
-- Can your application have the expected predictive power by ingesting data from a single source?
-- Does your initial choice of data store support data warehousing capabilities?
-- Is the source data already optimized for AI searches?
+As your workload grows and data comes from multiple sources, the platform decision becomes more complex. You may need to consider solutions that support ETL or ELT pipelines, specialized search indexes, and scalable storage for large datasets. Each added capability should serve a clear purpose rather than simply expanding the technology stack.
 
-If you answer yes to these questions, then you can simplify your architecture by allowing the application to access the data source directly. This approach eliminates the need for big data architecture components like data ingestion, analytical store integration, and external data processing. If the source database can handle the required searches, integrating the search index capability directly into the source database can be a practical approach. Make sure that the source can cost-effectively scale to meet new demands.
+This article provides guidance on choosing a data platform for workloads where data needs to be stored, processed, or analyzed. The focus is on solutions that support generative AI (GenAI), particularly scenarios built on foundation models. We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Grounding data design](./grounding-data-design.md).
 
-For instance, Azure Cosmos DB and Azure SQL Databases support vector search, so you might not need another index. Built-in support for vector data types eliminates the need for separate vector databases reducing architectural complexity and data movement while improving query performance for machine learning operations. Another use case is to use read replicas as endpoints for search operations. For SQL databases that have read replicas, direct searches to these replicas can optimize performance. 
-
-
-A data platform architecture for large-scale workloads is more complex.
-
-Ingesting data from multiple data sources and orchestrating searches across various platforms can become complex and inefficient. Also, you still need some extract, transform, and load (ETL); extract, load, and transform (ELT); or extract and load (EL) processes to reshape the data within the data store. The scenario becomes more complex as the data requires more processing. You need to add many components to the architecture to handle the end-to-end pipeline from ingestion to serving queries. Many big data technologies are highly specialized and built to handle those processing tasks effectively.
-
-One such technology is the search index. The primary advantage of adding a separate index is its ability to efficiently manage queries and process large volumes of data that have high throughput. This function offloads AI capabilities from the original data source so that the index can focus on its main function, serving queries.
-
-Choose a platform based on its specific functionality and purpose, and consider your functional and technical requirements. If your architecture is evolving to handle complex use cases, focus on the following sections about aggregated data stores, processing pipelines, and search indexes.
-
-## Recommendations
-
-Here's the summary of recommendations provided in this article.
-
-|Recommendation|Description|
-|---|---|
-|**Build secure, performant, and cost-effective data stores**. | A key part of your data platform is a data store that aggregates data from multiple sources and allows integration with various integration tasks. This helps your workload perform at scale. Be sure to review the various functional and non-functional requirements of your data store to ensure a cost effective deployment. <br><br>&#9642; [Considerations for storing aggregated data](#considerations-for-processing-data)|
-|**Follow best practices for data ingestion and processing**. | High quality data helps improve the reliability of your workload and the end user experience. Consider the requirements of your workload as well as key best practices to build efficient ingestion and data transition processes that help maintain a high quality bar. <br><br>&#9642; [Considerations for processing data](#considerations-for-processing-data)|
-|**Design reliable and relevant search indexes**. | Aim for a high-performing, write-once, read-many data store that efficiently handles impromptu and fuzzy queries, delivering relevant results to your user base, even when queries aren't precise. <br><br>&#9642; [Considerations for a search index](#considerations-for-a-search-index)|
-|**Ensure functional data stores perform at scale**.  | Depending on the functional requirements of your workload you might need to create functional data stores, for example for offline inferencing. It's important that you create data stores with their designated function in mind and apply best practices for the function. <br><br>&#9642; [Considerations for a feature store](#considerations-for-a-feature-store)<br>&#9642; [Considerations for an offline inferencing data store](#considerations-for-an-offline-inferencing-data-store)|
+For recommendations specific to model training and fine-tuning, see [Training data platform considerations](#training-data-platform-considerations).
 
 ## Considerations for storing aggregated data
 
-In AI workloads, data moves through various stages of storage and processing with the help of pipelines that orchestrate workflow in between these stages. One key stage is a data store that contains data that's ingested and aggregated from multiple sources. You need this store to conduct processing until the data reaches a suitable state for training or indexing. The primary focus is on ensuring that the data accurately reflects its source.
+In AI workloads, data usually moves through several stages of storage and processing, guided by pipelines that connect each step. One important stage is the data store that holds information collected and combined from multiple sources. This store allows you to process and refine the data until it's ready for the next stage. 
 
 > [!NOTE]
-> An alternative approach is to directly access data sources. However, this approach can lead to performance problems because it might overload the source systems with AI features. There can also be data access problems. To avoid these problems, we recommend that you copy data to this store.
+> You might not need this component in your architecture. In some cases, you could access data directly from the source systems. However, doing so can lead to performance issues and may overload those systems with AI queries. It can also cause access or reliability challenges. To prevent these issues, it's usually better to copy the data into a dedicated store for aggregation and processing.
 
-The data platform for this store should meet the security standards applied at data sources, be cost effective, and support integration with ETL, ELT, and EL processing tasks. Options vary from basic storage to big data technologies based on data volume. Choose economical storage that helps you achieve enough reliability and performance.
+When you choose a platform for this store, make sure it follows the same security standards as your source systems, is cost-effective, and works well with ETL, ELT, or EL processing tasks. Your options can range from simple storage solutions to large-scale data platforms, depending on your data volume and performance needs. Look for a storage option that's reliable, scalable, and provides good value for your workload.
 
-The following section provides guidance about the capabilities to consider when you select a data store technology. For more information, see [Data processing pipelines](#considerations-for-processing-data).
+Here are a few questions to help guide your choice of data store technology.
 
-### Functional requirements
+- **Can the platform handle different data formats?**
 
-- **Can the platform handle various data formats?**
+  Your data store should be able to store a variety of data formats and, when needed, convert data between them.
 
-  The data store should be able to store various data formats and transform them to other formats if necessary.
-  
-  Suppose that your ingestion pipeline sources data from a relational database and a Parquet file, so it supports both structured and semistructured data. You want to convert relational data to Parquet format in accordance with its schema definitions. The data platform should have built-in capabilities to do that transformation without you writing custom code.
+  For example, if your ingestion pipeline brings in data from both a relational database and a Parquet file, it must support structured and semi-structured data. You might want to convert relational data into Parquet format to align with schema definitions. The platform should provide built-in tools for this kind of transformation so that you do not need to write custom code.
 
 - **Do you expect to store multiple versions of the data?**
 
-  Data values and schemas can change over time, and managing multiple versions of the data becomes important. 
+  Data changes over time in both values and structure, and source systems usually store only the current state. If you need historical context, choose a data platform that supports versioning. Without it, you might have to duplicate datasets, which adds complexity.
 
-  Source systems typically store only current data, not historical data. If it's important to retain historical data, you might need to duplicate large data sets from source systems. In this case, versioning can disambiguate current data from historical data. 
-
-  In some cases, you might need to maintain copies of data for different use cases. To support this scenario, you might need to fork data. Each fork can independently mutate to enhance its quality and usability. Your data platform should be able to maintain proper versioning of those forks.
-
-  Your data platform should be able to store versions of data over time to provide historical context. This context is beneficial for processing and training AI models because it offers multiple observations rather than just a single point in time.
+  Versioning has other benefits. In some cases, you may need separate copies of data for different use cases. Each copy can evolve independently, and the platform should manage versioning across all copies to preserve context for your AI models.
 
 - **Does the platform have built-in data lifecycle management capabilities?**
 
-  Data lifecycle management (DLM) is a process for managing data from its creation to its deletion, with stages such as data collection, storage, usage, archiving, and disposal.
+  Data lifecycle management (DLM) helps control growth from creation to deletion. Your platform should automatically remove intermediate copies, manage archived data, and support regulatory retention when needed. Without that, data can grow uncontrollably and that unnecessary volume can make processing difficult. For instance, you might need to rerun preprocessing steps several times to improve data quality. The platform should automatically remove intermediate copies when they are no longer needed.
 
-  Without DLM, data can grow uncontrollably, often resulting in multiple copies as it moves through quality tiers. The data platform should have DLM capabilities to prevent unbounded data growth.
-
-  Consider this scenario. The preprocessing step needs to repeat to refine the data until it reaches an acceptable quality for training purposes. Your data platform should be able to delete intermediate copies of the data.
-
-  In some cases, you might need to retain data for regulatory audits. The data platform should have cold storage capabilities for infrequently accessed data so that you can archive it at a lower cost.
+  In other cases, you may need to retain data for compliance or audits. Look for storage options that support cold or archived tiers for rarely accessed data at lower cost.
 
 - **Does the platform support data governance features?**
 
-  Auditability is an important aspect for AI workloads. The data store should maintain audit trails that can track data access, ensure privacy, and understand data origins.
-
-  Use a data dictionary feature to you manage metadata, data types, purposes, and lineage. This feature is especially important when data is ingested from multiple sources.
-
-- **Do you plan to conduct training with production data?** 
-
-  There are two approaches to deployments, model deployment and code deployment. In model deployment, production data is used in development, which requires stringent security measures. In code deployment, the model doesn't see production data until it's in production. Although code deployment simplifies security concerns in the development environment, it can increase compute costs. Whichever approach you choose, your data platform should support separate environments for development and production.  
-
-- **Are you prioritizing convenience features over key functional features?**
-
-  When you choose a data platform for AI or machine learning, don't rely just on its notebook capabilities. Although notebooks are useful for exploratory data analysis, they shouldn't be the deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They're usually integrated with other resources, such as Azure Machine Learning.
-
-### Nonfunctional requirements
+  Auditability is an important aspect for AI workloads. Your platform should maintain audit trails to track data access, ensure privacy, and document data origins. It should also support a data dictionary or catalog that manages metadata, data types, purpose, and lineage, especially when data comes from multiple sources.
 
 - **How much data do you expect to store?**
 
-  AI workloads generate a lot of data. Volume can increase significantly because of multiple versions and extra metadata. 
+  AI workloads generate large volumes of data, which can grow further with multiple versions and extra metadata. Your data platform should scale efficiently for both storage and throughput, handling high ingestion rates, concurrent writes, and intensive processing without performance degradation.
+
+  When choosing a platform, consider the entire workflow, as ingestion and processing often happen at the same time. The system should support parallel processing and frequent data movement, and provide telemetry to give clear insight into read and write performance.
+
+
+- **Is this data store critical to your workload's reliability?**
   
-  Scalability for storage and throughput is important. The data platform must efficiently consume data from the ingestion pipeline while it handles data volume, manages concurrent writes, and ensures individual write performance without degradation. Those criteria also apply to the processing pipeline that reads, processes, and even writes back to the store.
-  
-  When you make a decision, consider the entire process because ingestion and processing often occur simultaneously. The design must be able to manage frequent data movement and processing. The data platform should offer high levels of parallelism to process data effectively.
+  Choose a platform that supports reliability and scalability through replication or multiple instances. Many big data stores use controllers that distribute processing automatically and provide failover when an instance becomes unavailable.
 
-  The platform technology should emit telemetry that gives meaningful insight into the throughput and performance of the read and write operations. 
-
-- **Is this data store a critical component that contributes to the reliability target of the workload?**
-
-  Choose a data store that enhances both reliability and scalability by using multiple instances. Big data stores often have a built-in controller that orchestrates data processing across instances. If one copy fails, then another can be used.
-
-  Keep in mind that data doesn't serve its purpose if it isn't correct or accessible. The data platform should guarantee durability and make sure that the data remains intact. Make sure that the APIs that query the data are accessible. Additionally, consider data stores that have backup features.
-
-  In general, you don't need to back up this data. However, if the cost of aggregating data each time from scratch is significantly high, you can consider rehydrating the data from a backup.
+  Data also needs to be both durable and accessible. Make sure the platform guarantees data integrity, provides accessible APIs, and supports backup or restore capabilities if rebuilding data from scratch would be costly.
 
 - **Do you have any cost constraints?**
 
-  If data reliability and performance are sufficient, consider the cost impact. 
+  Once reliability and performance requirements are met, consider how to optimize cost. For many AI workloads, a write once, read many pattern is sufficient and helps control expenses. Grounding data should be cost-effective to store and retrieve, even if it does not require the same level of responsiveness as a production database. The goal is to balance cost, efficiency, and performance.
 
-  The system should be optimized for _write once, read many_ to avoid overspending on data storage. The training or grounding data is important but not critical like a production database, which requires instant responsiveness. The focus is on balancing cost with just enough efficiency to maximize the return on investment.
+### Technology options
 
-The preceding requirements might naturally lead you to consider using a data lake because it offers DLM, quality tiers, observability, and support for diverse file formats. If your workload already uses a data lake, take advantage of that resource to meet your AI needs. Alternatively, you can choose other storage options, such as Azure Blob Storage, which provides some level of DLM, monitoring capabilities, and high transaction rates.
+If these needs sound familiar, a **data lake** might be a good fit. Data lakes offer DLM, support quality tiers, handle diverse file formats, and include strong observability features. If your workload already uses a data lake, you can likely extend it for your AI scenarios.
+
+Alternatively, options such as **Azure Blob Storage** can provide many of these benefits, including lifecycle management, monitoring, and high transaction rates, while keeping costs under control.
+
 
 ## Considerations for processing data
 
@@ -135,11 +91,11 @@ You must process data in the aggregate data store to increase its utility downst
 
   The pipeline is responsible for collecting data from various sources and moving it to the aggregate data store. During this process, the pipeline typically performs basic preprocessing and might even structure the data in a queryable format.
   
-  To minimize the need for custom code, we recommend offloading much of this responsibility to a data platform. When you select a technology, consider the ETL characteristics required to support model training and augmentation.
+  To minimize the need for custom code, we recommend offloading much of this responsibility to a data platform. When you select a technology, consider the ETL characteristics required to support model augmentation.
 
 - **Processing layer**
 
-  Data from the aggregate data store undergoes extensive processing before it can be used for indexing or model training use cases. The processing pipeline requires levels of reliability and scaling that are similar to the ingestion pipeline. The main difference is the type of processing done on the data. 
+  Data from the aggregate data store undergoes extensive processing before it can be used for indexing. The processing pipeline requires levels of reliability and scaling that are similar to the ingestion pipeline. The main difference is the type of processing done on the data. 
   
   The process involves significant rescoping and restructuring of data. This process includes tasks like entity recognition, integrating additional data into the data set, and performing lookups. This process might also include deleting unnecessary data and applying data logic through a data orchestration platform.
 
@@ -147,10 +103,6 @@ The data processing stage can produce various outputs, which land in different d
 
 > [!NOTE] 
 > In the context of machine learning and generative AI, it's important to distinguish between ETL, ELT, and EL processes. Traditional ETL is crucial for data warehousing and object-relational mappings, where, because of schema restrictions, data must be transformed before you load it into the target system. ELT involves extracting data, loading it into a data lake, and then transforming it by using tools like Python or PySpark. In generative AI, particularly for retrieval-augmented generation (RAG), the process often involves extracting and loading documents to storage first, followed by transformations like chunking or image extraction.
-
-The following section provides guidance to consider when you select a data processing technology that has ETL capabilities.
-  
-### Functional requirements
 
 - **What's the support for connecting to data sources?**
 
@@ -166,11 +118,10 @@ The following section provides guidance to consider when you select a data proce
 
 - **Does the platform offer features for data preparation and rescoping?**
 
-  You must process data that you intend to use for training or augmentation until it's suitable for training, fine-tuning, or indexing. Your data design strategies should explicitly outline the requirements.
+  You must process data that you intend to use for augmentation until it's suitable for indexing. Your data design strategies should explicitly outline the requirements.
 
   The following articles describe specific considerations: 
 
-  - [Design training data for AI workloads on Azure](./training-data-design.md#data-preprocessing)
   - [Design grounding data for AI workloads on Azure](./grounding-data-design.md#data-preparation)
   
   As part of basic cleansing, the platform removes duplicates, fills in missing values, and eliminates extraneous noise during ingestion. For certain use cases, such as implementing a RAG pattern, we recommend that you lowercase chunks.
@@ -195,13 +146,11 @@ The following section provides guidance to consider when you select a data proce
 
   Ultimately, which tool you choose depends on what your organization allows and the skills that the workload team is comfortable with.
 
-### Nonfunctional requirements
-
 When you choose a processing pipeline, it's crucial to balance throughput and observability. The pipeline must reliably process and land the necessary data for models or indexes within a sufficient timeframe. It should be lightweight enough to support your current needs and be scalable for future growth. Teams must decide how much they need to future-proof the platform to avoid technical debt later. Key considerations include the frequency and volume of data ingestion, the reliability of the process, and the need for observability to monitor and address problems promptly.
 
 - **How much data do you expect to ingest?**
 
-  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index or for model training. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
+  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
 
   One way to handle high volume is through parallelism because it allows for more efficient data handling and processing. Platforms such as Azure Databricks can orchestrate tasks by creating multiple instances for the same job and distributing the load efficiently.
 
@@ -225,7 +174,7 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
 
   The platform should also support resiliency features. For example, the orchestrator should automatically retry a failed task, which reduces the need for manual restarts.
 
-  Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If training occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry.
+  Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If grounding occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry.
 
 - **Are there any cost constraints?**
 
@@ -237,13 +186,11 @@ When you choose a processing pipeline, it's crucial to balance throughput and ob
 
   The data pipeline platform should support identity and access management to ensure that only authorized identities have access to specific jobs or steps within workflows. For instance, if your ETL process consists of several workflows, and one of them handles highly confidential data, the platform should allow you to restrict access to that workflow while keeping the others accessible. This capability helps you meet the security requirements without needing separate platforms for different data sensitivity levels. Ideally, the platform should provide built-in support for such isolation that enables efficient and secure data management.
 
-Data processing pipelines can output the data to either a search index or a model training pipeline. Depending on the use case, see the sections on [search indexes](#considerations-for-a-search-index) or [feature stores](#considerations-for-a-feature-store).
+Data processing pipelines can output the data to either a search index. Depending on the use case, see the sections on [search indexes](#considerations-for-a-search-index).
 
 ## Considerations for a search index
 
 The search index is designed to store contextual or grounding data to send to the model inference endpoint, along with the prompt. Both calls, the index query and the inference endpoint invocation, take place in the context of servicing the same client HTTP requests. Unlike ETL processes that handle offline and batch jobs, this index supports real-time inferencing, which requires high performance and reliability. It's specialized for AI queries and offers features like keyword indexing and filtering, which aren't typical of big data stores. The goal is to have a high-performing, _write-once, read-many_ data store that supports impromptu and fuzzy queries. This data store can provide relevant results without precise queries.
-
-### Functional requirements
 
 - **What types of search does the search index support?**
 
@@ -260,8 +207,6 @@ The search index is designed to store contextual or grounding data to send to th
 - **Does the index support automatic update capabilities when the data in the data sources changes?**
 
   Choose an index that has automatic update features. If one isn't available, you need to manually detect and push changes to the index. With these capabilities, the indexer can detect changes in data sources and pull updates automatically. By offloading this responsibility to the platform, you can reduce operational overhead and simplify the maintenance process.
-
-### Nonfunctional requirements
 
 - **Can the index perform with large volumes of data?**
 
@@ -297,29 +242,49 @@ The search index is designed to store contextual or grounding data to send to th
 
   Ideally, the search index should align with network security requirements. For example, if you need to filter egress traffic to non-Microsoft sites and maintain observability, the index should offer egress controls. It should also support network segmentation. If the back-end compute is in a virtual network, private connectivity for key components, including the index, is essential to avoid exposure to the public internet. The index should easily integrate with private networks and support managed identities for authentication via Microsoft Entra ID.
 
-## Considerations for a feature store
 
-  For discriminative models, your data design might include an intermediate data store that caches data for extra refinement. This store, known as a feature store, allows data scientists to store features as a final step, outside of the aggregated data store.
 
-  The feature store helps catalog data for multiple uses by adding metadata like generation time and origin. This intermediate landing spot is ideal for _golden training data_.
+## Training data platform considerations
 
-  The managed feature store in Machine Learning is a data storage option that integrates with MLflow and other tools. It fetches and trains data from the aggregate data store, adding a reusable layer for better data lineage and formal identification within Machine Learning.
+We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md).
 
-  When you use a feature store, treat it like a data store with security and access considerations. 
 
-## Considerations for an offline inferencing data store
+#### Considerations for storing aggregated data
 
-  In some scenarios, use of a separate store is appropriate for faster future lookups because inferencing is done on pre-collected and pre-calculated data, in advance. In this process, the user request never reaches the AI model. There are several benefits:
-  
-  - Improved efficiency and user experience by reducing latency. Results are served faster for frequent queries, such as generating FAQs as the result.
-  - Inference calls can be scaled out more easily as a batch process without the constraints of real-time processing.
-  - Allows prevalidation to ensure accuracy before production.
-  - Because the request isn't directed to the interference endpoint, it reduces the load, contributing to the reliability of the workload.
-  - Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
+- **Do you plan to conduct training with production data?**
 
-  However, this approach is only effective if you can predict the possible requests _and_ a significant portion of the predictions are expected to be requested by users. For scenarios with fewer repeated requests, an offline inference store might be less effective.
-  
-  The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval. It should also be able to integrate into the aggregated data store. Any store with those capabilities can be considered, such as Azure Cosmos DB, or even a table storage.
+There are two approaches to deployments, model deployment and code deployment. In model deployment, production data is used in development, which requires stringent security measures. In code deployment, the model doesn't see production data until it's in production. Although code deployment simplifies security concerns in the development environment, it can increase compute costs. Whichever approach you choose, your data platform should support separate environments for development and production.
+
+- **Are you prioritizing convenience features over key functional features?**
+When you choose a data platform for AI or machine learning, don't rely just on its notebook capabilities. Although notebooks are useful for exploratory data analysis, they shouldn't be the deciding factor. Compute resources for notebooks are typically outside the scope of the aggregation data store. They're usually integrated with other resources, such as Azure Machine Learning.
+
+#### Considerations for processing data
+
+ In the context of machine learning and generative AI, it's important to distinguish between ETL, ELT, and EL processes. Traditional ETL is crucial for data warehousing and object-relational mappings, where, because of schema restrictions, data must be transformed before you load it into the target system. ELT involves extracting data, loading it into a data lake, and then transforming it by using tools like Python or PySpark. In generative AI, particularly for retrieval-augmented generation (RAG), the process often involves extracting and loading documents to storage first, followed by transformations like chunking or image extraction.
+
+#### Considerations for a feature store
+
+For discriminative models, your data design might include an intermediate data store that caches data for extra refinement. This store, known as a feature store, allows data scientists to store features as a final step, outside of the aggregated data store.
+
+The feature store helps catalog data for multiple uses by adding metadata like generation time and origin. This intermediate landing spot is ideal for golden training data.
+
+The managed feature store in Machine Learning is a data storage option that integrates with MLflow and other tools. It fetches and trains data from the aggregate data store, adding a reusable layer for better data lineage and formal identification within Machine Learning.
+
+When you use a feature store, treat it like a data store with security and access considerations.
+
+#### Considerations for an offline inferencing data store
+
+In some scenarios, use of a separate store is appropriate for faster future lookups because inferencing is done on pre-collected and pre-calculated data, in advance. In this process, the user request never reaches the AI model. There are several benefits:
+
+Improved efficiency and user experience by reducing latency. Results are served faster for frequent queries, such as generating FAQs as the result.
+Inference calls can be scaled out more easily as a batch process without the constraints of real-time processing.
+Allows prevalidation to ensure accuracy before production.
+Because the request isn't directed to the interference endpoint, it reduces the load, contributing to the reliability of the workload.
+Could be more cost-effective as it reduces the need for high-performance hardware required for real-time processing.
+However, this approach is only effective if you can predict the possible requests and a significant portion of the predictions are expected to be requested by users. For scenarios with fewer repeated requests, an offline inference store might be less effective.
+
+The data store for this scenario should be optimized for read operations, must be able to handle large volumes of data and provide efficient retrieval. It should also be able to integrate into the aggregated data store. Any store with those capabilities can be considered, such as Azure Cosmos DB, or even a table storage.
+
 
 ## Resources
 
