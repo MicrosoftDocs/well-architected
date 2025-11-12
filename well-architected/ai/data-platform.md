@@ -102,7 +102,7 @@ There are two places where processing can happen:
 
 - Processing Layer. After data lands in the aggregate store, it typically needs deeper processing before it's ready for indexing or use in AI models. These pipelines should offer similar levels of reliability and scalability as your ingestion layer, but the focus shifts to transforming and reshaping the data.
 
-  Typical tasks include:
+Typical tasks include:
 
 - Entity recognition and enrichment
 - Integrating additional data sources
@@ -131,7 +131,7 @@ Before your data is ready for indexing or model consumption, it needs to be clea
 
 If your data store supports these operations natively, you can process data in place without moving it. Otherwise, use external tools like Azure Databricks or Azure Data Factory for heavy transformations.
 
-  In some cases, you may choose to externalize part of this responsibility to the data consumer. A common example of this approach is RAG implementation. During processing, documents are divided into smaller chunks, with each chunk stored as a separate row in the index. These chunks are then paired with embeddings, often generated through an OpenAI service. In AI search scenarios, this entire process, from chunking to embedding,is orchestrated within the indexing workflow, whether through OpenAI or Azure AI Search.
+In some cases, you may choose to externalize part of this responsibility to the data consumer. A common example of this approach is RAG implementation. During processing, documents are divided into smaller chunks, with each chunk stored as a separate row in the index. These chunks are then paired with embeddings, often generated through an OpenAI service. In AI search scenarios, this entire process, from chunking to embedding, is orchestrated within the indexing workflow, whether through OpenAI or Azure AI Search.
 
   
 #### Is there a built-in orchestrator for managing workflows?
@@ -197,7 +197,7 @@ Security, privacy, and data residency requirements should guide your choice. Ide
 
 A search index stores the contextual or grounding data that's sent to a model's inference endpoint along with the user's prompt. Both the index query and the inference call happen as part of the same client request.
 
-Unlike batch-oriented ETL pipelines, this index must support real-time inferencing — meaning high performance and reliability are non-negotiable. It's purpose-built for AI workloads and supports capabilities like keyword indexing, filtering, and vector-based search, which go beyond what traditional data stores provide.
+Unlike batch-oriented ETL pipelines, this index must support real-time inferencing, meaning high performance and reliability are non-negotiable. It's purpose-built for AI workloads and supports capabilities like keyword indexing, filtering, and vector-based search, which go beyond what traditional data stores provide.
 
 The ideal design is a high-performance, write-once, read-many data store that can handle imprecise or fuzzy queries while still returning relevant results. Choose the index technology keeping those points in mind. 
 
@@ -289,8 +289,6 @@ From a network security perspective, the index should:
 | **Document-level security and access control** | Azure AI Search (security filters), Microsoft Entra ID integration | Custom authorization layers, row-level security in databases |
 | **Network security and private access** | Azure Private Link, Virtual Network integration, Managed Identities | VPN gateways, Azure Firewall, custom network security groups |
 
-
-
 ## Training data platform considerations
 
 When designing your data platform for traditional machine learning (ML) or non-GenAI workloads, your focus shifts from real-time inference to data quality, reproducibility, and environment separation. These workloads rely on well-structured aggregated data and often involve additional layers, such as feature stores and offline inference data stores, to optimize model performance and cost efficiency.
@@ -338,13 +336,13 @@ Treat the feature store as a sensitive data store in its own right with proper a
 
 #### Should you use an offline inference data store?
 
-In some cases, you can improve performance and reduce costs by performing offline inferencing — that is, pre-computing inference results and storing them for later use instead of calling the model in real time.
+In some cases, you can improve performance and reduce costs by performing offline inferencing, that is, pre-computing inference results and storing them for later use instead of calling the model in real time.
 
   This approach can be highly effective when the same queries or predictions are requested repeatedly (for example, generating FAQs or standard recommendations).
 
   Key benefits include:
 
-  - Reduced latency and improved user experience — results are served instantly.
+  - Reduced latency and improved user experience, results are served instantly.
   - Easier scalability because inference can be batched and distributed offline.
   - Enhanced reliability that avoids putting real-time load on the inference endpoint.
   - Lower compute costs resulting from offline processing can use lower-tier hardware.
@@ -370,19 +368,6 @@ Technologies that fit this pattern include Azure Cosmos DB for fast, globally di
 | **Orchestration and automation** | Azure Data Factory Pipelines, Azure ML Pipelines | Apache Airflow, Prefect |
 | **Security and access control** | Microsoft Entra ID (Azure AD), Azure Key Vault, Managed Identities | HashiCorp Vault, AWS IAM |
 
-
-
-## Resources
-
-These articles provide more details about Azure products that we recommend as technology options for the considerations discussed in this article.
-
-- [Machine Learning](/azure/well-architected/service-guides/azure-machine-learning)
-- [Blob Storage](/azure/well-architected/service-guides/azure-blob-storage)
-- [Azure Databricks](/azure/well-architected/service-guides/azure-databricks-security)
-- [Data Factory](/azure/data-factory/)
-- [AI Search](/azure/search/search-what-is-azure-search)
-- [Azure Cosmos DB](/azure/well-architected/service-guides/cosmos-db)
-- [Azure Managed Redis](/azure/redis/overview)
 
 ## Next steps
 
