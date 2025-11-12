@@ -26,7 +26,7 @@ This article provides guidance on choosing a data platform for workloads where d
 
 For recommendations specific to model training and fine-tuning, see [Training data platform considerations](#training-data-platform-considerations).
 
-## Considerations for storing aggregated data
+## Considerations for data storage platform
 
 In AI workloads, data usually moves through several stages of storage and processing, guided by pipelines that connect each step. One important stage is the data store that holds information collected and combined from multiple sources. This store allows you to process and refine the data until it's ready for the next stage. 
 
@@ -65,7 +65,6 @@ Here are a few questions to help guide your choice of data store technology.
 
   When choosing a platform, consider the entire workflow, as ingestion and processing often happen at the same time. The system should support parallel processing and frequent data movement, and provide telemetry to give clear insight into read and write performance.
 
-
 - **Is this data store critical to your workload's reliability?**
   
   Choose a platform that supports reliability and scalability through replication or multiple instances. Many big data stores use controllers that distribute processing automatically and provide failover when an instance becomes unavailable.
@@ -83,102 +82,94 @@ If these needs sound familiar, a **data lake** might be a good fit. Data lakes o
 Alternatively, options such as **Azure Blob Storage** can provide many of these benefits, including lifecycle management, monitoring, and high transaction rates, while keeping costs under control.
 
 
-## Considerations for processing data
+## Considerations for data processing platform
 
-You must process data in the aggregate data store to increase its utility downstream. ETL pipelines perform this task, which is most important at the following points:
-
-- **Ingestion layer**
-
-  The pipeline is responsible for collecting data from various sources and moving it to the aggregate data store. During this process, the pipeline typically performs basic preprocessing and might even structure the data in a queryable format.
-  
-  To minimize the need for custom code, we recommend offloading much of this responsibility to a data platform. When you select a technology, consider the ETL characteristics required to support model augmentation.
-
-- **Processing layer**
-
-  Data from the aggregate data store undergoes extensive processing before it can be used for indexing. The processing pipeline requires levels of reliability and scaling that are similar to the ingestion pipeline. The main difference is the type of processing done on the data. 
-  
-  The process involves significant rescoping and restructuring of data. This process includes tasks like entity recognition, integrating additional data into the data set, and performing lookups. This process might also include deleting unnecessary data and applying data logic through a data orchestration platform.
-
-The data processing stage can produce various outputs, which land in different destinations for different intents. Its main goal is to prepare and transfer data from the aggregated data store for consumption by the final destination. The consumer can either pull data when needed, or the processing layer can push data when it's ready.
+The data processing platform plays a key role in preparing and transforming data so it's ready for downstream use, whether that's RAG indexing, analytics, or other use case. 
 
 > [!NOTE] 
-> In the context of machine learning and generative AI, it's important to distinguish between ETL, ELT, and EL processes. Traditional ETL is crucial for data warehousing and object-relational mappings, where, because of schema restrictions, data must be transformed before you load it into the target system. ELT involves extracting data, loading it into a data lake, and then transforming it by using tools like Python or PySpark. In generative AI, particularly for retrieval-augmented generation (RAG), the process often involves extracting and loading documents to storage first, followed by transformations like chunking or image extraction.
+> For AI workloads, especially generative AI and retrieval-augmented generation (RAG), it's useful to understand the difference between ETL, ELT, and EL processes.
+>  - ETL: Extract, transform, then load, typical for traditional data warehousing.
+>  - ELT: Extract, load, then transform, common for data lakes and big data tools like PySpark.
+>  - EL: Extract and load, used in RAG scenarios where you store documents first, then perform transformations like text chunking or image extraction later.
+
+There are two places where processing can happen:
+
+- Ingestion Layer. The ingestion pipeline collects data from various sources and moves it into your aggregate data store. Along the way, it often performs basic preprocessing or formatting so the data is queryable. To reduce the need for custom code, it's best to use a data platform that handles as much of this as possible. When evaluating tools, consider the ETL or ELT features required to support your AI workloads, such as model augmentation.
+
+- Processing Layer. After data lands in the aggregate store, it typically needs deeper processing before it's ready for indexing or use in AI models. These pipelines should offer similar levels of reliability and scalability as your ingestion layer, but the focus shifts to transforming and reshaping the data.
+
+  Typical tasks include:
+
+  - Entity recognition and enrichment
+  - Integrating additional data sources
+  - Performing lookups and transformations
+  - Cleaning or deleting irrelevant data
+
+A strong data platform helps automate and orchestrate these operations efficiently.
 
 - **What's the support for connecting to data sources?**
 
-  Data that needs to be processed might be stored in relational databases, big data sources, or various storage solutions.
+  The platform should easily connect to data sources you expect ingest from, whether that's relational databases, big data sources, or blob storage.
 
-  Most data processing technologies support prebuilt integrations that let you connect to various data sources without writing code. The connectors have features like the ability to copy data from source to sink, perform lookups, and apply some form of data governance. There are tools that offer drag-and-drop features to avoid unnecessary coding.
-
-  Choose a data platform that makes it easy to integrate with the expected data sources.
+  Look for prebuilt connectors and low-code integrations. Ideally, you want drag-and-drop or configuration-based connectors that support lookups, data copying, and governance.
 
 - **Can the platform process various data formats?**
-
-  Data might come in various formats, such as structured data like databases and JSON, unstructured data like images and documents, or streaming data like data from Internet of Things devices. The pipelines should be able to handle the expected file types.
+  
+  Data comes in many shapes: structured (SQL, JSON), unstructured (documents, images), and streaming (IoT data). Choose a platform that can handle the formats your use case requires considering immediate and longer term requirements.
 
 - **Does the platform offer features for data preparation and rescoping?**
 
-  You must process data that you intend to use for augmentation until it's suitable for indexing. Your data design strategies should explicitly outline the requirements.
+  Before your data is ready for indexing or model consumption, it needs to be cleaned, enriched, and reshaped. Your data design strategies should explicitly outline the requirements. A good platform should:
 
-  The following articles describe specific considerations: 
+  - Remove duplicates and fill missing values
+  - Handle case normalization and other basic cleanup tasks
+  - Support advanced transformations like chunking, enrichment, and document analysis
 
-  - [Design grounding data for AI workloads on Azure](./grounding-data-design.md#data-preparation)
-  
-  As part of basic cleansing, the platform removes duplicates, fills in missing values, and eliminates extraneous noise during ingestion. For certain use cases, such as implementing a RAG pattern, we recommend that you lowercase chunks.
+  If your data store supports these operations natively, you can process data in place without moving it. Otherwise, use external tools like Azure Databricks or Azure Data Factory for heavy transformations.
 
-  Although these preprocessing steps are necessary, the platform must also support rich data manipulation that's specific to your needs. This process involves loading, rescoping, and transforming data. For certain models, the platform must be able to query external sources for document analysis, such as document intelligence or other AI tools. This work is needed for preparing the data and for data enrichment.
+  In some cases, you may choose to externalize part of this responsibility to the data consumer. A common example of this approach is RAG implementation. During processing, documents are divided into smaller chunks, with each chunk stored as a separate row in the index. These chunks are then paired with embeddings, often generated through an OpenAI service. In AI search scenarios, this entire process, from chunking to embedding,is orchestrated within the indexing workflow, whether through OpenAI or Azure AI Search.
 
-  If your data store supports this level of processing, you can localize this stage in the store without moving it elsewhere. Otherwise, you need an external technology such as Azure Databricks or Azure Data Factory. These technologies are suitable for moving data and performing manipulations, such as filtering, filling missing values, and standardizing string casing. For more complex tasks, a job-hosting platform is typically required. You can use Spark pools for big data orchestration.
-
-  In certain use cases, you might want to externalize this responsibility to the consumer of the data. For example, AI models that use machine learning offer job processing capabilities to read, manipulate, and write data by using custom Python code.
-
-  Another example is RAG implementation. A common processing step is chunking, where a document is divided into multiple chunks, and each chunk becomes a row in the index. It also stores embeddings, which an OpenAI service often generates, for these chunks. In AI searches, this process is orchestrated within the indexing workflow, whether by using OpenAI or Azure AI Search.
   
 - **Is there a built-in orchestrator for managing workflows?**
+
+  Data processing typically happens as modular jobs that need complex coordination. Your platform should include an orchestrator to define, schedule, and monitor these workflows. Look for:
+
+  - Support for job dependencies and checks that validate sequence of exectution
+  - Flexible modification of workflows that allows for easy adjustments without rewriting large portions of code.
+  - Monitoring and logging capabilities
+
+  Popular tools include Azure Data Factory for its rich feature set for workflow management, or Azure Databricks for more complex orchestration. If cost is a concern, Apache NiFi or Airflow can be more economical alternatives.
   
-  The processing tasks are modular and run as jobs. The platform should have orchestration capabilities that break down the workflow into steps or jobs. Each job should be independently defined, run, and monitored.
-
-  In complex workflows, certain steps depend on the successful completion of previous ones. The orchestrator should handle job dependencies and make sure that tasks are completed in the correct order.
-
-  Data design is an iterative process, so the orchestrator tool should be flexible enough to modify workflows easily. You should be able to inject new steps or adjust existing ones without rewriting large portions of code.
-
-  Data Factory is a popular choice because it provides a rich feature set for managing data workflows. Azure Databricks can also manage complex workflows and schedule and monitor jobs. You should also consider the cost implications. For example, Azure Databricks features might be extensive, but they're also costly. An open-source alternative option, such as Apache NiFi, might be more cost effective.
-
-  Ultimately, which tool you choose depends on what your organization allows and the skills that the workload team is comfortable with.
-
-When you choose a processing pipeline, it's crucial to balance throughput and observability. The pipeline must reliably process and land the necessary data for models or indexes within a sufficient timeframe. It should be lightweight enough to support your current needs and be scalable for future growth. Teams must decide how much they need to future-proof the platform to avoid technical debt later. Key considerations include the frequency and volume of data ingestion, the reliability of the process, and the need for observability to monitor and address problems promptly.
-
 - **How much data do you expect to ingest?**
 
-  For the ingestion and processing stages, consider the platform's scalability and speed for handling tasks. For example, you expect to load 10 terabytes of data daily into an index. Your data ingestion platform should be able to process that much volume and with the expected throughput. In this case, using Azure Logic Apps might not be feasible because it could fail under such a load. Instead, Data Factory is better suited for this scale of data processing. 
+  Estimate how much data you'll ingest and the frequency of ingestion. For example, if you expect to load 10 terabytes of data daily into an index, the platform should support strong parallelization and distributed execution. For smaller workloads, simpler tools like Logic Apps might work, but for higher volumes, Data Factory or Databricks are more suitable. For scalability and throughput, consider:
 
-  One way to handle high volume is through parallelism because it allows for more efficient data handling and processing. Platforms such as Azure Databricks can orchestrate tasks by creating multiple instances for the same job and distributing the load efficiently.
-
-  Also, consider the tolerable latency and the complexity of the jobs. For instance, data cleansing involves validating and potentially replacing invalid fields or masking sensitive information. These tasks, though basic, require significant resources because each row is processed individually, which adds to the overall time.
+  - Data volume and frequency
+  - Tolerable latency requirements
+  - Job complexity
+  
+  For instance, data cleansing involves validating and potentially replacing invalid fields or masking sensitive information. These tasks, though basic, require significant resources because each row is processed individually, which adds to the overall time.
 
 - **What monitoring capabilities do you need?**
 
-  Data processing pipelines should have monitoring capabilities and provide insights into the pipeline's performance and status of jobs.
+  Data processing pipelines should have monitoring capabilities and provide insights into the pipeline's performance and status of jobs. Your platform should provide:
 
-  You must be able to track the progress of the jobs. Suppose the pipeline runs a data cleansing job that doesn't complete or completes partially. There might be downstream impact on the quality of data with which the model is trained, which might affect the predictive power.
-
-  Similar to other components in the workload, you should enable logs, metrics, and alerts on the data pipeline to understand its behavior. Collect and analyze performance metrics to understand the efficiency and reliability aspects.
+  - Job progress tracking
+  - Logs, metrics, and alerts to understand pipeline behavior
+  - Integration with your broader monitoring stack
 
   Identify any gaps in the built-in telemetry, and determine what additional monitoring you need to implement. This monitoring might involve adding custom logging or metrics to capture specific details about the job steps.
   
 - **How much reliability do you expect of the data processing platform?**
 
-  The reliability of a data processing pipeline varies based on the choice of platform. Even though Logic Apps has orchestration capabilities, it might not be as reliable as Data Factory. Data Factory, hosted on an Azure Kubernetes Service (AKS) cluster, might have different reliability characteristics.
+  Choose a platform that minimizes single points of failure and supports retries for failed tasks. For example, Data Factory on Azure Kubernetes Service (AKS) typically offers stronger reliability than Logic Apps.
   
-  Single-instance setups are considered points of failure. Choose a platform that supports reliability features, such as multiple instances, to meet your requirements.
+  If your data updates infrequently and you handle processing thorugh weekly batch processing, occasional failures may be acceptable. But for real-time AI scenarios, you'll need higher reliability.
 
-  The platform should also support resiliency features. For example, the orchestrator should automatically retry a failed task, which reduces the need for manual restarts.
-
-  Batch processing can be less reliable than inferencing, depending on data freshness and latency requirements. If grounding occurs weekly and processing takes one day, occasional failures are acceptable because there's enough time to retry.
 
 - **Are there any cost constraints?**
 
-  When you consider the cost-effectiveness of a data processing pipeline, it's important to choose a solution that meets your needs without unnecessary expenses. If your requirements don't justify the advanced features of Azure Databricks, a more economical option like Data Factory might be sufficient. Additionally, open-source tools like Apache Airflow or Apache NiFi can provide robust capabilities at a lower cost. The key is to avoid overspending on features that you don't need and select a platform that balances functionality and cost efficiency.
+  The goal is to avoid over-engineering and pick a platform that fits your needs today while leaving room to scale. For example, if you don't need Databricks' advanced features, Data Factory might offer a more affordable option. Open-source tools like Airflow or NiFi can further reduce costs.
 
 - **What are the security requirements on the workflows and on the data that you process?**
 
