@@ -135,6 +135,12 @@ Here are some decision points to get you started. Make those decisions keeping i
 >   | Fine-tuning | Balances efficiency with adaptability; allows tailoring AI to your domain or customer data | Requires some expertise and effort to manage data quality, training, grounding, and continuous evaluation. Fine tuning isn't a onetime activity; you need to commit to the operational overhead of redoing the fine-tuning process whenever the underlying model changes. You have to actively test for model decay so that models remain relevant over time | [Fine-tuning in Azure OpenAI in Foundry Models](/azure/ai-foundry/openai/how-to/fine-tuning) |
 >
 >   Most SaaS products benefit from using a combination of those approaches. You should also think strategically about how AI fits into your product experience. For example, some companies integrate into existing AI ecosystems (like Microsoft Copilot), while others aim to build their own AI-powered experiences or platforms. Your choice will affect both your technical architecture and how customers interact with your solution.
+>
+> - **How will your SaaS product evolve?**
+> 
+>   Think of AI adoption as a journey that you take over time. Initially, you should focus on use cases that add incremental value to your product, reduce user toil, and enhance your own operational efficiency. Over time, consider using AI for decision support, reasoning, and more complex process orchestration. Consider building agents that have access to tools, including those you build into your product. Then, progress to multi-agent experiences, with sets of specialized agents that collaborate to perform more complex tasks.
+>
+>   Be prepared to adapt your journey as you learn more, as your customers give feedback, and as the technology and landscape evolve.
 
 ## Build AI in your foundational practices
 
@@ -171,21 +177,19 @@ Briefly describe the SaaS archetype.
 - How is that value consumed or experienced by users?
 - What differentiates this product in the market?
 
-**Typical use cases**
+Then consider each of the following areas:
 
-List typical use cases that form the core functionality. 
+- **Typical use cases:** List typical use cases that form the core functionality. 
 
-**AI opportunities** 
+- **Evolution:** Consider your journey and roadmap, starting with constrained but impactful use cases, and building towards increasingly autonomous and agentic experiences.
 
-Identify where AI can add the most value based on the typical use cases of this archetype.
+- **AI opportunities:** Identify where AI can add the most value based on the typical use cases of this archetype.
 
-**Risks**
+- **Risks:** Identify the key challenges, limitations, and potential failure points related to applying AI within this archetype. Consider technical risks and quality risks.
 
-Identify the key challenges, limitations, and potential failure points related to applying AI within this archetype. Consider technical risks and quality risks.
+- **Build/Buy/Customize:** For core components, should you build, buy, or customize? What's the rationale?
 
-**Build/Buy/Customize**
-
-For core components, should you build, buy, or customize? What's the rationale?
+#### Example archetypes and requirements
 
 Here are some examples for common SaaS archetypes. 
 
