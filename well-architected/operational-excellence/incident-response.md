@@ -3,7 +3,7 @@ title: Architecture strategies for designing an incident management (IcM) proces
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 10/27/2025
+ms.date: 11/13/2025
 ms.topic: conceptual
 ---
 
@@ -34,7 +34,13 @@ This article outlines proven strategies for designing an architecture that helps
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
 
+## Allocate additional resources for incident response infrastructure, processes, and staff
 
+Thethe ability to recover or roll back quickly requires sufficient infrastructure capacity. Plan for enough resources to operate at least two redudant workload configurations at the same time. This approach allows teams to perform fallbacks or rollbacks without disrupting services. Workload teams should be comfortable supporting both configurations in production when needed. That may require refactoring workloads, such as decoupling components or updating data models.
+
+The team needs to balance their regular responsibilities with emergency response work. There may be a need to increase headcount or engage third-party vendors who specialize in incident management. Vendors can provide valuable expertise, tools, and insights that help resolve issues faster. It's important to maintain active support agreements and clearly define escalation procedures so that some team members can work directly with vendors while others continue internal triage and remediation.
+
+Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access to monitoring and diagnostic data to ensure smooth collaboration during incidents.
 
 ## Build containment and isolation in the architecture
 
@@ -42,10 +48,13 @@ Incidents are inevitable, so design your architecture to **restrict failures and
 
 Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads or publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
-
 ## Build monitoring capabilities for rapid detection
 
 A strong incident response plan depends on a well-designed monitoring stack. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** . An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
+>
+> Mititgate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
 
 Effective monitoring has two key dimensions. First, the response process should receive timely notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, **the solution itself must emit rich, structured telemetry, logs, metrics, and traces**, which enable deep analysis, triage, and root cause identification.
 
@@ -96,6 +105,8 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 ## Bring agility and consistency through automation 
 
 Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
+
+
 
 ## Azure facilitation
 
