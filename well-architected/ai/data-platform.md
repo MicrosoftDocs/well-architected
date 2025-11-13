@@ -18,7 +18,7 @@ When evaluating platform choices, start by asking whether you truly need additio
 - Does the chosen data store already provide the analytics or search capabilities you need?
 - Is the source data already structured and indexed for AI or vector search?
 
-If the answer is yes to most of these questions, a complex architecture might not be necessary. For example, modern databases such as Azure Cosmos DB and Azure SQL Database already support native vector data types and vector search. These capabilities can reduce the need for separate indexing or specialized vector databases, minimizing data movement while improving performance.
+If the answer is yes to most of these questions, a complex architecture might not be necessary. For example, databases such as Azure Cosmos DB and Azure SQL Database already support vector data types and vector search natively but they need to be enabled and configured. These capabilities can reduce the need for separate indexing or specialized vector databases, minimizing data movement while improving performance.
 
 As your workload grows and data comes from multiple sources, the platform decision becomes more complex. You may need to consider solutions that support ETL or ELT pipelines, specialized search indexes, and scalable storage for large datasets. Each added capability should serve a clear purpose rather than simply expanding the technology stack.
 
@@ -73,7 +73,16 @@ Data also needs to be both durable and accessible. Make sure the platform guaran
 
 #### Do you have any cost constraints?
 
-Once reliability and performance requirements are met, consider how to optimize cost. For many AI workloads, a write once, read many pattern is sufficient and helps control expenses. Grounding data should be cost-effective to store and retrieve, even if it does not require the same level of responsiveness as a production database. The goal is to balance cost, efficiency, and performance.
+After reliability and performance requirements are met, consider how to optimize cost. For many AI workloads, a write once, read many pattern is sufficient and helps control expenses. Grounding data should be cost-effective to store and retrieve, even if it does not require the same level of responsiveness as a production database. The goal is to balance cost, efficiency, and performance.
+
+
+#### Do you need to support data sovereignty or regional compliance requirements?
+
+For workloads that handle regulated or sensitive data, consider deploying in a sovereign cloud, such as Azure Government or Azure China. These environments are designed to meet strict data residency, privacy, and compliance requirements by ensuring that data storage, processing, and access remain within specific jurisdictions.
+
+Sovereign clouds provide greater control and independence over your data, which is often a requirement for sectors such as government, defense, or banking. However, keep in mind that some advanced AI and data platform features might not yet be available in these regions. Review service availability before designing your architecture.
+
+Use Microsoft Purview to maintain data cataloging, classification, and lineage tracking across these environments. For highly confidential workloads, consider using confidential computing and customer-managed keys to strengthen data protection. You must verify that your deployment aligns with regional regulations.
 
 ### Technology options
 
@@ -91,7 +100,7 @@ Once reliability and performance requirements are met, consider how to optimize 
 The data processing platform plays a key role in preparing and transforming data so it's ready for downstream use, whether that's RAG indexing, analytics, or other use case. 
 
 > [!NOTE] 
-> For AI workloads, especially generative AI and retrieval-augmented generation (RAG), it's useful to understand the difference between ETL, ELT, and EL processes.
+> For GenAI and retrieval-augmented generation (RAG), it's useful to understand the difference between ETL, ELT, and EL processes.
 >  - ETL: Extract, transform, then load, typical for traditional data warehousing.
 >  - ELT: Extract, load, then transform, common for data lakes and big data tools like PySpark.
 >  - EL: Extract and load, used in RAG scenarios where you store documents first, then perform transformations like text chunking or image extraction later.
@@ -126,12 +135,12 @@ Data comes in many shapes: structured (SQL, JSON), unstructured (documents, imag
 Before your data is ready for indexing or model consumption, it needs to be cleaned, enriched, and reshaped. Your data design strategies should explicitly outline the requirements. A good platform should:
 
 - Remove duplicates and fill missing values
-- Handle case normalization and other basic cleanup tasks
+- Handle stemming, normalization and other basic cleanup tasks
 - Support advanced transformations like chunking, enrichment, and document analysis
 
 If your data store supports these operations natively, you can process data in place without moving it. Otherwise, use external tools like Azure Databricks or Azure Data Factory for heavy transformations.
 
-In some cases, you may choose to externalize part of this responsibility to the data consumer. A common example of this approach is RAG implementation. During processing, documents are divided into smaller chunks, with each chunk stored as a separate row in the index. These chunks are then paired with embeddings, often generated through an OpenAI service. In AI search scenarios, this entire process, from chunking to embedding, is orchestrated within the indexing workflow, whether through OpenAI or Azure AI Search.
+In some cases, you may choose to externalize part of this responsibility to the data consumer. A common example of this approach is RAG implementation. During processing, documents are divided into smaller chunks, with each chunk stored as a separate row in the index. These chunks are then paired with embeddings, often generated through an OpenAI service. In AI Search, this process is orchestrated as part of the enrichment pipeline during indexing, where documents are processed by an embedding model (such as OpenAI embedding model) to generate vector representations that are then stored in the index.
 
   
 #### Is there a built-in orchestrator for managing workflows?
@@ -209,9 +218,15 @@ However, combining vector search with full-text search, filtering, and special d
 
 Your data design should clearly specify which search types are required and how they should work together. For more information, see [Efficient querying in the data design](./grounding-data-design.md#efficient-querying).
 
-#### Does the index support multimodal data?
+#### How does the index handle multimodal data?
 
-AI workloads often deal with more than just text. Choose an index technology that can handle multimodal content, such as text, images, audio, and video. For example, your system might analyze an email, extract an image, convert that image into a vector, and store the resulting description in the index. This capability enables searches that span multiple content types and modalities.
+AI workloads often deal aata that includes not just text, but also images, audio, or video. The index itself can't directly understand images. So before adding the image to the index, they need to be converted into a text-based or vector representation. The index can then perform vector search, allowing semantic queries.
+
+In this use case, the search index should have:
+
+- Vector search support to store and query embeddings (numeric vectors) generated from the extracted image text. 
+- Integration with external AI APIs for for extracting or enriching data during the indexing process.
+- Ability to store store extracted fields (text, tags, captions, embeddings) in appropriate schema fields as metadata for search and filtering.
 
 #### Does the index support automatic update capabilities when the data in the data sources changes?
 
@@ -276,6 +291,16 @@ From a network security perspective, the index should:
 - Use managed identities for authentication through Microsoft Entra ID
 - Avoid exposing components directly to the public internet
 
+Embeddings can still expose sensitive information if not properly secured. Risks include embedding inversion (reconstructing original text from vectors), data poisoning (inserting malicious vectors), and unauthorized access to embedding stores or backups. To mitigate these risks, apply security measures like: 
+
+- Encryption at rest and in transit 
+- Strict access controls
+- Private network connectivity discussed above 
+- Monitor embedding endpoints for anomalies or tampering
+
+Similar to other types of data, have processes to remove sensitive or personal data. Treat vector indexes as sensitive data stores that require the same level of security and governance as other production systems.
+
+
 ### Technology options
 
 | **Function** | **Recommended Technologies** | **Alternatives / Complementary Tools** |
@@ -291,7 +316,7 @@ From a network security perspective, the index should:
 
 ## Training data platform considerations
 
-When designing your data platform for traditional machine learning (ML) or non-GenAI workloads, your focus shifts from real-time inference to data quality, reproducibility, and environment separation. These workloads rely on well-structured aggregated data and often involve additional layers, such as feature stores and offline inference data stores, to optimize model performance and cost efficiency.
+When designing your data platform for traditional machine learning (ML) or non-GenAI workloads, your focus shifts from real-time inference to data quality, reproducibility, and environment separation. These workloads rely on well-structured aggregated data and often involve additional layers, such as feature stores and batch inference data stores, to optimize model performance and cost efficiency.
 
 We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Training data design](./training-data-design.md).
 
@@ -334,23 +359,23 @@ Managed feature stores, such as the one in Azure Machine Learning, integrate dir
 
 Treat the feature store as a sensitive data store in its own right with proper access controls, encryption, and auditing.
 
-#### Should you use an offline inference data store?
+#### Should you use a batch inference data store?
 
-In some cases, you can improve performance and reduce costs by performing offline inferencing, that is, pre-computing inference results and storing them for later use instead of calling the model in real time.
+In some cases, you can improve performance and reduce costs by performing inferencing offline, that is, pre-computing inference results and storing them for later use instead of calling the model in real time.
 
-  This approach can be highly effective when the same queries or predictions are requested repeatedly (for example, generating FAQs or standard recommendations).
+This approach can be highly effective when the same queries or predictions are requested repeatedly (for example, generating FAQs or standard recommendations).
 
-  Key benefits include:
+Key benefits include:
 
-  - Reduced latency and improved user experience, results are served instantly.
-  - Easier scalability because inference can be batched and distributed offline.
-  - Enhanced reliability that avoids putting real-time load on the inference endpoint.
-  - Lower compute costs resulting from offline processing can use lower-tier hardware.
-  - Built-in pre-validation where results can be verified for accuracy before being exposed to users.
+- Reduced latency and improved user experience, results are served instantly.
+- Easier scalability because inference can be batched and distributed offline.
+- Enhanced reliability that avoids putting real-time load on the inference endpoint.
+- Lower compute costs resulting from batch processing can use lower-tier hardware.
+- Built-in pre-validation where results can be verified for accuracy before being exposed to users.
 
-  However, this approach works best when a significant percentage of predictions are reused. If your workload involves mostly unique queries, maintaining an offline inference store may not be worth the complexity.
+However, this approach works best when a significant percentage of predictions are reused. If your workload involves mostly unique queries, maintaining a batch inference store may not be worth the complexity.
 
-Your offline inference data store should be optimized for read operations, scalable enough to handle large datasets, and integrated with your aggregate data store.
+Your batch inference data store should be optimized for read operations, scalable enough to handle large datasets, and integrated with your aggregate data store.
 
 Technologies that fit this pattern include Azure Cosmos DB for fast, globally distributed access, or Azure Table Storage for simpler, lower-cost read-heavy workloads.
 
@@ -363,7 +388,7 @@ Technologies that fit this pattern include Azure Cosmos DB for fast, globally di
 | **Data processing and transformation (ETL/ELT)** | Azure Data Factory, Azure Databricks (PySpark, SQL), Microsoft Fabric Data Engineering | Apache Airflow, Apache NiFi, Synapse Pipelines |
 | **Development and training environment** | Azure Machine Learning (with MLflow integration), Azure Databricks Workspaces | JupyterHub, Kubeflow, Amazon SageMaker |
 | **Feature store** | Azure Machine Learning Feature Store, Databricks Feature Store | Feast (open source), Tecton |
-| **Offline inference or pre-computed results store** | Azure Cosmos DB, Azure Table Storage | Azure SQL Database, PostgreSQL, Redis Cache |
+| **Batch inference** | Azure Cosmos DB, Azure Table Storage | Azure SQL Database, PostgreSQL, Redis Cache |
 | **Model registry and experiment tracking** | MLflow (integrated in Azure ML or Databricks) | Weights & Biases, Neptune.ai, DVC |
 | **Orchestration and automation** | Azure Data Factory Pipelines, Azure ML Pipelines | Apache Airflow, Prefect |
 | **Security and access control** | Microsoft Entra ID (Azure AD), Azure Key Vault, Managed Identities | HashiCorp Vault, AWS IAM |
