@@ -26,17 +26,13 @@ This article outlines the key strategies for disaster recovery, emphasizing resi
 |Active-passive warm standby | A DR deployment pattern where the secondary region has some infrastructure pre-deployed and running at reduced capacity, enabling faster failover than cold standby. |
 |Backup | A copy of data stored separately from the primary system to enable data recovery if loss, corruption, or disaster occurs |
 |Business criticality | The classification of workloads or components based on their importance to business operations, influencing recovery priorities and investment levels. |
-|Cross-region recovery | The process of restoring operations in a different geographic region from where the disaster occurred. |
 |DR activation criteria | Predefined thresholds and conditions that determine when to declare a disaster and trigger recovery procedures. |
 |DR drill | A planned exercise to test disaster recovery procedures and validate recovery capabilities under controlled conditions. |
 |Failback     | The automated and/or manual shifting of production workload traffic from a failover region back to the primary region.        |
 |Failover     | The automated and/or manual shifting of production workload traffic from an unavailable region to an unaffected geographical region.        |
-|Health model | A framework that defines the healthy, unhealthy, and degraded states of a workload to enable automated monitoring and response. |
 |Point-in-time recovery | The ability to restore data to a specific moment in time, typically used to recover from data corruption or accidental changes. |
 |Recovery Point Objective (RPO) | The maximum acceptable amount of data loss measured in time, defining how much data a business can afford to lose during a disaster. |
 |Recovery Time Objective (RTO) | The maximum acceptable time to restore business operations after a disaster occurs. |
-|Replication | The process of copying data or configurations across multiple locations to ensure availability and enable recovery. |
-|Retention period | The length of time that backup copies are kept before being automatically deleted or archived. |
 |Synchronous replication | Data replication where changes are written to multiple locations simultaneously, ensuring zero data loss but potentially higher latency. |
 |Asynchronous replication | Data replication where changes are written to the primary location first and then copied to secondary locations, allowing for some data loss but lower latency. |
 |War room | A centralized location or communication channel where key personnel coordinate during disaster recovery operations. |
