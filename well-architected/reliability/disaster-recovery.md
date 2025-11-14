@@ -38,77 +38,76 @@ This guide assumes that you have already performed the following tasks as part o
 
 A reliable disaster recovery (DR) strategy builds on the foundation of a reliable workload architecture. Address reliability at every stage of building your workload to ensure that necessary pieces for optimized recovery are in place before you start designing your DR strategy. This foundation ensures that your workload's reliability targets, like recovery time objective (RTO) and recovery point objective (RPO), are realistic and achievable.
 
-## Maintain a disaster-recovery plan
+## Factor in the criticality 
 
-The cornerstone of a reliable DR strategy for a workload is the *DR plan*. Your plan should be a living document that's routinely reviewed and updated as your environment evolves. Present the plan to the appropriate teams (operations, technology leadership, and business stakeholders) regularly (every six months, for example). Store it in a highly available, secure data store such as OneDrive for Business.
+Categorize your workload by criticality tiers defined by your organization, such as mission-critical, business-critical, business operational, and so on. Recognize that each tier warrants a distinct level of investment, resilience, and recovery sequencing. If the workload contains multiple flows or components with varying criticalities, document the recovery approach for each to avoid ambiguity during an event. 
 
-Follow these recommendations to develop your DR plan:
+These criticality tiers influence the appropriate recovery objectives. Higher-criticality components demand faster recovery and more frequent data protection, while lower-criticality components can tolerate slower restoration. From these requirements, [derive clear RTO and RPO](./metrics.md#define-recovery-metrics) targets that align recovery expectations directly with business value.
 
--   Clearly define what constitutes a disaster and therefore requires activation of the DR plan.
+## Set clear criteria DR activation
 
-    -   Disasters are large-scale issues. They might be regional outages, outages of services like Microsoft Entra ID or Azure DNS, or severe malicious attacks like ransomware attacks or DDoS attacks.
+Make sure the team and business stakeholders understand exactly what counts as a disaster and what doesn't. Your strategy must differenciate between a full disaster, a major disruption, and a small issue that can be fixed quickly. Don't base this only on which components are failing. Instead, factor in how much the problem impacts users and the business as a whole.
 
-    -   Identify failure modes that aren't considered disasters, such as the failure of a single resource, so that operators don't mistakenly invoke their DR escalations. These failure modes can be addressed by troubleshooting the issue in place, redeploying the failed resources, or utilizing a [Backup Plan](#define-and-maintain-backup-plans-for-resources-within-critical-flows)
+After you define the thresholds that separate minor incidents from true DR situations, build them into your [health model](../design-guides/health-modeling.md). This way, the monitoring can spot early warning signs and the appropriate recovery processes are triggered. 
 
--   Build the DR plan on your FMA documentation. Ensure that your DR plan captures the failure modes and mitigation strategies for outages that are defined as disasters. Update both your DR plan and your FMA documents in parallel so they're accurate when the environment changes or when testing uncovers unexpected behaviors.
+## Plan for communication and escalation
 
-    -   Whether you develop DR plans for nonproduction environments depends on your business requirements and cost impacts. For example, if you offer quality-assurance (QA) environments to certain customers for prerelease testing, you might want to include those environments in your DR planning.
+Without clear communication, even the best-designed disaster recovery plan can break down. Build a clear communication strategy that defines who makes decisions, who gets informed, and how information flows during a DR event. 
 
--   Clearly define roles and responsibilities within the workload team and understand any related external roles within your organization. Roles should include:
+Start by outlining roles and responsibilities within the workload team, as well as any external groups involved. These should include owners for declaring a disaster, closing an incident, running operations tasks, performing testing and validation, managing internal and external communication, and leading retrospectives or root-cause analysis.
 
-    -   The party responsible for declaring a disaster.
+Establish cross-functional war rooms to ensure the right people can coordinate quickly, and prepare communication channels and message templates in advance so teams aren't improvising under pressure. 
 
-    -   The party responsible for declaring incident closure.
+ Define the escalation paths that the workload team must follow to ensure that recovery status is communicated to stakeholders.
 
-    -   Operations roles.
+## Test the DR plan as a routine practice
 
-    -   Testing and validation roles.
+Testing the DR plan works in real-world situations. Test multiple scenarios, including unlikely edge cases, and combine scheduled drills with surprise to see how systems and teams respond under pressure.
 
-    -   Internal and external communications roles.
+In your DR plan, include procedures and cadence for both tabletop exercises (dry runs in non-production) and production-level drills. Tabletop drills help the team practice their roles, build familiarity, and train new members, while production drills are the only way to truly verify that your plan meets RTO and RPO targets in real conditions. For processes outside your control, like DNS propagation, validates potential delays when evaluating recovery times.
 
-    -   Retrospective and root-cause analysis (RCA) lead roles.
+Have a process in place that treats test results as inputs to improve the overall DR posture. For example, if a new operator is hesitant, review that procedure to ensure that it's clearly written.
 
--   Define the escalation paths that the workload team must follow to ensure that recovery status is communicated to stakeholders.
+## Maintain the DR plan
 
--   Capture component-level recovery procedures, data estate-level recovery, and workload-wide recovery processes. Include a prescribed order of operations to ensure that components are recovered in the least impactful way. For example, recover and check databases before you recover the application.
+Treat the DR plan as a living document. Your plan should evolve as your environment changes and should be reviewed regularly with all relevant teams, operations, technology leadership, and business stakeholders, ideally every six months. Store it securely in a highly available location so it's always accessible when needed.
 
-    -   Detail each component-level recovery procedure as a step-by-step guide. Include screenshots if possible.
+The DR plan should supplement your FMA documentation, capturing how the system behaves during disasters and how to respond. As you discover new failure cases, through testing, monitoring, or real incidents, update your plan to include them. Ensure both your DR plan and FMA documentation are updated whenever the environment changes or testing uncovers unexpected behaviors.
 
-    -   Define your team's responsibilities versus your cloud hosting provider's responsibilities. For example, Microsoft is responsible for restoring a PaaS (platform as a service), but you're responsible for rehydrating data and applying your configuration to the service.
+Reflect architectural changes. Whenever the workload architecture changes, update the DR plan to clearly define any adjustments to activation criteria or recovery processes.
 
-    -   Include prerequisites for running the procedure. For example, list the required scripts or credentials that need to be gathered.
+Plan realistic maintenance time. Use metrics from testing as the minimum time needed for recovery steps when scheduling drills or maintenance.
 
-    -   Capture the root cause of the incident and perform mitigation before you start recovery. For example, if the cause of the incident is a security issue, mitigate that issue before you recover the affected systems in your failover environment.
+Refine procedures over time. Early in your DR practices, assume each procedure must run in sequence and allow extra time for unforeseen issues. As drills mature, identify which steps can safely run in parallel.
 
--   Depending on the [redundancy design](redundancy.md) for your workload, you might need to do significant post-failover work before you make the workload available to your customers again. Post-failover work could include DNS updates, database connection string updates, and traffic routing changes. Capture all of the post-failover work in your recovery procedures.
+## Align recovery with the architecture design
 
-    > [!NOTE]
-    > Your redundancy design might allow you to automatically recover from major incidents fully or partially, so be sure that your plan includes processes and procedures around these scenarios. For example, if you have a fully active-active design that spans [availability zones or regions](../design-guides/regions-availability-zones.md), you might be able to transparently fail over automatically after an availability zone or regional outage and minimize the steps in your DR plan that need to be performed. Similarly, if you designed your workload by using [deployment stamps](/azure/architecture/patterns/deployment-stamp), you might suffer only a partial outage if the stamps are deployed zonally. In this case, your DR plan should cover how to recover stamps in unaffected zones or regions.
+Your disaster recovery process should be designed with the architecture of your workloads in mind. Align your plan with architectural design: active-active deployments, zonal redundancy, or  [deployment stamps](/azure/architecture/patterns/deployment-stamp) may allow partial or automated recovery. For more information, see [Architecture strategies for using availability zones and regions](../design-guides/regions-availability-zones.md). 
 
--   If you need to redeploy your app in the failover environment, use tooling to automate the deployment process as much as possible. Ensure that your DevOps pipelines have been predeployed and configured in the failover environments so that you can immediately begin your app deployments. Use automated end-to-end deployments, with manual approval gates where necessary, to ensure a consistent and efficient deployment process. The full deployment duration needs to align with your recovery targets.
+Layer your recovery processes. Structure procedures at the component level, data estate level, and workload level. Define the proper sequence to minimize impact. For example, restore databases before applications that depend on them.
 
-    -   When a stage of the deployment process requires manual intervention, document the manual steps. Clearly define roles and responsibilities.
+Define scope based on business impact. Decide which environments, production and, if necessary, non-production, require DR coverage, considering customer impact and cost.
 
--   Automate as much of the procedure as you can. In your scripts, use declarative programming because it allows idempotence. When you can't use declarative programming, be mindful about developing and running your custom code. Use retry logic and circuit breaker logic to avoid wasting time on scripts that are stuck on a broken task. Because you run these scripts only in emergencies, you don't want incorrectly developed scripts to cause more damage or slow down your recovery process.
+Automate deployment and recovery procedures in failover environments wherever possible, ensuring they meet RTO targets. Use declarative, idempotent scripts for reliability, and build safeguards like retry and circuit-breaker logic for any custom code. 
 
-    > [!NOTE]
-    > Automation poses risks. Trained operators need to monitor the automated processes carefully and intervene if any process encounters issues. To minimize the risk that automation will react to false positives, be thorough in your DR drills. Test all phases of the plan. Simulate detection to generate alerting, and then move through the entire recovery procedure. 
-    > 
-    > Remember that your DR drills should validate or inform updates to your recovery target metrics. If you find that your automation is susceptible to false positives, you might need to increase your failover thresholds.
+Use automation to redeploy applications in failover environments wherever possible. Predeploy and configure DevOps pipelines so deployments can start immediately, using automated end-to-end processes with manual approval gates only when needed. Ensure deployment timelines align with your recovery targets.
 
--   Separate the failback plan from the DR plan to avoid potential confusion with the DR procedures. The failback plan should follow all of the DR plan's development and maintenance recommendations and should be structured in the same way. Any manual steps that were necessary for failover should be mirrored in the failback plan. Failback might happen quickly after failover, or it might take days or weeks. Consider failback as separate from failover.
+Apply manual approvals  when necessary to balance speed with control. When manual steps are required, document them clearly and define roles and responsibilities.
 
-    -   The need to fail back is situational. If you're routing traffic between regions for performance reasons, failing back the load originally in the failed-over region is important. In other cases, you might have designed your workload to function fully regardless of which production environment it's located in at any time.
+> [!NOTE]
+> Automation poses risks. Even with automation, trained operators must oversee recovery processes and intervene if issues arise. Use thorough DR drills to test every phase, validate recovery targets, and adjust failover thresholds to reduce the risk of false positives.
 
-## Conduct disaster-recovery drills
+Detail procedures clearly. Provide step-by-step instructions, prerequisites (scripts, credentials, configurations), and assigned responsibilities between your team and cloud providers. Include root-cause mitigation before recovery to prevent recurring failures.
 
-A DR testing practice is as important as a well-developed DR plan. Many industries have compliance frameworks that require a specified number of DR drills to be performed regularly. Regardless of your industry, regular DR drills are paramount to your success. 
+Plan for post-failover work. Capture all tasks needed after failover, such as DNS updates, traffic routing, and connection string adjustments, to bring the workload fully back online.
 
-Follow these recommendations for successful DR drills:
 
--   Perform at least one production DR drill per year. Tabletop (dry run) drills or nonproduction drills help ensure that the involved parties are familiar with their roles and responsibilities. These drills also help operators build familiarity ("muscle memory") by following recovery processes. But only production drills truly test the validity of the DR plan and the RTO and RPO metrics. Use your production drills to time recovery processes for components and flows to ensure that the RTO and RPO targets that have been defined for your workload are achievable. For functions that are out of your control, like DNS propagation, ensure that the RTO and RPO targets for the flows that involve those functions account for possible delays beyond your control.
+## Keep failback strategy separate from failover
+> [!IMPORTANT]
+> Failback is a deliberate, context-driven process, not merely a reversal of failover. Keep failback distinct from the DR plan to prevent confusion. Build and maintain it using the same principles as your DR plan, including mirroring any manual steps from failover. Failback may occur immediately or over days or weeks—treat it as a separate process.
+>
+> The need to fail back depends on the situation: for example, if traffic was rerouted between regions for performance, restoring it to the original region is important. In other cases, workloads may function fully regardless of which environment is active.
 
--   Use tabletop drills not only to build familiarity for seasoned operators but also to educate new operators about DR processes and procedures. Senior operators should take time to let new operators perform their role and should watch for improvement opportunities. If a new operator is hesitant or confused by a step in a procedure, review that procedure to ensure that it's clearly written.
 
 ### Considerations
 
