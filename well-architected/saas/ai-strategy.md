@@ -138,7 +138,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How will your SaaS product evolve?**
 > 
->   Think of AI adoption as a journey that you take over time. Initially, you should focus on use cases that add incremental value to your product, reduce user toil, and enhance your own operational efficiency. Over time, consider using AI for decision support, reasoning, and more complex process orchestration. Consider building agents that have access to tools, including those you build into your product. Then, progress to multi-agent experiences, with sets of specialized agents that collaborate to perform more complex tasks.
+>   Think of AI adoption as a journey that you take over time. Initially, you should focus on use cases that add incremental value to your product, reduce user toil, and enhance your own operational efficiency. Over time, consider using AI for higher value capabilities, including decision support, reasoning, and more complex process orchestration. These capabilities are more complex to build and require more advanced models, patterns, and operational maturity, but when employed well, they can provide a substantial return on investment.
 >
 >   Be prepared to adapt your journey as you learn more, as your customers give feedback, and as the technology and landscape evolve.
 
@@ -211,6 +211,12 @@ For this type of SaaS product, core value comes from the user experience or work
 
 - Support natural language interfaces that allow users to perform tasks within the application.
 
+- Provide autonomous agents that can act on the user's behalf.
+
+#### Evolution
+
+Initial use cases might be focused on foundational use cases for generative AI, like summarization or content generation. Over time, expose your product's functionality as tools, and provide agentic interfaces that can use those tools and perform task-based reasoning. Ultimately, plan to create a multi-agent strategy, where teams of specialized agents collaborate to perform higher-order complex tasks, deep research, and reasoning across data from customers' environments in conjunction with tools from your application.
+
 #### AI opportunities
 
 - **Interface integration**. Implement AI features directly within existing user interfaces such as editors, dashboards, and core workflow components to minimize context switching.
@@ -234,12 +240,12 @@ For this type of SaaS product, core value comes from the user experience or work
 
 #### Build, buy, or customize?
 
-| Capabilities | Approach  | Recommendation|
-|--------------|-----------|---------------|
-| General-purpose language models | Buy | Utilize established models. Avoid building your own language model. |
-| AI-enhanced features (summarization, classification) | Customize| Craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. If necessary, you can fine-tune existing models. |
-| Agentic experiences | TODO | TODO |
-| Workflow integration (UI/UX)| Build| Develop custom UI/UX components to  embed AI, creating a differentiated and intuitive user experience. |
+| Capabilities | Approach  | Recommendation |
+|--------------|-----------|----------------|
+| General-purpose and reasoning-focused language models | Buy | Utilize established models. Avoid building your own language model. |
+| AI-enhanced features (summarization, classification) | Customize | Craft domain-specific prompts. Consider Retrieval-Augmented Generation (RAG) to ground outputs in your data. If necessary, you can fine-tune existing models. |
+| Agentic user experiences | Build | Design agents that fit your capabilities and business model. Expose application functionality as tools to enable increasingly complex semi-autonomous and autonomous action. |
+| Workflow integration (UI/UX)| Build| Develop custom UI/UX components to embed AI, creating a differentiated and intuitive user experience. |
 | Task-specific models (legal clause analysis, medical term tagging) | Buy or customize | Purchase or customize proven domain models when available. Only build custom models if you have proprietary data and strong ML capabilities. |
 
 # [Data-as-a-platform](#tab/archetype-data)
@@ -255,6 +261,10 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 - **Customer AI integration**. Allowing customers to build or integrate their own AI agents or workflows that operate on your data.
 
 - **Predictive analytics**. Offering predictive analytics, benchmarking, or trend insights based on aggregated customer data.
+
+#### Evolution
+
+Initially, focus on providing your solution's data and capabilities to enable customer integration into their own AI workflows. Look for opportunities to use foundational capabilities for data processing, visualization, and querying. Over time, evolve to use AI for higher-order predictive tasks, and automated reasoning across complex data sets.
 
 #### AI opportunities
 
@@ -286,7 +296,6 @@ In this archetype, the SaaS solution's primary value is in collecting, consolida
 |-----------|----------|----------------|
 | Data access APIs | Build | Create robust, secure APIs to enable customers and third-party tools to access and query data. |
 | AI-powered data query interfaces | Build or customize | Develop or fine-tune natural language query tools that allow users to interact with data intuitively. |
-| Agentic experiences | TODO | TODO |
 | Integration with external AI agents | Build or integrate | Support integration points (APIs, webhooks) to allow customers to connect their AI agents or workflows to your data. |
 | Data governance and privacy | Build | Implement strict controls and monitoring to ensure data security, compliance, and privacy. |
 | Custom ML models for data insights | Buy or build | Use prebuilt models when possible; build custom models only if you have proprietary data and expertise. |
@@ -330,6 +339,10 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 - **Continuous learning and model tuning.** Implement feedback loops where AI models improve over time based on user interactions and new data.
 
+#### Evolution
+
+Initially, you might focus on ML and narrow AI applications, starting with prebuilt models and progressing to custom models tuned for your own use cases. Over time, expand to provide decision support capabilities, advanced reasoning, and where applicable, autonomous or human-in-the-loop action-taking. Use advanced reasoning models to evaluate how narrow models are working and where they can be improved.
+
 #### Risks
 
 - **Data privacy and security.** Exposure of sensitive customer data or regulatory breaches can cause trust loss and legal issues. Mitigate by enforcing encryption, access controls, and regular compliance checks.
@@ -353,7 +366,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 | Data ingestion pipelines         | Build           | Develop tailored pipelines to collect, clean, and normalize diverse customer data for accurate analysis. |
 | Prebuilt analytics models        | Buy or customize             | Leverage existing AI/ML models for common forecasting, anomaly detection, and benchmarking tasks. Customize them if necessary for your domain. |
 | Custom AI model training         | Build | Create and train models on proprietary datasets to create unique, differentiated insights and predictions.     |
-| Agentic experiences | TODO | TODO |
+| Reasoning capabilities | Customize | Build your own reasoning layer on top of prebuilt specialized reasoning models, grounded in your solution's data and use cases. |
 | Interactive data visualization   | Build or customize | Create or enhance dashboards that allow dynamic exploration and real-time data interaction.             |
 | Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
