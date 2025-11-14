@@ -70,8 +70,8 @@ This could involve embedding intelligent features, improving internal operations
 
     Distinguish between foundational AI use cases and agentic use cases:
     
-    - Foundational use cases use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, and enrichment.
-    - Agentic use cases use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities. Agentic use cases increasingly combine multiple agents, each with a defined purpose. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to discover and assess loan applications.
+    - Foundational use cases use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, content generation, and enrichment.
+    - Agentic use cases use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities. Agentic use cases increasingly combine multiple agents, each with a defined purpose, and might reflect an entire business process or decision. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to perform research and assess loan applications based on criteria you specify.
 
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
