@@ -1,7 +1,7 @@
 ---
 title: Design Essentials Overview
 author: PageWriter-MSFT
-ms.date: 11/04/2025
+ms.date: 11/14/2025
 ms.author: prwilk
 description: Summary of design guides for the Azure Well-Architected Framework.
 ms.topic: concept-article
@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Design essentials overview
 
-[placeholder for Priyanka & Jose]
+Design guides in the Well-Architected Framework (WAF) offer prescriptive guidance that turns the framework's key strategies into actionable steps. Built on the foundational strategies defined within the pillar recommendations, these guides reach across multiple pillars to highlight how architectural considerations work together in practice. Rather than walking through full, end-to-end scenarios, each design guide zeroes in on a single practice or decision point, providing clear direction to help teams apply WAF principles with confidence and consistency.
 
 ## Design guides summary
 
