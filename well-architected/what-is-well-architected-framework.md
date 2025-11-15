@@ -82,6 +82,12 @@ Service guides play a key role in making decisions about individual Azure compon
 
 For more information, see [the available guides](./service-guides/index.yml).
 
+#### Design essentials
+
+Design guides serve as focused resources that deliver prescriptive guidance for applying the framework’s key strategies. They draw directly from the foundational approaches defined in the pillar recommendations, yet intentionally extend across pillars to show how these strategies interact in practice. Instead of covering entire architectural journeys, design guides concentrate on a specific practice or choice, giving teams clear, targeted direction to put WAF principles into action.
+
+For more information, see [Design essentials](../design-guides/index.md)
+
 #### Assessment
 
 Microsoft Azure Well-Architected Review is offered at no charge. It's a collection of questionnaires tied to the pillar checklists to evaluate your design choices. Track your score through iterative runs to identify possible areas for enhancement.
