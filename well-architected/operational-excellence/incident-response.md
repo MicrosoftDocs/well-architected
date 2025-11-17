@@ -34,9 +34,9 @@ This article outlines proven strategies for designing an architecture that helps
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
 
-## Allocate additional resources for incident response infrastructure, processes, and staff
+## Allocate sufficient resources for incident response infrastructure, processes, and staff
 
-Thethe ability to recover or roll back quickly requires sufficient infrastructure capacity. Plan for enough resources to operate at least two redudant workload configurations at the same time. This approach allows teams to perform fallbacks or rollbacks without disrupting services. Workload teams should be comfortable supporting both configurations in production when needed. That may require refactoring workloads, such as decoupling components or updating data models.
+Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
 
 The team needs to balance their regular responsibilities with emergency response work. There may be a need to increase headcount or engage third-party vendors who specialize in incident management. Vendors can provide valuable expertise, tools, and insights that help resolve issues faster. It's important to maintain active support agreements and clearly define escalation procedures so that some team members can work directly with vendors while others continue internal triage and remediation.
 
@@ -54,7 +54,7 @@ A strong incident response plan depends on a well-designed monitoring stack. Cap
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** . An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
 >
-> Mititgate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
+> Mitigate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
 
 Effective monitoring has two key dimensions. First, the response process should receive timely notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, **the solution itself must emit rich, structured telemetry, logs, metrics, and traces**, which enable deep analysis, triage, and root cause identification.
 
