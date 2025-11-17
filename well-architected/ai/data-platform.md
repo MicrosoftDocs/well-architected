@@ -73,7 +73,7 @@ Data also needs to be both durable and accessible. Make sure the platform guaran
 
 #### Do you have any cost constraints?
 
-After reliability and performance requirements are met, consider how to optimize cost. For many AI workloads, a write once, read many pattern is sufficient and helps control expenses. Grounding data should be cost-effective to store and retrieve, even if it does not require the same level of responsiveness as a production database. The goal is to balance cost, efficiency, and performance.
+After reliability and performance requirements are met, consider how to optimize costs. For many AI workloads, a write-once, read-many pattern is sufficient and helps control expenses. Grounding data should be cost-effective to store and retrieve, even if it doesn't require the same level of responsiveness as a production database. The goal is to balance cost, efficiency, and performance.
 
 
 #### Do you need to support data sovereignty or regional compliance requirements?
