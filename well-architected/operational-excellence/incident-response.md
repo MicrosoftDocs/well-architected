@@ -3,7 +3,7 @@ title: Architecture strategies for designing an incident management (IcM) proces
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/13/2025
+ms.date: 11/17/2025
 ms.topic: conceptual
 ---
 
@@ -34,13 +34,29 @@ This article outlines proven strategies for designing an architecture that helps
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
 
+## Document the incident response plan
+
+An incident might relate to deployment, security, or performance issues. Regardless, create an overarching incident response plan that covers the entire process. Include supplemental procedures for each incident type that describe distinct detection methods, containment and recovery steps, involved stakeholders specific to that type of incident. 
+
+An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
+
+The plan must include a **communication and escalation structure** that outlines how incidents are reported, who is notified, and through which channels. This ensures that information moves quickly to the right people and prevents gaps or duplication during critical moments.
+
+The plan must also include the **core procedures** the team will follow during detection, triage, containment, and recovery. These steps provide a predictable framework for response and help maintain operational stability. Regular reviews of these procedures keep the plan aligned with system changes and lessons learned from previous incidents.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** An overly aggressive response strategy can trigger false alarms or unnecessary escalations.
+>
+> Similarly, automatic actions such as scaling or self-healing triggered by threshold breaches can incur extra costs and operational overhead. Since the optimal thresholds may not be obvious, validate them through testing in lower environments and carefully monitored production trials to align actions with your actual requirements.
+
 ## Allocate sufficient resources for incident response infrastructure, processes, and staff
 
 Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
 
-The team needs to balance their regular responsibilities with emergency response work. There may be a need to increase headcount or engage third-party vendors who specialize in incident management. Vendors can provide valuable expertise, tools, and insights that help resolve issues faster. It's important to maintain active support agreements and clearly define escalation procedures so that some team members can work directly with vendors while others continue internal triage and remediation.
+From human resourcing perspective, the team needs to balance their regular responsibilities with emergency response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
 
-Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access to monitoring and diagnostic data to ensure smooth collaboration during incidents.
+Even with those external dependencies, expect some team members to work directly with vendors while others continue internal triage and remediation.
+
+Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access with appropriate permissions for logs and production environments.
 
 ## Build containment and isolation in the architecture
 
@@ -78,17 +94,7 @@ Key components should include observability data, timelines, ownership details, 
 
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
-## Document the incident response plan
 
-An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
-
-The plan must include a **communication and escalation structure** that outlines how incidents are reported, who is notified, and through which channels. This ensures that information moves quickly to the right people and prevents gaps or duplication during critical moments.
-
-The plan must also include the **core procedures** the team will follow during detection, triage, containment, and recovery. These steps provide a predictable framework for response and help maintain operational stability. Regular reviews of these procedures keep the plan aligned with system changes and lessons learned from previous incidents.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** An overly aggressive response strategy can trigger false alarms or unnecessary escalations.
->
-> Similarly, automatic actions such as scaling or self-healing triggered by threshold breaches can incur extra costs and operational overhead. Since the optimal thresholds may not be obvious, validate them through testing in lower environments and carefully monitored production trials to align actions with your actual requirements.
 
 ## Test the plan
 
