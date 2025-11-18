@@ -34,7 +34,7 @@ This article doesn't cover disasters that require specialized recovery efforts. 
 | **Severity Level** | Classification system (Critical, High, Medium, Low) that determines the appropriate response level based on business impact and affected users. |
 | **Triage** | The process of analyzing and prioritizing incidents to determine severity, impact, and appropriate response actions. |
 
-## Phase 1: Prepare
+## Preparation
 
 Before an incident happens, set up the foundation for effective response by designing observability, defining clear roles and processes, and preparing the tools and resources your teams will need. Document the incident response plan and keep it updated and reviewed regularly.
 
@@ -110,7 +110,7 @@ Before an incident happens, set up the foundation for effective response by desi
    > Design your operations so that only the designated authority, such as the Incident Response Manager, can close an incident. Enforce strict checklists to block premature closure. Skipping steps can leave hidden issues unresolved, turning a "closed" incident into a repeat disaster.
 
 
-## Phase 2: Detect, investigate, and respond
+## Detect, investigate, and respond
 
 Phase 2 focuses on detecting and responding to incidents quickly and effectively. The goal is to identify issues early, assess their impact, and implement the right mitigation strategies while containing disruption. This phase also ensures that triage, resolution, and communication are coordinated, consistent, and accountable across all teams.
 
@@ -154,7 +154,7 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
 
 1. Generate Root Cause Analysis (RCA) report. After an incident is resolved, generate the RCA report within the SLA timeframe. The incident owner, or a closely involved team member if unavailable, should create the report to ensure accuracy. Follow a defined RCA template with clear guidelines on what information to include and share, or create and approve a new template with stakeholder review.
 
-## Phase 3: Retrospective
+## Post-incident activities
 
 Retrospectives should follow every incident. They provide critical learning opportunities, highlight weaknesses in response, deployment, or infrastructure, and inform improvements. Document action items and ensure they are tracked and implemented through the workload backlog.
 
