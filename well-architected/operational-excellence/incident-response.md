@@ -18,7 +18,7 @@ When incidents occur, the workload team should be prepared with clear, structure
 
 There are two key aspects to incident response. The first is architectural, focusing on designing systems that support effective response procedures and prevent failures from cascading across components. The second is procedural, covering detection, containment, and triage to manage issues quickly, followed by root cause analysis and postmortems to prevent recurrence. Regular drills help maintain readiness and ensure the plan can be executed effectively.
 
-This article outlines proven strategies for designing an architecture that helps in response and a response plan that keeps the team calm, coordinated, and in control. 
+This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control. 
 
 
 **Definitions**
@@ -36,7 +36,7 @@ This article outlines proven strategies for designing an architecture that helps
 
 ## Document the incident response plan
 
-An incident might relate to deployment, security, or performance issues. Regardless, create an overarching incident response plan that covers the entire process. Include supplemental procedures for each incident type that describe distinct detection methods, containment and recovery steps, involved stakeholders specific to that type of incident. 
+An incident might relate to deployment, security, or performance issues. Regardless, create an core incident response plan that covers the entire process. Define supplemental procedures for each incident type that describe distinct detection methods, containment and recovery steps, the involved stakeholders specific to that type of incident. For example, your security incident plan might have processes related to involving Security Operations Center (SOC), which won't be applicable to a deployment incident.
 
 An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
 
