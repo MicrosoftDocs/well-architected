@@ -52,7 +52,10 @@ The plan must also include the **core procedures** the team will follow during d
 
 Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
 
-From human resourcing perspective, the team needs to balance their regular responsibilities with emergency response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
+From human resourcing perspective, the team needs to balance their regular responsibilities with incident response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
+
+> [!NOTE]
+> Work with your organization to prepare those support contracts in advance so that they are readily available during an incident.
 
 Even with those external dependencies, expect some team members to work directly with vendors while others continue internal triage and remediation.
 
