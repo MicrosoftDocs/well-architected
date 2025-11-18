@@ -1,9 +1,10 @@
 ---
 title: Governance for SaaS Workloads on Azure
 description: Learn about governance to reduce risks, help ensure compliance, and support your organization's business objectives.
-author: joshuawaddell
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/03/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---

@@ -1,10 +1,11 @@
 ---
 title: Design Methodology for SaaS Workloads on Azure
 description: Learn how to implement a structured approach when you make architectural design decisions for software as a service (SaaS) workloads on Azure.
-author: landonpierce 
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
 ms.date: 11/05/2025
+ms.update-cycle: 1095-days
 ms.collection: learn-startups
 ---
 

@@ -1,9 +1,10 @@
 ---
 title: Networking for SaaS Workloads on Azure
 description: Learn about the networking considerations, including deployment strategies, topology, security, and connectivity, for SaaS workloads on Azure.
-author: senavar
+author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/05/2025
+ms.update-cycle: 1095-days
 ms.topic: concept-article
 ms.collection: learn-startups
 ---

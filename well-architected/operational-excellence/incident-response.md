@@ -1,5 +1,5 @@
 ---
-title: Architecture strategies for designing an emergency response strategy
+title: Architecture strategies for designing an incident management (IcM) process
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,7 +7,7 @@ ms.date: 10/27/2025
 ms.topic: conceptual
 ---
 
-# Architecture strategies for designing an incident response strategy
+# Architecture strategies for designing an incident management (IcM) process
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 

@@ -279,7 +279,7 @@ Azure supports batch processing in various services, so you can group multiple o
 
 Regarding data serialization, Azure supports various serialization formats, including JSON and XML. Choose the appropriate serialization format based on data size, performance requirements, and interoperability needs.
 
-**Optimizing data access**: Azure provides caching services like Azure Cache for Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
+**Optimizing data access**: Azure provides caching services like Azure Managed Redis. You can use caching to store frequently accessed data closer to the application, which results in faster retrieval and reduced back-end load.
 
 - *Indexing and query optimization:* Azure services like [Azure SQL Database](/azure/azure-sql/database/automatic-tuning-overview) and [Azure Cosmos DB](/azure/cosmos-db/index-policy) provide indexing capabilities to optimize query performance. By choosing the right indexing strategy and optimizing queries, you can improve the overall efficiency of data retrieval.
 

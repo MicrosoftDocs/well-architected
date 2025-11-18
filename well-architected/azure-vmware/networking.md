@@ -45,7 +45,7 @@ High-traffic applications require optimal retrieval of content. Optimization tec
 
 - Use Azure Content Delivery Network to improve responsiveness and reduce latency for users who access your applications and websites.
 - Use compression to minimize the payload of static assets.
-- Use caching solutions like Redis or Azure Cache for Redis to cache frequently accessed data.
+- Use caching solutions like Redis or Azure Managed Redis to cache frequently accessed data.
 
 ## Use a firewall for internet-facing workloads
 
