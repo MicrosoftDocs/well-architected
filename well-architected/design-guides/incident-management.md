@@ -245,5 +245,5 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 
 #### Related links
 
-- [Recommendations for designing an incident response strategy](incident-response.md)
+- [Recommendations for designing an incident response strategy](../operational-excellence/incident-response.md)
 - [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md)

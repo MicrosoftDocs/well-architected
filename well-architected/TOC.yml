@@ -335,7 +335,7 @@
       - name: Implementing recommendations
         href: ./design-guides/implementing-recommendations.md
       - name: Incident management
-        href: ./design-guides/incident0management.md
+        href: ./design-guides/incident-management.md
       - name: Optimize using flows
         href: ./design-guides/optimize-workload-using-flows.md
       - name: Handle transient faults
