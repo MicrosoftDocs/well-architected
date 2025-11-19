@@ -171,7 +171,7 @@ The goal is not to assign blame but to identify actionable improvements. This pr
 
 Let's look at a deployment-related incident. Even with careful planning and testing, deployments can sometimes introduce issues that affect system performance or user experience.
 
-In this example, we'll look at how a workload team responds and detects the issue caused when the team is rolling out a new feature to a subset of users.
+In this example, a workload team is rolling out a search enhancement feature that includes multiple components: a new search API endpoint with enhanced filtering functionality, an updated database schema, a redesigned UI search widget, and new caching logic.
 
 1. **Detection**. The problem was noticed when error rates spiked in one of the canary rollout groups. The team immediately used their observability tools like application performance monitoring, logging, and telemetry linking users to rollout phases, to pinpoint the affected group.
 
@@ -184,7 +184,7 @@ In this example, we'll look at how a workload team responds and detects the issu
     **Preparation**: 
 
     Before the incident occurred, the team had defined a clear decision tree for handling deployment issues.
-    
+
     - **Rollback**: Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means, typically the last healthy state of the workload before the deployment began, which may not be the immediately prior application version. Rolling back can be complex, particularly when schema or data changes are involved. To reduce risk, schema updates should be additive rather than replacing records, allowing old and new data to coexist until deprecated records can be safely removed. Rollbacks may require careful planning and coordination across multiple teams.
 
     - **Fallback**: Remove updated systems from production traffic routing, directing all traffic to the stable stack. This low-risk strategy allows addressing deployment issues without further disruptions. With canary deployments, fallback can be complicated depending on infrastructure and application design. Adequate capacity on the stable stack should be ensured before switching traffic back. Fallback supports continued operation while isolating the problematic deployment.
@@ -195,22 +195,25 @@ In this example, we'll look at how a workload team responds and detects the issu
 
 After reviewing all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower-risk than attempting a full rollback, which could have required complex data and schema operations. The team confirmed that the stable stack had sufficient capacity to handle the full production load and that the updated systems could be isolated from production traffic routing..
 
+Is worth noticing that, because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
+
 1. **Resolution**.  The team executed the fallback procedure: traffic was shifted away from the updated environment, isolating the problematic deployment. This allowed the team to address the underlying issue without impacting the majority of users.
+
+    However, the fallback execution revealed operational gaps: contact information for two key team members was outdated, and one engineer in the escalation chain had left the company months earlier. Additionally, when attempting to remove the updated deployment from the load balancer, the documentation referenced an outdated load balancer configuration that changed in a recent Azure update, requiring them to locate the correct procedure under time pressure.
 
     Communication was a key part of the mitigation plan. Stakeholders were kept informed of the decision and its implications, including the expected timeline for resolving the issue in the isolated environment. The team standardized the cadence for providing status updates during deployment incidents so stakeholders knew when to expect progress reports and issue updates. As direct communication with end users was necessary, the team clarified the type and level of detail appropriate to share, while also ensuring that any other requirements for deployment incident communications were followed. This structured approach minimized confusion and helped maintain confidence in the response process.
 
 1. **Retrospective**. After the deployment incident was fully mitigated, the team conducted a retrospective to capture lessons learned and improve future processes. The session included everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviewed the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
 
+  A key finding was that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
+
 1. **Post-incident improvements**. From the retrospective, the team implemented several operational improvements to make future deployments safer and mitigations more reliable:
-
-
 
    - **Smaller, frequent changes**: The team shifted toward smaller, incremental deployments, reducing the delta between successive versions and making mitigation simpler and lower-risk.
 
+      For the search enhancement specifically, the team to deploy each component independently: first the database schema changes with backward-compatible changes, then the API endpoint updates, and so on. This approach would enable the team to validate each layer independently before adding the next, and more easily isolate issues to a specific component.
 
-
-
-   - **Regular testing and drills**: The team established a practice of frequent testing for the full deployment failure mitigation strategy. Chaos engineering and fault injection tests were introduced to simulate failure scenarios and validate mitigation processes.
+   - **Regular testing and drills**: The team established a practice of frequent testing for the full deployment failure mitigation strategy. Chaos engineering and fault injection tests were introduced to simulate failure scenarios and validate mitigation processes. These regular drills would have caught the issues encountered during the incident: outdated contact information, and outdated runbook procedures.
 
 ## Azure facilitation
 
