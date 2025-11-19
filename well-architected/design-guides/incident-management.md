@@ -1,20 +1,20 @@
 ---
-title: Incident response design guide for Azure workloads
+title: Develop an incident management practice to recover from disruptions
 description: Learn how to design comprehensive incident response processes for Azure workloads, including detection, containment, mitigation, and recovery strategies.
 author: PageWriter-MSFT 
 ms.author: prwilk 
-ms.date: 11/08/2025
+ms.date: 11/18/2025
 ms.topic: conceptual
 ms.update-cycle: 1095-days  
 ---
 
-# Incident management (IcM) design for Azure workloads
+# Manage disuptions with an effective incident management plan
 
 An _incident_ is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system, resulting in customer or business impact. Incidents exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Your incident management (IcM) strategy should scale with severity, from rapid mitigation for minor incidents to coordinated cross-team efforts for major events. Response can also vary depending on the cause, whether hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors such as security attacks. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises.
 
 Despite the cause, incident response, whether operational or security, follows the same playbook: detect, triage, mitigate, communicate, and review. Don't just focus on dashboards and runbooks. As an architect, design operations where people, processes, and tools work together under pressure to restore systems efficiently and without chaos.
 
-This article focuses on the phases of IcM, which includes preparation, active incident response, post-incident review, and ongoing improvement. It also includes an example to illustrate the design practices. Before you begin, take some time to review the key strategies and pick the ones that make sense for your business. See [OE:08 Architecture strategies for designing an incident management (IcM) process](../operational-excellence/incident-response.md) for details.
+This article focuses on the phases of IcM, which includes preparation, active incident response, post-incident review, and ongoing improvement. It also includes an example to illustrate the design practices. Before you begin, review the key strategies and pick the ones that make sense for your business. See [OE:08 Architecture strategies for designing an incident management (IcM) process](../operational-excellence/incident-response.md) for details.
 
 This article doesn't cover disasters that require specialized recovery efforts. Details on handling such scenarios can be found in [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md).
 
@@ -245,34 +245,5 @@ Use Monitor to integrate machine learning. Automate and optimize incident triage
 
 #### Related links
 
-- [Progressive experimentation with feature flags](/devops/operate/progressive-experimentation-feature-flags)
-- [Recommendations for designing and creating an observability framework](observability.md)
-- [Recommendations for designing an emergency response strategy](emergency-response.md)
-- [Recommendations for designing a reliability testing strategy](../reliability/testing-strategy.md)
-- [Recommendations for designing a workload development supply chain](workload-supply-chain.md)
-- [Recommendations for performing failure mode analysis](../reliability/failure-mode-analysis.md)
-- [Recommendations for safe deployment practices](safe-deployments.md)
-- [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
-
-## DUMP ZONE
-
-Strategies:
-
-An overly aggressive response strategy can lead to false alarms or unnecessary escalations. Balance the need for rapid response with the cost of disrupting normal operations.
-
-Similarly, aggressively implementing automatic scaling or other self-healing actions to respond to threshold breaches can lead to unnecessary expenditures and management burden. You might not know the exact thresholds to set for alerting and automatic actions like scaling. Perform testing in lower environments and in production to help you determine the right thresholds for your requirements.
-
-Support team members need to be able to perform their normal duties and also support emergencies. You might need to increase head count to help ensure that the support team is properly staffed and able to carry out all required duties.
-
-Being able to fall back typically means that you need sufficient infrastructure capacity to handle two versions of your workload configuration at the same time. Your workload teams also need to be able to support two versions in production at the same time.
-
-Being able to roll back effectively might involve refactoring elements of your workload. For example, you might need to decouple functions or change your data model.
-
-
-#### Engage vendor support
-
-Vendor support can be an essential step when you deal with ongoing performance issues. Vendors have the expertise, tools, resources, and experience to help fix issues with their products. Your support agreement with your supplier determines the level of support a vendor provides.
-
-It's often best to work in parallel with vendors. You should create a plan to have some team members collaborate with vendor support while others continue to triage and fix performance issues. Vendor support teams can also make suggestions on how to help prevent and automate responses to similar events.
-
-You need to have contact information available for your personnel. Vendors might also need access to data to effectively engage in problem-solving. You need to have a plan in place for authenticating and authorizing external or guest accounts to access monitoring data.
+- [Recommendations for designing an incident response strategy](incident-response.md)
+- [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md)
