@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is transforming how SaaS products are developed, delivered, and experienced. As a SaaS ISV, AI represents the next frontier in your product strategy and development. You need to rethink your product strategy with AI at the core. You have a unique opportunity to accelerate innovation and unlock new value for your customers in ways that were not possible before. Shift from being a feature builder to a partner who drives meaningful outcomes. Define how AI fits into your overall value proposition.
+AI is transforming how SaaS products are designed, delivered, and operated. For SaaS ISVs, it defines the next frontier in product architecture and system capabilities. Define how AI fits into your overall value proposition. Shifts your strategy from being a feature builder to a partner who drives meaningful outcomes for their customers. 
 
 The benefits of AI are real, but so are the risks. There is urgency: if you don't adopt AI quickly, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
 
@@ -138,7 +138,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How will your SaaS product evolve?**
 > 
->   Think of AI adoption as a journey that you take over time. Initially, you should focus on use cases that add incremental value to your product, reduce user toil, and enhance your own operational efficiency. Over time, consider using AI for higher value capabilities, including decision support, reasoning, and more complex process orchestration. These capabilities are more complex to build and require more advanced models, patterns, and operational maturity, but when employed well, they can provide a substantial return on investment.
+>   Think of AI adoption as an evolving journey. Start with use cases that deliver clear low-effort value to your product, reduce user toil, and enhance your own operational efficiency. Over time, consider using AI for higher value capabilities. Incorporate decision support, reasoning, and more complex process orchestration. These capabilities are more complex to build and require more advanced models, patterns, and operational maturity, but when employed well, they can provide a substantial return on investment.
 >
 >   Be prepared to adapt your journey as you learn more, as your customers give feedback, and as the technology and landscape evolve.
 
