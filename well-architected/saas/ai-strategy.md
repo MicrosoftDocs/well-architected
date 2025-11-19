@@ -10,7 +10,7 @@ ms.collection: learn-startups
 
 # Build an AI strategy for your SaaS product
 
-AI is transforming how SaaS products are designed, delivered, and operated. For SaaS ISVs, it defines the next frontier in product architecture and system capabilities. Define how AI fits into your overall value proposition. Shifts your strategy from being a feature builder to a partner who drives meaningful outcomes for their customers. 
+AI is transforming how SaaS products are designed, delivered, and operated. For SaaS ISVs, it defines the next frontier in product architecture and system capabilities. Define how AI fits into your overall value proposition. Shift your strategy from being a feature builder to a partner who drives meaningful outcomes for your customers. 
 
 The benefits of AI are real, but so are the risks. There is urgency: if you don't adopt AI quickly, competitors will deliver your value faster, smarter, and at scale. Compared to other types of software, there's added complexity in SaaS that comes from:
 
