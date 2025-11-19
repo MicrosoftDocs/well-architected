@@ -3,17 +3,17 @@ title: Architecture design patterns that support operational excellence
 description: Learn about industry patterns that support operational excellence and can help you address common challenges in cloud workloads.  
 author: ckittel
 ms.author: chkittel
-ms.date: 10/10/2024
+ms.date: 11/06/2025
 ms.topic: concept-article
 ---
 
 # Architecture design patterns that support operational excellence
 
-When you design workload architectures, you should use industry patterns that address common challenges. Patterns can help you make intentional tradeoffs within workloads and optimize for your desired outcome. They can also help mitigate risks that originate from specific problems, which can affect reliability, security, performance, and cost. Because operations cut across all those areas, risks will eventually affect workload operations. These patterns are backed by real-world experience, are designed for cloud scale and operating models, and are inherently vendor agnostic. Using well-known patterns as a way to standardize your workload design is itself a component of operational excellence.
+When you design workload architectures, you should use industry patterns that address common challenges. Patterns help you make intentional tradeoffs and optimize for desired outcomes. They also help you mitigate risks that can impact reliability, security, performance, and cost. Because operations span all those areas, unmanaged risks eventually surface as operational toil or incidents. These patterns are proven in real-world cloud environments, scale with modern operating models, and are inherently vendor agnostic. Standardizing on well-known patterns is itself a practice of operational excellence.
 
-Many design patterns directly support one or more architecture pillars. Design patterns that support the Operational Excellence pillar use topologies that provide a solid foundation for safe deployment practices and facilitate architecture evolution over time, migration scenarios, and observability.
+Many patterns reinforce one or more Azure Well-Architected pillars. For operational excellence specifically, patterns often provide topologies that enable safe deployment practices, incremental evolution, controlled migration, and observability.
 
-The following table summarizes Architecture design patterns that support the goals of operational excellence.
+The following table summarizes architecture design patterns that support operational excellence goals.
 
 |Pattern|Summary|
 |-|-|
@@ -30,7 +30,7 @@ The following table summarizes Architecture design patterns that support the goa
 |[Publisher/Subscriber](/azure/architecture/patterns/publisher-subscriber)|Decouples components of an architecture by replacing direct client-to-service or client-to-services communication with communication via an intermediate message broker or event bus. This layer of indirection can enable you to safely change the implementation on either the publisher or subscriber side without needing to coordinate changes to both components.|
 |[Quarantine](/azure/architecture/patterns/quarantine)|Ensures external assets meet a team-agreed quality level before being authorized to consume them in the workload. Automation and consistency on these checks are a part of the workload's software development lifecycle and safe deployment practices (SDP).|
 |[Sidecar](/azure/architecture/patterns/sidecar)|Extends the functionality of an application by encapsulating nonprimary or cross-cutting tasks in a companion process that exists alongside the main application. This pattern provides an approach to implementing flexibility in tool integration that might enhance the application's observability without requiring the application to take direct implementation dependencies. It enables the sidecar functionality to evolve independently and be maintained independently of the application's lifecycle.|
-|[Strangler Fig](/azure/architecture/patterns/strangler-fig)|Provides an approach for systematically replacing the components of a running system with new components, often during a migration or modernization of the system. This pattern provides a continuous improvement approach, in which incremental replacement with small changes over time is preferred rather than large systemic changes that are riskier to implement.|
+|[Strangler Fig](/azure/architecture/patterns/strangler-fig)|Provides an approach for systematically replacing the components of a running system with new components, often during a migration or modernization of the system. This pattern provides a continuous improvement approach, in which incremental replacement with small changes over time is preferred rather than large systemic changes that are riskier to implement. This pattern also supports safe decommissioning: legacy endpoints can be measured, drained, and removed only after replacement flows meet reliability and observability targets.|
 
 ## Next steps
 

@@ -331,7 +331,7 @@ These articles provide more details about Azure products that we recommend as te
 - [Data Factory](/azure/data-factory/)
 - [AI Search](/azure/search/search-what-is-azure-search)
 - [Azure Cosmos DB](/azure/well-architected/service-guides/cosmos-db)
-- [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview)
+- [Azure Managed Redis](/azure/redis/overview)
 
 ## Next steps
 
