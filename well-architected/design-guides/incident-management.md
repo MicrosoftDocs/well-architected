@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.update-cycle: 1095-days  
 ---
 
-# Manage disuptions with an effective incident management plan
+# Manage disruptions with an effective incident management plan
 
 An _incident_ is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system, resulting in customer or business impact. Incidents exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Your incident management (IcM) strategy should scale with severity, from rapid mitigation for minor incidents to coordinated cross-team efforts for major events. Response can also vary depending on the cause, whether hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors such as security attacks. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises.
 
@@ -92,13 +92,13 @@ Before an incident happens, set up the foundation for effective response by desi
    - Automate infrastructure scaling: Adjust resources automatically to handle traffic shifts or increased load.
    - Implement self-healing: Safely automate responses to common incident patterns with proper monitoring and options for manual override.
 
-1. Define communication processes. Document clear communication and escalation plans so tier-1 support can quickly reach the right teams. Specify appropriate communication channels for internal and external stakeholders, and include on-call schedules and contact details.
+1. Define communication processes. Document clear communication and escalation plan so tier-1 support can quickly reach the right teams. Specify appropriate communication channels for internal and external stakeholders, and include on-call schedules and contact details.
 
 1. Define the usage of an IcM tool and the standard operating procedures it should capture in a simple workflow: create, acknowledge, mitigate, resolve. The tool's goal is to give teams visibility, track progress, maintain accountability, and ensure consistent incident handling around the clock, centralizing all activities to support live site management and on-call rotations.
             
 1. Define the criteria that officially mark an incident as closed:
 
-   - Include clear resolution factors. Typically, this means systems and services are operating within SLAs, performance and reliability have returned to acceptable levels, and any immediate mitigation actions have been successfully completed.
+   - Include clear resolution factors. Typically, this means the system and services are operating within SLAs, performance and reliability have returned to acceptable levels, and any immediate mitigation actions have been successfully completed.
 
    - Include validation checks to ensure the issue is fully resolved. This involves confirming through monitoring tools that the impact has ended and verifying that affected users are no longer experiencing disruption.
 
@@ -156,7 +156,7 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
 
 ## Post-incident activities
 
-Retrospectives should follow every incident. They provide critical learning opportunities, highlight weaknesses in response, deployment, or infrastructure, and inform improvements. Document action items and ensure they are tracked and implemented through the workload backlog.
+Retrospectives should follow every incident. They provide critical learning opportunities, highlight weaknesses in response, deployment, or infrastructure, and inform improvements. Document action items and ensure they are tracked in a backlog for iterative execution.
 
 The goal is not to assign blame but to identify actionable improvements. This process should be led by an impartial facilitator. All teams involved in the incident must be represented by individuals who worked on the response and come prepared with observations on successes and areas for improvement:
 
