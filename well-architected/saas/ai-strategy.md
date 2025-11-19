@@ -68,10 +68,14 @@ This could involve embedding intelligent features, improving internal operations
 
 - **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#put-strategy-to-practice-for-your-saas-archetype).
 
-    Distinguish between foundational AI use cases and agentic use cases:
+    Distinguish between foundational AI use cases, conversational AI use cases, and agentic use cases:
+
+    :::image type="content" source="./images/ai-progression.png" alt-text="Diagram that shows the progression between foundational, conversational, agentic, and multi-agent use cases." lightbox="./images/ai-progression.png":::
     
-    - Foundational use cases use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, content generation, and enrichment.
-    - Agentic use cases use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities. Agentic use cases increasingly combine multiple agents, each with a defined purpose, and might reflect an entire business process or decision. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to perform research and assess loan applications based on criteria you specify.
+    - *Foundational use cases* use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, content generation, and enrichment.
+    - *Conversational use cases* build on top of foundational use cases, using your application's or customers' data to answer questions.
+    - *Agentic use cases* use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities.
+    - *Multi-agent use cases* combine agents that each have a defined purpose, and might reflect an entire business process or decision. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to perform research and assess loan applications based on criteria you specify.
 
 - **Communicate the strategy across the organization**.  Ensure everyone from developers to product managers to marketing understands the company's AI goals. Regularly reinforce this strategy in planning sessions, product reviews, and company updates.
 
