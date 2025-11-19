@@ -337,7 +337,7 @@
     - name: Design guides
       items:
         - name: Overview
-          href: ./index.md
+          href: ./design.md
         - name: Health modeling
           href: ./design-guides/health-modeling.md
         - name: Implementing recommendations

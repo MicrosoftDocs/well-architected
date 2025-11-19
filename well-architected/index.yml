@@ -43,11 +43,11 @@ sections:
         text: Azure service guides
       - componentType: icon-link
         icon: book-open
-        url: ./index.md
+        url: ./design.md
         text: Design essentials
       - componentType: icon-link
         icon: topic-learn
-        url: ./index.md
+        url: ./design.md
         text: Training
       - componentType: icon-link
         icon: developer-tools
