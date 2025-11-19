@@ -195,7 +195,7 @@ In this example, a workload team is rolling out a search enhancement feature tha
 
 After reviewing all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower-risk than attempting a full rollback, which could have required complex data and schema operations. The team confirmed that the stable stack had sufficient capacity to handle the full production load and that the updated systems could be isolated from production traffic routing..
 
-Is worth noticing that, because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
+Because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
 
 1. **Resolution**.  The team executed the fallback procedure: traffic was shifted away from the updated environment, isolating the problematic deployment. This allowed the team to address the underlying issue without impacting the majority of users.
 
