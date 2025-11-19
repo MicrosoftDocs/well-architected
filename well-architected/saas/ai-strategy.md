@@ -1,6 +1,6 @@
 ---
 title: Build an AI Strategy for your SaaS Business
-description: TODO
+description: Learn how to develop and implement a strategic AI approach for your SaaS product. Use AI to transform your business from a feature provider to a strategic partner.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 08/26/2025
