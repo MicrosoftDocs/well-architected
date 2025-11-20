@@ -78,7 +78,7 @@ After reliability and performance requirements are met, consider how to optimize
 
 #### Do you need to support data sovereignty or regional compliance requirements?
 
-For workloads that handle regulated or sensitive data, consider deploying in a sovereign cloud, such as Azure Government, Azure China, or other National Partner Clouds. These environments are designed to meet strict data residency, privacy, and compliance requirements by ensuring that data storage, processing, and access remain within specific jurisdictions.
+For workloads that handle regulated or sensitive data, consider deploying in a sovereign cloud, such as Azure Government, Microsoft Azure operated by 21Vianet, or other National Partner Clouds. These environments are designed to meet strict data residency, privacy, and compliance requirements by ensuring that data storage, processing, and access remain within specific jurisdictions.
 
 Sovereign clouds provide greater control and independence over your data, which is often a requirement for sectors such as government, defense, or banking. However, keep in mind that some advanced AI and data platform features might not yet be available in these regions. Review service availability before designing your architecture.
 
@@ -387,8 +387,8 @@ Technologies that fit this pattern include Azure Cosmos DB for fast, globally di
 | **Development and training environment** | Azure Machine Learning (with MLflow integration), Azure Databricks Workspaces | JupyterHub, Kubeflow, Amazon SageMaker |
 | **Feature store** | Azure Machine Learning Feature Store, Databricks Feature Store | Feast (open source), Tecton |
 | **Batch inference** | Azure Cosmos DB, Azure Table Storage | Azure SQL Database, PostgreSQL, Redis Cache |
-| **Model registry and experiment tracking** | MLflow (integrated in Azure ML or Databricks) | Weights & Biases, Neptune.ai, DVC |
-| **Orchestration and automation** | Azure Data Factory Pipelines, Azure ML Pipelines | Apache Airflow, Prefect |
+| **Model registry and experiment tracking** | MLflow (integrated in Azure Machine Learning or Databricks) | Weights & Biases, Neptune.ai, DVC |
+| **Orchestration and automation** | Azure Data Factory Pipelines, Azure Machine Learning Pipelines | Apache Airflow, Prefect |
 | **Security and access control** | Microsoft Entra ID (Azure AD), Azure Key Vault, Managed Identities | HashiCorp Vault, AWS IAM |
 
 
