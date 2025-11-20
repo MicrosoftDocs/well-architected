@@ -24,7 +24,7 @@ As your workload grows and data comes from multiple sources, the platform decisi
 
 This article provides guidance on choosing a data platform for workloads where data needs to be stored, processed, or analyzed. The focus is on solutions that support generative AI (GenAI). We highly recommend that you understand the principles of good data pipeline design before you explore the technological capabilities that this article describes. For more information, see [Grounding data design](./grounding-data-design.md).
 
-For recommendations specific to discriminative model training and fine-tuning, see [Training data platform considerations](#training-data-platform-considerations).
+For recommendations specific to discriminative model training and fine-tuning, see [Training data platform considerations](#training-and-fine-tuning-considerations).
 
 ## Considerations for data storage platform
 
