@@ -330,21 +330,23 @@
           href: service-guides/virtual-network.md
     - name: Design guides
       items:
-      - name: Health modeling
-        href: ./design-guides/health-modeling.md      
-      - name: Implementing recommendations
-        href: ./design-guides/implementing-recommendations.md
-      - name: Optimize using flows
-        href: ./design-guides/optimize-workload-using-flows.md
-      - name: Handle transient faults
-        href: ./design-guides/handle-transient-faults.md
-      - name: Develop a disaster recovery plan
-        href: ./design-guides/disaster-recovery.md
-      - name: Develop background jobs
-        href: ./design-guides/background-jobs.md
-      - name: Data partitioning
-        href: reliability/partition-data.md
-      - name: Continuous integration 
-        href: ./design-guides/release-engineering-continuous-integration.md
-      - name: Regions and availability zones
-        href: ./design-guides/regions-availability-zones.md
+        - name: Overview
+          href: ./design.md
+        - name: Health modeling
+          href: ./design-guides/health-modeling.md
+        - name: Implementing recommendations
+          href: ./design-guides/implementing-recommendations.md
+        - name: Optimize using flows
+          href: ./design-guides/optimize-workload-using-flows.md
+        - name: Handle transient faults
+          href: ./design-guides/handle-transient-faults.md
+        - name: Develop a disaster recovery plan
+          href: ./design-guides/disaster-recovery.md
+        - name: Develop background jobs
+          href: ./design-guides/background-jobs.md
+        - name: Data partitioning
+          href: reliability/partition-data.md
+        - name: Continuous integration
+          href: ./design-guides/release-engineering-continuous-integration.md
+        - name: Regions and availability zones
+          href: ./design-guides/regions-availability-zones.md
