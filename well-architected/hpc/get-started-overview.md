@@ -120,6 +120,8 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 
 The following description illustrates how an HPC workload operates on Azure, from job submission through execution to results storage and analysis.
 
+:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png"::
+
 The architecture highlights the integration of different components to enable efficient job scheduling, parallel execution, high-performance storage access, and monitoring in HPC solutions. It includes modules such as user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, parallel file systems, data management, and monitoring systems.
 
 **Key flow:**
