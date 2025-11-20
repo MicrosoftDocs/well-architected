@@ -175,13 +175,9 @@ In this example, a workload team is rolling out a search enhancement feature tha
 
 1. **Detection**. The problem was noticed when error rates spiked in one of the canary rollout groups. The team immediately used their observability tools like application performance monitoring, logging, and telemetry linking users to rollout phases, to pinpoint the affected group.
 
-    **Preparation**:
-
     The team had prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry linked users to specific rollout groups, so they could quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured support staff knew how to escalate issues according to the emergency response plan. This preparation allowed them to detect the spike in error rates quickly and respond without delay.
 
-1. **Mitigation**. The team quickly decided on a mitigation strategy, considering whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function with a feature flag, or deploy a hot fix. With the decision tree and approval process already defined, the team implemented the chosen action..
-
-    **Preparation**: 
+1. **Mitigation**. The team quickly decided on a mitigation strategy, considering whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function with a feature flag, or deploy a hot fix. With the decision tree and approval process already defined, the team implemented the chosen action.
 
     Before the incident occurred, the team had defined a clear decision tree for handling deployment issues.
 
@@ -193,9 +189,9 @@ In this example, a workload team is rolling out a search enhancement feature tha
 
     - **Emergency deployment (hot fix)**: Deploy a hot fix mid-rollout to address the issue quickly. Hot fixes should follow safe deployment practices, including code promotion through environments and quality gate checks, but with accelerated timelines. Bake times and tests may be shortened or modified to speed deployment, while automated testing ensures reliability. Hot fixes require coordination and careful planning to minimize risk while resolving the issue promptly.
 
-After reviewing all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower-risk than attempting a full rollback, which could have required complex data and schema operations. The team confirmed that the stable stack had sufficient capacity to handle the full production load and that the updated systems could be isolated from production traffic routing..
+   After reviewing all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower-risk than attempting a full rollback, which could have required complex data and schema operations. The team confirmed that the stable stack had sufficient capacity to handle the full production load and that the updated systems could be isolated from production traffic routing.
 
-Because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
+   Because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
 
 1. **Resolution**.  The team executed the fallback procedure: traffic was shifted away from the updated environment, isolating the problematic deployment. This allowed the team to address the underlying issue without impacting the majority of users.
 
@@ -205,7 +201,7 @@ Because the deployment included multiple interdependent changes across API, data
 
 1. **Retrospective**. After the deployment incident was fully mitigated, the team conducted a retrospective to capture lessons learned and improve future processes. The session included everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviewed the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
 
-  A key finding was that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
+     A key finding was that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
 
 1. **Post-incident improvements**. From the retrospective, the team implemented several operational improvements to make future deployments safer and mitigations more reliable:
 
