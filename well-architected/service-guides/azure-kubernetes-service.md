@@ -4,7 +4,7 @@ description: Learn how to use Azure Kubernetes Service (AKS) features to boost r
 author: schaffererin
 ms.author: schaffererin
 ms.topic: concept-article
-ms.date: 10/13/2025
+ms.date: 11/21/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
@@ -190,7 +190,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
 >   
-> - (Cluster and workload) **Implement a comprehensive monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
+> - (Cluster and workload) **Implement a  monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
 >
 >    Enable diagnostics settings to ensure that control plane or core API server interactions are logged.
 >
@@ -253,7 +253,8 @@ Start your design strategy based on the [design review checklist for Performance
 |(Cluster and workload) Separate workloads into different node pools and consider [scaling user node pool](/azure/aks/scale-cluster)s.|Unlike system node pools that always require running nodes, user node pools allow you to scale up or scale down.|
 |(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features that the Kubernetes scheduler provides let you control which pods can be scheduled on certain nodes. They also let you control how multipod applications can be appropriately distributed across the cluster.|
 |(Workload) Use [KEDA](/training/modules/aks-app-scale-keda/) to build a meaningful autoscale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Scale considerations often come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
-|(Cluster) Enable [Azure Monitor High Scale mode for Container Insights](/azure/azure-monitor/containers/container-insights-high-scale#enable-high-scale-mode-for-monitoring-add-on) for large-scale Kubernetes deployments with hundreds of nodes. High Scale mode optimizes monitoring performance and reduces resource consumption while maintaining comprehensive observability.|High Scale mode enables efficient monitoring of large-scale Kubernetes deployments by reducing agent resource overhead and improving data collection performance. This optimization is essential for enterprise environments running hundreds of nodes where standard monitoring approaches can impact cluster performance and increase costs.|
+|(Cluster) Enable [Azure Monitor High Scale mode for Container Insights](/azure/azure-monitor/containers/container-insights-high-scale#enable-high-scale-mode-for-monitoring-add-on) for large-scale Kubernetes deployments with hundreds of nodes. It reduces resource consumption while maintaining  observability.|Enables monitoring  and reduces agent resource overhead and improves data collection performance. This optimization is beneficial for enterprise environments running hundreds of nodes where standard monitoring approaches can impact cluster performance and increase costs.|
+|(Cluster) Enable [LocalDNS](/azure/aks/coredns-custom) for large-scale AKS clusters to improve DNS resolution by handling queries locally and reducing latency. |LocalDNS improves performance by reducing network overhead and speeding up service discovery. Its local caching removes DNS bottlenecks by cutting down on external DNS queries, and it provides continued name resolution even when upstream DNS services experience outages.|
 
 ## Azure policies
 
@@ -279,7 +280,7 @@ You can also check the following cluster and workload policies:
 - Namespace deployment restrictions.
 - CPU and memory resource limits.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes) and other policies that might affect the security of the compute layer.
+For  governance, review the [Azure Policy built-in definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes) and other policies that might affect the security of the compute layer.
 
 ## Azure Advisor recommendations
 
