@@ -2404,6 +2404,11 @@
 			"source_path": "well-architected/operational-excellence/emergency-response.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
 			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/service-guides/event-hubs.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-event-hubs",
+			"redirect_document_id": false
 		}								
 	]
 }
