@@ -7,7 +7,7 @@ ms.reviewer: lnyswonger
 ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
-ms.date: 09/16/2025
+ms.date: 11/21/2025
 products: azure-firewall
 azure.category:
   - networking
@@ -49,7 +49,7 @@ as needed.
 > - **Review the list of Azure Firewall *known issues*.** Azure Firewall products maintain an updated list of [known issues](/azure/firewall/firewall-known-issues#azure-firewall-standard). This list contains important information about by-design behavior, fixes under construction, platform limitations, and possible workarounds or mitigation strategies.
 >
 >  - **Ensure that your Azure Firewall policy adheres to Azure Firewall limits and recommendations.** The policy structure has limits, including the number of rules and rule collection groups, total policy size, source destinations, and target destinations. Be sure to compose your policy and stay below the [documented thresholds](/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-firewall-limits).
-> - **Deploy Azure Firewall across multiple availability zones** for a higher service-level agreement (SLA). Azure Firewall provides different SLAs depending on whether you deploy the service in a single availability zone or [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLAs for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services).
+> - **Deploy Azure Firewall across multiple availability zones** for a higher service-level agreement (SLA). Azure Firewall provides different SLAs depending on whether you deploy the service in a single availability zone or [multiple zones](/azure/reliability/availability-zones-overview#availability-zones). For more information, see [SLAs for online services](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services). For more information about reliability for Azure Firewall, see [Reliability in Azure Firewall](/azure/reliability/reliability-firewall).
 > - **Deploy an Azure Firewall instance in each region** in multi-region environments. For traditional hub-and-spoke architectures, see [Multi-region considerations](/azure/firewall/firewall-multi-hub-spoke). For secured Azure Virtual WAN hubs, configure [routing intent and policies](/azure/virtual-wan/how-to-routing-policies) to secure inter-hub and branch-to-branch communications. For failure-resistant and fault-tolerant workloads, consider instances of Azure Firewall and Azure Virtual Network as regional resources.
 > - **Monitor Azure Firewall metrics and the resource health state.** Azure Firewall integrates with [Azure Resource Health](/azure/service-health/resource-health-overview). Use the Resource Health check to view the health status of Azure Firewall and address service problems that might affect your Azure Firewall resource.
 > - **Deploy Azure Firewall in hub virtual networks or as part of Virtual WAN hubs.** 
@@ -118,6 +118,7 @@ strategy to include more approaches as needed.
 | Use Firewall Manager to create and associate an [Azure DDoS Protection plan](/azure/firewall-manager/configure-ddos) with your hub virtual network. This approach doesn't apply to Virtual WAN. | Configure an Azure DDoS Protection plan so that you can centrally manage DDoS protection alongside your firewall policies. This approach streamlines how you manage your network security and simplifies how you deploy and monitor processes. |
 |Use [integration in Security Copilot](/azure/firewall/firewall-copilot) to do investigations of the malicious traffic. |This integration helps analysts perform detailed investigations of the malicious traffic intercepted by the IDPS feature.|
 | Configure [explicit proxy](/azure/firewall/explicit-proxy) for outbound traffic when UDRs can't be applied. Configure proxy settings on sending applications (such as web browsers) to direct traffic through Azure Firewall's private IP address without requiring user-defined routes. | Use explicit proxy to simplify traffic routing in scenarios where traditional UDR-based routing isn't feasible, while maintaining security inspection capabilities. |
+| Enable [DNS flow trace logs](/azure/firewall/monitor-firewall-reference#dns-flow-trace-logs) for end-to-end visibility into DNS traffic and name resolution. <br><br> These logs can be useful for verifying traffic forwarding paths for custom DNS configurations, or debugging DNS resolution issues that prevent applications from connecting to critical services. | Provides detailed DNS flow visibility for troubleshooting, auditing, and analyzing DNS behavior. |
 
 ## Cost Optimization
 
@@ -189,6 +190,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Use [FQDNs in DNAT rules](/azure/firewall/destination-nat-rules) to route inbound traffic to backend infrastructure instead of static IP addresses. | Reduces operational overhead when backend infrastructure changes IP addresses due to scaling operations, deployments, or infrastructure updates. |
 | Configure [DNAT on private IP addresses](/azure/firewall/destination-nat-rules) for complex hybrid and enterprise networking scenarios. <br><br> Enable connectivity between networks with overlapping IP address ranges through port translation capabilities. | This is especially useful in scenarios with overlapping IP ranges, common in mergers, partner networks, or multi-tenant environments. |
 | Implement [change tracking](/azure/firewall/monitor-firewall#change-tracking-preview) (preview) to monitor configuration changes made to Azure Firewall Rule Collection Groups. | Provides detailed visibility into configuration changes, enhancing security posture and simplifying troubleshooting by tracking who made what changes and when. |
+| Configure [packet capture capabilities](/azure/firewall/packet-capture) for capturing specific traffic flows with filtering based on protocol, flags, and custom filters. <br><br> Use packet capture to identify blocked connections, and validate firewall rule behavior with detailed packet-level information for troubleshooting connectivity issues. | Enables network troubleshooting and traffic analysis by providing detailed packet-level visibility into Azure Firewall traffic flows.|
 
 ## Performance Efficiency
 
@@ -227,6 +229,7 @@ Start your design strategy based on the [design review checklist for Performance
 | Use Azure Firewall [web categories](/azure/firewall/web-categories) to allow or deny outbound access in bulk, instead of explicitly building and maintaining a long list of public internet sites. | This feature dynamically categorizes web content and permits the creation of compact application rules, which reduces operational overhead. |
 | Evaluate the performance impact of [IDPS](/azure/firewall/premium-features#idps) in *Alert and deny* mode. For more information, see [Azure Firewall performance](/azure/firewall/firewall-performance). | Enable IDPS in *Alert and deny* mode to detect and prevent malicious network activity. This feature might introduce a performance penalty. Understand the effect on your workload so you can plan accordingly. |
 | Configure Azure Firewall deployments with a minimum of five public IP addresses for deployments that are susceptible to [SNAT port exhaustion](/azure/firewall/firewall-known-issues#azure-firewall-standard).| Azure Firewall supports 2,496 ports for each public IP address that each back-end Azure Virtual Machine Scale Sets instance uses. This configuration increases the available SNAT ports by five times. <br><br> By default, Azure Firewall deploys two Virtual Machine Scale Sets instances that support 4,992 ports for each flow destination IP, destination port, and TCP or UDP protocol. The firewall scales up to a maximum of 20 instances. |
+| Configure [prescaling capabilities](/azure/firewall/prescaling) and monitor the Observed Capacity metric for capacity planning and visibility into activity. <br><br> Use prescaling to allocate capacity units for anticipated traffic increases, in advance. | Enables proactive capacity management based on metrics and allows you to set alerts for reliable scaling operations during expected traffic increases. <br>  There's added benefit that you pay only for provisioned capacity units with flexibility to adjust as needs evolve. |
 
 ## Azure policies
 
@@ -279,3 +282,4 @@ recommendations in this article.
 -->
 
 <!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, public-preview-azure-firewall-integration-in-microsoft-copilot-for-security -->
+<!-- Updated: November 21, 2025 for Azure Update 515452, 516002, 526720, 528969 -->
