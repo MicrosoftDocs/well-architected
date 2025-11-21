@@ -4,7 +4,7 @@ description: Provides architectural best practices for using Azure ExpressRoute.
 author: duongau
 ms.author: duau
 ms.topic: concept-article
-ms.date: 08/17/2025
+ms.date: 11/21/2025
 products: 
   - azure-expressroute
 azure.category:
@@ -83,9 +83,13 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Conduct reliability testing:** Test the network design for resiliency to ensure that the network can withstand failures. Testing can be achieved by using Azure Connectivity Toolkit to test performance across your ExpressRoute circuit to understand bandwidth capacity and latency of your network connection. Confirm failover mechanisms are working as expected.
 >
+>   Run [ExpressRoute resiliency validation](/azure/expressroute/resiliency-validation) tests to assess network connectivity during site failovers for your Virtual Network Gateway. These tests help confirm your failover configuration works as expected during recovery operations.
+>   
 > - **Configure monitoring for ExpressRoute circuits and ExpressRoute Virtual Network Gateway health:** Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
 >
 > - **Use health indicators to identify disruptions:** Configure monitoring and alerts for ExpressRoute circuit and ExpressRoute Virtual Network Gateway health based on various metrics available.
+>
+> - **Take advantage of resiliency insights and validation:** Use [ExpressRoute resiliency insights](/azure/expressroute/resiliency-insights) to access a percentage-based resiliency index that evaluates ExpressRoute control plane reliability through factors like route resilience, zone-redundant gateways, and validation tests. 
 
 ### Configuration recommendations
 
