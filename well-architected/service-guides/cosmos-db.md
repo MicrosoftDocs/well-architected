@@ -5,7 +5,7 @@ author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
 ms.subservice: waf-service-guide
-ms.date: 08/17/2025
+ms.date: 11/21/2025
 products:
   - azure-cosmos-db
 ---
@@ -244,6 +244,7 @@ Start your design strategy based on the [design review checklist for Performance
 | --- | --- |
 | Use tools like the [capacity calculator](https://cosmos.azure.com/capacitycalculator/) to determine the amount of throughput required for your performance baseline. Use features like [autoscale](/azure/cosmos-db/nosql/how-to-provision-autoscale-throughput) to scale your actual throughput to more closely match your actual workload. Monitor your actual throughput consumption afterwards and make adjustments. | Using the capacity calculator helps you make informed decisions about provisioning resources initially. You can ensure that your database can handle the expected load without unnecessary costs. Autoscale throughput automatically adjusts the provisioned throughput to match the actual workload needs.  |
 | Use optimization techniques on the client and server sides when appropriate. Take advantage of the built-in [integrated cache](/azure/cosmos-db/integrated-cache). Configure the SDK to manage how many items are prefetched, or *buffered*, and returned for each page. | Code optimization techniques can improve the user experience and make your client and server side application more efficient by helping reduce the RU charges for repeated reads and queries. These benefits can reduce costs.|
+| Use [Cosmos DB Query Advisor](/azure/cosmos-db/query-advisor) for recommendations for optimizing query performance, indexing strategies, and resource utilization based on actual usage patterns and workload characteristics. | You can programmatically identify slow queries, optimize indexing strategies, and potentially reduce RU consumption.|
 | Use [global distribution](/azure/cosmos-db/distribute-data-globally) and deploy Azure Cosmos DB instances in all regions closest to your end users. | Deploying your database to the regions closest to your end users helps reduce *read* latency which can improve user experience. Read replication enables performant read operations regardless of how the write operations are configured. |
 | Use [multi-region writes](/azure/cosmos-db/nosql/how-to-multi-master) if your clients are geographically distributed. | Reduces *write* latency by allowing the client to write to a region that is closest to it. Your workload must support conflict resolution logic and your application needs to expect eventual consistency behavior. |
 | Configure the SDK for [Direct mode](/azure/cosmos-db/nosql/sdk-connection-modes) for the best performance. This mode allows your client to open Transmission Control Protocol (TCP) connections directly to partitions in the service and send requests directly with no intermediary gateway.| Direct mode provides better performance because there are fewer network hops. |
@@ -280,4 +281,5 @@ For more information, see [Azure Advisor](/azure/advisor).
 - [Serverless database computing by using Azure Cosmos DB](/azure/architecture/solution-ideas/articles/serverless-apps-using-cosmos-db)
 
 <!-- Updated: August 17, 2025 for Azure Update 470102 -->
+<!-- Updated: November 21, 2025 for Azure Update 520696 -->
 
