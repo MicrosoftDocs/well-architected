@@ -86,7 +86,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Design disaster recovery strategy for business continuity:** Define Recovery Time Objective (RTO) and Recovery Point Objective (RPO) based on business requirements, then select DR patterns from active-passive for cost optimization to active-active for minimal RTO.
 >
->    Use [geo-disaster recovery](/azure/event-hubs/event-hubs-geo-dr?tabs=portal) for Standard and Premium tiers to enable metadata replication between paired namespaces across regions, providing automated failover capabilities during regional outages. Implement client-side failover capabilities for faster recovery and evaluate data consistency requirements for the chosen pattern.
+>    Use geo-disaster recovery for Standard and Premium tiers to enable metadata replication between paired namespaces across regions, providing automated failover capabilities during regional outages. Implement client-side failover capabilities for faster recovery and evaluate data consistency requirements for the chosen pattern.
 >
 >    Create operational continuity plans that include documented backup procedures for metadata and consumer offsets, execution runbooks, communication plans, and scheduled regular DR testing.
 >
