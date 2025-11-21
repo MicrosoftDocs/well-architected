@@ -44,11 +44,11 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Review quotas and limits that might pose design restrictions:** Analyze [quotas and limits](/azure/event-hubs/event-hubs-quotas) that significantly impact architecture decisions across key dimensions. Plan for partition limits that vary dramatically between service tiers for large-scale scenarios.
+> - **Review quotas and limits that might pose design restrictions:** Analyze [quotas and limits](/azure/event-hubs/event-hubs-quotas) that significantly impact architecture decisions. Plan for partition limits that vary dramatically between service tiers for large-scale scenarios.
 >
->    Calculate throughput units or processing units that determine message ingestion capacity and establish scaling boundaries for your workload. Design payloads within maximum message size constraints of 1 MB for large event scenarios.
+>    Calculate throughput units or processing units that determine message ingestion capacity and establish scaling boundaries for your workload. Design payloads within maximum message size constraints of within the limits of your selected tier.
 >
->    Select appropriate message retention periods that vary by service tier, considering recovery and replay requirements. Plan application architecture around consumer group limits per namespace that depend on your selected tier.
+>    Select appropriate message retention periods according to service tier, considering recovery and replay requirements. Plan application architecture around consumer group limits per namespace.
 >
 > - **Anticipate potential failures through failure mode analysis:** Failure mode analysis provides a systematic approach to anticipating potential failure scenarios and developing mitigation strategies to ensure messaging service resilience.
 >
@@ -66,23 +66,23 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   Implement geo-replication for Dedicated tier namespaces to enable real-time asynchronous replication of events and metadata across multiple regions, providing seamless regional failover capabilities.
 >
->    Implement partition and application-level redundancy with effective partition key distribution to prevent hotspots. Deploy producer and consumer redundancy patterns to ensure continued operation when instances fail, while implementing storage account redundancy to protect checkpointing data essential for consumer state management.
+>    Implement partition and application-level redundancy with effective partition key distribution to prevent hotspots. Deploy producer and consumer redundancy patterns to ensure continued operation when instances fail. Implement storage account redundancy to protect checkpointing data essential for consumer state management.
 >
-> - **Design for reliable scaling to handle variable workloads:** Implement scaling capabilities at distinct levels to handle variable workloads reliably. Configure infrastructure scaling through auto-inflate in Standard and Premium tiers to automatically scale throughput units during traffic spikes, while using Dedicated tier for predictable performance with reserved capacity.
+> - **Design for reliable scaling to handle variable workloads:** Configure infrastructure scaling through auto-inflate in Standard and Premium tiers to automatically scale throughput units during traffic spikes. Use Dedicated tier for predictable performance with reserved capacity.
 >
 >    Plan partition scaling carefully since partition count cannot be decreased after creation. Implement application-level scaling with producer patterns that distribute load across partitions using appropriate partition keys and align consumer group instances with partition count for optimal throughput.
 >
 > - **Implement monitoring and alerting for reliability:** Configure Azure Monitor to collect metrics including ingestion metrics for message volume and throughput utilization, consumer lag tracking to identify processing delays, and infrastructure metrics for namespace health.
 >
->    Configure thresholds aligned with SLOs and business impact severity while implementing multi-dimensional metrics for granular monitoring across namespace, event hub, and partition levels.
+>    Configure thresholds aligned with SLOs and business impact severity and monitor multi-dimensional metrics for granular monitoring across namespace, event hub, and partition levels.
 >
 > - **Configure Event Hubs for self-preservation and graceful degradation:** Implement self-preservation patterns to protect workloads from cascading failures and enable graceful degradation. Since built-in dead-letter queues are unavailable, implement custom patterns for poison message handling and configure circuit breaker patterns for traffic protection during recovery.
 >
 >    Implement consumer isolation through separate consumer groups with only one active receiver per group. Configure SDK exception handling to properly catch EventHubsException or OperationCancelledException from retry policies. Enable the Capture feature to provide durable storage for event replay and recovery scenarios.
 >
-> - **Implement reliability testing to validate resilience:** Conduct reliability testing to validate resilience through systematic failure simulation and performance validation. Execute load testing to validate performance under expected and peak traffic conditions and implement consumer lag testing to confirm processing keeps pace with ingestion rates.
+> - **Implement reliability testing to validate resilience:** Conduct reliability testing to validate resilience through systematic failure simulation and performance validation. Execute stress testing to validate performance under expected and peak traffic conditions and incorporate consumer lag testing to confirm processing keeps pace with ingestion rates.
 >
->    Execute resilience testing through chaos engineering with intentional failure introduction, implement failover testing to verify geo-disaster recovery and zone redundancy capabilities, and conduct dependency failure testing for Azure Storage and other service dependencies.
+>    Execute resilience testing through chaos engineering with intentional failure introduction. Implement failover testing to verify geo-disaster recovery and zone redundancy capabilities, and conduct dependency failure testing for Azure Storage and other service dependencies.
 >
 > - **Design disaster recovery strategy for business continuity:** Define Recovery Time Objective (RTO) and Recovery Point Objective (RPO) based on business requirements, then select DR patterns from active-passive for cost optimization to active-active for minimal RTO.
 >
