@@ -1,5 +1,5 @@
 ---
-title: Develop an incident management practice to recover from disruptions
+title: Develop an Incident Management Practice to Recover from Disruptions
 description: Learn how to design comprehensive incident response processes for Azure workloads, including detection, containment, mitigation, and recovery strategies.
 author: PageWriter-MSFT 
 ms.author: prwilk 
@@ -10,126 +10,127 @@ ms.update-cycle: 1095-days
 
 # Manage disruptions with an effective incident management plan
 
-An _incident_ is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system, resulting in customer or business impact. Incidents exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Your incident management (IcM) strategy should scale with severity, from rapid mitigation for minor incidents to coordinated cross-team efforts for major events. Response can also vary depending on the cause, whether hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors such as security attacks. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises.
+An _incident_ is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system, which results in customer or business impact. Incidents exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Your incident management (IcM) strategy should scale based on severity, from rapid mitigation for minor incidents to coordinated cross-team efforts for major events. Response can also vary depending on the cause, like hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors such as security attacks. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises.
 
-Despite the cause, incident response, whether operational or security, follows the same playbook: detect, triage, mitigate, communicate, and review. Don't just focus on dashboards and runbooks. As an architect, design operations where people, processes, and tools work together under pressure to restore systems efficiently and without chaos.
+Despite the cause, incident response, whether operational or security, follows the same playbook: detect, triage, mitigate, communicate, and review. Don't focus only on dashboards and runbooks. As an architect, design operations where people, processes, and tools work together under pressure to restore systems efficiently and without chaos.
 
-This article focuses on the phases of IcM, which includes preparation, active incident response, post-incident review, and ongoing improvement. It also includes an example to illustrate the design practices. Before you begin, review the key strategies and pick the ones that make sense for your business. See [OE:08 Architecture strategies for designing an incident management (IcM) process](../operational-excellence/incident-response.md) for details.
+This article focuses on the phases of IcM, which include preparation, active incident response, post-incident review, and ongoing improvement. This guidance also includes an example to illustrate the design practices. Before you begin, review the key strategies and choose the ones that make sense for your business. For more information, see [OE:08 Architecture strategies for designing an IcM process](../operational-excellence/incident-response.md).
 
-This article doesn't cover disasters that require specialized recovery efforts. Details on handling such scenarios can be found in [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md).
+This article doesn't cover disasters that require specialized recovery efforts. For more information about handling such scenarios, see [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md).
 
 ## Terminology
 
 | Term | Definition |
 |---|---|
-| **Blast Radius** | The scope of impact or affected area when an incident occurs, which containment strategies aim to limit. |
-| **Break-glass Accounts** | Emergency credentials with elevated privileges used during critical incidents, strictly controlled with clear usage guidelines. |
-| **Bridge Team** | The triage team assembled to investigate an incident, also called the engineering bridge, consisting of relevant technical experts and decision-makers. |
-| **Containment** | The first step in incident remediation that isolates affected components to prevent the issue from spreading to other parts of the workload. |
-| **Incident Management (IcM)** | The structured process of detecting, triaging, mitigating, and resolving incidents while coordinating communication and capturing lessons learned. |
+| **Blast radius** | The scope of impact or affected area when an incident occurs, which containment strategies aim to limit. |
+| **Break-glass accounts** | Emergency credentials that have elevated privileges used during critical incidents, strictly controlled with clear usage guidelines. |
+| **Bridge team** | The triage team that assembles to investigate an incident, also called the *engineering bridge*. It consists of relevant technical experts and decision-makers. |
+| **Containment** | The first step in incident remediation that isolates affected components to prevent the problem from spreading to other parts of the workload. |
+| **Incident management (IcM)** | The structured process of detecting, triaging, mitigating, and resolving incidents while coordinating communication and capturing lessons learned. |
 | **Last-known-good** | The last healthy state of the workload before an incident began, used as a reference point for rollback operations. |
-| **Mitigation** | Actions taken to reduce or eliminate the impact of an incident, including rollback, fallback, bypass, or emergency fixes. |
+| **Mitigation** | Actions taken to reduce or remove the impact of an incident, including rollback, fallback, bypass, or emergency fixes. |
 | **Retrospective** | A blameless post-incident review process focused on identifying lessons learned and actionable improvements rather than assigning blame. |
-| **Root Cause Analysis (RCA)** | A systematic process of investigating an incident to identify the underlying factors responsible for the problem and prevent recurrence. |
-| **Severity Level** | Classification system (Critical, High, Medium, Low) that determines the appropriate response level based on business impact and affected users. |
+| **Root cause analysis (RCA)** | A systematic process of investigating an incident to identify the underlying factors responsible for the problem and prevent recurrence. |
+| **Severity level** | Classification system, like critical, high, medium, and low, that determines the appropriate response level based on business impact and affected users. |
 | **Triage** | The process of analyzing and prioritizing incidents to determine severity, impact, and appropriate response actions. |
 
 ## Preparation
 
-Before an incident happens, set up the foundation for effective response by designing observability, defining clear roles and processes, and preparing the tools and resources your teams will need. Document the incident response plan and keep it updated and reviewed regularly.
+Before an incident happens, set up the foundation for effective response by designing observability, defining clear roles and processes, and preparing the tools and resources that your teams needs. Document the incident response plan and update and review it regularly.
 
-1. Maintain accurate, up-to-date architecture diagrams that show all components and their interactions help teams quickly identify bottlenecks or single points of failure, enabling faster troubleshooting during high-pressure situations.
+1. Maintain accurate, up-to-date architecture diagrams that show all components and their interactions to help teams quickly identify bottlenecks or single points of failure. This approach enables faster troubleshooting during high-pressure situations.
 
 1. Define the incident data that your monitoring stack must provide for the entire workload:
 
    - Collect end-to-end telemetry, including infrastructure and applications.
 
-   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If required, also forward them to centrally managed sinks. Make sure team members have time-limited, least-privilege access during incidents.
+   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If required, also forward logs to centrally managed sinks. Make sure team members have time-limited, least-privilege access during incidents.
 
-   - Create dashboards based on the workload health model, showing the metrics and signals your team is responsible for monitoring.
+   - Create dashboards based on the workload health model that show metrics and signals that your team monitors.
 
-   - Configure actionable alerts that trigger notifications only when thresholds are exceeded and a potential incident is detected. Alerts should be tuned to avoid noise (too many) or too few alerts. For example, for live-site incidents, alerts should monitor critical metrics like CPU, memory, response times, and database performance to detect actionable issues that align with performance targets.
+   - Configure actionable alerts that trigger notifications only when thresholds are exceeded and a potential incident is detected. Tune alerts to avoid too many alerts (noise) or too few alerts. For example, for live-site incidents, alerts should monitor critical metrics like CPU, memory, response times, and database performance to detect actionable problems that align with performance targets.
    
-     Route alerts automatically to the right teams. For example, tier-1 support gets all alerts, while security engineers receive only security-related ones.
+     Route alerts automatically to the right teams. For example, tier-1 support gets all alerts, while security engineers receive only security-related alerts.
 
    For more information, see [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md).
 
-1. Define key roles to ensure accountability, decision-making, and effective follow-up during and after incidents. Create appropriate approval processes and codify them in a clear decision tree. Define authorization levels for different types of severity, mitigation decisions, escalations paths, and so on.
+1. Define key roles to ensure accountability, decision-making, and effective follow-up during and after incidents. Create appropriate approval processes and codify them in a clear decision tree. Define authorization levels for different types of severity, mitigation decisions, escalations paths, and other areas.
 
-   Use these examples as a starting point and adapt them to fit your team structure. 
+   Use the following examples as a starting point and adapt them to fit your team structure. 
 
    | Role | Responsibilities |
    |------|-----------------|
-   | **Incident Response Manager** | Owns the incident from detection through resolution and root cause analysis. Ensures processes are followed, decisions are made, and the right people are informed. |
-   | **Retrospective Leader** | Leads post-incident reviews, captures lessons learned, produces actionable reports, and ensures findings are applied. |
-   | **On-Call Engineer** | Actively mitigates and resolves incidents. Follows responsibilities for different incident types, and collaborates with specialized teams as needed to ensure timely resolution of the incident. |
+   | **Incident Response Manager** | Owns the incident from detection through resolution and RCA. Ensures processes are followed, decisions are made, and the right people are informed. |
+   | **Retrospective Leader** | Leads post-incident reviews, captures lessons learned, produces actionable reports, and ensures that findings are applied. |
+   | **On-Call Engineer** | Actively mitigates and resolves incidents. Follows responsibilities for different incident types and collaborates with specialized teams as needed to ensure timely resolution of the incident. |
 
 1. Define procedures for investigation:
 
-   - Define categories for types of incidents (operational, security, performance, deployment) and severity levels (Critical, High, Medium, Low) applicable to your workload.
+   - Define categories for types of incidents—like operational, security, performance, and deployment incidents—and severity levels—like critical, high, medium, and low—that apply to your workload.
 
-   - Document how to evaluate the severity, impact, and urgency of the incident. Consider user impact, affected systems, and business-critical functions. Based on the severity level, the team will activate the disaster recovery plan for cases that meet disaster-level thresholds, or follow the standard response plan for less severe incidents.
+   - Document how to evaluate the severity, impact, and urgency of the incident. Consider user impact, affected systems, and business-critical functions. Based on the severity level, the team activates the disaster recovery plan for cases that meet disaster-level thresholds, or follow the standard response plan for less severe incidents.
 
    - Define strategies that isolate or remove the affected component from workload flow paths, such as shutting down a resource or rerouting traffic. Identify which roles have authority to take containment action.
     
-     Set monitoring systems to auto-initiate containment for defined incidents, keeping humans in the loop for critical decisions.  System administrators, engineers, and senior developers should collaborate to limit the blast radius while maintaining degraded functionality. If a component must remain accessible for triage, ensure its access is strictly isolated from the rest of the workload.
+     Set monitoring systems to automatically initiate containment for defined incidents. This approach keeps humans in the loop for critical decisions. System administrators, engineers, and senior developers should collaborate to limit the blast radius while maintaining degraded functionality. If a component must remain available for triage, strictly isolate its access from the rest of the workload.
 
    - Create guidelines for selecting mitigation strategies based on incident severity, such as isolation, rollback, configuration changes, and workarounds.
 
-   - Specify which teams or individuals are responsible for handling the incident based on type and severity. Make sure to include escalation paths for when initial responders cannot resolve the issue.
+   - Specify which teams or individuals must handle the incident based on type and severity. Include escalation paths for when initial responders can't resolve the problem.
 
-   - Outline what data must be collected during triage (logs, metrics, user reports, alerts) to support investigation and decision-making. Also include who should have access to that data.
+   - Outline what data to collect during triage, like logs, metrics, user reports, and alerts, to support investigation and decision-making. Also include who should have access to that data.
 
    > [!IMPORTANT]
-   > Lock down your emergency credentials, or break-glass accounts, with clear rules: who can use them, when, and exactly how. Pair that with emergency drills and track every run. Define how frequently the team should practice drills. During an incident there's no time to figure it out on the fly. Drills provide adequate practice and refinement opportunities.
+   > Safeguard your emergency credentials, or break-glass accounts, by establishing clear rules. Determine who can use them, when, and exactly how. Pair those rules with emergency drills and track every run. Define how frequently the team should practice drills. During an incident, there's no time to figure it out in the moment. Drills provide adequate practice and refinement opportunities.
 
 1. Set up your infrastructure to support resolution:
 
-   - Parameterize pipelines: Enable deployment and recovery pipelines to accept specific versions for rapid rollback or fix deployment.
+   - Parameterize pipelines: Enable deployment and recovery pipelines to accept specific versions for rapid rollback or to fix deployment.
 
-   - Ensure data plane consistency: Keep keys, secrets, configs, and state data aligned during recovery operations.
+   - Ensure data plane consistency: Keep keys, secrets, configurations, and state data aligned during recovery operations.
 
    - Automate infrastructure scaling: Adjust resources automatically to handle traffic shifts or increased load.
-   - Implement self-healing: Safely automate responses to common incident patterns with proper monitoring and options for manual override.
 
-1. Define communication processes. Document clear communication and escalation plan so tier-1 support can quickly reach the right teams. Specify appropriate communication channels for internal and external stakeholders, and include on-call schedules and contact details.
+   - Implement self-healing: Safely automate responses to common incident patterns, but include proper monitoring and options for manual override.
 
-1. Define the usage of an IcM tool and the standard operating procedures it should capture in a simple workflow: create, acknowledge, mitigate, resolve. The tool's goal is to give teams visibility, track progress, maintain accountability, and ensure consistent incident handling around the clock, centralizing all activities to support live site management and on-call rotations.
+1. Define communication processes. Document clear communication and escalation plans so that tier-1 support can quickly reach the right teams. Specify appropriate communication channels for internal and external stakeholders, and include on-call schedules and contact details.
+
+1. Define the usage of an IcM tool and the standard operating procedures that it should capture in a simple workflow. The workflow includes four steps: create, acknowledge, mitigate, and resolve. The tool gives teams visibility, tracks progress, maintains accountability, and ensures consistent incident handling at all times. It centralizes all activities to support live site management and on-call rotations.
             
 1. Define the criteria that officially mark an incident as closed:
 
-   - Include clear resolution factors. Typically, this means the system and services are operating within SLAs, performance and reliability have returned to acceptable levels, and any immediate mitigation actions have been successfully completed.
+   - Include clear resolution factors. Typically, resolution means that the system and services operate within service-level agreements (SLAs), performance and reliability return to acceptable levels, and immediate mitigation actions successfully finish.
 
-   - Include validation checks to ensure the issue is fully resolved. This involves confirming through monitoring tools that the impact has ended and verifying that affected users are no longer experiencing disruption.
+   - Include validation checks to confirm full resolution. Use monitoring tools to check that the impact has ended and ensure that affected users no longer experience disruption.
 
-   - Include communication requirements when closing an incident. Notify relevant stakeholders, including internal teams, support staff, and impacted users, and provide a summary of actions taken along with any ongoing work.
+   - Include communication requirements when you close an incident. Notify relevant stakeholders, including internal teams, support staff, and affected users, and provide a summary of actions taken along with ongoing work.
 
-   - Include thorough documentation when closing an incident. Record all details in the incident management system, covering the trigger, containment steps, triage decisions, and the final resolution. This documentation should be considered as handoff for root cause analysis (RCA) and retrospective to capture lessons learned.
+   - Include thorough documentation when you close an incident. Record all details in the IcM system. Include the trigger, containment steps, triage decisions, and the final resolution. Treat this documentation as the handoff for RCA and the retrospective to capture lessons learned.
 
    > [!IMPORTANT]
-   > Design your operations so that only the designated authority, such as the Incident Response Manager, can close an incident. Enforce strict checklists to block premature closure. Skipping steps can leave hidden issues unresolved, turning a "closed" incident into a repeat disaster.
+   > Design your operations so that only the designated authority, such as the Incident Response Manager, can close an incident. Enforce strict checklists to block premature closure. Skipping steps can leave hidden problems unresolved, which can turn a *closed* incident into a repeat disaster.
 
 
 ## Detect, investigate, and respond
 
-Phase 2 focuses on detecting and responding to incidents quickly and effectively. The goal is to identify issues early, assess their impact, and implement the right mitigation strategies while containing disruption. This phase also ensures that triage, resolution, and communication are coordinated, consistent, and accountable across all teams.
+Phase 2 focuses on detecting and responding to incidents quickly and effectively. This phase identifies problems early, assesses their impact, and implements the right mitigation strategies while containing disruption. This phase also ensures that triage, resolution, and communication are coordinated, consistent, and accountable across all teams.
 
 > [!IMPORTANT]
-> Clear, consistent communication maintains control and clarity in high-stress situations.  Define exactly who speaks, what gets shared, and how often. Standardize update cadence, channels, and message formats so no one scrambles for information mid-crisis. Make sure every stakeholder, from engineers to executives, knows when to expect updates and when escalation is required.
+> Clear, consistent communication maintains control and clarity in high-stress situations. Define exactly who speaks, what gets shared, and how often. Standardize update cadence, channels, and message formats so that no one scrambles for information during the crisis. Make sure every stakeholder, from engineers to executives, knows when to expect updates and when escalation is required.
 
-1. Act immediately on the first sign of an issue, from alerts or user reports. Use observability and performance tools to correlate anomalies with system changes. The incident recipient sets up a triage (_bridge_) team with the right members, agreeing on communication mode, progress tracking, and access to incident assets.
+1. Act immediately on the first sign of a problem, from alerts or user reports. Use observability and performance tools to correlate anomalies with system changes. The incident recipient sets up a triage (_bridge_) team with the right members and agrees on communication mode, progress tracking, and access to incident assets.
 
-1. Mobilize the engineering bridge to evaluate impact and severity. Evaluate the impact of the incident using your predefined severity classifications. Get data to justify criteria outlined in the incident response plan, such as number of users affected, business functions disrupted, security and compliance implications, and potential impact on customer trust and reputation. This assessment determines the appropriate response level and guides the next mitigation steps.
+1. Mobilize the engineering bridge to evaluate the impact and severity. Evaluate the impact of the incident by using your predefined severity classifications. Use data to justify criteria outlined in the incident response plan, such as number of users affected, business functions disrupted, security and compliance implications, and potential impact on customer trust and reputation. This assessment determines the appropriate response level and guides the next mitigation steps.
 
-1. The investigation stage begins when the right engineering teams are engaged and start root cause analysis. This process involves deep technical analysis to pinpoint the cause and contain the impact. Engineers use observability data, telemetry dashboards, system logs, and change histories to trace anomalies and identify failure points. The focus is on isolating the problem quickly, validating hypotheses with real-time data, and developing a precise mitigation plan that restores service stability without introducing new risk.
+1. The investigation stage begins when the right engineering teams are engaged and start an RCA. This process involves deep technical analysis to pinpoint the cause and contain the impact. Engineers use observability data, telemetry dashboards, system logs, and change histories to trace anomalies and identify failure points. They focus on isolating the problem quickly, validating hypotheses by using real-time data, and developing a precise mitigation plan that restores service stability without introducing new risk.
 
-    > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The steps of a root cause analysis can be time consuming. To correlate performance issues, you also need to collect and store data. The required time and infrastructure can add significant work to the operations teams and cost to the workload.
+    > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off:** An RCA can take significant time. To correlate performance problems, you must collect and store data. The required time and infrastructure can add extra work to the operations teams and cost to the workload.
 
-    > :::image type="icon" source="../_images/risk.svg"::: **Risk**: If you perform a root cause analysis without proper security guardrails, there's a risk that you expose sensitive information when you provide access to logs and data.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk:** If you perform an RCA without proper security guardrails, you might expose sensitive information when you provide access to logs and data.
 
-1. Follow the containment strategies to isolate affected components and limit the blast radius. You might take actions that:
+1. Follow the containment strategies to isolate affected components and limit the blast radius. You might take the following actions:
 
-   - Block access to affected components, using separate paths for triage. For example, shutting down a resource, throttling traffic, or disabling a failing microservice.
+   - Block access to affected components by using separate paths for triage. For example, you might shut down a resource, throttle traffic, or disable a failing microservice.
 
    - Limit the incident's reach to specific users, regions, or components.
    
@@ -137,28 +138,28 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
 
 1. Select an appropriate mitigation strategy. Choose mitigation approaches based on the current state of the workload, available resources, and immediate constraints. 
 
-   The choice depends on factors such as infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives:
+   Your choice depends on factors such as infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives:
 
-   - Restore systems to a last-known-good state, ensuring the team agrees on what that means and accounting for data or dependency complexities.
+   - Restore systems to a last-known-good state. Ensure that the team agrees on what that state means and accounts for data or dependency complexities.
 
    - Reroute traffic to healthy systems to maintain availability during failures or regional disruptions.
 
-   - Use feature flags or configuration changes to bypass faulty components while assessing tradeoffs and securing stakeholder approval.
+   - Use feature flags or configuration changes to bypass faulty components. Assess trade-offs and secure stakeholder approval.
 
    - Apply targeted fixes quickly but safely. Make sure the team maintains key quality checks even under pressure.
 
    > [!IMPORTANT]
-   > Ensure that mitigation decisions follow predefined authorization rules. The Incident Manager should be accountable for all mitigation actions. Only authorized personnel should approve high-impact steps, and every action is documented. Keep the actions controlled, safe, and accountable while restoring the system.  
+   > Ensure that mitigation decisions follow predefined authorization rules. The Incident Manager should handle all mitigation actions. Require authorized personnel to approve high-impact steps and document every action. Keep the actions controlled, safe, and accountable while you restore the system.
 
-1. Apply the resolution. This step focuses on restoring the system to full operational state while preventing recurrence. Engineering teams apply verified fixes following team-specific, scripted procedures, using log analysis and monitoring tools to guide investigation. Rollback steps are included to undo ineffective changes, ensuring every action drives the system steadily toward complete recovery.
+1. Apply the resolution. This step focuses on restoring the system to full operational state while preventing recurrence. Engineering teams apply verified fixes that follow team-specific, scripted procedures. They use log analysis and monitoring tools to guide investigation. Rollback steps undo ineffective changes to ensure that every action drives the system steadily toward complete recovery.
 
-1. Generate Root Cause Analysis (RCA) report. After an incident is resolved, generate the RCA report within the SLA timeframe. The incident owner, or a closely involved team member if unavailable, should create the report to ensure accuracy. Follow a defined RCA template with clear guidelines on what information to include and share, or create and approve a new template with stakeholder review.
+1. Generate an RCA report. After you resolve an incident, generate the RCA report within the SLA timeframe. The incident owner, or a closely involved team member if the owner is unavailable, should create the report to ensure accuracy. Follow a defined RCA template that has clear guidelines about what information to include and share, or create and approve a new template through stakeholder review.
 
 ## Post-incident activities
 
-Retrospectives should follow every incident. They provide critical learning opportunities, highlight weaknesses in response, deployment, or infrastructure, and inform improvements. Document action items and ensure they are tracked in a backlog for iterative execution.
+Do retrospectives after every incident. They provide critical learning opportunities, highlight weaknesses in response, deployment, or infrastructure, and inform improvements. Document action items and track them in a backlog for iterative implementation.
 
-The goal is not to assign blame but to identify actionable improvements. This process should be led by an impartial facilitator. All teams involved in the incident must be represented by individuals who worked on the response and come prepared with observations on successes and areas for improvement:
+The goal isn't to assign blame but to identify actionable improvements. An impartial facilitator should lead this process. Individuals who worked on the response must represent each team involved in the incident. They must come prepared with observations on successes and areas for improvement:
 
 - Response plan enhancements: Update processes or procedures to ensure clearer, more effective actions.
 
@@ -166,50 +167,54 @@ The goal is not to assign blame but to identify actionable improvements. This pr
 
 - Workload remediation: Address vulnerabilities exposed during the incident for permanent fixes.
 
-
 ## Example: Deployment failure response
 
-Let's look at a deployment-related incident. Even with careful planning and testing, deployments can sometimes introduce issues that affect system performance or user experience.
+The following example describes a deployment-related incident. Even with careful planning and testing, deployments can sometimes introduce problems that affect system performance or user experience.
 
-In this example, a workload team is rolling out a search enhancement feature that includes multiple components: a new search API endpoint with enhanced filtering functionality, an updated database schema, a redesigned UI search widget, and new caching logic.
+In this example, a workload team rolls out a search enhancement feature that includes multiple components:
 
-1. **Detection**. The problem was noticed when error rates spiked in one of the canary rollout groups. The team immediately used their observability tools like application performance monitoring, logging, and telemetry linking users to rollout phases, to pinpoint the affected group.
+- A new search API endpoint that has enhanced filtering functionality
+- An updated database schema
+- A redesigned UI search widget
+- New caching logic
 
-    The team had prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry linked users to specific rollout groups, so they could quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured support staff knew how to escalate issues according to the emergency response plan. This preparation allowed them to detect the spike in error rates quickly and respond without delay.
+1. **Detection:** The team noticed problem when error rates spiked in one of the canary rollout groups. The team immediately used their observability tools, like application performance monitoring, logging, and telemetry that links users to rollout phases, to pinpoint the affected group.
 
-1. **Mitigation**. The team quickly decided on a mitigation strategy, considering whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function with a feature flag, or deploy a hot fix. With the decision tree and approval process already defined, the team implemented the chosen action.
+    The team prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry linked users to specific rollout groups, so they could quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured support staff knew how to escalate problems according to the emergency response plan. This preparation allowed them to detect the spike in error rates quickly and respond without delay.
 
-    Before the incident occurred, the team had defined a clear decision tree for handling deployment issues.
+1. **Mitigation:** The team quickly decided on a mitigation strategy. They considered whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function by using a feature flag, or deploy a hot fix. With the decision tree and approval process already defined, the team implemented the chosen action.
 
-    - **Rollback**: Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means, typically the last healthy state of the workload before the deployment began, which may not be the immediately prior application version. Rolling back can be complex, particularly when schema or data changes are involved. To reduce risk, schema updates should be additive rather than replacing records, allowing old and new data to coexist until deprecated records can be safely removed. Rollbacks may require careful planning and coordination across multiple teams.
+    Before the incident occurred, the team defined a clear decision tree to handle deployment problems:
 
-    - **Fallback**: Remove updated systems from production traffic routing, directing all traffic to the stable stack. This low-risk strategy allows addressing deployment issues without further disruptions. With canary deployments, fallback can be complicated depending on infrastructure and application design. Adequate capacity on the stable stack should be ensured before switching traffic back. Fallback supports continued operation while isolating the problematic deployment.
+    - **Rollback:** Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means. It typically refers to the last healthy state of the workload before the deployment began, which might not be the immediately prior application version. Rolling back can be complex, especially when schema or data changes are involved. To reduce risk, make schema updates additive instead of replacing records. The old and new data can coexist until you can safely remove deprecated records. Rollbacks might require careful planning and coordination across multiple teams.
 
-    - **Bypass the offending function**: Use feature flags or runtime configuration properties to bypass the problematic functionality. This approach allows the rollout to continue while isolating the issue. Tradeoffs should be evaluated and communicated to stakeholders, including how long a degraded state can be tolerated and the estimated time to fully resolve the issue. Stakeholder approval should be obtained for the plan.
+    - **Fallback:** Remove updated systems from production traffic routing and direct all traffic to the stable stack. This low-risk strategy addresses deployment problems without causing further disruptions. Fallback in canary deployments can be complicated depending on infrastructure and application design. Ensure adequate capacity on the stable stack before switching traffic back. Fallback supports continued operation and isolates the problematic deployment.
 
-    - **Emergency deployment (hot fix)**: Deploy a hot fix mid-rollout to address the issue quickly. Hot fixes should follow safe deployment practices, including code promotion through environments and quality gate checks, but with accelerated timelines. Bake times and tests may be shortened or modified to speed deployment, while automated testing ensures reliability. Hot fixes require coordination and careful planning to minimize risk while resolving the issue promptly.
+    - **Bypass the offending function:** Use feature flags or runtime configuration properties to bypass the problematic functionality. This approach lets the rollout continue and isolates the problem. Evaluate trade-offs and communicate them to stakeholders. Include how long you can tolerate a degraded state and the estimated time to fully resolve the problem. Obtain stakeholder approval for the plan.
 
-   After reviewing all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower-risk than attempting a full rollback, which could have required complex data and schema operations. The team confirmed that the stable stack had sufficient capacity to handle the full production load and that the updated systems could be isolated from production traffic routing.
+    - **Emergency deployment (hot fix):** Deploy a hot fix during the rollout to address the problem quickly. Follow safe deployment practices, including code promotion through environments and quality gate checks, but accelerate timelines. Shorten or modify bake times and tests to speed deployment. Use automated testing to ensure reliability. Hot fixes require coordination and careful planning to minimize risk and resolve the problem promptly.
 
-   Because the deployment included multiple interdependent changes across API, database schema, UI components, and caching logic, identifying which specific component was causing the errors proved more challenging and took more time than if the changes had been deployed separately.
+   After the team reviewed all available strategies, the team narrowed their choice to either rollback or fallback, and ultimately decided on fallback. They determined that redirecting traffic to the stable stack would be faster and lower risk than a full rollback, which could require complex data and schema operations. The team confirmed that the stable stack had enough capacity to handle the full production load and they could isolate the updated systems from production traffic routing.
 
-1. **Resolution**.  The team executed the fallback procedure: traffic was shifted away from the updated environment, isolating the problematic deployment. This allowed the team to address the underlying issue without impacting the majority of users.
+   The deployment included multiple interdependent changes across the API, database schema, UI components, and caching logic, so identifying the specific component that caused the errors was more challenging and time consuming than if they deployed changes separately.
 
-   The fallback execution revealed operational gaps: contact information for two key team members was outdated, and one engineer in the escalation chain had left the company months earlier. The team lost time in figuring out the responsible individual. Additionally, when attempting to remove the updated deployment from the load balancer, the documentation referenced an outdated load balancer configuration that changed in a recent Azure update, requiring them to locate the correct procedure under time pressure.
+1. **Resolution:**  The team implemented the fallback procedure. They shifted traffic away from the updated environment to isolate the problematic deployment. The team could address the underlying problem without affecting most users.
 
-    Communication was a key part of the mitigation plan. Stakeholders were kept informed of the decision and its implications, including the expected timeline for resolving the issue in the isolated environment. The team standardized the cadence for providing status updates during deployment incidents so stakeholders knew when to expect progress reports and issue updates. As direct communication with end users was necessary, the team clarified the type and level of detail appropriate to share, while also ensuring that any other requirements for deployment incident communications were followed. This structured approach minimized confusion and helped maintain confidence in the response process.
+   The fallback implementation revealed operational gaps. They found outdated contact information for two key team members, and one engineer in the escalation chain left the company months earlier. The team lost time figuring out the responsible individual. When they tried to remove the updated deployment from the load balancer, the documentation referenced an outdated load balancer configuration that changed in a recent Azure update. They had to find the correct procedure under time pressure.
 
-1. **Retrospective**. After the deployment incident was fully mitigated, the team conducted a retrospective to capture lessons learned and improve future processes. The session included everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviewed the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
+    Communication was a key part of the mitigation plan. The team informed stakeholders of the decision and its implications, including the expected timeline to resolve the problem in the isolated environment. The team standardized the cadence for providing status updates during deployment incidents so that stakeholders knew when to expect progress reports and updates. Users required direct communication, so the team defined the type and level of detail to share and ensured compliance with other requirements for deployment incident communications. This structured approach minimized confusion and helped maintain confidence in the response process.
+
+1. **Retrospective:** After the team mitigated the deployment incident, they did a retrospective to capture lessons learned and improve future processes. The session included everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviewed the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
 
      A key finding was that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
 
-1. **Post-incident improvements**. From the retrospective, the team implemented several operational improvements to make future deployments safer and mitigations more reliable:
+1. **Post-incident improvements:** From the retrospective, the team implemented several operational improvements to make future deployments safer and mitigations more reliable:
 
-   - **Smaller, frequent changes**: The team shifted toward smaller, incremental deployments, reducing the delta between successive versions and making mitigation simpler and lower-risk.
+   - **Smaller, frequent changes:** The team shifted toward smaller, incremental deployments to reduce the delta between successive versions and make mitigation simpler and lower risk.
 
-      For the search enhancement specifically, the team to deploy each component independently: first the database schema changes with backward-compatible changes, then the API endpoint updates, and so on. This approach would enable the team to validate each layer independently before adding the next, and more easily isolate issues to a specific component.
+      For the search enhancement specifically, the team decided to deploy each component independently. They deployed the database schema changes with backward-compatible changes first, then the API endpoint updates, and then other changes. This approach enables the team to validate each layer independently before they add the next layer, and more easily isolate problems to a specific component.
 
-   - **Regular testing and drills**: The team established a practice of frequent testing for the full deployment failure mitigation strategy. Chaos engineering and fault injection tests were introduced to simulate failure scenarios and validate mitigation processes. These regular drills would have caught the issues encountered during the incident: outdated contact information, and outdated runbook procedures.
+   - **Regular testing and drills:** The team established a practice of frequent testing for the full deployment failure mitigation strategy. They introduced chaos engineering and fault injection tests to simulate failure scenarios and validate mitigation processes. These regular drills would have caught the problems encountered during the incident, including outdated contact information and outdated runbook procedures.
 
 ## Azure facilitation
 
