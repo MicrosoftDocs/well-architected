@@ -49,7 +49,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Plan for site resiliency:** Planning for site resiliency is crucial to ensure high availability. ExpressRoute offers three architectures of site resiliency: *Standard*, *High*, and *Maximum*. Standard resiliency provides basic protection against link failures, but does not provide protection against site failures. High resiliency offers enhanced protection with additional failover mechanisms, and Maximum resiliency ensures the highest level of protection with multiple redundant systems and failover mechanisms.
 >
-> - **Plan for regions and availability zones:** Plan for multiple region and availability zones closest to your on-premises locations to provide resiliency and high availability.
+> - **Plan for regions and availability zones:** Plan for multiple region and availability zones closest to your on-premises locations to provide resiliency and high availability. For more information about reliability for Virtual Network Gateways, see [Reliability in Azure Virtual Network Gateway](/azure/reliability/reliability-virtual-network-gateway?pivots=expressroute).
 >
 > - **Plan for ExpressRoute circuit or ExpressRoute Direct:** During the initial planning phase, you want to decide whether you want to configure an ExpressRoute circuit or an ExpressRoute Direct connection.
 >
