@@ -343,7 +343,7 @@
       - name: Background jobs
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
-        href: reliability/partition-data.md
+        href: ./design-guides/partition-data.md
       - name: Continuous integration 
         href: ./design-guides/release-engineering-continuous-integration.md
       - name: Regions and availability zones
