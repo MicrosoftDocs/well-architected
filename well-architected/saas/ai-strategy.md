@@ -169,7 +169,7 @@ To establish a strong AI practice, set clear standards and ensure that your AI e
 > [!CAUTION]
 > Embed responsible AI principles in your foundational practices. Align your AI efforts with your brand and values, and avoid unintended harm. Develop expertise in the responsible use of AI and how that applies within your industry and to your customers and business. For guidance, see [Responsible AI in Azure workloads](../ai/responsible-ai.md).
 
-## Put strategy to practice for your SaaS archetype
+## Put strategy to practice
 
 In the context of SaaS, an archetype is a recurring type of SaaS business model or product design that creates value in a particular way. It's a mental model that helps you apply AI strategically, based on your product's strengths, rather than jumping into AI adoption without direction.  Keep in mind a single SaaS solution can serve multiple archetypes, either because different user personas engage with it in different ways, or because it offers distinct features and capabilities tailored to various needs.
 
