@@ -109,7 +109,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 > - **How much AI do you use in your processes for productivity gains?**
 >
->   At minimum, start developing internal capabilities around AI. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build AI in your foundational practices](#build-ai-in-your-foundational-practices).
+>   At minimum, start developing internal capabilities around AI across all of your product roles, including engineers and product managers. This is a great way to upskill the team and familiarize them with real-world capabilities and AI tools. We'll cover this in the [Build AI in your foundational practices](#build-ai-in-your-foundational-practices).
 >
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
