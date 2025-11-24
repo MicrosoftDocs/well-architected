@@ -10,11 +10,11 @@ ms.update-cycle: 1095-days
 
 # Support the workload in a consultative role
 
-Architects should seek ways to stay involved with the workload as it changes over time. Their role doesn't end with design handoff or consultation during the initial implementation. Architects bring perspective that can be used in other activities that are related to the product's evolution.
+Architects should seek ways to stay involved with the workload as it changes over time. Their role doesn't end with design handoff or consultation during the initial implementation. Architects bring perspective that can be used in other activities related to the product's evolution.
 
 ## Support modeling exercises
 
-Teams can model workloads in multiple dimensions and for multiple purposes often build on pre-deployment assumptions. For example, workloads can abstract health signals out of implementation details and into business constructs. Or they can model system growth over time or the licensing process to evaluate alternative billing models.
+Teams can model workloads in multiple dimensions and for multiple purposes. These models often build on pre-deployment assumptions. For example, workloads can abstract health signals out of implementation details and into business constructs. Or they can model system growth over time or the licensing process to evaluate alternative billing models.
 
 Whether the model is an abstraction or evaluates hypotheticals to inform a future business decision, architects contribute to that process. They use their insight into the workload design, its known or predicted limitations, and its scaling characteristics, to validate or tune the assumptions in the model and approximate the system more accurately. For example, does the health model accurately predict failures and align with the workload's service-level objectives (SLOs)? Is the cost model tracking with actual spend? You ensure that business decisions are based on empirical evidence rather than outdated hypotheses.
 
@@ -22,8 +22,8 @@ Whether the model is an abstraction or evaluates hypotheticals to inform a futur
 
 Architects stay current with fundamentals like cloud provider offerings and industry design patterns.
 
-- Features that were state of the art when a workload was designed might might now be missing out on new cloud capabilities that offer better performance, security, or cost efficiency.
-- The expected usage patterns of the application might not manifest in the way that they were predicted.
+- Features that were state of the art when a workload was designed might now be missing out on new cloud capabilities that offer better performance, security, or cost efficiency.
+- The expected usage patterns of the application might not manifest as predicted.
 - The workload might have accumulated "technical debt" or drifted from its original design principles due to rapid iteration.
 
 In cases like these, there's an opportunity for you to present a recommendation to further optimize or refine the current design based on this new knowledge.
