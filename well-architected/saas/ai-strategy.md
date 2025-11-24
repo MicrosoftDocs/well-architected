@@ -66,7 +66,7 @@ This could involve embedding intelligent features, improving internal operations
 
     They could also serve as reviewers of AI experiments and pilots. Their responsibility would be to assess them against strategic goals, customer value, and product consistency to prevent drift and duplication.
 
-- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#put-strategy-to-practice-for-your-saas-archetype).
+- **Create a shared inventory for AI use cases**. Enumerate current flows and features in the product and develop internal guidelines for when, where, and how AI should be used within your product. For inspiration, see typical uses cases listed under [SaaS Architectypes](#put-strategy-to-practice).
 
     Distinguish between foundational AI use cases, conversational AI use cases, and agentic use cases.
 
@@ -97,7 +97,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   > :::image type="icon" source="../_images/risk.svg"::: **Risk: Over indexing on chatbots as the primary AI interface.** Chatbots are often a practical starting point for AI because easy to implement, well-supported, and capable of delivering quick wins. However, relying solely on chat interfaces can limit your strategy and lead to missed opportunities. AI has the potential to power much more, including personalization, automation, recommendations, and intelligent insights. Think beyond chat and consider how AI can best serve your users and product experience.
 >
->   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#put-strategy-to-practice-for-your-saas-archetype).
+>   Start by understanding where your SaaS business creates value, is it in the application experience, the data you manage, or the insights you provide. Refer to: [Examples: SaaS archetypes](#put-strategy-to-practice).
 >
 > - **How would you assess your maturity level with AI?**
 >
@@ -113,7 +113,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   Revisit your [SaaS value proposition](#focus-on-saas-as-a-business-model-not-the-application) and look for areas where AI can extend, automate, or transform what you deliver. It's often more effective to model your business processes and flows, integrate AI into targeted steps where it adds clear value, and keep humans involved to validate and guide the AI's output.
 >
->   See [Examples: AI use cases](#put-strategy-to-practice-for-your-saas-archetype) to guide this evaluation.
+>   See [Examples: AI use cases](#put-strategy-to-practice) to guide this evaluation.
 >
 > - **How can you improve customer operations with AI?**
 >
