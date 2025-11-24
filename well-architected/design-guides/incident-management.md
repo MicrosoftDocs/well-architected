@@ -46,7 +46,7 @@ Before an incident happens, set up the foundation for effective response by desi
 
    - Collect end-to-end telemetry, including infrastructure and applications.
 
-   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If required, also forward logs to centrally managed sinks. Make sure team members have time-limited, least-privilege access during incidents.
+   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If necessary, also forward logs to centrally managed sinks. Make sure team members have time-limited, least-privilege access during incidents.
 
    - Create dashboards based on the workload health model that show metrics and signals that your team monitors.
 
@@ -138,17 +138,19 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
    
    - Maintain workload functionality in a degraded state if possible.
 
+<a name="mitigation-strategies"></a>
+
 1. Select an appropriate mitigation strategy. Choose mitigation approaches based on the current state of the workload, available resources, and immediate constraints. 
 
    Your choice depends on factors such as infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives.
 
-   - Restore systems to a last-known-good state. Ensure that the team agrees on what that state means and accounts for data or dependency complexities.
+   - **Rollback:** Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means. It typically refers to the last healthy state of the workload before the deployment began, which might not be the immediately prior application version. Rolling back can be complex, especially when schema or data changes are involved. To reduce risk, make schema updates additive instead of replacing records. The old and new data can coexist until you can safely remove deprecated records. Rollbacks might require careful planning and coordination across multiple teams.
 
-   - Reroute traffic to healthy systems to maintain availability during failures or regional disruptions.
+   - **Fallback:** Remove updated systems from production traffic routing and direct all traffic to the stable stack. This low-risk strategy addresses deployment problems without causing further disruptions. Fallback in canary deployments can be complicated depending on infrastructure and application design. Ensure adequate capacity on the stable stack before switching traffic back. Fallback supports continued operation and isolates the problematic deployment.
 
-   - Use feature flags or configuration changes to bypass faulty components. Assess trade-offs and secure stakeholder approval.
+   - **Bypass the offending function:** Use feature flags or runtime configuration properties to bypass the problematic functionality. This approach lets the rollout continue and isolates the problem. Evaluate trade-offs and communicate them to stakeholders. Include how long you can tolerate a degraded state and the estimated time to fully resolve the problem. Obtain stakeholder approval for the plan.
 
-   - Apply targeted fixes quickly but safely. Make sure the team maintains key quality checks even under pressure.
+   - **Emergency deployment (hot fix):** Deploy a hot fix during the rollout to address the problem quickly. Follow safe deployment practices, including code promotion through environments and quality gate checks, but accelerate timelines. Shorten or modify bake times and tests to speed deployment. Use automated testing to ensure reliability. Hot fixes require coordination and careful planning to minimize risk and resolve the problem promptly.
 
    > [!IMPORTANT]
    > Ensure that mitigation decisions follow predefined authorization rules. The Incident Manager should handle all mitigation actions. Require authorized personnel to approve high-impact steps and document every action. Keep the actions controlled, safe, and accountable while you restore the system.
@@ -184,29 +186,19 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 1. **Detection:** The team notices a problem when error rates spike in one of the canary rollout groups. The team immediately uses their observability tools, like APM, logging, and telemetry that links users to rollout phases, to pinpoint the affected group.
 
-    The team prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry linked users to specific rollout groups, so they could quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured that support staff knew how to escalate problems according to the emergency response plan. This preparation allows them to detect the spike in error rates quickly and respond without delay.
+    The team prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry links users to specific rollout groups, so they can quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured that support staff knew how to escalate problems according to the emergency response plan. This preparation allows them to detect the spike in error rates quickly and respond without delay.
 
-1. **Mitigation:** The team quickly decides on a mitigation strategy. They consider whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function by using a feature flag, or deploy a hot fix. With the decision tree and approval process already defined, the team implements the chosen action.
+1. **Mitigation:** The team quickly decides on a mitigation strategy. They consider whether to roll back to the last-known-good version, fall back to the stable environment, bypass the problematic function by using a feature flag, or deploy a hot fix. The decision tree and approval process are already defined.
 
-    Before the incident occurred, the team defined a clear decision tree to handle deployment problems:
+   After the team reviews all [available strategies](#mitigation-strategies), they narrow their choice to either rollback or fallback, and ultimately decide on fallback. They determine that redirecting traffic to the stable stack is faster and lower risk than a full rollback, which could require complex data and schema operations. The team confirms that the stable stack has enough capacity to handle the full production load and they can isolate the updated systems from production traffic routing.
 
-    - **Rollback:** Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means. It typically refers to the last healthy state of the workload before the deployment began, which might not be the immediately prior application version. Rolling back can be complex, especially when schema or data changes are involved. To reduce risk, make schema updates additive instead of replacing records. The old and new data can coexist until you can safely remove deprecated records. Rollbacks might require careful planning and coordination across multiple teams.
-
-    - **Fallback:** Remove updated systems from production traffic routing and direct all traffic to the stable stack. This low-risk strategy addresses deployment problems without causing further disruptions. Fallback in canary deployments can be complicated depending on infrastructure and application design. Ensure adequate capacity on the stable stack before switching traffic back. Fallback supports continued operation and isolates the problematic deployment.
-
-    - **Bypass the offending function:** Use feature flags or runtime configuration properties to bypass the problematic functionality. This approach lets the rollout continue and isolates the problem. Evaluate trade-offs and communicate them to stakeholders. Include how long you can tolerate a degraded state and the estimated time to fully resolve the problem. Obtain stakeholder approval for the plan.
-
-    - **Emergency deployment (hot fix):** Deploy a hot fix during the rollout to address the problem quickly. Follow safe deployment practices, including code promotion through environments and quality gate checks, but accelerate timelines. Shorten or modify bake times and tests to speed deployment. Use automated testing to ensure reliability. Hot fixes require coordination and careful planning to minimize risk and resolve the problem promptly.
-
-   After the team reviews all available strategies, they narrow their choice to either rollback or fallback, and ultimately decide on fallback. They determine that redirecting traffic to the stable stack is faster and lower risk than a full rollback, which could require complex data and schema operations. The team confirms that the stable stack has enough capacity to handle the full production load and they can isolate the updated systems from production traffic routing.
-
-   The deployment included multiple interdependent changes across the API, database schema, UI components, and caching logic, so identifying the specific component that caused the errors is more challenging and time consuming than if they deployed changes separately.
+   The team bundled multiple interdependent changes together, including the API, database schema, UI components, and caching logic, so identifying the specific component that caused the errors is more challenging and time consuming than if they had deployed each change separately.
 
 1. **Resolution:**  The team implements the fallback procedure. They shift traffic away from the updated environment to isolate the problematic deployment. The team can address the underlying problem without affecting most users.
 
    The fallback implementation reveals operational gaps. They find outdated contact information for two key team members, and one engineer in the escalation chain left the company months earlier. The team loses time figuring out the responsible individual. When they try to remove the updated deployment from the load balancer, the documentation references an outdated load balancer configuration that changed in a recent Azure update. They have to find the correct procedure under time pressure.
 
-    Communication is a key part of the mitigation plan. The team informs stakeholders of the decision and its implications, including the expected timeline to resolve the problem in the isolated environment. The team already standardized the cadence for providing status updates during deployment incidents so that stakeholders know when to expect progress reports and updates. The team also defined the type and level of detail to share with users and ensured compliance with other requirements for deployment incident communications. This structured approach minimizes confusion and helps maintain confidence in the response process.
+    Communication is a key part of the mitigation plan. The team informs stakeholders of the decision and its implications, including the expected timeline to resolve the problem in the isolated environment. The team already standardized the cadence for providing status updates during deployment incidents, so stakeholders know when to expect progress reports and updates. The team also defined the type and level of detail to share with users and ensured compliance with other requirements for deployment incident communications. This structured approach minimizes confusion and helps maintain confidence in the response process.
 
 1. **Retrospective:** After the team mitigates the deployment incident, they do a retrospective to capture lessons learned and improve future processes. The session includes everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviews the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
 
@@ -222,24 +214,24 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 ## Azure facilitation
 
-Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
+- Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
 [Incident readiness](/services-hub/unified/health/incident-readiness). 
 
-[Azure Monitor](/azure/azure-monitor/overview) is a solution for collecting, analyzing, and responding to monitoring data from cloud and on-premises environments. It includes an alerting platform that you can configure for [automatic notifications and other actions](/azure/azure-monitor/alerts/action-groups), like autoscaling and other self-healing mechanisms.
+- [Azure Monitor](/azure/azure-monitor/overview) is a solution for collecting, analyzing, and responding to monitoring data from cloud and on-premises environments. It includes an alerting platform that you can configure for [automatic notifications and other actions](/azure/azure-monitor/alerts/action-groups), like autoscaling and other self-healing mechanisms.
 
-Use Azure Monitor to integrate machine learning. Automate and optimize incident triage and proactive measures. For more information, see [AI operations and machine learning in Azure Monitor](/azure/azure-monitor/logs/aiops-machine-learning).
+  Use Azure Monitor to integrate machine learning. Automate and optimize incident triage and proactive measures. For more information, see [AI operations and machine learning in Azure Monitor](/azure/azure-monitor/logs/aiops-machine-learning).
 
-[Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is an analytics tool built into Azure Monitor. You can use Log Analytics to run queries against aggregated logs and gain insights about your workload.
+  - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is an analytics tool in Azure Monitor. You can use Log Analytics to run queries against aggregated logs and gain insights about your workload.
 
-[Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor that provides application performance monitoring (APM) features.
+  - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor that provides application performance monitoring (APM) features.
 
-[Microsoft Sentinel](/azure/sentinel/overview) is a security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solution. It's a single solution for alert detection, threat visibility, proactive hunting, and threat response.
+- [Microsoft Sentinel](/azure/sentinel/overview) is a security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solution. It's a single solution for alert detection, threat visibility, proactive hunting, and threat response.
 
-[Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and continuous delivery (CI/CD) of your applications.
+- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/) provides build and release services to support continuous integration and continuous delivery (CI/CD) of your applications.
 
-[Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution. This solution provides capabilities required for planned manual testing, user acceptance testing, and exploratory testing. Azure Test Plans also provides a way for you to gather feedback from stakeholders.
+- [Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution. This solution provides capabilities required for planned manual testing, user acceptance testing, and exploratory testing. Azure Test Plans also provides a way for you to gather feedback from stakeholders.
 
-[Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) is a cloud-based platform for running automated workflows that integrate apps, data, services, and systems. You can use Logic Apps to create a new version of your application whenever it gets an update. Azure maintains a history of the versions and can revert or promote any previous version.
+- [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) is a cloud-based platform for running automated workflows that integrate apps, data, services, and systems. You can use Logic Apps to create a new version of your application whenever it gets an update. Azure maintains a history of the versions and can revert or promote any previous version.
 
 - Many Azure database services provide point-in-time restore functionality that can help you when you need to roll back:
 
