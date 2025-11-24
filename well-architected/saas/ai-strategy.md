@@ -4,7 +4,7 @@ description: Learn how to develop and implement a strategic AI approach for your
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 11/25/2025
-ms.topic: conceptual
+ms.topic: article
 ms.collection: learn-startups
 ---
 
