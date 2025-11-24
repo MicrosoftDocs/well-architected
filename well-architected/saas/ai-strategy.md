@@ -70,7 +70,7 @@ This could involve embedding intelligent features, improving internal operations
 
     Distinguish between foundational AI use cases, conversational AI use cases, and agentic use cases.
 
-    :::image type="content" source="./images/ai-progression.svg" alt-text="Diagram that shows the progression between foundational, conversational, agentic, and multi-agent use cases." lightbox="./images/ai-progression.svg" border="false":::
+    :::image type="content" source="./images/ai-progression.svg" alt-text="Diagram that shows the progression between foundational, conversational, agentic, and multi-agent use cases." border="false":::
     
     - *Foundational use cases* use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, content generation, and enrichment.
     - *Conversational use cases* build on top of foundational use cases, using your application's or customers' data to answer questions.
