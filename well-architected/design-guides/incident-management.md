@@ -50,7 +50,7 @@ Before an incident happens, set up the foundation for effective response by desi
 
    - Create dashboards based on the workload health model that show metrics and signals that your team monitors.
 
-   - Configure actionable alerts that trigger notifications only when thresholds are exceeded and a potential incident is detected. Tune alerts to avoid too many alerts (noise) or too few alerts. For example, for live-site incidents, alerts should monitor critical metrics like CPU, memory, response times, and database performance to detect actionable problems that align with performance targets.
+   - Configure actionable alerts that trigger notifications only when thresholds are exceeded and a potential incident is detected. Tune alerts to avoid too many alerts (noise) or too few alerts. For example, for live-site incidents, alerts should monitor critical metrics like central processing unit (CPU), memory, response times, and database performance to detect actionable problems that align with performance targets.
    
      Route alerts automatically to the right teams. For example, tier-1 support gets all alerts, while security engineers receive only security-related alerts.
 
@@ -242,7 +242,7 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 - [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience.
 
-#### Related links
+## Related links
 
 - [Recommendations for designing an incident response strategy](../operational-excellence/incident-response.md)
 - [Develop a disaster recovery plan for multi-region deployments](./disaster-recovery.md)
