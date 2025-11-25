@@ -339,7 +339,7 @@ This SaaS archetype focuses on delivering insight and analytics by leveraging cu
 
 - **Personalized insights delivery.** Tailor AI-generated recommendations and reports to individual user roles, preferences, or business contexts.
 
-- **Explainable AI.** Clearly disclose where AI is used to support or make decisions. Provide transparent explanations of AI-driven insights to build trust and facilitate decision-making.
+    > :::image type="icon" source="../_images/risk.svg"::: **Risk: Lack of transparency and explainability.** Without clear disclosure and explanations of how AI generates insights and recommendations, users may lose trust in the system or make poor decisions based on opaque AI outputs. Always provide transparent explanations of AI-driven insights and clearly indicate when AI is being used to support or make decisions.
 
 - **Integration in dashboards.** Embed AI-powered insights and alerts directly within existing visualization tools to streamline workflows.
 
