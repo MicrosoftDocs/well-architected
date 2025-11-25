@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 08/18/2025
+ms.date: 09/25/2025
 ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -44,6 +44,8 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Create a recovery plan**: Consider data protection features, backup and restore operations, or failover procedures. Prepare for potential [data loss and data inconsistencies](/azure/storage/common/storage-disaster-recovery-guidance#anticipate-data-loss-and-inconsistencies) and the [time and cost of failing over](/azure/storage/common/storage-disaster-recovery-guidance#the-time-and-cost-of-failing-over). For more information, see [Recommendations for designing a disaster recovery strategy](/azure/well-architected/reliability/disaster-recovery).
 >
 > - **Monitor potential availability problems**: Subscribe to the [Azure Service Health dashboard](https://azure.microsoft.com/status/) to monitor potential availability problems. Use storage metrics in Azure Monitor and diagnostic logs to investigate alerts.
+>
+> - **Periodically analyze your data estate**: Use Azure Storage Discovery and Azure Copilot analyze redundancy configurations and to consider potential optimizations. See [Discover insights about your Azure Storage estate with Azure Storage Discovery using Azure Copilot](/azure/copilot/discover-storage-estate-insights?toc=%2Fazure%2Fstorage-discovery%2Ftoc.json#manage-data-redundancy-and-resiliency).
 
 ### Configuration recommendations
 
@@ -71,7 +73,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Use network controls to restrict ingress and egress traffic**: Disable all public traffic to the storage account. Use account network controls to grant the minimal level of access required by users and applications. For more information, see [How to approach network security for your storage account](/azure/storage/common/storage-network-security#how-to-approach-network-security-for-your-storage-account).
 >
-> - **Reduce the attack surface**: Preventing anonymous access, account key access, or access over non-secure (HTTP) connections can reduce the attack surface. Require clients to send and receive data by using the latest version of the Transport Layer Security (TLS) protocol.
+> - **Reduce the attack surface**: Preventing anonymous access, account key access, or access over non-secure (HTTP) connections can reduce the attack surface. You can use [Azure Storage Discovery with Azure Copilot](/azure/copilot/discover-storage-estate-insights?toc=%2Fazure%2Fstorage-discovery%2Ftoc.json#manage-data-redundancy-and-resiliency) to identify these security threats at scale across all of your accounts. Require clients to send and receive data by using the latest version of the Transport Layer Security (TLS) protocol.
 >
 > - **Authorize access without using passwords or keys**: Microsoft Entra ID provides superior security and ease of use compared to shared keys and shared access signatures. Grant security principals only those permissions that are necessary for them to do their tasks.
 >
@@ -133,7 +135,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Monitor costs**: Ensure costs stay within budgets, compare costs against forecasts, and see where overspending occurs. You can use the [cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) pane in the Azure portal to monitor costs. You also can export cost data to a storage account and analyze that data by using Excel or Power BI.
 >
-> - **Monitor usage**: Continuously monitor usage patterns and detect unused or underutilized accounts and containers. Use [Storage insights](/azure/storage/blobs/blob-storage-monitoring-scenarios#identify-storage-accounts-with-no-or-low-use) to identity accounts with no or low use. Enable blob inventory reports, and use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to analyze cost data. Watch out for unexpected increases in capacity, which might indicate that you're collecting numerous log files, blob versions, or soft-deleted blobs. Develop a strategy for expiring or transitioning objects to more cost-effective access tiers.Have a plan for expiring objects or moving objects to more affordable access tiers.
+> - **Monitor usage**: Continuously monitor usage patterns and detect unused or underutilized accounts and containers. Use [Storage insights](/azure/storage/blobs/blob-storage-monitoring-scenarios#identify-storage-accounts-with-no-or-low-use) to identity accounts with no or low use. Use [Azure Storage Discovery and Azure Copilot](/azure/copilot/discover-storage-estate-insights?toc=%2Fazure%2Fstorage-discovery%2Ftoc.json#manage-data-redundancy-and-resiliency) to find cost inefficiencies such as underutilized storage that is placed in expensive access tiers. You can also enable blob inventory reports, and use tools such as [Azure Databricks](/azure/storage/blobs/storage-blob-calculate-container-statistics-databricks) or [Azure Synapse Analytics](/azure/storage/blobs/storage-blob-inventory-report-analytics) and Power BI to analyze cost data. Watch out for unexpected increases in capacity, which might indicate that you're collecting numerous log files, blob versions, or soft-deleted blobs. Develop a strategy for expiring or transitioning objects to more cost-effective access tiers.Have a plan for expiring objects or moving objects to more affordable access tiers.
 >
 > - **Consider Azure Storage Actions for automated data lifecycle management**: [Azure Storage Actions](/azure/storage-actions/overview#supported-regions) enables automated data lifecycle management across your storage accounts with improved regional availability. This allows for consistent automated data archiving, deletion, and tier transition policies across regions while maintaining data residency compliance.
 ### Configuration recommendations
