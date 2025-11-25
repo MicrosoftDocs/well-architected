@@ -10,7 +10,7 @@ ms.update-cycle: 1095-days
 
 # Create an effective incident management plan to manage disruptions
 
-An *incident* is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system. Incidents often negatively affect customers or a business. They exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises. Causes include hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors such as security attacks.
+An *incident* is an unplanned event that disrupts, degrades, or threatens to disrupt the normal operation of a system. Incidents often negatively affect customers or a business. They exist on a spectrum, from transient or localized disruptions to widespread events or disasters. Examples of security incidents include data breaches, regulatory violations, malware, or identity compromises. Causes include hardware or infrastructure failures, resource limits, human errors like failed deployments or misconfigurations, or external factors like security attacks.
 
 *Incident management (IcM)* provides a systematic approach to restore service during disruptions. It coordinates detection, investigation, mitigation, and resolution while maintaining clear communication and documenting insights for continuous improvement. Incident response follows the same playbook regardless of the incident type.
 
@@ -46,7 +46,7 @@ Before an incident happens, set up the foundation for effective response by desi
 
    - Collect end-to-end telemetry, including infrastructure and applications.
 
-   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If necessary, also forward logs to centrally managed sinks. Make sure team members have time-limited, least-privilege access during incidents.
+   - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If necessary, also forward logs to centrally managed sinks. Make sure that team members have time-limited, least-privilege access during incidents.
 
    - Create dashboards based on the workload health model that show metrics and signals that your team monitors.
 
@@ -62,7 +62,7 @@ Before an incident happens, set up the foundation for effective response by desi
 
    | Role | Responsibilities |
    |------|-----------------|
-   | **Incident Response Manager** | Owns the incident from detection through resolution and RCA. Ensures processes are followed, decisions are made, and the right people are informed. |
+   | **Incident Response Manager** | Owns the incident from detection through resolution and RCA. Ensures that processes are followed, decisions are made, and the right people are informed. |
    | **Retrospective Leader** | Leads post-incident reviews, captures lessons learned, produces actionable reports, and ensures that findings are applied. |
    | **On-Call Engineer** | Actively mitigates and resolves incidents. Follows responsibilities for different incident types and collaborates with specialized teams as needed to ensure timely resolution of the incident. |
 
@@ -72,11 +72,11 @@ Before an incident happens, set up the foundation for effective response by desi
 
    - Document how to evaluate the severity, impact, and urgency of the incident. Consider user impact, affected systems, and business-critical functions. Based on the severity level, the team activates the disaster recovery plan for cases that meet disaster-level thresholds. Or they follow the standard response plan for less-severe incidents.
 
-   - Define strategies that isolate or remove the affected component from workload flow paths, such as shutting down a resource or rerouting traffic. Identify which roles have authority to take containment action.
+   - Define strategies that isolate or remove the affected component from workload flow paths, like shutting down a resource or rerouting traffic. Identify which roles have authority to take containment action.
     
      Set monitoring systems to automatically initiate containment for defined incidents. This approach keeps humans in the loop for critical decisions. System administrators, engineers, and senior developers should collaborate to limit the blast radius while maintaining degraded functionality. If a component must remain available for triage, strictly isolate its access from the rest of the workload.
 
-   - Create guidelines for selecting mitigation strategies based on incident severity, such as isolation, rollback, configuration changes, and workarounds.
+   - Create guidelines for selecting mitigation strategies based on incident severity, like isolation, rollback, configuration changes, and workarounds.
 
    - Specify which teams or individuals handle the incident based on type and severity. Include escalation paths for when initial responders can't resolve the problem.
 
@@ -110,7 +110,7 @@ Before an incident happens, set up the foundation for effective response by desi
    - Include thorough documentation when you close an incident. Record all details in the IcM system. Include the trigger, containment steps, triage decisions, and the final resolution. Treat this documentation as the handoff for RCA and the retrospective to capture lessons learned.
 
    > [!IMPORTANT]
-   > Design your operations so that only the designated authority, such as the Incident Response Manager, can close an incident. Enforce strict checklists to block premature closure. Skipping steps can leave hidden problems unresolved, which can turn a *closed* incident into a repeat disaster.
+   > Design your operations so that only the designated authority, like the Incident Response Manager, can close an incident. Enforce strict checklists to block premature closure. Skipping steps can leave hidden problems unresolved, which can turn a *closed* incident into a repeat disaster.
 
 
 ## Detect, investigate, and respond
@@ -118,11 +118,11 @@ Before an incident happens, set up the foundation for effective response by desi
 Phase 2 focuses on detecting and responding to incidents quickly and effectively. This phase identifies problems early, assesses their impact, and implements the right mitigation strategies while containing disruption. This phase also ensures that triage, resolution, and communication are coordinated, consistent, and accountable across all teams.
 
 > [!IMPORTANT]
-> Clear, consistent communication maintains control and clarity in high-stress situations. Define exactly who speaks, what gets shared, and how often. Standardize update cadence, channels, and message formats so that no one scrambles for information during the crisis. Make sure every stakeholder, from engineers to executives, knows when to expect updates and when escalation is required.
+> Clear, consistent communication maintains control and clarity in high-stress situations. Define exactly who speaks, what gets shared, and how often. Standardize update cadence, channels, and message formats so that no one scrambles for information during the crisis. Make sure that every stakeholder, from engineers to executives, knows when to expect updates and when escalation is required.
 
-1. Act immediately on the first sign of a problem from alerts or user reports. Use observability and performance tools to correlate anomalies with system changes. The incident recipient sets up a triage (_bridge_) team with the right members and agrees on communication mode, progress tracking, and access to incident assets.
+1. Act immediately when alerts or user reports indicate a problem. Use observability and performance tools to correlate anomalies with system changes. The incident recipient sets up a triage (*bridge*) team with the right members and agrees on communication mode, progress tracking, and access to incident assets.
 
-1. Mobilize the engineering bridge to evaluate the impact and severity. Evaluate the impact of the incident by using your predefined severity classifications. Use data to justify criteria outlined in the incident response plan, such as number of users affected, business functions disrupted, security and compliance implications, and potential impact on customer trust and reputation. This assessment determines the appropriate response level and guides the next mitigation steps.
+1. Mobilize the engineering bridge to evaluate the impact and severity. Evaluate the impact of the incident by using your predefined severity classifications. Use data to justify criteria outlined in the incident response plan, like the number of users affected, business functions disrupted, security and compliance implications, and potential impact on customer trust and reputation. This assessment determines the appropriate response level and guides the next mitigation steps.
 
 1. The investigation stage begins when the right engineering teams are engaged and start an RCA. This process involves deep technical analysis to pinpoint the cause and contain the impact. Engineers use observability data, telemetry dashboards, system logs, and change histories to trace anomalies and identify failure points. They focus on isolating the problem quickly, validating hypotheses by using real-time data, and developing a precise mitigation plan that restores service stability without introducing new risk.
 
@@ -142,7 +142,7 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
 
 1. Select an appropriate mitigation strategy. Choose mitigation approaches based on the current state of the workload, available resources, and immediate constraints. 
 
-   Your choice depends on factors such as infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives.
+   Your choice depends on factors like infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives (RTOs).
 
    - **Rollback:** Revert updated systems to the last-known-good configuration state. The workload team should define what last known good means. It typically refers to the last healthy state of the workload before the deployment began, which might not be the immediately prior application version. Rolling back can be complex, especially when schema or data changes are involved. To reduce risk, make schema updates additive instead of replacing records. The old and new data can coexist until you can safely remove deprecated records. Rollbacks might require careful planning and coordination across multiple teams.
 
@@ -179,12 +179,12 @@ In this example, a workload team rolls out a search enhancement feature that inc
 
 - A new search API endpoint that has enhanced filtering functionality
 - An updated database schema
-- A redesigned UI search widget
+- A redesigned user interface (UI) search widget
 - New caching logic
 
 The team does the following steps to detect, mitigate, and resolve the incident:
 
-1. **Detection:** The team notices a problem when error rates spike in one of the canary rollout groups. The team immediately uses their observability tools, like APM, logging, and telemetry that links users to rollout phases, to pinpoint the affected group.
+1. **Detection:** The team notices a problem when error rates spike in one of the canary rollout groups. The team immediately uses their observability tools, like application performance monitoring (APM), logging, and telemetry that links users to rollout phases, to pinpoint the affected group.
 
     The team prepared for this scenario by building strong observability into their deployment process. They ran smoke tests and quality checks at each rollout phase and instrumented their application with logging, tracing, and performance metrics. Telemetry links users to specific rollout groups, so they can quickly identify which version affected which users. They also scheduled deployments during working hours when full support was available, and ensured that support staff knew how to escalate problems according to the emergency response plan. This preparation allows them to detect the spike in error rates quickly and respond without delay.
 
@@ -202,7 +202,7 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 1. **Retrospective:** After the team mitigates the deployment incident, they do a retrospective to capture lessons learned and improve future processes. The session includes everyone involved in the rollout, from developers and operators to support and stakeholder representatives. The team reviews the sequence of events, from detection through mitigation, to understand what went well and where gaps existed.
 
-     A key finding is that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
+     A key takeaway is that bundling the search API changes, database schema updates, UI redesign, and caching layer changes complicated both troubleshooting and recovery efforts.
 
 1. **Post-incident improvements:** From the retrospective, the team implements several operational improvements to make future deployments safer and mitigations more reliable:
 
@@ -214,8 +214,7 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 ## Azure facilitation
 
-- Microsoft offers Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and
-[Incident readiness](/services-hub/unified/health/incident-readiness). 
+- Microsoft provides Azure-related incident readiness training. For more information, see [Introduction to Azure incident readiness](/training/technical-support/intro-to-azure-incident-readiness/) and [Incident readiness](/services-hub/unified/health/incident-readiness).
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a solution for collecting, analyzing, and responding to monitoring data from cloud and on-premises environments. It includes an alerting platform that you can configure for [automatic notifications and other actions](/azure/azure-monitor/alerts/action-groups), like autoscaling and other self-healing mechanisms.
 
@@ -223,7 +222,7 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
   - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is an analytics tool in Azure Monitor. You can use Log Analytics to run queries against aggregated logs and gain insights about your workload.
 
-  - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor that provides application performance monitoring (APM) features.
+  - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor that provides APM features.
 
 - [Microsoft Sentinel](/azure/sentinel/overview) is a security information and event management (SIEM) and security orchestration, automation, and response (SOAR) solution. It's a single solution for alert detection, threat visibility, proactive hunting, and threat response.
 
@@ -231,9 +230,9 @@ The team does the following steps to detect, mitigate, and resolve the incident:
 
 - [Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution. This solution provides capabilities required for planned manual testing, user acceptance testing, and exploratory testing. Azure Test Plans also provides a way for you to gather feedback from stakeholders.
 
-- [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) is a cloud-based platform for running automated workflows that integrate apps, data, services, and systems. You can use Logic Apps to create a new version of your application whenever it gets an update. Azure maintains a history of the versions and can revert or promote any previous version.
+- [Azure Logic Apps](/azure/logic-apps/manage-logic-apps-with-azure-portal) is a cloud-based platform for running automated workflows that integrate apps, data, services, and systems. You can use Logic Apps to create a new version of your application when it gets an update. Azure maintains a history of the versions and can revert or promote any previous version.
 
-- Many Azure database services provide point-in-time restore functionality that can help you when you need to roll back:
+- Many Azure database services provide point-in-time restore (PITR) functionality that can help you when you need to roll back:
 
   - [Azure SQL Database](/azure/azure-sql/database/recovery-using-backups)
   - [Azure SQL Managed Instance](/azure/azure-sql/managed-instance/point-in-time-restore)
