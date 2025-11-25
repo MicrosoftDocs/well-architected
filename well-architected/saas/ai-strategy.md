@@ -60,7 +60,7 @@ This could involve embedding intelligent features, improving internal operations
 
 #### Recommendations
 
-- **Establish a clear AI strategy at the leadership level**. Senior leadership should have sufficient knowledge of what's possible with AI so that they can make informed decisions and tradeoffs.  Work with them to set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
+- **Establish a clear AI strategy at the leadership level**. Senior leadership should have sufficient knowledge of what's possible with AI and trade-offs so that they can make informed decisions.  Work with them to set a clear vision, principles, and desired outcomes for AI integration that align with your long-term goals. For more information, see [Cloud Adoption Framework: Create your AI strategy](/azure/cloud-adoption-framework/scenarios/ai/strategy).
 
 -  **Encourage exploration within strategic guardrails**. Appoint a directly responsible individual (DRI) or working group that's accountable for driving AI initiatives. This ensures cohesion and a unified direction across development and operational teams and also keeps business stakeholders informed.
 
