@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.collection: learn-startups
 ---
 
-# Build an AI strategy for your SaaS product
+# Build an AI Strategy for your SaaS Business
 
 AI is transforming how SaaS products are designed, delivered, and operated. For SaaS ISVs, it sets the next frontier in product architecture and system capabilities. Define how AI fits into your overall value proposition. Shift your strategy from being a feature builder to a partner who drives meaningful outcomes for your customers. 
 
@@ -75,7 +75,7 @@ This could involve embedding intelligent features, improving internal operations
     - *Foundational use cases* use AI technology for targeted purposes, like conversation, classification, sentiment analysis, data extraction, content generation, and enrichment.
     - *Conversational use cases* build on top of foundational use cases, using your application's or customers' data to answer questions.
     - *Agentic use cases* use a combination of foundational use cases to achieve higher-order tasks, and typically add reasoning, deep research, and other advanced capabilities.
-    - *Multi-agent use cases* combine agents that each have a defined purpose, and might reflect an entire business process or decision. For example, a home loan lending assessment process could be modelled as a set of agents with specific roles to perform research and assess loan applications based on criteria you specify.
+    - *Multi-agent use cases* combine agents that each have a defined purpose, and might reflect an entire business process or decision. For example, a home loan lending assessment process could be modeled as a set of agents with specific roles to perform research and assess loan applications based on criteria you specify.
 
     Consider them as a progression, each building on top of previous stages to add more value and also more complexity.
 
@@ -377,6 +377,8 @@ Initially, you might focus on ML and narrow AI applications, starting with prebu
 | Explainability and transparency tools | Build or customize | Implement features that clarify how AI arrives at insights to build user trust and facilitate decisions. |
 | Natural language query interfaces | Build or customize | Enable intuitive querying of complex datasets using natural language processing tailored to domain needs. |
 | Automated report generation      | Build or buy    | Automate creation of insight reports; buy off-the-shelf solutions or build custom generators as needed.  |
+
+---
 
 ## Related links
 
