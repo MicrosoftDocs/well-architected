@@ -4,7 +4,7 @@ description: Learn how to design comprehensive incident response processes for A
 author: PageWriter-MSFT 
 ms.author: prwilk 
 ms.date: 11/18/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
