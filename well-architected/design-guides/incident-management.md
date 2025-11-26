@@ -48,7 +48,7 @@ Before an incident happens, set up the foundation for effective response by desi
 
    - Enable structured logging for all components to support triage and investigation, and send logs to data sinks for analysis. If necessary, also forward logs to centrally managed sinks. Make sure that team members have time-limited, least-privilege access during incidents.
 
-   - Create dashboards based on the workload health model that show metrics and signals that your team monitors.
+   - Create dashboards based on the workload health model. The dashboards show metrics and signals that your team monitors.
 
    - Configure actionable alerts that trigger notifications only when thresholds are exceeded and a potential incident is detected. Tune alerts to avoid too many alerts (noise) or too few alerts. For example, for live-site incidents, alerts should monitor critical metrics like central processing unit (CPU), memory, response times, and database performance to detect actionable problems that align with performance targets.
    
