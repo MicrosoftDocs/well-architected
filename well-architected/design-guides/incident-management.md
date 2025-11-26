@@ -138,9 +138,9 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
    
    - Maintain workload functionality in a degraded state if possible.
 
-<a name="mitigation-strategies"></a>
 
-1. Select an appropriate mitigation strategy. Choose mitigation approaches based on the current state of the workload, available resources, and immediate constraints. 
+
+1. <a name="mitigation-strategies"></a>Select an appropriate mitigation strategy. Choose mitigation approaches based on the current state of the workload, available resources, and immediate constraints. 
 
    Your choice depends on factors like infrastructure type, available bypass mechanisms, complexity of the fix, data sensitivity and compliance requirements, system dependencies, and recovery time objectives (RTOs).
 
