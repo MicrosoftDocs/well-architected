@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 09/25/2025
+ms.date: 11/26/2025
 ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
