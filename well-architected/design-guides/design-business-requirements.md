@@ -24,38 +24,39 @@ This article shows you how to do that by following a 5-step process. We'll also 
 ![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./_images/architecture-discovery.png)
 
 
-## Listen: Capture what stakeholders _say_ they want
+## Listen: Capture stakeholder requests
 
-By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements because they might be based on assumptions, or influenced by solution bias. It's not uncommon that the business team jumps into solution mode, requesting features, tools, or architectures long before the underlying motivations are understood.
+By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, requesting features, tools, or architectures long before the underlying motivations are understood.
 
-Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated goals, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." Listening well builds trust and sets the foundation for uncovering the real needs behind the initial ask.
+Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated goals, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
 
-Consider this common scenario. A business team says, "We need 100% uptime." At first glance, it sounds like a straightforward requirement. With initial clarifications, it might become clear that they may be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
+Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
 
-In this step, it's important that you respect business perspectives and aren't dismissing concerns of the business stakeholders. It also sets you up to uncover what's really driving the request.
+In this step, it's important that you respect business perspectives and aren't dismissing concerns of the business stakeholders. Listening well builds trust and sets the foundation for uncovering what's really driving the request.
 
-## Probe: Understand the motivation behind the request
 
-After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real drivers surface. Your goal is to understand the pressures, constraints, and incentives behind the ask:
+## Probe: Understand the motivation
+
+After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real needs surface. Your goal is to understand the pressures, constraints, and incentives behind the ask:
 
 - Is this addressing a production issue?
 - Is it driven by competition or market shifts?
 - Is it needed for compliance?
 - Is it part of a broader strategic direction?
 
-Motivation matters because two identical requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you're aiming at the wrong target.
+Motivation matters because two similar requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you're aiming at the wrong target.
 
 Returning to the example, probing reveals  that a recent outage caused lost orders. A competitor now advertises real-time ordering availability and executives fear brand damage from another failure. Also, customer support is overloaded when checkout goes down.
 
 At this point, "100% uptime" takes on a different meaning. The real driver isn't perfection, it's business continuity for revenue-critical flows, especially checkout.
 
-In this step, you're not deciding on solutions. You're revealing the forces behind the requirement so you can anchor the architecture in the right business context.
+In this step, you're not deciding on solutions. You're uncovering the forces behind the request so you can anchor the architecture in the right business context.
 
-## Clarify: Distill real needs from stated wants
+## Clarify: Translate requests to requirements
 
 Once motivations are clear, the next step is clarifying what the business actually needs. This is where you translate the business's motivations or requests into concrete outcomes and measurable requirements. 
 
-In the example, dive deeper to get consensus on impact to user, such as:
+In the example, dive deeper and get consensus on impact to user, such as:
 
 - Which user flows must always be available?
 - What happens if a secondary flow is temporarily down?
@@ -72,7 +73,7 @@ Note that those are business outcomes, not architecture choices. Clarifying need
 
 ## Evaluate: Test feasibility, constraints, and trade-offs
 
-With requirements defined, the next step is to evaluate how those needs can be met in practice. This phase is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
+With requirements defined, the next step is to evaluate how those needs can be met in practice. This step  is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
 
 Continuing with the high availability example, lay out the tradeoffs, like: 
 
@@ -86,9 +87,9 @@ This is the point where every answer inevitably begins with "it depends." Evalua
 You're still not choosing technology yet. This step is about defining boundaries. That includes mapping constraints, highlighting trade-offs, and narrowing the solution space to approaches that can meet the clarified requirements under real-world conditions. Bring a collaborative approach to unify perspectives and agree on a path forward.
 
 
-## Recommend: Present the solution that meets the actual needs
+## Recommend: Propose the solution
 
-Once feasibility and trade-offs are understood, the next step is to recommend a solution path that aligns with real business needs. This means turning information captured during discovery into a clear, actionable direction that closes the loop between what the business asked for, what they actually need, and what you propose to build. 
+Once feasibility and trade-offs are understood, the next step is to recommend a solution path that aligns with real business needs. This means turning information captured during discovery into a clear, actionable direction that closes the loop between what the business asked for, what they actually need, and what you propose to build. Every recommendation is a negotiation, a compromise, and an opportunity to make it better over time.
 
 Your recommendation should be documented and cover these aspects:
 
@@ -100,9 +101,7 @@ Returning to the uptime example, a recommendation might look like this:
 
 "Checkout should run in a multi-region active-active configuration to protect revenue. Catalog services can run in a single region with read replicas for resilience. Order history can remain single-region with planned maintenance windows. This approach will meet the requirement of continuity while avoiding unnecessary duplication and cost."
 
-Every recommendation is a negotiation, a compromise, and an opportunity to make it better over time.  The key is to anchor your recommendation in the motivations and clarified needs uncovered earlier. This ensures the decision is based on business outcomes, not technology preferences, and it builds trust by showing that your direction is deliberate and aligned with what the business truly values.
-
-Although this may sound like a final step, it's actually iterative and marks the beginning of the solutioning process, where the design is refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.
+Although this may sound like a final step, it's actually iterative and marks the beginning of the solutioning process, where the design is refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.   
 
 Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Strive to build systems that evolve gracefully as needs change. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. 
 
