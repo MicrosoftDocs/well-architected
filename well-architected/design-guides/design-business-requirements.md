@@ -4,7 +4,7 @@ description: Learn about ... TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 09/18/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
@@ -21,7 +21,7 @@ This is where your role becomes critical. You need to listen carefully, ask why 
 
 This article shows you how to do that by following a 5-step process. We'll also explore an example to set the context on gathering the right context, ask the right questions, and build shared understanding before you design anything. The goal is to help you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. 
 
-![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./_images/architecture-discovery.png.png)
+![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./_images/architecture-discovery.png)
 
 
 ## Listen: Capture what stakeholders _say_ they want
