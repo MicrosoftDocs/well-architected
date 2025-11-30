@@ -1,0 +1,113 @@
+---
+title: How to design a solution that integrates business goals with technical strategy
+description: Learn about ... TBD.
+author: PageWriter-MSFT
+ms.author: prwilk
+ms.date: 09/18/2025
+ms.topic: conceptual
+ms.update-cycle: 1095-days  
+---
+
+# How to design a solution that integrates business goals with technical strategy
+
+
+As a cloud architect, your first task is to create clarity. Before you can make meaningful architectural decisions, you need to understand what the system must achieve, who it serves, and which constraints you must operate within. You need a clear view of expected outcomes and the boundaries set by the business.
+
+Every decision is shaped by real pressures: budgets, delivery timelines, compliance rules, performance expectations, and service-level commitments. These aren't optional considerations. They're the conditions your design has to meet.
+
+If you don't understand these factors, the systems has high changes of failure. Requirements may exist, but they can often reflect assumptions rather than true needs. Like, there might a list of requested features, but how about  the traffic patterns that will stress the system? What about growth over the next year? What commitments already made to customers? 
+
+This is where your role becomes critical. You need to listen carefully, ask why the request exists, and separate actual needs from early assumptions. You have to guide conversations back to goals, not implementation. And when a request is unrealistic or misaligned, you need to propose alternatives that still achieve the desired outcome.
+
+This article shows you how to do that by following a 5-step process. We'll also explore an example to set the context on gathering the right context, ask the right questions, and build shared understanding before you design anything. The goal is to help you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. 
+
+![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./_images/architecture-discovery.png.png)
+
+
+## Listen: Capture what stakeholders _say_ they want
+
+By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements because they might be based on assumptions, or influenced by solution bias. It's not uncommon that the business team jumps into solution mode, requesting features, tools, or architectures long before the underlying motivations are understood.
+
+Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated goals, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." Listening well builds trust and sets the foundation for uncovering the real needs behind the initial ask.
+
+Consider this common scenario. A business team says, "We need 100% uptime." At first glance, it sounds like a straightforward requirement. With initial clarifications, it might become clear that they may be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
+
+In this step, it's important that you respect business perspectives and aren't dismissing concerns of the business stakeholders. It also sets you up to uncover what's really driving the request.
+
+## Probe: Understand the motivation behind the request
+
+After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real drivers surface. Your goal is to understand the pressures, constraints, and incentives behind the ask:
+
+- Is this addressing a production issue?
+- Is it driven by competition or market shifts?
+- Is it needed for compliance?
+- Is it part of a broader strategic direction?
+
+Motivation matters because two identical requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you're aiming at the wrong target.
+
+Returning to the example, probing reveals  that a recent outage caused lost orders. A competitor now advertises real-time ordering availability and executives fear brand damage from another failure. Also, customer support is overloaded when checkout goes down.
+
+At this point, "100% uptime" takes on a different meaning. The real driver isn't perfection, it's business continuity for revenue-critical flows, especially checkout.
+
+In this step, you're not deciding on solutions. You're revealing the forces behind the requirement so you can anchor the architecture in the right business context.
+
+## Clarify: Distill real needs from stated wants
+
+Once motivations are clear, the next step is clarifying what the business actually needs. This is where you translate the business's motivations or requests into concrete outcomes and measurable requirements. 
+
+In the example, dive deeper to get consensus on impact to user, such as:
+
+- Which user flows must always be available?
+- What happens if a secondary flow is temporarily down?
+- Which functions are revenue-impacting?
+- What are acceptable degradation modes?
+
+In this step, "100% uptime" breaks apart into flow-level requirements:
+
+- Order placement. Must be highly available. Downtime has direct revenue impact.
+- Catalog browsing. Can degrade briefly without critical harm.
+- Order history. Can tolerate planned maintenance.
+
+Note that those are business outcomes, not architecture choices. Clarifying needs reframes the requirement from "Make everything always available" to "Ensure continuity of the flows that generate value."
+
+## Evaluate: Test feasibility, constraints, and trade-offs
+
+With requirements defined, the next step is to evaluate how those needs can be met in practice. This phase is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
+
+Continuing with the high availability example, lay out the tradeoffs, like: 
+
+- Cost: Multi-region active-active architecture doubles infrastructure spend.
+- Engineering complexity: Cross-region state replication isn't trivial.
+- Security and compliance: Multiple regions introduce data residency concerns.
+- Operational effort: 24/7 on-call rotations and sophisticated failover processes.
+
+This is the point where every answer inevitably begins with "it depends." Evaluation often exposes mismatches between what the business wants and what is practical. It helps the business understand what "100% uptime" actually demands. You may find that only the checkout flow justifies multi-region deployment, while catalog and order history do not. You might also uncover risks, such as immature team capabilities, overestimated benefits, or underestimated costs.
+
+You're still not choosing technology yet. This step is about defining boundaries. That includes mapping constraints, highlighting trade-offs, and narrowing the solution space to approaches that can meet the clarified requirements under real-world conditions. Bring a collaborative approach to unify perspectives and agree on a path forward.
+
+
+## Recommend: Present the solution that meets the actual needs
+
+Once feasibility and trade-offs are understood, the next step is to recommend a solution path that aligns with real business needs. This means turning information captured during discovery into a clear, actionable direction that closes the loop between what the business asked for, what they actually need, and what you propose to build. 
+
+Your recommendation should be documented and cover these aspects:
+
+- Address the clarified requirements
+- Reflect the constraints and trade-offs identified during evaluation
+- Communicate options and their implications clearly to stakeholders
+
+Returning to the uptime example, a recommendation might look like this:
+
+"Checkout should run in a multi-region active-active configuration to protect revenue. Catalog services can run in a single region with read replicas for resilience. Order history can remain single-region with planned maintenance windows. This approach will meet the requirement of continuity while avoiding unnecessary duplication and cost."
+
+Every recommendation is a negotiation, a compromise, and an opportunity to make it better over time.  The key is to anchor your recommendation in the motivations and clarified needs uncovered earlier. This ensures the decision is based on business outcomes, not technology preferences, and it builds trust by showing that your direction is deliberate and aligned with what the business truly values.
+
+Although this may sound like a final step, it's actually iterative and marks the beginning of the solutioning process, where the design is refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.
+
+Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Strive to build systems that evolve gracefully as needs change. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. 
+
+
+
+
+
+
