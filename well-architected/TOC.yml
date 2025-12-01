@@ -334,6 +334,8 @@
           href: service-guides/virtual-machines.md
         - name: Azure Virtual Network
           href: service-guides/virtual-network.md
+        - name: Azure Virtual WAN
+          href: service-guides/virtual-wan-service-guide.md
     - name: Design guides
       items:
       - name: Health modeling
