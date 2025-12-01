@@ -190,7 +190,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Use a repeatable and automated deployment processes for your workload within your software development lifecycle.
 >   
-> - (Cluster and workload) **Implement a  monitoring strategy.** Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
+> - (Cluster and workload) **Implement a monitoring strategy**. Collect logs and metrics to monitor the health of the workload, identify trends in performance and reliability, and troubleshoot problems. Review the [Best practices for monitoring Kubernetes with Azure Monitor](/azure/azure-monitor/best-practices-containers) and the Well-Architected [Recommendations for designing and creating a monitoring system](/azure/well-architected/operational-excellence/observability) to determine the best monitoring strategy for your workloads.
 >
 >    Enable diagnostics settings to ensure that control plane or core API server interactions are logged.
 >
