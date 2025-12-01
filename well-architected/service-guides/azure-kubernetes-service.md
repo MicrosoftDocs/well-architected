@@ -280,7 +280,7 @@ You can also check the following cluster and workload policies:
 - Namespace deployment restrictions.
 - CPU and memory resource limits.
 
-For  governance, review the [Azure Policy built-in definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes) and other policies that might affect the security of the compute layer.
+For governance, review the [Azure Policy built-in definitions for Kubernetes](/azure/governance/policy/samples/built-in-policies#kubernetes) and other policies that might affect the security of the compute layer.
 
 ## Azure Advisor recommendations
 
