@@ -1,6 +1,6 @@
 ---
-title: How to design a solution that integrates business goals with technical strategy
-description: Learn about ... TBD.
+title: Align technical strategy with business requirements
+description: Learn how to gather the right information, ask the right questions, and build shared understanding so you can design architectures that are both technically sound and aligned with real business motivations and long-term goals.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.date: 12/02/2025
@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
-# How to design a solution that integrates business goals with technical strategy
+# Align technical strategy with business requirements
 
 
 As a cloud architect, your first task is to create clarity. Before you can make meaningful architectural decisions, you need to understand what the system must achieve, who it serves, and which constraints you must operate within. You need a clear view of expected outcomes and the boundaries set by the business.
@@ -111,7 +111,7 @@ Architecture is never a one-and-done activity. Considering multiple time horizon
 Now that you've gained consensus on the business requirements, start writing a detailed specification that describes design choices and is accompanied by diagrams.
 
 > [!div class="nextstepaction"]
-> [Workload architecture design specification](./architecture-design-specification.md)
+> [Develop an architecture design specification](./architecture-design-specification.md)
 
 
 

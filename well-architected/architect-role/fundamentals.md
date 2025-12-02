@@ -29,6 +29,12 @@ Although the preceding list isn't exhaustive, those perspectives are an importan
 
 The following sections highlight the guiding principles that architects should follow to be effective in their function.
 
+## Be clear on business requirements
+
+Before a cloud architect can design a solution, they must understand the outcomes the system needs to deliver and the business constraints that shape every decision. This requires creating clarity and alignment with stakeholders, around budgets, timelines, compliance obligations, performance expectations, and growth plans. Without this foundation, the design process can spiral into endless revisions and lead to frustration and disappointment.
+
+The architect's role is to ask probing questions, ground requests in reality, and steer conversations toward goals rather than features.
+
 ## Have a decision-making framework
 
 A key aspect of design is using a consistent process to make decisions. An architect should approach both initial and incremental design with rigor.

@@ -19,9 +19,9 @@
             href: architect-role/design-business-requirements.md
           - name: Build architecture design specification
             href: architect-role/architecture-design-specification.md
-          - name: Use design diagrams
+          - name: Create design diagrams
             href: architect-role/design-diagrams.md
-          - name: Capture in architecture decision record
+          - name: Maintain an architecture decision record
             href: architect-role/architecture-decision-record.md
           - name: Collaborate with implementors
             href: architect-role/collaboration.md

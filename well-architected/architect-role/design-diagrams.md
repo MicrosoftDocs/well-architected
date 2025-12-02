@@ -1,5 +1,5 @@
 ---
-title: Architecture design diagrams
+title: Create architecture design diagrams
 description: Learn about diagramming practices and types of architecture diagrams that you can create to communicate effectively.
 author: ckittel
 ms.author: chkittel

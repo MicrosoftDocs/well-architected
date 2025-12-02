@@ -1,5 +1,5 @@
 ---
-title: Workload architecture design specification
+title: Develop an architecture design specification
 description: Learn about the benefits of creating an architecture design specification for a workload. The specification describes design choices through words and diagrams.
 author: ckittel
 ms.author: chkittel
@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 
-# Workload architecture design specification
+# Develop an architecture design specification
 
 A workload architecture design specification is **a detailed specification that describes design choices and is accompanied by diagrams**. The design choices must meet functional and nonfunctional requirements and include provisions for routine, ad hoc, and emergency operations.
 

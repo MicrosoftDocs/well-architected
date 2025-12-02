@@ -22,6 +22,7 @@ Architecture frameworks, like the Azure Well-Architected Framework, give archite
 
 |&nbsp;|Deliverable tasks|
 |---|---|
+|&#9744;|[**Align technical strategy with business requirements**](./design-business-requirements.md) by following a 5-step process to gather the right information, negotiate realistic outcomes and stay aligned with business goals.|
 |&#9744;|[**Develop an architecture design specification**](./architecture-design-specification.md) accompanied by diagrams as a structured packet. Ensure the specification meets functional and nonfunctional requirements and includes provisions for routine, ad hoc, and emergency operations.|
 |&#9744;|[**Create architecture design diagrams**](./design-diagrams.md) that illustrate all system design aspects, from a broad overview to detailed dimensions like network and identity.|
 |&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) that captures the context, consequences, and justifications for architectural decisions. Document accepted trade-offs, rejected options, and known shortcomings.|
