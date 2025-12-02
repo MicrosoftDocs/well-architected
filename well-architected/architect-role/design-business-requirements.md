@@ -87,9 +87,9 @@ This is the point where every answer inevitably begins with "it depends." Evalua
 You're still not choosing technology yet. This step is about defining boundaries. That includes mapping constraints, highlighting trade-offs, and narrowing the solution space to approaches that can meet the clarified requirements under real-world conditions. Bring a collaborative approach to unify perspectives and agree on a path forward.
 
 
-## Recommend: Propose the solution
+## Recommend: Propose the technical strategy
 
-Once feasibility and trade-offs are understood, the next step is to recommend a solution path that aligns with real business needs. This means turning information captured during discovery into a clear, actionable direction that closes the loop between what the business asked for, what they actually need, and what you propose to build. Every recommendation is a negotiation, a compromise, and an opportunity to make it better over time.
+Once feasibility and trade-offs are understood, the next step is to recommend technology choices and other decisions that align with real business needs. This means turning information captured during discovery into a clear, actionable direction that closes the loop between what the business asked for, what they actually need, and what you propose to build. Every recommendation is a negotiation, a compromise, and an opportunity to make it better over time.
 
 Your recommendation should be documented and cover these aspects:
 
@@ -101,7 +101,7 @@ Returning to the uptime example, a recommendation might look like this:
 
 "Checkout should run in a multi-region active-active configuration to protect revenue. Catalog services can run in a single region with read replicas for resilience. Order history can remain single-region with planned maintenance windows. This approach will meet the requirement of continuity while avoiding unnecessary duplication and cost."
 
-Although this may sound like a final step, it's actually iterative and marks the beginning of the solutioning process, where the design is refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.   
+Although this may sound like a final step, it's actually iterative and marks the beginning of the design process, where decisions are refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.   
 
 Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Strive to build systems that evolve gracefully as needs change. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. 
 
