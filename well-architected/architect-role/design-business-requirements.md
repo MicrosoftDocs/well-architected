@@ -3,7 +3,7 @@ title: How to design a solution that integrates business goals with technical st
 description: Learn about ... TBD.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 09/18/2025
+ms.date: 12/02/2025
 ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
@@ -26,9 +26,9 @@ This article shows you how to do that by following a 5-step process. We'll also 
 
 ## Listen: Capture stakeholder requests
 
-By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, requesting features, tools, or architectures long before the underlying motivations are understood.
+By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or architectures long before the underlying motivations are understood.
 
-Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated goals, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
+Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
 
 Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
 
@@ -37,7 +37,7 @@ In this step, it's important that you respect business perspectives and aren't d
 
 ## Probe: Understand the motivation
 
-After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real needs surface. Your goal is to understand the pressures, constraints, and incentives behind the ask:
+After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real needs surface. Understand the pressures, constraints, and incentives behind the ask:
 
 - Is this addressing a production issue?
 - Is it driven by competition or market shifts?
@@ -106,7 +106,12 @@ Although this may sound like a final step, it's actually iterative and marks the
 Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Strive to build systems that evolve gracefully as needs change. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. 
 
 
+## Next steps
 
+Now that you've gained consensus on the business requirements, start writing a detailed specification that describes design choices and is accompanied by diagrams.
+
+> [!div class="nextstepaction"]
+> [Workload architecture design specification](./architecture-design-specification.md)
 
 
 
