@@ -71,6 +71,8 @@ In this step, "100% uptime" breaks apart into flow-level requirements:
 
 Note that those are still business outcomes, not yet architecture choices. Clarifying needs reframes the requirement from "Make everything always available" to "Ensure continuity of the flows that generate value."
 
+Some business requirements implicitly bring other requirements that need explicit discussion. Requirements like data residency, security standards, data retention, or other industry standards can be missed because stakeholders might assume they are understood or don't realize they apply. Identify and explicitly document these requirements early in the process.
+
 ## Evaluate: Test feasibility, constraints, and trade-offs
 
 With requirements defined, the next step is to evaluate how those needs can be met in practice and within fixed and flexible constraints. This step is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
