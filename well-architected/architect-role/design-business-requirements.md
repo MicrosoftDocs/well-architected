@@ -56,7 +56,7 @@ In this step, you're not deciding on solutions. You're uncovering the forces beh
 
 Once motivations are clear, the next step is clarifying what the business actually needs. This is where you translate the business's motivations or requests into concrete outcomes and measurable requirements. 
 
-In the example, dive deeper and get consensus on impact to user, such as:
+In the example, dive deeper and get consensus on impact to users, such as:
 
 - Which user flows must always be available?
 - What happens if a secondary flow is temporarily down?
