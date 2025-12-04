@@ -15,20 +15,20 @@ As a cloud architect, your first task is to create clarity. Before you can make 
 
 Every decision is shaped by real pressures: budgets, delivery timelines, compliance rules, performance expectations, and service-level commitments. These aren't optional considerations. They're the conditions your design has to meet.
 
-If you don't understand these factors, the systems has high changes of failure. Requirements may exist, but they can often reflect assumptions rather than true needs. Like, there might a list of requested features, but how about  the traffic patterns that will stress the system? What about growth over the next year? What commitments already made to customers? 
+If you don't understand these factors, the systems has high chances of failure. Requirements sometimes start out as assumptions rather than true needs. Like, there might a list of requested features, but none about the traffic patterns that will stress the system. What about growth over the next year? What commitments were already made to customers?
 
-This is where your role becomes critical. You need to listen carefully, ask why the request exists, and separate actual needs from early assumptions. You have to guide conversations back to goals, not implementation. And when a request is unrealistic or misaligned, you need to propose alternatives that still achieve the desired outcome.
+This is where your role helps bring clarity. You need to listen carefully, ask why the request exists, and separate actual needs from early assumptions. You guide conversations back to goals, not implementation. And when a request is unrealistic or misaligned, you need to propose alternatives that still achieve the desired outcome.
 
-This article shows you how to do that by following a 5-step process. We'll also explore an example to set the context on gathering the right context, ask the right questions, and build shared understanding before you design anything. The goal is to help you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. 
+This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals.
 
 ![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./images/architecture-discovery.png)
 
 
 ## Listen: Capture stakeholder requests
 
-By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or architectures long before the underlying motivations are understood.
+By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want and often budget constraints. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or technology decisions long before the underlying motivations are understood.
 
-Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb. You'll likely find  yourself saying "tell me more". Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
+Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb desired outcomes and get early indications of motivations. You'll likely find yourself saying "tell me more." Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
 
 Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
 
@@ -37,16 +37,16 @@ In this step, it's important that you respect business perspectives and aren't d
 
 ## Probe: Understand the motivation
 
-After you have a basic understanding of what the business is asking for, the next step is to ask "why?"and do that repeatedly. The goal is to probe until the real needs surface. Understand the pressures, constraints, and incentives behind the ask:
+After you have a basic understanding of what the business is asking for, the next step is to ask "why?" and do that repeatedly. The goal is to probe until the real needs surface. Understand the pressures, constraints, and incentives behind the ask:
 
 - Is this addressing a production issue?
 - Is it driven by competition or market shifts?
 - Is it needed for compliance?
 - Is it part of a broader strategic direction?
 
-Motivation matters because two similar requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you're aiming at the wrong target.
+Motivation matters because two similar requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you risk aiming at the wrong target.
 
-Returning to the example, probing reveals  that a recent outage caused lost orders. A competitor now advertises real-time ordering availability and executives fear brand damage from another failure. Also, customer support is overloaded when checkout goes down.
+Returning to the example, probing reveals that a recent outage caused lost orders. A competitor now advertises real-time ordering availability and executives fear brand damage from another failure. Also, customer support is overloaded when checkout goes down.
 
 At this point, "100% uptime" takes on a different meaning. The real driver isn't perfection, it's business continuity for revenue-critical flows, especially checkout.
 
@@ -69,11 +69,11 @@ In this step, "100% uptime" breaks apart into flow-level requirements:
 - Catalog browsing. Can degrade briefly without critical harm.
 - Order history. Can tolerate planned maintenance.
 
-Note that those are business outcomes, not architecture choices. Clarifying needs reframes the requirement from "Make everything always available" to "Ensure continuity of the flows that generate value."
+Note that those are still business outcomes, not yet architecture choices. Clarifying needs reframes the requirement from "Make everything always available" to "Ensure continuity of the flows that generate value."
 
 ## Evaluate: Test feasibility, constraints, and trade-offs
 
-With requirements defined, the next step is to evaluate how those needs can be met in practice. This step  is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
+With requirements defined, the next step is to evaluate how those needs can be met in practice and within fixed and flexible constraints. This step is about technical and operational feasibility, cost implications, risks, and alignment with your organization's standards. It's where you bring engineering judgment and architectural experience. Start by extracting constraints and defining success. Focus on what really matters, avoid over-engineering, and know when a simpler solution is sufficient.
 
 Continuing with the high availability example, lay out the tradeoffs, like: 
 
