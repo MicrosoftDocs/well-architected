@@ -10,9 +10,7 @@ ms.update-cycle: 1095-days
 
 # Develop an architecture design specification
 
-A workload architecture design specification is **a detailed specification that describes design choices and is accompanied by diagrams**. The design choices must meet functional and nonfunctional requirements and include provisions for routine, ad hoc, and emergency operations.
-
-For information about diagrams, see [Architecture design diagrams](./design-diagrams.md).
+A workload architecture design specification is **a detailed specification that describes design choices supported by architecture diagrams and justifications**. These decisions must address both functional and nonfunctional choices, as well as support routine, ad hoc, and emergency operations. All of this, however, must be rooted in clear business needs. If you haven't yet established a well-defined set of business goals agreed upon with stakeholders, we recommend starting with the guide on [Align technical strategy with business requirements](./design-business-requirements.md).
 
 Workload architecture design, typically expansive, starts with application design and progresses to cloud service selection. These phases mutually inform each other. The combined application and infrastructure design must fulfill all requirements.
 
@@ -22,29 +20,10 @@ We recommend that you align your design with the Azure Well-Architected Framewor
 
 Ultimately, the workload architecture design specification is implemented by the workload development team, so it must be clear and unambiguous. The specification should be readily available and stored with the workload's documentation.
 
-## Functional specification
-
-The functional specification for a workload details the *what* and the *why* of the system or feature under development, but not the implementation. This document must explain the current problems that exist and how this feature or system is going to improve that experience. This document captures most of the business requirements.
-
-An architect can help shape this document, but primarily it's a function of product ownership. An architect should help design the data that is captured in this specification. This involvement ensures the functional specification drives effective and efficient technical design.
-
-Here are a few example topics that should be covered in this specification.
-
-- In addition to detailing what is *in scope* for this design, also be explicit about adjacent concerns that are *out of scope*. Setting clear scopes reduces scope creep by defining boundaries around the functionality.
-
-- It's helpful to include the details on how this change is going to be measured. What measurements need to be collected and what business goals those measurements support.
-
-- User flows should be clearly described. Low-fidelity mockups can be helpful as well. If error handling situations are important for these flows, ensure the expected behavior described.
-
-- Always include any specific requirements for accessibility, compliance, performance, privacy, or security.
-
-- Include any planned rollout strategy. For example, "This feature is going to be available for our beta users for two months before deciding on a full release."
-
-Avoid specific technical implementation details in this specification. These functional specifications will drive technical specifications created by the architect.
 
 ## Technical specification
 
-The technical specification describes the *how* based on the scope and goals described in the [functional specification](#functional-specification). This specification is designed for the engineering team to use as a plan-of-record during implementation.
+The technical specification describes the *how* based on the scope and goals described in the [functional specification](./design-business-requirements.md#expected-outcome). This specification is designed for the engineering team to use as a plan-of-record during implementation.
 
 In this specification include items such as:
 
@@ -58,11 +37,13 @@ In this specification include items such as:
 
 The technical specification will drive engineering efforts. Engineering work items are primarily created from the contents this specification. Implementation teams refer to the work items, the technical specification, and the functional specification to ensure the final result is meeting both the functional and nonfunctional requirements.
 
-## Disaster recovery plans
+## Disaster recovery (DR) plans
 
 In order to meet the reliability requirements for the workload, an architect needs to design a system that can recover within the target recovery time objective (RTO) and recovery point objective (RPO) goals. The architecture design specification must include the recovery plan. This plan must cover the involved architecture components, failover mechanisms and impact to user and data flow, and operational recommendations. It should describe which recovery targets are met by the design and how.
 
 Although the initial plan is expected to evolve based on insights from drills and post-incident reviews, it's the architect's responsibility to deliver the initial plan for all new architecture.
+
+For details on how to build a DR plan, see [Develop a disaster recovery plan for multi-region deployments](../design-guides/disaster-recovery.md).
 
 ## Security and compliance documentation
 

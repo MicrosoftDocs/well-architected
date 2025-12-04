@@ -19,14 +19,14 @@ If you don't understand these factors, the systems has high chances of failure. 
 
 This is where your role helps bring clarity. You need to listen carefully, ask why the request exists, and separate actual needs from early assumptions. You guide conversations back to goals, not implementation. And when a request is unrealistic or misaligned, you need to propose alternatives that still achieve the desired outcome.
 
-This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals.
+This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. If you're new to this role, we recommend starting with [Solution architect's fundamentals](./fundamentals.md) guide for an overview of the role and what the defines success. 
 
 ![Architectural Discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./images/architecture-discovery.png)
 
 
 ## Listen: Capture stakeholder requests
 
-By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want and often budget constraints. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or technology decisions long before the underlying motivations are understood.
+By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want and often budget constraints. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or technology decisions long before the underlying motivations are understood. Also, early input is also vulnerable to skewed judgment, where small details might get overemphasized and core needs get overlooked. As an architect, identify where the workload lacks clarity, where assumptions have been mistaken for requirements, and where information is incomplete or missing.
 
 Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb desired outcomes and get early indications of motivations. You'll likely find yourself saying "tell me more." Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
 
@@ -84,7 +84,7 @@ Continuing with the high availability example, lay out the tradeoffs, like:
 - Security and compliance: Multiple regions introduce data residency concerns.
 - Operational effort: 24/7 on-call rotations and sophisticated failover processes.
 
-This is the point where every answer inevitably begins with "it depends." Evaluation often exposes mismatches between what the business wants and what is practical. It helps the business understand what "100% uptime" actually demands. You may find that only the checkout flow justifies multi-region deployment, while catalog and order history do not. You might also uncover risks, such as immature team capabilities, overestimated benefits, or underestimated costs.
+This is the point where every answer inevitably begins with "it depends." Evaluation often exposes mismatches between what the business wants and what is practical. It helps the business understand what "100% uptime" actually demands. You may find that only the checkout flow justifies multi-region deployment, while catalog and order history do not. You might also uncover risks, such as immature team capabilities, overestimated benefits, or underestimated costs. You may also uncover opportunities to apply alternative approaches that better balance cost, complexity, and reliability. For example, caching the catalog in a CDN can achieve that balance when the tradeoffs are appropriate for that flow.
 
 You're still not choosing technology yet. This step is about defining boundaries. That includes mapping constraints, highlighting trade-offs, and narrowing the solution space to approaches that can meet the clarified requirements under real-world conditions. Bring a collaborative approach to unify perspectives and agree on a path forward.
 
@@ -105,12 +105,27 @@ Returning to the uptime example, a recommendation might look like this:
 
 Although this may sound like a final step, it's actually iterative and marks the beginning of the design process, where decisions are refined through stakeholder feedback, trade-off discussions, and agreement at each design milestone.   
 
-Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Strive to build systems that evolve gracefully as needs change. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. 
+## Expected outcome
 
+By this stage, you've completed the listening and requirements-gathering process, shared your findings with the business, and aligned on the goals, scope, and any refinements uncovered along the way. These insights naturally lead to adjustments in the original business requirements and the formation of early design considerations. With this clarity, you now have the information required to help produce a clear and grounded **functional specification**. Although product stakeholders typically own this document, architects play an important supporting role by helping shape the structure of the information captured and ensuring the clarity required for a strong technical design.
+
+This document defines _what_ the workload or feature must achieve and _why_ it matters. It should describe business problems being solved with measurable outcomes that define success. These elements form the foundation that will guide all subsequent technical design work.
+
+A well-developed functional specification at this stage should include:
+
+- A clear definition of what is in scope and out of scope, providing boundaries that reduce ambiguity and prevent scope creep.
+- The metrics and success criteria that will be used to evaluate the change and tie it to business goals.
+- Detailed user flows, supported by low-fidelity mockups where useful, including expected handling of errors or exceptions.
+- Any requirements related to accessibility, compliance, performance, privacy, or security.
+- A defined rollout strategy, such as phased deployment or targeted beta release.
+
+Architecture is never a one-and-done activity. Considering multiple time horizons: Day 1, near-term growth, and long-term scale. Plan for the point at which growth thresholds may require revisiting decisions and tradeoffs, while avoiding overengineering too early. It's acceptable that initial designs capture minimal reliable capabilities, but each subsequent cycle refines the architecture based on observed usage, shifting priorities, and new business goals. Update this specification and others to reflect the evolution, keeping all stakeholders on the same page.
+
+Delivering specifications is a continuous, collaborative process. Architects remain actively engaged with the business stakeholders and technical teams throughout implementation, helping ensure that designs are interpreted correctly, risks are managed, and the resulting system aligns with business goals. For details, see [Collaborate with workload and platform teams](./collaboration.md).
 
 ## Next steps
 
-Now that you've gained consensus on the business requirements, start writing a detailed specification that describes design choices and is accompanied by diagrams.
+Now that you've gained consensus on the business requirements and they are documented as part of the functional specification, start writing a detailed technical specification that describes design choices and is accompanied by diagrams.
 
 > [!div class="nextstepaction"]
 > [Develop an architecture design specification](./architecture-design-specification.md)
