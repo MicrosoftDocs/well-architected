@@ -10,25 +10,24 @@ ms.update-cycle: 180-days
 
 # HPC workloads on Azure
 
-This article addresses architectural challenges of designing high-performance computing (HPC) workloads. It focuses on computational intensity, parallel processing, data movement optimization, and large-scale operations. The recommendations are based on Azure Well-Architected Framework principles and include insights from successful Azure HPC implementations.
+This article addresses architectural challenges of designing high-performance computing (HPC) workloads. It focuses on design strategies for all the characteristics of HPC workloads. The recommendations are based on Azure Well-Architected Framework principles and include insights from successful Azure HPC implementations on Azure.
 
 These articles are meant for workload owners and technical stakeholders like architects, HPC administrators, development leads, and IT leaders. Specialized HPC roles, such as computational scientists, researchers, and performance engineers, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
 > [!NOTE]
-> Azure offers various HPC services and infrastructure that you can integrate into your workload or build around. Depending on your business needs, you can choose between fully managed platform as a service (PaaS) solutions, infrastructure as a service (IaaS) solutions with HPC-optimized resources, or hybrid approaches.
+> Azure offers various services and infrastructure that are core to any HPC workload or build around. Depending on your business needs, you can choose between fully managed platform as a service (PaaS) solutions, infrastructure as a service (IaaS) solutions with HPC-optimized resources, or hybrid approaches.
 >
 > Specific Azure services and their capabilities are not covered here. We recommend that you refer to the respective product documentation for that information.
 
-Also, certain workloads aren't in scope, such as:
-- Standard enterprise applications that don't require specialized compute resources
-- Web-scale applications focused primarily on horizontal scaling without tightly coupled parallel processing
-- AI/ML workloads that are covered in the dedicated AI workload guidance
+This guidance is designed for workloads that need more computational power than standard applications can provide. Consider using HPC when your work involves processing massive amounts of data, running complex calculations that take hours or days, or solving problems that require many computers working together simultaneously.
+
+For example, engineers testing how a new aircraft design handles wind resistance need to run thousands of calculations across the entire structure. Researchers studying how proteins fold to develop new medicines process enormous datasets that require specialized computing power. Financial analysts running market simulations explore millions of scenarios to understand risk. Weather forecasters process global atmospheric data to predict storms days in advance.
+
+These scenarios share common needs: they require significant processing capacity, handle large volumes of data, often need specialized hardware like graphics processors, and benefit from distributing work across many machines. If your workload takes too long on regular computers, requires specialized processing capabilities, or involves running the same analysis across many variations, this guidance can help you design an effective solution.
 
 ## What is an HPC workload?
 
-In the context of Well-Architected Framework, an HPC workload processes computationally intensive tasks that require significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. It focuses on delivering high throughput, low latency, parallel processing capabilities, and optimizing for scientific, engineering, or data-intensive computing scenarios.
-
-Apply the Well-Architected Framework pillars at every decision point to ensure that the system is reliable, secure, efficient, and cost-effective.
+An HPC workload processes computationally intensive tasks that require significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. It focuses on delivering high throughput, low latency, parallel processing capabilities, and optimizing for scientific, engineering, or data-intensive computing scenarios.
 
 HPC workloads are different from traditional cloud workloads because they:
 - **Require specialized hardware**: Often need high-core-count CPUs, GPUs, high-performance interconnects (InfiniBand, RoCE), and low-latency networking
