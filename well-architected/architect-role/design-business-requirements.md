@@ -28,7 +28,7 @@ This article shows you how to do that by following a 5-step process. It uses an 
 
 By the time a cloud architect joins a new initiative, the business stakeholders usually have a vision for what they want and often budget constraints. Product owners, business analysts, and domain experts may have documented requirements, and some of these insights can be valuable. Treat them as requests rather than requirements. It's not uncommon that the business team jumps into solution mode, request features, tools, or technology decisions long before the underlying motivations are understood. Also, early input is also vulnerable to skewed judgment, where small details might get overemphasized and core needs get overlooked. As an architect, identify where the workload lacks clarity, where assumptions have been mistaken for requirements, and where information is incomplete or missing.
 
-Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb desired outcomes and get early indications of motivations. You'll likely find yourself saying "tell me more." Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X." 
+Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb desired outcomes and get early indications of motivations. You'll likely find yourself saying "tell me more." Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X."
 
 Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
 
@@ -37,14 +37,16 @@ In this step, it's important that you respect business perspectives and aren't d
 
 ## Probe: Understand the motivation
 
-After you have a basic understanding of what the business is asking for, the next step is to ask "why?" and do that repeatedly. The goal is to probe until the real needs surface. Understand the pressures, constraints, and incentives behind the ask:
+After you have a basic understanding of what the business is asking for, the next step is to ask "why?" and do that repeatedly. The goal is to probe until the real needs surface. Understand the pressures, constraints, and incentives behind the ask. Equally important is understanding how the solution fits into the broader business context. Without understanding the motivation, you risk aiming at the wrong target. You might ask questions like:
 
+- Is it driving revenue or primarily supports the business?
+- Does it affect a core part of the organization, or address a niche problem?
 - Is this addressing a production issue?
 - Is it driven by competition or market shifts?
 - Is it needed for compliance?
 - Is it part of a broader strategic direction?
 
-Motivation matters because two similar requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. Without understanding the motivation, you risk aiming at the wrong target.
+Motivation matters because two similar requests can represent very different intentions. A feature needed to meet a regulatory deadline requires a different architectural approach than one meant to unlock a new growth opportunity. 
 
 Returning to the example, probing reveals that a recent outage caused lost orders. A competitor now advertises real-time ordering availability and executives fear brand damage from another failure. Also, customer support is overloaded when checkout goes down.
 
