@@ -11,6 +11,39 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## November 2025
+
+### New articles
+
+- [Build an AI strategy for your SaaS business](./saas/ai-strategy.md): Learn how to develop and implement a strategic AI approach for your software as a service (SaaS) business. This guidance describes how to transform from a feature provider to a strategic partner, evaluate opportunities and risks in multitenant environments, and align AI initiatives with measurable business outcomes. Explore SaaS archetypes to identify where AI creates value, establish generative AI operations (GenAIOps) practices, and make informed build-buy-customize decisions. Learn how to start small with foundational use cases and evolve toward agentic experiences while building internal AI capabilities that strengthen your product's long-term market position.
+- [Develop an incident management practice to recover from disruptions](./design-guides/incident-management.md): Learn how to create an effective incident management plan to handle workload disruptions. This guidance describes how to prepare through observability design, role definition, and infrastructure setup, detect and respond to incidents through triage and mitigation strategies, and conduct post-incident retrospectives for continuous improvement. Explore practical examples of deployment failure response, including containment, rollback, fallback, and emergency fixes to restore service efficiently while maintaining clear communication and accountability across teams.
+
+### Updated articles
+
+- [Develop a disaster recovery plan for multi-region deployments](./design-guides/disaster-recovery.md): We clarified the article's focus on technical mitigations and processes for business continuity, added a reference to the companion reliability pillar article about disaster recovery strategies, and established incident management as a prerequisite for effective disaster recovery planning with a link to the new incident management guide.
+- [Architecture strategies for designing an incident management (IcM) process](./operational-excellence/incident-response.md): We updated the article title and reorganized the content to begin with documentation and resource allocation before covering architectural strategies. We also added clarifications about resource planning, support contracts, and contact information for internal and external incident response personnel.
+- [Data platform for AI workloads on Azure](./ai/data-platform.md): We reorganized the search index section to lead with its purpose and performance requirements before covering detailed criteria. We added guidance for multimodal data handling, expanded security considerations to include embedding protection and vector data risks, and introduced new sections about training data considerations, feature stores, and batch inference patterns to provide more comprehensive coverage of machine learning and generative AI (GenAI) data platform needs.
+- [Architecture strategies for disaster recovery](./reliability/disaster-recovery.md): We clarified the scope of disaster recovery by distinguishing it from routine incident management and adding a reference to the new companion article on multi-region disaster recovery planning. We reorganized the guidance to prioritize business impact assessment, disaster threshold definition, and communication protocols before covering architectural and procedural details. We expanded coverage of backup strategies, failback planning, and accessibility requirements during outages.
+- [How to use the Azure Well-Architected Framework documentation](.//what-is-well-architected-framework.md): We added a new **Design essentials** section to the framework building blocks. It introduces design guides as focused resources that provide prescriptive, cross-pillar guidance about specific practices and choices to help teams apply Well-Architected Framework principles in practical scenarios.
+- [Design methodology for SaaS workloads on Azure](./saas/design-methodology.md): We added bold formatting to key decision points to improve readability and emphasize critical considerations like resource deployment location, pricing models, and feature provisioning.
+- [Identity and access management for SaaS workloads on Azure](./saas/identity-access.md): We improved clarity by explicitly defining *tenant* as *customer* in the context of data separation, corrected a formatting problem in the feature list, and updated diagram file references from PNG to SVG format for better scalability and rendering.
+- [Resource organization for SaaS workloads on Azure](./saas/resource-organization.md): We updated the Azure resource organization reference link and refined guidance about shared resource trade-offs for better clarity in multitenant SaaS environments.
+- [Billing and cost management for SaaS workloads on Azure](./saas/billing-cost-management.md): We refined the guidance about billing plan implementation to explicitly discourage individual customer pricing arrangements that can lead to operational complexity.
+- [Architecture best practices for Azure Files](./service-guides/azure-files.md): We clarified that administrators can use the Windows permission model for SMB admin to manage file ownership without requiring the storage account key, and refined language around network file system (NFS) file share administrative control for better precision.
+- [Architecture best practices for Azure Blob Storage](./service-guides/azure-blob-storage.md): We added guidance for using Azure Storage Discovery with Azure Copilot to analyze redundancy configurations, identify security threats, and find cost inefficiencies across storage accounts. We also introduced geo priority replication as an option to optimize recovery point objective (RPO) when you use geo-zone redundant storage (GZRS) redundancy.
+- [Architecture best practices for Azure ExpressRoute](./service-guides/azure-expressroute.md): We refined the reliability introduction to emphasize the distinction between resiliency and recoverability in network connectivity, and clarified that resiliency maintains traffic flow during circuit problems while recoverability focuses on restoration after regional disruptions. We also added guidance for using ExpressRoute resiliency validation tests and resiliency insights to assess failover configurations and evaluate control plane reliability.
+- [Solution architect checklist](./architect-role/checklist.md): We clarified the architect's role by emphasizing the balance of competing constraints and the importance of disclosing design shortcomings and accepted risks to prevent uncommunicated technical debt. We also added a new checklist item about validating critical assumptions with proof of concepts to prevent theoretical designs from failing in practice.
+- [Collaboration with the workload team](./architect-role/collaboration.md): We streamlined collaboration guidance by making it more concise and actionable, added a new section about managing technical debt that emphasizes intentional decision-making and documentation, and introduced guidance about mentorship and knowledge sharing to help architects amplify their impact by educating the implementation team.
+- [Support the workload in a consultative role](./architect-role/ongoing-support.md): We enhanced the guidance for modeling exercises to emphasize validating assumptions with empirical evidence rather than outdated hypotheses. We expanded the improvement recommendations section to encourage proactive evaluation and technical debt management. We also reframed the review participation guidance to position architects as providers of authoritative context who help identify compliance gaps.
+- [Architecture design patterns that support operational excellence](./operational-excellence/design-patterns.md): We streamlined the introduction to make it more concise and action-oriented by clarifying that unmanaged risks eventually surface as operational toil or incidents. We also enhanced the Strangler Fig pattern description to include guidance for safe decommissioning, and emphasized that legacy endpoints should only be removed after replacement flows meet reliability and observability targets.
+- [Architecture strategies for safe deployment practices](./operational-excellence/safe-deployments.md): We added a new section about safe decommissioning that provides a structured, safety-first approach to removing or deprecating components. This guidance emphasizes treating deletions as irreversible and includes steps like validating inactivity, preserving state, disabling before deleting, monitoring through a watch window, and cleaning up residual references to prevent unintended disruptions from hidden dependencies.
+- [Architecture strategies for designing for redundancy](./reliability/redundancy.md): We reframed the active-passive architecture heading to emphasize its cost-effectiveness for disaster recovery. We also added a new section about applying delete protection by using Azure resource locks to prevent accidental deletion of redundant components. Locks complement but don't replace backups and proper governance.
+- [Architecture strategies for failure mode analysis](./reliability/failure-mode-analysis.md): We clarified that failure mode analysis (FMA) helps workloads recover gracefully within defined recovery objectives and emphasizes alignment with specific targets rather than just general recovery. We also cleaned up formatting inconsistencies throughout the document.
+- [Architecture strategies for designing a reliability testing strategy](./reliability/testing-strategy.md): We refined the definitions of recoverability and resiliency to better distinguish between them. Recoverability focuses on restoration within recovery time objective (RTO) and RPO targets while resiliency emphasizes withstanding faults and maintaining acceptable user experience during disruptions.
+- [Data for SaaS workloads on Azure](./saas/data.md): We updated terminology throughout the article. We also refined the discussion of reliability by distinguishing between resiliency (withstanding faults) and recoverability (restoring operations) to clarify how these concepts apply to SaaS data design.
+- [SAP workload design principles](./sap/design-principles.md): We updated the title for consistency. We also refined the Reliability pillar description to distinguish between resiliency (withstanding faults to maintain uptime) and recoverability (restoring normal operations after failures). SAP workloads must be designed for both concerns rather than treating them as synonymous.
+- We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Virtual Machines and scale sets](./service-guides/virtual-machines.md) and [Architecture best practices for Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md).
+
 ## October 2025
 
 ### New articles
@@ -207,46 +240,3 @@ This month, we made significant updates to many of our service guides. Here are 
 ### Azure IoT Hub workload guidance retirement
 
 - This month, we announced the deprecation of Azure IoT Hub workload documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
-
-## November 2024
-
-### New articles
-
-- [Well-Architected Framework Perspective on Azure Monitor Application Insights](./service-guides/application-insights.md): Explore design considerations and configuration recommendations for Azure Monitor Application Insights. Azure Monitor Application Insights is an extensible Application Performance Management (APM) service that helps you monitor the performance and usage of your live web applications. It provides real-time insights into your application's performance and user behavior, enabling you to detect and diagnose issues and understand what users actually do with your app.
-
-#### New workload: AI on Azure
-
-This month, we introduced new guidance for designing AI workloads on Azure. This documentation is appropriate for roles that are accountable for designing, building, and maintaining a solution for running AI workloads in a cloud environment. Use the [AI Workloads on Azure](./ai/index.yml) documentation as your go-to resource to build and optimize AI solutions on Azure.
-
-- [AI Workloads on Azure](./ai/get-started.md)
-- [Design Methodology for AI Workloads on Azure](./ai/design-methodology.md)
-- [Design Principles for AI Workloads on Azure](./ai/design-principles.md)
-- [Application Design for AI Workloads on Azure](./ai/application-design.md)
-- [Application Platform for AI Workloads on Azure](./ai/application-platform.md)
-- [Design Training Data for AI Workloads on Azure](./ai/training-data-design.md)
-- [Grounding Data Design for AI Workloads on Azure](./ai/grounding-data-design.md)
-- [Data Platform for AI Workloads on Azure](./ai/data-platform.md)
-- [MLOps and GenAIOps for AI Workloads on Azure](./ai/mlops-genaiops.md)
-- [AI Workload Operations on Azure](./ai/operations.md)
-- [Test and Evaluate AI Workloads on Azure](./ai/test.md)
-- [Responsible AI in Azure Workloads](./ai/responsible-ai.md)
-- [Workload Team Personas Involved in AI Workloads](./ai/personas.md)
-- [AI Workload Assessment](./ai/assessment.md)
-
-#### New workload: Software as a service (SaaS) on Azure
-
-This month, we added a new workload for SaaS on Azure. This documentation provides actionable and authoritative guidance that applies Well-Architected best practices as the technical foundation for building and operating a SaaS solution on Azure at-scale. Use the [SaaS Workloads on Azure](./saas/index.yml) documentation to build scalable, performant, reliable, and secure SaaS solutions.
-
-- [SaaS Workloads](./saas/get-started.md)
-- [Design Methodology for SaaS Workloads on Azure](./saas/design-methodology.md)
-- [Design Principles of SaaS Workloads on Azure](./saas/design-principles.md)
-- [Billing and Cost Management for SaaS Workloads on Azure](./saas/billing-cost-management.md)
-- [Governance for SaaS Workloads on Azure](./saas/governance.md)
-- [Resource Organization for SaaS Workloads on Azure](./saas/resource-organization.md)
-- [Identity and Access Management for SaaS Workloads on Azure](./saas/identity-access.md)
-- [Compute for SaaS Workloads on Azure](./saas/compute.md)
-- [Networking for SaaS Workloads on Azure](./saas/networking.md)
-- [Data for SaaS Workloads on Azure](./saas/data.md)
-- [DevOps Practices for SaaS Workloads on Azure](./saas/devops.md)
-- [Incident Management for SaaS Workloads on Azure](./saas/incident-management.md)
-- [Assessment Review Tool for SaaS Workloads on Azure](./saas/assessment.md)
