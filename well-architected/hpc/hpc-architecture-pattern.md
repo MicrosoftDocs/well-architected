@@ -30,12 +30,12 @@ Certain resources are globally shared across all regional deployments. Common ex
 
 | Characteristic | Considerations |
 |---|---|
-| **Lifetime** | These resources are expected to be long living. Their lifetime spans the life of the system or longer. They're managed with in-place updates and should support zero-downtime operations. |
-| **State** | These resources often store global state such as user accounts, authentication tokens, job metadata, and monitoring data that needs to be accessible across all regions. |
-| **Reach** | The resources should be globally accessible with appropriate latency characteristics. They need to communicate effectively with regional resources while maintaining security boundaries. |
-| **Dependencies** | The resources should minimize dependencies on regional resources to avoid creating global failure points. Replicate critical data across regions to ensure availability. |
-| **Scale limits** | These resources handle aggregate load from all regions. They must scale to accommodate the combined throughput of the entire system. |
-| **Availability and disaster recovery** | Regional resources depend on global resources. Configure global resources with high availability and disaster recovery to protect system-wide health. |
+| **Resource lifecycle** | These resources are expected to be long living, persisting across the entire HPC environment lifecycle. They're managed with in-place updates and should support zero-downtime operations to avoid disrupting running jobs. |
+| **Data persistence** | These resources store global state such as user accounts, authentication tokens, job metadata, and aggregated monitoring data that needs to be accessible across all regional clusters. |
+| **Distribution model** | The resources should be globally accessible with appropriate latency characteristics. They need to communicate effectively with regional compute clusters while maintaining security boundaries and access controls. |
+| **Inter-resource dependencies** | These resources should minimize dependencies on regional components to avoid creating global failure points. Replicate critical authentication and configuration data across regions to ensure continuous availability. |
+| **Aggregate capacity** | These resources handle combined load from all regional clusters. They must scale to accommodate the total number of users, jobs, and monitoring data points across the entire HPC environment. |
+| **Resilience strategy** | Regional compute clusters depend on these global resources for authentication and configuration. Design global resources with high availability and disaster recovery to prevent system-wide disruptions. |
 
 ## Regional compute cluster resources
 
@@ -43,12 +43,12 @@ The regional cluster contains the compute nodes, schedulers, and supporting infr
 
 | Characteristic | Considerations |
 |---|---|
-| **Lifetime** | Compute nodes are ephemeral and can be added or removed dynamically based on workload demand. The cluster management infrastructure persists longer but should support rapid scaling. |
-| **State** | Compute nodes should be stateless. All persistent state lives in storage systems or databases outside the compute cluster. This enables rapid scaling and recovery from failures. |
-| **Reach** | Clusters communicate with regional storage and networking resources. Avoid dependencies on other regions or other clusters to maintain independence and fault isolation. |
-| **Dependencies** | Cluster resources depend on regional storage, networking, and monitoring systems. Minimize external dependencies to reduce failure domains. |
-| **Scale limits** | Determine cluster throughput through testing with representative workloads. Consider how quickly the cluster can scale up to handle burst demand or recover from failures in other clusters. |
-| **Availability and disaster recovery** | Because compute nodes are ephemeral, recovery involves provisioning new nodes rather than repairing failed ones. Failed clusters can be rebuilt from configuration templates. |
+| **Node provisioning model** | Compute nodes are ephemeral and can be added or removed dynamically based on job queue depth and demand patterns. The cluster management infrastructure persists longer but should support rapid scaling for burst workloads. |
+| **Job state management** | Compute nodes should be stateless to enable elastic scaling. All job input data, output results, and checkpoints must reside in shared storage systems accessible to any node in the cluster. |
+| **Cluster isolation** | Clusters communicate with regional storage and high-performance networks. Design clusters to operate independently without dependencies on other clusters or regions to maintain fault isolation during failures. |
+| **External service dependencies** | Cluster resources depend on regional storage, job schedulers, and monitoring systems. Minimize external dependencies beyond these core services to reduce the blast radius of failures. |
+| **Computational throughput** | Determine cluster capacity through benchmarking with representative workloads. Consider maximum job concurrency, node-to-node communication bandwidth, and the ability to handle workload spikes from failover scenarios. |
+| **Cluster recovery approach** | Because compute nodes are ephemeral and stateless, recovery involves provisioning replacement nodes rather than repairing failed hardware. Failed clusters can be rapidly rebuilt from infrastructure templates. |
 
 ## Regional supporting resources
 
@@ -56,15 +56,17 @@ A region contains resources that support the compute clusters but outlive indivi
 
 | Characteristic | Considerations |
 |---|---|
-| **Lifetime** | These resources share the lifetime of the region and outlive ephemeral compute nodes. They persist across cluster scaling events and individual job executions. |
-| **State** | Regional resources may store state such as job queues, file system data, logs, and metrics. This state is specific to the region and doesn't need to be shared globally. |
-| **Reach** | The resources don't need to be globally distributed. They serve the compute clusters within their region. Avoid cross-region communication except to global resources. |
-| **Dependencies** | These resources can depend on global resources for authentication, configuration, or monitoring aggregation. They shouldn't depend on other regional resources. |
-| **Scale limits** | Size regional resources to handle the aggregate demand from all clusters within the region. Plan for peak load scenarios including failover from other regions. |
-| **Availability and disaster recovery** | Regional resources require backup and recovery strategies. Critical data should be replicated or backed up to enable recovery after regional failures. |
+| **Infrastructure persistence** | These resources outlive ephemeral compute nodes and persist across cluster scaling events. They remain operational throughout individual job lifecycles and continue functioning as compute capacity scales up and down. |
+| **Storage and queue state** | Regional resources store job queues, file system data, performance metrics, and operational logs. This state is region-specific and serves the local compute clusters without requiring global distribution. |
+| **Netowrk boundaries** | The resources serve compute clusters within their region and don't require global distribution. They communicate with local clusters and global resources but avoid cross-region traffic to minimize latency. |
+| **Service integration** | These resources integrate with global resources for authentication, centralized monitoring, and configuration management. They operate independently from other regional deployments to prevent cascading failures. |
+| **Regional capacity planning** | Size regional resources to handle aggregate demand from all compute clusters within the region. Plan for peak workload scenarios including burst jobs and potential failover traffic from other regions. |
+| **Data protection strategy** | Regional resources require backup and recovery strategies appropriate to their function. Critical data like job metadata and user files should be replicated or backed up to enable recovery after regional failures. |
 
 ## Baseline architecture for HPC workloads
 
 The following architecture illustrates the typical pattern for HPC workloads. The architecture includes user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, storage systems, and management infrastructure.
 
 :::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
+
+Should we talk about architecture flow and architecture components after this?
