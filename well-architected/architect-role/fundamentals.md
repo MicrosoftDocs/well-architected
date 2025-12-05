@@ -47,7 +47,7 @@ When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, 
 
 Document every decision in an Architecture Decision Record (ADR), including your reasoning and justification.  Make sure your decisions are communicated, applied, and reflected in the system.
 
-Finally, follow up on what the implementation might look like, through a proof of concept. Pay attention to outcomes and learn from them. Notice where decisions that weren't made introduced risk, and use those insights to guide future architecture work.
+Follow up on what the implementation might look like, through a proof of concept. Pay attention to outcomes and learn from them. Notice where decisions that weren't made introduced risk, and use those insights to guide future architecture work.
 
 ## Know cloud design patterns
 
