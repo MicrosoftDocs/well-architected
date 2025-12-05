@@ -1,5 +1,5 @@
 ---
-title: A Well-Architected Architect
+title: Architect's responsibilities and guiding principles for the role
 description: Learn guiding principles that Well-Architected architects should follow to be effective in their function.
 author: ckittel
 ms.author: chkittel
@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 
 A _cloud solution architect_ is responsible for guiding the component and topology design of workloads, ensuring they meet both initial requirements and long-term business goals. This role covers the full lifecycle of a workload, adapting the architecture as functionality evolves or organizational needs change.
 
-As an architect, your job is to take the information from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Your experience in development, operations, QA, disaster recovery, or managing large and incremental changes helps you make informed decisions, anticipate challenges, and create a system that stands the test of time. Your designs consider not just the "happy path" but also operational realities such as observability, supportability, and resilience. You uncover design trade-offs and accepted risks to prevent uncommunicated technical debt and keep stakeholders informed.
+As an architect, your role is to gather input from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Take advantage of your experience in development, operations, QA, disaster recovery, and managing both incremental and large-scale changes to make informed decisions. Design not just for the "happy path", but also for operational realities such as observability, supportability, and resilience. Identify trade-offs and accepted risks to prevent hidden technical debt and keep stakeholders fully informed.
 
 This article outlines the common checklist of deliverables and the guiding principles that make them achievable. 
 
@@ -63,7 +63,7 @@ When reviewing functional and nonfunctional requirements, map them to the right 
 
 ## Be forward-thinking
 
-Architect for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth. Common areas to be aware of:
+Design for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth. Common areas to be aware of:
 
 - Anticipate how workload usage may increase or decrease over time.
 - Plan ahead for potential future regulations that could affect your workload.
@@ -76,7 +76,7 @@ When designing workloads, consider support from three angles. Ensure the system 
 
 ## Stay hands-on and keep learning
 
-Architecture is more than theory and your effectiveness comes from curiosity, effort, and real-world experience. Decision should be grounded in what you've learned by experimenting, solving problems, and working directly with technology. Explore unfamiliar tools, build prototypes, and learn by doing. Strengthen your foundation through training and certifications, and broaden your perspective by engaging with peers, joining communities, and participating in hands-on events like hackathons.
+Don't be an ivory tower architect who only talks in abstractions and theory. Architecture commands respect when it's grounded in curiosity, effort, and hands-on, real-world experience. Decision should be based on what you've learned by experimenting, solving problems, and working directly with technology. Explore unfamiliar tools, build prototypes, and learn by doing. Strengthen your foundation through training and certifications, and broaden your perspective by engaging with peers, joining communities, and participating in hands-on events like hackathons.
 
 You can also self-assess by asking yourself questions such as:
 
