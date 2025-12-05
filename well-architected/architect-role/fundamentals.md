@@ -1,5 +1,5 @@
 ---
-title: Architect's responsibilities and guiding principles for the role
+title: Solution Architect's Responsibilities and Guiding Principles
 description: Learn guiding principles that Well-Architected architects should follow to be effective in their function.
 author: ckittel
 ms.author: chkittel
@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 
-# A Well-Architected Architect: Deliverables, Responsibilities, and Guiding Principles
+# Solution Architect's Responsibilities and Guiding Principles
 
 A _cloud solution architect_ is responsible for guiding the component and topology design of workloads, ensuring they meet both initial requirements and long-term business goals. This role covers the full lifecycle of a workload, adapting the architecture as functionality evolves or organizational needs change.
 
