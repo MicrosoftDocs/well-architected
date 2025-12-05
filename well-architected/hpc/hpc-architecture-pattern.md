@@ -13,6 +13,9 @@ This article presents a key pattern for HPC architectures on Azure. Apply this p
 
 We recommend that you evaluate [**the key design areas**](/azure/well-architected/hpc/hpc-workloads-overview#what-are-the-key-design-areas), define the critical user and system flows that use the underlying components, and develop an understanding of HPC resources and their configuration while keeping in mind the following characteristics.
 
+:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
+
+
 |Characteristic|Considerations|
 |---|---|
 | **Workload type** | Is the workload tightly coupled (requiring low-latency communication), loosely coupled (embarrassingly parallel), GPU-accelerated, memory-intensive, or data-intensive? |
@@ -63,8 +66,7 @@ A region contains resources that support the compute clusters but outlive indivi
 | **Regional capacity planning** | Size regional resources to handle aggregate demand from all compute clusters within the region. Plan for peak workload scenarios including burst jobs and potential failover traffic from other regions. |
 | **Data protection strategy** | Regional resources require backup and recovery strategies appropriate to their function. Critical data like job metadata and user files should be replicated or backed up to enable recovery after regional failures. |
 
-## Baseline architecture for HPC workloads
-
+## Talk about illustrations from the HPC-CAF.
 The following architecture illustrates the typical pattern for HPC workloads. The architecture includes user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, storage systems, and management infrastructure.
 
 :::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
