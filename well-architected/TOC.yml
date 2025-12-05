@@ -9,12 +9,10 @@
         href: what-is-well-architected-framework.md
       - name: How to be a proficient architect
         items:
-        - name: Architect's fundamentals
+        - name: Architect role
           href: architect-role/fundamentals.md
-        - name: Deliverables
+        - name: Responsibilities
           items: 
-          - name: Checklist
-            href: architect-role/checklist.md
           - name: Align with business requirements
             href: architect-role/design-business-requirements.md
           - name: Build architecture design specification

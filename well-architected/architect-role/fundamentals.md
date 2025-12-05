@@ -1,33 +1,37 @@
 ---
-title: Solution architect's fundamentals
+title: A Well-Architected Architect
 description: Learn guiding principles that Well-Architected architects should follow to be effective in their function.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/01/2024
+ms.date: 12/04/2025
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 
-# Solution architect's fundamentals
+# A Well-Architected Architect: Deliverables, Responsibilities, and Guiding Principles
 
-Every workload passes through a component and topology design process. This process is most intense at the inception of the workload, which includes designing for initial requirements and long-term success of the workload. Architecture is also designed when the workload changes over time and the organization adds, changes, or removes functionality.
+A _cloud solution architect_ is responsible for guiding the component and topology design of workloads, ensuring they meet both initial requirements and long-term business goals. This role covers the full lifecycle of a workload, adapting the architecture as functionality evolves or organizational needs change.
 
-Component and topology design is the primary function of an architect. Architects who focus on cloud-based and hybrid solutions are often called *cloud solution architects*. In some organizations, cloud solution architects exist in a centralized capacity within an enterprise architecture group. They can also focus on a specific workload.
+As an architect, your job is to take the information from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Your experience in development, operations, QA, disaster recovery, or managing large and incremental changes helps you make informed decisions, anticipate challenges, and create a system that stands the test of time. Your designs consider not just the "happy path" but also operational realities such as observability, supportability, and resilience. You uncover design trade-offs and accepted risks to prevent uncommunicated technical debt and keep stakeholders informed.
 
-A dedicated role can deliver the function of an architect. In some cases, trusted technical specialists (such as a workload engineering lead) can deliver the function of an architect. Or an organization might distribute the function among a small group of senior engineers who are associated with the workload.
+This article outlines the common checklist of deliverables and the guiding principles that make them achievable. 
 
-Architects usually have experience in roles beyond system design. They might have:
+## Architect's responsibilities
 
-- Been developers and operations team members.
-- Worked with customer support teams.
-- Developed an understanding of how a system is tested for quality assurance and user acceptance.
-- Been through disaster recovery drills or incident responses.
-- Been exposed to both incremental and large functional changes in workloads.
-- Interpreted specifications and user-acceptance criteria.
+|&nbsp;|Deliverable task|
+|---|---|
+|&#9744;|[**Align technical strategy with business requirements**](./design-business-requirements.md) by following a 5-step process to gather the right information, negotiate realistic outcomes and stay aligned with business goals.|
+|&#9744;|[**Develop an architecture design specification**](./architecture-design-specification.md) accompanied by diagrams as a structured packet. Ensure the specification meets functional and nonfunctional requirements gathered in the prior task and includes provisions for routine, ad hoc, and emergency operations.|
+|&#9744;|[**Create architecture design diagrams**](./design-diagrams.md) that illustrate all system design aspects, from a broad overview to detailed dimensions like network and identity.|
+|&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) that captures the context, consequences, and justifications for architectural decisions. Document accepted tradeoffs, rejected options, and known shortcomings.|
+|&#9744;|[**Validate critical assumptions with proof of concepts (PoCs)**](./collaboration.md#use-a-proof-of-concept-poc). Before finalizing a design, validate high-risk or novel components with working code. This prevents theoretical designs from failing in practice.|
+|&#9744;|[**Collaborate with the workload and platform team during implementation**](./collaboration.md) to provide clarity and recommendations about the implementation sequence. This collaboration helps you maximize learning and make improvements from the outset. Renegotiate requirements with stakeholders if needed.|
+|&#9744;|[**Support modeling exercises**](./ongoing-support.md#support-modeling-exercises) that provide contextualized information about workload concerns. Cover costs, application health, and other areas.|
+|&#9744;|[**Provide optimization recommendations**](./ongoing-support.md#share-potential-improvements) based on observations of usage patterns and changes in workload functionality or cloud provider offerings.|
+|&#9744;|[**Participate in audit, compliance, and confidence reviews**](./ongoing-support.md#assist-in-reviews) to provide a valuable perspective to external parties authorized to conduct reviews.|
+|&#9744;|[**Be a consultant during change reviews**](./ongoing-support.md#review-proposed-changes) to provide insight into the estimated cost of change and its feasibility.|
 
-Although the preceding list isn't exhaustive, those perspectives are an important aspect of what an architect brings to design duties. The Azure Well-Architected Framework assumes that these practices are in place for the most effective use of the guidance.
-
-The following sections highlight the guiding principles that architects should follow to be effective in their function.
+Delivering these outputs requires following the core principles of the architect's role. The sections below highlight the key principles that make them possible.
 
 ## Be clear on business requirements
 
@@ -37,37 +41,19 @@ The architect's role is to ask probing questions, ground requests in reality, an
 
 ## Have a decision-making framework
 
-A key aspect of design is using a consistent process to make decisions. An architect should approach both initial and incremental design with rigor.
+Start by identifying key decisions upfront. Draw on your past experience to anticipate where choices will matter most, and make sure to log them clearly.
 
-**Identify expected decisions**. Use learned experiences to help with decision identification. Log all decisions that you plan to make.
+When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, reversibility, and risk. Tools like decision trees, feature comparisons, and benchmarks can guide you, but they don't replace your judgment. Combine this guidance with evidence from proofs of concept and testing to make informed choices.
 
-**Make informed decisions**. Consider limitations, constraints, tradeoffs, effort, reversibility, and risk. Consult resources such as product feature comparisons, decision trees, and benchmarks when narrowing technology choices. Inputs from tools like decision trees and feature matrices are purely directional; they do not replace your role in decision making. Combine documented characteristics with evidence from your proofs of concept and testing.
+Document every decision in an Architecture Decision Record (ADR), including your reasoning and justification.  Make sure your decisions are communicated, applied, and reflected in the system.
 
-**Document decisions in an architecture decision record (ADR)**. Document the justification along with each decision.
-
-**Follow up on implementation**. Communicate and implement all decisions. Learn from the implementation to help guide future decisions. Look for areas where a failure to identify decisions introduced risk.
+Finally, follow up on what the implementation might look like, through a proof of concept. Pay attention to outcomes and learn from them. Notice where decisions that weren't made introduced risk, and use those insights to guide future architecture work.
 
 ## Know cloud design patterns
 
-Cloud design patterns are a fundamental building block of architecture. Cloud-based architecture and application design are often an exercise in pattern recognition.
+Cloud design patterns should be at your fingertips. As an architect, you need to recognize them quickly and apply them instinctively.
 
-**Evaluate a workload's functional and nonfunctional requirements to recognize patterns**. Look for opportunities to map your design to use cases via standardized patterns.
-
-## Be forward-thinking
-
-Designing to achieve current requirements is a must, but it's important for an architect to predict the workload's evolution. Incorporating change in an implemented system is more expensive than changing the design before implementation.
-
-To design a system that will last until its planned end of life, you must design the workload with architectural flexibility in mind. Avoid design cliffs when you can identify them.
-
-**Growth model**. Predict how the workload's usage will grow or shrink over time.
-
-**Compliance changes**. Take proactive measures if you expect the workload to be under compliance requirements in the future. This approach can reduce rework when following compliance becomes a requirement.
-
-**Regional expansion**. Consider future expansion of the workload into multiple regions. A design that's limited to a single region will need to be heavily refactored for multiple-region deployment, and that can be a costly change. There's even more complexity if the workload design needs to accommodate multiple geographies with different compliance requirements. Make sure that your design factors in any reasonable prediction about regional expansion.
-
-**Product roadmaps**. In your design, don't include components that are on the path to deprecation. Likewise, be careful when you include features in your design that are currently in a preview state. They might be released, but they might also be canceled. Being ahead of the curve by using preview features can be highly advantageous. Soon after the feature is released, the workload is prepared to go to production. But include preview features in your design only after you do a careful risk analysis. Ship only features that have a tolerated risk profile.
-
-For more information on cloud design patterns, see:
+When reviewing functional and nonfunctional requirements, map them to the right patterns. Use proven cloud design patterns to guide your workload, simplify decisions, reduce risk, and accelerate delivery. The more fluent you are with these patterns, the more naturally they shape effective designs. Well-Architected framework recommends these patterns for its pillars:
 
 - [Architecture design patterns that support reliability](../reliability/design-patterns.md)
 - [Architecture design patterns that support security](../security/design-patterns.md)
@@ -75,39 +61,46 @@ For more information on cloud design patterns, see:
 - [Architecture design patterns that support operational excellence](../operational-excellence/design-patterns.md)
 - [Architecture design patterns that support performance efficiency](../performance-efficiency/design-patterns.md)
 
+## Be forward-thinking
+
+Architect for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth. Common areas to be aware of:
+
+- Anticipate how workload usage may increase or decrease over time.
+- Plan ahead for potential future regulations that could affect your workload.
+- Design for possible multi-region deployment and differing geographic requirements.
+- Don't use deprecated components and carefully assess the risks of using preview features.
+
 ## Design for supportability
 
-Design workloads with three key support perspectives:
+When designing workloads, consider support from three angles. Ensure the system operates within your cloud provider's supported configurations to avoid disruptions when engaging platform support. Provide operational visibility so your team can understand and respond to incidents quickly. Finally, design with customer support in mind, making it easy for support teams to investigate issues and assist users without friction.
 
-**Cloud provider support**. The workload should operate within the supported configuration of your cloud provider to avoid disruptions when you're engaging platform support channels.
+## Stay hands-on and keep learning
 
-**Operational visibility**. The design should provide execution visibility for the workload operations team to prevent confusion during incident response.
+Architecture is more than theory and your effectiveness comes from curiosity, effort, and real-world experience. Decision should be grounded in what you've learned by experimenting, solving problems, and working directly with technology. Explore unfamiliar tools, build prototypes, and learn by doing. Strengthen your foundation through training and certifications, and broaden your perspective by engaging with peers, joining communities, and participating in hands-on events like hackathons.
 
-**Customer support capabilities**. The design should meet user needs but also facilitate customer support functions. A design that hinders the support team's ability to investigate or to assist customers is inadequate.
+You can also self-assess by asking yourself questions such as:
 
-## Maintain and enhance your skills
-
-An architect's expertise is often rooted in practical experience. It's important to invest in expanding your skill set to keep up with the evolving cloud ecosystem.
-
-**Education**. Seek opportunities for training and certification that technology providers offer for architects.
-
-**Community participation**. Engage with peers through online and local architecture communities.
-
-**Exploratory exercises**. Participate in organizationally sponsored hackathons or similar events to develop skills in unfamiliar areas.
+- What architectural problem am I solving, and why does it matter to the business?
+- What gaps or shortcomings in existing designs or documentation am I addressing?
+- What evidence or analysis supports my proposed approach?
+- What tradeoffs, risks, or design cliffs have I identified?
+- Which pillars of the Well-Architected Framework are most relevant in this design, and why?
 
 ## Collaborate for success
 
-An architect should take advantage of the expertise of the cloud provider or implementation partner. Most  providers want your workload to succeed on their platform, and they often provide services such as architecture design review sessions or consultative sessions with their cloud solution architects. Seek opportunities for review and assistance within your vendor relationships.
+As an architect, you can't work in isolation. Use the expertise available through your cloud provider. Most providers want your workload to succeed and offer valuable resources, architecture reviews, design consultations, and direct access to experienced solution architects. Make full use of these relationships to validate your design, uncover blind spots, and strengthen your overall approach.
+
+In many organizations, workload teams rely on platform teams for shared infrastructure and services, similar to the Azure landing zone model. When your architecture depends on this partnership, work closely with the platform team to deliver a solution that meets longer term goals.
 
 ## Be methodical in your design approach
 
-Architecture frameworks support an architect by offering workload perspectives and methodological approaches. The Well-Architected Framework provides a comprehensive workload viewpoint. Architects can combine the Well-Architected Framework with other architecture frameworks, such as The Open Group Architecture Framework (TOGAF).
+A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and TOGAF to guide your process; their principles, checklists, and assessments help you make consistent, well-informed decisions. Supplement them with resources such as decision trees, reference architectures, and benchmarking tools to further strengthen your design choices.
 
-Use the principles, checklists, assessments, and reference materials in architecture frameworks to establish a process that fits the workload. Combine frameworks with personal techniques, such as mind mapping.
+Define a repeatable process for every workload, supported by these frameworks and your own techniques, such as mind mapping or structured decision logs.
 
-Architecture is about communication as much as it's about the end product. Make sure that you're optimizing for intentional decision-making, tradeoff acknowledgment, and clear communication in your established processes.
+Architecture is as much about clarity as design. Be deliberate in how you make decisions, surface tradeoffs, and communicate your rationale so stakeholders understand the path you're taking.
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Architect's checklist](checklist.md)
+> [Azure Well-Architected Pillars](../pillars.md)
