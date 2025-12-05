@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 
 A _cloud solution architect_ is responsible for guiding the component and topology design of workloads, ensuring they meet both initial requirements and long-term business goals. This role covers the full lifecycle of a workload, adapting the architecture as functionality evolves or organizational needs change.
 
-As an architect, your role is to gather input from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Take advantage of your experience in development, operations, QA, disaster recovery, and managing both incremental and large-scale changes to make informed decisions. Design not just for the "happy path", but also for operational realities such as observability, supportability, and resilience. Identify trade-offs and accepted risks to prevent hidden technical debt and keep stakeholders fully informed.
+As an architect, your role is to gather input from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Take advantage of your experience in development, operations, QA, disaster recovery, and managing both incremental and large-scale changes to make informed decisions. Design not just for the "happy path", but also for operational realities such as observability and supportability. Identify trade-offs and accepted risks to prevent hidden technical debt and keep stakeholders fully informed.
 
 This article outlines the common checklist of deliverables and the guiding principles that make them achievable. 
 
@@ -23,7 +23,7 @@ This article outlines the common checklist of deliverables and the guiding princ
 |&#9744;|[**Align technical strategy with business requirements**](./design-business-requirements.md) by following a 5-step process to gather the right information, negotiate realistic outcomes and stay aligned with business goals.|
 |&#9744;|[**Develop an architecture design specification**](./architecture-design-specification.md) accompanied by diagrams as a structured packet. Ensure the specification meets functional and nonfunctional requirements gathered in the prior task and includes provisions for routine, ad hoc, and emergency operations.|
 |&#9744;|[**Create architecture design diagrams**](./design-diagrams.md) that illustrate all system design aspects, from a broad overview to detailed dimensions like network and identity.|
-|&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) that captures the context, consequences, and justifications for architectural decisions. Document accepted tradeoffs, rejected options, and known shortcomings.|
+|&#9744;|[**Maintain an architecture decision record (ADR)**](./architecture-decision-record.md) that captures the context, consequences, and justifications for architectural decisions. Document tradeoffs and rejected options.|
 |&#9744;|[**Validate critical assumptions with proof of concepts (PoCs)**](./collaboration.md#use-a-proof-of-concept-poc). Before finalizing a design, validate high-risk or novel components with working code. This prevents theoretical designs from failing in practice.|
 |&#9744;|[**Collaborate with the workload and platform team during implementation**](./collaboration.md) to provide clarity and recommendations about the implementation sequence. This collaboration helps you maximize learning and make improvements from the outset. Renegotiate requirements with stakeholders if needed.|
 |&#9744;|[**Support modeling exercises**](./ongoing-support.md#support-modeling-exercises) that provide contextualized information about workload concerns. Cover costs, application health, and other areas.|
@@ -43,7 +43,7 @@ The architect's role is to ask probing questions, ground requests in reality, an
 
 Start by identifying key decisions upfront. Draw on your past experience to anticipate where choices will matter most, and make sure to log them clearly.
 
-When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, reversibility, and risk. Tools like decision trees, feature comparisons, and benchmarks can guide you, but they don't replace your judgment. Combine this guidance with evidence from proofs of concept and testing to make informed choices.
+When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, reversibility, and risk. Tools like decision trees can guide you, but they don't replace your judgment. Combine this guidance with evidence from proofs of concept and testing to make informed choices.
 
 Document every decision in an Architecture Decision Record (ADR), including your reasoning and justification.  Make sure your decisions are communicated, applied, and reflected in the system.
 
@@ -76,7 +76,7 @@ When designing workloads, consider support from three angles. Ensure the system 
 
 ## Stay hands-on and keep learning
 
-Don't be an ivory tower architect who only talks in abstractions and theory. Architecture commands respect when it's grounded in curiosity, effort, and hands-on, real-world experience. Decision should be based on what you've learned by experimenting, solving problems, and working directly with technology. Explore unfamiliar tools, build prototypes, and learn by doing. Strengthen your foundation through training and certifications, and broaden your perspective by engaging with peers, joining communities, and participating in hands-on events like hackathons.
+Don't be an ivory tower architect who only talks in abstractions and theory. Architecture commands respect when it's grounded in curiosity and hands-on, real-world experience. Decision should be based on what you've learned by experimenting, solving problems, and working directly with technology. Explore unfamiliar tools, build prototypes, and learn by doing. Strengthen your foundation through training and certifications, and broaden your perspective by engaging with peers and joining communities such as hands-on events like hackathons.
 
 You can also self-assess by asking yourself questions such as:
 
@@ -88,13 +88,13 @@ You can also self-assess by asking yourself questions such as:
 
 ## Collaborate for success
 
-As an architect, you can't work in isolation. Use the expertise available through your cloud provider. Most providers want your workload to succeed and offer valuable resources, architecture reviews, design consultations, and direct access to experienced solution architects. Make full use of these relationships to validate your design, uncover blind spots, and strengthen your overall approach.
+As an architect, you can't work in isolation. Use the expertise available through your cloud provider. Most providers want your workload to succeed and offer valuable resources, including architecture reviews and design consultations with direct access to experienced solution architects. Make full use of these relationships to validate your design, uncover blind spots, and strengthen your overall approach.
 
 In many organizations, workload teams rely on platform teams for shared infrastructure and services, similar to the Azure landing zone model. When your architecture depends on this partnership, work closely with the platform team to deliver a solution that meets longer term goals.
 
 ## Be methodical in your design approach
 
-A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and TOGAF to guide your process; their principles, checklists, and assessments help you make consistent, well-informed decisions. Supplement them with resources such as decision trees, reference architectures, and benchmarking tools to further strengthen your design choices.
+A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and TOGAF to guide your process; their principles and checklists help you make consistent, well-informed decisions. Supplement them with resources such as decision trees and reference architectures to further strengthen your design choices.
 
 Define a repeatable process for every workload, supported by these frameworks and your own techniques, such as mind mapping or structured decision logs.
 
