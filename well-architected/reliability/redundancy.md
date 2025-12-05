@@ -143,7 +143,7 @@ The following sections describe configuration options for active-active deployme
 
 - **Common disadvantages of both designs:** Higher operating costs and management burden because of various factors, including the necessity of managing the synchronization of application state and data.
 
-## Use an active-passive architecture design to provide DR resilience
+## Use an active-passive architecture design as a cost-effective DR approach
 
 Active-passive deployment configurations provide a cost-effective way to ensure DR by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary instance fails or undergoes maintenance. This approach minimizes resource usage while providing reliable failover capabilities.
 
