@@ -63,7 +63,7 @@ When reviewing functional and nonfunctional requirements, map them to the right 
 
 ## Be forward-thinking
 
-Design for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth. Common areas to be aware of:
+Design for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth, but set practical bounds. Success comes from leaving room to adapt and improve, while recognizing that some design decisions are only valid up to a certain scale. Common areas to be aware of:
 
 - Anticipate how workload usage may increase or decrease over time.
 - Plan ahead for potential future regulations that could affect your workload.
