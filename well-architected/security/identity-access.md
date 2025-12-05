@@ -48,32 +48,18 @@ From a technical control perspective, **identity is always the primary perimeter
 > [!Note] 
 > An identity can be grouped with other, similar identities under a parent called a *security principal*. A security group is an example of a security principal. This hierarchical relationship simplifies maintenance and improves consistency. Because identity attributes aren't handled at the individual level, chances of errors are also reduced. In this article, the term *identity* is inclusive of security principals.
 
-### The role of an identity provider
-
 An identity provider (IdP) is a cloud-hosted service that stores and manages users as digital identities.
 
 **Take advantage of the capabilities provided by a trusted IdP** for your identity and access management. Don't implement custom systems to replace an IdP. IdP systems are improved frequently based on the latest attack vectors by capturing billions of signals across multiple tenants each day. Microsoft Entra ID is the IdP for Azure cloud platform.
 
-#### Authentication
+- **Authentication:** Authentication is a process that verifies identities. The requesting identity is required to provide some form of verifiable identification. For example:
 
-Authentication is a process that verifies identities. The requesting identity is required to provide some form of verifiable identification. For example:
+  -   A user name and password.
+  -   A preshared secret, like an API key that grants access.
+  -   A shared access signature (SAS) token.
+  -   A certificate that's used in TLS mutual authentication.
 
--   A user name and password.
-
--   A preshared secret, like an API key that grants access.
-
--   A shared access signature (SAS) token.
-
--   A certificate that's used in TLS mutual authentication.
-
-As much as possible, the verification process should be handled by your IdP.
-
-#### Authorization
-
-Authorization is a process that allows or denies actions that are requested by the verified identity. The action might be operational or related to resource management.
-
-Authorization requires that you assign permissions to the identities, which you need to do by using the functionality provided by your IdP.
-
+- **Authorization:** Authorization is a process that allows or denies actions that are requested by the verified identity. The action might be operational or related to resource management. Authorization requires that you assign permissions to the identities, which you need to do by using the functionality provided by your IdP.
 
 To get a holistic view of the identity needs for a workload, you need to catalog the flows, workload assets, and personas, and the actions the assets and personas will perform. Your strategy must cover all use cases that handle **the flows that reach the workload or its components (outside-in access) and flows that reach out from the workload to other sources (inside-out access)**.
 
