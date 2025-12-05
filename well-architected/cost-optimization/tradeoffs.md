@@ -5,7 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 10/10/2024
 ms.topic: concept-article
-ms.update-cycle: 1095-days  
+ms.update-cycle: 1095-days
 ---
 
 # Cost Optimization tradeoffs
@@ -60,7 +60,7 @@ The cost of a compromise to confidentiality, integrity, and availability in a wo
 
 One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
 
-- Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of zero-trust architecture. Examples of these simplifications include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
+- Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of Zero-Trust architecture. Examples of these simplifications include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
 
 - Removing encryption in transit or at rest to reduce costs on certificates and their operational processes exposes data to potential integrity or confidentiality breaches.
 

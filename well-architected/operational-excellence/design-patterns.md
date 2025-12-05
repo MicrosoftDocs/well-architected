@@ -5,6 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 11/06/2025
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ---
 
 # Architecture design patterns that support operational excellence

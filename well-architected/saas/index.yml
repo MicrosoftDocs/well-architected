@@ -25,6 +25,8 @@ landingContent:
             url: design-methodology.md                
           - text: Design principles
             url: design-principles.md 
+          - text: Design with an AI mindset
+            url: ai-strategy.md
 
    # Card
   - title: Technical design areas
