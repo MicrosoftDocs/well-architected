@@ -246,7 +246,7 @@ Azure provides an extensive set of built-in policies related to Azure NetApp Fil
 
 Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure NetApp Files deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure NetApp Files.
 
-Consider the following [Advisor](https://azure.microsoft.com/en-us/products/advisor/) recommendation for cost effectiveness:
+Consider the following [Advisor](https://azure.microsoft.com/products/advisor/) recommendation for cost effectiveness:
 
 - Save on-demand costs with reserved capacity.
 
