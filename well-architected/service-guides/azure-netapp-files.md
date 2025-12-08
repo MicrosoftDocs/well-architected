@@ -35,14 +35,14 @@ This article assumes that as an architect, you reviewed the [file storage option
 
 Azure NetApp Files satisfies a variety of requirements for a wide range of [use cases](/azure/azure-netapp-files/azure-netapp-files-solution-architectures), including (but not limited to):
 
-- [General File Sharing](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#file-sharing-and-global-file-caching)
-- [Azure VMware Solution (AVS)](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#azure-vmware-solution-solutions)
+- [General File Sharing](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#file-sharing-and-global-file-caching)
+- [Azure VMware Solution (AVS)](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-vmware-solution-solutions)
 - SAP HANA
-- [Oracle](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#oracle)
-- [SQL server](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#sql-server)
-- HPC [(Electronic Design Automation (EDA))](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#hpc-solutions), Oil & Gas, Analytics
-- [Artificial Intelligence/Machine Learning](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#machine-learning)
-- [Azure Kubernetes Service](/azure/azure-netapp-files/azure-netapp-files-solution-architectures.md#azure-kubernetes-services-and-kubernetes), Containerized workloads
+- [Oracle](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#oracle)
+- [SQL server](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sql-server)
+- HPC [(Electronic Design Automation (EDA))](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions), Oil & Gas, Analytics
+- [Artificial Intelligence/Machine Learning](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#machine-learning)
+- [Azure Kubernetes Service](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-kubernetes-services-and-kubernetes), Containerized workloads
 
 
 **Technology scope**
@@ -171,7 +171,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 The [Operational Excellence design principles](../operational-excellence/principles.md) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
-### Workload design checklist 
+### Design checklist 
 
 Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to your file storage configuration.
 
@@ -191,7 +191,7 @@ Consider the following recommendations to optimize operational excellence when y
 | Understand the [Windows Server Active Directory connector, its options, and what the options do](/azure/azure-netapp-files/understand-guidelines-active-directory-domain-service-site). Solution architectures that use Azure NetApp Files volumes require proper AD DS design and planning. | Azure NetApp Files features such as SMB volumes, dual-protocol volumes, and NFSv4.1 Kerberos volumes integrate with AD DS. Understand AD DS deployment to help optimize your Azure NetApp Files experience. |
 | Understand [LDAP](/azure/azure-netapp-files/lightweight-directory-access-protocol). LDAP provides a general-purpose, network-based directory service that you can use across diverse platforms to locate network objects. | LDAP is robust, scalable, and secure. You can use LDAP to contain millions of user objects and group objects. With Windows Server Active Directory, you can use multiple servers to replicate across multiple sites to improve performance and resiliency. The only LDAP server that Azure NetApp Files supports is Windows Server Active Directory. It supports both AD DS and Microsoft Entra Domain Services. |
 | Use [native monitoring features](/azure/azure-netapp-files/monitor-azure-netapp-files) to monitor the performance and health of application volumes, file shares, and databases. | Use monitoring features to set up alerts and notifications for critical events such as file system capacity and performance problems. Use alerts to take corrective actions proactively. |
-| [Manage performance](/azure/azure-netapp-files/azure-netapp-files-performance-considerations). Azure NetApp Files offers nondisruptive on-demand [capacity scaling](/azure/azure-netapp-files/azure-netapp-files-resize-capacity-pools-or-volumes) and [service-level changes](/azure/azure-netapp-files/dynamic-change-volume-service-level). | Use these features to scale up or scale down quickly when applications, file shares, and databases require adjustments. To help manage the performance and availability of your application, combine these capabilities with volume resizing or manual QoS settings. |
+| [Manage performance](/azure/azure-netapp-files/azure-netapp-files-performance-considerations). Azure NetApp Files offers nondisruptive on-demand [capacity scaling](/azure/azure-netapp-files/azure-netapp-files-resize-capacity-pools-or-volumes) and [service-level changes](/azure/azure-netapp-files/dynamic-change-volume-service-level) (including the new [Flexible service level](/azure/azure-netapp-files/azure-netapp-files-service-levels#supported-service-levels) for on-the-fly throughput control). | Use these features to scale up or down quickly without downtime or adding capacity. For example, with FSL you can instantly increase a volumes throughput to handle a spike and later scale it back, maintaining performance with no service interruption. Combine this capability with volume resizing or manual QoS as needed for fine-grained performance management. |
 | Use Azure NetApp Files [storage with cool access](/azure/azure-netapp-files/cool-access-introduction) to transparently tier infrequently accessed data blocks to lower-cost Azure storage. | By configuring cool access and moving inactive data from Azure NetApp Files storage to an Azure storage account, you can optimize costs while maintaining accessibility and performance for active data. Azure NetApp Files storage with cool access offers significant benefits by seamlessly tiering infrequently accessed data blocks to lower-cost Azure storage. This feature is particularly advantageous for managing cold data, which is often unstructured and can account for over 60% of total storage capacity in many environments. By integrating cool access directly within the service, it eliminates the need for additional tools, making it easier to optimize costs. This approach is ideal for inactive data, large volumes of unstructured data, snapshot data, sequential read operations, and metadata-intensive workloads like chip design, version control systems, and home directories. |
 | Use advanced [snapshot](/azure/azure-netapp-files/snapshots-introduction) data-protection and data-management capabilities. These features provide the foundation for data-protection solutions, including single-file restores, volume restores, clones, cross-region replication, and long-term retention. | Azure NetApp Files snapshot technology provides stability, scalability, and fast recoverability without affecting performance.|
 | Automate infrastructure deployments. Use [ARM templates](/azure/azure-netapp-files/azure-netapp-files-sdk-cli#azure-resource-manager-templates) to define and deploy the resources that support your application, such as file shares, storage accounts, VMs, and databases. Also consider using infrastructure as code via [Terraform](/azure/developer/terraform/overview) to configure and deploy cloud infrastructure. For more information, see [Deploy Azure NetApp Files by using Terraform](https://www.youtube.com/watch?v=TTV6rz52dPI) and [Terraform Azure Resource Manager and Azure NetApp Files account integration](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/netapp_account). | Use Azure NetApp Files to automate the deployment of your application infrastructure, file shares, and databases, which improves the deployment's efficiency and supports a lift-and-shift approach. |
@@ -199,6 +199,7 @@ Consider the following recommendations to optimize operational excellence when y
 | Test environments. You can use Azure NetApp Files to create and manage test environments quickly. Use snapshot restore to [clone your production data to a new volume](/azure/azure-netapp-files/snapshots-introduction#restoring-cloning-an-online-snapshot-to-a-new-volume). | Test activities remain separate from production environments. Do testing to add guardrails. For example, you can ensure the effectiveness of a disaster recovery solution. Use test environments to test new releases or upgrades in a nondisruptive manner. Combine test environments with cross-zone or cross-region replication for further optimization. You can repurpose data that you typically replicate for disaster recovery only. |
 | Use [short-term clones](/azure/azure-netapp-files/create-short-term-clone) for rapid, space-efficient testing and development workflows. Short-term clones provide temporary volume copies with automatic cleanup capabilities, reducing storage costs and administrative overhead for temporary data copies. | Short-term clones enable better development and testing workflows by providing production-like data without requiring significant storage resources. Automatic lifecycle management reduces administrative overhead while ensuring teams have access to fresh data for testing scenarios without impacting production systems. |
 | Manage your regional quotas and [resource limits](/azure/azure-netapp-files/azure-netapp-files-resource-limits). Review those levels regularly as your workload evolves. To increase your regional quota, [request a regional capacity quota increase](/azure/azure-netapp-files/regional-capacity-quota#request-regional-capacity-quota-increase). To increase resource limits, [request a limit increase](/azure/azure-netapp-files/azure-netapp-files-resource-limits#request-limit-increase). | Quotas affect cost and performance. Plan the amount of resources that your workload requires. Review that level regularly as the workload evolve. Understand these requirements to maintain performance and capacity as needs change. |
+|Incorporate Azure NetApp Files file access logs into operational monitoring and analytics. Set up file access logs to be sent to a log analysis service (for example, Azure Monitor Logs or a third-party SIEM) and periodically review the aggregated data for trends and outliers. | File access logs provide granular visibility into how data is being used. By analyzing these logs, you can identify usage trends, detect operational anomalies, and verify that automated processes are working as intended. These insights enable data-driven optimizations and help in early detection of potential issues.  |
 
 ## Performance efficiency
 
@@ -206,7 +207,7 @@ Performance Efficiency is about **maintaining user experience even when there's 
 
 The [Performance Efficiency design principles](../performance-efficiency/principles.md) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
-### Workload design checklist
+### Design checklist
 
 Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure NetApp Files.
 
@@ -214,14 +215,15 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Define performance targets.** Understand the demands of your workload and assign numerical values to your performance targets. Azure NetApp Files offers tools and resources to quantify these demands, including calculators and formulas to convert throughput to input/output operations per second (IOPS). You should also understand how Azure NetApp Files service levels and performance tiers affect your deployment and meet the needs of your workload. 
 >
 > - **Conduct capacity planning.** Understand the capacity requirements of your datasets so that you can plan for and optimize performance. Before you deploy your application, understand the nature of your workload and understand the [resource limits of Azure NetApp Files](/azure/azure-netapp-files/azure-netapp-files-resource-limits). Ensure that Azure NetApp Files capabilities can handle your specific needs to effectively plan for your performance requirements. Make configuration choices that meet your performance and capacity needs.
-> - **Select the right service.** When you define the needs of your Azure NetApp Files deployment, understand the different performance, capacity, data protection, and disaster recovery requirements. Based on your requirements, calibrate Azure NetApp Files to meet your specific throughput and general performance needs. In some cases, you can reduce storage costs.
+> - **Select the right service.** Calibrate Azure NetApp Files to meet specific throughput and performance needs without overpaying. Azure NetApp Files now offers a Flexible Service Level (FSL), which decouples storage capacity from throughput. With FSL, you can independently adjust a volume’s throughput without increasing its capacity, enabling high-performance or high-capacity scenarios on demand without overprovisioning resources. This fine-grained control improves performance efficiency and can yield significant cost savings – you only pay for the performance you need. (For example, instead of always using an Ultra service level volume, you might use FSL to dial up throughput during peak periods and dial it down during off-peak times, avoiding unnecessary costs.)
+> - **Maintain performance for diverse workloads.** These capabilities support a wide range of workloads from enterprise databases like Oracle and SAP HANA to high-performance computing (HPC), disaster recovery, and general-purpose file shares without sacrificing efficiency. The FSL and cool access combination ensures that each workload gets the performance it needs when it needs it, while idle or archival data is stored cost-effectively.
 > - **Continually optimize performance.** Monitor your volume performance to understand the shifting demands of your production workloads. Use these monitoring insights to optimize and tune your performance.
 
 ### Configuration recommendations
 
 | Recommendation | Benefit|
 | - | - |
-| Review and understand the Azure NetApp Files [service levels](/azure/azure-netapp-files/azure-netapp-files-service-levels), which provide performance ceilings for Azure NetApp Files volumes. | When performance needs for a workload change, you can dynamically and seamlessly change the service levels of the volume to reduce cost. |
+| Review and understand the Azure NetApp Files [service levels](/azure/azure-netapp-files/azure-netapp-files-service-levels), (Standard, Premium, Ultra, and the new Flexible service level), which provide performance ceilings (or in the Flexible service level’s case, flexible throughput) for Azure NetApp Files volumes. | When workload performance needs to change, you can dynamically and seamlessly change a volumes service level (or move it into an FSL capacity pool) to optimize cost. (For example, scaling down from Ultra or using FSL to dial down throughput during off-peak times avoids paying for unused capacity.) |
 | Understand [resource limits](/azure/azure-netapp-files/azure-netapp-files-resource-limits) of Azure NetApp Files. | Understand the resource limits of Azure NetApp Files to reduce the risk of overprovisioning or overtaxing your volume. |
 | Understand the [nature of your workload](/azure/azure-netapp-files/faq-performance#how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops). Convert throughput to IOPS so that you can get insights into performance. For more information, see [Performance benchmark test recommendations](/azure/azure-netapp-files/azure-netapp-files-performance-metrics-volumes). <br><br> Use the [Azure NetApp Files performance calculator](https://azure.github.io/azure-netapp-files/calc/) to understand how your needs match with Azure NetApp Files. | Understand the IOPS, throughput, and latency requirements of your workload to determine what service level and volume capacity you require. <br></br> Use the Azure NetApp Files performance calculator to choose the correct capacity and service level so that you can size your volume to maximize your performance and cost efficiency. |
 | Understand the [capacity requirements](/azure/azure-netapp-files/volume-quota-introduction) of the dataset, and determine the appropriate [QoS type](/azure/azure-netapp-files/azure-netapp-files-understand-storage-hierarchy#qos_types). | Volume quotas and QoS settings affect performance and volume capacity. If you have a small dataset but high performance requirements, you can use manual QoS to overprovision the volume's performance. |
@@ -242,13 +244,19 @@ Azure provides an extensive set of built-in policies related to Azure NetApp Fil
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure NetApp Files deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure NetApp Files.
 
-For more information, see [Azure Advisor](/azure/advisor).
+Consider the following [Advisor](https://azure.microsoft.com/en-us/products/advisor/) recommendation for cost effectiveness:
 
-## Example architecture
+- Save on-demand costs with reserved capacity.
 
-Foundational architecture that demonstrates the key recommendations: [Moodle deployment with Azure NetApp Files](/azure/architecture/example-scenario/file-storage/moodle-azure-netapp-files).
+Consider the following Advisor recommendations for reliability:
+
+- Implement disaster recovery strategies for your Azure NetApp Files resources.
+- Enable continuous availability for SMB volumes.
+- Review SAP configurations for timeout values that you use with Azure NetApp Files.
+
+
 
 ## Next steps
 
