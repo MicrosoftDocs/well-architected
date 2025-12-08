@@ -37,13 +37,13 @@ Delivering these outputs requires following the core principles of the architect
 
 Before a cloud architect can design a solution, they must understand the outcomes the system needs to deliver and the business constraints that shape every decision. This requires creating clarity and alignment with stakeholders, around budgets, timelines, compliance obligations, performance expectations, and growth plans. Without this foundation, the design process can spiral into endless revisions and lead to frustration and disappointment.
 
-The architect's role is to ask probing questions, ground requests in reality, and steer conversations toward obtaining goals.
+The architect asks probing questions, ground requests in reality, and steer conversations toward obtaining goals.
 
 ## Have a decision-making framework
 
 Start by identifying key decisions upfront. Draw on your past experience to anticipate where choices will matter most, and make sure to log them clearly.
 
-When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, reversibility, and risk. Tools like decision trees can guide you, but they don't replace your judgment. Combine this guidance with evidence from proofs of concept and testing to make informed choices.
+When it's time to decide, be deliberate. Weigh constraints, trade-offs, effort, reversibility, and risk. Tools like decision trees and benchmarks can guide you, but they don't replace your judgment. Combine this guidance with evidence from proofs of concept and testing to make informed choices.
 
 Document every decision in an Architecture Decision Record (ADR), including your reasoning and justification.  Make sure your decisions are communicated, applied, and reflected in the system.
 
@@ -63,11 +63,11 @@ When reviewing functional and nonfunctional requirements, map them to the right 
 
 ## Be forward-thinking
 
-Design for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that could block future growth, but set practical bounds. Success comes from leaving room to adapt and improve, while recognizing that some design decisions are only valid up to a certain scale. Common areas to be aware of:
+Design for change, not just current requirements. It's far cheaper to anticipate evolution in your design than to retrofit a live system. Focus on flexibility and avoid design cliffs that are likely going block future growth, but set practical bounds. Success comes from leaving room to adapt and improve, while recognizing that some design decisions are only valid up to a certain scale. Common areas to be aware of:
 
 - Anticipate how workload usage may increase or decrease over time.
 - Plan ahead for potential future regulations that could affect your workload.
-- Design for possible multi-region deployment and differing geographic requirements.
+- Design for possible regional expansion and differing geographic requirements.
 - Don't use deprecated components and carefully assess the risks of using preview features.
 
 ## Design for supportability
@@ -94,7 +94,7 @@ In many organizations, workload teams rely on platform teams for shared infrastr
 
 ## Be methodical in your design approach
 
-A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and The Open Group Architecture Framework (TOGAF) to guide your process; their principles and checklists help you make consistent, well-informed decisions. Supplement them with resources such as decision trees and reference architectures to further strengthen your design choices.
+A disciplined approach leads to better architecture. Use the Azure Well-Architected Framework combined with other established architecture frameworks, such as The Open Group Architecture Framework (TOGAF), to guide your process. Their principles and checklists help you make consistent, well-informed decisions. Supplement them with resources such as decision trees and reference architectures to further strengthen your design decisions.
 
 Define a repeatable process for every workload, supported by these frameworks and your own techniques, such as mind mapping or structured decision logs.
 
@@ -102,5 +102,7 @@ Architecture is as much about clarity as design. Be deliberate in how you make d
 
 ## Next steps
 
+Get started with the first item on the architect's responsibilities checklist.
+
 > [!div class="nextstepaction"]
-> [Azure Well-Architected Pillars](../pillars.md)
+> [Align with business requirements](./design-business-requirements.md)
