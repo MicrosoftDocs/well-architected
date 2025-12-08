@@ -94,7 +94,7 @@ In many organizations, workload teams rely on platform teams for shared infrastr
 
 ## Be methodical in your design approach
 
-A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and TOGAF to guide your process; their principles and checklists help you make consistent, well-informed decisions. Supplement them with resources such as decision trees and reference architectures to further strengthen your design choices.
+A disciplined approach leads to better architecture. Use established frameworks like the Azure Well-Architected Framework and The Open Group Architecture Framework (TOGAF) to guide your process; their principles and checklists help you make consistent, well-informed decisions. Supplement them with resources such as decision trees and reference architectures to further strengthen your design choices.
 
 Define a repeatable process for every workload, supported by these frameworks and your own techniques, such as mind mapping or structured decision logs.
 
