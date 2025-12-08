@@ -30,7 +30,7 @@ Based on these characteristics, classify and identify critical HPC resources. Th
 
 The following diagram illustrates a typical pattern for HPC workloads on Azure. The architecture encompasses user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, storage systems, and management infrastructure.
 
-:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
+:::image type="content" source="./images/hpc-architecture.png" alt-text="Screenshot of typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
 
 ### Architecture Flow
 
