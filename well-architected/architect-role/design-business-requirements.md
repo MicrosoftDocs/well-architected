@@ -30,7 +30,7 @@ By the time a cloud architect joins a new initiative, the business stakeholders 
 
 Every architectural engagement begins with listening. At this stage, your job isn't to critique or solve. It's to absorb desired outcomes and get early indications of motivations. You'll likely find yourself saying "tell me more." Capture the stated requests, the assumptions behind them, and any embedded solution bias, which often appears as statements like "we need to build X."
 
-Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or reacting to a recent outage, or following a trend adopted by a competitor.
+Consider this common scenario. A business team says, "We need 100% uptime." At first, it sounds like a straightforward requirement. However, they might be equating high availability with high quality, or having an impulsive reaction to a recent outage, or following a trend adopted by a competitor without proper analysis.
 
 In this step, it's important that you respect business perspectives and aren't dismissing concerns of the business stakeholders. Listening well builds trust and sets the foundation for uncovering what's really driving the request.
 
