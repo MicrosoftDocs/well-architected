@@ -21,7 +21,7 @@ This is where your role helps bring clarity. You need to listen carefully, ask w
 
 This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. If you're new to this role, we recommend starting with [Solution architect's fundamentals](./fundamentals.md) guide for an overview of the role and what the defines success. 
 
-![Diagram showing the architectural discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./images/architecture-discovery.svg)
+![Diagram showing the architectural discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./images/architecture-discovery.png)
 
 
 ## Listen: Capture stakeholder requests
