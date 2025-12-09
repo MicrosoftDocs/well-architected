@@ -9,21 +9,21 @@
         href: what-is-well-architected-framework.md
       - name: How to be a proficient architect
         items:
-        - name: Architect's fundamentals
+        - name: Architect role
           href: architect-role/fundamentals.md
-        - name: Deliverables
+        - name: Responsibilities
           items: 
-          - name: Checklist
-            href: architect-role/checklist.md
-          - name: Architecture design specification
+          - name: Align with business requirements
+            href: architect-role/design-business-requirements.md
+          - name: Build architecture design specification
             href: architect-role/architecture-design-specification.md
-          - name: Design diagrams
+          - name: Create design diagrams
             href: architect-role/design-diagrams.md
-          - name: Architecture decision record
+          - name: Maintain an architecture decision record
             href: architect-role/architecture-decision-record.md
-          - name: Collaboration with implementors
+          - name: Collaborate with implementors
             href: architect-role/collaboration.md
-          - name: Consultative support
+          - name: Provide consultative support
             href: architect-role/ongoing-support.md            
     - name: Pillars
       items: 

@@ -2404,6 +2404,11 @@
 			"source_path": "well-architected/operational-excellence/emergency-response.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
 			"redirect_document_id": false
-		}								
+		},
+		{
+			"source_path": "well-architected/architect-role/checklist.md",
+			"redirect_url": "/azure/well-architected/architect-role/fundamentals",
+			"redirect_document_id": true
+		}											
 	]
 }
