@@ -10,7 +10,7 @@ ms.update-cycle: 1095-days
 
 # Architecture design diagrams
 
-Architects often communicate through diagrams. Well‑designed visuals are a powerful tool that help implementers, security reviewers, and business stakeholders converge on a shared mental model, expose risks earlier, and reduce rework. To communicate with intention, an architect must select and often layer diagram types that match the message, audience, and lifecycle stage.
+Architects often communicate through diagrams. Well‑designed visuals are powerful tools that help implementers, security reviewers, and business stakeholders converge on a shared mental model, expose risks earlier, and reduce rework. To communicate with intention, an architect must select and often layer diagram types that match the message, audience, and lifecycle stage.
 
 Ultimately, the choice of architecture diagram depends on what you're trying to convey and your audience's questions. Architects use multiple types of diagrams throughout design activities, requirements refinement, and stakeholder communication. Expect to maintain multiple diagrams across envisioning, design elaboration, threat modeling, implementation, operations, and governance.
 

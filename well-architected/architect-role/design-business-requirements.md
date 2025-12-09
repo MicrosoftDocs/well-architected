@@ -15,11 +15,11 @@ As a cloud architect, your first task is to create clarity. Before you can make 
 
 Every decision is shaped by real pressures: budgets, delivery timelines, compliance rules, performance expectations, and service-level commitments. These aren't optional considerations. They're the conditions your design has to meet.
 
-If you don't understand these factors, the systems has high chances of failure. Requirements sometimes start out as assumptions rather than true needs. Like, there might a list of requested features, but none about the traffic patterns that will stress the system. What about growth over the next year? What commitments were already made to customers?
+If you don't understand these factors, the system has high chances of failure. Requirements sometimes start out as assumptions rather than true needs. Like, there might be a list of requested features, but none about the traffic patterns that will stress the system. What about growth over the next year? What commitments were already made to customers?
 
 This is where your role helps bring clarity. You need to listen carefully, ask why the request exists, and separate actual needs from early assumptions. You guide conversations back to goals, not implementation. And when a request is unrealistic or misaligned, you need to propose alternatives that still achieve the desired outcome.
 
-This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. If you're new to this role, we recommend starting with [Solution architect's fundamentals](./fundamentals.md) guide for an overview of the role and what the defines success. 
+This article shows you how to do that by following a 5-step process. It uses an example to illustrate how to gather the right context, ask the right questions, and build shared understanding before you design anything. This way, you create architectures that aren't just technically sound but also aligned with real motivations, business pressures, and long-term goals. If you're new to this role, we recommend starting with [Solution architect's fundamentals](./fundamentals.md) guide for an overview of the role and what defines success. 
 
 ![Diagram showing the architectural discovery process. It visually represents the five steps: Listen, Probe, Clarify, Evaluate, and Recommend with key actions under each.](./images/architecture-discovery.png)
 
