@@ -47,7 +47,7 @@ The following diagram illustrates a typical pattern for HPC workloads on Azure. 
 
 The architecture consists of six primary layers:
 
-## User Access and Job Submission
+#### User Access and Job Submission
 
 | Component | Description |
 |-----------|-------------|
@@ -55,7 +55,7 @@ The architecture consists of six primary layers:
 | Command Line | Direct terminal access for scripting and automation through SSH or local shells. |
 | API | Programmatic access via REST or GraphQL for integration with external systems and workflows. |
 
-## Orchestration and Scheduling
+#### Orchestration and Scheduling
 
 | Component | Description |
 |-----------|-------------|
@@ -65,7 +65,7 @@ The architecture consists of six primary layers:
 | Workflow Engine | Coordinates multi-step pipelines and manages dependencies between jobs. |
 | Capacity Planning | Forecasts resource demand and informs scaling decisions. |
 
-## High-Performance Interconnect
+#### High-Performance Interconnect
 
 | Component | Description |
 |-----------|-------------|
@@ -73,7 +73,7 @@ The architecture consists of six primary layers:
 | High-Bandwidth Links | Network infrastructure supporting large data transfers between nodes. |
 | Topology-Optimized Network | Network design that minimizes hops and latency for node-to-node communication. |
 
-## Storage Architecture
+#### Storage Architecture
 
 | Component | Description |
 |-----------|-------------|
@@ -81,7 +81,7 @@ The architecture consists of six primary layers:
 | Object Storage | Scalable storage for large datasets, intermediate results, and working data. |
 | Cold Tier | Low-cost archival storage for long-term retention and compliance requirements. |
 
-## Management and Monitoring
+#### Management and Monitoring
 
 | Component | Description |
 |-----------|-------------|
@@ -91,7 +91,7 @@ The architecture consists of six primary layers:
 | Alerting | Automated notifications for faults, threshold breaches, and operational issues. |
 | Fault Detection | Identification of node failures, job errors, and infrastructure problems. |
 
-## Key Architectural Patterns
+#### Key Architectural Patterns
 
 | Pattern | Description |
 |---------|-------------|
