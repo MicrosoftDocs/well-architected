@@ -3,7 +3,7 @@ title: HPC workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating HPC workloads on Azure.
 author: prwilk
 ms.author: padmalathas
-ms.date: 11/15/2025
+ms.date: 12/12/2025
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -37,12 +37,6 @@ In the preceding example shown, the workload must be capable of handling computa
 - **Specialized performance**: Leverage purpose-built hardware like GPUs and high-speed interconnects to achieve performance levels impossible with general-purpose infrastructure
 - **Flexible resource allocation**: Scale resources dynamically to match workload demands, paying only for capacity when needed rather than maintaining idle infrastructure
 
-**Challenges:**
-- **Higher infrastructure costs**: Specialized hardware like high-core-count CPUs, GPUs, and low-latency networking (InfiniBand, RoCE) significantly increase resource expenses compared to standard compute
-- **Operational complexity**: Require sophisticated workload managers (Slurm, PBS, LSF), parallel file systems, and specialized scheduling policies that demand expert knowledge to configure and maintain
-- **Application constraints**: Many applications require substantial refactoring or rewriting to take advantage of parallel processing capabilities, creating development overhead
-- **Storage demands**: Massive data volumes and concurrent access patterns necessitate expensive parallel file systems and high-IOPS storage that standard solutions cannot provide
-- **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire
 
 ## Before you begin your design strategies
 
@@ -133,9 +127,9 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 ## What are the common challenges?
 | Challenges | Summary |
 | :--------- | :------ |
-| Network Performance | Tightly coupled jobs need low latency and high bandwidth for efficiency. |
-| Licensing Complexity | Software licenses add cost and require careful management.
-| Data Transfer Overhead | Moving large datasets is slow and resource-heavy, creating bottlenecks.
+| Network Performance | Frequent exchange of data during a job, creats network latency with the slow network connections.|
+| Licensing Complexity | Software licenses add cost and require careful management.|
+| Data Transfer Overhead | Moving large datasets is slow and resource-heavy, creating bottlenecks.|
 | Storage Throughput | Parallel I/O needs high-performance file systems, standard storage falls short. |
 | Resource Allocation | Efficient scheduling and job placement are complex and ongoing. |
 | Application Scalability | Apps don’t always scale linearly, tuning and redesign may be needed. |
