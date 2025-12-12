@@ -29,7 +29,7 @@ This guidance is designed for workloads that need more computational power than 
 
 In the preceeding example shown , workload must be capable of handling computationally intensiveworklods. It requires significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. It focuses on delivering high throughput, low latency, parallel processing capabilities, and optimizing for scientific, engineering, or data-intensive computing scenarios.
 
-In the preceding example shown, the workload must be capable of handling computationally intensive tasks. It requires significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. HPC workloads differ from traditional cloud workloads in ways that create both opportunities and challenges:
+In the preceding example shown, the workload must be capable of handling computationally intensive tasks. It requires significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. HPC workloads differ from traditional cloud workloads in ways that create both opportunities and challenges.
 
 **Opportunities:**
 - **Massive computational scale**: Process complex problems in hours or days that would take months or years on standard systems, accelerating research and innovation timelines
@@ -44,7 +44,7 @@ In the preceding example shown, the workload must be capable of handling computa
 > This guidance focuses specifically on HPC workloads requiring specialized compute infrastructure and parallel processing.
 > - AI/ML workloads: See the [AI workload guidance](/azure/well-architected/ai/get-started) for model training, inference, and MLOps patterns
 > - Big Data analytics: Data lake and analytics platform patterns are covered separately in Data analytics guidance
-> - Standard web applications: Traditional cloud-native patterns are covered in the [Well-Architected Framework guidance]([/azure/well-architected/pillars)
+> - Standard web applications: Traditional cloud-native patterns are covered in the [Well-Architected Framework guidance](/azure/well-architected/pillars)
 
 ### Familiarize yourself with the broad HPC workload categories
 
@@ -153,7 +153,7 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 
 The following description illustrates how an HPC workload operates on Azure, from job submission through execution to results storage and analysis.
 
-:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png"::
+:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
 
 The architecture highlights the integration of different components to enable efficient job scheduling, parallel execution, high-performance storage access, and monitoring in HPC solutions. It includes modules such as user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, parallel file systems, data management, and monitoring systems.
 
