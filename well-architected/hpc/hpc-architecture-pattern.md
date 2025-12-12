@@ -1,6 +1,6 @@
 ---
 title: Architecture pattern for HPC workloads on Azure
-description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
+description: Design areas address the critical decisions that determine whether your HPC workload can run jobs efficiently, handle large-scale parallel processing, and meet performance targets
 author: padmalathas
 ms.author: prwilk
 ms.date: 12/05/2025
@@ -30,7 +30,7 @@ Based on these characteristics, classify and identify critical HPC resources. Th
 
 The following diagram illustrates a typical pattern for HPC workloads on Azure. The architecture encompasses user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, storage systems, and management infrastructure.
 
-:::image type="content" source="./images/hpc-architecture.png" alt-text="Screenshot of typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
+:::image type="content" source="./media/hpc-architecture.png" alt-text="Screenshot of typical architecture of an HPC workload." lightbox="./media/hpc-architecture.png":::
 
 ### Architecture Flow
 
