@@ -57,7 +57,7 @@ For more information, see:
 - [SAP HANA install](/azure/virtual-machines/workloads/sap/hana-get-started)
 - [SAP HANA configuration](/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
-## Configure application sever reliability
+## Configure application server reliability
 
 *Impact: Reliability*
 
