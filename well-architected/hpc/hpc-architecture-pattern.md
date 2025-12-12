@@ -26,7 +26,7 @@ Before selecting Azure services, evaluate the following characteristics to infor
 
 Based on these characteristics, classify and identify critical HPC resources. This exercise helps you track resource utilization and associated costs while focusing optimization efforts where they have the greatest impact. Organize resources into logical groups based on their function and lifetime.
 
-## Baseline Architecture
+## Basic Architecture
 
 The following diagram illustrates a typical pattern for HPC workloads on Azure. The architecture encompasses user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, storage systems, and management infrastructure.
 
@@ -41,30 +41,66 @@ The following diagram illustrates a typical pattern for HPC workloads on Azure. 
 1. **Storage systems** provide data to running jobs and persist results
 1. **Monitoring infrastructure** tracks performance, cost, and system health throughout execution
 
+----
+
 ### Architecture Components
 
 The architecture consists of six primary layers:
 
-**User access and job submission:** Users interact with the HPC environment through web portals, command-line interfaces, or APIs. Authentication systems verify user identities and control access to resources. Common implementations include Open OnDemand for web-based access and SSH for direct command-line interaction.
+## User Access and Job Submission
 
-**Orchestration and scheduling:** Job schedulers receive work requests and determine when and where each job should run. Resource managers track available capacity. Queue managers organize pending jobs based on priority and fairness policies. Policy engines enforce organizational rules. Azure CycleCloud supports popular schedulers including Slurm, PBS Pro, and Grid Engine.
+| Component | Description |
+|-----------|-------------|
+| Web Portal | Browser-based interface for job submission, monitoring, and file management. |
+| Command Line | Direct terminal access for scripting and automation through SSH or local shells. |
+| API | Programmatic access via REST or GraphQL for integration with external systems and workflows. |
 
-**Compute resources:** Different node types serve different purposes:
+## Orchestration and Scheduling
 
-  - CPU-focused nodes (HB-series, HX-series) handle tightly coupled parallel workloads
-  - GPU-accelerated nodes (ND-series, NC-series) speed up massively parallel computations
-  - Memory-optimized nodes support large in-memory processing requirements
-  - Specialized configurations address domain-specific needs
+| Component | Description |
+|-----------|-------------|
+| Job Scheduler | Receives work requests and determines when and where each job should run. |
+| Resource Manager | Tracks available compute capacity and allocates resources to jobs. |
+| Queue Control | Organizes pending jobs based on priority, fairness policies, and resource requirements. |
+| Workflow Engine | Coordinates multi-step pipelines and manages dependencies between jobs. |
+| Capacity Planning | Forecasts resource demand and informs scaling decisions. |
 
-**High-performance interconnect:** Low-latency network fabrics connect compute nodes and storage. InfiniBand networking (HDR and NDR) provides the bandwidth and latency characteristics required for tightly coupled MPI workloads. Technologies like RDMA (Remote Direct Memory Access) reduce communication overhead by bypassing the operating system.
+## High-Performance Interconnect
 
-**Storage architecture:** A tiered approach balances performance with cost:
+| Component | Description |
+|-----------|-------------|
+| Low-Latency Network | High-speed fabric connecting compute nodes with minimal communication delay. |
+| High-Bandwidth Links | Network infrastructure supporting large data transfers between nodes. |
+| Topology-Optimized Network | Network design that minimizes hops and latency for node-to-node communication. |
 
-  - Parallel file systems (Azure Managed Lustre, Azure NetApp Files) provide high throughput for active job operations
-  - Blob storage holds working datasets and intermediate results
-  - Archive storage maintains long-term data for compliance and analysis
+## Storage Architecture
 
-**Management and monitoring:** Performance monitoring tracks resource utilization and identifies bottlenecks. Cost tracking helps organizations understand spending patterns. Alerting systems notify administrators of issues. Azure Monitor and Log Analytics provide native integration for HPC environments.
+| Component | Description |
+|-----------|-------------|
+| Parallel File System | High-throughput shared storage optimized for concurrent access by many nodes. |
+| Object Storage | Scalable storage for large datasets, intermediate results, and working data. |
+| Cold Tier | Low-cost archival storage for long-term retention and compliance requirements. |
+
+## Management and Monitoring
+
+| Component | Description |
+|-----------|-------------|
+| Provisioning | Automated deployment and configuration of compute nodes and infrastructure. |
+| Telemetry | Collection of performance data, logs, and system metrics across the environment. |
+| Monitoring | Real-time tracking of resource utilization, job status, and system health. |
+| Alerting | Automated notifications for faults, threshold breaches, and operational issues. |
+| Fault Detection | Identification of node failures, job errors, and infrastructure problems. |
+
+## Key Architectural Patterns
+
+| Pattern | Description |
+|---------|-------------|
+| Batch Processing | Execution of large volumes of jobs with results delivered upon completion. |
+| Interactive Visualization | Real-time rendering and analysis of simulation outputs and datasets. |
+| Temporary Nodes | On-demand compute resources provisioned for peak workloads and released when idle. |
+| Data Sharding | Distribution of large datasets across multiple storage nodes for parallel access. |
+
+---
 
 ## Reference Architectures and Landing Zones
 
