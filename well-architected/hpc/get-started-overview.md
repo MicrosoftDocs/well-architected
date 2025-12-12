@@ -41,10 +41,10 @@ In the preceding example shown, the workload must be capable of handling computa
 ## Before you begin your design strategies
 
 > [!NOTE]
-> This guidance focuses specifically on HPC workloads requiring specialized compute infrastructure and parallel processing. It doesn't cover:
-> - AI/ML workloads: See the [AI workload guidance](link) for model training, inference, and MLOps patterns
-> - Big Data analytics: Data lake and analytics platform patterns are covered separately in [Data analytics guidance](link)
-> - Standard web applications: Traditional cloud-native patterns are covered in the [Well-Architected Framework guidance](link)
+> This guidance focuses specifically on HPC workloads requiring specialized compute infrastructure and parallel processing.
+> - AI/ML workloads: See the [AI workload guidance](/azure/well-architected/ai/get-started) for model training, inference, and MLOps patterns
+> - Big Data analytics: Data lake and analytics platform patterns are covered separately in Data analytics guidance
+> - Standard web applications: Traditional cloud-native patterns are covered in the [Well-Architected Framework guidance]([/azure/well-architected/pillars)
 
 ### Familiarize yourself with the broad HPC workload categories
 
@@ -103,7 +103,7 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 
 | Aspect    | Description | Benefits  |
 | :---------| :---------- | :-------- |
-| **Capital vs. operational expenditure**| Shift from upfront hardware costs to pay-as-you-go. | Improves cash flow, and reduces financial risk. |
+| **Infrastructure vs. operational expenditure**| Shift from upfront hardware costs to pay-as-you-go. | Improves cash flow, and reduces financial risk. |
 | **Scalability**| Scale up or scale down resources as needed. | Handles peak demand and optimizes cost and performance.|
 | **Hardware currency**| Access the latest CPU, GPU, and interconnects. | Improves performance and efficiency with hardware. |
 | **Geographic distribution**| Deploy workloads across multiple regions. | Ensures compliance and disaster recovery. |
@@ -125,6 +125,7 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 - Best for: Organizations with existing on-premises investments wanting flexible capacity, regulatory requirements for some data on-premises
 
 ## What are the common challenges?
+
 | Challenges | Summary |
 | :--------- | :------ |
 | Network Performance | Frequent exchange of data during a job, creats network latency with the slow network connections.|
@@ -193,8 +194,8 @@ The following table describes some key design areas related to HPC workloads.
 
 ## Related resources
 
-- [Azure HPC documentation](https://docs.microsoft.com/azure/architecture/topics/high-performance-computing)
-- [Azure CycleCloud](https://docs.microsoft.com/azure/cyclecloud/)
-- [Azure Batch](https://docs.microsoft.com/azure/batch/)
-- [Azure HPC VM sizes](https://docs.microsoft.com/azure/virtual-machines/sizes-hpc)
-- [Azure high-performance storage options](https://docs.microsoft.com/azure/architecture/guide/storage/storage-start-here)
+- [Azure HPC documentation](/azure/architecture/topics/high-performance-computing)
+- [Azure CycleCloud](/azure/cyclecloud/)
+- [Azure Batch](/azure/batch/)
+- [Azure HPC VM sizes](/azure/virtual-machines/sizes-hpc)
+- [Azure high-performance storage options](/azure/architecture/guide/storage/storage-start-here)
