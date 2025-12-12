@@ -166,6 +166,8 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated throughout the guidance with specific examples like cost versus performance, security versus usability, or simplicity versus flexibility.
 
+## Design areas
+
 ## Next steps
 
 - Review the Design methodology for HPC workloads to understand the systematic approach to HPC architecture
