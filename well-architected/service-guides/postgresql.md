@@ -4,7 +4,7 @@ description: Learn about Azure Well-Architected Framework design considerations 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.reviewer: maghan
-ms.date: 10/13/2025
+ms.date: 11/21/2025
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 ms.topic: concept-article
@@ -163,6 +163,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 | Use [Query Performance Insight](/azure/postgresql/flexible-server/concepts-query-performance-insight) to identify the top resource consuming and long-running queries in your workload. | Query Performance Insight helps you identify long-running queries and their changes over time, determine the wait types that affect them, analyze top database queries by frequency, and other benefits. |
 | Use [index tuning](/azure/postgresql/flexible-server/concepts-index-tuning) with query store to analyze tracked queries and provide recommendations. | Index tuning analyzes the workload that query store tracks. It produces index recommendations to improve the performance of the analyzed workload or to drop duplicate or unused indexes. Index tuning helps you identify beneficial indexes, duplicate indexes, and unused indexes. |
 | Use [intelligent tuning](/azure/postgresql/flexible-server/concepts-intelligent-tuning) to enhance performance automatically and help prevent problems. | Intelligent tuning continuously monitors the Azure Database for PostgreSQL flexible server database's status and dynamically adapts the database to your workload. |
+| Enable support for [PgBouncer](/azure/postgresql/flexible-server/concepts-pgbouncer) to optimize connection pooling. |Enhances database resource utilization and connection management.|
 
 ## Azure policies
 

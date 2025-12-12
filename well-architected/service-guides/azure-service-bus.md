@@ -3,7 +3,7 @@ title: "Architecture Best Practices for Azure Service Bus"
 description: "Architecture recommendations for Azure Service Bus messaging infrastructure covering reliability, security, cost optimization, operational excellence, and performance efficiency."
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.topic: conceptual
+ms.topic: concept-article
 ms.date: 07/24/2025
 ms.subservice: waf-service-guide
 products:
