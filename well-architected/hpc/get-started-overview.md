@@ -149,39 +149,6 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 
 ✔ **Use the Assessment Review Tool** to evaluate the readiness of your optimized HPC workload in production and identify areas for improvement.
 
-## Typical architecture pattern and design areas
-
-The following description illustrates how an HPC workload operates on Azure, from job submission through execution to results storage and analysis.
-
-:::image type="content" source="./images/hpc-architecture.png" alt-text="Diagram that shows the typical architecture of an HPC workload." lightbox="./images/hpc-architecture.png":::
-
-The architecture highlights the integration of different components to enable efficient job scheduling, parallel execution, high-performance storage access, and monitoring in HPC solutions. It includes modules such as user access and job submission, orchestration and scheduling, compute clusters, high-performance interconnects, parallel file systems, data management, and monitoring systems.
-
-**Key flow:**
-1. Users submit jobs through web portals, command-line interfaces, or APIs to a central job scheduler
-2. The scheduler allocates resources based on job requirements, queue policies, and cluster availability
-3. Compute nodes execute workloads with access to shared parallel file systems for input/output operations
-4. High-speed interconnects enable efficient MPI communication for tightly coupled parallel jobs
-5. Monitoring systems track job progress, resource utilization, and system health
-6. Results are written to storage tiers (hot, warm, cold) based on access patterns and retention policies
-7. Completed jobs release resources back to the scheduler for the next workload
-
-The following table describes some key design areas related to HPC workloads.
-
-| Design areas |
-|---|
-| **Compute infrastructure**:  Select processing resources based on workload characteristics. Evaluate CPU, GPU, memory, and specialized accelerator requirements. Balance performance needs with cost constraints and availability. |
-| **Network architecture**: Design high-performance interconnects for parallel communication. Implement low-latency topologies, optimize bandwidth utilization, and minimize communication overhead between compute nodes. |
-| **Storage architecture**: Architect parallel file systems and tiered storage for concurrent access patterns. Balance throughput, capacity, and cost across hot, warm, and cold data tiers. |
-| **Workload orchestration**: Implement scheduling systems to manage job queues, resource allocation, and priority policies. Design for efficient resource utilization and fair access across users and projects. |
-| **Security and governance**: Establish authentication, authorization, and data protection mechanisms. Implement network isolation, encryption, audit controls, and compliance frameworks without compromising performance. |
-| **Operations and monitoring**: Deploy automated provisioning, configuration management, and continuous monitoring. Track resource utilization, job metrics, system health, and cost attribution for operational efficiency. |
-| **Cost optimization**: Implement cost management with budget alerts, resource tagging, right-sizing recommendations, spot instance strategies, and automated scale-down policies. |
-| **Performance optimization**: Profile applications to identify bottlenecks and optimize for target infrastructure. Implement tuning strategies, establish performance baselines, and continuously evaluate efficiency improvements. |
-| **Disaster recovery and business continuity**: Design backup strategies for critical data, implement checkpointing for long-running jobs, and establish recovery procedures. Consider multi-region deployments for mission-critical workloads and document failover processes. |
-| **Hybrid and multi-cloud strategies**: Integrate Azure HPC resources with on-premises infrastructure using Azure Arc, ExpressRoute, or VPN connections. Design workload distribution policies, unified identity management, and consistent monitoring across environments. |
-| **Application optimization**: Profile and optimize applications for Azure infrastructure characteristics. Consider compiler optimizations, library selections (Intel MPI, OpenMPI), containerization strategies, and Azure-specific tuning. Establish performance baselines and benchmarking practices. |
-
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated throughout the guidance with specific examples like cost versus performance, security versus usability, or simplicity versus flexibility.
 
