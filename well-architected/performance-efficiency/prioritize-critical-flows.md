@@ -80,8 +80,8 @@ The process of isolating critical flows is about providing dedicated resources o
 - *Resource segmentation*: Create separate resources for critical flows, allowing them to operate independently without interference from other processes. For example, you can isolate critical flows on dedicated network segments or by using dedicated servers to handle the processing needs of these flows. This approach helps minimize how noncritical flows can negatively affect critical flows.
 
 - *Logical segmentation*: Use virtualization and containerization tools like Docker or Kubernetes to isolate flows at the software level. You can separate critical flows into virtual machines (VMs). By doing so, you create an isolated environment, reducing dependencies and potential interference from other flows.
-  - Consider using the [pipes and filters pattern](/azure/architecture/patterns/pipes-and-filters) to separate out certain steps of the flow that can be run asynchronously, like sending emails.
 
+- *Task decomposition*: Consider using the [pipes and filters pattern](/azure/architecture/patterns/pipes-and-filters) to separate out certain steps of the flow that can be run asynchronously, like sending emails.
 - *Capacity allocation*: For critical flows, explicitly allocate a fixed set of capacity such as CPU, memory, and disk I/O. This allocation ensures that critical flows always have enough resources to operate efficiently. Set resource quotas or limits by using orchestration platforms. By explicitly allocating resources to critical flows, you prevent resource contention and prioritize how they run.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Resource segmentation affects costs. When you dedicate resources to a flow, you often increase the cost and leave some resources underutilized. To justify the performance enhancements to critical flows, the increase in business impact must outweigh the increase in cost.
