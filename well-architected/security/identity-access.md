@@ -25,7 +25,10 @@ From a technical control perspective, **identity is always the primary perimeter
 
 -   **Anonymous**. Entities who haven't provided any evidence about who they are.
 
+
+
 **Definitions** 
+
 
 |Terms   |Definition   |
 |---------|---------|
@@ -70,6 +73,7 @@ As much as possible, the verification process should be handled by your IdP.
 Authorization is a process that allows or denies actions that are requested by the verified identity. The action might be operational or related to resource management.
 
 Authorization requires that you assign permissions to the identities, which you need to do by using the functionality provided by your IdP.
+
 
 To get a holistic view of the identity needs for a workload, you need to catalog the flows, workload assets, and personas, and the actions the assets and personas will perform. Your strategy must cover all use cases that handle **the flows that reach the workload or its components (outside-in access) and flows that reach out from the workload to other sources (inside-out access)**.
 
