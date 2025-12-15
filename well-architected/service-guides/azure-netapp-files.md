@@ -2,7 +2,7 @@
 title: Architecture Best Practices for Azure NetApp Files
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure NetApp Files.
 author: gvanteylingen
-ms.author: netapp-manishc
+ms.author: b-mchabbria
 ms.date: 09/13/2025
 ms.topic: concept-article
 ms.service: azure-waf
