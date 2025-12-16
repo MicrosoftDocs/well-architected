@@ -27,22 +27,6 @@ Use the familiar protocols and tools that you use for on-premises enterprise app
 
 This article assumes that as an architect, you reviewed the [file storage options](/azure/architecture/guide/storage/storage-start-here) and chose Azure NetApp Files as the service for your workloads. The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](../pillars.md).
 
-> [!IMPORTANT]
->
-> Each section has a design checklist that presents architectural areas of concern along with design strategies localized to the scope of technology. Also included are recommendations for the technological capabilities that can help materialize those strategies. The recommendations don't represent an exhaustive list of all configurations that are available for Azure NetApp Files and its dependencies. Instead, they list the key recommendations mapped to the design perspectives. Use the recommendations to build your proof-of-concept or to optimize your existing environments. The foundational architecture that demonstrates the key recommendations use [Siemens Teamcenter PLM with Azure NetApp Files](/azure/architecture/example-scenario/manufacturing/teamcenter-plm-netapp-files).
-
-Azure NetApp Files satisfies a variety of requirements for a wide range of [use cases](/azure/azure-netapp-files/azure-netapp-files-solution-architectures), including (but not limited to):
-
-- [General File Sharing](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#file-sharing-and-global-file-caching)
-- [Azure VMware Solution (AVS)](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-vmware-solution-solutions)
-- SAP HANA
-- [Oracle](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#oracle)
-- [SQL server](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#sql-server)
-- HPC [(Electronic Design Automation (EDA))](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#hpc-solutions), Oil & Gas, Analytics
-- [Artificial Intelligence/Machine Learning](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#machine-learning)
-- [Azure Kubernetes Service](/azure/azure-netapp-files/azure-netapp-files-solution-architectures#azure-kubernetes-services-and-kubernetes), Containerized workloads
-
-
 **Technology scope**
 
 This review focuses on the interrelated decisions for the following Azure resource:
