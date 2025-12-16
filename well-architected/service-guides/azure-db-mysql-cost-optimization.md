@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Database for MySQL and Cost Optimiz
 description: Focuses on the Azure Database for MySQL service used in the Data solution to provide best-practice, configuration recommendations, and design considerations related to Cost Optimization.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 09/13/2025
+ms.date: 11/21/2025
 ms.topic: concept-article
 products:
   - azure-database-mysql
@@ -47,8 +47,10 @@ Explore the following table of recommendations to optimize your Azure Database f
 |Choose the appropriate server size for your workload.|Configuration options: [Single Server](/azure/mysql/concepts-pricing-tiers) and [Flexible Server](/azure/mysql/flexible-server/concepts-compute-storage).|
 |Consider Reserved Capacity for Azure Database for MySQL Single Server.|Compute costs associated with Azure Database For MySQL [Single Server Reservation Discount](/azure/mysql/concept-reserved-pricing). Once you've determined the total compute capacity and performance tier for Azure Database for MySQL in a region, this information can be used to reserve the capacity. The reservation can span one or three years. You can realize significant cost optimization with this commitment.|
 |Take advantage of near-zero-downtime maintenance (Flexible Server).|For production Flexible Server deployments that require minimal disruption, the [near-zero-downtime maintenance capability] (/azure/mysql/flexible-server/concepts-maintenance#near-zero-downtime-maintenance-preview) uses a dedicated load balancer to keep connections healthy during planned maintenance. Maintenance periods should coincide with times of low workload on the server to minimize downtime. Use the [custom maintenance window](/azure/mysql/flexible-server/how-to-maintenance-portal#custom-managed-maintenance-window-cmw) to schedule maintenance during off-peak hours. Still implement retry logic in the data access layer because the feature doesn't eliminate all transient faults (for example, networking blips or failovers).|
+|Enable high availability with dedicated load balancing for mission-critical workloads.|Azure Database for MySQL Flexible Server with high availability now includes a [dedicated Azure Standard Load Balancer](/azure/mysql/flexible-server/concepts-high-availability) for improved network traffic distribution and optimized failover times. This enhancement reduces unplanned downtime costs through faster failover capabilities and improved connection management during maintenance or unexpected outages, helping minimize business impact and associated downtime costs.|
 
 > [!div class="nextstepaction"]
 > [Azure Database for PostgreSQL and cost optimization](postgresql.md)
 
 <!-- Updated: 2025-09-13 for Azure Update 500765 (Near-zero-downtime maintenance capability) -->
+<!-- Updated: November 21, 2025 for Azure Update 520705 -->

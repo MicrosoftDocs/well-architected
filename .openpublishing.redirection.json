@@ -2409,6 +2409,11 @@
 			"source_path": "well-architected/service-guides/event-hubs.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-event-hubs",
 			"redirect_document_id": false
-		}								
+		},								
+    {
+			"source_path": "well-architected/architect-role/checklist.md",
+			"redirect_url": "/azure/well-architected/architect-role/fundamentals",
+			"redirect_document_id": true
+		}											
 	]
 }
