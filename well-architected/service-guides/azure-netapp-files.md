@@ -226,17 +226,9 @@ Azure provides an extensive set of built-in policies related to Azure NetApp Fil
 
 ## Azure Advisor recommendations
 
-Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure NetApp Files deployments. Here are some recommendations that can help you improve the reliability, security, cost effectiveness, performance, and operational excellence of Azure NetApp Files.
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
 
-Consider the following [Advisor](https://azure.microsoft.com/products/advisor/) recommendation for cost effectiveness:
-
-- Save on-demand costs with reserved capacity.
-
-Consider the following Advisor recommendations for reliability:
-
-- Implement disaster recovery strategies for your Azure NetApp Files resources.
-- Enable continuous availability for SMB volumes.
-- Review SAP configurations for timeout values that you use with Azure NetApp Files.
+For more information, see [Azure Advisor](/azure/advisor).
 
 
 ## Example architecture
