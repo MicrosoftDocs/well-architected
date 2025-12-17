@@ -89,8 +89,6 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - *The Circuit Breaker pattern* prevents an application from repeatedly trying to perform an operation that's likely to fail.
 >
->   You can use WebJobs to run background tasks in your web app. To run those tasks reliably, ensure that the app that hosts your job runs continuously on a schedule or based on event-driven triggers.
->
 >   For more information, see [Architecture design patterns that support reliability](/azure/well-architected/reliability/design-patterns).
 >
 > - **Conduct reliability testing:** Conduct load testing to evaluate your application's reliability and performance under load. Test plans should include scenarios that validate your automated recovery operations.
@@ -119,6 +117,7 @@ Start your design strategy based on the [design review checklist for Reliability
 |(App Service) Do not use App Service's [back up and restore](/azure/app-service/manage-backup) functionality for linked databases. |Using native backup and restore tools for your linked databases provides a more reliable and tunable recovery solution for the state store of your web app.<br><br>Backing up linked databases through App Service is [deprecated](/azure/app-service/manage-backup#deprecation-of-linked-database-backups). |
 |(Web Apps) [Define automatic healing rules](/azure/app-service/overview-diagnostics#auto-healing) based on request count, slow requests, memory limits, and other indicators that are part of your performance baseline. Consider this configuration as part of your scaling strategy. |Automatic healing rules help your application recover automatically from unexpected problems. The configured rules trigger healing actions when thresholds are breached. <br><br> Automatic healing enables automatic proactive maintenance. |
 |(Web Apps) [Enable the health check feature](/azure/app-service/monitor-instances-health-check) and provide a path that responds to the health check requests. |Health checks can detect problems early. Then the system can automatically take corrective actions when a health check request fails. <br><br> The load balancer routes traffic away from unhealthy instances, which directs users to healthy nodes.|
+|(Web Apps) [Enable **Always on**](/azure/app-service/webjobs-create?tabs=windowscode#continuous-vs-triggered-webjobs) when your web app is hosting a WebJob. | Web apps can time out after a period of HTTP inactivity. The Always on setting helps ensure that both continuous and triggered WebJobs run reliably. |
 
 ## Security
 

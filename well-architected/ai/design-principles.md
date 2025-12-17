@@ -14,7 +14,7 @@ This article outlines the core principles for AI workloads on Azure, with a focu
 
 ## Reliability
 
-When you run AI workloads on Azure, you need to consider many of the same reliability requirements that you consider for other types of workloads. However, specific considerations for model training, hosting, and inferencing are particularly important and are the focus of this article. It's important integrate these practices with standard design best practices for cloud applications, which also apply to AI workloads.
+When you run AI workloads on Azure, you need to consider many of the same reliability requirements that you consider for other types of workloads. However, specific considerations for model training, hosting, and inferencing are particularly important and are the focus of this article. It's important to integrate these practices with standard design best practices for cloud applications, which also apply to AI workloads.
 
 Review the [reliability design principles](../reliability/principles.md) to get a foundational understanding of the concepts described here.
 
