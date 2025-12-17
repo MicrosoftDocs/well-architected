@@ -1,5 +1,5 @@
 ---
-title: Collaboration with the workload team
+title: Collaborate with workload and platform teams
 description: See how an architect collaborates with the workload team during implementation. Learn about ongoing collaboration tasks like setting review checkpoints.
 author: ckittel
 ms.author: chkittel
@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 
-# Collaboration with the workload team
+# Collaborate with workload and platform teams
 
 Delivering architecture specifications isn't a one-time task. Architects should engage with the workload team throughout implementation.
 
