@@ -4,7 +4,7 @@ description: "Explore design considerations and recommendations for Azure Event 
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
-ms.date: 11/20/2024
+ms.date: 12/18/2025
 ms.subservice: waf-service-guide
 products:
  - azure-event-hubs

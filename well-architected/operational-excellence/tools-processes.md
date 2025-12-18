@@ -177,7 +177,7 @@ The Cloud Adoption Framework for Azure provides general [guidelines and recommen
 - [Security development lifecycle guide](../security/secure-development-lifecycle.md)
 - [Security in DevOps (DevSecOps)](/devops/operate/security-in-devops)
 - [Shift testing left with unit tests](/devops/develop/shift-left-make-testing-fast-reliable)
-- [Video series: Introduction to GitHub CoPilot](/shows/introduction-to-github-copilot/what-is-github-copilot-1-of-6)
+- [Video series: Introduction to GitHub Copilot](/shows/introduction-to-github-copilot/what-is-github-copilot-1-of-6)
 
 ## Operational Excellence checklist
 
