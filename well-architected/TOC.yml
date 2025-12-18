@@ -285,7 +285,7 @@
             - name: Operational excellence
               href: service-guides/event-grid/operational-excellence.md
         - name: Azure Event Hubs
-          href: service-guides/event-hubs.md
+          href: service-guides/azure-event-hubs.md
         - name: Azure ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Azure Files
