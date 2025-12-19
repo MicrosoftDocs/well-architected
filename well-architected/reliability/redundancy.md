@@ -43,7 +43,7 @@ When you design for redundancy in the context of performance efficiency, distrib
 >
 > - A low-latency redundancy design means that you accept the risk of losing those components in the event of a large-scale event, like a geographic disaster, that takes all instances offline. A geo-distant disaster recovery (DR) environment helps mitigate this risk but increases costs.
 
-### Prefer serverless and fully managed services to reduce operational burden
+## Prefer serverless and fully managed services to reduce operational burden
 
 Take advantage of [serverless](https://azure.microsoft.com/solutions/serverless), software as a service (SaaS), and platform as a service (PaaS) solutions to easily add redundancy to your workload without needing to manage data replication or failover operations. These services implement redundancy transparently, which removes the operational burden of designing and maintaining your own redundancy mechanisms. When you evaluate service options, prioritize managed services that handle redundancy automatically over infrastructure-based approaches that require manual redundancy configuration.
 
@@ -55,7 +55,7 @@ Azure managed services provide redundancy through different models. Each model p
 
 When you architect your solution, evaluate whether a managed service option exists for each component before you implement infrastructure-based redundancy. Managed services reduce your operational overhead and often provide more robust redundancy implementations than custom solutions, though they might involve trade-offs in control and potentially higher costs for each unit of capacity.
 
-### Build redundancy into your workload with multiple component instances
+## Build redundancy into your workload with multiple component instances
 
 Deploy multiple instances of your infrastructure components and services to achieve the resilience that your workload needs. This fundamental redundancy strategy ensures that if one instance fails, other instances can continue to handle the workload. You can achieve multiple instances through different approaches. Some scenarios require you to manually configure redundancy by deploying multiple resources individually, such as multiple Azure ExpressRoute circuits or configuring Azure Traffic Manager in multiple regions. Other services are designed to support multiple instances directly, such as setting Azure Virtual Machine Scale Sets to five instances or configuring Azure App Service to run 10 instances. When possible, prefer services that provide built-in support for multiple instances and autoscaling capabilities because they simplify redundancy management and can respond to both reliability and performance needs.
 
@@ -103,7 +103,7 @@ When you deploy redundant infrastructure components, determine how many instance
 
 - Ensure that your design for handling Domain Name System (DNS) is built with a focus on resilience and supports redundant infrastructure.
 
-### Use the Deployment Stamps pattern to streamline your redundancy approach
+## Use the Deployment Stamps pattern to streamline your redundancy approach
 
 Beyond redundancy for individual infrastructure components and services, extend your redundancy strategy to the workload level by deploying multiple instances of your entire workload or logical groups of resources. Follow the [Deployment Stamps design pattern](/azure/architecture/patterns/deployment-stamp) to create repeatable, self-contained units that include all the resources required to deliver your workload to a specific subset of users or requirements.
 
@@ -111,7 +111,7 @@ Deployment stamps represent a shift from component-level to workload-level redun
 
 Whether you deploy stamps in an active-active model (where all stamps actively serve traffic simultaneously) or active-passive model (where one stamp serves traffic while others remain on standby), design each stamp to be a complete, self-sufficient deployment that can handle its designated workload independently.
 
-### Achieve zero downtime through active-active redundancy
+## Achieve zero downtime through active-active redundancy
 
 Active-active deployments maximize service availability by running multiple instances of a workload simultaneously, each actively handling traffic. This setup ensures immediate failover, eliminates downtime, and optimizes resource use by keeping all instances productive. If one instance fails, traffic is automatically rerouted to healthy instances without disrupting service.
 
@@ -143,7 +143,7 @@ The following sections describe configuration options for active-active deployme
 
 - **Common disadvantages of both designs:** Higher operating costs and management burden because of various factors, including the necessity of managing the synchronization of application state and data.
 
-### Use an active-passive architecture design as a cost-effective DR approach
+## Use an active-passive architecture design as a cost-effective DR approach
 
 Active-passive deployment configurations provide a cost-effective way to ensure DR by running a primary instance that handles all traffic while keeping secondary instances idle but ready. These standby instances are activated only when the primary instance fails or undergoes maintenance. This approach minimizes resource usage while providing reliable failover capabilities.
 
@@ -171,13 +171,13 @@ Consider the following configuration options for active-passive deployments.
 
   - **Disadvantage of this design:** Longer recovery time than the warm spare design.
 
-### Distribute workloads across proximate independent infrastructure
+## Distribute workloads across proximate independent infrastructure
 
 Deploying workloads across nearby independent datacenters or datacenter sectors provides redundancy without compromising performance. By using geographically close but physically separate facilities, this setup ensures fault isolation with minimal latency impact. It provides the resilience of distributed infrastructure while maintaining the responsiveness of a single-site deployment. In Azure, availability zones provide this functionality. Availability zones are physically independent datacenters or datacenter sectors that are designed to let you easily deploy fault-tolerant, low-latency workloads.
 
 For latency-sensitive applications like real-time gaming, this approach enables seamless failover and uninterrupted user experience. Game servers distributed across local datacenters can instantly reroute traffic during outages, with transparent load balancing and near real-time data replication preserving gameplay continuity. However, this strategy does carry some risk because large-scale regional events can still affect all sites simultaneously.
 
-### Strengthen fault tolerance with geo-distant deployments
+## Strengthen fault tolerance with geo-distant deployments
 
 Deploying across geographically distributed datacenters provides the strongest protection against large-scale disasters by spreading workloads across regions hundreds or thousands of miles apart. This approach ensures business continuity during events like natural disasters, infrastructure failures, or geopolitical disruptions that can affect entire metropolitan areas. In Azure, you can deploy workloads into regions, which are spread across the globe. When you use this design approach, choose regions that are close to your users but are geographically distant, such as West US and East US.
 
