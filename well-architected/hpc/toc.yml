@@ -1,0 +1,21 @@
+- name: HPC 
+  href: index.yml
+  items:
+    - name: Get started
+      href: get-started-overview.md
+    - name: Design principles
+      href: hpc-design-principles.md
+    - name: Architecture pattern
+      href: hpc-architecture-pattern.md      
+    - name: Design areas
+      items:
+      - name: Identity and access management
+        href: identity-access-management.md
+      - name: Network topology and connectivity
+        href: network-topology-connectivity.md
+      - name: Compute large-scale HPC application workloads
+        href: compute.md
+      - name: Storage for Azure HPC workloads
+        href: storage.md
+      - name: Resource organization for Azure HPC
+        href: resource-organization.md
