@@ -28,7 +28,7 @@ Collaboration between architects and workload and platform teams prevents misali
 
 Architects use POCs in their designs to inform decisions about the design specifications for the workload architecture. These POCs can also provide insight into the feasibility of the actual workload implementation.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Never consider POC code as production-ready. Architects often build POCs without security, logging, or error handling to prove a specific concept quickly. Don't copy and paste POC code into the production codebase. Instead, use the POC as a guideline to write the production code by using established engineering standards.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Never consider POC code as production-ready. POCs are often built without security, logging, or error handling to prove a specific concept quickly. Discourage your workload teams from copy and pasting POC code into the production codebase. Instead, they should use the POC to learn, then they write the production code by using established engineering standards.
 
 ## Manage technical debt
 
