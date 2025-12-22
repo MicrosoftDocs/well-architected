@@ -20,7 +20,7 @@ Collaboration between architects and workload and platform teams prevents misali
 
 - **Set implementation review checkpoints**. Establish regular checkpoints to compare the implementation with the architectural specification with your workload teams. This practice helps ensure the team implements your design according to your specifications, and that the specification meets the predicted requirements. A working feedback loop can mitigate against design or implementation errors.
 
-- **Communicate with stakeholders**. Architects can use their established relationship with stakeholders and understanding of the workload to relay implementation team concerns or negotiate requirement changes.
+- **Communicate with stakeholders**. Architects use their established relationship with stakeholders and understanding of the workload to relay implementation team concerns or negotiate requirement changes.
 
 - **Make environment recommendations**. Architects can also assist workload teams in right-sizing preproduction environments. Workload design often extends beyond designing for production and its disaster recovery.
 
