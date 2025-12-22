@@ -10,7 +10,7 @@ ms.update-cycle: 1095-days
 
 # Collaborate with workload and platform teams
 
-Collaboration between architects and workload and platform teams prevents misalignment, avoids costly rework, and keeps projects moving smoothly. This article outlines practical steps for architects during implementation, including continuous collaboration tasks, POC usage, and technical debt management to help you succeed.
+Collaboration between architects and workload and platform teams prevents misalignment, avoids costly rework, and keeps projects moving smoothly. This article outlines practical steps for architects during implementation, including continuous collaboration tasks, proof-of-concept (POC) usage, and technical debt management to help you succeed.
 
 ## Continuous collaboration tasks
 
