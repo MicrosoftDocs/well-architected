@@ -4,7 +4,7 @@ description: Learn how to set up emergency response processes and procedures tha
 author: claytonsiemens77
 ms.author: csiemens
 ms.date: 11/17/2025
-ms.topic: conceptual
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing an incident management (IcM) process
