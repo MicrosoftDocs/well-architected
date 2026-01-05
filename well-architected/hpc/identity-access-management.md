@@ -9,11 +9,9 @@ ms.date: 12/09/2025
 
 # Identity and access management for Azure HPC
 
-This article builds on considerations and recommendations that are described in the article [Azure identity and access management design](../../ready/landing-zone/design-area/identity-access.md). It can help you examine design considerations for identity and access management that are specific to the deployment, on Azure, of HPC applications.
+This article builds on considerations and recommendations that are described in the article [Azure identity and access management design](/azure/cloud-adoption-framework/ready/landing-zone/design-area/identity-access.md). It can help you examine design considerations for identity and access management that are specific to the deployment, on Azure, of HPC applications.
 
 [Microsoft Entra Domain Services](/entra/identity/domain-services/overview) provides managed domain services like domain join and Group Policy. It also provides access to legacy authentication protocols like lightweight directory access protocol (LDAP) and Kerberos/NTLM authentication. Microsoft Entra Domain Services integrates with your existing Microsoft Entra tenant. This integration enables users to sign in to services and applications connected to the managed domain by using their existing credentials in Microsoft Entra ID. You can also use existing groups and user accounts to help secure access to resources. These features provide a smoother lift-and-shift of on-premises resources to Azure, especially for hybrid environments.
-
-For more information, see [design recommendations for platform access](../../ready/landing-zone/design-area/identity-access-platform-access.md#design-recommendations-for-platform-access) and [Azure identity and access for landing zones](../../ready/landing-zone/design-area/identity-access-landing-zones.md).
 
 ## Design considerations
 
@@ -77,7 +75,7 @@ This diagram shows a manufacturing architecture that uses Batch for authenticati
 
 The following articles provide guidance for various stages of the cloud adoption process. These resources can help you succeed in adopting HPC environments for the cloud.
 
-- [Azure billing offers and Microsoft Entra tenants](../../ready/landing-zone/design-area/azure-billing-microsoft-entra-tenant.md)
+- [Azure billing offers and Microsoft Entra tenants](/azure/cloud-adoption-framework/ready/landing-zone/design-area/azure-billing-microsoft-entra-tenant.md)
 - [Management](manage.md)
 - [Resource organization](resource-organization.md)
 - [Secure](secure.md)
