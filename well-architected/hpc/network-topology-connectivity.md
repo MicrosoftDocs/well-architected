@@ -61,7 +61,7 @@ Domain name system (DNS) is a crucial design element in the overall Azure landin
   
   - InfiniBand connections are possible only between VMs that are allocated within the same [placement group](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups). For more information, see [Enable InfiniBand](/azure/virtual-machines/workloads/hpc/enable-infiniband). To learn how to set up MPI, see [Set up Message Passing Interface for HPC](/azure/virtual-machines/workloads/hpc/setup-mpi).
 
-  :::image type="content" alt-text="Diagram that shows InfiniBand connection between VMs." source="media/infiniband.png" lightbox="media/infiniband.png":::
+  :::image type="content" alt-text="Diagram that shows InfiniBand connection between VMs." source="./media/infiniband.png" lightbox="./media/infiniband.png":::
 
 - **Azure ExpressRoute:** ExpressRoute connections don't use the public internet, and they provide more reliability, faster speeds, and lower latencies than typical internet connections. For point-to-site VPN and site-to-site VPN, you can connect on-premises devices or networks to a virtual network by using any combination of these VPN options and ExpressRoute.
 
