@@ -140,19 +140,6 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 | Security vs. Performance | Strong security can slow workloads, balance compliance with speed. |
 
 
-### Challenges 
-
-- **Network Performance** : Frequent exchange of data during a job, creats network latency with the slow network connections.
-| Licensing Complexity | Software licenses add cost and require careful management.|
-| Data Transfer Overhead | Moving large datasets is slow and resource-heavy, creating bottlenecks.|
-| Storage Throughput | Parallel I/O needs high-performance file systems, standard storage falls short. |
-| Resource Allocation | Efficient scheduling and job placement are complex and ongoing. |
-| Application Scalability | Apps don’t always scale linearly, tuning and redesign may be needed. |
-| Cost Predictability | Specialized hardware can drive costs beyond budget without controls. |
-| Workforce Expertise | HPC demands rare skills in programming, networking, and optimization. |
-| Job Reliability | Long jobs risk failures; checkpointing and fault tolerance add complexity. |
-| Security vs. Performance | Strong security can slow workloads, balance compliance with speed. |
-
 ## How to use this guidance
 
 ✔ **Start with Design methodology**, which outlines the rationale and recurring themes across technical and operational areas. This systematic approach helps to define requirements and design strategies. Revisit this methodology when you face uncertain choices to stay aligned with the workload's overall goals.
@@ -167,6 +154,16 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated throughout the guidance with specific examples like cost versus performance, security versus usability, or simplicity versus flexibility.
 
 ## Design areas
+
+|Design area|Summary|
+|---|---|
+|[**Identity and Access Management**](identity-access-management.md)|Considerations for identity and access management that are specific to the deployment, on Azure, of HPC applications.|
+|[**Network topology and connectivity**](network-topology-connectivity.md)|Examine design considerations and best practices that relate to networking and connectivity for Microsoft Azure and high-performance computing (HPC) deployments.|
+|[**Compute**](compute.md)|The best fit from various VM sizes for HPC and GPU-optimized computing. |
+|[**Storage**](storage.md)|Choose the correct storage for your Azure HPC workloads.|
+|[**Resource organization**](resource-organization.md)|Recommendations that can help you align HPC implementations.|
+
+<br>
 
 ## Next steps
 
