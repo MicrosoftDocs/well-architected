@@ -4,7 +4,7 @@ description: Learn about the ideal Azure VM instances for large-scale HPC applic
 author: Rajani-Janaki-Ram
 ms.author: padmalathas
 ms.topic: concept-article
-ms.date: 12/09/2025
+ms.date: 01/05/2026
 ---
 
 # Compute large-scale HPC application workloads in Azure Virtual Machines
@@ -27,7 +27,7 @@ Azure provides various VM sizes for HPC and GPU-optimized computing. It's import
 
 Keep in mind that not all Azure products are available in all regions. To see what's available in your area, see [Products available by region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/).
 
-For more information about Azure compute options, see the [Azure compute blog](https://techcommunity.microsoft.com/t5/azure-compute-blog/bg-p/AzureCompute) or [Choose an Azure compute service](/azure/architecture/guide/technology-choices/compute-decision-tree).
+For more information about Azure compute options, see the [Choose an Azure compute service](/azure/architecture/guide/technology-choices/compute-decision-tree).
 
 Azure provides both CPU-based and GPU-enabled VMs. The N-series VMs feature NVIDIA GPUs that are designed for compute-intensive or graphics-intensive applications such as AI, learning, and visualization. 
 
@@ -105,20 +105,20 @@ The following architecture is an example of how to use VMs in HPC for finance wo
 
 :::image type="content" alt-text="Architecture diagram that shows a finance HPC workload that uses HPC Pack HB-series VMs." source="./media/hpc-finance-architecture-example.svg" lightbox="./media/hpc-finance-architecture-example.svg" border="false":::
 
-This workload uses HPC Pack HB-series compute nodes. HB-series SKUs have been retired, but a suitable alternative for the compute instances used in this architecture is the HBv4-series VMs.
+This workload uses HPC Pack HB-series compute nodes. HB-series SKUs have been retired, but a suitable alternative for the compute instances used in this architecture is the HBv5-series VMs.
 
-The [HBv4-series VMs](/azure/virtual-machines/hbv4-series) are optimized for HPC applications such as financial analysis, weather simulation, and silicon register-transfer level modeling. HB VMs feature the following specifications:
+The [HBv5-series VMs](/azure/virtual-machines/hbv5-series) are optimized for HPC applications such as financial analysis, weather simulation, and silicon register-transfer level modeling. HB VMs feature the following specifications:
 
-- Up to 176 AMD EPYC™ 9V33X-series CPU cores  
-- 768 GB of RAM  
-- No hyperthreading  
+- Up 368 4th Generation AMD EPYC™ processor cores  
+- 6.7 TB/s of memory bandwidth across 432 GB of high-bandwidth memory (HBM)  
+- No simultaneous multithreading  
 
-HBv4-series VMs also provide the following performance metrics:
+HBv5-series VMs also provide the following performance metrics:
 
-- An average of 1.2 terabytes per second of effective memory bandwidth  
-- 2,304 megabytes of L3 cache  
-- Up to 12 gigabytes per second (GB/s) read and 7 GB/s write speeds for block device SSD performance  
-- Clock frequencies of up to 3.7 gigahertz (GHz)
+- An average of 6.7 terabytes per second of effective memory bandwidth  
+- 1,500 megabytes of L3 cache  
+- Up to 50 gigabytes per second (GB/s) read and 30 GB/s write speeds for block device SSD performance  
+- Base frequencies of up to 3.5 gigahertz (GHz) with 4 gigahertz of boost frequency
 
 For the HPC head node, the workload uses a different-sized VM. Specifically, it uses a D16s_v4 VM, a type of general-purpose product.
 
