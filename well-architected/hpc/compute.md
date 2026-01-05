@@ -53,9 +53,9 @@ Consider the following recommendations and use cases when you design an architec
 
 - Understand that reservoir and seismic workflows typically have similar requirements for compute and job scheduling.
 
-- Consider your network needs. Azure HPC provides HBv2, HBv3, HBv4, and HX-series VM sizes designed for memory-intensive seismic imaging and reservoir simulations.
+- Consider your network needs. Azure HPC provides HBv2, HBv3, HBv4, HBv5, and HX-series VM sizes designed for memory-intensive seismic imaging and reservoir simulations.
 
-- Use HX-series or HBv4-series VMs for memory bandwidth-bound applications, and use HBv3-series or HBv2-series VMs for compute-bound reservoir simulations.
+- Use HX-series or HBv5-series VMs for memory bandwidth-bound applications, and use HBv3-series or HBv2-series VMs for compute-bound reservoir simulations.
 
 - Use NV-series VMs for 3D reservoir modeling and visualizing seismic data.
 
@@ -63,7 +63,7 @@ Consider the following recommendations and use cases when you design an architec
 
    For data-intensive resin transfer molding (RTM) processing, the NDv4 VM size is the best option because it provides Non-Volatile Memory Express (NVMe) drives that have a cumulative capacity of 7 TB. 
 
-   To get the best possible performance on HBv2, HBv3, HBv4, and HX-series VMs with Message Passing Interface workloads, do optimal process pinning to the processors' cores. For more information, see [Scale HPC applications](/azure/virtual-machines/compiling-scaling-applications).
+   To get the best possible performance on HBv2, HBv3, HBv4, HBv5, and HX-series VMs with Message Passing Interface workloads, do optimal process pinning to the processors' cores. For more information, see [Scale HPC applications](/azure/virtual-machines/compiling-scaling-applications).
 
    NCv4-series VMs also provide dedicated tools to ensure the correct pinning of parallel application processes.
 
