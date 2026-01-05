@@ -167,7 +167,13 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >    Monitor event delivery patterns for unusual behavior that might signal security incidents. Set up log retention policies that meet your organization's security and compliance requirements.
 >
-> - **Validate security controls through systematic testing and assessment:** Run regular validation tests on Event Grid access controls, network security, and encryption settings. Do penetration testing that focuses on endpoints, authentication mechanisms, and attempts to bypass access controls. Test network security controls like private endpoint configuration, IP address filtering, and virtual network integration. Test identity and access management, including RBAC assignments, Conditional Access policies, and managed identity authentication. Verify that events remain secure throughout the entire pipeline, from publishers through Event Grid to consumers. Implement automated security testing in your deployment pipelines to catch misconfigurations.
+> - **Validate security controls through systematic testing and assessment:** Run regular validation tests on Event Grid access controls, network security, and encryption settings. 
+>
+>   - Do penetration testing that focuses on endpoints, authentication mechanisms, and attempts to bypass access controls. 
+>
+>   - Test network security controls like private endpoint configuration, IP address filtering, and virtual network integration. 
+>   - Test identity and access management, including RBAC assignments, Conditional Access policies, and managed identity authentication. Verify that events remain secure throughout the entire pipeline, from publishers through Event Grid to consumers. 
+>   - Implement automated security testing in your deployment pipelines to catch misconfigurations.
 >
 
 <!-- markdownlint-disable-next-line MD024 -->
