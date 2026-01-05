@@ -71,7 +71,7 @@ The following diagram shows a manufacturing reference architecture that uses Cyc
 
 This diagram shows a manufacturing architecture that uses Batch for authentication: 
 
-:::image type="content" source="../azure-hpc/media/hpc-identity-access-management-batch.png" alt-text="Diagram that shows a manufacturing reference architecture that uses Azure Batch." lightbox="../azure-hpc/media/hpc-identity-access-management-batch.png":::
+:::image type="content" source="./media/hpc-identity-access-management-batch.png" alt-text="Diagram that shows a manufacturing reference architecture that uses Azure Batch." lightbox="./media/hpc-identity-access-management-batch.png":::
 
 ## Next steps
 
