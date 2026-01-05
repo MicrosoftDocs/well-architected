@@ -25,7 +25,7 @@ For more information, see [Understand factors that influence HPC storage selecti
 
 The following diagram shows a decision tree that's for a specific HPC storage system choice.
 
-:::image type="content" source="media/storage-selection-flow.svg" alt-text="Diagram that shows a decision tree of considerations when you choose a storage solution." lightbox="media/storage-selection-flow.svg" border="false":::
+:::image type="content" source="./media/storage-selection-flow.svg" alt-text="Diagram that shows a decision tree of considerations when you choose a storage solution." lightbox="./media/storage-selection-flow.svg" border="false":::
 
 *Download a [Visio file](https://arch-center.azureedge.net/storage-selection-flow.vsdx) of this architecture.*
 
