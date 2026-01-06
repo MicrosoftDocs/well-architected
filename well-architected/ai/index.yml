@@ -28,6 +28,8 @@ landingContent:
             url: design-methodology.md
           - text: Design principles
             url: design-principles.md
+          - text: Architecture pattern
+            url: architecture-pattern.md            
           - text: Workload personas
             url: personas.md
 
