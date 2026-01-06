@@ -69,11 +69,11 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Baseline Microsoft Foundry chat reference architecture
-            url: azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat
+            url: /azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat
           - text: Baseline Microsoft Foundry chat reference architecture in an Azure landing zone
-            url: azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone
+            url: /azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone
           - text: Analytics end-to-end with Azure Synapse
-            url: azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end
+            url: /azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end
 
  # Card
   - title: Related services

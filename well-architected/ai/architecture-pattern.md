@@ -48,7 +48,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
-                 href="azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat">
+                 href="/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat">
                  <img role="presentation" alt="Microsoft Foundry chat reference architecture" src="./images/baseline-microsoft-foundry.svg">
                 </a>
             </figure>
@@ -67,7 +67,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
-                 href="azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone">
+                 href="/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone">
                  <img role="presentation" alt="Microsoft Foundry chat reference in Azure landing zone" src="./images/baseline-microsoft-foundry-landing-zone.svg">
                 </a>
             </figure>
@@ -86,7 +86,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
-                 href="azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end">
+                 href="/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end">
                  <img role="presentation" alt="App Services baseline architecture diagram." src="./images/azure-analytics-end-to-end.svg">
                 </a>
             </figure>
