@@ -1,7 +1,7 @@
 ---
 title: Architecture pattern for AI workloads on Azure
 ms.reviewer: simipaul
-description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
+description: Learn how to design, deploy, and govern AI workloads on Azure with architectural patterns, baseline references, and best practices for secure, scalable systems.
 author: simipaul
 ms.author: simipaul
 ms.date: 12/18/2025
@@ -9,11 +9,11 @@ ms.topic: concept-article
 ---
 
 # Architecture pattern for AI workloads on Azure
-Learn how to assess, plan, and manage AI workloads. Discover best practices and tools for governing, securing, and maintaining your data and models throughout their lifecycle.
+This guide helps you design, deploy, and govern AI workloads on Azure. Explore key architectural components, baseline reference architectures, and best practices for building secure, scalable AI systems.
 
 The following diagram shows the key components for the architecture pattern that you should include in your design.
 
-:::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Diagram that shows the typical architecture pattern of an AI workload." lightbox="./images/ai-workload-architecture-pattern.png":::
+:::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Screenshot of typical AI workload architecture pattern showing data processing, ML training, generative AI applications, AI practices, and platform services." lightbox="./images/ai-workload-architecture-pattern.png":::
 
 |Component|Description|
 |---|---|
@@ -21,20 +21,21 @@ The following diagram shows the key components for the architecture pattern that
 |ML training and fine-tuning|ML training and fine-tuning are core components of AI architecture. This phase allows data scientists and architects to quickly experiment with models and validate ideas. Starting with a pretrained model provides a solid foundation, which you can then customize for specific tasks. Model development follows a reproducible, iterative process, where models learn from raw data to gain intelligence and deliver meaningful predictions or generative outputs. Carefully track each model’s lifecycle for governance, ensuring easy retrieval and robust management for deployment. Deploy effective models to production through a pipeline. Update models continuously as new data becomes available using MLOps practices to maintain performance.|
 |Generative AI applications|This component brings AI-powered intelligence directly to end users. It combines pretrained models with application logic that manages AI behaviors. The application retrieves knowledge to ground responses in relevant context. It works with other tools and applications by crafting prompts, designing intuitive interfaces, and collecting feedback to improve the experience.|
 |AI practices and process|Build trustworthy AI systems by incorporating ethics, transparency, and DevOps principles throughout development and operation. Incorporate DevOps principles such as version control and automated pipelines into your ML Ops workflows. For generative AI, extend these practices to include prompt management and content monitoring. Use an iterative deployment strategy, ensuring updates to your AI models are delivered safely, with robust fail-safe mechanisms in place. Continually validate accuracy, performance, and bias throughout the AI lifecycle to keep models high-quality.|
-|Platform services and tools|Secure and efficiently manage AI workload operations. Focus on protecting resources, optimizing costs, and maintaining system health. Monitor AI operation health and performance through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Scan and filter AI outputs using specialized tools to identify policy violations. Implement endpoint security measures to safeguard sensitive data returned by the system.|
+|Platform services and tools|Securely and efficiently manage AI workload operations. Focus on protecting resources, optimizing costs, and maintaining system health. Monitor AI operation health and performance through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Scan and filter AI outputs by using specialized tools to identify policy violations. Implement endpoint security measures to safeguard sensitive data returned by the system.|
 
-## Generative AI applications
+## Generative AI application components
 The following diagram shows the key components for the architecture pattern that you should include in your design.
 
-:::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Diagram that shows the typical architecture pattern of an AI workload." lightbox="./images/ai-workload-architecture-pattern.png":::
+:::image type="content" source="./images/gen-ai-workload.jpg" alt-text="Screenshot of generative AI application components." lightbox="./images/gen-ai-workload.jpg":::
 
 |Component|Description|
 |---|---|
 
-## ML training and fine tuning
+
+## ML training and fine-tuning architecture
 The following diagram shows the key components for the architecture pattern that you should include in your design.
 
-:::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Diagram that shows the typical architecture pattern of an AI workload." lightbox="./images/ai-workload-architecture-pattern.png":::
+:::image type="content" source="./images/training-fine-tuning-workload.jpg" alt-text="Screenshot of ML training and fine-tuning components." lightbox="./images/training-fine-tuning-workload.jpg":::
 
 |Component|Description|
 |---|---|
