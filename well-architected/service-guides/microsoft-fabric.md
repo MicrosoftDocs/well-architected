@@ -111,21 +111,25 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Do capacity planning:**  Evaluate workload characteristics to determine the optimal capacity units (CUs) and capacity unit seconds. CUs represent provisioned compute power, while CU-seconds track actual consumption. The goal is choose the right SKU to get predictable performance without over- or under-provisioning. Unused CUs don't carry over so careful estimation is required to avoid wasted or insufficient resources.
->
+> - **Do capacity planning.**  Evaluate workload characteristics to determine the optimal capacity units (CUs) and capacity unit seconds. CUs represent provisioned compute power, while CU-seconds track actual consumption. The goal is choose the right SKU to get predictable performance without over- or under-provisioning. Unused CUs don't carry over so careful estimation is required to avoid wasted or insufficient resources.
+>   
 >   Avoid a one-size-fits-all approach, as different workloads consume capacity in different ways. Classify workloads by behavior and features: for example, data warehouse resources are used only when queries execute; interactive workloads require planning for peak demand; continuously running background tasks can be sized based on daily averages. Understand those patterns to map CU consumption and determine whether to increase capacity, redesign workload distribution, or leverage autoscalingy averages. Map these patterns to CU usage to decide whether to increase capacity, redesign workload distribution, or use autoscaling.
 >
-> - **Validate performance baseline with iterative testing**. Don't rely only on estimators or theoretical calculations. Deploy a representative sample of your workloads to a test capacity and measure actual resource utilization. Use these measurements to extrapolate capacity requirements for higher data volumes, increased process frequency, or greater concurrency.
+> - **Validate performance baseline with iterative testing**. Don't rely only on estimators or theoretical calculations. Deploy a representative sample of your workload to measure actual capacity utilization. Also pay attention to resource utilization (CPU, memory), concurrency levels, and response times and throughput for critical operations. 
+> 
+>   Use these measurements to extrapolate capacity requirements for higher data volumes, increased process frequency, or greater concurrency.
 >
->   Because workloads may scale non-linearly, this approach should be iterative. Adjust capacity based on observed performance, retest, and refine your estimates. Real-world testing and measurement are essential to accurately size capacity, avoid performance bottlenecks, and ensure reliable operation under production conditions.
+>   Because workloads may scale non-linearly, this approach should be iterative. Adjust capacity based on observed performance, retest, and refine your estimates. Real-world testing and measurement are a must to validate assumptions so that capacity is right sized and performance bottlenecks are avoided.
 >
-> - **Be aware of the quotas and limits**. Each Azure subscription has region-specific quotas on the number of CUs that can be provisioned, which can limit workload deployment in certain regions. If quotas are reached, you can request an increase or consider deploying workloads in adjacent regions, balancing proximity to users and data with available capacity. Be aware that even with the same SKU, performance may vary across regions.
+> - **Be aware of the quotas and limits**. Each Fabric SKU also enforces fixed compute, memory, and service-level quotas that can become hard ceilings if they are not explicitly accounted for in the architecture. For example, for Spark there are limits on vCore. Concurrency can be a hidden constraint. A large Spark job, a heavy SQL query, or a pipeline with parallel activities can consume a significant share of available CUs. Adding capacity doesn't necessarily improve performance. Design for isolation so that one workload doesn't monopolize resources and degrade others. Other strategies include capping concurrent executions for non-critical workloads. 
+>
+>   Each Azure subscription has region-specific quotas on the number of CUs that can be provisioned, which can limit workload deployment in certain regions. If quotas are reached, you can request an increase or consider deploying workloads in adjacent regions, balancing proximity to users and data with available capacity. Be aware that even with the same SKU, performance may vary across regions.
 >
 >   Workspaces also have limits on the number of items and users that can be assigned.
 >   
 >   Lower SKUs, like F8, can lead to memory and compute constraints and aren't recommended for production workloads.
 >   
-> - **To be continued**:
+> - **Account for dependencies**. 
 
 ### Recommendations
 
