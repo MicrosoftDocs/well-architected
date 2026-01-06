@@ -48,52 +48,13 @@ In the preceding example shown, the workload must be capable of handling computa
 
 ### Familiarize yourself with the broad HPC workload categories
 
-### Workloads that need constant communication between computers
-
-These applications require all computers to constantly talk to each other while solving a problem. Think of it like an orchestra where every musician must stay perfectly synchronized—if one section slows down, the entire performance suffers.
-
-**Common uses:** Simulating how air flows around an aircraft wing, predicting tomorrow's weather, testing how a car crumples in a crash, or modeling how molecules interact in drug development.
-
-**What they need:** Extremely fast network connections between computers, keeping computers physically close together, and specialized high-performance hardware.
-
----
-
-### Workloads that can work independently
-
-These applications can divide work into separate pieces that don't need to coordinate with each other. Imagine a team of artists each painting different portraits—they work side by side but don't need to wait for each other or share brushes.
-
-Use cases: Running thousands of "what-if" scenarios for investment portfolios, rendering frames for animated movies, analyzing DNA sequences, or testing different design variations for a product.
-
-**What they need:** Standard network connections are usually fine, can use lower-cost computing that might occasionally get interrupted, and can easily add more computers when needed.
-
----
-### Workloads that use graphics processors for speed
-
-These applications use graphics processors (like those in gaming computers) because they're exceptionally good at doing millions of simple calculations at once. It's like having thousands of simple calculators working together instead of one very smart calculator.
-
-Use cases:  Training artificial intelligence systems, processing seismic data to find oil deposits, running chemistry simulations, analyzing medical images, or creating engineering visualizations.
-
-**What they need:** Computers with powerful graphics processors, specialized software that knows how to use these processors, and storage systems fast enough to keep up with the processing speed.
-
----
-
-### Workloads that need enormous amounts of memory
-
-These applications must hold massive amounts of information in active memory simultaneously, like trying to work on a giant jigsaw puzzle where all pieces need to be spread out on the table at once rather than stored in boxes.
-
-Use cases:  Assembling complete genome sequences from fragments, running city-scale simulations, analyzing entire datasets in memory for instant queries, or processing real-time data from thousands of sensors.
-
-**What they need:** Computers with exceptionally large memory capacity (often 1-4 terabytes), configurations that provide lots of memory per processor, and sometimes special settings to manage very large memory allocations.
-
----
-
-### Workloads where moving data is the bottleneck
-
-These applications spend more time reading and writing data than actually computing results. Think of it like a busy kitchen where chefs wait for ingredients to arrive rather than spending time cooking.
-
-Use cases:  Processing satellite imagery covering entire continents, converting massive video libraries between formats, analyzing years of system logs to find patterns, or processing genetic data from large population studies.
-
-**What they need:** Storage systems that can read and write data extremely fast, file systems designed to handle many computers accessing data simultaneously, and strategies to keep data close to where it's being processed.
+| Workload Type | Description | Use Case | Recommended |
+|-------------- | ----------- | -------- | ----------- |
+| Tightly coupled (constant communication) | All computers must constantly talk to each other while solving a problem. | Simulating how air flows around an aircraft wing, predicting tomorrow's weather, testing how a car crumples in a crash, or modeling how molecules interact in drug development. | Extremely fast network connections between computers, keeping computers physically close together, and specialized high-performance hardware. |
+| Loosely coupled (work independently) | Work divides into separate pieces that don't need to coordinate. | Running thousands of "what-if" scenarios for investment portfolios, rendering frames for animated movies, analyzing DNA sequences, or testing different design variations for a product. | Standard network connections are usually fine, can use lower-cost computing that might occasionally get interrupted, and can easily add more computers when needed. |
+| GPU-accelerated | Uses graphics processors because they're exceptionally good at doing millions of simple calculations at once. | Training AI systems, processing seismic data to find oil deposits, running chemistry simulations, analyzing medical images, or creating engineering visualizations. | Computers with powerful graphics processors, specialized software that knows how to use these processors, and storage systems fast enough to keep up with the processing speed. |
+| Memory-intensive | Must hold massive amounts of information in active memory simultaneously. | Assembling complete Genome sequences from fragments, running city-scale simulations, analyzing entire datasets in memory for instant queries, or processing real-time data from thousands of sensors. | Computers with exceptionally large memory capacity (often 1-4 terabytes), configurations that provide lots of memory per processor, and sometimes special settings to manage very large memory allocations. |
+| I/O-intensive (data bottleneck) | Spends more time reading and writing data than actually computing results. | Processing satellite imagery covering entire continents, converting massive video libraries between formats, analyzing years of system logs to find patterns, or processing genetic data from large population studies. | Storage systems that can read and write data extremely fast, file systems designed to handle many computers accessing data simultaneously, and strategies to keep data close to where it's being processed. |
 
 ### Evaluate your cloud versus on-premises options
 
@@ -123,21 +84,6 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 
 **Hybrid approaches**: Combine on-premises infrastructure with cloud resources for burst capacity or specialized workloads.
 - Best for: Organizations with existing on-premises investments wanting flexible capacity, regulatory requirements for some data on-premises
-
-## What are the common challenges?
-
-| Challenges | Summary |
-| :--------- | :------ |
-| Network Performance | Frequent exchange of data during a job, creats network latency with the slow network connections.|
-| Licensing Complexity | Software licenses add cost and require careful management.|
-| Data Transfer Overhead | Moving large datasets is slow and resource-heavy, creating bottlenecks.|
-| Storage Throughput | Parallel I/O needs high-performance file systems, standard storage falls short. |
-| Resource Allocation | Efficient scheduling and job placement are complex and ongoing. |
-| Application Scalability | Apps don’t always scale linearly, tuning and redesign may be needed. |
-| Cost Predictability | Specialized hardware can drive costs beyond budget without controls. |
-| Workforce Expertise | HPC demands rare skills in programming, networking, and optimization. |
-| Job Reliability | Long jobs risk failures; checkpointing and fault tolerance add complexity. |
-| Security vs. Performance | Strong security can slow workloads, balance compliance with speed. |
 
 
 ## How to use this guidance
