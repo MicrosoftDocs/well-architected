@@ -3,7 +3,7 @@ title: HPC workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating HPC workloads on Azure.
 author: prwilk
 ms.author: padmalathas
-ms.date: 12/12/2025
+ms.date: 01/06/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -153,17 +153,6 @@ When you choose between cloud HPC and on-premises infrastructure, consider these
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated throughout the guidance with specific examples like cost versus performance, security versus usability, or simplicity versus flexibility.
 
-## Design areas
-
-|Design area|Summary|
-|---|---|
-|[**Identity and Access Management**](identity-access-management.md)|Considerations for identity and access management that are specific to the deployment, on Azure, of HPC applications.|
-|[**Network topology and connectivity**](network-topology-connectivity.md)|Examine design considerations and best practices that relate to networking and connectivity for Microsoft Azure and high-performance computing (HPC) deployments.|
-|[**Compute**](compute.md)|The best fit from various VM sizes for HPC and GPU-optimized computing. |
-|[**Storage**](storage.md)|Choose the correct storage for your Azure HPC workloads.|
-|[**Resource organization**](resource-organization.md)|Recommendations that can help you align HPC implementations.|
-
-<br>
 
 ## Next steps
 
