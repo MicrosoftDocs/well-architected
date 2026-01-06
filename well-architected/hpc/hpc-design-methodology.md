@@ -103,5 +103,5 @@ Maintain relationships with hardware and software vendors, cloud providers, and 
 
 Start your design journey by reviewing how the Well-Architected Framework pillars apply to HPC workloads.
 
-> [Design principles for HPC workloads](get-started.md)
+> [Design principles for HPC workloads](get-started-overview.md)
 
