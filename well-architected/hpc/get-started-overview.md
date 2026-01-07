@@ -15,8 +15,6 @@ This article addresses architectural challenges of designing high-performance co
 These articles are meant for workload owners and technical stakeholders like architects, HPC administrators, development leads, and IT leaders. Specialized HPC roles, such as computational scientists, researchers, and performance engineers, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
 
 > [!NOTE]
-> Azure offers various services and infrastructure that are core to any HPC workload or build around. Depending on your business needs, you can choose between fully managed platform as a service (PaaS) solutions, infrastructure as a service (IaaS) solutions with HPC-optimized resources, or hybrid approaches.
->
 > Specific Azure services and their capabilities are not covered here. We recommend that you refer to the respective product documentation for that information.
 
 For example, engineers testing how a new aircraft design handles wind resistance need to run thousands of calculations across the entire structure. Researchers studying how proteins fold to develop new medicines process enormous datasets that require specialized computing power. Financial analysts running market simulations explore millions of scenarios to understand risk. Weather forecasters process global atmospheric data to predict storms days in advance.
@@ -42,15 +40,9 @@ In the preceding example shown, the workload must be capable of handling computa
 - **Storage demands**: Massive data volumes and concurrent access patterns necessitate expensive parallel file systems and high-IOPS storage that standard solutions cannot provide
 - **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire
 
-## Before you begin your design strategies
-
-> [!NOTE]
-> This guidance focuses specifically on HPC workloads requiring specialized compute infrastructure and parallel processing.
-> - AI/ML workloads: See the [AI workload guidance](/azure/well-architected/ai/get-started) for model training, inference, and MLOps patterns
-> - Big Data analytics: Data lake and analytics platform patterns are covered separately in Data analytics guidance
-> - Standard web applications: Traditional cloud-native patterns are covered in the [Well-Architected Framework guidance](/azure/well-architected/pillars)
-
 ### Familiarize yourself with the broad HPC workload categories
+
+To get the most value from this guidance, start by familiarizing yourself with the common HPC workload categories and identifying the one that best aligns with the solution you’re building.
 
 | Workload Type | Description | Use Case | Recommended |
 |-------------- | ----------- | -------- | ----------- |
@@ -60,35 +52,8 @@ In the preceding example shown, the workload must be capable of handling computa
 | Memory-intensive | Must hold massive amounts of information in active memory simultaneously. | Assembling complete Genome sequences from fragments, running city-scale simulations, analyzing entire datasets in memory for instant queries, or processing real-time data from thousands of sensors. | Computers with exceptionally large memory capacity (often 1-4 terabytes), configurations that provide lots of memory per processor, and sometimes special settings to manage very large memory allocations. |
 | I/O-intensive (data bottleneck) | Spends more time reading and writing data than actually computing results. | Processing satellite imagery covering entire continents, converting massive video libraries between formats, analyzing years of system logs to find patterns, or processing genetic data from large population studies. | Storage systems that can read and write data extremely fast, file systems designed to handle many computers accessing data simultaneously, and strategies to keep data close to where it's being processed. |
 
-### Evaluate your cloud versus on-premises options
-
-If your workload has predictable, continuous compute requirements and you already have infrastructure, maintaining on-premises HPC might be cost-effective. But if you need burst capacity, rapid provisioning, access to the latest hardware, or have variable workloads, Azure HPC solutions offer significant advantages.
-
-When you choose between cloud HPC and on-premises infrastructure, consider these factors:
-
-| Aspect    | Description | Benefits  |
-| :---------| :---------- | :-------- |
-| **Infrastructure vs. operational expenditure**| Shift from upfront hardware costs to pay-as-you-go. | Improves cash flow, and reduces financial risk. |
-| **Scalability**| Scale up or scale down resources as needed. | Handles peak demand and optimizes cost and performance.|
-| **Hardware currency**| Access the latest CPU, GPU, and interconnects. | Improves performance and efficiency with hardware. |
-| **Geographic distribution**| Deploy workloads across multiple regions. | Ensures compliance and disaster recovery. |
-| **Time to solution**| Provision clusters in minutes, not months. | Accelerates R&D and speeds innovation. |
-| **Total cost of ownership**| Improves maintenance and administrative overhead. | Lowers overall costs and simplifies operations. |
-
 > [!IMPORTANT]
-> Migrating to cloud, requires careful planning around data transfer, network architecture, licensing models, and application optimization. Many organizations adopt a hybrid approach, maintaining on-premises resources for steady-state workloads while using cloud for bursting and specialized requirements.
-
-### Determine your deployment and management model
-
-**Self-managed infrastructure**: You control the entire stack from VMs to applications, providing maximum flexibility but requiring significant operational expertise. 
-- Best for: Organizations with existing HPC expertise, complex custom configurations, specific compliance requirements
-
-**Managed services**: Use Azure services or marketplace solutions to reduce operational burden.
-- Best for: Organizations wanting to focus on workloads rather than infrastructure, teams without deep HPC operations experience
-
-**Hybrid approaches**: Combine on-premises infrastructure with cloud resources for burst capacity or specialized workloads.
-- Best for: Organizations with existing on-premises investments wanting flexible capacity, regulatory requirements for some data on-premises
-
+> On-premises HPC can be cost-effective for predictable, continuous workloads with existing infrastructure. Cloud HPC offers advantages for burst capacity, variable workloads, rapid provisioning, and access to current hardware. Key factors include pay-as-you-go pricing, on-demand scalability, geographic distribution, and faster time-to-solution. Many organizations adopt a hybrid approach—using on-premises for steady-state workloads and cloud for bursting. (**Placeholder for this converted NOTE is TBD!!!**)
 
 ## How to use this guidance
 
