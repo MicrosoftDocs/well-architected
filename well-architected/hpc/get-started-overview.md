@@ -12,35 +12,43 @@ ms.update-cycle: 180-days
 
 This article addresses architectural challenges of designing high-performance computing (HPC) workloads. It focuses on design strategies for all the characteristics of HPC workloads. The recommendations are based on Azure Well-Architected Framework principles and include insights from successful Azure HPC implementations on Azure.
 
-These articles are meant for workload owners and technical stakeholders like architects, HPC administrators, development leads, and IT leaders. Specialized HPC roles, such as computational scientists, researchers, and performance engineers, should also be aware of this guidance because collaboration across various roles and teams is a key aspect.
+HPC workloads involve specialized roles such as computational scientists, researchers, and performance engineers. This article is meant for workload owners like engineers, specialized roles, technical stakeholders like architects, HPC administrators, development leads, and IT leaders.
 
 > [!NOTE]
 > Specific Azure services and their capabilities are not covered here. We recommend that you refer to the respective product documentation for that information.
 
-For example, engineers testing how a new aircraft design handles wind resistance need to run thousands of calculations across the entire structure. Researchers studying how proteins fold to develop new medicines process enormous datasets that require specialized computing power. Financial analysts running market simulations explore millions of scenarios to understand risk. Weather forecasters process global atmospheric data to predict storms days in advance.
-
-These scenarios share common needs: they require significant processing capacity, handle large volumes of data, often need specialized hardware like graphics processors, and benefit from distributing work across many machines. If your workload takes too long on regular computers, requires specialized processing capabilities, or involves running the same analysis across many variations, this guidance can help you design an effective solution.
-
-This guidance is designed for workloads that need more computational power than standard applications can provide. Consider using HPC when your work involves processing massive amounts of data, running complex calculations that take hours or days, or solving problems that require many computers working together simultaneously.
+---
 
 ## What is an HPC workload?
 
-In the preceding example shown, the workload must be capable of handling computationally intensive tasks. It requires significant processing power, memory, storage, or network bandwidth beyond what standard computing resources can efficiently provide. It focuses on delivering high throughput, low latency, parallel processing capabilities, and optimizing for scientific, engineering, or data-intensive computing scenarios. HPC workloads differ from traditional cloud workloads in ways that create both opportunities and challenges.
+An HPC workload should be capable of handling computationally intensive tasks that need more computing resources than a typical system can provide. 
 
-**Opportunities:**
+Consider a pharmaceutical company designing a new drug. Researchers need to simulate how millions of molecular compounds interact with a target protein. Running these simulations on a standard computer would take years. With HPC, the work is distributed across thousands of processors working in parallel, completing the analysis in days. The workload requires specialized GPUs for molecular modeling, high-speed networks so processors can share results quickly, and fast storage systems that can feed data to all processors simultaneously.
+
+This example illustrates the core HPC characteristics: massive parallelism, specialized hardware, high-speed data movement, and time-sensitive results. Whether you're simulating weather patterns, crash-testing vehicle designs, processing seismic data, or rendering visual effects, HPC workloads share these same fundamental needs.
+
+HPC workloads are capable of handling:
+
 - **Massive computational scale**: Process complex problems in hours or days that would take months or years on standard systems, accelerating research and innovation timelines
 - **Parallel efficiency**: Distribute work across hundreds or thousands of compute resources simultaneously, enabling breakthrough discoveries in science and engineering
 - **Specialized performance**: Leverage purpose-built hardware like GPUs and high-speed interconnects to achieve performance levels impossible with general-purpose infrastructure
 - **Flexible resource allocation**: Scale resources dynamically to match workload demands, paying only for capacity when needed rather than maintaining idle infrastructure
 
-**Challenges:**
+---
+
+## Common challenges
+
+While HPC offers greater computing capability, adopting or scaling HPC workloads requires addressing common challenges such as:
+
 - **Higher infrastructure costs**: Specialized hardware like high-core-count CPUs, GPUs, and low-latency networking (InfiniBand, RoCE) significantly increase resource expenses compared to standard compute
 - **Operational complexity**: Require sophisticated workload managers (Slurm, PBS, LSF), parallel file systems, and specialized scheduling policies that demand expert knowledge to configure and maintain
 - **Application constraints**: Many applications require substantial refactoring or rewriting to take advantage of parallel processing capabilities, creating development overhead
 - **Storage demands**: Massive data volumes and concurrent access patterns necessitate expensive parallel file systems and high-IOPS storage that standard solutions cannot provide
 - **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire
 
-### Familiarize yourself with the broad HPC workload categories
+---
+
+## Familiarize yourself with the broad HPC workload categories
 
 To get the most value from this guidance, start by familiarizing yourself with the common HPC workload categories and identifying the one that best aligns with the solution you’re building.
 
