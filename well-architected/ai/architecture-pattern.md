@@ -18,10 +18,10 @@ The following diagram shows the key components for the architecture pattern that
 |Component|Description|
 |---|---|
 |Data processing and analytics|Data processing and analytics are essential for AI workloads. They ensure machine learning models get clean, well-structured, high-quality datasets for better results. Ingest raw data from diverse sources into a central repository. Then clean, transform, and organize it into reusable datasets for model training, model fine-tuning, and grounding data for intelligent AI applications.|
-|Model training and fine-tuning|Model training and fine-tuning are core components of AI architecture. Model development follows a reproducible, iterative process, where models learn from raw data to gain intelligence and deliver meaningful predictions or generative outputs. A well-architected approach tracks model versions, data lineage, and evaluation metrics.  Update models continuously as new data becomes available using MLOps practices to maintain model performance and alignment with business needs.|
+|Model training and fine-tuning|Model training and fine-tuning are core components of AI architecture. Model development follows a reproducible, iterative process, where models learn from raw data to gain intelligence and deliver meaningful predictions or generative outputs. A well-architected approach tracks model versions, data lineage, and evaluation metrics. Update models continuously as new data becomes available using MLOps practices to maintain model performance and alignment with business needs.|
 |Intelligent AI applications|This component brings AI-powered intelligence directly to end users. It combines pretrained models with application logic that manages AI behaviors. The application retrieves knowledge to ground responses in relevant context. It works with other tools and applications by crafting prompts, designing intuitive interfaces, and collecting feedback to improve the experience.|
 |AI practices and process|These practices help you build AI solutions that are consistent, repeatable, trustworthy, and aligned with organizational and regulatory expectations. Incorporate DevOps principles such as version control and automated pipelines into your MLOps workflows. For generative AI, extend these practices to include prompt management and content monitoring. Use an iterative deployment strategy, ensuring updates to your AI models are delivered safely, with robust fail-safe mechanisms in place. Continually validate accuracy, performance, and bias throughout the AI lifecycle to keep models high-quality.|
-|Platform services and tools|These are the core cloud capabilities and tools that support AI workloads throughout development and operations. Manage AI workloads securely and efficiently by protecting resources, optimizing costs, and monitoring system health through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Scan and filter AI outputs by using specialized tools to identify policy violations. Implement endpoint security measures to safeguard sensitive data returned by the system.|
+|Platform services and tools|Here are the core cloud capabilities and tools that support AI workloads from development to deployment. Manage AI workloads securely and efficiently by protecting resources, optimizing costs, and monitoring system health through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Scan and filter AI outputs by using specialized tools to identify policy violations. Implement endpoint security measures to safeguard sensitive data returned by the system.|
 
 ## Intelligent application architecture
 The following diagram shows the components for the intelligent application that you should include in your design.
@@ -59,7 +59,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
                   <hr>                      
                 </div>
                 <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                    <p>Use this architecture as a reference to build and deploy a secure, scalable conversational AI solutions on Azure using Foundry, Azure Open AI, and other related services. It emphasizes private networking, zone redundancy, and strict security controls to ensure compliance and enterprise readiness.</p>
+                    <p>Use this architecture as a reference to build and deploy secure, scalable conversational AI solutions on Azure using Foundry, Azure OpenAI, and other related services. It emphasizes private networking, zone redundancy, and strict security controls to ensure compliance and enterprise readiness.</p>
                 </div>
             </div>
         </article>
@@ -78,7 +78,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
                   <hr>                      
                 </div>
                 <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                    <p>This reference architecture extends the Baseline Microsoft Foundry Chat design into a secure Azure Landing Zone, unifying components such as Foundry Agent Service, Azure OpenAI, and App Service behind private endpoints and Azure Firewall—all within a zone-redundant, network-isolated virtual network.</p>
+                    <p>This architecture builds on the Microsoft Foundry Chat design and places it in a secure Azure Landing Zone. It brings together key components—Foundry Agent Service, Azure OpenAI, and App Service—inside a private, network-isolated environment. All services connect through private endpoints and are protected by Azure Firewall, with zone redundancy for high availability.</p>
                 </div>
             </div>
         </article>
