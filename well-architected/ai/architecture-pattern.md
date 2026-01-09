@@ -24,7 +24,6 @@ Although each solution has its own unique requirements, the architecture diagram
 |Platform services and tools|Core cloud services and tools support AI workloads from development to deployment. Keep your AI workloads secure and cost-effective by protecting resources, optimizing spending, and monitoring system health through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Use specialized tools to scan and filter AI outputs for policy compliance, while endpoint security safeguards sensitive data.|
 
 The next section outlines the standard architecture pattern for the core components of an AI workload. 
-
 ## Intelligent application architecture
 The following diagram shows the components for the intelligent application that you should include in your design.
 
