@@ -328,6 +328,8 @@
           href: service-guides/virtual-wan-service-guide.md
     - name: Design guides
       items:
+      - name: Overview
+        href: ./design.md
       - name: Health modeling
         href: ./design-guides/health-modeling.md      
       - name: Incident management plan
