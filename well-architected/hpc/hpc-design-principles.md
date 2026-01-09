@@ -3,7 +3,7 @@ title: Design Principles for HPC Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an HPC workload.
 author: padmalathas
 ms.author: prwilk
-ms.date: 12/12/2025
+ms.date: 02/28/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -17,7 +17,7 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Reliability
 
-| Design Principle | Considerations |
+| Recommendations | Considerations |
 |------------------|----------------|
 | **Define recovery objectives** | Establish how much work can be lost and how quickly the environment must be restored after failures. These targets inform backup frequency, checkpoint strategies, and failover procedures. |
 | **Implement job checkpointing** | Long-running jobs should periodically save progress to durable storage, enabling them to resume from the last saved state rather than restarting from the beginning after failures. |
@@ -27,7 +27,7 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Performance Efficiency
 
-| Design Principle | Considerations |
+| Recommendations | Considerations |
 |------------------|----------------|
 | **Match hardware to workload needs** | Different workloads have different bottlenecks—some need fast processors, others need large memory, fast storage, or GPU accelerators. Profile applications and select hardware accordingly. |
 | **Minimize communication delays** | When jobs require frequent coordination between nodes, network speed becomes critical. Deploy high-speed interconnects and keep communicating nodes physically close together. |
@@ -37,7 +37,7 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Operational Excellence
 
-| Design Principle | Considerations |
+| Recommendations | Considerations |
 |------------------|----------------|
 | **Automate cluster provisioning** | Define infrastructure as code to enable rapid, repeatable deployment. Automation reduces setup errors and time spent on manual configuration. |
 | **Integrate familiar job schedulers** | Support existing tools and workflows that teams already use. Users should submit jobs the same way regardless of where workloads run. |
@@ -47,7 +47,7 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Security
 
-| Design Principle | Considerations |
+| Recommendations | Considerations |
 |------------------|----------------|
 | **Implement network segmentation** | Isolate compute resources from general networks. Restrict access to authorized users and limit communication to required pathways. |
 | **Enforce role-based access control** | Grant users only the permissions they need. Separate privileges between user groups and restrict administrative actions to authorized operators. |
@@ -57,7 +57,7 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Cost Optimization
 
-| Design Principle | Considerations |
+| Recommendations | Considerations |
 |------------------|----------------|
 | **Implement storage lifecycle management** | Automatically move aging data from high-performance storage to lower-cost tiers based on access patterns. Balance performance needs against storage costs. |
 | **Right-size compute for actual usage** | Profile applications to understand true resource consumption. Avoid paying for capabilities that workloads won't use. |
