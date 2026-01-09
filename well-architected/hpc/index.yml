@@ -8,7 +8,7 @@ metadata:
   services: na
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 12/09/2025
+  ms.date: 02/06/2026
   ms.topic: landing-page
   ms.collection: na
 
@@ -27,26 +27,12 @@ landingContent:
             url: get-started-overview.md
       - linkListType: concept
         links:
-          - text: Architecture pattern 
-            url: hpc-architecture-pattern.md
+          - text: Design methodology
+            url: hpc-design-methodology.md
           - text: Design principles
-            url: hpc-design-principles.md             
-  # Card
-  - title: Design areas
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Identity and access management
-            url: identity-access-management.md
-          - text: Network topology and connectivity
-            url: network-topology-connectivity.md
-          - text: Compute large-scale HPC application workloads
-            url: compute.md
-          - text: Storage for Azure HPC workloads
-            url: storage.md
-          - text: Resource organization for Azure HPC
-            url: resource-organization.md            
-    
+            url: hpc-design-principles.md            
+          - text: Architecture pattern 
+            url: hpc-architecture-pattern.md         
  # Card
   - title: Reference example
     linkLists:
