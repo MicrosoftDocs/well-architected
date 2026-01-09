@@ -279,13 +279,9 @@
         - name: Azure Disk Storage
           href: service-guides/azure-disk-storage.md
         - name: Azure Event Grid
-          items:
-            - name: Reliability
-              href: service-guides/event-grid/reliability.md
-            - name: Operational excellence
-              href: service-guides/event-grid/operational-excellence.md
+          href: service-guides/azure-event-grid.md
         - name: Azure Event Hubs
-          href: service-guides/event-hubs.md
+          href: service-guides/azure-event-hubs.md
         - name: Azure ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Azure Files
