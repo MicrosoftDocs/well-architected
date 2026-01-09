@@ -3,7 +3,7 @@ title: HPC workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating HPC workloads on Azure.
 author: prwilk
 ms.author: padmalathas
-ms.date: 01/06/2026
+ms.date: 02/28/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -17,8 +17,6 @@ HPC workloads involve specialized roles such as computational scientists, resear
 > [!NOTE]
 > Specific Azure services and their capabilities are not covered here. We recommend that you refer to the respective product documentation for that information.
 
----
-
 ## What is an HPC workload?
 
 An HPC workload should be capable of handling computationally intensive tasks that need more computing resources than a typical system can provide. 
@@ -29,26 +27,26 @@ This example illustrates the core HPC characteristics: massive parallelism, spec
 
 HPC workloads are capable of handling:
 
-- **Massive computational scale**: Process complex problems in hours or days that would take months or years on standard systems, accelerating research and innovation timelines
-- **Parallel efficiency**: Distribute work across hundreds or thousands of compute resources simultaneously, enabling breakthrough discoveries in science and engineering
-- **Specialized performance**: Leverage purpose-built hardware like GPUs and high-speed interconnects to achieve performance levels impossible with general-purpose infrastructure
-- **Flexible resource allocation**: Scale resources dynamically to match workload demands, paying only for capacity when needed rather than maintaining idle infrastructure
+- **Massive computational scale**: Process complex problems in hours or days that would take months or years on standard systems, accelerating research and innovation timelines.
+- **Parallel efficiency**: Distribute work across hundreds or thousands of compute resources simultaneously, enabling breakthrough discoveries in science and engineering.
+- **Specialized performance**: Leverage purpose-built hardware like GPUs and high-speed interconnects to achieve performance levels impossible with general-purpose infrastructure.
+- **Flexible resource allocation**: Scale resources dynamically to match workload demands, paying only for capacity when needed rather than maintaining idle infrastructure.
 
----
 
 ## Common challenges
 
 While HPC offers greater computing capability, adopting or scaling HPC workloads requires addressing common challenges such as:
 
-- **Higher infrastructure costs**: Specialized hardware like high-core-count CPUs, GPUs, and low-latency networking (InfiniBand, RoCE) significantly increase resource expenses compared to standard compute
-- **Operational complexity**: Require sophisticated workload managers (Slurm, PBS, LSF), parallel file systems, and specialized scheduling policies that demand expert knowledge to configure and maintain
+- **Higher infrastructure costs**: Specialized hardware like high-core-count CPUs, GPUs, and low-latency networking (InfiniBand, RoCE) significantly increase resource expenses compared to standard compute.
+- **Operational complexity**: Require sophisticated workload managers (Slurm, PBS, LSF), parallel file systems, and specialized scheduling policies that demand expert knowledge to configure and maintain.
 - **Application constraints**: Many applications require substantial refactoring or rewriting to take advantage of parallel processing capabilities, creating development overhead
-- **Storage demands**: Massive data volumes and concurrent access patterns necessitate expensive parallel file systems and high-IOPS storage that standard solutions cannot provide
-- **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire
+- **Storage demands**: Massive data volumes and concurrent access patterns necessitate expensive parallel file systems and high-IOPS storage that standard solutions cannot provide.
+- **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire.
 
----
+When you design a HPC workload your design methodology should always solve for the preceeding challenges, for more information see [Design methodology for HPC workloads](hpc-design-methodology.md).
 
-## Familiarize yourself with the broad HPC workload categories
+
+## Broad HPC workload categories
 
 To get the most value from this guidance, start by familiarizing yourself with the common HPC workload categories and identifying the one that best aligns with the solution you’re building.
 
@@ -61,7 +59,7 @@ To get the most value from this guidance, start by familiarizing yourself with t
 | I/O-intensive (data bottleneck) | Spends more time reading and writing data than actually computing results. | Processing satellite imagery covering entire continents, converting massive video libraries between formats, analyzing years of system logs to find patterns, or processing genetic data from large population studies. | Storage systems that can read and write data extremely fast, file systems designed to handle many computers accessing data simultaneously, and strategies to keep data close to where it's being processed. |
 
 > [!IMPORTANT]
-> On-premises HPC can be cost-effective for predictable, continuous workloads with existing infrastructure. Cloud HPC offers advantages for burst capacity, variable workloads, rapid provisioning, and access to current hardware. Key factors include pay-as-you-go pricing, on-demand scalability, geographic distribution, and faster time-to-solution. Many organizations adopt a hybrid approach—using on-premises for steady-state workloads and cloud for bursting. (**Placeholder for this converted NOTE is TBD!!!**)
+> On-premises HPC can be cost-effective for predictable, continuous workloads with existing infrastructure. Cloud HPC offers advantages for burst capacity, variable workloads, rapid provisioning, and access to current hardware. Key factors include pay-as-you-go pricing, on-demand scalability, geographic distribution, and faster time-to-solution. Many organizations adopt a hybrid approach—using on-premises for steady-state workloads and cloud for bursting.
 
 ## How to use this guidance
 
@@ -69,9 +67,6 @@ To get the most value from this guidance, start by familiarizing yourself with t
 
 ✔ **Proceed to Design principles** to see how the design methodology aligns with the core Well-Architected Framework pillars. Consider your growth trajectory and scaling needs. Evaluate the underlying principles for all pillars collectively, including the tradeoffs between performance, cost, security, and operational complexity.
 
-✔ **Focus on the design areas** that have the biggest effect on your solution. Each area includes considerations and recommendations to guide you through the design decisions specific to HPC workloads.
-
-✔ **Use the Assessment Review Tool** to evaluate the readiness of your optimized HPC workload in production and identify areas for improvement.
 
 > [!TIP]
 > Every architectural decision involves a range of considerations and a set of acknowledged compromises that balance different aspects of the framework. These tradeoffs are indicated throughout the guidance with specific examples like cost versus performance, security versus usability, or simplicity versus flexibility.
@@ -79,10 +74,11 @@ To get the most value from this guidance, start by familiarizing yourself with t
 
 ## Next steps
 
-- Review the Design methodology for HPC workloads to understand the systematic approach to HPC architecture
-- Explore Design principles for HPC workloads to see how Well-Architected Framework pillars apply to HPC scenarios
-- Deep dive into specific design areas most relevant to your workload requirements
-- Complete the HPC workload assessment to evaluate your architecture and identify improvement opportunities
+- Review the Design methodology for HPC workloads to understand the systematic approach to HPC architecture.
+- Explore Design principles for HPC workloads to see how Well-Architected Framework pillars apply to HPC scenarios.
+- Deep dive into specific design areas most relevant to your workload requirements.
+- Complete the HPC workload assessment to evaluate your architecture and identify improvement opportunities.
+
 
 ## Related resources
 
