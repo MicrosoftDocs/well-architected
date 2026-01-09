@@ -3,7 +3,7 @@ title: Design Principles for HPC Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an HPC workload.
 author: padmalathas
 ms.author: prwilk
-ms.date: 02/28/2026
+ms.date: 02/06/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
