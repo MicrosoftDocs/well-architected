@@ -2412,12 +2412,12 @@
 		},
 		{
 		"source_path": "well-architected/service-guides/event-grid/operational-excellence.md",
-		"redirect_url": "/azure/well-architected/azure/well-architected/service-guides/azure-event-grid",
+		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
 		"redirect_document_id": false
 		},
 		{
 		"source_path": "well-architected/service-guides/event-grid/reliability.md",
-		"redirect_url": "/azure/well-architected/azure/well-architected/service-guides/azure-event-grid",
+		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
 		"redirect_document_id": false
 		}											
 	]
