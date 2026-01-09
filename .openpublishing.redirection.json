@@ -2414,6 +2414,16 @@
 			"source_path": "well-architected/architect-role/checklist.md",
 			"redirect_url": "/azure/well-architected/architect-role/fundamentals",
 			"redirect_document_id": true
+		},
+		{
+		"source_path": "well-architected/service-guides/event-grid/operational-excellence.md",
+		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
+		"redirect_document_id": false
+		},
+		{
+		"source_path": "well-architected/service-guides/event-grid/reliability.md",
+		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
+		"redirect_document_id": false
 		}											
 	]
 }
