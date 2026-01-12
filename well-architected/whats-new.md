@@ -33,9 +33,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for designing for redundancy](./reliability/redundancy.md): We updated the redundancy guidance in the reliability pillar to use clearer, more consistent heading levels and improve readability. Section headings now better highlight key strategies like serverless services, deployment stamps, and active-active or active-passive designs. These changes make it easier to find and apply best practices for building resilient Azure workloads.
 
-### Azure feature updates
-
-We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Database for MySQL and cost optimization](./service-guides/azure-db-mysql-cost-optimization.md), [Architecture best practices for Azure Functions](./service-guides/azure-functions.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
+- We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Database for MySQL and cost optimization](./service-guides/azure-db-mysql-cost-optimization.md), [Architecture best practices for Azure Functions](./service-guides/azure-functions.md), [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
 
 ## November 2025
 
