@@ -93,7 +93,11 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Implement a layered monitoring stack**. To support ongoing capacity management in Fabric, your monitoring capabilities should combine high-level visibility with detailed, actionable telemetry. Start with the Fabric Capacity Metrics app to track overall utilization trends, bursts, and sustained load over time. For proactive control, use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. Complement this with Fabric Workspace Monitoring to capture detailed operation-level logs across workloads and centralize them in an Eventhouse for deeper analysis and trend detection. Augment these platform tools with workload-specific monitoring where appropriate, enabling data-driven decisions around scaling, isolation, and For example, self-service and ad-hoc analytics can operate with lighter controls, while mission-critical workloads require more structured DevOps, approval workflows, and operational discipline.  
 >
-> - 
+> - **Rely on automation**. Microsoft Fabric handles key automation natively: it provisions capacities, workspaces, security, and artifacts from Git or templates, keeping environments consisten. It also manages the full artifact lifecycle with Deployment Pipelines, and detects accidental or unauthorized changes. 
+>
+>   Build on those native capabilities with custom automation to remediate drift, provision workspaces, configure access, schedule refreshes, and manage deployments. 
+
+
 >
 > - **Focus on having the right roles and skills**. The main roles involved are tenant administrators, capacity administrators, and workspace administrators. Operational responsibilties should be clearly documented highlighting intent behind configuration choices, especially for:
 >   - Workspace strategy
@@ -114,6 +118,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Recommendation | Benefit |
 | ----- | ----- |
 | Configure [Microsoft Fabric monitoring](/fabric/admin/service-admin-portal-tenant-settings) with comprehensive telemetry collection across all workspace components. Implement automated alerting for capacity utilization, pipeline failures, and data quality issues with appropriate escalation procedures. | Provides unified operational visibility across the entire Microsoft Fabric platform, enabling proactive issue detection and rapid response to maintain service availability and performance standards. |
+| Use [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction?utm_source=chatgpt.com) to implement sophisticated event-driven automation workflows in response to events in the Fabric environment.||
 
 ## Performance Efficiency
 
