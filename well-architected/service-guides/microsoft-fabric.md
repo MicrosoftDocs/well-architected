@@ -91,7 +91,23 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Implement a layered monitoring stack**. To support ongoing capacity management in Fabric, your monitoring capabilities should combine high-level visibility with detailed, actionable telemetry. Start with the Fabric Capacity Metrics app to track overall utilization trends, bursts, and sustained load over time. For proactive control, use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. Complement this with Fabric Workspace Monitoring to capture detailed operation-level logs across workloads and centralize them in an Eventhouse for deeper analysis and trend detection. Augment these platform tools with workload-specific monitoring where appropriate, enabling data-driven decisions around scaling, isolation, and optimization before capacity issues impact users.
+> - **Implement a layered monitoring stack**. To support ongoing capacity management in Fabric, your monitoring capabilities should combine high-level visibility with detailed, actionable telemetry. Start with the Fabric Capacity Metrics app to track overall utilization trends, bursts, and sustained load over time. For proactive control, use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. Complement this with Fabric Workspace Monitoring to capture detailed operation-level logs across workloads and centralize them in an Eventhouse for deeper analysis and trend detection. Augment these platform tools with workload-specific monitoring where appropriate, enabling data-driven decisions around scaling, isolation, and For example, self-service and ad-hoc analytics can operate with lighter controls, while mission-critical workloads require more structured DevOps, approval workflows, and operational discipline.  
+>
+> - 
+>
+> - **Focus on having the right roles and skills**. The main roles involved are tenant administrators, capacity administrators, and workspace administrators. Operational responsibilties should be clearly documented highlighting intent behind configuration choices, especially for:
+>   - Workspace strategy
+>   - Capacity sizing 
+>   - Security model
+>   - Data lifecycle management
+>   - CI/CD standards
+>   The roles are usually centrally managed and the workload teams focus on building solutions. Depending on workload characteristics and business criticality, certain administrative tasks can be shared with the platform team. 
+>
+>   Success with Fabric also depends on a collaborative mindset. For example, expect shared ownership and CI/CD practices, incident response, and so on. Also invest in Microsoft Learn Fabric training and working toward certifications like DP-600 and DP-700, supported by foundational Azure and Entra ID knowledge.
+>
+>   In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-day administration, but Fabric can support rigourous DevOps processes and sophisticated administrative workflows. The team still needs strong skills in data engineering and analytics, specifically working with Lakehouses and Delta Lake, using Spark and SQL, building Power BI semantic models, and orchestrating pipelines with Fabric Data Factory.  
+
+
 
 ### Recommendations
 
