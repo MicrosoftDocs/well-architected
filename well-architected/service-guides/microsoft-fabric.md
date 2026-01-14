@@ -87,29 +87,83 @@ Operational Excellence primarily focuses on procedures for **development practic
 
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Microsoft Fabric.
+In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-day administration, but Fabric can support rigourous DevOps processes and sophisticated administrative workflows. You'll need to define operational practices and the rigor should be aligned to the business criticality of the workload.  Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Microsoft Fabric.
 
 > [!div class="checklist"]
 >
-> - **Implement a layered monitoring stack**. To support ongoing capacity management in Fabric, your monitoring capabilities should combine high-level visibility with detailed, actionable telemetry. Start with the Fabric Capacity Metrics app to track overall utilization trends, bursts, and sustained load over time. For proactive control, use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. Complement this with Fabric Workspace Monitoring to capture detailed operation-level logs across workloads and centralize them in an Eventhouse for deeper analysis and trend detection. Augment these platform tools with workload-specific monitoring where appropriate, enabling data-driven decisions around scaling, isolation, and For example, self-service and ad-hoc analytics can operate with lighter controls, while mission-critical workloads require more structured DevOps, approval workflows, and operational discipline.  
+> - **Implement a layered monitoring stack**. Treat monitoring as a shared responsibility across tenant, capacity, and workspace roles to get clear visibility into platform and workload health. Gather metrics that give you insights into:
+>   - Capacity health and utilization to understand CU consumption, throttling, autoscale behavior, and whether capacity sizing continues to meet workload demand. Also track storage usage at both the capacity and workspace level to identify growth trends and prevent unexpected capacity pressure.
+>   - Workspace-level operations to troubleshoot deployments and gather other  operation-level logs and diagnostics.
+>   - Workload execution to detect job failures, retries, long-running executions, and issues with pipelines or semantic model refreshes that could impact users.
+>   - User activity and data access for administrators to understand how Fabric is being used, investigate access patterns, and support governance and security requirements.
+>   - Upstream and downstream dependencies such as Entra ID, Azure Storage, and networking, as well as customer-managed data sources and gateway infrastructure. 
+
 >
-> - **Rely on automation**. Microsoft Fabric handles key automation natively: it provisions capacities, workspaces, security, and artifacts from Git or templates, keeping environments consisten. It also manages the full artifact lifecycle with Deployment Pipelines, and detects accidental or unauthorized changes. 
+>    The team still needs strong skills in data engineering and analytics, specifically working with Lakehouses and Delta Lake, using Spark and SQL, building Power BI semantic models, and orchestrating pipelines with Fabric Data Factory.  
 >
->   Build on those native capabilities with custom automation to remediate drift, provision workspaces, configure access, schedule refreshes, and manage deployments. 
+> - **Do incremental updates**. Compartmentalize solution components into dedicated workspaces to reduce blast radius and enable controlled release promotion. 
+>
+>   Similarly, use separate environments (dev, test, prod) to promote releases with proper validation gates. For example, you might have test stages in dedicated workspace to aalidate that appropriate items exist, they function as expected, do data integrity checks in data stores. Some of those checks can be automated, but also combine with manual testing, particularly those involving user interacativity, such as reports and dashboards.
+>
+>   [!NOTE] Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
+
+> - **Design for incremental and safe releases**. Compartmentalize solutions into dedicated workspaces and use separate dev, test, and production environments to reduce blast radius. Design validation stages that include functional checks and data integrity testing, combining automation with manual validation for interactive workloads. Because Fabric has no native rollback, ensure your design relies on version control and redeployment, with explicit consideration for restoring data consistency if a rollback is required.
+>
+> - **Design a layered monitoring approach**. Plan monitoring across tenant, capacity, and workspace scopes so you can see both platform health and workload behavior. At design time, decide how you will track capacity utilization and storage growth, workload execution and failures, workspace-level operations, user activity and data access, and key dependencies such as other Azure services or even centrally-managed technologies like identity platforms, data sources, and gateways.
+>
+> - **Plan alerts and notifications early**.  Define which events require alerts and who should receive them. Where possible, also define the automated actions that should be triggered. 
+>
+>   Capacity-related alerts are recommended. Enable service outage notifications and job failure alerts by default, and design escalation paths using multi-channel notifications based on severity levels that you define at a granular level for various components and items in Fabric.
+>
+> - **Account for log retention and data volume**. Native Fabric logs and metrics are retained for limited periods, so decide upfront whether historical data is needed and where it should be stored. Use detailed workspace monitoring and OneLake Diagnostics selectively, and design for aggregation and sampling to control monitoring costs.
+> 
+> - **Design around automation capabilities**. Rely on Fabric's built-in automation for consistent provisioning and deployment using Git and Deployment Pipelines. Where needed, design custom automation to handle drift remediation, workspace setup, access configuration, refresh scheduling, and deployment orchestration. Align deployment rigor with business impact, and for mission-critical or large-scale workloads, prioritize Fabric items that support automated deployment and account for capacity and service limits in your design.
+>
+>- **Define roles, ownership, and required skills**. Clearly define responsibilities across tenant, capacity, and workspace administrators, and document the intent behind key design decisions such as workspace strategy, capacity sizing, security controls, data lifecycle, and CI/CD standards. Expect shared ownership between platform and workload teams, supported by a collaborative DevOps mindset. 
+> 
+>   Ensure the team has strong data engineering and analytics skills—Lakehouse and Delta Lake concepts, Spark and SQL, Power BI semantic models, and Fabric Data Factory—and invest in Fabric training and certifications such as DP-600 and DP-700.
+
+Plan for regional failover. Fabric provides zone redundancy within regions to protect against availability zone failures and a Business Continuity and Disaster Recovery (BCDR) feature that replicates OneLake data to a secondary region. Both capabilities vary by region and workload. When high availability is critical, select zones and regions that offer zone redundancy, enable BCDR on capacities, and document disaster recovery plans.
+
+Design failback procedures. After a disaster is resolved, safely return to primary operations by validating and reconciling data across OneLake and other stores. Where needed, re-deploy workspaces and rehydrate affected data. Maintain versioned artifacts and Git history to enable safe promotion of prior stable versions.
+
+Understand failure detection. As a SaaS platform, Fabric relies on Microsoft's internal mechanisms to detect and trigger failover. Architect your operations to complement this with CI/CD pipeline error triggers and deployment failure monitoring to prevent promoting faulty deployments during recovery scenarios.
+
+Validate failover readiness. Fabric does not support customer-initiated failover. To test failover plans, run multiple instances of critical workloads across regions and simulate failover by pausing capacities in one region. Perform periodic failover drills in non-production environments to verify that recovery paths, re-deployments, and data restoration processes work as expected.
+
+Plan for partial failure scenarios. Not all failures affect the platform globally. Consider component-specific failures (Lakehouses, warehouses, notebooks), item metadata corruption, OneLake-only issues, capacity-specific outages, workspace-level problems, and dependent service outages (e.g., Entra ID, SQL, Storage). Create recovery procedures for each scenario, including item-level restore and environment synchronization strategies.
+
+Maintain operational readiness. Document responsibilities, escalation paths, and recovery steps. Ensure teams understand which components can fail independently and how to restore workloads efficiently while minimizing downtime and data loss.
 
 
->
-> - **Focus on having the right roles and skills**. The main roles involved are tenant administrators, capacity administrators, and workspace administrators. Operational responsibilties should be clearly documented highlighting intent behind configuration choices, especially for:
->   - Workspace strategy
->   - Capacity sizing 
->   - Security model
->   - Data lifecycle management
->   - CI/CD standards
->   The roles are usually centrally managed and the workload teams focus on building solutions. Depending on workload characteristics and business criticality, certain administrative tasks can be shared with the platform team. 
->
->   Success with Fabric also depends on a collaborative mindset. For example, expect shared ownership and CI/CD practices, incident response, and so on. Also invest in Microsoft Learn Fabric training and working toward certifications like DP-600 and DP-700, supported by foundational Azure and Entra ID knowledge.
->
->   In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-day administration, but Fabric can support rigourous DevOps processes and sophisticated administrative workflows. The team still needs strong skills in data engineering and analytics, specifically working with Lakehouses and Delta Lake, using Spark and SQL, building Power BI semantic models, and orchestrating pipelines with Fabric Data Factory.  
+//Testing
+
+Implement comprehensive testing strategies. Validate solution functionality and configuration through unit tests on notebooks and pipelines, data quality checks using frameworks like Great Expectations, end-to-end workflow testing in dedicated test workspaces, and pre-production business acceptance testing via deployment pipelines. Use test stages as gates before promoting changes to production.
+
+Automate continuous validation. Integrate automated tests into Azure DevOps or GitHub Actions pipelines, triggered on pull requests and deployments. Leverage Fabric REST APIs to execute pipelines, validate results, and perform post-deployment data checks. Schedule recurring automated tests to detect regressions and maintain operational readiness.
+
+Configure test environments properly. Maintain separate dev/test/prod workspaces on dedicated capacities. Use sample or anonymized datasets and parameterized rules to ensure tests do not impact production. Non-production capacities can be smaller, but scale up temporarily for load or performance testing. Test environments should mirror production workloads, concurrency, and data patterns.
+
+Define quality gates and deployment criteria. Require passing unit tests, integration tests, and data quality validations before promoting artifacts. Include manual approvals from business stakeholders and assess capacity utilization post-deployment to detect potential performance or scaling issues.
+
+Select the right tools and frameworks. Use workload-specific testing tools: pytest or nutter for notebooks, Great Expectations for data quality, Azure DevOps Test Plans for coordination, Fabric REST APIs for automation, and custom Python/PowerShell scripts for integration validation. Use Fabric and KQL queries to monitor results.
+
+Perform safe production testing. Run read-only tests in production to verify performance, validate data quality, and check for regressions without affecting users. Carefully control test workloads to avoid impacting production SLAs.
+
+Test rollback and recovery processes. Validate the ability to redeploy prior versions of capacities, workspaces, and items from source control. Confirm the integrity and consistency of data, and ensure mechanisms exist to restore data into affected stores if needed.
+
+### Recommendations
+
+| Recommendation | Benefit |
+| --- | --- |
+| Enable **Workspace Monitoring** to collect logs and metrics into an Eventhouse within the workspace. <br><br> Consider tracking workload execution, including job failures, retries, and long-running jobs. Use this data to troubleshoot deployments and operational issues. | Provides workload-level visibility for troubleshooting performance, failures, and operational behavior without relying solely on tenant-wide logs. |
+| Export **Microsoft Fabric audit logs** (from Microsoft 365 audit logs) to **Azure Monitor / Log Analytics**. <br><br> Use these logs to monitor user activity and data access patterns, investigate usage, enforce governance, and support security requirements. | Enables centralized monitoring, long-term retention, and correlation with other Azure platform signals. |
+| Use the **Microsoft Fabric Capacity Metrics app** as the primary dashboard for capacity health, compute, and storage, and enable built-in threshold notifications. <br><br> Track CU consumption, throttling events, autoscale behavior, and storage usage trends at both capacity and workspace levels to prevent unexpected pressure. | Delivers comprehensive insight into CU consumption, throttling, autoscale behavior, and storage usage over rolling 14-day windows. |
+| Use **Fabric Activator** to monitor Fabric capacity events and trigger real-time alerts or automated actions. <br><br> Include upstream and downstream dependencies such as Entra ID, Azure Storage, networking, and customer-managed gateways to maintain operational continuity. | Enables proactive monitoring and faster response to capacity pressure, failures, or operational anomalies. |
+| Enable **OneLake Diagnostics** selectively for workspaces that require detailed data-access visibility. | Provides insight into how data is accessed within a workspace, supporting governance, security investigations, and performance analysis. |
+| Configure **Fabric monitoring settings** at the tenant level to collect telemetry across all workspace components. <br><br> Define alert escalation paths, validate pipelines and semantic model refreshes, and implement proactive monitoring for data quality issues. | Ensures consistent, platform-wide observability and faster detection of capacity, pipeline, or data-quality issues. |
+| Use **Capacity Utilization Events** in the Real-Time Intelligence workload for near real-time alerts and automation when thresholds are exceeded. | Allows rapid detection and automated handling of capacity pressure scenarios before users are impacted. |
+
 
 
 
@@ -117,8 +171,17 @@ Start your design strategy based on the [design review checklist for Operational
 
 | Recommendation | Benefit |
 | ----- | ----- |
+|Enable Workspace monitoring to collect logs and metrics in an EventHouse within the workspace. ||
+|Export Microsoft Fabric audit logs to Azure Monitor for centralized monitoring and correlation with other platform signals.||
+|Use Microsoft Fabric Capacity Metrics app as the primary dashboard for monitoring capacity health, compute, and storage, and enable built-in capacity threshold notifications. For advanced alerting and automated responses, use Fabric Activator or Azure Monitor alert rules to detect capacity events and trigger notifications or actions. | comprehensive monitoring of CU consumption, throttling events, autoscale behavior, and storage usage across 14-day windows. |
+|Data Activator can create real-time alerts on capacity metrics or Fabric events for proactive monitoring. Fabric's built-in workspace monitoring tracks operation-level logs across common Fabric items.||
+|OneLake Diagnostics feature provides visibility into data access at the scope of an individual workspace. ||
 | Configure [Microsoft Fabric monitoring](/fabric/admin/service-admin-portal-tenant-settings) with comprehensive telemetry collection across all workspace components. Implement automated alerting for capacity utilization, pipeline failures, and data quality issues with appropriate escalation procedures. | Provides unified operational visibility across the entire Microsoft Fabric platform, enabling proactive issue detection and rapid response to maintain service availability and performance standards. |
 | Use [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction?utm_source=chatgpt.com) to implement sophisticated event-driven automation workflows in response to events in the Fabric environment.||
+|EventHouse||
+|use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. ||
+ore tools include the Fabric Capacity Metrics app for tracking CU utilization, throttling, autoscale behavior, and storage usage; built-in workspace monitoring and OneLake Diagnostics for operation- and data-access visibility; and Fabric Activator for real-time alerts and automated actions.
+
 
 ## Performance Efficiency
 
@@ -177,6 +240,32 @@ Start your design strategy based on the [design review checklist for Performance
 >   Validate scaling strategies through targeted load and benchmarking tests across different scaling configurations, measuring throughput, concurrency, execution duration, latency, CU utilization, and error rates during scale-up/down or scale-in/out events. Include test cases for retry or recover situations from interruptions.  For example, if you plan to scale out by using two capacities, perform a test where you simulate the distribution of load between them and see if response times improve proportionally. 
 >
 >   Scaling validation must also include the resources hosted on Fabric capacities, such as Spark clusters, semantic models, Eventstreams, and Eventhouses, since some workloads require explicit configuration to benefit from additional compute, while others may not scale due to limited parallelism. 
+
+Do capacity planning. Estimate optimal capacity units (CUs) and CU-seconds based on workload characteristics. Right-size capacities to meet peak demand without over-provisioning. Unused CUs don't carry over, so careful estimation is key.
+
+Conduct realistic performance testing. Use workload-specific tools (e.g., JMeter, Locust, TPC-H/TPC for SQL) and simulate large data volumes for ingestion and processing workloads. Gradually ramp up load, include realistic concurrency, data variety, and peak scenarios. Avoid extrapolating results from small test environments—performance rarely scales linearly.
+
+Align test environments with production. Match capacity, region, concurrency, and data volumes. Ensure the test environment supports concurrent ingestion, processing, and consumption for continuously updating datasets.
+
+Monitor and analyze performance metrics. Track CU consumption, throughput, latency, concurrency, error rates, and memory/CPU usage. Capture statistical distributions (min, max, mean, median, p95/p99) to understand variability and peak behavior.
+
+Establish performance baselines iteratively. Deploy representative workload samples to measure actual usage and critical operation metrics. Adjust capacity based on observed results, retest, and refine estimates.
+
+Align SKU to compute demand. Select SKUs based on peak concurrency, workload type, and SLAs. Classify workloads by usage pattern: interactive queries, batch processing, or continuous tasks. Optimize to remain on lower SKUs where possible using pre-aggregation, caching, and workload distribution across multiple workspaces.
+
+Be aware of quotas and service limits. Consider SKU-specific compute, memory, and concurrency limits, plus subscription-region quotas for CUs. Monitor workspace-level limits on items and users. Avoid low SKUs like F8 for production workloads.
+
+Account for dependencies. Shared resources, upstream data sources, gateways, networking, and “noisy neighbors” can constrain performance. Design isolation with purpose-driven workspaces and manage underlying dependencies such as OneLake partitioning, gateway caching, and idle Spark sessions.
+
+Design for vertical and horizontal scaling. Vertical scaling increases resources but may interrupt in-flight jobs. Horizontal scaling distributes workloads across capacities and workspaces and is generally less disruptive. Build workloads to tolerate retries and transient failures during scaling.
+
+Plan for capacity limits. Some workloads, like single Power BI datasets, can't span multiple capacities. Consider scaling out across workspaces or partitioning workloads rather than only scaling up. Sequence large jobs, use aggregations, and avoid hitting hard limits.
+
+Leverage decoupled storage and compute. Independently scale storage, compute, and engines (Spark, Warehouses, Pipelines) to optimize resource usage and performance for specific workloads.
+
+Use balanced partitioning. Partition by date, key columns, or incremental refresh in Power BI to reduce per-operation data volumes. Test partition strategies to ensure they improve performance without unnecessary complexity.
+
+Scale based on sustained pressure and validate. Use CU utilization and secondary indicators (memory errors, latency, operation duration) to guide scaling. Validate scaling decisions through targeted load tests and benchmarking. Include all resources hosted on Fabric capacities, such as Spark clusters, semantic models, Eventstreams, and Eventhouses, to ensure workloads benefit from additional compute.
 
 ### Recommendations
 
