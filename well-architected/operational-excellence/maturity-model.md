@@ -20,6 +20,21 @@ The most mature stage is all about optimization and innovation. Here, teams oper
 
 The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
+# [:::image type="icon" source="../_images/ai.svg"::: **AI opportunities**](#tab/ai-opportunities)
+
+![Goal icon](../_images/goal.svg) **Modernize operations by deliberately embedding AI-driven tools that reduce manual, error-prone toil and deliver measurable gains while pragmatically balancing cost, risk, and time to value.**
+
+AI can improve operational productivity when applied deliberately and with clear constraints. Teams can adopt off-the-shelf tools where they fit, or build custom AI integrations when they do not. In most cases, the primary effort is not model development but prompt design, output validation, and ongoing tuning. These solutions can scale across teams once deployed, but they should be treated as software systems that require maintenance to ensure reliable, high-quality outputs.
+
+Adoption should follow a clear progression. Start with focused, high-impact use cases such as summarization or content generation. As confidence and capability grow, expose system functionality as AI-accessible tools and introduce agentic interfaces capable of task-based reasoning. Over time, this can evolve into multi-agent patterns, where specialized agents collaborate to perform complex tasks, research, and analysis across customer data and integrated systems.
+
+**AI capabilities**
+> [!div class="checklist"]
+>
+> - TBD
+
+#### &#10003; TBD and use cases
+
 
 # [**Level 1: DevOps foundation**](#tab/level1)
 
