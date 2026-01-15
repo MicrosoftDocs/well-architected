@@ -90,23 +90,19 @@ Operational Excellence primarily focuses on procedures for **development practic
 In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-day administration, but Fabric can support rigourous DevOps processes and sophisticated administrative workflows. You'll need to define operational practices and the rigor should be aligned to the business criticality of the workload.  Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Microsoft Fabric.
 
 > [!div class="checklist"]
+> 
+> - **Select the right tools and frameworks**. Use workload-specific testing tools: pytest or nutter for notebooks, Great Expectations for data quality, Azure DevOps Test Plans for coordination, Fabric REST APIs for automation, and custom Python/PowerShell scripts for integration validation. Use Fabric and KQL queries to monitor results.
 >
-> - **Implement a layered monitoring stack**. Treat monitoring as a shared responsibility across tenant, capacity, and workspace roles to get clear visibility into platform and workload health. Gather metrics that give you insights into:
->   - Capacity health and utilization to understand CU consumption, throttling, autoscale behavior, and whether capacity sizing continues to meet workload demand. Also track storage usage at both the capacity and workspace level to identify growth trends and prevent unexpected capacity pressure.
->   - Workspace-level operations to troubleshoot deployments and gather other  operation-level logs and diagnostics.
->   - Workload execution to detect job failures, retries, long-running executions, and issues with pipelines or semantic model refreshes that could impact users.
->   - User activity and data access for administrators to understand how Fabric is being used, investigate access patterns, and support governance and security requirements.
->   - Upstream and downstream dependencies such as Entra ID, Azure Storage, and networking, as well as customer-managed data sources and gateway infrastructure. 
-
->
->    The team still needs strong skills in data engineering and analytics, specifically working with Lakehouses and Delta Lake, using Spark and SQL, building Power BI semantic models, and orchestrating pipelines with Fabric Data Factory.  
->
+> - **Validate solution functionality and configuration**. Have unit tests on notebooks and pipelines, data quality checks using frameworks like Great Expectations, end-to-end workflow testing in dedicated test workspaces, and pre-production business acceptance testing via deployment pipelines. Use test stages as gates before promoting changes to production.
+> 
+> - **Configure test environments properly**. Maintain separate dev/test/prod workspaces on dedicated capacities. Use sample or anonymized datasets and parameterized rules to ensure tests do not impact production. Non-production capacities can be smaller, but scale up temporarily for load or performance testing. Test environments should mirror production workloads, concurrency, and data patterns.
+> 
 > - **Do incremental updates**. Compartmentalize solution components into dedicated workspaces to reduce blast radius and enable controlled release promotion. 
 >
->   Similarly, use separate environments (dev, test, prod) to promote releases with proper validation gates. For example, you might have test stages in dedicated workspace to aalidate that appropriate items exist, they function as expected, do data integrity checks in data stores. Some of those checks can be automated, but also combine with manual testing, particularly those involving user interacativity, such as reports and dashboards.
+>   Require passing unit tests, integration tests, and data quality validations before promoting artifacts. For example, you might have test stages in dedicated workspace to validate that appropriate items exist, they function as expected, do data integrity checks in data stores. Some of those checks can be automated, but also combine with manual testing, particularly those involving user interacativity, such as reports and dashboards. Include manual approvals from business stakeholders and assess capacity utilization post-deployment to detect potential performance or scaling issues.
 >
 >   [!NOTE] Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
-
+>
 > - **Design for incremental and safe releases**. Compartmentalize solutions into dedicated workspaces and use separate dev, test, and production environments to reduce blast radius. Design validation stages that include functional checks and data integrity testing, combining automation with manual validation for interactive workloads. Because Fabric has no native rollback, ensure your design relies on version control and redeployment, with explicit consideration for restoring data consistency if a rollback is required.
 >
 > - **Design a layered monitoring approach**. Plan monitoring across tenant, capacity, and workspace scopes so you can see both platform health and workload behavior. At design time, decide how you will track capacity utilization and storage growth, workload execution and failures, workspace-level operations, user activity and data access, and key dependencies such as other Azure services or even centrally-managed technologies like identity platforms, data sources, and gateways.
@@ -115,42 +111,30 @@ In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-
 >
 >   Capacity-related alerts are recommended. Enable service outage notifications and job failure alerts by default, and design escalation paths using multi-channel notifications based on severity levels that you define at a granular level for various components and items in Fabric.
 >
+>   Use CI/CD pipeline error triggers to detect deployment failures and prevent promoting faulty deployments.
+>
 > - **Account for log retention and data volume**. Native Fabric logs and metrics are retained for limited periods, so decide upfront whether historical data is needed and where it should be stored. Use detailed workspace monitoring and OneLake Diagnostics selectively, and design for aggregation and sampling to control monitoring costs.
 > 
-> - **Design around automation capabilities**. Rely on Fabric's built-in automation for consistent provisioning and deployment using Git and Deployment Pipelines. Where needed, design custom automation to handle drift remediation, workspace setup, access configuration, refresh scheduling, and deployment orchestration. Align deployment rigor with business impact, and for mission-critical or large-scale workloads, prioritize Fabric items that support automated deployment and account for capacity and service limits in your design.
+> - **Design around automation capabilities**. Rely on Fabric's built-in automation for consistent provisioning and deployment using Git and Deployment Pipelines. Where needed, design custom automation to handle drift remediation, workspace setup, access configuration, refresh scheduling, and so on. Integrate automated tests into Azure DevOps or GitHub Actions pipelines, triggered on pull requests and deployments.
 >
->- **Define roles, ownership, and required skills**. Clearly define responsibilities across tenant, capacity, and workspace administrators, and document the intent behind key design decisions such as workspace strategy, capacity sizing, security controls, data lifecycle, and CI/CD standards. Expect shared ownership between platform and workload teams, supported by a collaborative DevOps mindset. 
+>   Make sure to align deployment rigor with business impact, and for mission-critical or large-scale workloads, prioritize Fabric items that support automated deployment and account for capacity and service limits in your design.
+>
+> - **Plan for both failover and failback procedures**. Fabric provides a Business Continuity and Disaster Recovery (BCDR) feature that replicates OneLake data to a secondary region. Failover is initiated by Microsoft based on internal failure detection.  After which you need to have new capabilities in secondary region where redeploy Fabric items and rehydrate data from replicated stores. For high availability, select zones and regions that offer zone redundancy, enable BCDR on capacities, and document disaster recovery plans.
+>
+>   [!NOTE] Make sure you test disaster recovery. For mission-critical workloads, you might  run multiple instances of a solution on capacities in multiple regions and simulate failover by pausing a capacity in one of the regions.
+>
+>   After a disaster is resolved, safely return to primary operations by validating and reconciling data across OneLake and other stores. Where needed, re-deploy workspaces and restore affected data. Maintain versioned artifacts and Git history to enable safe promotion of prior stable versions.
+>
+> - **Plan for partial failures**. Not all failures affect the platform globally. Consider component-specific failures (Lakehouses, warehouses, notebooks), item metadata corruption, OneLake-only issues, capacity-specific outages, workspace-level problems, and dependent service outages (e.g., Entra ID, SQL, Storage). Create recovery procedures for each scenario, including item-level restore and environment synchronization strategies.
+>
+> - **Maintain production-like test environments**. Use separate dev/test/prod workspaces on dedicated capacities, with anonymized or sample data and parameterized rules to avoid production impact. Non-production capacities can be smaller but should scale temporarily for performance or load testing and mirror production concurrency and data patterns.
+>
+> - **Define roles, ownership, and required skills**. Clearly define responsibilities across tenant, capacity, and workspace administrators, and document the intent behind key design decisions such as workspace strategy, capacity sizing, security controls, data lifecycle, and CI/CD standards. Expect shared ownership between platform and workload teams, supported by a collaborative DevOps mindset. 
 > 
 >   Ensure the team has strong data engineering and analytics skills—Lakehouse and Delta Lake concepts, Spark and SQL, Power BI semantic models, and Fabric Data Factory—and invest in Fabric training and certifications such as DP-600 and DP-700.
 
-Plan for regional failover. Fabric provides zone redundancy within regions to protect against availability zone failures and a Business Continuity and Disaster Recovery (BCDR) feature that replicates OneLake data to a secondary region. Both capabilities vary by region and workload. When high availability is critical, select zones and regions that offer zone redundancy, enable BCDR on capacities, and document disaster recovery plans.
-
-Design failback procedures. After a disaster is resolved, safely return to primary operations by validating and reconciling data across OneLake and other stores. Where needed, re-deploy workspaces and rehydrate affected data. Maintain versioned artifacts and Git history to enable safe promotion of prior stable versions.
-
-Understand failure detection. As a SaaS platform, Fabric relies on Microsoft's internal mechanisms to detect and trigger failover. Architect your operations to complement this with CI/CD pipeline error triggers and deployment failure monitoring to prevent promoting faulty deployments during recovery scenarios.
-
-Validate failover readiness. Fabric does not support customer-initiated failover. To test failover plans, run multiple instances of critical workloads across regions and simulate failover by pausing capacities in one region. Perform periodic failover drills in non-production environments to verify that recovery paths, re-deployments, and data restoration processes work as expected.
-
-Plan for partial failure scenarios. Not all failures affect the platform globally. Consider component-specific failures (Lakehouses, warehouses, notebooks), item metadata corruption, OneLake-only issues, capacity-specific outages, workspace-level problems, and dependent service outages (e.g., Entra ID, SQL, Storage). Create recovery procedures for each scenario, including item-level restore and environment synchronization strategies.
-
-Maintain operational readiness. Document responsibilities, escalation paths, and recovery steps. Ensure teams understand which components can fail independently and how to restore workloads efficiently while minimizing downtime and data loss.
 
 
-//Testing
-
-Implement comprehensive testing strategies. Validate solution functionality and configuration through unit tests on notebooks and pipelines, data quality checks using frameworks like Great Expectations, end-to-end workflow testing in dedicated test workspaces, and pre-production business acceptance testing via deployment pipelines. Use test stages as gates before promoting changes to production.
-
-Automate continuous validation. Integrate automated tests into Azure DevOps or GitHub Actions pipelines, triggered on pull requests and deployments. Leverage Fabric REST APIs to execute pipelines, validate results, and perform post-deployment data checks. Schedule recurring automated tests to detect regressions and maintain operational readiness.
-
-Configure test environments properly. Maintain separate dev/test/prod workspaces on dedicated capacities. Use sample or anonymized datasets and parameterized rules to ensure tests do not impact production. Non-production capacities can be smaller, but scale up temporarily for load or performance testing. Test environments should mirror production workloads, concurrency, and data patterns.
-
-Define quality gates and deployment criteria. Require passing unit tests, integration tests, and data quality validations before promoting artifacts. Include manual approvals from business stakeholders and assess capacity utilization post-deployment to detect potential performance or scaling issues.
-
-Select the right tools and frameworks. Use workload-specific testing tools: pytest or nutter for notebooks, Great Expectations for data quality, Azure DevOps Test Plans for coordination, Fabric REST APIs for automation, and custom Python/PowerShell scripts for integration validation. Use Fabric and KQL queries to monitor results.
-
-Perform safe production testing. Run read-only tests in production to verify performance, validate data quality, and check for regressions without affecting users. Carefully control test workloads to avoid impacting production SLAs.
-
-Test rollback and recovery processes. Validate the ability to redeploy prior versions of capacities, workspaces, and items from source control. Confirm the integrity and consistency of data, and ensure mechanisms exist to restore data into affected stores if needed.
 
 ### Recommendations
 
@@ -163,6 +147,7 @@ Test rollback and recovery processes. Validate the ability to redeploy prior ver
 | Enable **OneLake Diagnostics** selectively for workspaces that require detailed data-access visibility. | Provides insight into how data is accessed within a workspace, supporting governance, security investigations, and performance analysis. |
 | Configure **Fabric monitoring settings** at the tenant level to collect telemetry across all workspace components. <br><br> Define alert escalation paths, validate pipelines and semantic model refreshes, and implement proactive monitoring for data quality issues. | Ensures consistent, platform-wide observability and faster detection of capacity, pipeline, or data-quality issues. |
 | Use **Capacity Utilization Events** in the Real-Time Intelligence workload for near real-time alerts and automation when thresholds are exceeded. | Allows rapid detection and automated handling of capacity pressure scenarios before users are impacted. |
+|Enable BCDR feature||
 
 
 
@@ -195,23 +180,21 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Do capacity planning**.  Evaluate workload characteristics to determine the optimal capacity units (CUs) and capacity unit seconds. CUs represent provisioned compute power, while CU-seconds track actual consumption. The goal is choose the right SKU to get predictable performance without over- or under-provisioning. Unused CUs don't carry over so careful estimation is required to avoid wasted or insufficient resources. 
+> - **Do capacity planning**.  Estimate optimal capacity units (CUs) and CU-seconds based on workload characteristics. Right-size capacities to meet peak demand without over-provisioning. Unused CUs don't carry over, so careful estimation is key. 
 >
-> - **Conduct performance testing with realistic workloads**. There's no single testing tool that fits all workload types. Use workload-specific test tools and combine those with general-purpose load testing tools. For example, JMeter and Locust can be used to test for concurrent user queries where applicable. SQL endpoints can be benchmarked using standard datasets and queries such as TPC-H/TPC. Certain items may require simulating large volume of data to measure throughput and latency for ingestion and processing workloads. 
->
+> - **Conduct performance testing with realistic workloads**. There's no single testing tool that fits all workload types. Use workload-specific test tools and combine those with general-purpose load testing tools. For example, JMeter and Locust can be used to test for concurrent user queries where applicable. SQL endpoints can be benchmarked using standard datasets and queries such as TPC-H/TPC. Certain items may require simulating large volume of data to measure throughput and latency for ingestion and processing workloads. Gradually ramp up load, include realistic concurrency, data variety, and peak scenarios. Avoid extrapolating results from small test environments—performance rarely scales linearly.
+
 > - **Align test environments with production**. Match capacity size, region, and other configuration characteristics to your production environment. For consumption-oriented workloads, include realistic user concurrency, data volumes, and query diversity; for ingestion and processing, use varied data to avoid misleading results from compression or repetition. For scenarios where data is continuously updated, make sure in your test environment is able to ingest, process, and consume data concurrently.
 >
->   Avoid extrapolating results from smaller environments because performance doesn't scale linearly. Gradually ramp up load, simulate real data change patterns, and test peak scenarios in non-production environments because short, bursty tests may not reflect long-term capacity needs.
->
-> - **Monitor and analyze performance metrics**. Track Fabric CU consumption as the primary platform metric, and supplement with workload-specific metrics such as response time, throughput, concurrency, error rates, CPU, and memory usage. Capture statistical distributions (min, max, mean, median, p95, p99) to understand variability and peak behavior.
+> - **Monitor and analyze performance metrics**. Track Fabric CU consumption as the primary metric, and supplement with workload-specific metrics such as response time, throughput, concurrency, error rates, CPU, and memory usage. Capture statistical distributions (min, max, mean, median, p95, p99) to understand variability and peak behavior.
 > 
-> - **Establish performance baseline with iterative testing**. Don't rely only on estimators or theoretical calculations. Deploy a representative sample of your workload to measure actual capacity utilization. Also pay attention to key performance metrics for critical operations. Use these measurements to derive capacity requirements for what's important for your workload whether that's higher data volumes, increased process frequency, or greater concurrency.
->
->   This approach should be iterative. Adjust capacity based on observed performance, retest, and refine your estimates. 
+> - **Establish performance baseline with iterative testing**. Establish performance baselines iteratively. Deploy representative workload samples to measure actual usage and critical operation metrics. Adjust capacity based on observed results, retest, and refine estimates.
 >
 > - **Align SKU size to compute demand and peak concurrency**. Fabric SKUs differ mainly in available compute (CUs), which drives latency, throughput, and concurrent usage. Select a tier based on peak workload requirements and SLAs. Avoid a one-size-fits-all approach, because different workloads consume capacity in different ways. Classify workloads by behavior and features: for example, data warehouse resources are used only when queries execute; interactive workloads require planning for peak demand; continuously running background tasks can be sized based on daily averages. Understand those patterns to map CU consumption and determine whether to increase capacity, redesign workload distribution, or leverage autoscalingy averages. Map these patterns to CU usage to decide whether to increase capacity, redesign workload distribution, or use autoscaling.
 >
->   Plan for scale and optimize before going bigger. Higher tiers provide more compute and memory headroom but not new features. To remain on lower SKUs where possible, offload heavy processing, optimize data models and Spark jobs, and use pre-aggregation and caching. Design solutions across multiple workspaces so they can later scale vertically or be distributed across multiple capacities as growth demands. Take advantage of the built-in bursting, smoothing, or autoscale billing to absorb short-term spikes without permanently overprovisioning capacity.
+>   Plan for optimization before going bigger. Higher tiers provide more compute and memory headroom but not new features necessarily. Where possible, remain on lower SKUs explore techniques like caching, pre-aggregation in OneLake, PowerBI import mode. Take advantage of the built-in bursting, smoothing, or autoscale billing to absorb short-term spikes without permanently overprovisioning capacity.
+>
+>   Design solutions across multiple workspaces so they can later scale vertically or be distributed across multiple capacities as growth demands.
 >
 > - **Be aware of the quotas and limits**. Each Fabric SKU also enforces fixed compute, memory, and service-level quotas that can become hard ceilings if they are not explicitly accounted for in the architecture. For example, for Spark there are limits on vCore. Concurrency can be a hidden constraint. A large Spark job, a heavy SQL query, or a pipeline with parallel activities can consume a significant share of available CUs. 
 >
@@ -225,47 +208,17 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   A practical approach is to design with isolation and growth in mind: break larger solutions into purpose-driven workspaces, and place them on shared or dedicated capacities depending on their scale and criticality. For example, you might separate ingestion, storage, engineering, orchestration, and reporting components. It's also important to actively manage underlying dependencies. For example, optimizing OneLake data layout and partitioning, placing capacities close to key data sources, right-sizing and caching gateways, and cleaning up idle Spark sessions. 
 > 
-> - **Design for both vertical and horizontal scaling from the start**. Vertical scaling can accommodate growing workloads up to a point, but it may cause brief interruptions and cancel in-flight jobs. Horizontal scaling distributes solutions across multiple workspaces and capacities, is generally faster and less disruptive, though moving workspaces can still impact active operations temporarily. Workloads should be designed to handle retries and transient failures during scaling events. 
+> - **Design for both vertical and horizontal scaling from the start**. Vertical scaling increases resources but may interrupt in-flight jobs. Horizontal scaling distributes workloads across capacities and workspaces and is generally less disruptive. Build workloads to tolerate retries and transient failures during scaling.
 >
-> - **Plan around Fabric capacity limits**. Scaling up increases available capacity, but Fabric SKUs have hard upper limits, and some workloads, such as single Power BI datasets, cannot be split across capacities, effectively capping performance. For large or growing workloads, scaling out across multiple workspaces and smaller capacities is often more flexible and cost-effective than scaling up alone. Not all workloads are parallelizable, so adding capacity may not always improve performance. Long-term capacity planning should include partitioning workloads, using aggregations, sequencing large jobs, and avoiding hard scaling ceilings.
+> - **Plan around Fabric capacity limits**. Scaling up increases available capacity, but Fabric SKUs have hard upper limits. Some workloads, like single Power BI datasets, can't span multiple capacities. For large or growing workloads, scaling out across multiple workspaces and smaller capacities than scaling up. Not all workloads are parallelizable, so adding capacity may not always improve performance. Long-term capacity planning should include partitioning workloads, using aggregations, sequencing large jobs, and avoiding hard scaling ceilings.
 >
-> - **Take advantage of decoupled storage and compute**. Fabric allows independent scaling of storage and compute, enabling isolated workloads and data mesh–style patterns where applicable. Individual engines, such as Spark, Warehouses, and Pipelines, can be scaled independently in addition to scaling overall capacities, providing more granular control over performance and resource usage.ies.
+> - **Take advantage of decoupled storage and compute**. Fabric allows independently scaling of storage, compute, and engines (Spark, Warehouses, Pipelines) providing more granular control over performance and resource usage.
 >
-> - **Use balanced partitioning**. Partitioning can improve performance by reducing the volume of data processed per operation, but it must be carefully balanced against the management overhead and the risk of overly small or fragmented partitions. Common approaches include partitioning tables or folders in the Data Warehouse, Lakehouse, or Spark environments by date or key columns, as well as leveraging incremental refresh in Power BI. 
+> - **Use balanced partitioning**. Partitioning can improve performance by reducing the volume of data processed per operation, but it must be carefully balanced against the management overhead and the risk of overly small or fragmented partitions. Common approaches include partitioning by date, key columns, or incremental refresh in Power BI to reduce per-operation data volumes. Test partition strategies to ensure they improve performance without unnecessary complexity.
 >   
->   performance tests that compare queries targeting a single partition with those spanning multiple partitions, ensuring the partitioning strategy produces measurable performance gains for typical workloads rather than adding unnecessary complexity.
->
-> - **Scale based on sustained pressure and validate with targeted testing**. Trigger scaling decisions based on sustained or peak CU utilization, while also monitoring secondary indicators such as memory-related errors, increasing operation durations, and rising latency. Based on the load test results, understand variability and peak behavior. 
-> 
->   Validate scaling strategies through targeted load and benchmarking tests across different scaling configurations, measuring throughput, concurrency, execution duration, latency, CU utilization, and error rates during scale-up/down or scale-in/out events. Include test cases for retry or recover situations from interruptions.  For example, if you plan to scale out by using two capacities, perform a test where you simulate the distribution of load between them and see if response times improve proportionally. 
+> - **Scale based on sustained pressure and validate with targeted testing**. T Use CU utilization and secondary indicators (memory errors, latency, operation duration) to trigger scaling actions. Validate scaling strategies through targeted load and benchmarking tests across different scaling configurations, measuring throughput, concurrency, execution duration, latency, CU utilization, and error rates during scale-up/down or scale-in/out events. Include test cases for retry or recover situations from interruptions. For example, if you plan to scale out by using two capacities, perform a test where you simulate the distribution of load between them and see if response times improve proportionally. 
 >
 >   Scaling validation must also include the resources hosted on Fabric capacities, such as Spark clusters, semantic models, Eventstreams, and Eventhouses, since some workloads require explicit configuration to benefit from additional compute, while others may not scale due to limited parallelism. 
-
-Do capacity planning. Estimate optimal capacity units (CUs) and CU-seconds based on workload characteristics. Right-size capacities to meet peak demand without over-provisioning. Unused CUs don't carry over, so careful estimation is key.
-
-Conduct realistic performance testing. Use workload-specific tools (e.g., JMeter, Locust, TPC-H/TPC for SQL) and simulate large data volumes for ingestion and processing workloads. Gradually ramp up load, include realistic concurrency, data variety, and peak scenarios. Avoid extrapolating results from small test environments—performance rarely scales linearly.
-
-Align test environments with production. Match capacity, region, concurrency, and data volumes. Ensure the test environment supports concurrent ingestion, processing, and consumption for continuously updating datasets.
-
-Monitor and analyze performance metrics. Track CU consumption, throughput, latency, concurrency, error rates, and memory/CPU usage. Capture statistical distributions (min, max, mean, median, p95/p99) to understand variability and peak behavior.
-
-Establish performance baselines iteratively. Deploy representative workload samples to measure actual usage and critical operation metrics. Adjust capacity based on observed results, retest, and refine estimates.
-
-Align SKU to compute demand. Select SKUs based on peak concurrency, workload type, and SLAs. Classify workloads by usage pattern: interactive queries, batch processing, or continuous tasks. Optimize to remain on lower SKUs where possible using pre-aggregation, caching, and workload distribution across multiple workspaces.
-
-Be aware of quotas and service limits. Consider SKU-specific compute, memory, and concurrency limits, plus subscription-region quotas for CUs. Monitor workspace-level limits on items and users. Avoid low SKUs like F8 for production workloads.
-
-Account for dependencies. Shared resources, upstream data sources, gateways, networking, and “noisy neighbors” can constrain performance. Design isolation with purpose-driven workspaces and manage underlying dependencies such as OneLake partitioning, gateway caching, and idle Spark sessions.
-
-Design for vertical and horizontal scaling. Vertical scaling increases resources but may interrupt in-flight jobs. Horizontal scaling distributes workloads across capacities and workspaces and is generally less disruptive. Build workloads to tolerate retries and transient failures during scaling.
-
-Plan for capacity limits. Some workloads, like single Power BI datasets, can't span multiple capacities. Consider scaling out across workspaces or partitioning workloads rather than only scaling up. Sequence large jobs, use aggregations, and avoid hitting hard limits.
-
-Leverage decoupled storage and compute. Independently scale storage, compute, and engines (Spark, Warehouses, Pipelines) to optimize resource usage and performance for specific workloads.
-
-Use balanced partitioning. Partition by date, key columns, or incremental refresh in Power BI to reduce per-operation data volumes. Test partition strategies to ensure they improve performance without unnecessary complexity.
-
-Scale based on sustained pressure and validate. Use CU utilization and secondary indicators (memory errors, latency, operation duration) to guide scaling. Validate scaling decisions through targeted load tests and benchmarking. Include all resources hosted on Fabric capacities, such as Spark clusters, semantic models, Eventstreams, and Eventhouses, to ensure workloads benefit from additional compute.
 
 ### Recommendations
 
