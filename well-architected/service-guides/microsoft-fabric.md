@@ -101,8 +101,8 @@ In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-
 >
 >   Require passing unit tests, integration tests, and data quality validations before promoting artifacts. For example, you might have test stages in dedicated workspace to validate that appropriate items exist, they function as expected, do data integrity checks in data stores. Some of those checks can be automated, but also combine with manual testing, particularly those involving user interacativity, such as reports and dashboards. Include manual approvals from business stakeholders and assess capacity utilization post-deployment to detect potential performance or scaling issues.
 >
-> [!NOTE]
-> Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
+>   [!NOTE]
+>   Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
 >
 > - **Design for incremental and safe releases**. Compartmentalize solutions into dedicated workspaces and use separate dev, test, and production environments to reduce blast radius. Design validation stages that include functional checks and data integrity testing, combining automation with manual validation for interactive workloads. Because Fabric has no native rollback, ensure your design relies on version control and redeployment, with explicit consideration for restoring data consistency if a rollback is required.
 >
