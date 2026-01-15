@@ -1,10 +1,11 @@
 ---
 title: "Architecture Best Practices for Azure Databricks"
-description: "Learn best practices for architecting Azure Databricks solutions with recommendations for reliability, security, cost optimization, operational excellence, and performance efficiency."
+description: "Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Databricks."
 author: khdownie
 ms.author: kendownie
 ms.topic: concept-article
 ms.date: 09/30/2025
+ms.subservice: waf-service-guide
 products:
  - azure-databricks
 azure.category:
@@ -13,17 +14,16 @@ azure.category:
 
 # Architecture best practices for Azure Databricks
 
-Azure Databricks is a fast, easy, and collaborative Apache Spark-based analytics platform. It's designed to help you build and deploy data engineering, machine learning, and analytics workloads at scale, providing a unified platform for data teams to collaborate efficiently. Across these use cases for Databricks, there are some common considerations and best practices for using Azure Databricks. This article addresses these considerations and gives architectural recommendations that are mapped to the principles of the Well-Architected Framework pillars.
+Azure Databricks is an Apache Spark-based analytics platform that data teams can use to collaborate efficiently. Use it to build and deploy data engineering, machine learning, and analytics workloads at scale. This article addresses common considerations and best practices for using Azure Databricks and gives architectural recommendations that are mapped to the principles of the [Azure Well-Architected Framework pillars](/azure/well-architected/pillars).
 
-
-It's assumed that as an architect, you've reviewed the [Choose an analytical data store](/azure/architecture/data-guide/technology-choices/analytical-data-stores) and chose Azure Databricks as the analytics platform for your workload.
+It's assumed that as an architect, you've reviewed [Choose an analytical data store](/azure/architecture/data-guide/technology-choices/analytical-data-stores) and chose Azure Databricks as the analytics platform for your workload.
 
 **Technology scope**
 
-This review focuses on the interrelated decisions for Databricks features, which are hosted in Azure:  
+This review focuses on the interrelated decisions for the following Azure resources:  
 
 - Azure Databricks
-- Apache Spark
+- Spark
 - Delta Lake
 - Unity Catalog
 - MLflow
@@ -40,46 +40,46 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Understand service limits and quotas:** Azure Databricks [service limits](/azure/databricks/resources/) directly constrain workload reliability through compute clusters, workspace capacity, storage throughput, and network bandwidth restrictions. Architecture design must proactively incorporate these quotas to prevent unexpected service disruptions, including the 1000-node cluster limit, workspace cluster maximums, and regional capacity constraints that can halt scaling operations during peak demand.
+> - **Understand service limits and quotas.** Azure Databricks [service limits](/azure/databricks/resources/) directly constrain workload reliability through compute clusters, workspace capacity, storage throughput, and network bandwidth restrictions. Your architecture design must proactively incorporate quotas to prevent unexpected service disruptions that can halt scaling operations during peak demand. These quotas include a 1000-node cluster limit, workspace cluster maximums, and regional capacity constraints.
 >
-> - **Anticipate potential failures through failure mode analysis:** Systematic [failure mode analysis](/azure/well-architected/reliability/failure-mode-analysis) identifies potential system failures and establishes corresponding mitigation strategies to maintain distributed computing resilience.
+> - **Anticipate potential failures by using failure mode analysis.** Systematic [failure mode analysis](/azure/well-architected/reliability/failure-mode-analysis) identifies potential system failures and establishes corresponding mitigation strategies to maintain distributed computing resilience.
 >
->    Common failure scenarios and their proven mitigation approaches include:
+>    The following table includes common failure scenarios and their proven mitigation approaches.
 >
 >    |Failure|Mitigation|
 >    |---|---|
 >    |Cluster driver node failure| Use cluster auto-restart policies and implement checkpointing for Spark applications. Use structured streaming with fault-tolerant state management. |
->    |Job execution failures | Implement retry policies with exponential backoff. Use Databricks job orchestration with error handling. Configure proper timeout settings. |
->    |Data corruption or inconsistency | Use Delta Lake ACID transactions and time travel capabilities and data expectations in Lakeflow Declarative Pipelines. Implement data validation checks and monitoring.  |
+>    |Job execution failures | Implement retry policies with exponential backoff. Use Azure Databricks job orchestration with error handling. Set up proper timeout settings. |
+>    |Data corruption or inconsistency | Use Delta Lake atomicity, consistency, isolation, and durability (ACID) transactions, time travel capabilities, and data expectations in Lakeflow Declarative Pipelines. Implement data validation checks and monitoring.  |
 >    |Workspace or region unavailability | Implement multi-region deployment strategies. Use workspace backup and restore procedures. Configure cross-region data replication. |
 >
->    These mitigation strategies leverage native Azure Databricks capabilities including auto-restart, automatic scaling, Delta Lake consistency guarantees, and Unity Catalog security features for fault tolerance.
+>    These mitigation strategies use native Azure Databricks capabilities like auto-restart, automatic scaling, Delta Lake consistency guarantees, and Unity Catalog security features for fault tolerance.
 >
-> - **Design to support redundancy across the critical layers:** Redundancy is a key strategy that must be applied to the critical architectural layers to maintain workload continuity.
+> - **Design to support redundancy across the critical layers.** Redundancy in the critical architectural layers is key to maintaining workload continuity.
 >
->     For example, distribute clusters across availability zones, using diverse instance types, leveraging cluster pools, and implementing automatic node replacement policies. Similarly, Reliable network design protects against connectivity failures that could disrupt control plane reachability, data access, and communication with dependencies. Using redundant network paths, diverse private endpoint configurations, DNS failover mechanisms, and VNet injection can help achieve network resilience. Even metadata resilience is important for maintaining compliance and data accessibility during service disruptions, since governance failures can halt data access and compromise compliance requirements.
+>     For example, distribute clusters across availability zones by using diverse instance types and cluster pools and by implementing automatic node replacement policies. Reliable network design also protects against connectivity failures that can disrupt control plane reachability, data access, and communication with dependencies. Use redundant network paths, diverse private endpoint configurations, DNS failover mechanisms, and VNet injection to achieve network resilience. Even metadata resilience is important for maintaining compliance and data accessibility during service disruptions. Governance failures can halt data access and compromise compliance requirements.
 >
->   For higher availability, consider multi-region Azure Databricks deployments for geographic redundancy that protects against regional outages and ensures business continuity during extended service disruptions. Multi-region setup is also a viable solution for disaster recovery.  
+>   For higher availability, consider using multi-region Azure Databricks deployments for geographic redundancy. This approach helps protect against regional outages and ensures business continuity during extended service disruptions. Multi-region setup is also a viable solution for disaster recovery. 
 >
-> - **Implement scaling strategies:** Use autoscaling to handle demand fluctuations while keeping performance steady. Plan for delays in adding resources and regional capacity limits, balancing speed, and cluster startup latency impacts during peak demand periods.
+> - **Implement scaling strategies.** Use autoscaling to handle demand fluctuations while keeping performance steady. Plan for delays when you add resources and regional capacity limits to balance speed and cluster startup latency impacts during peak demand periods.
 >
-> - **Adopt serverless compute for improved reliability:** Serverless compute options reduce operational complexity and improve reliability by shifting infrastructure management to Microsoft, providing automatic scaling, built-in fault tolerance, and consistent availability without cluster lifecycle management overhead.
+> - **Adopt serverless compute for improved reliability.** Serverless compute options reduce operational complexity and improve reliability by shifting infrastructure management to Microsoft, providing automatic scaling, built-in fault tolerance, and consistent availability without cluster lifecycle management overhead.
 >
-> - **Implement comprehensive health monitoring and alerting:** [Comprehensive monitoring](/azure/well-architected/reliability/monitoring-alerting-strategy) across all Azure Databricks components enables proactive issue detection and rapid response before availability impacts occur, covering workspace health, cluster status, job execution patterns, and data pipeline performance with automated escalation workflows.
+> - **Implement comprehensive health monitoring and alerting.** [Comprehensive monitoring](/azure/well-architected/reliability/monitoring-alerting-strategy) across all Azure Databricks components enables proactive issue detection and rapid response before availability impacts occur, covering workspace health, cluster status, job execution patterns, and data pipeline performance with automated escalation workflows.
 >
-> - **Protect data using Delta Lake reliability features:** Delta Lake provides essential data protection through ACID transactions, automatic versioning, time travel capabilities, and schema enforcement that prevent corruption and enable recovery from data issues.
+> - **Protect data using Delta Lake reliability features.** Delta Lake provides essential data protection through ACID transactions, automatic versioning, time travel capabilities, and schema enforcement that prevent corruption and enable recovery from data issues.
 >
-> - **Configure job reliability and retry mechanisms:** Job reliability configurations establish resilient data processing through intelligent retry policies, timeout management, and failure handling mechanisms that distinguish between transient issues and permanent errors.
+> - **Configure job reliability and retry mechanisms.** Job reliability configurations establish resilient data processing through intelligent retry policies, timeout management, and failure handling mechanisms that distinguish between transient issues and permanent errors.
 >
-> - **Build data pipeline resilience and fault tolerance:** Data pipeline resilience addresses the critical reliability challenges of distributed data processing where failures can cascade throughout interconnected data systems and disrupt business analytics workflows.
+> - **Build data pipeline resilience and fault tolerance.** Data pipeline resilience addresses the critical reliability challenges of distributed data processing where failures can cascade throughout interconnected data systems and disrupt business analytics workflows.
 >
 >    Advanced resilience strategies leverage Lakeflow Declarative Pipelines, structured streaming checkpoints, Auto Loader rescued data capabilities, and Lakeflow Declarative Pipelines quality constraints to provide automatic error handling, data quality enforcement, and graceful degradation during infrastructure disruptions.
 >
-> - **Establish backup and disaster recovery procedures:**    Effective [disaster recovery](/azure/well-architected/reliability/disaster-recovery) requires aligning recovery time objectives with business requirements while establishing automated backup processes for workspace metadata, notebook repositories, job definitions, cluster configurations, and integrated data storage systems.
+> - **Establish backup and disaster recovery procedures.**    Effective [disaster recovery](/azure/well-architected/reliability/disaster-recovery) requires aligning recovery time objectives with business requirements while establishing automated backup processes for workspace metadata, notebook repositories, job definitions, cluster configurations, and integrated data storage systems.
 >
 >   If you're using a secondary region for recovery, pay attention to workspace metadata synchronization, code repository replication, and coordinated integration with dependent Azure services to maintain operational continuity across geographic boundaries.
 >
-> - **Implement reliability testing and chaos engineering:** Systematic reliability testing validates that failure recovery mechanisms function correctly under real-world conditions, incorporating chaos engineering principles to identify resilience gaps before they impact production environments.
+> - **Implement reliability testing and chaos engineering.** Systematic reliability testing validates that failure recovery mechanisms function correctly under real-world conditions, incorporating chaos engineering principles to identify resilience gaps before they impact production environments.
 
 ### Recommendations
 
@@ -113,37 +113,37 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - **Review security baselines:** The [Azure Databricks security baseline](/security/benchmark/azure/baselines/azure-databricks-security-baseline) provides procedural guidance and resources for implementing the security recommendations specified in the Microsoft cloud security benchmark.
+> - **Review security baselines.** The [Azure Databricks security baseline](/security/benchmark/azure/baselines/azure-databricks-security-baseline) provides procedural guidance and resources for implementing the security recommendations specified in the Microsoft cloud security benchmark.
 >
-> - **Integrate secure development lifecycle (SLC):** Implement security code scanning for source code and MLflow model security validation to identify vulnerabilities early in the development lifecycle.
+> - **Integrate secure development lifecycle (SLC).** Implement security code scanning for source code and MLflow model security validation to identify vulnerabilities early in the development lifecycle.
 >
 >    Use infrastructure-as-code (IaC) validation to enforce secure configurations of Azure Databricks resources.
 >
 >   Also, protect the development environment by implementing secure source code management, managing credentials safely within development workflows, and integrating automated security testing into CI/CD pipelines used for data processing and machine learning model deployment.
 >
-> - **Provide centralized governance:** Add traceability and auditing for data sources through Databricks pipelines. Unity Catalog serves a centralized metadata catalog that supports data discovery and lineage tracking across workspaces with fine-grained access controls and validation.
+> - **Provide centralized governance.** Add traceability and auditing for data sources through Databricks pipelines. Unity Catalog serves a centralized metadata catalog that supports data discovery and lineage tracking across workspaces with fine-grained access controls and validation.
 >
 >    Unity Catalog can be integrated with external data sources.
 >
-> - **Introduce intentional resource segmentation:** Enforce segmentation at different scopes by using separate workspaces and subscriptions. Use separate segments for production, development, and sandbox environments to limit blast radius of potential breaches.
+> - **Introduce intentional resource segmentation.** Enforce segmentation at different scopes by using separate workspaces and subscriptions. Use separate segments for production, development, and sandbox environments to limit blast radius of potential breaches.
 >
 >    Apply segmentation by sensitivity and function: isolate sensitive data workloads in dedicated workspaces with stricter access controls, and use sandbox environments for exploratory work with limited privileges and no production data access.
 >
-> - **Implement secure network access:** Azure Databricks' data plane resources like Spark clusters, and VMs, are deployed into your Azure Virtual Network (VNet) through vNet Injection. Those resources are deployed into subnets within that VNet. Therefore, the control plane, managed by Databricks platform, is isolated from the data plane preventing unauthorized access. The control plane communicates securely with the data plane to manage the workload, while all data processing remains within your network.
+> - **Implement secure network access.** Azure Databricks' data plane resources like Spark clusters, and VMs, are deployed into your Azure Virtual Network (VNet) through vNet Injection. Those resources are deployed into subnets within that VNet. Therefore, the control plane, managed by Databricks platform, is isolated from the data plane preventing unauthorized access. The control plane communicates securely with the data plane to manage the workload, while all data processing remains within your network.
 >
 >   vNet injection gives you full control over configuration, routing, and security though Azure's private networking capabilities. For example, you can use Azure Private Links to secure the connection to the control plane without using the public internet. You can use network security groups (NSGs) to control egress and ingress traffic between subnets, route traffic through Azure Firewall, NAT Gateway, or network virtual appliances for inspection and control. You can even peer the VNet with your on-premises network, if needed.
 >
-> - **Implement authorization and authentication mechanisms:** Consider [identity and access management](/azure/well-architected/security/identity-access)  across both the control and data planes. The Databricks runtime enforces its own security features and access controls during job execution, creating a layered security model. Azure Databricks components, like Unity Catalog and Spark cluster, integrates with Microsoft Entra ID, enabling access management through Azure's built-in RBAC policies. This integration also provides enterprise authentication through single sign-on, multifactor authentication, and conditional access policies, and so on.
+> - **Implement authorization and authentication mechanisms.** Consider [identity and access management](/azure/well-architected/security/identity-access)  across both the control and data planes. The Databricks runtime enforces its own security features and access controls during job execution, creating a layered security model. Azure Databricks components, like Unity Catalog and Spark cluster, integrates with Microsoft Entra ID, enabling access management through Azure's built-in RBAC policies. This integration also provides enterprise authentication through single sign-on, multifactor authentication, and conditional access policies, and so on.
 >
 >   It's important to understand where your architecture relies on Databricks-native security and where it intersects with Entra ID. This dual-layered approach may require separate identity management and maintenance strategies.
 >
-> - **Encrypt data at rest:** Azure Databricks integrates with Azure Key Vault to manage encryption keys. This integration supports customer-managed keys (CMK), allowing you to control the operation of your encryption keys, such as revocation, auditing, and compliance with security policies.
+> - **Encrypt data at rest.** Azure Databricks integrates with Azure Key Vault to manage encryption keys. This integration supports customer-managed keys (CMK), allowing you to control the operation of your encryption keys, such as revocation, auditing, and compliance with security policies.
 >
-> - **Protect workload secrets:** To run data workflows, there's often a need to store secrets like database connection strings, API keys, and other sensitive information. Azure Databricks natively supports secret scopes to store secrets within a workspace that can be securely accessed from source code and jobs.
+> - **Protect workload secrets.** To run data workflows, there's often a need to store secrets like database connection strings, API keys, and other sensitive information. Azure Databricks natively supports secret scopes to store secrets within a workspace that can be securely accessed from source code and jobs.
 >
 >   Secret scopes are integrated with Azure Key Vault allowing you to reference secrets and manage them centrally. Enterprise teams often require Key Vault-backed secret scopes for compliance, security, and policy enforcement.
 >
-> - **Implement security monitoring:** Azure Databricks natively supports audit logging that gives you visibility into admin activities in a workspace, like login attempts, notebook access, changes to permissions. Also, Unity Catalog access logs tracks who accessed what data, when, and how.
+> - **Implement security monitoring.** Azure Databricks natively supports audit logging that gives you visibility into admin activities in a workspace, like login attempts, notebook access, changes to permissions. Also, Unity Catalog access logs tracks who accessed what data, when, and how.
 >
 >   With Azure Databricks, those logs can be viewed in Azure Monitor.
 >
@@ -184,37 +184,37 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
-> - **Determine your cost drivers:** Theoretical capacity planning often leads to over-provisioning and wasted spend, and conversely not investing in enough resources is risky.
+> - **Determine your cost drivers.** Theoretical capacity planning often leads to over-provisioning and wasted spend, and conversely not investing in enough resources is risky.
 >
 >   Estimate costs and seek optimization opportunities based on workload behavior. Run pilot workloads, benchmark cluster performance, and analyze autoscaling behavior. Real usage data can help to right-size the cluster, set scaling rules, and allocate the right resources.
 >
-> - **Set clear accountability for spend:** When using multiple Azure Databricks workspaces, it's important to track which teams or projects are responsible for specific costs. This requires tagging resources (like clusters or jobs) with project or cost center information, using chargeback models to assign usage-based costs to teams, and setting budget controls to monitor and limit spending.
+> - **Set clear accountability for spend.** When using multiple Azure Databricks workspaces, it's important to track which teams or projects are responsible for specific costs. This requires tagging resources (like clusters or jobs) with project or cost center information, using chargeback models to assign usage-based costs to teams, and setting budget controls to monitor and limit spending.
 >
-> - **Choose the appropriate tiers:** It's recommended that you use the Standard tier providing for development and basic production workloads; Premium tier for production workloads as it provides security features, such as the Unity Catalog, which are central to most analytics workloads.
+> - **Choose the appropriate tiers.** It's recommended that you use the Standard tier providing for development and basic production workloads; Premium tier for production workloads as it provides security features, such as the Unity Catalog, which are central to most analytics workloads.
 >
-> - **Choose between serverless compute versus VMs:** For serverless, you only pay for what you use (consumption-based). Serverless is recommended for bursty workloads or on-demand jobs because it scales automatically and reduces operational overhead. You don't need to manage infrastructure or pay for idle time.
+> - **Choose between serverless compute versus VMs.** For serverless, you only pay for what you use (consumption-based). Serverless is recommended for bursty workloads or on-demand jobs because it scales automatically and reduces operational overhead. You don't need to manage infrastructure or pay for idle time.
 >
 >   For predictable or steady usage, opt for VM-based clusters. This gives you more control, but requires operational management and tuning to avoid overprovisioning. If you are sure about long-term usage, use reserved capacity. Databricks Commit Units (DBCU) are pre-paid usage contracts that give discounts in exchange for usage commitments.
 >
 >   Make sure you analyze historical trends and project future demands to make the best choice.
 >
-> - **Optimize cluster utilization:** Reduce Azure Databricks costs by automatically scaling and shutting down clusters when they're not needed.
+> - **Optimize cluster utilization.** Reduce Azure Databricks costs by automatically scaling and shutting down clusters when they're not needed.
 >
 >   Evaluate if your budget allows for cluster pools. While they can reduce cluster start times, they are idle resources that accrue infrastructure costs even while not in use.
 >
 >   Save costs in Dev/Test environments by using scaled down configurations. Encourage cluster sharing among teams to avoid spinning up unnecessary resources. Enforce auto-termination policies to deprovision idle clusters.
 >
-> - **Optimize compute for each workload:** Different workloads require different compute configurations. Some jobs may need higher memory, processing power, while others might run lightweight jobs accruing lower cost. Use the right cluster for the right job.
+> - **Optimize compute for each workload.** Different workloads require different compute configurations. Some jobs may need higher memory, processing power, while others might run lightweight jobs accruing lower cost. Use the right cluster for the right job.
 >
 >    Instead of using the same large cluster for everything, assign the right cluster to each job. Azure Databricks lets you tailor compute resources to match each workload, helping you reduce costs and improve performance.
 >
-> - **Optimize storage costs:** Storing large volumes of data can get expensive. Try to reduce cost by using Delta Lake capabilities. For example, data compaction allows you to merge many small files into fewer large files to reduce storage overhead and speed up queries.
+> - **Optimize storage costs.** Storing large volumes of data can get expensive. Try to reduce cost by using Delta Lake capabilities. For example, data compaction allows you to merge many small files into fewer large files to reduce storage overhead and speed up queries.
 >
 >   Be diligent about managing old data. You can use retention policies to remove outdated versions. In addition, you can move older infrequently accessed data to cheaper storage tiers. If applicable, automate lifecycle policies like time-based deletion or tiering rules help archive or delete data as it becomes less useful, keeping storage lean.
 >
 >    Different storage formats and compression settings can also reduce the amount of space used.
 >
-> - **Optimize data processing techniques:** There are costs associated with compute, networking, and querying when processing large volumes of data. To reduce costs, use a combination of strategies for query tuning, data format selection, and Delta Lake and code optimizations:
+> - **Optimize data processing techniques.** There are costs associated with compute, networking, and querying when processing large volumes of data. To reduce costs, use a combination of strategies for query tuning, data format selection, and Delta Lake and code optimizations:
 >
 >   - _Minimize data movement_. Evaluate the data processing pipeline to reduce unnecessary data movement and bandwidth costs. Implement incremental processing to avoid reprocessing unchanged data, and use caching to store frequently accessed data closer to compute resources. Reduce overhead when connectors access or integrate with external data sources.
 >
@@ -224,9 +224,9 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   - _Apply code optimization design patterns_ like Competing Consumers, Queue-Based Load Leveling, and Compute Resource Consolidation within Azure Databricks environments.
 >
-> - **Monitor consumption:** Databricks Unit (DBU) is an abstracted billing model that's based on compute usage. Azure Databricks gives you detailed information  that provides visibility into usage metrics about clusters, runtime hours, and other components. Use that data for budget planning and controlling costs.
+> - **Monitor consumption.** Databricks Unit (DBU) is an abstracted billing model that's based on compute usage. Azure Databricks gives you detailed information  that provides visibility into usage metrics about clusters, runtime hours, and other components. Use that data for budget planning and controlling costs.
 >
-> - **Have automated spending guardrails:** To avoid overspending and efficient use of resources, enforce policies that prevent or regulate the use of resources. For example, have checks on the types of clusters that can be created, limit the cluster size or its lifetime. Also, set alerts to get notified when resource usage near the allowed budget boundaries. For example, if a job suddenly starts consuming 10× more DBUs, a script can alert the admin or shut it down.
+> - **Have automated spending guardrails.** To avoid overspending and efficient use of resources, enforce policies that prevent or regulate the use of resources. For example, have checks on the types of clusters that can be created, limit the cluster size or its lifetime. Also, set alerts to get notified when resource usage near the allowed budget boundaries. For example, if a job suddenly starts consuming 10× more DBUs, a script can alert the admin or shut it down.
 >
 >   Take advantage of Databricks system tables to track cluster usage and DBU consumption. You can query the table to detect cost anomalies.
 
@@ -260,7 +260,7 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Collect monitoring data:** For your Azure Databricks workload, focus on tracking key areas like cluster health, resource usage, jobs and pipelines, data quality, and access activity. Use these metrics to gain insights to confirm the system is delivering  functionality at the expected performance. Also they can be used to audit how data and resources are accessed and used and enforce governance.
+> - **Collect monitoring data.** For your Azure Databricks workload, focus on tracking key areas like cluster health, resource usage, jobs and pipelines, data quality, and access activity. Use these metrics to gain insights to confirm the system is delivering  functionality at the expected performance. Also they can be used to audit how data and resources are accessed and used and enforce governance.
 >
 >   - _Monitor the cluster:_ When monitoring Azure Databricks clusters, focus on indicators that reflect performance and efficiency. Track overall cluster health and observe how resources like CPU, memory, and disk are being used across nodes.
 >   - _Monitor jobs and pipelines:_ Capture metrics that reflect execution flow. This includes tracking job success and failure rates, and run durations. Also, gather information about how jobs are triggered to clarify execution context.
@@ -273,23 +273,23 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >   Azure Databricks' built-in monitoring tools are integrated with Azure Monitor.
 >
-> - **Set up automated and repeatable deployment assets:** Use Infrastructure as Code (IaC) to define and manage Azure Databricks resources.
+> - **Set up automated and repeatable deployment assets.** Use Infrastructure as Code (IaC) to define and manage Azure Databricks resources.
 >
 >   Automate provisioning of workspaces, including region selection, networking, and access control, to ensure consistency across environments. Use cluster templates to standardize compute configurations, reducing the risk of misconfiguration and improving cost predictability. Also define jobs and pipelines as code using formats like JSON ARM templates, making them version-controlled and reproducible.
 >
 >   Use [Databricks Asset Bundles](/azure/databricks/dev-tools/bundles/) to version control notebook source code, job configurations, pipeline definitions, and infrastructure settings in Git repositories with proper branching strategies and rollback procedures.
 >
-> - **Automate deployments:** Use CI/CD pipelines in Azure Databricks to automate the deployment of pipelines, job configurations, cluster settings, and Unity Catalog assets. Instead of manually pushing changes, consider tools like Databricks Repos for version control, Azure DevOps or GitHub Actions for pipeline automation, and Databricks Asset Bundles for packaging code and configurations.
+> - **Automate deployments.** Use CI/CD pipelines in Azure Databricks to automate the deployment of pipelines, job configurations, cluster settings, and Unity Catalog assets. Instead of manually pushing changes, consider tools like Databricks Repos for version control, Azure DevOps or GitHub Actions for pipeline automation, and Databricks Asset Bundles for packaging code and configurations.
 >
-> - **Automate routine tasks:** Common automation includes managing cluster lifecycles (like scheduled start/stop), cleaning up logs, validating pipeline health. By integrating with Azure tools like Logic Apps or Functions, teams can build self-healing workflows that automatically respond to issues, such as restarting failed jobs or scaling clusters. This kind of automation is key to maintaining reliable, efficient Azure Databricks operations as workloads grow.
+> - **Automate routine tasks.** Common automation includes managing cluster lifecycles (like scheduled start/stop), cleaning up logs, validating pipeline health. By integrating with Azure tools like Logic Apps or Functions, teams can build self-healing workflows that automatically respond to issues, such as restarting failed jobs or scaling clusters. This kind of automation is key to maintaining reliable, efficient Azure Databricks operations as workloads grow.
 >
-> - **Have strong testing practices:** Azure Databricks-specific strategies include unit testing for notebook code, integration testing for data pipelines, validation of Lakeflow Declarative Pipelines logic, permission testing with Unity Catalog, and verifying infrastructure deployments. These practices help catch issues early and reduce production incidents,
+> - **Have strong testing practices.** Azure Databricks-specific strategies include unit testing for notebook code, integration testing for data pipelines, validation of Lakeflow Declarative Pipelines logic, permission testing with Unity Catalog, and verifying infrastructure deployments. These practices help catch issues early and reduce production incidents,
 >
-> - **Develop operational runbooks to handle incidents:** [Operational runbooks](/azure/databricks/lakehouse-architecture/operational-excellence/) offer structured, step-by-step guidance for handling common Azure Databricks scenarios. These runbooks include diagnostic commands, log locations, escalation contacts, and recovery procedures with estimated resolution times, enabling consistent and rapid incident response across teams.
+> - **Develop operational runbooks to handle incidents.** [Operational runbooks](/azure/databricks/lakehouse-architecture/operational-excellence/) offer structured, step-by-step guidance for handling common Azure Databricks scenarios. These runbooks include diagnostic commands, log locations, escalation contacts, and recovery procedures with estimated resolution times, enabling consistent and rapid incident response across teams.
 >
-> - **Develop backup and recovery procedures:** [Backup and recovery procedures](/azure/well-architected/reliability/disaster-recovery) ensure business continuity through protection of workspace configurations, analytics source code, job definitions, and data assets with automated backup schedules and cross-region replication that meet recovery time and recovery point objectives.
+> - **Develop backup and recovery procedures.** [Backup and recovery procedures](/azure/well-architected/reliability/disaster-recovery) ensure business continuity through protection of workspace configurations, analytics source code, job definitions, and data assets with automated backup schedules and cross-region replication that meet recovery time and recovery point objectives.
 >
-> - **Implement team collaboration and knowledge management:** Team collaboration practices optimize Azure Databricks productivity through shared workspace organization, notebook collaboration features, and documentation standards that facilitate knowledge transfer and reduce project duplication across development teams.
+> - **Implement team collaboration and knowledge management.** Team collaboration practices optimize Azure Databricks productivity through shared workspace organization, notebook collaboration features, and documentation standards that facilitate knowledge transfer and reduce project duplication across development teams.
 
 ### Recommendations
 
@@ -321,9 +321,9 @@ Start your design strategy based on the [design review checklist for Performance
 
 > [!div class="checklist"]
 >
-> - **Do capacity planning:** Analyze workloads and monitor resource usage to determine how much compute and storage your workloads actually need. Use that insight to right-size clusters, optimize job schedules, and forecast storage growth, so you avoid under-provisioning, which leads to resource constraints.
+> - **Do capacity planning.** Analyze workloads and monitor resource usage to determine how much compute and storage your workloads actually need. Use that insight to right-size clusters, optimize job schedules, and forecast storage growth, so you avoid under-provisioning, which leads to resource constraints.
 >
-> - **Choose optimal compute configurations for workload characteristics:**  Evaluate serverless options, which can offer better automatic scaling, faster startup times. Compare them with traditional clusters to choose the best fit.
+> - **Choose optimal compute configurations for workload characteristics.**  Evaluate serverless options, which can offer better automatic scaling, faster startup times. Compare them with traditional clusters to choose the best fit.
 >
 >   For clusters, optimize configurations including instance types, sizes, scaling settings, based on data volume and processing patterns. Be sure to analyze trade-offs between instance families for specific use cases. For example, evaluating memory-optimized versus compute-optimized instances, local SSD versus standard storage options, to match performance requirements.
 >
@@ -331,11 +331,11 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >    See [Recommendations for selecting the right services](/azure/well-architected/performance-efficiency/select-services) for additional guidance on how to approach selecting the right services for your workload.
 >
-> - **Prioritize resource allocation for critical workloads:** Separate and prioritize workloads running at the same time. Use features like resource pools, cluster pools, isolation modes, and job queues to avoid interference between jobs. Set resource quotas and scheduling rules to protect high-priority tasks from being slowed down by background or lower-priority processes.
+> - **Prioritize resource allocation for critical workloads.** Separate and prioritize workloads running at the same time. Use features like resource pools, cluster pools, isolation modes, and job queues to avoid interference between jobs. Set resource quotas and scheduling rules to protect high-priority tasks from being slowed down by background or lower-priority processes.
 >
-> - **Configure autoscaling for variable workloads:** Set up autoscaling policies in Azure Databricks by defining scaling triggers that cause the cluster to scale, how quickly it adds or removes nodes, and resource limits. These settings help Azure Databricks respond efficiently to changing workloads, optimize resource usage, and avoid performance issues during scaling events.
+> - **Configure autoscaling for variable workloads.** Set up autoscaling policies in Azure Databricks by defining scaling triggers that cause the cluster to scale, how quickly it adds or removes nodes, and resource limits. These settings help Azure Databricks respond efficiently to changing workloads, optimize resource usage, and avoid performance issues during scaling events.
 >
-> - **Design efficient data storage and retrieval mechanisms:** Performance gains for data intensive operations especially on large volumes of data requires careful planning and tuning.
+> - **Design efficient data storage and retrieval mechanisms.** Performance gains for data intensive operations especially on large volumes of data requires careful planning and tuning.
 >
 >   - _Organize data strategically_. Design data partitioning schemes that optimize query performance when organizing Delta Lake tables. Good partitioning enables partition pruning, where Spark reads only the relevant subsets of data during a query, rather than scanning the entire table.
 >
@@ -352,23 +352,23 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   - _Pick the right data formats and compression:_ Choose formats like Parquet and smart compression algorithms (e.g., ZSTD) that reduce storage and speed up reads without compromising performance.
 >
-> - **Optimize network and I/O performance:** Choose high-performance storage options (like Premium or SSD-backed storage) and design your architecture to minimize data movement by processing data close to where it's stored.
+> - **Optimize network and I/O performance.** Choose high-performance storage options (like Premium or SSD-backed storage) and design your architecture to minimize data movement by processing data close to where it's stored.
 >
 >   Additionally, use efficient data transfer strategies, such as batching writes and avoiding unnecessary shuffles to maximize throughput and reduce latency.
 >
-> - **Optimize job execution based on type of workload:**. Tailor optimization strategies to the specific needs  For example,
+> - **Optimize job execution based on type of workload.**. Tailor optimization strategies to the specific needs  For example,
 >   - _Stream processing_: Real-time data pipelines require low-latency and high-throughput performance. In Azure Databricks, this means tuning parameters such as trigger intervals, micro-batch sizes, watermarking, and checkpointing. Using Structured Streaming and Delta Lake capabilities like schema evolution and exactly-once can ensure consistent processing under varying loads.
 >   - _Machine learning_: ML training and inference jobs are often compute-intensive. You can boost performance by using distributed training, GPU acceleration, and efficient feature engineering pipelines. Azure Databricks supports ML performance tuning through MLflow, Databricks Runtime for ML, and integrations with tools like Horovod. Tuning resource configurations and applying data pre-processing optimizations can significantly reduce training time and inference latency.
 >
 >   Using Lakeflow Declarative Pipelines simplifies and automates the implementation of these optimization recommendations.
 >
-> - **Use your monitoring system to identify performance bottlenecks:** Implement [comprehensive performance monitoring](/azure/well-architected/performance-efficiency/collect-performance-data)  to get visibility into how jobs, clusters, and queries perform, to identify bottlenecks or inefficiencies that drive up costs and slow down workloads.
+> - **Use your monitoring system to identify performance bottlenecks.** Implement [comprehensive performance monitoring](/azure/well-architected/performance-efficiency/collect-performance-data)  to get visibility into how jobs, clusters, and queries perform, to identify bottlenecks or inefficiencies that drive up costs and slow down workloads.
 >
 >   Analyze anomalies in key metrics like CPU and memory usage, job execution times, query latencies, and cluster health. This allows you to pinpoint slowdowns, whether they're caused by poor Spark configurations, unoptimized queries, or under/over-provisioned clusters.
 >
 >   Use built-in tools like the Spark UI to analyze query plans and job stages, Azure Monitor to track infrastructure-level metrics, and custom metrics or logs for deeper insights. These tools support proactive tuning, allowing you to fix issues before they impact users or critical pipelines.
 >
-> - **Conduct systematic performance testing:** Use load testing, stress testing, and benchmarking to validate execution times, resource usage, and system responsiveness. By establishing performance baselines and incorporating automated tests into your CI/CD pipelines, you can detect slowdowns early and measure the impact of any optimizations.
+> - **Conduct systematic performance testing.** Use load testing, stress testing, and benchmarking to validate execution times, resource usage, and system responsiveness. By establishing performance baselines and incorporating automated tests into your CI/CD pipelines, you can detect slowdowns early and measure the impact of any optimizations.
 
 ### Recommendations
 
