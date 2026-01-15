@@ -13,9 +13,9 @@ azure.category:
 
 # Architecture best practices for Microsoft Fabric
 
-Microsoft Fabric is a comprehensive, unified analytics platform that brings together data movement, processing, ingestion, transformation, real-time event routing, and report building in a single environment. It's designed to help organizations build and deploy complete analytics solutions at scale, providing an integrated platform for data teams to collaborate efficiently across the entire data lifecycle. Across these diverse use cases for Microsoft Fabric, there are common considerations and best practices for using the platform effectively. This article addresses these considerations and gives architectural recommendations that are mapped to the principles of the Well-Architected Framework pillars.
+Microsoft Fabric is a unified analytics platform that brings together data movement, processing, ingestion, transformation, real-time event routing, and report building in a single environment. It's designed to help organizations build and deploy complete analytics solutions at scale, providing an integrated platform for data teams to collaborate efficiently across the entire data lifecycle. Across these diverse use cases for Microsoft Fabric, there are common considerations and best practices for using the platform effectively. This article addresses these considerations and gives architectural recommendations that are mapped to the principles of the Well-Architected Framework pillars.
 
-It's assumed that as an architect, you've reviewed the analytics platform options available and chosen Microsoft Fabric as the comprehensive data platform for your workload.
+It's assumed that as an architect, you've reviewed the analytics platform options available and chosen Microsoft Fabric as the  data platform for your workload.
 
 **Technology scope**
 
@@ -134,38 +134,18 @@ In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-
 >   Ensure the team has strong data engineering and analytics skills—Lakehouse and Delta Lake concepts, Spark and SQL, Power BI semantic models, and Fabric Data Factory—and invest in Fabric training and certifications such as DP-600 and DP-700.
 
 
-
-
 ### Recommendations
 
 | Recommendation | Benefit |
 | --- | --- |
 | Enable **Workspace Monitoring** to collect logs and metrics into an Eventhouse within the workspace. <br><br> Consider tracking workload execution, including job failures, retries, and long-running jobs. Use this data to troubleshoot deployments and operational issues. | Provides workload-level visibility for troubleshooting performance, failures, and operational behavior without relying solely on tenant-wide logs. |
 | Export **Microsoft Fabric audit logs** (from Microsoft 365 audit logs) to **Azure Monitor / Log Analytics**. <br><br> Use these logs to monitor user activity and data access patterns, investigate usage, enforce governance, and support security requirements. | Enables centralized monitoring, long-term retention, and correlation with other Azure platform signals. |
-| Use the **Microsoft Fabric Capacity Metrics app** as the primary dashboard for capacity health, compute, and storage, and enable built-in threshold notifications. <br><br> Track CU consumption, throttling events, autoscale behavior, and storage usage trends at both capacity and workspace levels to prevent unexpected pressure. | Delivers comprehensive insight into CU consumption, throttling, autoscale behavior, and storage usage over rolling 14-day windows. |
-| Use **Fabric Activator** to monitor Fabric capacity events and trigger real-time alerts or automated actions. <br><br> Include upstream and downstream dependencies such as Entra ID, Azure Storage, networking, and customer-managed gateways to maintain operational continuity. | Enables proactive monitoring and faster response to capacity pressure, failures, or operational anomalies. |
+| Use the **Microsoft Fabric Capacity Metrics app** as the primary dashboard for capacity health, compute, and storage, and enable built-in threshold notifications. <br><br> Track CU consumption, throttling events, autoscale behavior, and storage usage trends at both capacity and workspace levels to prevent unexpected pressure. | Delivers  insight into CU consumption, throttling, autoscale behavior, and storage usage over rolling 14-day windows. |
+| Use [**Fabric Activator**](/fabric/real-time-intelligence/data-activator/activator-introduction?utm_source=chatgpt.com) to monitor Fabric capacity events and trigger real-time alerts or automated actions. <br><br> Include upstream and downstream dependencies such as Entra ID, Azure Storage, networking, and customer-managed gateways to maintain operational continuity. | Enables proactive monitoring and faster response to capacity pressure, failures, or operational anomalies. |
 | Enable **OneLake Diagnostics** selectively for workspaces that require detailed data-access visibility. | Provides insight into how data is accessed within a workspace, supporting governance, security investigations, and performance analysis. |
 | Configure **Fabric monitoring settings** at the tenant level to collect telemetry across all workspace components. <br><br> Define alert escalation paths, validate pipelines and semantic model refreshes, and implement proactive monitoring for data quality issues. | Ensures consistent, platform-wide observability and faster detection of capacity, pipeline, or data-quality issues. |
 | Use **Capacity Utilization Events** in the Real-Time Intelligence workload for near real-time alerts and automation when thresholds are exceeded. | Allows rapid detection and automated handling of capacity pressure scenarios before users are impacted. |
 |Enable BCDR feature||
-
-
-
-
-### Recommendations
-
-| Recommendation | Benefit |
-| ----- | ----- |
-|Enable Workspace monitoring to collect logs and metrics in an EventHouse within the workspace. ||
-|Export Microsoft Fabric audit logs to Azure Monitor for centralized monitoring and correlation with other platform signals.||
-|Use Microsoft Fabric Capacity Metrics app as the primary dashboard for monitoring capacity health, compute, and storage, and enable built-in capacity threshold notifications. For advanced alerting and automated responses, use Fabric Activator or Azure Monitor alert rules to detect capacity events and trigger notifications or actions. | comprehensive monitoring of CU consumption, throttling events, autoscale behavior, and storage usage across 14-day windows. |
-|Data Activator can create real-time alerts on capacity metrics or Fabric events for proactive monitoring. Fabric's built-in workspace monitoring tracks operation-level logs across common Fabric items.||
-|OneLake Diagnostics feature provides visibility into data access at the scope of an individual workspace. ||
-| Configure [Microsoft Fabric monitoring](/fabric/admin/service-admin-portal-tenant-settings) with comprehensive telemetry collection across all workspace components. Implement automated alerting for capacity utilization, pipeline failures, and data quality issues with appropriate escalation procedures. | Provides unified operational visibility across the entire Microsoft Fabric platform, enabling proactive issue detection and rapid response to maintain service availability and performance standards. |
-| Use [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction?utm_source=chatgpt.com) to implement sophisticated event-driven automation workflows in response to events in the Fabric environment.||
-|EventHouse||
-|use Capacity Utilization Events in the Real-Time Intelligence workload to enable near–real-time alerts or automated responses when thresholds are exceeded. ||
-ore tools include the Fabric Capacity Metrics app for tracking CU utilization, throttling, autoscale behavior, and storage usage; built-in workspace monitoring and OneLake Diagnostics for operation- and data-access visibility; and Fabric Activator for real-time alerts and automated actions.
 
 
 ## Performance Efficiency
@@ -183,7 +163,7 @@ Start your design strategy based on the [design review checklist for Performance
 > - **Do capacity planning**.  Estimate optimal capacity units (CUs) and CU-seconds based on workload characteristics. Right-size capacities to meet peak demand without over-provisioning. Unused CUs don't carry over, so careful estimation is key. 
 >
 > - **Conduct performance testing with realistic workloads**. There's no single testing tool that fits all workload types. Use workload-specific test tools and combine those with general-purpose load testing tools. For example, JMeter and Locust can be used to test for concurrent user queries where applicable. SQL endpoints can be benchmarked using standard datasets and queries such as TPC-H/TPC. Certain items may require simulating large volume of data to measure throughput and latency for ingestion and processing workloads. Gradually ramp up load, include realistic concurrency, data variety, and peak scenarios. Avoid extrapolating results from small test environments—performance rarely scales linearly.
-
+>
 > - **Align test environments with production**. Match capacity size, region, and other configuration characteristics to your production environment. For consumption-oriented workloads, include realistic user concurrency, data volumes, and query diversity; for ingestion and processing, use varied data to avoid misleading results from compression or repetition. For scenarios where data is continuously updated, make sure in your test environment is able to ingest, process, and consume data concurrently.
 >
 > - **Monitor and analyze performance metrics**. Track Fabric CU consumption as the primary metric, and supplement with workload-specific metrics such as response time, throughput, concurrency, error rates, CPU, and memory usage. Capture statistical distributions (min, max, mean, median, p95, p99) to understand variability and peak behavior.
