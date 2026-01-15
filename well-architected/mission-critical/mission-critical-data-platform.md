@@ -46,7 +46,7 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - *Will there be a risk of data loss?*
 
 - Features such as Time to Live (TTL) can be used to manage data growth by automatically deleting records after an elapsed time, using either record creation or modification.
-  - For example, Azure Cosmos DB provides an in-built [TTL](/azure/cosmos-db/sql/time-to-live) capability.
+  - For example, Azure Cosmos DB provides an in-built [TTL](/azure/cosmos-db/time-to-live) capability.
 
 **Velocity**
 
@@ -366,7 +366,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
   - The change feed can be used to populate a secondary store for additional data platform redundancy or for subsequent analytical scenarios.
 
 - If delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
-  - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
+  - A [Soft Delete](/azure/cosmos-db/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
     - Instead of explicitly deleting data records, data records are *updated* by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
     - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
   - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
@@ -477,7 +477,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - [Indexing](/azure/cosmos-db/index-overview) is also crucial for performance, so ensure index exclusions are used to reduce RU/s and storage requirements.
   - Only index those fields that are needed for filtering within queries; design indexes for the most-used predicates.
 
-- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/sql/best-practice-dotnet#checklist).
+- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/best-practice-dotnet#checklist).
   - Implement [retry logic](/azure/architecture/best-practices/retry-service-specific#cosmos-db) within the SDK on clients.
 
 - Use service-managed encryption keys to reduce management complexity.
