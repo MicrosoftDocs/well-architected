@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:01**| Determine workload team members' specializations, and integrate them into a robust set of practices to design, develop, deploy, and operate your workload to specification. Team members must have clarity in decision-making and responsibilities, value continuous improvement and optimization, and adopt a blameless culture that incorporates continuous learning.|
+|**OE:01**| Align team members' specializations to clear practices for designing, deploying, and operating the workload, ensuring accountability, continuous improvement, and a blameless culture that supports learning.|
 |---|---|
 
 Operating a workload with a DevOps mindset requires more than tools and processes. There are two core components. The first is culture: shared ownership, accountability, continuous learning, and a focus on quality. The second is execution: teams must be able to run their workloads day to day, respond to incidents and changes, and collaborate with other teams while meeting organizational requirements.
