@@ -101,7 +101,8 @@ In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-
 >
 >   Require passing unit tests, integration tests, and data quality validations before promoting artifacts. For example, you might have test stages in dedicated workspace to validate that appropriate items exist, they function as expected, do data integrity checks in data stores. Some of those checks can be automated, but also combine with manual testing, particularly those involving user interacativity, such as reports and dashboards. Include manual approvals from business stakeholders and assess capacity utilization post-deployment to detect potential performance or scaling issues.
 >
->   [!NOTE] Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
+> [!NOTE]
+> Microsoft Fabric does not provide native rollback capabilities. Rollback is achieved by redeploying a previous version from version control or reapplying earlier configuration and provisioning settings. Because Fabric solutions span multiple data stores, any rollback strategy must also address data integrity and consistency, and may require additional measures to restore data state safely.
 >
 > - **Design for incremental and safe releases**. Compartmentalize solutions into dedicated workspaces and use separate dev, test, and production environments to reduce blast radius. Design validation stages that include functional checks and data integrity testing, combining automation with manual validation for interactive workloads. Because Fabric has no native rollback, ensure your design relies on version control and redeployment, with explicit consideration for restoring data consistency if a rollback is required.
 >
@@ -121,7 +122,8 @@ In general, keep in mind that Fabric is a SaaS platform, so there's less day-to-
 >
 > - **Plan for both failover and failback procedures**. Fabric provides a Business Continuity and Disaster Recovery (BCDR) feature that replicates OneLake data to a secondary region. Failover is initiated by Microsoft based on internal failure detection.  After which you need to have new capabilities in secondary region where redeploy Fabric items and rehydrate data from replicated stores. For high availability, select zones and regions that offer zone redundancy, enable BCDR on capacities, and document disaster recovery plans.
 >
->   [!NOTE] Make sure you test disaster recovery. For mission-critical workloads, you might  run multiple instances of a solution on capacities in multiple regions and simulate failover by pausing a capacity in one of the regions.
+>   [!NOTE]
+>   Make sure you test disaster recovery. For mission-critical workloads, you might  run multiple instances of a solution on capacities in multiple regions and simulate failover by pausing a capacity in one of the regions.
 >
 >   After a disaster is resolved, safely return to primary operations by validating and reconciling data across OneLake and other stores. Where needed, re-deploy workspaces and restore affected data. Maintain versioned artifacts and Git history to enable safe promotion of prior stable versions.
 >
