@@ -3,7 +3,7 @@ title: Architecture strategies for designing an incident management (IcM) proces
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/17/2025
+ms.date: 01/15/2025
 ms.topic: concept-article
 ---
 
@@ -109,7 +109,7 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. That repetitive work can be time consuming and take focus away from recovery efforts.
 >
 > AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
 
