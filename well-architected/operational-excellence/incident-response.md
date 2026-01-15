@@ -97,8 +97,6 @@ Key components should include observability data, timelines, ownership details, 
 
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
-
-
 ## Test the plan
 
 Regularly test your incident response processes using dry runs or chaos engineering exercises. **Simulate realistic incidents to validate recoverability**, verify RTO and RPO targets, and ensure communication and escalation plans function under pressure. 
@@ -111,10 +109,13 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
+>
+> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
+
 ## Bring agility and consistency through automation 
 
 Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
-
 
 
 ## Azure facilitation
@@ -131,6 +132,8 @@ Microsoft offers Azure-related incident readiness training. For more information
 Use [connection monitor](/azure/network-watcher/connection-monitor-overview) in Azure Network Watcher to continuously track network connectivity and performance across Azure resources. During emergency incidents, custom workbooks in connection monitor provide real-time visibility into connectivity health, latency trends, and alert status. To do an effective RCA and achieve faster resolution, use [connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) inside the Network Watcher suite of diagnostics tools.
 
 Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze virtual network flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in traffic analytics allows teams to monitor live traffic behavior, receive alerts, and use timeline and topology views to quickly identify affected network segments and respond effectively.
+
+Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Azure AI Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
 
 ## Related links
 
