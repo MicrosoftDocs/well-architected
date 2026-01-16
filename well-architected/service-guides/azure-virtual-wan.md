@@ -1,9 +1,9 @@
 ---
-title: Azure Virtual WAN service guide
+title: Azure Virtual WAN Service Guide
 description: Architectural recommendations for Azure Virtual WAN mapped to the Well-Architected Framework pillars.
 author: abell
 ms.author: abell
-ms.topic: article
+ms.topic: concept-article
 ms.date: 12/01/2025
 ms.subservice: waf-service-guide
 products:
@@ -19,7 +19,7 @@ azure.category:
 
 # Architecture best practices for Azure Virtual WAN  
 
-Azure Virtual WAN is a networking service that provides unified connectivity, security, and routing. It enables global branch and user connectivity through VPN and ExpressRoute, supports encrypted private links, and integrates Azure Firewall for protection. Virtual WAN uses a hub-and-spoke architecture with scale and performance for global transit networks.
+Azure Virtual WAN is a networking service that provides unified connectivity, security, and routing. It enables global branch and user connectivity through VPN and Azure ExpressRoute, supports encrypted private links, and integrates Azure Firewall for protection. Virtual WAN uses a hub-and-spoke architecture with scale and performance for global transit networks.
 
 The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).  
 
@@ -35,7 +35,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 
 The purpose of the Reliability pillar is to provide continued functionality by **building enough resilience and the ability to recover fast from failures**.  
 
-The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy for individual components, system flows, and the system as a whole.
+The [Reliability design principles](/azure/well-architected/resiliency/principles) provide a high-level design strategy applied for individual components, system flows, and the system as a whole.
 
 ### Workload design checklist
 
@@ -43,141 +43,141 @@ Start your design strategy based on the [design review checklist for Reliability
 
 > [!div class="checklist"]
 >
-> - **Review service limits and known issues:** Review [Azure Virtual WAN limits](/azure/virtual-wan/virtual-wan-faq) and [known issues](/azure/virtual-wan/virtual-wan-faq#known-issues) before planning your architecture. Virtual WAN enforces limits on connected resources per hub and per subscription. Known issues include available workarounds.
+> - **Review service limits and known problems:** Review [Virtual WAN limits](/azure/virtual-wan/virtual-wan-faq) and [known problems](/azure/virtual-wan/virtual-wan-faq#known-issues) before you plan your architecture. Virtual WAN enforces limits on connected resources per hub and per subscription. Known problems include available workarounds.
 >
->    Choose Virtual WAN [Standard SKU](/azure/virtual-wan/virtual-wan-about#basicstandard) for production deployments to access zone redundancy and advanced routing capabilities.
+>    Choose the Virtual WAN [Standard SKU](/azure/virtual-wan/virtual-wan-about#basicstandard) for production deployments to get zone redundancy and advanced routing capabilities.
 >
-> - **Anticipate potential failures through failure mode analysis:** Failure mode analysis helps you anticipate failure scenarios and develop mitigation strategies.
+> - **Anticipate potential failures through failure mode analysis (FMA):** FMA helps you anticipate failure scenarios and develop mitigation strategies.
 >
 >    | Failure | Mitigation |
 >    |---------|------------|
->    | Region outage affecting a single-region Virtual WAN hub | Deploy multiple hubs across regions to maintain connectivity when one region becomes unavailable. |
+>    | Regional outage that affects a single-region Virtual WAN hub | Deploy multiple hubs across regions to maintain connectivity when one region becomes unavailable. |
 >    | ExpressRoute connection failure | Deploy redundant circuits or backup VPN connections to maintain hybrid connectivity during outages. |
->    | Branch site VPN connection failure | Provision site-to-site VPN with redundant ISP links to protect against provider-level connectivity issues. |
+>    | Branch site VPN connection failure | Provision site-to-site VPN with redundant internet service provider (ISP) links to protect against provider-level connectivity problems. |
 >
-> - **Understand SLA and composite reliability targets:** Virtual WAN hub routing infrastructure has a 99.95% SLA. Downtime means you can't establish or maintain connections. See SLA terms for service credits.
+> - **Understand service-level agreement (SLA) and composite reliability targets:** Virtual WAN hub routing infrastructure has a 99.95% SLA. Downtime means that you can't establish or maintain connections. See SLA terms for service credits.
 >
 >    End-to-end connectivity requires composite SLA calculation. Hubs, gateways, and firewalls each have independent SLAs. Calculate the combined SLA for critical connectivity paths.
 >
->    The SLA excludes customer responsibilities: on-premises equipment failures, internet connectivity issues outside Azure's control, and configuration errors.
+>    The SLA excludes customer responsibilities, like on-premises equipment failures, internet connectivity problem outside of Azure control, and configuration errors.
 >
 > - **Plan multi-region redundancy for hub deployment:** Distribute virtual hubs across multiple Azure regions to achieve region-level redundancy.
 >
->   Region selection should prioritize:
+>   Region selection should prioritize the following factors:
 >
->   - Proximity to users and workloads.
->   - Paired regions for disaster recovery.
->   - Cross-region connectivity requirements.
->   - Regulatory and data residency constraints.
+>   - Proximity to users and workloads
+>   - Paired regions for disaster recovery
+>   - Cross-region connectivity requirements
+>   - Regulatory and data residency constraints
 >
 >    Configure routing to support automatic or manual region failover. Plan for asymmetric routing patterns during failures and document expected outage behavior. Regulatory and data residency requirements might constrain multi-region deployment strategies.
 >
-> - **Plan for layered redundancy:** Virtual WAN supports three redundancy layers, each addressing distinct failure scenarios:
+> - **Plan for layered redundancy:** Virtual WAN supports three redundancy layers. Each layer addresses distinct failure scenarios.
 >
->     | Layer | Protection Against |
+>     | Layer | Protects against |
 >     |-------|-------------------|
->     | Zone-level | Datacenter failures within a region. |
->     | Connection-level | Single path failures. |
->     | Route-level | Enables traffic engineering and failover control. |
+>     | Zone-level | Datacenter failures within a region |
+>     | Connection-level | Single-path failures |
+>     | Route-level | Enables traffic engineering and failover control |
 >
->     Balance redundancy decisions against availability needs, implementation complexity, and cost. Evaluate each failure domain's impact on workload operations. Choose routing patterns (symmetric or asymmetric) that match operational capabilities.
+>     Balance redundancy decisions against availability needs, implementation complexity, and cost. Evaluate each failure domain's affect on workload operations. Choose symmetric or asymmetric routing patterns that match operational capabilities.
 >
-> - **Plan for reliable hub and gateway scaling:** Size infrastructure for expected growth rather than current traffic. Hub routers autoscale but require up to 25 minutes. Gateways require manual sizing and scheduled maintenance for changes. Overprovision capacity to maintain reliability during demand spikes.
+> - **Plan for reliable hub and gateway scaling:** Size infrastructure for expected growth rather than current traffic. Hub routers automatically scale but require up to 25 minutes. Gateways require manual sizing and scheduled maintenance for changes. Overprovision capacity to maintain reliability during demand spikes.
 >
-> - **Design resilience for Point-to-Site VPN:** Enable global VPN profile for automatic hub selection and failover. Size Point-to-Site address pools to handle at least twice expected concurrent users to prevent exhaustion during gateway redistribution.
+> - **Design resilience for point-to-site VPN:** Configure the global VPN profile for automatic hub selection and failover. Size point-to-site address pools to handle at least double the expected concurrent users to prevent exhaustion during gateway redistribution.
 >
-> - **Configure VPN backup for failover:** Deploy VPN gateway alongside ExpressRoute gateway. Set BGP preference to favor ExpressRoute over VPN for automatic failover.
+> - **Configure VPN backup for failover:** Deploy VPN gateway alongside an ExpressRoute gateway. Set the Border Gateway Protocol (BGP) preference to favor ExpressRoute over VPN for automatic failover.
 >
-> - **Validate failover behavior:** Test routing and NVA behavior during failover scenarios. Document expected traffic flows and client impact for each failover pattern.
+> - **Validate failover behavior:** Test routing and network virtual appliance (NVA) behavior during failover scenarios. Document expected traffic flows and client impact for each failover pattern.
 >
 > - **Incorporate business continuity testing:** Test your failover configuration to avoid surprises during actual outages.
 >
->   Testing should simulate:
+>   Simulate the following scenarios during testing:
 >
->   - Region failures to verify multi-region failover behavior.
->   - ExpressRoute circuit failures to confirm VPN backup activation.
->   - Parallel path scenarios to identify asymmetric routing patterns.
->   - BGP route advertisement during failover events.
+>   - Region failures to verify multi-region failover behavior
+>   - ExpressRoute circuit failures to confirm VPN backup activation
+>   - Parallel path scenarios to identify asymmetric routing patterns
+>   - BGP route advertisement during failover events
 >
-> - **Configure monitoring and alerting for service health:** Set up monitoring for hub routers, gateways, and routing infrastructure to detect issues before users report outages. Configure alerts for performance degradation for early response.
+> - **Configure monitoring and alerting for service health:** Set up monitoring for hub routers, gateways, and routing infrastructure to detect problems before users report outages. Configure alerts for performance degradation for early response.
 >
->    Enable diagnostic logs across all Virtual WAN components to support troubleshooting through event correlation. Resource Health distinguishes Azure service issues from customer-side connectivity problems.
+>    Turn on diagnostic logs across all Virtual WAN components to support troubleshooting through event correlation. Azure Resource Health distinguishes Azure service problems from customer-side connectivity problems.
 
 ### Configuration recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| Choose [Virtual WAN Standard SKU](/azure/virtual-wan/virtual-wan-about#basicstandard) for production deployments to access critical reliability capabilities. Standard SKU provides zone redundancy, supports advanced routing scenarios, and enables hub-to-hub and branch-to-branch connectivity patterns. | Enables zone-redundant gateway deployment across availability zones for datacenter-level fault tolerance. Supports global transit architecture for multi-region connectivity patterns.|
-| Select [Network Virtual Appliances](/azure/virtual-wan/about-nva-hub) with native Virtual WAN hub integration. Native integration provides better reliability and support while avoiding complex custom routing configurations. | Eliminates user-defined route maintenance overhead. Provides combined Microsoft and partner support for integrated solutions. |
+| Choose the [Virtual WAN Standard SKU](/azure/virtual-wan/virtual-wan-about#basicstandard) for production deployments to get critical reliability capabilities. The Standard SKU provides zone redundancy, supports advanced routing scenarios, and provides hub-to-hub and branch-to-branch connectivity patterns. | Enables zone-redundant gateway deployment across availability zones for datacenter-level fault tolerance. Supports global transit architecture for multi-region connectivity patterns.|
+| Select [NVAs](/azure/virtual-wan/about-nva-hub) that have native Virtual WAN hub integration. Native integration provides better reliability and support, and avoids complex custom routing configurations. | Eliminates user-defined route maintenance overhead. Provides combined Microsoft and partner support for integrated solutions. |
 | Deploy virtual hubs in at least two [Azure regions](/azure/virtual-wan/virtual-wan-global-transit-network-architecture) to establish redundancy. Choose regions close to users and workloads. Consider Azure paired regions for enhanced disaster recovery capabilities. | Maintains network operations during complete region failures. Preserves branch and virtual network connectivity through alternate region hubs. Enables workload distribution for load balancing. |
-| Configure VPN gateways with the [zone-redundant SKU](/azure/vpn-gateway/about-zone-redundant-vnet-gateways) to enable automatic distribution across availability zones. Verify the target region supports availability zones and confirm successful zone distribution through gateway properties. | Maintains VPN tunnel availability during availability zone failures. Eliminates single datacenter dependency through automatic instance distribution. |
-| Configure [Site-to-Site VPN tunnels](/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) in active-active configuration by creating separate tunnels with identical settings to both VPN gateway instances. Enable BGP peering on both tunnels for dynamic routing and immediate failover without convergence delay. | Eliminates convergence delays during failover events. Provides instant traffic routing through alternate tunnel when primary fails. Improves throughput compared to active-passive deployments. |
-| Configure active-active route advertisement by advertising routes from on-premises to Azure across all [ExpressRoute circuits](/azure/expressroute/designing-for-high-availability-with-expressroute). Use BGP AS path prepending for traffic engineering when needed. Monitor route advertisement status on all connections. | Maximizes ExpressRoute redundancy and bandwidth through automatic failover. Enables traffic distribution control via AS path prepending. Optimizes network utilization through active-active forwarding. |
-| Configure virtual [hub routing infrastructure units](/azure/virtual-wan/hub-settings) above baseline requirements to accommodate anticipated growth. Set units based on expected traffic and growth projections. Monitor routing capacity utilization metrics to identify scaling needs and prevent performance degradation as traffic increases. | Avoids routing performance bottlenecks when traffic exceeds baseline capacity. Eliminates 25-minute scaling delay impact on active connections. Supports workload expansion without service disruption. |
-| Configure VPN and ExpressRoute [gateway scale units](/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings) for expected aggregate throughput with overprovisioning for future growth. Size gateway scale units based on throughput requirements and growth projections. Gateways don't autoscale and scale unit changes require maintenance windows. | Prevents capacity bottlenecks and connectivity degradation from gateway exhaustion. Avoids packet loss when traffic exceeds capacity. Reduces operational overhead by minimizing gateway resize operations. |
-| Configure a [global VPN profile](/azure/virtual-wan/global-hub-profile) across all hubs to enable automatic hub selection for Point-to-Site connections. The global profile directs VPN clients to the nearest available hub and provides resilience when the primary hub becomes unavailable.| Ensures remote user connectivity during hub outages through automatic failover. Connects users to nearest hub for optimal latency. Maintains productivity during regional failures.|
-| Configure the [Point-to-Site address pool](/azure/vpn-gateway/vpn-gateway-vpn-faq) with capacity to support twice the expected user count. Size the address pool to prevent exhaustion during gateway instance redistribution. Monitor address pool utilization for ongoing capacity planning. | Prevents address exhaustion during gateway maintenance or failures. Enables single VPN profile deployment to all users. Supports business continuity for remote workforce. |
-| Configure Site-to-Site [VPN as backup connectivity](/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-use-vpn-to-backup-my-expressroute-connection) for ExpressRoute circuits by deploying a VPN gateway alongside the ExpressRoute gateway in the virtual hub. Set BGP preference to favor ExpressRoute over VPN. | Maintains connectivity when ExpressRoute fails. Preserves application availability for on-premises dependent services. |
-| Configure [diagnostic settings](/azure/virtual-wan/monitor-virtual-wan) for all Virtual WAN resources with output to a Log Analytics workspace. Enable diagnostics for virtual hubs, gateways, and firewalls. Send diagnostic logs to a centralized Log Analytics workspace for comprehensive visibility. | Enables proactive issue detection and rapid incident response. Identifies connectivity problems before users report outages. Notifies operations teams instantly when failures occur. |
-| Configure alerts for [Virtual WAN metrics and Resource Health](/azure/virtual-wan/monitor-virtual-wan-reference) events. Create alerts for gateway connectivity failures and BGP peer session status changes. Set alerts for routing infrastructure capacity thresholds and enable Resource Health alerts. | Accelerates troubleshooting through centralized log correlation. Provides historical data for pattern identification. Enables automated remediation workflows for common issues. |
-| Review the [Virtual WAN disaster recovery guidance](/azure/virtual-wan/disaster-recovery-design) to understand failure scenarios and mitigation strategies. | Systematic failure mode analysis identifies reliability risks early in design. Enables proactive mitigation through redundancy and failover mechanisms before production deployment. |
+| Configure VPN gateways by using a [zone-redundant SKU](/azure/vpn-gateway/about-zone-redundant-vnet-gateways) to enable automatic distribution across availability zones. Verify that the target region supports availability zones and confirm successful zone distribution through gateway properties. | Maintains VPN tunnel availability during availability zone failures. Eliminates single datacenter dependency through automatic instance distribution. |
+| Configure [site-to-site VPN tunnels](/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell) in active-active configuration. Create a separate tunnel to each VPN gateway instance by using identical settings. Configure BGP peering on both tunnels for dynamic routing and immediate failover without convergence delay. | Eliminates convergence delays during failover events. Provides instant traffic routing through alternate tunnel when primary fails. Improves throughput compared to active-passive deployments. |
+| Configure active-active route advertisement by advertising routes from on-premises to Azure across all [ExpressRoute circuits](/azure/expressroute/designing-for-high-availability-with-expressroute). Use BGP autonomous system (AS) path prepending for traffic engineering when needed. Monitor the route advertisement status on all connections. | Maximizes ExpressRoute redundancy and bandwidth through automatic failover. Enables traffic distribution control via AS path prepending. Optimizes network utilization through active-active forwarding. |
+| Configure [virtual hub routing infrastructure units](/azure/virtual-wan/hub-settings) above baseline requirements to accommodate anticipated growth. Set units based on expected traffic and growth projections. Monitor routing capacity utilization metrics to identify scaling needs and prevent performance degradation as traffic increases. | Avoids routing performance bottlenecks when traffic exceeds baseline capacity. Prevents the 25-minute scaling delay from affecting active connections. Supports workload expansion without service disruption. |
+| Configure VPN and ExpressRoute [gateway scale units](/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings) for expected aggregate throughput with extra capacity for future growth. Size gateway scale units based on throughput requirements and growth projections. Gateways don't automatically scale, and scale unit changes require maintenance windows. | Prevents capacity bottlenecks and connectivity degradation from gateway exhaustion. Avoids packet loss when traffic exceeds capacity. Reduces operational overhead by minimizing gateway resize operations. |
+| Configure a [global VPN profile](/azure/virtual-wan/global-hub-profile) across all hubs to provide automatic hub selection for point-to-site connections. The global profile directs VPN clients to the nearest available hub and provides resilience when the primary hub becomes unavailable.| Ensures remote user connectivity during hub outages through automatic failover. Connects users to nearest hub for optimal latency. Maintains productivity during regional failures.|
+| Configure the [point-to-site address pool](/azure/vpn-gateway/vpn-gateway-vpn-faq) with capacity to support double the expected user count. Size the address pool to prevent exhaustion during gateway instance redistribution. Monitor address pool utilization for ongoing capacity planning. | Prevents address exhaustion during gateway maintenance or failures. Provides single VPN profile deployment to all users. Supports business continuity for remote workforce. |
+| Configure [site-to-site VPN as backup connectivity](/azure/vpn-gateway/vpn-gateway-vpn-faq#can-i-use-vpn-to-backup-my-expressroute-connection) for ExpressRoute circuits by deploying a VPN gateway alongside the ExpressRoute gateway in the virtual hub. Set the BGP preference to favor ExpressRoute over VPN. | Maintains connectivity when ExpressRoute fails. Preserves application availability for on-premises dependent services. |
+| Configure [diagnostic settings](/azure/virtual-wan/monitor-virtual-wan) for all Virtual WAN resources, like virtual hubs, gateways, and firewalls. Send the logs to a Log Analytics workspace for visibility. | Enables proactive problem detection and rapid incident response. Identifies connectivity problems before users report outages. Notifies operations teams instantly when failures occur. |
+| Configure alerts for [Virtual WAN metrics and Resource Health](/azure/virtual-wan/monitor-virtual-wan-reference) events. Create alerts for gateway connectivity failures and BGP peer session status changes. Set alerts for routing infrastructure capacity thresholds and enable Resource Health alerts. | Accelerates troubleshooting through centralized log correlation. Provides historical data for pattern identification. Enables automated remediation workflows for common problems. |
+| Review the [Virtual WAN disaster recovery guidance](/azure/virtual-wan/disaster-recovery-design) to understand failure scenarios and mitigation strategies. | Systematic FMA identifies reliability risks early in design. Enables proactive mitigation through redundancy and failover mechanisms before production deployment. |
 
 ## Security
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.  
 
-The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to Azure Virtual WAN.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Virtual WAN.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture.
+Start your design strategy based on the [design review checklist for Security](../security/checklist.md) and identify vulnerabilities and controls to improve the security posture. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
 >
-> - **Establish security baseline:** Apply [Azure Security Baseline for Virtual WAN](/security/benchmark/azure/baselines/virtual-wan-security-baseline) as your foundational security baseline. The baseline covers Virtual WAN-specific controls for hub security, gateway configuration, routing security, and connection encryption.
+> - **Establish a security baseline:** Apply the [Azure security baseline for Virtual WAN](/security/benchmark/azure/baselines/virtual-wan-security-baseline) as your foundational security baseline. The baseline covers Virtual WAN-specific controls for hub security, gateway configuration, routing security, and connection encryption.
 >
->    This standardized approach addresses Virtual WAN service endpoints: virtual hubs, VPN gateways, ExpressRoute gateways, and Azure Firewall integration. It provides compliance mapping for network infrastructure requirements.
+>    This standardized approach addresses Virtual WAN service endpoints, like virtual hubs, VPN gateways, ExpressRoute gateways, and Azure Firewall integration. It provides compliance mapping for network infrastructure requirements.
 >
 > - **Implement network segmentation through routing controls:** Control network segmentation in Virtual WAN through routing tables. Create custom route tables to isolate routing domains and prevent unauthorized traffic between zones. Apply route maps when standard route table isolation doesn't meet connection requirements.
 >
->    Deploy a secured virtual hub to inspect traffic centrally. Use Azure Firewall for threat intelligence and Azure service integration, or deploy partner network virtual appliances for deep packet inspection and advanced threat prevention.
+>    Deploy a secured virtual hub to inspect traffic centrally. Use Azure Firewall for threat intelligence and Azure service integration, or deploy partner NVAs for deep packet inspection and advanced threat prevention.
 >
-> - **Establish private connectivity and protect public endpoints:** Deploy private endpoints in spoke networks to access Azure PaaS services without internet exposure. On-premises users reach these services through ExpressRoute or VPN connections. Routing through secured hubs enables inspection but adds latency and cost.
+> - **Establish private connectivity and protect public endpoints:** Deploy private endpoints in spoke networks to access Azure platform as a service (PaaS) solutions without internet exposure. On-premises users reach these services through ExpressRoute or VPN connections. Routing through secured hubs enables inspection but adds latency and cost.
 >
->    Protect public-facing spoke workloads with Azure DDoS Protection at the virtual network or IP level. DDoS Protection isn't available for hub public IPs.
+>    Protect public-facing spoke workloads by using Azure DDoS Protection at the virtual network or IP address level. Hub public IP addresses don't support DDoS Protection.
 >
-> - **Implement identity and access management:** Select your Point-to-Site VPN authentication method based on requirements:
+> - **Implement identity and access management:** Select your point-to-site VPN authentication method based on requirements:
 >
->   - Microsoft Entra ID authentication provides Conditional Access policies, MFA, device compliance checks, and risk-based authentication.
->   - Certificate-based authentication requires PKI infrastructure and certificate lifecycle management.
->   - RADIUS authentication integrates with existing RADIUS infrastructure.
+>   - Microsoft Entra ID authentication provides Conditional Access policies, multifactor authentication (MFA), device compliance checks, and risk-based authentication.
+>   - Certificate-based authentication requires public key infrastructure (PKI) and certificate life cycle management.
+>   - Remote Authentication Dial-In User Service (RADIUS) authentication integrates with existing RADIUS infrastructure.
 >
->   Control Virtual WAN configuration access using RBAC:
+>   Control Virtual WAN configuration access by using role-based access control (RBAC):
 >
 >   - Apply RBAC assignments to control who can modify Virtual WAN configuration.
 >   - Use built-in Network Contributor and Reader roles for most scenarios.
 >   - Create custom roles for more granular permission boundaries when built-in roles are too permissive.
 >
-> - **Control and filter network traffic with defense in depth:** Deploy security controls at multiple network layers. Use Virtual WAN Standard SKU to deploy Azure Firewall or partner security solutions in the hub for centralized application-aware filtering and threat protection. Deploy Network Security Groups in spoke networks for subnet-level filtering based on IPs, ports, and protocols.
+> - **Control and filter network traffic by using defense in depth:** Deploy security controls at multiple network layers. Use the Virtual WAN Standard SKU to deploy Azure Firewall or partner security solutions in the hub for centralized application-aware filtering and threat protection. Deploy network security groups (NSGs) in spoke networks for subnet-level filtering based on IP addresses, ports, and protocols.
 >
 >     Each layer addresses different security requirements. Hub security controls enforce organization-wide policies and detect threats across all connected networks. Spoke NSGs provide workload-specific controls that teams configure based on application requirements.
 >
-> - **Ensure encrypted connectivity:** Select strong encryption algorithms like AES-256-GCM or AES-256-CBC to protect data confidentiality. Use strong integrity algorithms like SHA-256 or SHA-384 to prevent tampering. Align IPsec/IKE encryption policies for Site-to-Site VPN between Azure and on-premises VPN devices to prevent tunnel establishment failures.
+> - **Ensure encrypted connectivity:** Select strong encryption algorithms like AES-256-GCM or AES-256-CBC to protect data confidentiality. Use strong integrity algorithms like SHA-256 or SHA-384 to prevent tampering. Align Internet Protocol Security (IPsec) and Internet Key Exchange (IKE) encryption policies for site-to-site VPN between Azure and on-premises VPN devices to prevent tunnel establishment failures.
 >
-> - **Configure encryption for ExpressRoute and Point-to-Site VPN:** Assess ExpressRoute encryption requirements separately from VPN. Each connection type requires different encryption configurations. Configure Point-to-Site VPN encryption based on client requirements and security policies.
+> - **Configure encryption for ExpressRoute and point-to-site VPN:** Evaluate ExpressRoute encryption requirements separately from VPN because each connection type requires different configurations. Configure point-to-site VPN encryption based on client requirements and security policies.
 >
-> - **Harden architecture with Zero Trust principles:** Apply Zero Trust by assuming breach and limiting blast radius. Implement deny-by-default network access controls with explicit permit rules for required traffic only.
+> - **Harden architecture by following Zero Trust principles:** Assume breach and limit the blast radius. Implement deny-by-default network access controls with explicit permit rules for required traffic only.
 >
->    Disable unused features to reduce attack surface:
+>    Turn off unused features to reduce attack surface:
 >
->   - Disable legacy or weak VPN cipher suites (DES, 3DES, MD5).
->   - Remove unnecessary Point-to-Site authentication modes.
+>   - Avoid legacy or weak VPN cipher suites (DES, 3DES, MD5).
+>   - Remove unnecessary point-to-site authentication modes.
 >   - Eliminate unneeded public IP assignments.
 >
->    Enable security monitoring for breach detection: diagnostic logging, metric alerts, and threat detection through Microsoft Sentinel.
+>    Configure diagnostic logging, metric alerts, and Microsoft Sentinel threat detection to monitor for breaches.
 >
-> - **Implement security monitoring and threat detection:** Enable diagnostic logging for Virtual WAN components: hubs, gateways, and Azure Firewall for security event visibility. Use Log Analytics workspace to enable centralized log collection, long-term retention, and query-based analysis.
+> - **Implement security monitoring and threat detection:** Enable diagnostic logging for Virtual WAN components, like hubs, gateways, and Azure Firewall for security event visibility. Use a Log Analytics workspace to enable centralized log collection, long-term retention, and query-based analysis.
 >
 >    Configure Azure Monitor alerts for reactive notification of specific metric thresholds or log patterns. Deploy Microsoft Sentinel to add proactive threat detection through machine learning and correlation with broader organizational signals.
 >
@@ -186,28 +186,28 @@ Start your design strategy based on the [design review checklist for Security](.
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| Create [custom route tables](/azure/virtual-wan/scenario-isolate-vnets-custom) matching your defined security zones. Set [route table associations](/azure/virtual-wan/how-to-virtual-hub-routing) on spoke virtual network connections. Set route table propagations to control which route tables receive routes from connections. Use "None" route table association when complete isolation is required with no route sharing. | Prevents unauthorized traffic between segmented zones through route control. Reduces blast radius by limiting communication with compromised resources. Enables granular connectivity control. |
-| Create [private endpoints](/azure/virtual-wan/howto-private-link) in spoke virtual networks for PaaS services requiring private connectivity: Storage, SQL Database, Cosmos DB, and other [supported services](/azure/private-link/private-endpoint-overview). Configure private endpoint network integration with spoke virtual network subnets. Route private endpoint traffic through secured virtual hub when inspection is required. | Eliminates data exfiltration risks from PaaS services. Reduces attack surface by removing public endpoints. Enables secure PaaS access from on-premises networks. |
-| Enable [DDoS Protection](/azure/ddos-protection/manage-ddos-protection) at the virtual network level or DDoS IP Protection for individual public IPs. Configure protection for public IPs on workload resources.<br><br>Note that DDoS Protection is unavailable for Virtual WAN hub public IPs and must be implemented at spoke level. | Detects and mitigates volumetric attacks attempting to overwhelm network bandwidth. Absorbs attack traffic before reaching workloads. Automatically scales mitigation capacity during attacks. |
-| Register the [Azure VPN application](/azure/vpn-gateway/openvpn-azure-ad-tenant) in your Microsoft Entra ID tenant and configure the VPN Gateway to use Microsoft Entra ID authentication. Deploy Azure VPN Client to user devices with the Microsoft Entra ID authentication profile.| Prevents unauthorized VPN access through MFA. Enables risk-based authentication adapting to user risk, sign-in risk, and device posture.|
-| Create [Conditional Access policies](/azure/vpn-gateway/openvpn-azure-ad-mfa) targeting the Azure VPN application with required controls: MFA, device compliance, and location restrictions. | Enforces adaptive access controls for VPN connections. Requires MFA for high-risk sign-ins. Restricts access to compliant devices and trusted locations. |
-| Assign [Network Contributor role](/azure/virtual-wan/roles-permissions) for full management permissions and Reader role for view-only access. Create custom RBAC roles when built-in roles exceed required permissions. | Prevents unauthorized configuration changes through permission limits. Reduces impact of compromised accounts through least privilege. Enables separation of duties with role-based job functions. |
-| Select Virtual WAN Standard SKU to enable security solution deployment. Deploy [Azure Firewall](/azure/firewall/overview) or partner security solution in virtual hub for centralized filtering. Enable [Routing Intent](/azure/virtual-wan/how-to-routing-policies) to automatically route traffic through the security solution. Configure internet traffic routing intent for outbound traffic inspection. | Delivers traffic filtering through centralized hub security and distributed spoke controls. Enables workload-specific controls via spoke NSGs. Provides flexibility for implementing controls at appropriate architectural layer. |
-| Implement [Network Security Groups](/azure/virtual-network/network-security-groups-overview) on subnets in spoke virtual networks for subnet-level filtering. Configure hub security solution for application and threat inspection. Configure spoke NSGs for network-level filtering based on IPs, ports, and protocols. | Spoke NSGs provide granular workload-specific controls complementing hub security policies. This layered approach enables explicit permit rules for required traffic while enforcing deny-by-default posture, reducing attack surface and limiting lateral movement after compromise. |
-| Configure [diagnostic settings](/azure/virtual-wan/monitor-virtual-wan) on Virtual WAN resource, virtual hubs, VPN gateways, ExpressRoute gateways, Point-to-Site gateways, and Azure Firewall. Enable log categories: AllMetrics, GatewayDiagnosticLog, TunnelDiagnosticLog, RouteDiagnosticLog, and IKEDiagnosticLog.<br><br>Route logs to Log Analytics workspace for centralized collection. Build queries targeting security-relevant events: authentication failures, connection anomalies, and configuration changes. | Diagnostic logging enables security event detection through log analysis of suspicious activities and anomalous behaviors. The configuration supports compliance and audit requirements through long-term event retention while providing forensic evidence for security incident investigation. |
-| Create [metric alerts](/azure/virtual-wan/monitor-virtual-wan) for security-relevant metrics: VPN Gateway connection status, ExpressRoute circuit status, BGP peer status, and bandwidth utilization anomalies. Set alert thresholds based on established baseline metrics for normal operations. Configure action groups routing alerts to security operations or automated response systems. | Enables rapid detection of connectivity failures indicating security issues or denial of service. Identifies bandwidth anomalies indicating data exfiltration. Provides early detection of BGP routing issues impacting segmentation. |
+| Create [custom route tables](/azure/virtual-wan/scenario-isolate-vnets-custom) that match your defined security zones. Set [route table associations](/azure/virtual-wan/how-to-virtual-hub-routing) on spoke virtual network connections. Set route table propagations to control which route tables receive routes from connections. Set the route table association to **None** to completely isolate a connection and prevent any route sharing. | Prevents unauthorized traffic between segmented zones through route control. Reduces blast radius by limiting communication with compromised resources. Enables granular connectivity control. |
+| Create [private endpoints](/azure/virtual-wan/howto-private-link) in spoke virtual networks for PaaS services that require private connectivity, like Azure Storage, Azure SQL Database, Azure Cosmos DB, and other [supported services](/azure/private-link/private-endpoint-overview). Configure private endpoint network integration with spoke virtual network subnets. Route private endpoint traffic through a secured virtual hub when inspection is required. | Eliminates data exfiltration risks from PaaS services. Reduces attack surface by removing public endpoints. Enables secure PaaS access from on-premises networks. |
+| Enable [DDoS Protection](/azure/ddos-protection/manage-ddos-protection) at the virtual network level, or enable DDoS IP Protection for individual public IP addresses. Configure protection for public IP addresses on workload resources. <br><br> Virtual WAN hub public IPs don't support DDoS Protection, so implement it at the spoke level. | Detects and mitigates volumetric attacks that attempt to overwhelm network bandwidth. Absorbs attack traffic before it reaches workloads. Automatically scales mitigation capacity during attacks. |
+| Register the [Azure VPN application](/azure/vpn-gateway/openvpn-azure-ad-tenant) in your Microsoft Entra ID tenant and configure the VPN gateway to use Microsoft Entra ID authentication. Deploy Azure VPN Client to user devices and configure it with a profile that authenticates through Microsoft Entra ID.| Prevents unauthorized VPN access through MFA. Enables risk-based authentication that adapts to user risk, sign-in risk, and device posture.|
+| Create [Conditional Access policies](/azure/vpn-gateway/openvpn-azure-ad-mfa) that target the Azure VPN application to enforce MFA, device compliance, and location restrictions. | Enforces adaptive access controls for VPN connections. Requires MFA for high-risk sign-ins. Restricts access to compliant devices and trusted locations. |
+| Assign the [Network Contributor role](/azure/virtual-wan/roles-permissions) for full management permissions, and assign the Reader role for view-only access. Create custom RBAC roles when built-in roles exceed required permissions. | Prevents unauthorized configuration changes through permission limits. Reduces the impact of compromised accounts through least privilege. Enables separation of duties through role-based job functions. |
+| Select the Virtual WAN Standard SKU to enable security solution deployment. Deploy [Azure Firewall](/azure/firewall/overview) or a partner security solution in virtual hub for centralized filtering. Configure [routing intent](/azure/virtual-wan/how-to-routing-policies) to automatically route traffic through the security solution. Configure internet traffic routing intent for outbound traffic inspection. | Delivers traffic filtering through centralized hub security and distributed spoke controls. Enables workload-specific controls via spoke NSGs. Provides flexibility for implementing controls at the appropriate architectural layer. |
+| Implement [NSGs](/azure/virtual-network/network-security-groups-overview) on subnets in spoke virtual networks for subnet-level filtering. Configure a hub security solution for application and threat inspection. Configure spoke NSGs for network-level filtering based on IP addresses, ports, and protocols. | Spoke NSGs provide granular workload-specific controls that complement hub security policies. This layered approach enables explicit permit rules for required traffic and enforces deny-by-default posture. It reduces the attack surface and limits lateral movement after compromise. |
+| Configure [diagnostic settings](/azure/virtual-wan/monitor-virtual-wan) on Virtual WAN resources, virtual hubs, VPN gateways, ExpressRoute gateways, point-to-site gateways, and Azure Firewall. Enable log categories: AllMetrics, GatewayDiagnosticLog, TunnelDiagnosticLog, RouteDiagnosticLog, and IKEDiagnosticLog. <br><br> Route logs to a Log Analytics workspace for centralized collection. Build queries that target security-relevant events, like authentication failures, connection anomalies, and configuration changes. | Diagnostic logging enables security event detection through analysis of suspicious activities and anomalous behaviors. The configuration supports compliance and audit requirements through long-term event retention. It provides forensic evidence for security incident investigation. |
+| Create [metric alerts](/azure/virtual-wan/monitor-virtual-wan) for security-relevant metrics, like VPN Gateway connection status, ExpressRoute circuit status, BGP peer status, and bandwidth utilization anomalies. Set alert thresholds based on established baseline metrics for normal operations. Configure action groups routing alerts to security operations or automated response systems. | Enables rapid detection of connectivity failures that indicate security problems or denial of service. Identifies bandwidth anomalies that indicate data exfiltration. Provides early detection of BGP routing problems that affect segmentation. |
 | Deploy [Microsoft Sentinel](/azure/sentinel/data-connectors/azure-firewall) connected to the Log Analytics workspace receiving Virtual WAN logs. Enable [Azure Firewall data connector](/azure/sentinel/overview) in Sentinel.<br><br>Implement analytics rules for Virtual WAN threat scenarios: anomalous VPN authentication patterns, unusual traffic volumes, and firewall policy violations. Create incident response playbooks for automated actions like blocking suspicious source IPs and disabling compromised VPN users. | Sentinel integration enables advanced threat detection using machine learning and behavioral analytics. The platform correlates Virtual WAN security events with broader organizational security telemetry while providing security operations with unified monitoring. |
 
 ## Cost Optimization
 
-Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet your budget while meeting business requirements.
+Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs in Azure Virtual WAN.
+The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Virtual WAN and its environment.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so the workload aligns with your budget. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
+Start your design strategy based on the [design review checklist for Cost Optimization](../cost-optimization/checklist.md) for investments. Fine-tune the design so that the workload is aligned with the budget that's allocated for the workload. Your design should use the right Azure capabilities, monitor investments, and find opportunities to optimize over time.
 
 > [!div class="checklist"]
 >
@@ -256,12 +256,14 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 ## Operational Excellence
 
-Operational Excellence focuses on **development practices, observability, and release management**. The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals.
+Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
+
+The [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles) provide a high-level design strategy for achieving those goals for the operational requirements of the workload.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Virtual WAN.
 
 > [!div class="checklist"]
 >
@@ -311,14 +313,14 @@ Start your design strategy based on the [design review checklist for Operational
 
 ## Performance Efficiency
 
-Performance Efficiency is about **maintaining user experience when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
+Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
 
 The [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles) provide a high-level design strategy for achieving those capacity goals against the expected usage.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure Virtual WAN.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md) for defining a baseline based on key performance indicators for Virtual WAN.
 
 > [!div class="checklist"]
 >
@@ -363,24 +365,26 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure Policy
 
-Azure provides an extensive set of built-in policies related to Azure Virtual WAN and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to Virtual WAN and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - Virtual hubs are protected with Azure Firewall for centralized security inspection.
 - VPN gateways avoid using Basic SKU that lacks reliability and performance features.
 - Point-to-Site VPN connections use Microsoft Entra ID authentication for enhanced security.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Azure Virtual WAN](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect network infrastructure security.
+For comprehensive governance, review the [Azure Policy built-in definitions for Virtual WAN](/azure/governance/policy/samples/built-in-policies#network) and other policies that might affect network infrastructure security.
 
 ## Azure Advisor recommendations
 
-Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments. For more information, see [Azure Advisor](/azure/advisor).
+Azure Advisor is a personalized cloud consultant that helps you follow best practices to optimize your Azure deployments.
+
+For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
-Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology with Azure Virtual WAN](/azure/architecture/networking/architecture/hub-spoke-virtual-wan-architecture).
+Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology with Virtual WAN](/azure/architecture/networking/architecture/hub-spoke-virtual-wan-architecture).
 
 ## Related content
 
 - [Virtual WAN FAQ](/azure/virtual-wan/virtual-wan-faq)
-- [Introduction to Azure Virtual WAN - Training](/training/modules/introduction-azure-virtual-wan/)
+- [Training: Introduction to Virtual WAN](/training/modules/introduction-azure-virtual-wan/)
 - [Virtual WAN partners, regions, and locations](/azure/virtual-wan/virtual-wan-locations-partners)
