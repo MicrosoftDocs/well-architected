@@ -28,11 +28,13 @@ Mutual respect enables a blameless culture. When issues arise, the team focuses 
 
 The workload team owns the operation end-to-end. Even when outside teams provide support, the team has shared responsibility for coordinating and ensuring all functions succeed. Every aspect that affects the workload is part of the team's responsibility, reinforcing a shared sense of ownership.
 
-Define roles and decision-making authority. Decisions should be made efficiently, with input from the team. When disagreements arise, a designated person must make the final call based on the evidence. Team members should feel heard and respected, even if they do not agree with the outcome.
+Define roles and decision-making authority. Decisions should be made efficiently, with input from the team. 
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to step outside their usual responsibilities. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can clarify project roles and speed up decisions and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. They identify responsibilities and route questions to the right people, reducing manual work and delays. Tools like Copilot can leverage existing infrastructure with moderate effort and low maintenance, while maintaining secure access to all project artifacts.
+When disagreements arise, a designated person must make the final call based on the evidence. Team members should feel heard and respected, even if they do not agree with the outcome.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. Based on the work being done, AI can identify responsibilities and route questions to the right people, reducing manual work and delays. Tools like Copilot can leverage existing infrastructure with moderate effort and low maintenance, while maintaining secure access to all project artifacts.
 
 
 ## Commit to continuous learning
