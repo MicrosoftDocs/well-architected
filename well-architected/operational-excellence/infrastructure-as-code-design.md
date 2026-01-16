@@ -40,6 +40,8 @@ Use your cloud platform's native tools and other industry-proven tools that nati
 > [!NOTE]
 > Be mindful that as cloud providers and third-party developers update their tools and APIs, you can run the risk of unanticipated issues when using the latest version in your workload. Ensure that you thoroughly test new versions of tools and APIs before adopting them. Likewise, avoid using the 'latest' flag when calling on a tool or API in your deployment code. Be intentional about calling the latest known good version for your workload.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Creating and validating IaC templates can be time-consuming and error-prone. Use AI to help develop Bicep and Terraform templates and accelerate modernization. AI can reduce manual effort and ensure compliance with organizational policies promoting a shift-left approach. For example, AI can simulate and forecast deployment impacts and summarize risk assessments in natural language. To use AI to speed up IaC development, provide secure access to your repositories and assets. Review AI-generated content to ensure it meets your compliance and governance standards.
+
 ## Use the right tool for the task
 
 Use the right tools for specific tasks and infrastructure types. Multiple tasks, beyond deployments, are involved in an infrastructure lifecycle. Configuration needs to be applied and maintained, for example, and the tool you use to script deployments, like Bicep, might not be the best tool for every management operation. 
@@ -54,6 +56,8 @@ Your scripts and templates should be flexible enough to easily deploy a variety 
 
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI reviews your codebase to identify required IaC updates and recommends changes before configuration issues impact quality or stability. Tools such as GitHub Copilot can analyze your codebase, design documentation, and product requirements to highlight needed updates, while more advanced agent based solutions can automatically generate pull requests with the recommended changes. To maintain strong security and governance, grant AI agents only the minimum access necessary to relevant repositories and artifacts—and never provide production access.
 
 ## Use the right balance when encapsulating functionality
 
@@ -86,6 +90,8 @@ Collaborate with other teams in your organization for standardization and reusab
 Apply the principle of "security as code" to ensure that security is part of the deployment pipeline. Include vulnerability scanning and configuration hardening as part of the IaC development process. Scan your IaC repos for keys and secrets that are exposed. One advantage of using IaC is that security-focused team members can review code before deployment to ensure that the configuration that's approved for release by security is actually what's deployed to production. For detailed guidance, see [Recommendations for securing a development lifecycle](../security/secure-development-lifecycle.md).
 
 **Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment-rollback processes. 
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To strengthen your security posture and accelerate response times, integrate AI into your security reviews and threat modeling processes. Enhance existing tools with AI to highlight insecure coding patterns and suggest secure alternatives. Use generative AI to analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. Regularly update architectural diagrams, IaC templates, prompts, model versions, and validation criteria. Apply human oversight to reduce AI errors and false positives.
 
 ## Adopt an immutable deployment model
 
