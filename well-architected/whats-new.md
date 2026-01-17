@@ -31,7 +31,6 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture best practices for Azure API Management](./service-guides/azure-api-management.md): We added the latest tier capabilities, including Premium v2, and clarified recommendations for reliability, security, and cost optimization. We improved guidance about redundancy, access control, and performance, and streamlined language throughout the article. These changes help you make more informed decisions and apply best practices for API Management workloads.
 
-- [Architecture strategies for designing for redundancy](./reliability/redundancy.md): We added clearer, more consistent heading levels and improved readability. Section headings now better highlight key strategies like serverless services, deployment stamps, and active-active or active-passive designs. These changes make it easier to find and apply best practices for building resilient Azure workloads.
 
 - We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Database for MySQL and cost optimization](./service-guides/azure-db-mysql-cost-optimization.md), [Architecture best practices for Azure Functions](./service-guides/azure-functions.md), and [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
 
