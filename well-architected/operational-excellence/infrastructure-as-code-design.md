@@ -57,7 +57,7 @@ Your scripts and templates should be flexible enough to easily deploy a variety 
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI reviews your codebase to identify required IaC updates and recommends changes before configuration issues impact quality or stability. Tools such as GitHub Copilot can analyze your codebase, design documentation, and product requirements to highlight needed updates, while more advanced agent based solutions can automatically generate pull requests with the recommended changes. To maintain strong security and governance, grant AI agents only the minimum access necessary to relevant repositories and artifacts—and never provide production access.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI reviews your code to identify required IaC updates and recommend changes before configuration issues affect quality or stability. Use tools like GitHub Copilot to analyze code, design docs, and requirements. Copilot identifies the updates you need, and teams can request infrastructure changes in natural language. Advanced agent-based solutions can even generate pull requests automatically. To maintain security and governance, grant AI agents only the minimum access they need to relevant repositories and artifacts—never production.
 
 ## Use the right balance when encapsulating functionality
 
