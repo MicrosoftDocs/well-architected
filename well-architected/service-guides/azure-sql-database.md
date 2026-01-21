@@ -210,7 +210,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   Applications that connect to SQL Database should use the latest connection providers, for example the latest [OLE DB driver](/sql/connect/oledb/oledb-driver-for-sql-server) or [ODBC driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 >
->   Use connection pooling within your application code. Connection pooling significantly reduces the overhead of establishing new connections. Most drivers, like ADO.NET, enable it by default.[Monitor Azure SQL Database](/azure/azure-sql/database/monitoring-sql-database-azure-monitor) connection performance and resource usage to identify bottlenecks, such as excessive idle connections or insufficient pool limits.
+>   Use connection pooling within your application code. Connection pooling significantly reduces the overhead of establishing new connections. Most drivers, like ADO.NET, enable it by default. [Monitor Azure SQL Database](/azure/azure-sql/database/monitoring-sql-database-azure-monitor) connection performance and resource usage to identify bottlenecks, such as excessive idle connections or insufficient pool limits.
 >
 >   When you use elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
 >
