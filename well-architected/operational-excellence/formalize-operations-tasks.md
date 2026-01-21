@@ -7,7 +7,7 @@ ms.date: 11/15/2023
 ms.topic: concept-article
 ---
 
-# Architecture strategies for formalizing routine and nonroutine tasks
+# Architecture strategies for standardizing operations
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
@@ -30,12 +30,6 @@ Consider a use case where the workload has dependency on an open-source library.
 - Submit a change request for production
 - Deploy the update
 - Update documentation to reflect the new version
-
-## Document standards and treat it as a living asset
-
-Documentation should capture standard operating procedures and clearly define how work is done. Make documentation effective by creating by actionable checklists with references to relevant tools. 
-
-Procedures must evolve as your workload and team evolve, and standards should be regularly reviewed and challenged to ensure they remain appropriate. Use templates and version control to maintain consistency and keep a record of updates. For example, store runbooks in a version-controlled repository and require scheduled reviews as part of the team's operational cadence. Include authorship and review dates, and highlight changes in procedures.
 
 ## Improvise checklists for emergency tasks
 
@@ -73,6 +67,11 @@ Be intentional when adopting open-source tools. Define clear rules for when and 
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Standards help maintain consistency but shouldn't be rigid. Follow procedures while leaving room for innovation so processes can evolve safely over time.
 
+## Document standards and treat it as a living asset
+
+Documentation should capture standard operating procedures and clearly define how work is done. Make documentation effective by creating by actionable checklists with references to relevant tools. 
+
+Procedures must evolve as your workload and team evolve, and standards should be regularly reviewed and challenged to ensure they remain appropriate. Use templates and version control to maintain consistency and keep a record of updates. For example, store runbooks in a version-controlled repository and require scheduled reviews as part of the team's operational cadence. Include authorship and review dates, and highlight changes in procedures.
 
 ## Azure facilitation
 
