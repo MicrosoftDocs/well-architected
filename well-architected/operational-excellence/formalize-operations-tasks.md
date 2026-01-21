@@ -25,17 +25,18 @@ Break routine tasks into simple, discrete checklist items that are easy to follo
 
 Consider a use case where the workload has dependency on an open-source library. Routine task is apply updates to get security patches, bug fixes, and functionality improvements. The checklist might include items like: 
 
-[!div class="checklist"]
-- Test the update in lower environments
-- Submit a change request for production
-- Deploy the update
-- Update documentation to reflect the new version
+>[!div class="checklist"]
+>
+> - Test the update in lower environments
+> - Submit a change request for production
+> - Deploy the update
+> - Update documentation to reflect the new version
 
 ## Improvise checklists for emergency tasks
 
 Emergency tasks differ by situation, but roles, responsibilities, and communication paths must always be clear. Teams should follow general standards and reusable checklists, even for new tasks.
 
-For instqance, an emergency fix might deploy a new resource. That deployment should use existing infrastructure-as-code standards and standard performance, security, and reliability tests. To accelerate the response, the checklist could be updated to include instructions on which low-risk, time-consuming items can be skipped with approval from authorized personnel.
+For instance, an emergency fix might deploy a new resource. That deployment should use existing infrastructure-as-code standards and standard performance, security, and reliability tests. To accelerate the response, the checklist could be updated to include instructions on which low-risk, time-consuming items can be skipped with approval from authorized personnel.
 
 For disaster recovery emergencies, follow the incident response plan exactly as defined to ensure fast, coordinated action. For details on this scenario, see [Create an effective incident management plan to manage disruptions](/azure/well-architected/design-guides/incident-management).
 
