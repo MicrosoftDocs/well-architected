@@ -381,7 +381,7 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
-Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology with Virtual WAN](/azure/architecture/networking/architecture/hub-spoke-virtual-wan-architecture).
+Foundational architecture that demonstrates the key recommendations: [Hub-spoke network topology that uses Virtual WAN](/azure/architecture/networking/architecture/hub-spoke-virtual-wan-architecture).
 
 ## Related content
 
