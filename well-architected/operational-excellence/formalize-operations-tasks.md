@@ -25,7 +25,7 @@ Break routine tasks into simple, discrete checklist items that are easy to follo
 
 Consider a use case where the workload has dependency on an open-source library. Routine task is apply updates to get security patches, bug fixes, and functionality improvements. The checklist might include items like: 
 
->[!div class="checklist"]
+> [!div class="checklist"]
 >
 > - Test the update in lower environments
 > - Submit a change request for production
@@ -46,9 +46,13 @@ Use established practices to reduce the time your team spends creating processes
 
 Rely on your team's experience to select practices that fit your workload lifecycle, and learn from other teams about approaches that have worked in similar contexts.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Adopting industry-standard practices can sometimes backfire. Teams may spend excessive effort on compliance, experience frustration, and delay delivering value while trying to follow best practices. AI can help detect when standards hinder rather than help. 
+>
+>   Consider implementing an AI-driven solution that tracks historical signals, such as time spent on standards, developer sentiment, and defect rates. Start with **LLMs** (large language models) to spot patterns, then train **predictive models** on historical data to anticipate when standards might impede workflow and take proactive action.
+
 ## Act early, stay proactive
 
-Consider this situation, a security vulnerability is detected and the team goes Encourage workload teams to take full ownership of their workloads across security, reliability, and cost efficiency. Teams should proactively identify improvements and add them to their backlog rather than waiting for other teams to act.
+Encourage workload teams to take full ownership of their workloads across security, reliability, and cost efficiency. Teams should proactively identify improvements and add them to their backlog rather than waiting for other teams to act.
 
 This strategy is particularly important for reliability and security checks. Suppose the team doesn't perform exploratory testing or take ownership of early security checks, a vulnerability could remain undetected until the next monthly scan, potentially exposing the workload to risk.
 
