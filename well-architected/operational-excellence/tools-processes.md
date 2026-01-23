@@ -114,6 +114,10 @@ Implement a shift-left approach to testing by performing unit testing early and 
 
 Implement a variety of testing types, such as unit, smoke, integration, and acceptance testing. For a detailed review of these types of tests, see the [testing section](workload-supply-chain.md#incorporate-comprehensive-types-of-testing) of the [workload supply chain](./workload-supply-chain.md) recommendation guide.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use an AI-powered shift-left testing strategy to improve quality earlier in the lifecycle. Evolve your test suite based on real-world usage and scenarios to ensure broad customer coverage. Use AI to detect recurring patterns in exploratory and UAT testing and automatically generate scripts for repetitive cases. 
+> Provide AI with access to incident descriptions, postmortems, and stack traces so it can design effective new test cases. Instead of waiting for issues to recur, use AI to transform incident data into proactive test scripts that align with your organizational standards and compliance requirements. 
+> Build an agent-based solution grounded in incident data and historical test executions to consistently generate high-quality test cases without relying on individual expertise. Plan for significant integration work and enforce strict security and privacy controls over access to project assets.
+
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
 ## Implement standards for naming and tagging resources
