@@ -86,7 +86,7 @@ Coding practices define the conventions and guidelines developers follow when wr
 - **Test coverage**. Require unit tests for all new code and significant modifications to existing code. Tests should follow agreed-upon patterns and include meaningful assertions to verify functionality. 
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI tools can automate repetitive, manual tasks in coding and review processes. GitHub Copilot can generate standardized code blocks, unit tests, and pull request descriptions, reducing the effort spent on routine work.
-
+>
 > Tools like SonarQube or Copilot Labs can automatically identify deviations from coding standards, missing test coverage, and common anti-patterns. Offloading these repetitive validation tasks to AI frees teams to focus on higher-value work. However, human review remains essential, as development practices are critical to the correct implementation of business logic and overall workload quality.
 
 ## Standardize integration practices
