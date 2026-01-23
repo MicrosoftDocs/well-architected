@@ -121,7 +121,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | Component | Risk | Likelihood | Effect/Mitigation/Note | Outage |
 |-----------|------|------------|------------------------|--------|
 | Microsoft Entra ID | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
-| Microsoft Entra ID | Misconfiguration | Medium | Users unable to sign in. No downstream effect. Help desk reports configuration issue to identity team. | None |
+| Microsoft Entra ID | Misconfiguration | Medium | Users unable to sign in. No downstream effect. Code catches authentication exceptions. Help desk reports configuration issue to development team. | External only |
 | Azure Front Door | Service outage | Low | Full outage for external users. Dependent on Microsoft to remediate. | External only |
 | Azure Front Door | Regional outage | Very low | Minimal effect. Azure Front Door is a global service, so global traffic routing directs traffic through non-effected Azure regions. | None |
 | Azure Front Door | Misconfiguration | Medium | Misconfigurations should be caught during deployment. If these happen during a configuration update, administrators must roll back changes. Configuration update causes a brief external outage. | External only |
