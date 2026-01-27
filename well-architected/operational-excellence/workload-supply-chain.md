@@ -36,6 +36,8 @@ The following recommendations can help you define the core tenets of your supply
 
 An important aspect of this tenet is that all changes are *proposed* *changes* until they're deployed into production. Through automated testing, like integration and smoke testing, you enable your supply chain to automatically reject changes.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual diagnosis of deployment failures slows teams, causes frustration, and creates knowledge silos. To boost productivity and resilience, start by evaluating off-the-shelf DevOps tools with built-in AI for failure analysis. If those tools aren’t enough, build a custom agentic AI solution that monitors pipeline data, detects recurring failure patterns, and recommends proactive remediations. Give the AI secure, controlled access to your logs, config files, and deployment metadata so it can automatically identify and fix common issues. Maintain oversight with audit logs and approval gates for AI-driven changes. Plan for ongoing model and integration maintenance to ensure long-term reliability and safety.
+
 ## Deploy repeatable and immutable infrastructure as code
 
 **Deploy repeatable and immutable infrastructure as code (IaC).** IaC is the management of infrastructure in a descriptive model that uses a versioning system that mirrors source code. When you create an application, the same source code should generate the same binary every time it's compiled. In a similar manner, an IaC model generates the same environment every time it's applied.
@@ -110,13 +112,16 @@ When possible, use automated testing to ensure consistency. Include the followin
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI to your testing strategy to find customer-focused edge cases and complex scenarios that are hard to automate. Start by using your existing analytics and reporting to identify coverage gaps, then use tools like GitHub Copilot to generate new test cases and scripts. Use AI to optimize your test suite—surface hard-to-detect defects and remove redundant tests to streamline execution and improve speed and efficiency.
+> Consider an AI solution that analyzes production usage, monitoring data, and historical defects to find patterns and automatically create tests in your codebase that match your organization's standards. Sanitize and protect sensitive information before you send data to AI systems. Enforce least-privilege access to telemetry and code artifacts. Maintain audit logs for all AI-generated changes. Plan for integration, ongoing operations, and regular model updates to address model drift and maintain effectiveness over time.
+
 ## Implement quality gates in code promotion processes
 
 **Implement quality gates throughout your code promotion process via testing**. Deploy your code into lower environments, like development and testing, and up through higher environments, like staging and production. As your deployment passes through quality gates, ensure that it meets your quality targets before changes go to production. Your business requirements determine what the focus of your quality gates are. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
 
 Also integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI-powered policy agents to automate tasks such as TLS certificate and credential management, improving efficiency and reducing errors across your environment. Use GenAI to translate outputs from specialized tools into natural language and help teams quickly review security configurations. Choose between integrating off-the-shelf solutions or building custom AI that aligns with your organization's standards. Grant AI agents only the minimum privileges they need, protect sensitive data, and set up strong guardrails—such as auditing and human oversight—to maintain security and accountability.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to eliminate review bottlenecks by auto routing PRs to the right SMEs. Begin with GitHub Copilot to assess scope and impact, then add an agentic CI/CD integration to evaluate code changes, configurations, and approval patterns. Grant least privilege access only to required artifacts—repositories, pipelines, configuration data, incident history, and approval logs—to assess impact, assign reviewers, surface bottlenecks, and recommend auto approval or extra review. For high-value workloads, train on historical data to predict deployment risk and approval outcomes. Keep humans in the loop. Be cautious with auto approval. Plan for integration, operations, and regular model updates.
 
 ## Azure facilitation
 
