@@ -11,14 +11,14 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:08**| Establish a structured incident management process. Create an incident response plan that clearly documents all procedures. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running postmortems. Enable design strategies in the architecture that promote rapid detection, troubleshooting, and fixes. |
+|**OE:08**| stablish a clear, structured incident management process with defined roles, documented procedures, and architecture designed for rapid detection, diagnosis, and recovery. |
 |---|---|
 
 When incidents occur, the workload team should be prepared with clear, structured procedures.  
 
 There are two key aspects to incident response. The first is architectural, focusing on designing systems that support effective response procedures and prevent failures from cascading across components. The second is procedural, covering detection, containment, and triage to manage issues quickly, followed by root cause analysis and postmortems to prevent recurrence. Regular drills help maintain readiness and ensure the plan can be executed effectively.
 
-This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control. 
+This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control.  For detailed implementation guidance, including stepwise processes and playbooks, see the companion article: [Create an effective incident management plan to manage disruptions](../design-guides/incident-management.md).
 
 
 **Definitions**
@@ -79,6 +79,8 @@ Effective monitoring has two key dimensions. First, the response process should 
 
 The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common that investigations have delayed start because of manual data gathering. AI can make incident response faster and easier by automatically collecting context, correlating data, and performing initial triage as soon as an alert fires. Instead of starting from scratch, engineers get a clear picture immediately, incidents are routed to the right experts, and safe, common fixes can be suggested or automated with guardrails. With enough testing, consider building a solution that provides automated initial response with all that correlated context. 
+
 ## Facilitate with  diagnostic data and practices 
 
 Design the solution to make diagnosing and resolving issues faster, more reliable. The approach is to embed debuggability and observability into the system's design. 
@@ -111,7 +113,7 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. That repetitive work can be time consuming and take focus away from recovery efforts.
 >
-> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
+> AI can take over much of the manual incident review work by summarizing logs, tickets, and discussions into a clear incident story, suggesting likely causes, and drafting retrospective questions. It can also learn from past incidents to highlight recurring issues and recommend prioritized backlog items. When integrated with incident management and development tools using automation platforms like Power Automate or Logic Apps, AI helps teams recover faster and improve reliability without added manual effort.
 
 ## Bring agility and consistency through automation 
 
