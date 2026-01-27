@@ -122,7 +122,7 @@ Validate thresholds using past experience and regular testing. Use fast storage 
 
 Automate alerting and link alerts to ticketing systems. Monitor cloud platform service health, outages, maintenance, and advisories.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can analyze metrics, logs, and incident data to predict issues and recommend thresholds. Off-the-shelf AI tools reduce setup and maintenance effort compared with custom predictive models.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**:  AI can be used to dynamically define "healthy" system behavior by learning patterns across business contexts like peak traffic, promotions, quiet periods, and regional variations. AI can then analyze metrics, logs, and incident data to predict issues and recommend thresholds. 
 
 ## Design scalable, durable telemetry pipelines
 
