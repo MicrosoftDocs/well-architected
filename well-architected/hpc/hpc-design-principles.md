@@ -17,53 +17,134 @@ The HPC design methodology is underpinned by five key design principles derived 
 
 ## Reliability
 
-| Recommendations | Considerations |
-|------------------|----------------|
-| **Define recovery objectives** | Establish how much work can be lost and how quickly the environment must be restored after failures. These targets inform backup frequency, checkpoint strategies, and failover procedures. |
-| **Implement job checkpointing** | Long-running jobs should periodically save progress to durable storage, enabling them to resume from the last saved state rather than restarting from the beginning after failures. |
-| **Design for node failure** | Expect that individual compute nodes may fail during job execution. Ensure the system can detect failures and either reassign work automatically or minimize lost progress. |
-| **Ensure data durability** | Protect valuable input datasets and results through replication or backups. Match protection levels to data value—critical results need stronger protection than temporary working files. |
-| **Plan for site-level resilience** | For critical workloads, establish procedures to resume computation at an alternate location. Maintain offsite data copies and document configurations for recovery. |
+Building reliable HPC environments on Azure requires planning for failures at multiple levels—from individual compute nodes to entire regions. The ephemeral nature of cloud resources and the long-running characteristics of HPC jobs demand deliberate strategies for state preservation and recovery.
+
+### Considerations
+
+- **Recovery objectives alignment.** Establish Recovery Point Objectives (RPO) and Recovery Time Objectives (RTO) that reflect the true business impact of HPC job failures. A 48-hour simulation that fails at hour 47 represents significant lost compute investment, making checkpoint frequency a critical reliability decision.
+
+- **Job state preservation.** Long-running HPC jobs are vulnerable to infrastructure failures, spot evictions, and maintenance events. Without systematic checkpointing, any interruption forces complete job restarts, wasting compute hours and delaying results.
+
+- **Node failure tolerance.** Individual VM failures are expected events in large-scale deployments. The scheduling and orchestration layer must detect failures promptly and either reassign work to healthy nodes or preserve state for recovery.
+
+- **Data protection strategy.** HPC workflows generate data with varying durability requirements—from disposable scratch files to irreplaceable simulation results. Protection mechanisms should match data value without imposing unnecessary overhead on transient working data.
+
+- **Cross-region continuity.** Critical workloads may require the ability to resume computation in an alternate Azure region following regional outages. This capability requires advance planning for data replication and environment reproducibility.
+
+### Recommendations
+
+| Azure Service/Feature | Recommendation | 
+|-----------------------|----------------|
+| Azure Blob Storage, Azure Managed Lustre | Implement application-level checkpointing to Azure Blob Storage or Azure Managed Lustre, with checkpoint frequency aligned to RPO targets and job criticality. | 
+| Azure CycleCloud, Azure Batch | Use Azure CycleCloud or Azure Batch automatic retry policies to handle transient node failures and reschedule failed tasks without manual intervention. | 
+| Azure Batch, Azure CycleCloud | Configure Azure Batch task retry policies and CycleCloud node health monitoring to automatically detect and respond to compute node failures during job execution. | 
+| Azure Blob Storage (GRS/LRS), Azure NetApp Files | Replicate critical datasets and final results to geo-redundant storage (GRS) or a paired Azure region, while using locally redundant storage for high-performance scratch data. | 
+| Azure Resource Manager, Bicep, Terraform | Maintain infrastructure-as-code definitions in Azure DevOps or GitHub to enable rapid cluster recreation in alternate regions when disaster recovery is required. | 
 
 ## Performance Efficiency
 
-| Recommendations | Considerations |
-|------------------|----------------|
-| **Match hardware to workload needs** | Different workloads have different bottlenecks—some need fast processors, others need large memory, fast storage, or GPU accelerators. Profile applications and select hardware accordingly. |
-| **Minimize communication delays** | When jobs require frequent coordination between nodes, network speed becomes critical. Deploy high-speed interconnects and keep communicating nodes physically close together. |
-| **Optimize storage for parallel access** | When many nodes read or write data simultaneously, standard storage becomes a bottleneck. Use storage systems designed for high concurrent throughput. |
-| **Right-size clusters using benchmarks** | Test with representative workloads to find the optimal balance of resources. Avoid both over-provisioning (wasted cost) and under-provisioning (poor performance). |
-| **Standardize compute environments** | Deploy all nodes from identical, pre-configured images with required software installed. Consistent environments prevent job failures and ensure reproducible performance. |
+HPC workloads demand maximum computational throughput, making hardware selection and system architecture critical to achieving performance objectives. Azure provides purpose-built HPC infrastructure, but realizing its potential requires deliberate alignment between workload characteristics and resource configuration.
+
+### Considerations
+
+- **Workload-hardware alignment.** HPC applications exhibit diverse resource profiles—CPU-bound simulations, memory-intensive analyses, GPU-accelerated computations, and I/O-dominated workflows each require different VM families to achieve optimal performance.
+
+- **Interconnect performance.** Tightly coupled parallel applications that exchange data frequently between nodes are highly sensitive to network latency and bandwidth. Standard ethernet networking introduces bottlenecks that can negate the benefits of additional compute nodes.
+
+- **Parallel storage throughput.** When hundreds of compute nodes access shared datasets simultaneously, storage systems become the primary performance constraint. Traditional file servers cannot sustain the aggregate throughput that large-scale HPC jobs demand.
+
+- **Cluster topology optimization.** Physical proximity between communicating VMs directly impacts MPI performance. Distributed placement across datacenter infrastructure introduces latency that degrades tightly coupled workload performance.
+
+- **Environment consistency.** Performance variability across nodes—caused by software version differences, library mismatches, or configuration drift—produces unpredictable job behavior and complicates performance optimization efforts.
+
+### Recommendations
+
+| Azure Service/Feature | Recommendation | 
+| ----------------------| ---------------|
+| Azure HBv4/HBv5 VMs, Azure NDv5 VMs | Select HBv4 or HBv5 series VMs for CPU-intensive workloads requiring high memory bandwidth; choose NDv5 series for GPU-accelerated computations; use memory-optimized series for data-intensive analytics. | 
+| Azure InfiniBand networking | Deploy InfiniBand-enabled VM series (HB, HC, ND) for MPI workloads requiring low-latency, high-bandwidth node-to-node communication. | 
+| Azure Managed Lustre, Azure NetApp Files | Implement Azure Managed Lustre for scratch storage requiring high aggregate throughput, or Azure NetApp Files for workloads needing shared POSIX-compliant file access with consistent performance. | 
+| Azure Proximity Placement Groups | Configure Proximity Placement Groups to colocate compute nodes within the same datacenter network segment, minimizing latency for tightly coupled parallel applications. | 
+| Azure Compute Gallery, Azure Image Builder | Build and maintain standardized VM images with pre-installed HPC libraries, MPI implementations, and application software using Azure Compute Gallery for consistent deployment across all nodes. | 
 
 ## Operational Excellence
 
-| Recommendations | Considerations |
-|------------------|----------------|
-| **Automate cluster provisioning** | Define infrastructure as code to enable rapid, repeatable deployment. Automation reduces setup errors and time spent on manual configuration. |
-| **Integrate familiar job schedulers** | Support existing tools and workflows that teams already use. Users should submit jobs the same way regardless of where workloads run. |
-| **Apply software development practices** | Version control application code, automate testing, and manage deployments systematically. This improves software quality and catches bugs before they crash long-running jobs. |
-| **Orchestrate end-to-end workflows** | Automate the full pipeline from data preparation through computation to results delivery. This eliminates manual handoffs and ensures reproducible execution. |
-| **Expose capabilities through APIs** | Enable programmatic job submission, monitoring, and integration with other systems. This allows HPC to function as part of larger automated workflows. |
+Operational maturity in HPC environments requires balancing user autonomy with system reliability. Researchers and engineers expect familiar tools and workflows, while operations teams need visibility, automation, and reproducibility to manage complex infrastructure at scale.
+
+### Considerations
+
+- **Infrastructure reproducibility.** Manual cluster provisioning introduces configuration inconsistencies and delays. HPC environments should be deployable through automated, version-controlled processes that produce identical results across deployments.
+
+- **Scheduler integration.** HPC users have established workflows built around specific job schedulers. Requiring users to adopt unfamiliar submission methods creates friction and delays adoption of cloud-based HPC resources.
+
+- **Workflow automation.** End-to-end HPC pipelines involve multiple stages—data staging, preprocessing, computation, post-processing, and results delivery. Manual orchestration of these stages introduces errors and limits throughput.
+
+- **Observability and diagnostics.** Large-scale HPC jobs can fail in subtle ways that are difficult to diagnose without comprehensive telemetry. Operators need visibility into job progress, resource utilization, and system health to troubleshoot issues effectively.
+
+- **Change management discipline.** Updates to HPC software stacks, scheduler configurations, or infrastructure definitions can introduce regressions that cause job failures. Changes should be tested and deployed through controlled processes.
+
+### Recommendations
+
+| Azure Service/Feature | Recommendation | 
+| ----------------------| ---------------|
+| Azure Resource Manager, Bicep, Terraform | Define HPC cluster infrastructure using Bicep or Terraform templates, enabling consistent deployments and version-controlled infrastructure changes. | 
+| Azure CycleCloud | Deploy Azure CycleCloud with native support for Slurm, PBS Pro, Grid Engine, or other schedulers that align with existing user workflows and submission scripts. | 
+| Azure Batch, Azure CycleCloud | Implement Azure Batch for managed job scheduling with built-in task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for complex multi-stage pipelines. | 
+| Azure Monitor, Log Analytics | Configure Azure Monitor to collect cluster metrics, job telemetry, and diagnostic logs; use Log Analytics workspaces and workbooks to create operational dashboards for HPC environments. | 
+| Azure DevOps, GitHub Actions | Use Azure DevOps or GitHub Actions pipelines to automate testing and deployment of infrastructure changes, application updates, and scheduler configuration modifications. | 
 
 ## Security
 
-| Recommendations | Considerations |
-|------------------|----------------|
-| **Implement network segmentation** | Isolate compute resources from general networks. Restrict access to authorized users and limit communication to required pathways. |
-| **Enforce role-based access control** | Grant users only the permissions they need. Separate privileges between user groups and restrict administrative actions to authorized operators. |
-| **Meet compliance requirements** | Validate that the environment meets applicable regulatory standards when processing sensitive or regulated data. Implement required controls and audit trails. |
-| **Secure the compute layer** | Ensure appropriate isolation between users and workloads. Restrict and audit privileged access to compute nodes. |
-| **Protect data in transit and at rest** | Encrypt sensitive data during storage and transfer. Implement access controls to ensure only authorized users and jobs can access protected data. |
+HPC environments often process sensitive data—proprietary research, regulated information, or competitive intellectual property—while requiring broad access for legitimate users. Security architecture must protect assets without creating barriers that impede computational workflows.
+
+### Considerations
+
+- **Network boundary enforcement.** HPC clusters should operate within defined network perimeters that restrict unauthorized access while permitting necessary communication between compute nodes, storage systems, and job submission endpoints.
+
+- **Identity and access governance.** Users require varying levels of access to HPC resources—from basic job submission to administrative cluster management. Permissions should follow least-privilege principles and integrate with organizational identity systems.
+
+- **Regulatory compliance.** Organizations processing data subject to regulatory requirements (HIPAA, ITAR, FedRAMP) must implement specific controls and demonstrate compliance through audit trails and documentation.
+
+- **Workload isolation.** Multi-tenant HPC environments or clusters processing sensitive data require mechanisms to prevent unauthorized access between users or jobs, both at the compute layer and within shared storage systems.
+
+- **Data protection controls.** Sensitive data requires encryption during storage and transmission. Access to protected datasets must be restricted to authorized users and jobs through enforced policies.
+
+### Recommendations
+
+| Azure Service/Feature | Recommendation | 
+| ----------------------| ---------------|
+| Azure Virtual Network, Network Security Groups | Deploy HPC clusters within isolated virtual networks using Network Security Groups to restrict inbound access and control communication flows between subnets. | 
+| Microsoft Entra ID, Azure RBAC | Integrate Azure CycleCloud and Azure Batch with Microsoft Entra ID for authentication; implement Azure RBAC to enforce least-privilege access across HPC resources. | 
+| Azure Confidential Computing, Microsoft Defender for Cloud | Deploy Azure confidential computing VMs for sensitive workloads, and use Microsoft Defender for Cloud to monitor compliance posture against regulatory frameworks. | 
+| Azure Private Link, Storage Firewalls | Use Azure Private Link to access storage and management services without exposing traffic to public networks; configure storage firewalls to restrict access to authorized virtual networks. | 
+| Azure Key Vault, Storage Service Encryption | Enable encryption at rest for all Azure storage services; use Azure Key Vault to manage encryption keys and secrets; enforce encryption in transit for all data movement. | 
 
 ## Cost Optimization
 
-| Recommendations | Considerations |
-|------------------|----------------|
-| **Implement storage lifecycle management** | Automatically move aging data from high-performance storage to lower-cost tiers based on access patterns. Balance performance needs against storage costs. |
-| **Right-size compute for actual usage** | Profile applications to understand true resource consumption. Avoid paying for capabilities that workloads won't use. |
-| **Scale dynamically with demand** | Provision resources when jobs are waiting and release them when queues are empty. Align infrastructure costs with actual usage rather than peak capacity. |
-| **Select appropriate orchestration** | Evaluate managed services versus self-managed schedulers based on total cost including operational overhead. Match the approach to workload patterns. |
-| **Leverage discounted capacity** | For workloads that can tolerate interruption, use lower-cost preemptible compute. Implement checkpointing so interrupted jobs can resume without losing progress. |
+Cloud-based HPC offers the flexibility to scale resources with demand, but without deliberate governance, costs can escalate rapidly. Optimization requires continuous alignment between provisioned resources and actual workload requirements.
+
+### Considerations
+
+- **Storage cost management.** HPC workflows generate large data volumes with varying access patterns. High-performance storage tiers are expensive; retaining cold data on premium storage wastes budget without providing performance benefits.
+
+- **Compute right-sizing.** Over-provisioned VMs waste money on unused capacity; under-provisioned VMs extend job runtimes and may cost more due to prolonged resource consumption. Accurate workload profiling enables appropriate sizing decisions.
+
+- **Elastic scaling alignment.** Static cluster provisioning—whether too large or too small—misaligns costs with value delivery. Infrastructure should expand when jobs are queued and contract when demand subsides.
+
+- **Interruptible workload economics.** Many HPC jobs can tolerate interruption if they implement checkpointing. These workloads are candidates for significantly discounted Spot VMs, but require architectural changes to handle evictions gracefully.
+
+- **Operational overhead accounting.** The total cost of HPC includes not just infrastructure but also the labor required to manage it. Managed services may have higher direct costs but lower total cost when operational effort is included.
+
+### Recommendations
+
+| Azure Service/Feature | Recommendation | 
+| ----------------------| ---------------|
+| Azure Blob Storage Lifecycle Management | Implement Azure Blob Storage lifecycle management policies to automatically transition aging data from hot to cool or archive tiers based on last access time. | 
+| Azure CycleCloud, Azure Batch, Azure Monitor | Use Azure CycleCloud or Azure Batch analytics to profile actual resource consumption, then select VM sizes that match observed CPU, memory, and I/O requirements. | 
+| Azure CycleCloud Autoscaling | Configure Azure CycleCloud autoscaling to provision compute nodes in response to scheduler queue depth and deallocate idle nodes after configurable timeout periods. | 
+| Azure Spot VMs, Azure Batch, Azure CycleCloud | Deploy Azure Spot VMs for fault-tolerant workloads with checkpointing enabled; configure Batch pools or CycleCloud clusters to use Spot instances with automatic failover to standard VMs when needed. | 
+| Azure Batch, Azure CycleCloud | Evaluate Azure Batch (fully managed) versus Azure CycleCloud (self-managed schedulers) based on team expertise, customization requirements, and total cost including operational labor. | 
+| Azure Cost Management, Resource Tags | Use Azure Cost Management to establish budgets, configure alerts, and analyze HPC spending patterns; implement resource tagging to attribute costs to specific projects or research groups. |
 
 ## Next Steps
 
