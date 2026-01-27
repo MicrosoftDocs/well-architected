@@ -50,8 +50,6 @@ Start your design strategy based on the [design review checklist for Reliability
 >   |Throttling because of exceeding request units (RUs)| Implement retry logic. Monitor RU consumption and adjust throughput settings as needed.|
 >   |Azure Cosmos DB service failure in a single zone in a single Azure region| Configure availability zone support when you create a database.|
 >
->   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
->
 > - **Always use the SDK to access your databases.** Use the Cosmos DB SDK in your clients to access Cosmos DB, and [tune client side error handling parameters](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.retryoptions) for both reads and writes. The SDK has built-in transient fault handling to minimize custom logic. Where built-in handling isn't sufficient, the SDK supports your custom error handling implementations, such as handling [rate limiting errors](/azure/cosmos-db/performance-tips?tabs=trace-net-core#429). The SDK also allows you to capture rich [diagnostics logs](/azure/cosmos-db/best-practice-dotnet#capture-diagnostics) on the client to provide reliability observability.
 >
 > - **Build redundancy to improve resiliency and help meet reliability targets.** Design your database account deployment so it spans at least two regions in Azure. Distribute your account across multiple availability zones if your Azure region supports it.
