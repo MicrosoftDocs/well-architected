@@ -61,6 +61,8 @@ Even with those external dependencies, expect some team members to work directly
 
 Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access with appropriate permissions for logs and production environments.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Before transitioning support to external vendors, AI can role-play as a vendor team using only the documentation provided playbooks, health models, and escalation paths. It tests historical incidents to reveal gaps, such as missing knowledge of systems or misconfigured thresholds, highlighting where tribal knowledge lives. This allows teams to fix gaps proactively, ensuring smooth handoffs.
+
 ## Build containment and isolation in the architecture
 
 Incidents are inevitable, so design your architecture to **restrict failures and limit their blast radius**. Ensure that when a component fails, the impact is isolated and doesn't cascade to other parts of the system. 
@@ -111,9 +113,16 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. That repetitive work can be time consuming and take focus away from recovery efforts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. That repetitive work can be time consuming and take focus away from recovery efforts. 
 >
-> AI can take over much of the manual incident review work by summarizing logs, tickets, and discussions into a clear incident story, suggesting likely causes, and drafting retrospective questions. It can also learn from past incidents to highlight recurring issues and recommend prioritized backlog items. When integrated with incident management and development tools using automation platforms like Power Automate or Logic Apps, AI helps teams recover faster and improve reliability without added manual effort.
+> AI can reduce manual work in incident management and improve learning from failures. At early maturity levels, use AI to summarize reports and draft blameless postmortems. As maturity grows, AI can correlatesdata across systems and detect patterns and hidden dependencies. Higher maturity introduces expertise-aware escalation, where AI identifies the people most effective at resolving specific incidents based on past resolutions and code ownership. At this point, AI can provide proactive and predictive insights to prevent incidents, while humans remain responsible for validation and decisions.
+>
+> | Progress level | How AI is used | Tooling | Effort | Primary outcome | Risks |
+> |----------------|---------------|-----------------|------------------|----------------|---------------------|
+> | **Foundational** | Manual incident analysis; basic AI prompts for summarizing logs, tickets, chat transcripts, and meeting notes | M365 Copilot, simple GenAI prompts | Low effort, low complexity, immediate time-to-value | Understanding individual incidents; faster summarization | Data quality; privacy; human validation required; limited pattern detection |
+> | **AI-Assisted** | AI generates blameless postmortems and retrospective questions, highlights key signals from multiple sources | Copilot assistance | Low effort, low complexity | Reduced toil; consistent blameless reports; quicker reviews | Requires human oversight; may miss cross-incident patterns if not integrated across data sources |
+> | **Agentic workflows** | AI correlates data across tools and incidents, identifies recurring patterns, silent dependencies, and links action items to code or system improvements; supports expertise-aware escalation to the team members most effective at resolving specific incident types | Azure native agents (SRE agent, Azure Copilot), 3rd party tools (Incident.io, Rootly, FireHydrant) | Moderate effort; licensing and integration required | Cross-incident insights; consistent learning; traceable improvements | Data access and governance; scalability with data volume; dependency on tool integration |
+> | **Custom solution** | AI drives predictive insights and proactive incident management; generates improvement PRs; predicts high-risk deployments | Custom agentic GenAI solutions; predictive ML models integrated with monitoring and development tools | High effort; requires ML expertise, historical data, and ongoing maintenance | Prevention of recurring failures; proactive reliability improvements | Over-reliance on AI; maintenance burden; data quality; governance; human validation still essential |
 
 ## Bring agility and consistency through automation 
 
