@@ -3,13 +3,36 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/10/2025
+ms.date: 01/13/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## December 2025
+
+### New articles
+
+- [Align technical strategy with business requirements](./architect-role/design-business-requirements.md): Learn about a five-step process to turn business needs into actionable technical requirements. This guidance helps architects clarify goals, uncover real motivations, evaluate trade-offs, and recommend strategies that balance technical soundness with business priorities.
+
+- [Architecture best practices for Azure Virtual WAN](./service-guides/virtual-wan-service-guide.md): Get architectural best practices for Virtual WAN that align with the Well-Architected Framework pillars. Learn how to design for reliability, security, cost optimization, operational excellence, and performance efficiency, with practical recommendations for connectivity, redundancy, monitoring, and scaling in global networks.
+
+### Updated articles
+
+- [Architecture best practices for Azure Event Hubs](./service-guides/azure-event-hubs.md): We improved clarity and modernized language across Operational Excellence and Performance Efficiency sections. We added new automation and policy-based cost control recommendations, streamlined configuration advice, and enhanced guidance for monitoring, scaling, and testing. These changes make it easier to apply best practices and optimize your Event Hubs workloads.
+
+- [Develop an architecture design specification](./architect-role/architecture-design-specification.md): We clarified the importance of aligning design decisions with business needs and stakeholder goals. We added references to the business requirements guide, condensed the functional specification section, and added a link to detailed disaster recovery planning resources. These changes make it easier to create clear, actionable architecture specifications that support both technical and business objectives.
+
+- [Solution architect's responsibilities and guiding principles](./architect-role/fundamentals.md): We clarified responsibilities, provided a practical checklist of deliverables, and emphasized the importance of aligning architecture with business requirements. We streamlined the guiding principles, added actionable advice for decision-making, supportability, and continuous learning, and improved guidance about how to collaborate with platform teams. These changes help architects deliver clear, effective, and adaptable solutions.
+
+- [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md): We added new guidance about file access logging, cross-tenant customer-managed keys, and the Flexible service level for decoupling throughput from capacity. We improved recommendations for cost optimization, security, and operational monitoring, and added details about using short-term clones and enhanced estimators. These updates help strengthen security, optimize costs, and improve performance and flexibility for your workloads.
+
+- [Architecture best practices for Azure API Management](./service-guides/azure-api-management.md): We added the latest tier capabilities, including Premium v2, and clarified recommendations for reliability, security, and cost optimization. We improved guidance about redundancy, access control, and performance, and streamlined language throughout the article. These changes help you make more informed decisions and apply best practices for API Management workloads.
+
+
+- We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Database for MySQL and cost optimization](./service-guides/azure-db-mysql-cost-optimization.md), [Architecture best practices for Azure Functions](./service-guides/azure-functions.md), and [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
 
 ## November 2025
 
@@ -306,13 +329,3 @@ This month, we made significant updates to many of our service guides. Here are 
 - [Azure Traffic Manager](./service-guides/azure-traffic-manager.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on load balancing across regions, enhancing DNS security, and using diagnostic logs and traffic view dashboards to optimize and troubleshoot Traffic Manager profiles.
 
 - [Azure Virtual Network](./service-guides/virtual-network.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on adding redundancy, segmenting networks for security, and monitoring traffic patterns. Use infrastructure as code in your deployments, optimize network traffic, and leverage Azure Network Watcher for performance insights.
-
-## December 2024
-
-### New articles
-
-- [Azure Well-Architected Framework Perspective on Azure Disk Storage](./service-guides/azure-disk-storage.md): Find new design considerations and configuration recommendations for optimizing Azure Disk Storage within the Azure Well-Architected Framework. Explore guidance on key areas such as reliability, security, cost optimization, operational excellence, and performance efficiency, as well as strategies and best practices to enhance storage management for Azure Virtual Machines.
-
-### Azure IoT Hub workload guidance retirement
-
-- This month, we announced the deprecation of Azure IoT Hub workload documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.
