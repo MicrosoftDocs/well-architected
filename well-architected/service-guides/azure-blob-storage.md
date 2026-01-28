@@ -37,7 +37,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Configure data redundancy**: For maximum durability, choose a configuration that copies data across availability zones or global regions. For maximum availability, choose a configuration that allows clients to read data from the secondary region during an outage of the primary region.
 >
-> - **Design applications**: [Design applications](/azure/storage/common/geo-redundant-design) to switch to reading data from the secondary region if the primary region becomes unavailable for any reason. This requires read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS) configurations. Both configurations provide read-only access to your data in the secondary region. Designing applications to handle outages reduces downtime for end users.
+> - **Always use the SDK when writing custom code to interact with blob storage.** Use the [Azure Blob Storage client library](/azure/storage/blobs/storage-blob-dotnet-get-started) for your language to manipulate containers and the blobs within the containers. The SDK has [built-in transient fault handling](/azure/storage/blobs/storage-retry-policy) to minimize custom retry logic.
+>
+> - **Design applications to use secondary read options**: [Design applications](/azure/storage/common/geo-redundant-design) to switch to reading data from the secondary region if the primary region becomes unavailable for any reason. This requires read-access geo-redundant storage (RA-GRS) or read-access geo-zone-redundant storage (RA-GZRS) configurations. Both configurations provide read-only access to your data in the secondary region. If both primary and secondary reads fail, degrade gracefully in your application. For example, show a generic placeholder image for a failed product image retrieval operation.
 >
 > - **Explore features to help you meet your recovery targets**: Make blobs restorable so that they can be recovered if they're corrupted, edited, or deleted by mistake.
 >
