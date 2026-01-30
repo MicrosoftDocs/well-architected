@@ -35,7 +35,7 @@ The following recommendations can help you define the core tenets of your supply
 
 An important aspect of this tenet is that all changes are *proposed* *changes* until they're deployed into production. Through automated testing, like integration and smoke testing, you enable your supply chain to automatically reject changes.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual diagnosis of deployment failures slows teams, causes frustration, and creates knowledge silos. To boost productivity and resilience, start by evaluating off-the-shelf DevOps tools with built-in AI for failure analysis. If those tools aren't enough, build a custom agentic AI solution that monitors pipeline data, detects recurring failure patterns, and recommends proactive remediations. Give the AI secure, controlled access to your logs, config files, and deployment metadata so it can automatically identify and fix common issues. Maintain oversight with audit logs and approval gates for AI-driven changes. Plan for ongoing model and integration maintenance to ensure long-term reliability and safety.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual diagnosis of deployment failures slows teams, causes frustration, and creates knowledge silos. Improve productivity and resilience by first evaluating off-the-shelf DevOps tools that offer AI-assisted failure analysis. To extend these capabilities, layer a custom agent on your existing toolchain to identify and resolve common issues. For advanced scenarios, build an agentic solution that monitors pipeline telemetry and historical incident data to detect recurring failure patterns and recommend proactive remediations.
 
 ## Deploy repeatable and immutable infrastructure as code
 
@@ -47,7 +47,11 @@ Design your workload as a logical group of components that you can bundle into o
 
 To optimize your IaC pipeline for consistency and efficiency, design an immutable infrastructure rather than a mutable infrastructure. Implement an immutable infrastructure to ensure that all systems in scope are replaced with the updated configuration simultaneously and identically with each deployment.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Streamline pipeline management and reduce manual effort by using AI-powered deployment optimization. Use AI to recommend rollback approaches and identify discrepancies between current and intended infrastructure states. Integrate AI to enhance monitoring by anticipating issues and enabling earlier intervention. To use AI safely in these workflows, standardize your pipelines and keep all relevant assets up to date. Maintain accurate resource inventories across environments and monitor resource state continuously. Add approval steps and audit trails to track all AI actions. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Streamline pipeline management and reduce manual effort with AI-powered deployment optimization. Use GitHub Copilot to accelerate code generation and integrate AI into your CI/CD pipelines to validate and enforce organizational standards.
+>
+> Enable AI to recommend rollback strategies and detect drift by comparing current and intended infrastructure states. Enhance monitoring with AI models that anticipate issues and surface them early for intervention. 
+>
+> Maintain accurate resource inventories across environments and monitor resource state continuously. Add approval steps and audit trails to track all AI actions.
 
 ## Use the same set of deployment artifacts across all environments
 
@@ -69,7 +73,7 @@ Use a progressive-exposure (canary deployments) approach to reduce the risk of i
 
 When you define your deployment method, adopt a standard policy of releasing the smallest viable change in each deployment. Determine what qualifies as the smallest viable change based on your workload’s criticality and the complexity of its components. If you use an immutable infrastructure, the smallest viable change is redeploying resources with the latest configuration to replace those resources running the previous version. If you use a mutable infrastructure, you might decide that the smallest viable change is only a single, scoped update on the group of resources.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI-driven analysis identifies usage patterns and recommends optimal deployment times—eliminating repetitive manual log inspection. Avoid guessing low usage periods, deploying during high traffic times, or causing user disruption. Start with a low-effort GenAI approach for interactive analysis. For large-scale, high-transaction workloads, scale to ML-based predictive models that forecast optimal deployment windows as usage trends evolve. Keep predictive models accurate by continuously retraining and refining them. Provide AI systems with secure access to your workload telemetry while maintaining privacy and governance.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI-driven analysis identifies usage patterns and recommends optimal deployment times—eliminating repetitive manual log inspection. Avoid guessing low usage periods, deploying during high traffic times, or causing user disruption. Start with a low-effort GenAI approach that connects models directly to your workload telemetry, enabling interactive pattern detection and insight generation. For large-scale, high-transaction workloads, scale to ML-based predictive models that forecast optimal deployment windows as usage trends evolve. Keep predictive models accurate by continuously retraining and refining them. 
 
 ## Follow a layered approach
 
@@ -111,8 +115,7 @@ Use automated testing when possible to ensure consistency. Include the following
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI to your testing strategy to find customer-focused edge cases and complex scenarios that are hard to automate. Start by using your existing analytics and reporting to identify coverage gaps, then use tools like GitHub Copilot to generate new test cases and scripts. Use AI to optimize your test suite—surface hard-to-detect defects and remove redundant tests to streamline execution and improve speed and efficiency.
-> Consider an AI solution that analyzes production usage, monitoring data, and historical defects to find patterns and automatically create tests in your codebase that match your organization's standards. Sanitize and protect sensitive information before you send data to AI systems. Enforce least-privilege access to telemetry and code artifacts. Maintain audit logs for all AI-generated changes. Plan for integration, ongoing operations, and regular model updates to address model drift and maintain effectiveness over time.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI to your testing strategy to find customer-focused edge cases and complex scenarios that are hard to automate. Start by using your existing analytics and reporting to identify coverage gaps, then use tools like GitHub Copilot to generate new test cases and scripts. Use AI to optimize your test suite—surface hard-to-detect defects and remove redundant tests to streamline execution and improve speed and efficiency. Consider an AI solution that analyzes production usage, monitoring data, and historical defects to find patterns and automatically create tests in your codebase that match your organization's standards.
 
 ## Implement quality gates in code promotion processes
 
@@ -120,7 +123,7 @@ Use automated testing when possible to ensure consistency. Include the following
 
 Integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to eliminate review bottlenecks by auto routing PRs to the right SMEs. Begin with GitHub Copilot to assess scope and impact, then add an agentic CI/CD integration to evaluate code changes, configurations, and approval patterns. Grant least privilege access only to required artifacts—repositories, pipelines, configuration data, incident history, and approval logs—to assess impact, assign reviewers, surface bottlenecks, and recommend auto approval or extra review. For high-value workloads, train on historical data to predict deployment risk and approval outcomes. Keep humans in the loop. Be cautious with auto approval. Plan for integration, operations, and regular model updates.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to eliminate review bottlenecks by auto routing PRs to the right SMEs. Begin with GitHub Copilot to assess scope and impact, then add an agentic CI/CD integration to evaluate code changes, configurations, and approval patterns. Grant least privilege access only to required artifacts—repositories, pipelines, configuration data, incident history, and approval logs—to assess impact, assign reviewers, surface bottlenecks, and recommend auto approval or extra review. For high-value workloads, train on historical data to predict deployment risk and approval outcomes. Keep humans in the loop and be cautious with auto approval.
 
 ## Azure facilitation
 
