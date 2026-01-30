@@ -28,19 +28,15 @@ AI can improve operational productivity when applied intentionally and with clea
 
 - Off-the-shelf GenAI solutions
 
-Azure services are adding AI features into the platform, so you can take advantage of them without extra setup. Many third-party tools and SaaS products also come with built-in capabilities. For teams ready to go further, Microsoft's agentic offerings provide AI that can actively manage workflows through agents to help optimize processes across your systems.
-
-This approach uses tools that don't require building or integrating custom systems. Prompt-driven chat interfaces are primarily used for knowledge work by providing artifacts as context. These tools work well for summarization, synthesis, drafting, and review tasks, but they require manual effort to supply context and validate outputs. They do not maintain workflow state or system integration, so the results are advisory rather than automated.
-
-Developer assistants extend this approach into IDE and CLI workflows to speed up code, IaC, test generation, and reviews. These tools operate within existing development environments and rely on prompts and local context such as the codebase. They require human review, careful handling of sensitive data, and consistent prompting to get reliable results.
+  Off-the-shelf GenAI uses existing tools with built-in AI capabilities, including platform-native features in Azure, third-party SaaS tools, and Microsoft agentic offerings. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat and for developer productivity through IDE and CLI assistants. They are effective for summarization, drafting, reviews, and code generation, but rely on manual context, require human validation, and provide advisory output rather than automated workflow execution.
 
 - GenAI with customer development
 
-Alternately, you can embed GenAI directly into operational and development workflows that work for specialized context for the workload proceses. Custom agents can correlate data across tickets, code repositories, metrics, and monitoring to provide context aware insights and recommendations. These systems maintain state, understand workflow context, and can take action based on defined rules or approvals.
+  Custom GenAI embeds AI directly into operational and development workflows tailored to a specific workload. Custom agents correlate data across systems such as tickets, code, metrics, and monitoring to provide context-aware insights and take action within workflows. More advanced systems can generate and validate code and infrastructure against internal standards, route work based on expertise, and use custom ML models for specialized predictions. This approach delivers deeper automation but requires investment in engineering, data quality, governance, and ongoing maintenance.
 
-More advanced implementations include agentic systems that generate code, infrastructure, and tests aligned to internal standards, validate changes against policies and design documents, and route work based on expertise or system signals. Some solutions also use custom trained ML models for specialized prediction or detection. This approach delivers higher impact but requires investment in engineering, data quality, governance, and ongoing maintenance, with humans still responsible for final decisions.
-
-> [!NOTE] Adoption should follow a clear progression. Start with focused, high-impact use cases such as summarization or content generation. As confidence and capability grow, expose system functionality as AI-accessible tools and introduce agentic interfaces capable of task-based reasoning. Over time, this can evolve into multi-agent patterns, where specialized agents collaborate to perform complex tasks, research, and analysis across customer data and integrated systems.
+> [!NOTE] 
+>
+> Adoption should follow a clear progression. Start with focused use cases like summarization or content generation. As capabilities grow, expose system functions as AI-accessible tools and add agentic interfaces for task-based reasoning. Eventually, this can evolve into multi-agent systems, where specialized agents collaborate on complex tasks and analysis across integrated systems and data.
 
 #### **AI capabilities**
 The following are some of the most common and approachable AI capabilities used in practice, but this list is not exhaustive. Use this as inspiration to evaluate where in your operations you can inject AI for productivity gains. 
@@ -53,16 +49,30 @@ The following are some of the most common and approachable AI capabilities used 
 > - **Policy and standards validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
 > - **People and process optimization.**  AI tools that use insights across artifacts to route work, support decisions, and optimize operational processes.
 
+> [!NOTE] 
+> 
+> TBD - Uber note about governance and privacy
 
-#### &#10003; Summarization and synthesis
 
-#### &#10003; Cross-source insights and recommendations
+#### &#10003; Summarization and synthesis considerations
 
-#### &#10003; Code, IaC, and test generation from natural language.
+TBD
 
-#### &#10003; Policy and standards validation
+#### &#10003; Cross-source insights and recommendations considerations
 
-#### &#10003; People and process optimization
+TBD
+
+#### &#10003; Code, IaC, and test generation from natural language considerations
+
+TBD
+
+#### &#10003; Policy and standards validation considerations
+
+TBD
+
+#### &#10003; People and process optimization considerations
+
+TBD
 
 
 
