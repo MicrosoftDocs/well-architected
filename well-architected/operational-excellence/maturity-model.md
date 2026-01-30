@@ -30,7 +30,7 @@ AI can improve operational productivity when applied intentionally and with clea
 
   Off-the-shelf GenAI uses existing tools with built-in AI capabilities, including platform-native features in Azure, third-party SaaS tools, and Microsoft agentic offerings. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat and for developer productivity through IDE and CLI assistants. They are effective for summarization, drafting, reviews, and code generation, but rely on manual context, require human validation, and provide advisory output rather than automated workflow execution.
 
-- GenAI with customer development
+- GenAI with custom implementation
 
   Custom GenAI embeds AI directly into operational and development workflows tailored to a specific workload. Custom agents correlate data across systems such as tickets, code, metrics, and monitoring to provide context-aware insights and take action within workflows. More advanced systems can generate and validate code and infrastructure against internal standards, route work based on expertise, and use custom ML models for specialized predictions. This approach delivers deeper automation but requires investment in engineering, data quality, governance, and ongoing maintenance.
 
