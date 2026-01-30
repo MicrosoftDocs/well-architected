@@ -40,7 +40,9 @@ Use your cloud platform's native tools and other industry-proven tools that nati
 > [!NOTE]
 > Be mindful that as cloud providers and third-party developers update their tools and APIs, you can run the risk of unanticipated issues when using the latest version in your workload. Ensure that you thoroughly test new versions of tools and APIs before adopting them. Likewise, avoid using the 'latest' flag when calling on a tool or API in your deployment code. Be intentional about calling the latest known good version for your workload.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Creating and validating IaC templates can be time-consuming and error-prone. Use AI to help develop Bicep and Terraform templates and accelerate modernization. AI can reduce manual effort and ensure compliance with organizational policies promoting a shift-left approach. For example, AI can simulate and forecast deployment impacts and summarize risk assessments in natural language. To use AI to speed up IaC development, provide secure access to your repositories and assets. Review AI-generated content to ensure it meets your compliance and governance standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Creating and validating IaC templates can be time-consuming and error-prone. Use AI to help develop Bicep and Terraform templates and accelerate modernization. 
+> AI can reduce manual effort and ensure compliance with organizational policies promoting a shift-left approach. For example, AI can simulate and forecast deployment impacts and summarize risk assessments in natural language. 
+> To speed up IaC development with AI, provide secure access to your repositories and assets, and review AI-generated content.
 
 ## Use the right tool for the task
 
@@ -57,7 +59,7 @@ Your scripts and templates should be flexible enough to easily deploy a variety 
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI reviews your code to identify required IaC updates and recommend changes before configuration issues affect quality or stability. Use tools like GitHub Copilot to analyze code, design docs, and requirements. Copilot identifies the updates you need, and teams can request infrastructure changes in natural language. Advanced agent-based solutions can even generate pull requests automatically. To maintain security and governance, grant AI agents only the minimum access they need to relevant repositories and artifacts—never production.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI reviews your code to identify required IaC updates and recommend changes before configuration issues affect quality or stability. Use tools like GitHub Copilot to analyze code, design docs, and requirements. Copilot identifies the updates you need, and teams can request infrastructure changes in natural language. Advanced agent-based solutions can even generate pull requests automatically.
 
 ## Use the right balance when encapsulating functionality
 
@@ -91,7 +93,9 @@ Apply the principle of "security as code" to ensure that security is part of the
 
 **Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment-rollback processes. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To strengthen your security posture and accelerate response times, integrate AI into your security reviews and threat modeling processes. Enhance existing tools with AI to highlight insecure coding patterns and suggest secure alternatives. Use generative AI to analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. Regularly update architectural diagrams, IaC templates, prompts, model versions, and validation criteria. Apply human oversight to reduce AI errors and false positives.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To strengthen your security posture and accelerate response times, integrate AI into your security reviews and threat modeling processes. 
+> Enhance existing tools with AI to highlight insecure coding patterns and suggest secure alternatives. Use generative AI to analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. 
+> Regularly update architectural diagrams, IaC templates, prompts, model versions, and validation criteria. Apply human oversight to reduce AI errors and false positives.
 
 ## Adopt an immutable deployment model
 
