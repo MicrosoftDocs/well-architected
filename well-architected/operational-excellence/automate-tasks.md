@@ -71,6 +71,8 @@ Be mindful of factors that can complicate your operations when you build your au
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, use AI to make data-driven decisions about which automations deliver real value and to proactively surface conflicts before they cause incidents. You’ll boost productivity, reduce costs, and keep automations maintained instead of neglected. For high-value workloads, apply large language models (LLMs) to correlate code, telemetry, and incident data so you can detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase. Maintain human oversight for any agent-based or autonomous capabilities.
+
 ## Considerations
 
 - Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution if no off-the-shelf solutions fit your requirements. In these cases, be judicious in your development efforts. Narrowly focus on developing only what you need to cover gaps that you can't solve with off-the-shelf solutions, and minimize complexities like dependencies.
