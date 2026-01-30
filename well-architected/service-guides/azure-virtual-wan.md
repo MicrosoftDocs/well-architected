@@ -1,6 +1,6 @@
 ---
 title: Azure Virtual WAN Service Guide
-description: Learn best practices for designing Azure Virtual WAN deployments that align with the Well-Architected Framework pillars, like Reliability and Security.
+description: Learn best practices for designing Azure Virtual WAN deployments that align with the Well-Architected Framework pillars.
 author: abell
 ms.author: abell
 ms.topic: concept-article
