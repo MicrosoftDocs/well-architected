@@ -47,12 +47,12 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >    The following table includes common failure scenarios and their proven mitigation approaches.
 >
->    |Failure|Mitigation|
+>    | Failure | Mitigation |
 >    |---|---|
->    |Cluster driver node failure| Use cluster automatic-restart policies and implement checkpointing for Spark applications. Use structured streaming with fault-tolerant state management. |
->    |Job execution failures | Implement retry policies with exponential backoff. Use Azure Databricks job orchestration with error handling. Set up appropriate timeout settings. |
->    |Data corruption or inconsistency | Use Delta Lake atomicity, consistency, isolation, and durability (ACID) transactions, time travel capabilities, and data expectations in Lakeflow Spark Declarative Pipelines. Implement data validation checks and monitoring.  |
->    |Workspace or region unavailability | Implement multiregion deployment strategies. Use workspace backup and restore procedures. Set up cross-region data replication. |
+>    | Cluster driver node failure | Use cluster automatic-restart policies and implement checkpointing for Spark applications. Use structured streaming with fault-tolerant state management. |
+>    | Job execution failures | Implement retry policies with exponential backoff. Use Azure Databricks job orchestration with error handling. Set up appropriate timeout settings. |
+>    | Data corruption or inconsistency | Use Delta Lake atomicity, consistency, isolation, and durability (ACID) transactions, time travel capabilities, and data expectations in Lakeflow Spark Declarative Pipelines. Implement data validation checks and monitoring.  |
+>    | Workspace or region unavailability | Implement multiregion deployment strategies. Use workspace backup and restore procedures. Set up cross-region data replication. |
 >
 >    These mitigation strategies use native Azure Databricks capabilities like automatic restart, automatic scaling, Delta Lake consistency guarantees, and Unity Catalog security features for fault tolerance.
 >
@@ -429,8 +429,6 @@ You might have to make design trade-offs if you use the approaches in the pillar
 Balance performance and cost to get the most value from your workloads. Overprovisioning wastes money, while underprovisioning can slow down workloads or lead to failures. Test different configurations, use performance benchmarks, and analyze costs to guide your choices.
 
 ## Scenario architecture
-
-Foundational architecture that demonstrates the key recommendations: [Stream processing with Azure Databricks](/azure/architecture/reference-architectures/data/stream-processing-databricks).
 
 [Stream processing by using Azure Databricks](/azure/architecture/reference-architectures/data/stream-processing-databricks) shows a foundational architecture that demonstrates the key recommendations described in this article.
 
