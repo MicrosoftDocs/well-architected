@@ -43,36 +43,80 @@ The following are some of the most common and approachable AI capabilities used 
 
 > [!div class="checklist"]
 >
-> - **Summarization and synthesis.**  AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
-> - **Cross-source insights and recommendations.**  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
-> - **Code, IaC, and test generation from natural language.**  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
-> - **Policy and standards validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
-> - **People and process optimization.**  AI tools that use insights across artifacts to route work, support decisions, and optimize operational processes.
+> - **Summarization.**  AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
+> - **Recommendations.**  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
+> - **Artifact generation.**  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
+> - **Policy Validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
+> - **Optimization actions.**  AI tools that use insights across artifacts to route work, support decisions, and optimize operational processes.
 
 > [!NOTE] 
 > 
 > TBD - Uber note about governance and privacy
+>
+
+To protect data, platforms apply PII masking and enforce security trimming, ensuring users only access summaries generated from authorized data subsets, which may reduce summary completeness.
 
 
-#### &#10003; Summarization and synthesis considerations
+Keep Humans in the Decision Loop
 
-TBD
+Human review remains essential, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
 
-#### &#10003; Cross-source insights and recommendations considerations
 
-TBD
+#### &#10003; Summarization agents
 
-#### &#10003; Code, IaC, and test generation from natural language considerations
+Most summarization workloads use a simple, Copilot-style agent architecture with straightforward retrieval and response generation, making them relatively easy to implement and operate.
 
-TBD
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Summarization has inherent correctness risk, especially when synthesizing across multiple documents. While inaccuracies cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content was summarized and allow users to drill into source material for validation.
 
-#### &#10003; Policy and standards validation considerations
+Summarization can accumulate inference costs over time. Route straightforward requests to smaller, lower-cost models, and reserve more advanced models for complex multi-document synthesis, accepting the added orchestration complexity. Provide concise initial summaries and support drill-down into supporting details and source documents.
 
-TBD
+Data management introduces additional hidden costs. Actively manage the data lifecycle to avoid index bloat from outdated documents or redundant versions. When historical context is needed, retain prior content through deliberate versioning rather than uncontrolled duplication.
 
-#### &#10003; People and process optimization considerations
+Capture direct user feedback to evaluate summary quality and usefulness. Use this feedback to assess model routing decisions, index effectiveness, and the impact of caching and preprocessing strategies.
 
-TBD
+#### &#10003; Recommendation agents
+
+Recommendations require reasoning-oriented models capable of cross-source analysis. Select models with sufficient analytical depth rather than lightweight or purely generative ones.
+
+> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** . More capable reasoning models typically increase per-request cost and inference latency. Minimize external calls per request by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external data sources at runtime is costly; offset this by parallelizing data access and preloading data into a shared index where feasible. 
+
+Multi-source analysis introduces additional integration complexity. Errors in one data source can propagate through the recommendation pipeline. Apply validation and security guardrails when correlating inputs. If low latency is required and data must be fetched at runtime, query sources in parallel. Preprocess steps that do not depend on the request, such as classification, enrichment, and lookups—and cache intermediate results and commonly used features to reduce repeated computation.
+
+Treat recommendation engines as decision-support systems rather than black boxes. Explainability is therefore more important, with higher expectations for trust and operational reliability. Systems should provide clear rationales for recommendations, including key signals and contributing data sources. Consider returning a confidence indicator (for example, 0–100%) to help downstream systems or users assess reliability.
+
+#### &#10003; Code generation agents
+
+Code generated by AI agents may become part of a production workload after validation. Agent-based code generation is inherently non-deterministic, and translating natural-language requirements into executable artifacts can produce results that diverge from the original intent. Use AI where the problem space is well understood and variation is limited, such as repetitive or standardized coding tasks, and apply explicit guardrails. Ensure clear ownership, appropriate controls, and integration into existing engineering practices.
+
+Choose models that are well suited for code generation and tool execution. Use multiple models where appropriate. For example: a reasoning model for analysis, planning, or decomposition. A code-focused model for artifact generation and execution. 
+
+Constraint generation with templates, reference implementations, and examples that reflect organizational and industry standards. Clear standards make it possible to detect drift and enforce consistency. Provide additional context to the agents that include approved templates, reference architectures, IaC modules, pipeline patterns, and coding guidelines. AI should be used to parameterize and assemble these predefined building blocks, not to create new or unproven patterns.
+
+Much like most agents, they will tap into multiple sources. Treat all outputs as untrusted until validated. Least privilege applies to agents as well. Limit tool execution permissions and scope. Avoid agents to deploy or modify production resources without explicit, gated approval.
+
+Integrate generated artifacts into the standard developer lifecycle whether that's Pull requests, Code reviews, Automated testing, Security scanning. Apply the same rigor as with human-authored code, including dependency and IaC scanning.
+
+> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** . Human review is part of the cost model and must be factored into ROI. Automate validation as much as possible using linters, unit and integration tests, static analysis, and policy checks to reduce review effort and catch common issues early.
+
+
+#### &#10003; Policy validation agents
+
+AI agents that review and validate assets against policies, standards, under supervision; not autonomous actors.
+
+Validation should include evaluations and testing before rollout. Version standards and maintain traceability so each asset clearly references the applicable policy or standard.
+
+Performance and maintenance can be improved by caching prompts and validation behaviors. Some checks can use pre-generated or prescriptive tools instead of having the agent reason over source documents each time. Balance this with maintenance overhead when policies or standards change. Batch and parallelize reviews where possible, focusing incremental checks on changes rather than rescanning all assets.
+
+Cost can be reduced by leveraging existing third-party tools for policy enforcement. Agents should integrate with these tools, supplying inputs and processing outputs, rather than duplicating functionality. Use batch processing to minimize repeated calls.
+
+Security controls should limit access to validation outputs to authorized users, such as security reviewers.
+
+Monitor effectiveness through dashboards tracking metrics such as issues detected versus issues in production, false positives, and coverage. Use this data to adjust validation logic, prompts, and operational processes.
+
+#### &#10003; Action optimization agents
+
+
+
 
 
 
