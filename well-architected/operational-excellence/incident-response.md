@@ -61,7 +61,7 @@ Even with those external dependencies, expect some team members to work directly
 
 Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access with appropriate permissions for logs and production environments.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Before transitioning support to external vendors, AI can role-play as a vendor team using only the documentation provided playbooks, health models, and escalation paths. It tests historical incidents to reveal gaps, such as missing knowledge of systems or misconfigured thresholds, highlighting where tribal knowledge lives. This allows teams to fix gaps proactively, ensuring smooth handoffs.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Before transitioning support to external vendors, AI can role-play as a vendor team using only the documentation, playbooks, health models, and escalation paths the vendor has provided. It tests historical incidents to reveal gaps, such as missing knowledge of systems or misconfigured thresholds, or reliance on tribal knowledge. This allows teams to fix gaps proactively, ensuring smooth handoffs.
 
 ## Build containment and isolation in the architecture
 
