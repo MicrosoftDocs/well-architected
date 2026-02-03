@@ -44,7 +44,7 @@ Define workload health indicators, KPIs, and performance metrics so that telemet
 
 Tie telemetry to system and user flows. This helps correlate flow health with collected data in addition to overall workload health.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Teams spend time defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure-as-code templates. Make sure there's human oversight ensures AI-driven observability stays accurate and aligned with standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Teams spend time manually defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure-as-code templates. Make sure there's human oversight to ensure AI-driven observability stays accurate and aligned with standards.
 
 
 ## Collect telemetry across the workload
