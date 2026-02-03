@@ -47,7 +47,7 @@ The following are some of the most common and approachable AI capabilities used 
 > - **Recommendations.**  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
 > - **Artifact generation.**  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
 > - **Policy Validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
-> - **Optimization actions.**  AI tools that use insights across artifacts to route work, support decisions, and optimize operational processes.
+> - **Optimization actions.**  AI tools that use insights across artifacts to route work and take action on decisions.
 
 > [!NOTE] 
 > 
@@ -64,60 +64,61 @@ Human review remains essential, especially for architectural, security, and oper
 
 #### &#10003; Summarization agents
 
-Most summarization workloads use a simple, Copilot-style agent architecture with straightforward retrieval and response generation, making them relatively easy to implement and operate.
+Summarization agents typically use a simple, Copilot-style architecture with straightforward retrieval and response generation, making them relatively easy to implement and operate.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Summarization has inherent correctness risk, especially when synthesizing across multiple documents. While inaccuracies cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content was summarized and allow users to drill into source material for validation.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:**Summarization carries inherent correctness risk, particularly when synthesizing across multiple documents. While errors cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content has been summarized and allow users to drill into the source material for validation.
 
-Summarization can accumulate inference costs over time. Route straightforward requests to smaller, lower-cost models, and reserve more advanced models for complex multi-document synthesis, accepting the added orchestration complexity. Provide concise initial summaries and support drill-down into supporting details and source documents.
+Inference costs can accumulate over time. Route straightforward requests to smaller, lower-cost models, and reserve more advanced models for complex multi-document synthesis, accepting the additional orchestration this may require. Provide concise initial summaries and allow users to drill down into supporting details and source content.
 
-Data management introduces additional hidden costs. Actively manage the data lifecycle to avoid index bloat from outdated documents or redundant versions. When historical context is needed, retain prior content through deliberate versioning rather than uncontrolled duplication.
+Data management introduces additional hidden costs. Actively manage the data lifecycle to prevent index bloat caused by outdated documents or redundant versions. When historical context is necessary, retain prior content through deliberate versioning rather than uncontrolled duplication.
 
-Capture direct user feedback to evaluate summary quality and usefulness. Use this feedback to assess model routing decisions, index effectiveness, and the impact of caching and preprocessing strategies.
+Direct user feedback is valuable. Capture input on summary quality and usefulness, and use it to evaluate model routing decisions, index effectiveness, and the impact of caching or preprocessing strategies. This feedback loop helps maintain reliable, efficient, and actionable summarization over time.
 
 #### &#10003; Recommendation agents
 
-Recommendations require reasoning-oriented models capable of cross-source analysis. Select models with sufficient analytical depth rather than lightweight or purely generative ones.
+AI agents that provide recommendations rely on reasoning-oriented models capable of analyzing multiple data sources. These models must have sufficient analytical depth to support cross-source correlation rather than relying on lightweight or purely generative approaches.
 
-> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** . More capable reasoning models typically increase per-request cost and inference latency. Minimize external calls per request by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external data sources at runtime is costly; offset this by parallelizing data access and preloading data into a shared index where feasible. 
+> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** More capable reasoning models come with tradeoffs. They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
 
-Multi-source analysis introduces additional integration complexity. Errors in one data source can propagate through the recommendation pipeline. Apply validation and security guardrails when correlating inputs. If low latency is required and data must be fetched at runtime, query sources in parallel. Preprocess steps that do not depend on the request, such as classification, enrichment, and lookups—and cache intermediate results and commonly used features to reduce repeated computation.
+Working with multiple sources adds integration complexity. Errors in a single source can propagate through the recommendation pipeline. Apply validation and security guardrails when combining inputs. When low latency is required, query sources in parallel. Preprocess steps that do not depend on the specific request, such as classification, enrichment, and lookups. Cache intermediate results and frequently used features to reduce repeated computation.
 
-Treat recommendation engines as decision-support systems rather than black boxes. Explainability is therefore more important, with higher expectations for trust and operational reliability. Systems should provide clear rationales for recommendations, including key signals and contributing data sources. Consider returning a confidence indicator (for example, 0–100%) to help downstream systems or users assess reliability.
+Treat recommendation engines as decision-support systems rather than black boxes. Explainability is central to building trust and operational reliability. Systems should provide clear rationales for recommendations, highlighting key signals and contributing data sources. Consider including confidence indicators (for example, 0–100%) to help downstream systems or users gauge reliability.
+
 
 #### &#10003; Code generation agents
 
-Code generated by AI agents may become part of a production workload after validation. Agent-based code generation is inherently non-deterministic, and translating natural-language requirements into executable artifacts can produce results that diverge from the original intent. Use AI where the problem space is well understood and variation is limited, such as repetitive or standardized coding tasks, and apply explicit guardrails. Ensure clear ownership, appropriate controls, and integration into existing engineering practices.
+AI agents can assist in generating code, infrastructure definitions, and tests, but their outputs may become part of a production workload. Code generation is inherently non-deterministic, and translating natural-language requirements into executable artifacts can produce results that diverge from the original intent. For this reason, clear ownership, explicit controls, and integration into existing engineering practices are essential. AI is most effective where the problem space is well understood and variation is limited, such as repetitive or standardized coding tasks, and guardrails should be applied to guide its outputs.
 
-Choose models that are well suited for code generation and tool execution. Use multiple models where appropriate. For example: a reasoning model for analysis, planning, or decomposition. A code-focused model for artifact generation and execution. 
+Selecting the right models is critical. Use models suited for code generation and tool execution, and combine them where appropriate. A reasoning model can help with system analysis, planning, or decomposition, a code-focused model can generate the artifacts themselves, and additional models can support testing or deployment steps.
 
-Constraint generation with templates, reference implementations, and examples that reflect organizational and industry standards. Clear standards make it possible to detect drift and enforce consistency. Provide additional context to the agents that include approved templates, reference architectures, IaC modules, pipeline patterns, and coding guidelines. AI should be used to parameterize and assemble these predefined building blocks, not to create new or unproven patterns.
+Generation should be grounded in templates, reference implementations, coding guidelines, and examples that reflect organizational and industry standards. Clear standards help detect drift and enforce consistency. AI is best used to assemble and parameterize these predefined building blocks rather than inventing new or untested patterns.
 
-Much like most agents, they will tap into multiple sources. Treat all outputs as untrusted until validated. Least privilege applies to agents as well. Limit tool execution permissions and scope. Avoid agents to deploy or modify production resources without explicit, gated approval.
+Like most agents, code generators may draw from multiple sources. All outputs should be treated as untrusted until validated. Apply least-privilege principles to limit tool execution permissions and scope. Agents should never deploy or modify production resources without explicit, gated approval.
 
-Integrate generated artifacts into the standard developer lifecycle whether that's Pull requests, Code reviews, Automated testing, Security scanning. Apply the same rigor as with human-authored code, including dependency and IaC scanning.
+Integrate generated artifacts into the standard developer lifecycle. This includes pull requests, code reviews, automated testing, and security scanning. Apply the same rigor as for human-authored code, including dependency checks and infrastructure-as-code scanning, to ensure reliability and compliance.
 
 > :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** . Human review is part of the cost model and must be factored into ROI. Automate validation as much as possible using linters, unit and integration tests, static analysis, and policy checks to reduce review effort and catch common issues early.
 
 
 #### &#10003; Policy validation agents
 
-AI agents that review and validate assets against policies, standards, under supervision; not autonomous actors.
+AI agents can assist in reviewing and validating assets against policies and standards, but they operate under supervision, not as autonomous actors. Their role is to support decisions, flag deviations, and enforce compliance, while humans retain final oversight.
 
-Validation should include evaluations and testing before rollout. Version standards and maintain traceability so each asset clearly references the applicable policy or standard.
+Validation begins with careful evaluation and testing before rollout. Standards should be versioned, and each asset should clearly reference the applicable policy, ensuring traceability. As policies evolve, maintenance overhead must be considered, and validation processes updated accordingly. Where possible, batch and parallelize reviews, and focus incremental checks on changes rather than rescanning all assets.
 
-Performance and maintenance can be improved by caching prompts and validation behaviors. Some checks can use pre-generated or prescriptive tools instead of having the agent reason over source documents each time. Balance this with maintenance overhead when policies or standards change. Batch and parallelize reviews where possible, focusing incremental checks on changes rather than rescanning all assets.
+Cost and performance require a careful balance. Consider the amount of historical data needed to make accurate predictions against the impact on storage, processing, and latency. Too little data reduces reliability, while too much increases cost.
 
-Cost can be reduced by leveraging existing third-party tools for policy enforcement. Agents should integrate with these tools, supplying inputs and processing outputs, rather than duplicating functionality. Use batch processing to minimize repeated calls.
+Security remains a key factor. Access to validation outputs should be restricted to authorized users, such as security reviewers, ensuring sensitive information is protected.
 
-Security controls should limit access to validation outputs to authorized users, such as security reviewers.
-
-Monitor effectiveness through dashboards tracking metrics such as issues detected versus issues in production, false positives, and coverage. Use this data to adjust validation logic, prompts, and operational processes.
+Effectiveness is measured, not assumed. Use dashboards to track metrics such as issues detected versus issues in production, false positives, and coverage. Feed these insights back into the validation logic, prompts, and operational processes, continuously refining the agent's contribution.
 
 #### &#10003; Action optimization agents
 
+Action optimization agents extend beyond analysis and recommendations by taking direct operational actions. Because their outputs can modify systems or processes, these agents require careful design, oversight, and integration into workflows.
 
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Security is a primary concern. Agents should ideally operate within a human-in-the-loop workflow, where proposed actions are reviewed and approved before execution in production. Access to tools and systems should follow the principle of least privilege, limiting the agent to only the permissions needed to perform its tasks. Detailed auditing is essential, capturing what actions were proposed, who approved them, and execution logs for traceability.
 
-
+Implement guardrails that enforce a minimal blast radius, keeping the scope of each change limited. Tool executions should be idempotent to allow safe retries, and the system should include validation and rollback mechanisms. Checkpoints, backups, or other recovery strategies can support safe correction of unintended changes.
 
 
 
