@@ -115,7 +115,7 @@ Use automated testing when possible to ensure consistency. Include the following
 
     The main purpose of this test is to evaluate the system's compliance with the business requirements and determine whether the system meets the required criteria for delivery to end users.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI to your testing strategy to find customer-focused edge cases and complex scenarios that are hard to automate. Start by using your existing analytics and reporting to identify coverage gaps, then use tools like GitHub Copilot to generate new test cases and scripts. Use AI to optimize your test suite—surface hard-to-detect defects and remove redundant tests to streamline execution and improve speed and efficiency. Consider an AI solution that analyzes production usage, monitoring data, and historical defects to find patterns and automatically create tests in your codebase that match your organization's standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Add AI to your testing strategy to find customer-focused edge cases and scenarios that are hard to detect and often overlooked. Start by using your existing analytics and reporting to identify coverage gaps, then use tools like GitHub Copilot to generate new test cases and scripts. Use AI to optimize your test suite by detecting and removing redundant tests to streamline execution and improve speed and efficiency. Consider an agentic AI solution that analyzes production usage, monitoring data, and historical defects to find patterns and automatically create tests in your codebase that match your organization's standards.
 
 ## Implement quality gates in code promotion processes
 
