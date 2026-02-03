@@ -44,7 +44,7 @@ Determine if you should invest in expensive tools or premium versions of tools. 
 
 Choose a trunk-based model when possible. Trunk-based branching keeps the workload development team in sync and encourages continuous delivery. Define branch policies to protect important branches, like the main branch. For more information, see [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) and [Branch policies and settings](/azure/devops/repos/git/branch-policies).
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Reduce friction from manual tasks like enforcing standards and maintaining documentation. AI can analyze your codebase and usage patterns to help shape your repo strategy. Use AI to streamline pull requests by anticipating merge conflicts and enforcing standard templates. To do this safely, limit AI access to only the repos and deployment pipeline it needs. Make sure access meets your organization's security guidelines and validate model outputs before adopting them. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to reduce friction from manual tasks, like enforcing standards and maintaining documentation. It analyzes your codebase and usage patterns to shape your repository strategy, including recommending an optimal branching model and repository design (monorepo or multirepo) based on dependencies and build patterns. Use AI to streamline pull requests by predicting merge conflicts, enforcing standard templates, and automating compliance checks. AI can also generate API documentation and diagrams to improve component discoverability across your codebase.
 
 ## Evaluate metrics to quantify development effectiveness
 
@@ -84,9 +84,12 @@ In your ADR, include:
 
 - The context of the decision-making process, like the problem that was addressed.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI finds hidden dependencies that manual code reviews often miss. These issues usually show up during incidents or deployment failures. 
-> Use tools such as SonarQube, Roslyn, and NDepend to map explicit dependencies. Then use GitHub Copilot to identify undocumented or implicit dependencies by interpreting those outputs, analyzing the codebase, and cross-referencing design documentation. This keeps your architectural documentation up to date. 
-> For larger or more complex environments, consider an agent-based approach. It ingests historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time. For critical workloads, improve accuracy by training predictive models on historical deployment and incident data. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can find hidden dependencies that manual code reviews often miss. Some of these issues usually show up during incidents or deployment failures.
+>
+> Use tools such as SonarQube, Roslyn, and NDepend to map explicit dependencies. Then use GitHub Copilot to identify undocumented or implicit dependencies by interpreting those outputs, analyzing the codebase, and cross-referencing design documentation. This keeps your architectural documentation up to date.
+>
+> For a more advanced solution, consider an agent-based approach. The solution can ingest historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time. For critical workloads, improve accuracy by training predictive models on historical deployment and incident data.
+> 
 > Pursue custom agentic solutions or specialized pre-trained models only when the return on investment is clear.
 
 ## Implement standards for addressing technical debt
@@ -95,7 +98,7 @@ Adopt a mindset that technical debt is intentional and necessary for your worklo
 
 For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to identify technical debt, quantify its impact, and justify reduction efforts to stakeholders. Off-the-shelf tools like CodeScene, Stepsize, GitHub Dependabot, WhiteSource, and Snyk's DeepCode offer quick value with lower effort. For custom needs, build an agent-based system to analyze your codebase, correlate findings with telemetry and incident data, integrates third-party insights, tracks ecosystem changes, and alert developers to risks.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to identify technical debt, quantify its impact, and justify remediation efforts to stakeholders. Off-the-shelf tools like CodeScene, Stepsize, GitHub Dependabot, WhiteSource, and Snyk's DeepCode offer quick value with lower implementation cost. For additional value, build an agent-based system to analyze your codebase, correlate findings with telemetry and incident data, integrate with third-party insights, track ecosystem changes, and alert developers when current dependencies introduce risks.
 
 ## Standardize how you apply versioning to your artifacts
 
@@ -122,9 +125,12 @@ Implement a shift-left approach to testing by performing unit testing early and 
 Implement a variety of testing types, such as unit, smoke, integration, and acceptance testing. For a detailed review of these types of tests, see the [testing section](workload-supply-chain.md#incorporate-comprehensive-types-of-testing) of the [workload supply chain](./workload-supply-chain.md) recommendation guide.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use an AI-powered shift-left testing strategy to improve quality earlier in the lifecycle. Evolve your test suite and test environment based on real-world usage and scenarios to ensure broad customer coverage. 
-> Use AI to create temporary test environments with the right changes and dependencies—including mock services—from templates based on your project artifacts. Extend this to autonomously provision environments from custom IaC without developer input.
-> Apply AI to detect recurring patterns in exploratory and UAT sessions and automatically script repetitive cases. 
-> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Build an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases. Plan for significant integration work, and maintain human oversight for any autonomous capabilities.
+>
+> Use AI to create purpose-built test environments with the right changes, dependencies, and applicable mock services implementations to validate a specific change. Start with a library of templates and mock services, then evolve to autonomously provision environments from custom IaC without developer input.
+>
+> Apply AI to detect recurring patterns in exploratory and UAT sessions and automatically script repetitive cases.
+>
+> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Build an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases. Plan for significant integration work and maintain human oversight for any autonomous capabilities.
 
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
