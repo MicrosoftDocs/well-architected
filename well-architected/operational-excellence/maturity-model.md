@@ -47,11 +47,11 @@ The following are some of the most common and approachable AI capabilities used 
 
 > [!div class="checklist"]
 >
-> - **Summarization.**  AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
-> - **Recommendations.**  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
-> - **Artifact generation.**  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
-> - **Policy Validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
-> - **Optimization actions.**  AI tools that use insights across artifacts to route work and take action on decisions.
+> - [**Summarization**](#-summarization-agents)  AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
+> - [**Recommendations**](#-recommendation-agents)  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
+> - [**Code artifact generation**](#-code-generation-agents)  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
+> - [**Policy validation**](#-policy-validation-agents).  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
+> - [**Optimization actions**](#-action-optimization-agents)  AI tools that use insights across artifacts to route work and take action on decisions.
 
 > [!CAUTION] 
 > 
@@ -66,7 +66,7 @@ The following are some of the most common and approachable AI capabilities used 
 
 Summarization agents typically use a simple, Copilot-style architecture with straightforward retrieval and response generation, making them relatively easy to implement and operate.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:**Summarization carries inherent correctness risk, particularly when synthesizing across multiple documents. While errors cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content has been summarized and allow users to drill into the source material for validation.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Summarization carries inherent correctness risk, particularly when synthesizing across multiple documents. While errors cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content has been summarized and allow users to drill into the source material for validation.
 
 Inference costs can accumulate over time. Route straightforward requests to smaller, lower-cost models, and reserve more advanced models for complex multi-document synthesis, accepting the additional orchestration this may require. Provide concise initial summaries and allow users to drill down into supporting details and source content.
 
@@ -77,7 +77,7 @@ Direct user feedback is valuable. Capture input on summary quality and usefulnes
 ##### Examples
 
 - [OE:08 Incident response](./incident-response.md#turn-rca-findings-into-system-improvements). Summarize incidents, postmortems, security findings, and audit reports to quickly understand scope, impact, and outcomes
-- [OE:01 DevOps culture](./devops-culture#establish-clear-roles-and-responsibilities)Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents
+- [OE:01 DevOps culture](./devops-culture#establish-clear-roles-and-responsibilities). Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents
 
 
 #### &#10003; Recommendation agents
@@ -158,7 +158,6 @@ Implement guardrails that enforce a minimal blast radius, keeping the scope of e
 
 ##### Examples
 
-- Autonomous incident response: detect issues, correlate metrics and signals, and execute runbook steps such as restarting services, scaling resources, or enabling and disabling components; escalate to humans when scenarios fall outside defined runbooks  
 - Self-healing infrastructure: detect configuration drift or service degradation, determine remediation steps, execute fixes (for example, reapplying infrastructure-as-code or restarting services), validate recovery, log actions, and notify stakeholders  
 - Intelligent auto-scaling: analyze usage patterns and upcoming events to proactively scale resources ahead of demand, and scale down automatically during low-usage periods  
 - Automated security response: detect security events such as failed authentication attempts or suspicious activity, assess severity, execute containment actions (for example, revoking tokens, isolating resources, applying patches), and notify the security team  
