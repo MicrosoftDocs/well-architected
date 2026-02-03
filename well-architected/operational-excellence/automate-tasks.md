@@ -57,7 +57,7 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Monitoring and alerting**: Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices to monitor and alert on anomalies.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can automatically tune noncritical production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time. To maintain safety, AI systems should have only the minimum access they need, operate within strict guardrails, produce audit logs, and require human approval before making changes.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can automatically optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time. To maintain safety, AI systems should have only the minimum access they need, operate within strict guardrails, produce audit logs, and require human approval before making changes.
 
 ## Choose an appropriate automation tool
 
