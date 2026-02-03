@@ -112,7 +112,7 @@ Design dashboards and reports around operational health models. Visualizations s
 Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Dashboards often focus on either business or engineering metrics. AI can ingest data from all sources and generate integrated dashboards with effective visualizations. This reduces manual effort and surfaces insights that might otherwise be overlooked.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Dashboards often focus on either business or engineering metrics. AI can analyze data from all relevant sources and help design integrated dashboards with the right configurations and visualization. This reduces manual effort and surfaces insights that might otherwise be overlooked.
 
 ## Define alerts around meaningful operational conditions
 
