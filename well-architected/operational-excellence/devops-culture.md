@@ -53,7 +53,7 @@ Continuously review and improve procedures. Regularly examine standard operating
 
 Enable safe experimentation. Provide sandbox environments and time in sprints for experimentation. Document standards for integrating new functionality, ensuring it aligns with [safe deployment practices](safe-deployments.md) and delivers tangible benefits.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot, Copilot Studio, GitHub Copilot, O365 Copilot Agents, or Claude Code can analyze relevant process data to identify bottlenecks and assist in implementing targeted automations. Once integrated with the right data sources, this approach requires low effort, minimal maintenance, and can deliver high cumulative ROI.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can assist in implementing targeted automations. Solutions that leverage interactive AI assitants like Copilot, once integrated with the right data sources, require low effort, minimal maintenance, and can deliver high cumulative ROI.
 
 ## Azure facilitation
 
