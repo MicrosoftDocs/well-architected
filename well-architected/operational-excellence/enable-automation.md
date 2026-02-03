@@ -46,8 +46,9 @@ Bootstrapping refers to the configuration updates to a resource that must be mad
 
 Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make predefined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use tools like Copilot or Claude to streamline repetitive configuration tasks like DSC setups, VM initialization, and environment variable management. Give these tools secure read-only access to analyze your code and design artifacts, then generate and validate configuration code in your IDE, using quality prompts. 
-> For advanced automation, use agent-based solutions that monitor production for drift, determine the intended state, and automatically update bootstrapping definitions. These solutions require significant engineering investment, comprehensive testing, tightly governed write access, audit trails, and ongoing human oversight when integrated with your existing tools.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use tools like Copilot or Claude Code to streamline repetitive configuration tasks like DSC setups, VM initialization, and environment variable management. Give these tools secure read-only access to analyze your code and design artifacts, then generate and validate configuration code in your IDE, using quality prompts.
+>
+> For advanced automation, use agent-based solutions that monitor production for drift, determine the intended state, and automatically update bootstrapping definitions. These solutions require significant engineering investment and ongoing human oversight when integrated with your existing tools.
 
 ## Incorporate automation into access management
 
