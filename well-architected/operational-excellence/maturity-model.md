@@ -24,15 +24,19 @@ The model is structured into five distinct maturity levels, each with a primary 
 
 ![Goal icon](../_images/goal.svg) **Modernize operations by deliberately embedding AI-driven tools that reduce manual, error-prone toil and deliver measurable gains while pragmatically balancing cost, risk, and time to value.**
 
-AI can improve operational productivity when applied intentionally and with clear constraints. Teams can adopt off-the-shelf tools where they fit, or build custom AI integrations when they do not. Here are some considerations for choosing either approach:
+AI can take friction out of day-to-day operations by handling the repetitive work that slows teams down. Used carefully, it helps teams respond faster, make more consistent decisions, and spend more time on judgment, problem-solving, and accountability instead of coordination overhead.
 
-- Off-the-shelf GenAI solutions
+#### Buy: Off-the-shelf GenAI solutions
 
-  Off-the-shelf GenAI uses existing tools with built-in AI capabilities, including platform-native features in Azure, third-party SaaS tools, and Microsoft agentic offerings. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat and for developer productivity through IDE and CLI assistants. They are effective for summarization, drafting, reviews, and code generation, but rely on manual context, require human validation, and provide advisory output rather than automated workflow execution.
+Off-the-shelf GenAI includes tools with built-in AI capabilities, such as platform-native features in Azure, third-party SaaS products, and Microsoft agentic offerings. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat, as well as for developer productivity via IDE and CLI assistants.
 
-- GenAI with custom implementation
+They work well for summarization, drafting, reviews, and code generation. However, they typically rely on manually supplied context, require human validation, and produce advisory output rather than executing actions inside operational workflows. Integration with internal systems and enforcement of organization-specific standards is usually limited.
 
-  Custom GenAI embeds AI directly into operational and development workflows tailored to a specific workload. Custom agents correlate data across systems such as tickets, code, metrics, and monitoring to provide context-aware insights and take action within workflows. More advanced systems can generate and validate code and infrastructure against internal standards, route work based on expertise, and use custom ML models for specialized predictions. This approach delivers deeper automation but requires investment in engineering, data quality, governance, and ongoing maintenance.
+#### Build: GenAI with custom implementation
+
+Custom GenAI embeds AI directly into operational and development workflows tailored to a specific workload. Custom agents can pull context from tickets, code repositories, metrics, and monitoring systems to produce insights that reflect the current state of operations and act within defined boundaries.
+
+More advanced implementations can generate and validate code or infrastructure against internal standards, route work based on expertise or availability, and apply custom ML models for specialized predictions. This approach enables deeper automation and tighter alignment with organizational processes, but it requires ongoing investment in engineering, data quality, governance, security, and maintenance.
 
 > [!NOTE] 
 >
@@ -49,17 +53,13 @@ The following are some of the most common and approachable AI capabilities used 
 > - **Policy Validation.**  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
 > - **Optimization actions.**  AI tools that use insights across artifacts to route work and take action on decisions.
 
-> [!NOTE] 
+> [!CAUTION] 
 > 
-> TBD - Uber note about governance and privacy
->
-
-To protect data, platforms apply PII masking and enforce security trimming, ensuring users only access summaries generated from authorized data subsets, which may reduce summary completeness.
-
-
-Keep Humans in the Decision Loop
-
-Human review remains essential, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
+>   Safeguards is not hypothetical when involving agents. One unchecked model, one misapplied automation, or one over-permissive access setting can propagate errors, leak sensitive data, or compromise operational integrity at scale. 
+> 
+>   To protect sensitive data, all platforms must enforce strict PII masking and security trimming. Users see only the outputs they are authorized to access. This means AI output may be incomplete, but full visibility comes at the cost of potential exposure. 
+> 
+>   Keep Humans in the Decision Loop: Human review remains essential, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
 
 
 #### &#10003; Summarization agents
@@ -74,15 +74,30 @@ Data management introduces additional hidden costs. Actively manage the data lif
 
 Direct user feedback is valuable. Capture input on summary quality and usefulness, and use it to evaluate model routing decisions, index effectiveness, and the impact of caching or preprocessing strategies. This feedback loop helps maintain reliable, efficient, and actionable summarization over time.
 
+##### Examples
+
+- [OE:08 Incident response](./incident-response.md#turn-rca-findings-into-system-improvements). Summarize incidents, postmortems, security findings, and audit reports to quickly understand scope, impact, and outcomes
+- [OE:01 DevOps culture](./devops-culture#establish-clear-roles-and-responsibilities)Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents
+
+
 #### &#10003; Recommendation agents
 
 AI agents that provide recommendations rely on reasoning-oriented models capable of analyzing multiple data sources. These models must have sufficient analytical depth to support cross-source correlation rather than relying on lightweight or purely generative approaches.
 
-> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** More capable reasoning models come with tradeoffs. They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** More capable reasoning models come with tradeoffs. They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
 
 Working with multiple sources adds integration complexity. Errors in a single source can propagate through the recommendation pipeline. Apply validation and security guardrails when combining inputs. When low latency is required, query sources in parallel. Preprocess steps that do not depend on the specific request, such as classification, enrichment, and lookups. Cache intermediate results and frequently used features to reduce repeated computation.
 
 Treat recommendation engines as decision-support systems rather than black boxes. Explainability is central to building trust and operational reliability. Systems should provide clear rationales for recommendations, highlighting key signals and contributing data sources. Consider including confidence indicators (for example, 0–100%) to help downstream systems or users gauge reliability.
+
+##### Examples
+
+- Combine work items, pull requests, builds, deployments, incidents, and telemetry into a single, coherent narrative
+- Identify what changed and what is most likely related, such as deployment correlations, configuration drift, or dependency failures
+- Detect cross-source patterns that signal elevated risk or likely failure, for example when a known log signature appears alongside metric degradation
+- Produce a short list of probable causes along with the next best validation steps, including queries to run, logs to inspect, or dashboards to review
+- Generate prioritized recommendations grounded in standards and design guidance, such as rollback or roll-forward options, mitigations, and follow-up hardening work
+- Output structured findings and recommendations that can be consumed downstream to generate code, infrastructure changes, tests, or runbook updates
 
 
 #### &#10003; Code generation agents
@@ -97,7 +112,19 @@ Like most agents, code generators may draw from multiple sources. All outputs sh
 
 Integrate generated artifacts into the standard developer lifecycle. This includes pull requests, code reviews, automated testing, and security scanning. Apply the same rigor as for human-authored code, including dependency checks and infrastructure-as-code scanning, to ensure reliability and compliance.
 
-> :::image type="icon" source="../_images/tradeoff.svg"::: **Tradeoff:** . Human review is part of the cost model and must be factored into ROI. Automate validation as much as possible using linters, unit and integration tests, static analysis, and policy checks to reduce review effort and catch common issues early.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** . Human review is part of the cost model and must be factored into ROI. Automate validation as much as possible using linters, unit and integration tests, static analysis, and policy checks to reduce review effort and catch common issues early.
+
+
+##### Examples
+
+- Generate CI/CD pipelines from approved templates (build, test, deploy) to support standardized, repeatable releases  
+- Generate infrastructure-as-code for resources, networking, identity, monitoring, and backups to enable consistent environments and faster provisioning  
+- Generate scripts and automations such as bootstrapping, triage helpers, environment validation, and safe rollback utilities to reduce toil and improve operational safety  
+- Generate unit and integration tests to increase quality and confidence in changes  
+- Generate tests derived from incident data to encode “never again” scenarios  
+- Generate policies and enforcement artifacts from standards, including lint rules, validation checks, PR policies, and workflow scripts, to establish guardrails and governance  
+- Generate operational artifacts such as alert definitions, dashboards, and workbooks to speed up observability setup and ensure consistent reporting  
+- Generate product and operational documentation directly from the codebase to keep documentation aligned with implementation
 
 
 #### &#10003; Policy validation agents
@@ -112,6 +139,15 @@ Security remains a key factor. Access to validation outputs should be restricted
 
 Effectiveness is measured, not assumed. Use dashboards to track metrics such as issues detected versus issues in production, false positives, and coverage. Feed these insights back into the validation logic, prompts, and operational processes, continuously refining the agent's contribution.
 
+##### Examples
+
+- Review pull requests, infrastructure-as-code, pipeline definitions, infrastructure configuration, and operational dashboards or metrics against design documents, standards, and current state  
+- Produce structured findings for each issue, including rule violated, severity, impacted component, supporting evidence, and recommended fix  
+- Generate a prioritized remediation plan with suggested work items and clear acceptance criteria  
+- Translate standards into policy-as-code suggestions and quality gates, such as CI/CD checks that block merges on high-severity violations  
+- Draft pull request comments and summary reports suitable for documentation, including release readiness reviews, operational assessments, or audit preparation
+
+
 #### &#10003; Action optimization agents
 
 Action optimization agents extend beyond analysis and recommendations by taking direct operational actions. Because their outputs can modify systems or processes, these agents require careful design, oversight, and integration into workflows.
@@ -120,6 +156,14 @@ Action optimization agents extend beyond analysis and recommendations by taking 
 
 Implement guardrails that enforce a minimal blast radius, keeping the scope of each change limited. Tool executions should be idempotent to allow safe retries, and the system should include validation and rollback mechanisms. Checkpoints, backups, or other recovery strategies can support safe correction of unintended changes.
 
+##### Examples
+
+- Autonomous incident response: detect issues, correlate metrics and signals, and execute runbook steps such as restarting services, scaling resources, or enabling and disabling components; escalate to humans when scenarios fall outside defined runbooks  
+- Self-healing infrastructure: detect configuration drift or service degradation, determine remediation steps, execute fixes (for example, reapplying infrastructure-as-code or restarting services), validate recovery, log actions, and notify stakeholders  
+- Intelligent auto-scaling: analyze usage patterns and upcoming events to proactively scale resources ahead of demand, and scale down automatically during low-usage periods  
+- Automated security response: detect security events such as failed authentication attempts or suspicious activity, assess severity, execute containment actions (for example, revoking tokens, isolating resources, applying patches), and notify the security team  
+- Deployment automation and rollback: execute deployments using safe rollout strategies (canary or progressive exposure), monitor health signals, and automatically roll back when issues are detected  
+- Resource optimization: analyze resource utilization to identify underutilized assets and recommend or execute scale-down or removal actions
 
 
 
