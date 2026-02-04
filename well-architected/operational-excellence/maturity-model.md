@@ -3,7 +3,7 @@ title: Operational Excellence Maturity Model
 description: Understand the maturity model levels of the Operational Excellence pillar.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 07/14/2025 
+ms.date: 02/04/2026 
 ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
@@ -18,19 +18,19 @@ When systems go live in production, operations become even more advanced. Teams 
 
 The most mature stage is all about optimization and innovation. Here, teams operate at scale, continuously adapting systems in real time to meet evolving business needs and technological shifts. However, this isn't a fixed destination; it's a dynamic mindset of always improving, always adapting.
 
-The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. For meaningful productivity gains, start evaluating where AI can be embedded into your operations from the very beginning. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
 # [:::image type="icon" source="../_images/ai.svg"::: **AI opportunities**](#tab/ai-opportunities)
 
 ![Goal icon](../_images/goal.svg) **Modernize operations by deliberately embedding AI-driven tools that reduce manual, error-prone toil and deliver measurable gains while pragmatically balancing cost, risk, and time to value.**
 
-AI can take friction out of day-to-day operations by handling the repetitive work that slows teams down. Used carefully, it helps teams respond faster, make more consistent decisions, and spend more time on judgment, problem-solving, and accountability instead of coordination overhead.
+Evaluate your operational paths end to end to identify where AI can be deliberately embedded to reduce manual toil, improve consistency, and unlock measurable productivity gains without compromising risk, cost, or time to value.
 
 #### Buy: Off-the-shelf GenAI solutions
 
-Off-the-shelf GenAI includes tools with built-in AI capabilities, such as platform-native features in Azure, third-party SaaS products, and Microsoft agentic offerings. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat, as well as for developer productivity via IDE and CLI assistants.
+Off-the-shelf GenAI tools have built-in AI capabilities. They can be broadly categorized by intent. One is generic, interactive assistance tools like GitHub Copilot, which are context-dependent and can be used for a variety of tasks. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat. The other category is purpose-built tools and agents such as deployment agents, SRE agents, which are designed for specific functions. They can be integrated for developer productivity via IDE and CLI assistants. 
 
-They work well for summarization, drafting, reviews, and code generation. However, they typically rely on manually supplied context, require human validation, and produce advisory output rather than executing actions inside operational workflows. Integration with internal systems and enforcement of organization-specific standards is usually limited.
+There are also Azure services that have integrated AI features, which can come with additional costs.
 
 #### Build: GenAI with custom implementation
 
@@ -38,12 +38,13 @@ Custom GenAI embeds AI directly into operational and development workflows tailo
 
 More advanced implementations can generate and validate code or infrastructure against internal standards, route work based on expertise or availability, and apply custom ML models for specialized predictions. This approach enables deeper automation and tighter alignment with organizational processes, but it requires ongoing investment in engineering, data quality, governance, security, and maintenance.
 
-> [!NOTE] 
->
-> Adoption should follow a clear progression. Start with focused use cases like summarization or content generation. As capabilities grow, expose system functions as AI-accessible tools and add agentic interfaces for task-based reasoning. Eventually, this can evolve into multi-agent systems, where specialized agents collaborate on complex tasks and analysis across integrated systems and data.
 
 #### **AI capabilities**
 The following are some of the most common and approachable AI capabilities used in practice, but this list is not exhaustive. Use this as inspiration to evaluate where in your operations you can inject AI for productivity gains. 
+
+> [!NOTE] 
+>
+> Adoption should follow a deliberate progression: begin with focused use cases such as summarization or content generation, then, as team competency matures, expose system functions as AI-enabled tools and introduce agentic interfaces for task-based reasoning, ultimately evolving toward multi-agent systems where specialized agents collaborate across integrated data and systems to tackle complex analysis and workflows.
 
 > [!div class="checklist"]
 >
@@ -59,7 +60,7 @@ The following are some of the most common and approachable AI capabilities used 
 > 
 >   To protect sensitive data, all platforms must enforce strict PII masking and security trimming. Users see only the outputs they are authorized to access. This means AI output may be incomplete, but full visibility comes at the cost of potential exposure. 
 > 
->   Keep Humans in the Decision Loop: Human review remains essential, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
+>  Human review remains a must, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
 
 
 #### &#10003; Summarization agents
@@ -72,7 +73,7 @@ Inference costs can accumulate over time. Route straightforward requests to smal
 
 Data management introduces additional hidden costs. Actively manage the data lifecycle to prevent index bloat caused by outdated documents or redundant versions. When historical context is necessary, retain prior content through deliberate versioning rather than uncontrolled duplication.
 
-Direct user feedback is valuable. Capture input on summary quality and usefulness, and use it to evaluate model routing decisions, index effectiveness, and the impact of caching or preprocessing strategies. This feedback loop helps maintain reliable, efficient, and actionable summarization over time.
+Direct user feedback is valuable. Capture input on summary quality and usefulness, and use it to evaluate model routing decisions, index effectiveness, and the impact of caching or preprocessing strategies.
 
 ##### Examples
 
@@ -84,7 +85,9 @@ Direct user feedback is valuable. Capture input on summary quality and usefulnes
 
 AI agents that provide recommendations rely on reasoning-oriented models capable of analyzing multiple data sources. These models must have sufficient analytical depth to support cross-source correlation rather than relying on lightweight or purely generative approaches.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** More capable reasoning models come with tradeoffs. They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** While broader scope can add value, cross-referenced sources may be misweighted or misaligned with the original intent; over-reliance on such AI-generated responses risks amplifying errors and potentially compounding the problem with iterative calls. 
+>
+>   They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
 
 Working with multiple sources adds integration complexity. Errors in a single source can propagate through the recommendation pipeline. Apply validation and security guardrails when combining inputs. When low latency is required, query sources in parallel. Preprocess steps that do not depend on the specific request, such as classification, enrichment, and lookups. Cache intermediate results and frequently used features to reduce repeated computation.
 
@@ -100,7 +103,7 @@ Treat recommendation engines as decision-support systems rather than black boxes
 - Output structured findings and recommendations that can be consumed downstream to generate code, infrastructure changes, tests, or runbook updates
 
 
-#### &#10003; Code generation agents
+#### &#10003; Artifact generation agents
 
 AI agents can assist in generating code, infrastructure definitions, and tests, but their outputs may become part of a production workload. Code generation is inherently non-deterministic, and translating natural-language requirements into executable artifacts can produce results that diverge from the original intent. For this reason, clear ownership, explicit controls, and integration into existing engineering practices are essential. AI is most effective where the problem space is well understood and variation is limited, such as repetitive or standardized coding tasks, and guardrails should be applied to guide its outputs.
 
