@@ -46,9 +46,11 @@ Use established practices to reduce the time your team spends creating processes
 
 Rely on your team's experience to select practices that fit your workload lifecycle, and learn from other teams about approaches that have worked in similar contexts.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Adopting industry-standard practices can sometimes backfire. Teams may spend excessive effort on compliance, experience frustration, and delay delivering value while trying to follow best practices. AI can help detect when standards hinder rather than help. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To reduce manual effort and drive consistency, begin by standardising the creation and review of common artefacts using Office Copilot and GitHub Copilot. Use these tools to generate documentation, pipeline definitions, test cases, and pull request content in a consistent manner. You can complement these capabilities with third-party tools such as SonarQube, which provide AI-assisted analysis for review scenarios.
 >
->   Consider implementing an AI-driven solution that tracks historical signals, such as time spent on standards, developer sentiment, and defect rates. Start with **LLMs** (large language models) to spot patterns, then train **predictive models** on historical data to anticipate when standards might impede workflow and take proactive action.
+> Adopting industry-standard practices can sometimes backfire. Teams may spend excessive effort on compliance, experience frustration, and delay delivering value while trying to follow best practices. AI can help detect when standards hinder rather than help. 
+>
+> Consider implementing an AI-driven solution that tracks historical signals, such as time spent on standards, developer sentiment, and defect rates. Start with **LLMs** (large language models) to spot patterns, then train **predictive models** on historical data to anticipate when standards might impede workflow and take proactive action.
 
 ## Act early, stay proactive
 
