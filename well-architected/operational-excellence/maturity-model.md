@@ -129,7 +129,7 @@ Integrate generated artifacts into the standard developer lifecycle. This includ
 
 #### &#10003; Policy validation agents
 
-AI agents can assist in reviewing and validating assets against policies and standards, but they operate under supervision, not as autonomous actors. Their role is to support decisions, flag deviations, and enforce compliance, while humans retain final oversight.
+AI agents can assist in reviewing and validating assets against policies and standards. Their role is to support decisions, flag deviations, and enforce compliance, while humans retain final oversight.
 
 Validation begins with careful evaluation and testing before rollout. Standards should be versioned, and each asset should clearly reference the applicable policy, ensuring traceability. As policies evolve, maintenance overhead must be considered, and validation processes updated accordingly. Where possible, batch and parallelize reviews, and focus incremental checks on changes rather than rescanning all assets.
 
