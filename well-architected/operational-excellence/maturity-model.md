@@ -49,7 +49,7 @@ The following are some of the most common and approachable AI capabilities used 
 >
 > - [**Summarization**](#-summarization-agents). AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
 > - [**Recommendations**](#-recommendation-agents).  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
-> - [**Code artifact generation**](#-code-generation-agents).  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
+> - [**Artifact generation**](#-artifact-generation-agents).  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
 > - [**Policy validation**](#-policy-validation-agents).  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
 > - [**Optimization actions**](#-action-optimization-agents).  AI tools that use insights across artifacts to route work and take action on decisions.
 
