@@ -167,8 +167,6 @@ Implement guardrails that enforce a minimal blast radius, keeping the scope of e
 - Deployment automation and rollback: execute deployments using safe rollout strategies (canary or progressive exposure), monitor health signals, and automatically roll back when issues are detected  
 - Resource optimization: analyze resource utilization to identify underutilized assets and recommend or execute scale-down or removal actions
 
-
-
 # [**Level 1: DevOps foundation**](#tab/level1)
 
 ![Goal icon](../_images/goal.svg) **Emphasize teamwork and unity in problem-solving to establish a strong foundation that creates consistent and stable operations in later stages.**

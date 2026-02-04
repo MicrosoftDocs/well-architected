@@ -164,9 +164,9 @@ The guidance includes an assessment to help you pinpoint the recommendations tha
 
 The Azure Well-Architected Framework includes guidance for intentionally and incrementally adopting AI in operational workflows. Its purpose is to help teams understand the costs, risks, and organizational friction associated with AI, when thinking about using AI for planning, development processes, and runtime operations. 
 
-We recommend starting with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md&tabs=ai-opportunities#tabpanel_1_ai-opportunities). This provides a practical entry point for exploring AI usage patterns, understanding trade-offs while maintaining human oversight, to drive efficiency. 
+We recommend starting with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). This provides a practical entry point for exploring AI usage patterns, understanding trade-offs while maintaining human oversight, to drive efficiency. 
 
-Within the recommendation guides, look for icons :::image type="icon" source="./_images/ai.svg" that annotate examples of where AI can augment tasks,such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked in this checklist article: [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md).
+Within the recommendation guides, look for :::image type="icon" source="./_images/ai.svg"::: that annotate examples of where AI can augment tasks,such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked in this checklist article: [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md).
 
 ## Take a pragmatic approach
 
