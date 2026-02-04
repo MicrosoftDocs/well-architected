@@ -113,13 +113,14 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. That repetitive work can be time consuming and take focus away from recovery efforts. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can handle  repetitive tasks like reviewing logs, tickets, and discussions, so incident managers can stay focused on recovery efforts.
 >
->   During early adoption, AI can assist by summarizing reports, logs, and chat transcripts, and drafting blameless postmortems, allowing teams to quickly capture the key details of incidents without getting bogged down in repetitive work. As the workload evolves, AI can begin to correlate data across multiple systems, detect patterns and hidden dependencies, and highlight recurring signals that might indicate deeper issues in infrastructure or processes.
+> Start by using AI to summarize reports, logs, transcripts, and draft postmortems so teams capture incident details quickly. As the workload evolves, apply AI to correlate data across multiple systems, detect patterns and hidden dependencies, and highlight recurring signals that suggest deeper issues.
 >
-> At even higher maturity, AI can supports expertise-aware escalation, identifying the people most effective at resolving specific incidents based on past resolutions, code ownership, and system knowledge. AI can also provide proactive insights, such as predicting potential failures before they occur or suggesting preventive actions, while humans remain responsible for validation, decision-making, and judgment in ambiguous situations.
+> At higher maturity, enable expertise-aware escalation that routes incidents to the most effective responders based on past resolutions, code ownership, and system knowledge. AI can provide proactive insights that predict failures or recommend preventive actions while humans retain validation and decision-making.
 >
-> It's recommended that you gradually advance AI maturity by starting with simple GenAI prompts and progress to single agent mode. Then, integrate AI into more agentic workflows like Azure native agents like SRE agent, Azure Copilot, and third-party tools. If those tools don't meet the requirements, invest in custom agentic GenAI solutions or predictive ML models integrated with monitoring and development tools.
+> Progress incrementally: start with simple GenAI prompts, move to single-agent solutions, then integrate agentic workflows with Azure-native agents such as SRE agent and Azure Copilot and third-party tools. If those tools don't meet the requirements, build custom agentic GenAI solutions or predictive ML models integrated with monitoring and development tools.
+
 
 ## Bring agility and consistency through automation 
 
