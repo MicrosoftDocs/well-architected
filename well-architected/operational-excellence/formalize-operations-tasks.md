@@ -76,9 +76,11 @@ Be intentional when adopting open-source tools. Define clear rules for when and 
 
 ## Document standards and treat it as a living asset
 
-Documentation should capture standard operating procedures and clearly define how work is done. Make documentation effective by creating by actionable checklists with references to relevant tools. 
+Documentation should capture standard operating procedures and clearly define how work is done. Make documentation effective by creating actionable checklists with references to relevant tools. 
 
 Procedures must evolve as your workload and team evolve, and standards should be regularly reviewed and challenged to ensure they remain appropriate. Use templates and version control to maintain consistency and keep a record of updates. For example, store runbooks in a version-controlled repository and require scheduled reviews as part of the team's operational cadence. Include authorship and review dates, and highlight changes in procedures.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Keeping documentation in sync with evolving assets and verifying standards compliance takes significant effort. With GitHub Copilot’s interactive analysis, you can generate and maintain standards documentation directly from your project assets. A more advanced option is to use agents grounded in your standards documentation to enforce compliance and generate new assets that follow those standards. For example, an agent can analyze a pull request, identify deviations, provide feedback, and, where appropriate, automatically update code to align with your standards.
 
 ## Azure facilitation
 
