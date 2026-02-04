@@ -106,7 +106,7 @@ AI agents can assist in generating code, infrastructure definitions, and tests, 
 
 Selecting the right models is critical. Use models suited for code generation and tool execution, and combine them where appropriate. A reasoning model can help with system analysis, planning, or decomposition, a code-focused model can generate the artifacts themselves, and additional models can support testing or deployment steps.
 
-Generation should be grounded in templates, reference implementations, coding guidelines, and examples that reflect organizational and industry standards. Clear standards help detect drift and enforce consistency. AI is best used to assemble and parameterize these predefined building blocks rather than inventing new or untested patterns.
+Generation should be grounded in templates, reference implementations, coding guidelines, and examples that reflect organizational and industry standards. Clear standards help detect drift and enforce consistency. By using templates, AI output is more predictable. 
 
 Like most agents, code generators may draw from multiple sources. All outputs should be treated as untrusted until validated. Apply least-privilege principles to limit tool execution permissions and scope. Agents should never deploy or modify production resources without explicit, gated approval.
 
