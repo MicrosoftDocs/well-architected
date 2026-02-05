@@ -40,9 +40,9 @@ Use your cloud platform's native tools and other industry-proven tools that nati
 > [!NOTE]
 > Be mindful that as cloud providers and third-party developers update their tools and APIs, you can run the risk of unanticipated issues when using the latest version in your workload. Ensure that you thoroughly test new versions of tools and APIs before adopting them. Likewise, avoid using the 'latest' flag when calling on a tool or API in your deployment code. Be intentional about calling the latest known good version for your workload.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Developing and validating standards based IaC templates, such as Bicep and Terraform, is often time consuming and error prone. Use AI to streamline template creation and validation, accelerating your modernization efforts. Make sure all AI-generated code is carefully reviewed to meet accuracy and compliance requirements.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Developing and validating standards-based IaC templates, such as Bicep and Terraform, is often time-consuming and error-prone. AI streamlines template creation and validation, accelerating your modernization efforts. Review all AI-generated code to meet accuracy and compliance requirements.
 >
-> AI can reduce deployment risks by reviewing templates for misconfigurations and validating compliance with organizational policies. It can simulate and forecast deployment impacts and summarize risk assessments in natural language. This helps surface issues early and makes potential problems easier to understand.
+> AI can reduce deployment risks by reviewing templates for misconfigurations and validating compliance with organizational policies. It simulates and forecasts deployment impacts and summarizes risk assessments in natural language. This helps surface issues early and makes potential problems easier to understand.
 
 ## Use the right tool for the task
 
@@ -59,7 +59,7 @@ Your scripts and templates should be flexible enough to easily deploy a variety 
 > [!NOTE]
 > Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to review your application code in pull requests to identify required IaC updates and recommend changes before configuration issues impact quality or stability. GitHub Copilot can analyze your code, design docs, and requirements to suggest needed updates, or you can request infrastructure changes in natural language. Advanced agent-based solutions can even generate pull requests automatically after autonomously performing the code analysis.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can review your application code in pull requests to identify required IaC updates and recommend changes before configuration issues impact quality or stability. GitHub Copilot can analyze your code, design docs, and requirements to suggest needed updates, or you can request infrastructure changes in natural language. Advanced agent-based solutions can generate pull requests automatically after analyzing your code.
 
 ## Use the right balance when encapsulating functionality
 
@@ -95,9 +95,7 @@ Apply the principle of "security as code" to ensure that security is part of the
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To strengthen your security posture and accelerate response times, integrate AI into your security reviews and threat modeling processes. 
 >
-> Enhance your existing security process with AI tools and features to highlight insecure coding patterns and suggest secure alternatives. Use generative AI to analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. 
->
-> Regularly update architectural diagrams, IaC templates, prompts, model versions, and validation criteria. Apply human oversight to reduce AI errors and false positives.
+> Enhance your existing security process with AI tools and features to highlight insecure coding patterns and suggest secure alternatives. Generative AI can analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. Regularly update architectural diagrams and IaC templates. Ensure human oversight to reduce AI errors and false positives.
 
 ## Adopt an immutable deployment model
 
