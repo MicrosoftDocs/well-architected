@@ -39,7 +39,7 @@ Custom GenAI embeds AI directly into operational and development workflows tailo
 More advanced implementations can generate and validate code or infrastructure against internal standards, route work based on expertise or availability, and apply custom ML models for specialized predictions. This approach enables deeper automation and tighter alignment with organizational processes, but it requires ongoing investment in engineering, data quality, governance, security, and maintenance.
 
 
-#### **AI capabilities**
+#### **AI funcational patterns**
 The following are some of the most common and approachable AI capabilities used in practice, but this list is not exhaustive. Use this as inspiration to evaluate where in your operations you can inject AI for productivity gains. 
 
 > [!NOTE] 
