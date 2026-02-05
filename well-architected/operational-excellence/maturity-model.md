@@ -39,7 +39,7 @@ Custom GenAI embeds AI directly into operational and development workflows tailo
 More advanced implementations can generate and validate code or infrastructure against internal standards, route work based on expertise or availability, and apply custom ML models for specialized predictions. This approach enables deeper automation and tighter alignment with organizational processes, but it requires ongoing investment in engineering, data quality, governance, security, and maintenance.
 
 
-#### **AI funcational patterns**
+#### **AI functional patterns**
 The following are some of the most common and approachable AI capabilities used in practice, but this list is not exhaustive. Use this as inspiration to evaluate where in your operations you can inject AI for productivity gains. 
 
 > [!NOTE] 
@@ -48,11 +48,11 @@ The following are some of the most common and approachable AI capabilities used 
 
 > [!div class="checklist"]
 >
-> - [**Summarization**](#-summarization-agents). AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, or actionable insights.
-> - [**Recommendations**](#-recommendation-agents).  AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
-> - [**Artifact generation**](#-artifact-generation-agents).  AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
-> - [**Policy validation**](#-policy-validation-agents).  AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
-> - [**Optimization actions**](#-action-optimization-agents).  AI tools that use insights across artifacts to route work and take action on decisions.
+> - [**Summarization**](#-summarization-agents). AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, using language and terminology the users will understand.
+> - [**Recommendations**](#-recommendation-agents). AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
+> - [**Artifact generation**](#-artifact-generation-agents). AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
+> - [**Policy validation**](#-policy-validation-agents). AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
+> - [**Optimization actions**](#-action-optimization-agents). AI tools that use insights across artifacts to route work and take action on decisions.
 
 > [!CAUTION] 
 > 
