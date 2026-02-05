@@ -117,7 +117,7 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 >
 > Start by using AI to summarize reports, logs, transcripts, and draft postmortems so teams capture incident details quickly. As the workload evolves, apply AI to correlate data across multiple systems, detect patterns and hidden dependencies, and highlight recurring signals that suggest deeper issues.
 >
-> At higher maturity, enable expertise-aware escalation that routes incidents to the most effective responders based on past resolutions, code ownership, and system knowledge. AI can provide proactive insights that predict failures or recommend preventive actions while humans retain validation and decision-making.
+> As the AI-driven processes evolve, enable expertise-aware escalation that routes incidents to the most effective responders based on past resolutions, code ownership, and system knowledge. AI can provide proactive insights that predict failures or recommend preventive actions while humans retain validation and decision-making.
 >
 > Progress incrementally: start with simple GenAI prompts, move to single-agent solutions, then integrate agentic workflows with Azure-native agents such as SRE agent and Azure Copilot and third-party tools. If those tools don't meet the requirements, build custom agentic GenAI solutions or predictive ML models integrated with monitoring and development tools.
 
