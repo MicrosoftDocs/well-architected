@@ -9,102 +9,84 @@ ms.topic: concept-article
 
 # Design methodology for HPC workloads on Azure
 
-High Performance Computing (HPC) systems are built to tackle computation-intensive tasks by using clusters of powerful machines working in parallel. This document outlines key considerations and best practices for designing HPC workloads and architectures. It is intended to help architects and engineers ensure that HPC applications run efficiently (making the best use of available compute resources), scalably (handling growth in workload), reliably (tolerating failures), and cost-effectively (within budget), while minimizing operational complexity.
+High Performance Computing (HPC) workloads solve compute‑intensive problems by running tasks across clusters of machines in parallel. Designing HPC workloads on Azure requires careful alignment between workload behavior, infrastructure choices, and operational practices.
 
-HPC workloads demand maximum performance from hardware and software. The guidance below is organized by major design focus areas: understanding workload communication patterns for performance, enabling scalable orchestration, building in fault tolerance, managing costs, and ensuring robust monitoring and operations. By following these practices, you can design HPC environments that meet business goals and computational requirements.
+This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable. It applies to both new deployments and existing HPC environments being optimized.
 
-This article presents a design methodology informed by insights from successful HPC implementations. The methodology applies whether you're building your first HPC environment or optimizing an existing one.
+## Understand workload coupling and communication
+HPC workloads are composed of components with different communication patterns. Identifying these patterns early is critical because they directly influence compute, network, and placement decisions.
 
-## Workload coupling and performance
+### Coupling models
+Component typeKey characteristicsDesign guidance
+| Component type | Key characteristics | Design guidance |
+| -------------- | ------------------- | --------------- |
+| Tightly coupled | Tasks communicate frequently and run in lockstep | Use low‑latency, high‑bandwidth networking. Co‑locate nodes. Prioritize performance. |
+| Loosely coupled | Tasks run independently or communicate infrequently | Standard networking is sufficient. Use cost‑efficient and scalable resources. |
 
-HPC workloads often consist of different components with varying communication needs. Some parts of the workload are tightly coupled, meaning they require frequent, high-speed communication between compute nodes. Other parts may be loosely coupled, with little inter-node communication required. It is crucial to identify which parts of the system fall into each category so you can apply the appropriate design strategy for each.
+Most HPC applications contain both types. For example, a simulation core may be tightly coupled, while post‑processing or reporting tasks are loosely coupled.
 
-The following table outlines the differences between tightly coupled and loosely coupled components and the corresponding design considerations:
+**Design principle:** Match compute and network choices to communication patterns. Use high‑performance resources only where they provide real benefit.
 
-| Type of component | Characteristics and design considerations |
-| ----------------- | ----------------------------------------- |
-| Tightly coupled   | Nodes perform one large, synchronized task with constant communication between them. These workloads are very sensitive to network latency. They require a low-latency, high-bandwidth network interconnect and should be co-located (placed physically close, such as in the same rack or region) to minimize communication delays. Prioritize maximum performance for these components, as they often form the core computational kernel of the HPC workload. |
-| Loosely coupled   | Nodes run independent or only intermittently communicating tasks. These components are more tolerant of network latency. They can use standard networking infrastructure and do not require special placement. It’s often possible to use more cost-effective or scalable resources for these parts, since ultra-low latency is not critical. For example, background data processing or report-generation tasks can run on general-purpose nodes without impacting the tightly coupled core computation. |
+## Design scalable orchestration and scheduling
+Efficient orchestration maximizes cluster throughput and reduces job wait times. Scaling should be automated and driven by workload demand rather than static capacity.
 
-By properly classifying each part of the workload as tightly or loosely coupled, you can allocate the right resources to the right job. In practice, a single HPC application might include both types of components. For example, a scientific simulation's primary compute phase could be tightly coupled and benefit from using specialized high-speed interconnects, whereas an auxiliary logging or reporting service within the same workflow might be loosely coupled and run on standard infrastructure. Designing the architecture with this in mind ensures that critical, chatty components get the low-latency environment they need, while less chatty components are handled in a cost-efficient manner. 
+Key scaling signals include:
+- Job queue depth – Scale out when queued jobs increase, scale in when demand drops.
+- Resource utilization – Add capacity when nodes remain saturated, remove idle nodes.
+- Job priority – Allow urgent or high‑priority jobs to trigger faster scaling.
 
-Always tailor your compute and network choices to the communication pattern: high-performance interconnects and proximity for the chatty parts, and scalable conventional clusters for the rest. This way, each component of the workload operates under conditions that best meet its needs.
+Monitor scheduling metrics such as queue wait time, utilization, throughput, and cost per job. Use these insights to refine scaling policies over time and detect predictable demand patterns.
 
-In summary, make workload characterization your first step. HPC workloads can have a mix of tightly coupled and loosely coupled processing. Identify these patterns early so that you can apply the correct design practices for each. This'll enable you to maximize performance where it matters and avoid unnecessary complexity or cost where it’s not needed.
+**Design principle:** Automate scaling using measurable signals and continuously refine based on observed behavior.
 
-## Scalable orchestration and job scheduling
+## Build in fault tolerance and recovery
+HPC jobs often run for hours or days, making them vulnerable to failures. Failures should be expected and planned for.
 
-HPC workloads are expensive. Design with the mindset of budget alerts at multiple thresholds and use resource tagging to track spending by project or user. This visibility enables informed conversations about priorities when budgets tighten.
+### Resiliency
+- Avoid single points of failure.
+- Maintain spare capacity to absorb node failures.
+- Monitor hardware health to detect issues early.
 
-Monitor actual utilization continuously. Consistent under-utilization signals over-provisioning. Frequent resource exhaustion indicates under-provisioning. Consider total job costs including for example data transfer, storage, and licensing not just compute expenses.Efficient scheduling and resource orchestration determine an HPC cluster’s throughput and responsiveness. A well-designed orchestration system ensures that compute resources scale to meet demand and that jobs spend minimal time waiting in queues. To achieve this, define clear scaling policies (triggers) for your HPC cluster based on workload characteristics:
+### Recoverability
+- Implement periodic checkpointing so jobs can resume instead of restarting.
+- Automatically re‑queue failed jobs.
+- Keep infrastructure and configuration reproducible for fast recovery.
 
-• **Queue length threshold:** Automatically scale out (add more compute nodes or instances) when the queue of pending jobs grows beyond a certain threshold. For example, if more than N jobs are waiting, the system should provision additional nodes to handle the load. This ensures shorter wait times during peaks of activity. Likewise, if the queue length drops below a minimum threshold, scale in by deallocating or powering down excess nodes to avoid idle capacity.
+**Design principle:** Accept that failures will occur and ensure they result in delay—not data or progress loss.
 
-• **Resource utilization levels:** Monitor how busy the current nodes are. If existing nodes are fully utilized (e.g. CPU or memory usage is consistently high for all nodes), that indicates the workload demand is saturating capacity even if the queue isn’t very long. In this case, scale out to add resources for the running jobs. Conversely, if nodes are frequently idle or under-used, you can consolidate work and scale in to reduce waste.
+## Manage costs with predictability
+HPC environments can scale quickly, and so can costs. Cost control must be built into the architecture from the start.
 
-• **Job priority or urgency:** Consider the nature of the jobs in the queue. High-priority jobs or time-sensitive workloads might warrant immediate scaling actions regardless of the overall queue length. For instance, if a critical job is submitted, the scheduler could trigger extra nodes to spin up at once to ensure the job starts right away. This guarantees that important tasks meet their deadlines even under heavy load.
+### Key practices:
+- Define budgets or quotas and set alerts at multiple thresholds.
+- Continuously monitor utilization to detect over‑ or under‑provisioning.
+- Account for total cost, including compute, storage, data movement, and licenses.
+- Tag resources or jobs by project or user to enable cost attribution.
 
-By implementing rules like these, the HPC system can dynamically adjust to workload fluctuations: adding capacity when needed and releasing it when not, all without manual intervention.
-No matter which scaling triggers you use, it is essential to build observability into the orchestration layer to guide and validate these scaling decisions. Monitor key scheduling metrics such as job queue wait times, cluster utilization rates, job completion throughput, and even cost per job. These metrics will reveal whether your scaling policies are effective. For example, if wait times remain high even after scaling out, you might need to adjust the trigger thresholds or add more nodes; if the cluster is often underutilized, your thresholds might be set too low, provisioning too much capacity.
+**Design principle:** Balance performance with cost by sizing resources to actual demand and reviewing usage regularly.
 
-Keep the orchestration logic flexible and data-driven. Over time, analyzing the collected metrics can help refine your approach — you may discover patterns (like daily peaks or heavy periodic workloads) that inform a more predictive scaling strategy. 
+## Design for observability and automation
+Operational success depends on visibility and repeatability. Observability and automation must be first‑class design concerns.
 
-In addition, incorporate any scheduler-specific features (such as backfilling, priority queues, or fair-share algorithms) wisely to balance efficiency and fairness for users. The goal is to maximize cluster efficiency (throughput and utilization) while maintaining a reasonable turnaround time for jobs. A combination of well-chosen scaling triggers and continuous monitoring will achieve a smooth, self-tuning HPC cluster that meets user demands without constant manual tuning.
+### What to monitor
+- Job performance and completion rates
+- Cluster and node utilization
+- Queue length and wait times
+- Hardware health and failure trends
+- Cost and usage patterns
 
-## Fault tolerance and recovery
+Use unified dashboards and alerts to detect issues early and support troubleshooting. Retain historical data to enable trend analysis and capacity planning.
 
-Long-running HPC jobs are vulnerable to interruptions if a hardware or system failure occurs. Unlike short tasks, HPC jobs might run for hours or days, so a mid-run failure can result in significant lost progress. Designing for fault tolerance means ensuring that when (not if) a compute node or other infrastructure component fails, the impact on the workload is minimized and the system can recover quickly.
+### Automation
+- Use infrastructure‑as‑code for consistent deployments.
+- Automate scaling, recovery, and routine maintenance.
+- Apply automation gradually and validate behavior under failure scenarios.
 
-To make an HPC workload resilient against hardware failures, consider both resiliency measures (to handle or avoid faults transparently) and recoverability measures (to restart or continue work after a fault):
+**Design principle:** Use observability to understand the system and automation to reduce manual effort—without sacrificing control.
 
-• **Resiliency:** Architect the system such that a single point of failure does not halt the entire workload. This can include provisioning redundant resources and enabling high-availability features. For example, ensure there are spare nodes in the cluster or capacity buffer so that if one node dies, the scheduler can immediately reassign its tasks to another node. Similarly, if using a parallel file system or network switch, choose configurations that have built-in failover. It's also important to monitor hardware health indicators (CPU temperature, memory errors, etc.) – this way, you can detect if a node is deteriorating and proactively move its workload elsewhere before a hard failure occurs. In summary, design the HPC environment to tolerate a certain level of faults without failing completely, through redundancy and early detection.
-  
-• **Recoverability:** Even with resilience measures, some failures will happen. The system should be prepared to recover gracefully when a fault occurs. Implement periodic checkpointing in long-running applications – i.e. have the application save its state at intervals (for instance, writing snapshots of an in-memory simulation to disk). If a job is interrupted (due to a node crash or reboot), it can be restarted from the last checkpoint rather than from the beginning, saving potentially hours of recomputation. 
+In summary, start by understanding your workload. Design for scalability, resilience, and cost control. Build visibility and automation into the system.
 
-Also, maintain backups of critical data and configurations so that if a node is lost, a new node can be brought to the same state quickly. Automate the re-queueing of failed jobs: the workload manager or scheduler should detect when a job fails due to a node issue and then automatically put that job back into the queue (or send it to a standby node) to resume work. Test these failure recovery workflows to ensure that, for example, a multi-node job can correctly restart and stitch together output from before and after a failure.
-  
-By incorporating both approaches, HPC workloads become much more robust. A hardware failure might slow down the overall job (while the system redistributes tasks or a job restarts from a checkpoint), but it won’t necessitate starting everything over from scratch. This is especially important for HPC scenarios like large simulations or data processing pipelines where a lot of computation could be lost in a crash. Design your architecture such that failures are expected and planned for. This means having spare capacity, regular state persistence, and clear procedures for recovery. As a result, you will significantly reduce the risk of losing valuable computation time due to unforeseeable outages, and maintain higher overall system reliability.
-
-## Cost management and predictability
-
-HPC deployments can be expensive, using clusters of high-end hardware, specialized networking, and large data storage. Without careful planning, costs can escalate quickly as compute needs grow. Designing with cost management in mind ensures that you get the needed performance without overspending, and that you can predict and control operational expenses over time.
-
-Begin with the mindset that HPC resources are a valuable (and costly) asset. Establish clear budget limits or quotas for your HPC project or environment. For example, you might have a monthly cloud budget or a compute-hour quota. Implement controls at multiple thresholds of spending or usage. This means setting up alerts or automated actions when, say, 50% of the budget is consumed, and another when 80% is consumed, etc. By having these thresholds, you won’t be caught off-guard as usage approaches a critical budget limit, the team can be notified to make decisions (such as pausing lower-priority jobs, optimizing code, or requesting additional funds) before the budget is exhausted. These controls enforce cost predictability: stakeholders are aware of burn rates and can take action in time, rather than discovering overages after the fact.
-
-Continuously monitor actual resource utilization and adjust capacity to avoid waste. Consistent under-utilization of the HPC environment is a sign of over-provisioning — you have more nodes or power allocated than the workloads truly need, and money is being left on the table. In such cases, you might consolidate workloads onto fewer nodes, choose smaller or cheaper instance types, or reduce always-on capacity in favor of on-demand resources. Conversely, frequent resource exhaustion or saturation (for instance, jobs often waiting due to all nodes being busy at 100% for extended periods) indicates under-provisioning. Under-provisioning can hurt productivity (jobs take longer to start or finish) and might lead to emergency provisioning that isn’t cost-optimized. The solution here could be to invest in additional capacity or more powerful resources, or to optimize the workload to use resources more efficiently. The key is to find the right balance: enough resources to keep pace with demand, but not so many that they sit idle.
-
-In addition, consider the total cost of ownership for HPC workloads, not just the obvious compute costs. HPC jobs often involve moving and storing large volumes of data. Hidden costs such as data transfer fees (e.g. moving data in/out of cloud or between regions), data storage costs for large intermediate datasets or results, and software licensing costs (for specialized HPC software or libraries) can be significant. Incorporate these factors into your cost estimates and monitoring. For example, if your workflow frequently stages data from a remote storage location, you should track those bandwidth charges and perhaps redesign the data placement if they become too high. By accounting for networking, storage, and licensing expenses up front, you avoid unpleasant surprises and can make more informed decisions about where to run certain parts of the workload (maybe moving data processing closer to where data resides, or negotiating better licenses for software at scale).
-
-Finally, implement cost attribution and accountability. Tag or label HPC jobs or resources by project or user (if possible) so you can break down costs and identify major cost drivers. This can help in optimization — for instance, if one type of simulation is extremely costly, you might optimize its code or scheduling. Regularly review cost and usage reports with your team. The aim is to create a culture where performance goals are met in a financially responsible way. With proper budgeting, continuous utilization monitoring, and a holistic view of all costs, HPC workloads can be run sustainably and predictably over the long term.
-
-
-## Observability and automation
-
-Operational success in HPC relies on robust observability—having complete insight into the system’s performance, usage, and health at all times. Because HPC environments are complex (involving many nodes, jobs, and interconnected components), you should design monitoring and logging into the solution from the very beginning. This allows you to detect issues early, optimize resource usage, and make informed improvements over time. In parallel, smart use of automation can reduce the operational burden on administrators, though it must be applied carefully in HPC contexts.
-
-To manage an HPC system effectively, you’ll want to capture a broad range of metrics and telemetry. Key metrics to monitor include:
-
-• **Compute performance:** Track how fast jobs are running and identify any performance bottlenecks. For tightly coupled jobs, monitor network latency and bandwidth between nodes — even small increases in latency can drastically slow down these jobs. Also watch CPU and GPU utilization on each node to ensure the workload is efficiently using the processors.
-
-• **Resource utilization:** Monitor aggregate cluster utilization (what percentage of the total computing capacity is in use at a given time) and per-node utilization. Persistent low utilization might mean resources are over-provisioned, while consistently high utilization or frequent 100% usage indicates potential need for more resources (or better scheduling).
-
-• **Job queue and throughput:** Keep an eye on the job queue length and job wait times. If jobs are often waiting a long time in queue, that affects user productivity and signals a need to adjust scheduling or add capacity. Also track job throughput (jobs completed per hour/day) as a measure of cluster efficiency.
-
-• **Failure rates and hardware health:** Use monitoring tools to catch hardware issues early. Metrics such as memory errors, I/O errors, or node heartbeat/availability can alert you to failing components. If a node is frequently causing job failures or reporting errors, preemptively take it out for maintenance. Logging of job failures (with error codes) is also important — for instance, if many jobs fail due to out-of-memory errors, that’s a sign some jobs need more resources than allocated.
-
-• **Cost and usage trends:** If running in a cloud or hybrid environment, monitor resource usage in terms of cost. Track how usage patterns correlate with costs (e.g., are you hitting any cloud usage caps or incurring burst pricing?). Over time, analyze trends in compute-hours consumed or data moved/stored. This helps in future capacity planning and budgeting (e.g., projecting when you might need to request more budget or optimize certain workflows to stay within budget).
-
-All these metrics should be collected and visible through a centralized dashboard or monitoring system. It’s valuable to integrate logs and metrics from various components – for example, combine cluster scheduler logs (which might show job statuses and wait times) with infrastructure metrics (CPU, memory, network stats from each node) and even application-level metrics if available. Such correlated telemetry gives a holistic view and makes troubleshooting easier. For instance, if a job is slow, you could correlate that with node metrics to see if it was waiting on network or starved for CPU.
-In addition to monitoring, set up alerts on critical conditions. Define thresholds for unusual situations such as: job wait time exceeding a certain limit, cluster utilization dropping below (or above) a certain percentage for an extended period, a node becoming unresponsive, or costs exceeding a daily limit. When these thresholds are crossed, automated alerts (emails, messages, etc.) should notify the operations team. Alerts ensure that urgent issues are addressed in real time, without someone having to constantly watch the dashboards.
-
-Another aspect of observability is capturing historical data for analysis. Over weeks and months, trends will emerge (for example, usage might be higher at end of quarter, or certain projects consume most of the resources). By analyzing historical metrics, you can perform capacity planning and optimization. If you know that every Monday a large genomic analysis job runs, you might plan to scale out the cluster on Mondays. If you see that GPU nodes are rarely used but still running, you might scale that part of the cluster down or consider cheaper alternatives. Trend analysis helps in making evidence-based decisions to tune the environment.
-While observability keeps you informed, automation helps you react and manage the system with less manual effort. Embrace automation in your HPC operations to the extent that it improves reliability and repeatability. For example, use Infrastructure as Code (IaC) tools to define and deploy your HPC cluster setup (networks, VMs, scheduler configurations) so that environments can be reproduced or modified systematically rather than by hand. Automated scaling, as discussed, is a form of operational automation responding to metrics. You can also automate routine maintenance tasks: automatically apply patches to nodes on a schedule, or drain and replace nodes that report critical hardware alerts.
-
-However, it’s important to balance automation with oversight. HPC workloads and infrastructure can be complex, and not all processes may safely be fully automated without thorough testing. Poorly implemented automation (for example, an aggressive scaling script or an untested failover routine) can be error-prone and difficult to debug, sometimes causing more problems than it solves. Therefore, automate gradually and verify the automation’s behavior under various scenarios. Start with automation in low-risk areas (like environment setup, log collection, or non-disruptive scaling) and build up confidence.
-One specific area of automation and operational ease is environment consistency. Make sure that all nodes are configured consistently using automated configuration management—this prevents issues where a misconfigured node causes a job to fail. Also, consider using containerization or similar techniques for the HPC applications if appropriate; containers can help ensure the software environment is the same across all compute nodes, which reduces weird runtime errors and eases scaling new instances up and down.
-
-In summary, design for reduced operational burden by investing in both observability and sensible automation. Treat monitoring and logging as main components of your HPC architecture, not afterthoughts, so that you always know the state of your system. Use this visibility to drive decisions and improvements. At the same time, streamline operations with automation in deployment, scaling, and recovery, so the system can handle routine events autonomously and reliably. With comprehensive observability, you’ll catch performance or reliability issues early, and with targeted automation, you’ll ensure your HPC platform runs smoothly with minimal manual intervention — allowing your team to focus on using the HPC system for scientific or business objectives rather than constantly managing it.
-
+Well‑designed HPC environments maximize performance where it matters most, remain reliable under failure, and operate efficiently as demand evolves.
 
 ## Next step
 
