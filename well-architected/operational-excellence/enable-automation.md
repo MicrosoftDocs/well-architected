@@ -36,7 +36,7 @@ Design with automation in mind to minimize refactoring after your workload is ru
 
 After your workload is running in the cloud, it's important to prioritize continuous improvement. Observe your workload in action, analyze usage patterns, and review customer behavior related to your workload to identify areas where you can improve automation. Look for ways to enhance existing automation or introduce new automation to improve your customer experience. For example, you might have automated scaling enabled, but the workload increase is short-lived. You can integrate scale-in automation to decrease CPU usage when the load drops below the threshold.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to identify and improve automations that are regularly bypassed or manually overridden. Integrate automation logs, IcM systems, and monitoring data with AI tools to find patterns that trigger exceptions or bypasses. Agent-based solutions can evaluate the effectiveness of your automations and recommend updates or retirement. Give AI access to all relevant assets while maintaining security and privacy standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify and improve automations that are regularly bypassed or manually overridden. Integrate automation logs, IcM systems, and monitoring data with AI tools to find patterns that trigger exceptions or bypasses. Agent-based solutions grounded in your project data can evaluate the effectiveness of your automations and recommend updates or retirement.
 
 The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
 
@@ -46,9 +46,9 @@ Bootstrapping refers to the configuration updates to a resource that must be mad
 
 Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make predefined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use tools like Copilot or Claude Code to streamline repetitive configuration tasks like DSC setups, VM initialization, and environment variable management. Give these tools secure read-only access to analyze your code and design artifacts, then generate and validate configuration code in your IDE, using quality prompts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Tools like Copilot or Claude Code can streamline repetitive configuration tasks like DSC setups, VM initialization, and environment variable management. Give these tools secure read-only access to analyze your code and design artifacts, then generate and validate configuration code in your IDE using quality prompts.
 >
-> For advanced automation, use agent-based solutions that monitor production for drift, determine the intended state, and automatically update bootstrapping definitions. These solutions require significant engineering investment and ongoing human oversight when integrated with your existing tools.
+> For advanced automation, agent-based solutions can monitor production for drift, determine the intended state, and automatically update bootstrapping definitions. These solutions require significant engineering investment and ongoing human oversight when you integrate them with your existing tools.
 
 ## Incorporate automation into access management
 
