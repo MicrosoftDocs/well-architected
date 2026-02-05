@@ -77,7 +77,7 @@ Direct user feedback is valuable. Capture input on summary quality and usefulnes
 
 ##### Examples
 
-- [OE:01 DevOps culture](./devops-culture#establish-clear-roles-and-responsibilities). Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents.
+- [OE:01 DevOps culture](./devops-culture.md#establish-clear-roles-and-responsibilities). Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents.
 - [OE:08 Incident response](./incident-response.md#turn-rca-findings-into-system-improvements). Summarize incidents, postmortems, security findings, and audit reports to quickly understand scope, impact, and outcomes
 
 #### &#10003; Recommendation agents
@@ -94,9 +94,9 @@ Treat recommendation engines as decision-support systems rather than black boxes
 
 ##### Examples
 
-- [OE:06 Designing a workload supply chain](./workload-supply-chain#incorporate-comprehensive-types-of-testing). Find customer-focused edge cases and scenarios that are  hard to detect and often overlooked to include in your test suite.
-- [OE:08 Incident management](./incident-response#allocate-sufficient-resources-for-incident-response-infrastructure-processes-and-staff). Validate vendor transition plans by having AI simulate the vendor support team using only the provided documentation, playbooks, health models, and escalation paths. The simulation highlights gaps and hidden dependencies before the handoff.
-- [OE:09 Implementing automation](./automate-tasks#integrate-automation-into-your-workloa). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
+- [OE:06 Designing a workload supply chain](./workload-supply-chain.md#incorporate-comprehensive-types-of-testing). Find customer-focused edge cases and scenarios that are  hard to detect and often overlooked to include in your test suite.
+- [OE:08 Incident management](./incident-response.md#allocate-sufficient-resources-for-incident-response-infrastructure-processes-and-staff). Validate vendor transition plans by having AI simulate the vendor support team using only the provided documentation, playbooks, health models, and escalation paths. The simulation highlights gaps and hidden dependencies before the handoff.
+- [OE:09 Implementing automation](./automate-tasks.md#integrate-automation-into-your-workloa). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
 
 #### &#10003; Artifact generation agents
 
@@ -114,9 +114,9 @@ Integrate generated artifacts into the standard developer lifecycle. This includ
 
 ##### Examples
 
-- [OE:02 Standardize operations](./formalize-operations-tasks#document-standards-and-treat-it-as-a-living-asset). Generate code and document artifacts that adhere to organization standards, and keep standards documentation updated as assets evolve. 
-- [OE:07 Design a monitoring system](./observability#analyze-and-visualize-to-support-actionable-decisions). Generate integrated dashboards configurations that align engineering metrics with business outcomes by automatically selecting the right metrics across sources.
-- [OE:10 Automation design](./enable-automation#automate-bootstrapping). Autonomously monitor production environments for configuration drift, infer the intended state, and update bootstrapping definitions to keep systems aligned over time. 
+- [OE:02 Standardize operations](./formalize-operations-tasks.md#document-standards-and-treat-it-as-a-living-asset). Generate code and document artifacts that adhere to organization standards, and keep standards documentation updated as assets evolve. 
+- [OE:07 Design a monitoring system](./observability.md#analyze-and-visualize-to-support-actionable-decisions). Generate integrated dashboards configurations that align engineering metrics with business outcomes by automatically selecting the right metrics across sources.
+- [OE:10 Automation design](./enable-automation.md#automate-bootstrapping). Autonomously monitor production environments for configuration drift, infer the intended state, and update bootstrapping definitions to keep systems aligned over time. 
 
 #### &#10003; Policy validation agents
 
@@ -132,9 +132,9 @@ Effectiveness is measured, not assumed. Use dashboards to track metrics such as 
 
 ##### Examples
 
-- [OE:03 Formalize development practices](./formalize-development-practices#standardize-how-development-work-is-recorded).  Validate work descriptions and acceptance criteria against organizational templates to enforce a consistent quality bar. 
-- [OE:04 Standardize tools and processes](./tools-processes#implement-standards-for-addressing-technical-debt). Review the codebase to enforce quality bar and organizational standards and recording gaps as technical debt.
-- [OE:05 Use infrastructure as code](./infrastructure-as-code-design#enforce-security-in-iac-code).Enforce security standards by reviewing code, IaC templates, and designs to detect insecure patterns, policy violations, and weak configurations.
+- [OE:03 Formalize development practices](./formalize-development-practices.md#standardize-how-development-work-is-recorded).  Validate work descriptions and acceptance criteria against organizational templates to enforce a consistent quality bar. 
+- [OE:04 Standardize tools and processes](./tools-processes.md#implement-standards-for-addressing-technical-debt). Review the codebase to enforce quality bar and organizational standards and recording gaps as technical debt.
+- [OE:05 Use infrastructure as code](./infrastructure-as-code-design.md#enforce-security-in-iac-code).Enforce security standards by reviewing code, IaC templates, and designs to detect insecure patterns, policy violations, and weak configurations.
 
 #### &#10003; Action optimization agents
 
@@ -146,9 +146,9 @@ Implement guardrails that enforce a minimal blast radius, keeping the scope of e
 
 ##### Examples
 
-- [OE:08 Incident management](./incident-response#build-monitoring-capabilities-for-rapid-detection). As soon as an alert fires, automatically gather context, correlate data, and perform initial triage. Engineers start with a clear incident picture instead of manual data collection.
-- [OE:09 Implementing automation](./automate-tasks#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
-- [OE:11 Safe deployment practices](./safe-deployments#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifing the optimum rollout timing, and the right target segment and percentages for your canary deployments.
+- [OE:08 Incident management](./incident-response.md#build-monitoring-capabilities-for-rapid-detection). As soon as an alert fires, automatically gather context, correlate data, and perform initial triage. Engineers start with a clear incident picture instead of manual data collection.
+- [OE:09 Implementing automation](./automate-tasks.md#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
+- [OE:11 Safe deployment practices](./safe-deployments.md#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifing the optimum rollout timing, and the right target segment and percentages for your canary deployments.
 
 # [**Level 1: DevOps foundation**](#tab/level1)
 
