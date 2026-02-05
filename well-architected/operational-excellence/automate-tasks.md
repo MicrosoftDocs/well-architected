@@ -57,7 +57,7 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Monitoring and alerting**: Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices to monitor and alert on anomalies.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can automatically optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time. To maintain safety, AI systems should have only the minimum access they need, operate within strict guardrails, produce audit logs, and require human approval before making changes.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time. Maintain human oversight to verify and approve all AI-generated changes.
 
 ## Choose an appropriate automation tool
 
@@ -65,13 +65,16 @@ Developing your own automation in-house is time intensive and can introduce mana
 
 Be mindful of factors that can complicate your operations when you build your automation, like version lock-in and plugin overuse. Plugins, like Jenkins or Azure DevOps plugins, are a great way to add functionality. You should adopt plugins when it benefits your automation goals. But when you use multiple plugins to perform a single task, it can make automation updates and troubleshooting difficult. Be judicious in your use of plugins. Also avoid solutions that have framework version dependencies because they're a burden to maintain over time. To help minimize the risk of these types of issues, standardize your selection of automation tools and plugins, and use source control for all automation projects.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Deliver secure and reliable deployments faster by using AI to create automation scripts consistently. Use tools like GitHub Copilot to generate CI/CD scripts, templatize configurations, and validate compliance. More advanced agent-based solutions can translate product requirements and standards directly into code. These solutions need accurate, up-to-date design documents, standards, and access to your codebase. Always review and test AI-generated code to ensure it meets your quality and security standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Deliver secure and reliable deployments faster by using AI to create consistent automation scripts. Tools like GitHub Copilot can generate CI/CD scripts, templatize configurations, and validate compliance. Advanced agent-based solutions can translate product requirements and standards directly into code. These solutions require accurate, up-to-date design documents, standards, and access to your codebase. Always review and test AI-generated code to ensure it meets your quality and security standards.
 
 ## Integrate automation into your workload
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, use AI to make data-driven decisions about which automations deliver real value and to proactively surface conflicts before they cause incidents. You’ll boost productivity, reduce costs, and keep automations maintained instead of neglected. For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data so you can detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase. Maintain human oversight for any agent-based or autonomous capabilities.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You’ll boost productivity, reduce costs, and keep automation maintained instead of neglected.
+>
+> For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase. Maintain human oversight for any agent-based or autonomous capabilities.
+
 
 ## Considerations
 
