@@ -96,7 +96,7 @@ Treat recommendation engines as decision-support systems rather than black boxes
 
 - [OE:06 Designing a workload supply chain](./workload-supply-chain.md#incorporate-comprehensive-types-of-testing). Find customer-focused edge cases and scenarios that are  hard to detect and often overlooked to include in your test suite.
 - [OE:08 Incident management](./incident-response.md#allocate-sufficient-resources-for-incident-response-infrastructure-processes-and-staff). Validate vendor transition plans by having AI simulate the vendor support team using only the provided documentation, playbooks, health models, and escalation paths. The simulation highlights gaps and hidden dependencies before the handoff.
-- [OE:09 Implementing automation](./automate-tasks.md#integrate-automation-into-your-workloa). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
+- [OE:09 Implementing automation](./automate-tasks.md#integrate-automation-into-your-workload). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
 
 #### &#10003; Artifact generation agents
 
