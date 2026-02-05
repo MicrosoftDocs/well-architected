@@ -14,10 +14,11 @@ High Performance Computing (HPC) workloads solve compute‑intensive problems by
 This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable. It applies to both new deployments and existing HPC environments being optimized.
 
 ## Understand workload coupling and communication
+
 HPC workloads are composed of components with different communication patterns. Identifying these patterns early is critical because they directly influence compute, network, and placement decisions.
 
 ### Coupling models
-Component typeKey characteristicsDesign guidance
+
 | Component type | Key characteristics | Design guidance |
 | -------------- | ------------------- | --------------- |
 | Tightly coupled | Tasks communicate frequently and run in lockstep | Use low‑latency, high‑bandwidth networking. Co‑locate nodes. Prioritize performance. |
@@ -28,6 +29,7 @@ Most HPC applications contain both types. For example, a simulation core may be 
 **Design principle:** Match compute and network choices to communication patterns. Use high‑performance resources only where they provide real benefit.
 
 ## Design scalable orchestration and scheduling
+
 Efficient orchestration maximizes cluster throughput and reduces job wait times. Scaling should be automated and driven by workload demand rather than static capacity.
 
 Key scaling signals include:
@@ -40,6 +42,7 @@ Monitor scheduling metrics such as queue wait time, utilization, throughput, and
 **Design principle:** Automate scaling using measurable signals and continuously refine based on observed behavior.
 
 ## Build in fault tolerance and recovery
+
 HPC jobs often run for hours or days, making them vulnerable to failures. Failures should be expected and planned for.
 
 ### Resiliency
@@ -55,6 +58,7 @@ HPC jobs often run for hours or days, making them vulnerable to failures. Failur
 **Design principle:** Accept that failures will occur and ensure they result in delay—not data or progress loss.
 
 ## Manage costs with predictability
+
 HPC environments can scale quickly, and so can costs. Cost control must be built into the architecture from the start.
 
 ### Key practices:
@@ -66,6 +70,7 @@ HPC environments can scale quickly, and so can costs. Cost control must be built
 **Design principle:** Balance performance with cost by sizing resources to actual demand and reviewing usage regularly.
 
 ## Design for observability and automation
+
 Operational success depends on visibility and repeatability. Observability and automation must be first‑class design concerns.
 
 ### What to monitor
