@@ -36,7 +36,7 @@ In some cases, one tool or a suite of tools might provide several functions. Ens
 
 Determine if you should invest in expensive tools or premium versions of tools. Consider the time and effort of developing your own solutions compared to features that the premium tools provide. Consider one-time costs versus recurring costs. In most cases, off-the-shelf tools provide higher value to your team.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can analyze your project documentation and design files to identify and compare off-the-shelf solutions that best fit your requirements. Use Copilot to quickly explore options, and let AI evaluate factors like cost, licensing, support, ROI, and alignment with your organization’s standards. Build AI agents to monitor for tool updates, new offerings, and deprecations so your team can rapidly adopt high-value solutions and reduce maintenance overhead.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Accelerate solution selection by applying AI to analyze your project documentation and design files to identify and compare off-the-shelf solutions that best fit your requirements. Copilot can quickly explore alternatives, and a single-agent solution can evaluate factors like cost, licensing, support, ROI, and alignment with your organization’s standards. An advanced agentic solution continuously monitors for tool updates, new offerings, and deprecations, so your team can rapidly adopt high-value solutions and reduce maintenance overhead.
 
 **Use low-code, no-code, and AI tools** when practical. Low-code and no-code tools save experienced developers time by allowing them to easily plug in functionality rather than performing the entire code development process. These tools also allow workload team members that might not be trained developers to contribute to the operation of the workload. AI tools can help with code development, reviews, and optimization.
 
@@ -44,7 +44,7 @@ Determine if you should invest in expensive tools or premium versions of tools. 
 
 Choose a trunk-based model when possible. Trunk-based branching keeps the workload development team in sync and encourages continuous delivery. Define branch policies to protect important branches, like the main branch. For more information, see [Adopt a Git branching strategy](/azure/devops/repos/git/git-branching-guidance) and [Branch policies and settings](/azure/devops/repos/git/branch-policies).
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to reduce friction from manual tasks, like enforcing standards and maintaining documentation. It analyzes your codebase and usage patterns to shape your repository strategy, including recommending an optimal branching model and repository design based on dependencies and build patterns. Use AI to streamline pull requests by predicting merge conflicts, enforcing standard templates, and automating compliance checks. AI can also generate API documentation and diagrams to improve component discoverability across your codebase.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Reduce overhead from enforcing standards and updating documentation, while providing developers with guidance on optimal repository design. AI analyzes your codebase to recommend the right branching model and structure based on dependencies and build patterns. Improve discoverability with AI-generated API documentation and diagrams. Streamline pull requests by predicting merge conflicts, enforcing templates, and automating compliance checks. 
 
 ## Evaluate metrics to quantify development effectiveness
 
@@ -84,13 +84,11 @@ In your ADR, include:
 
 - The context of the decision-making process, like the problem that was addressed.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can find hidden dependencies that manual code reviews often miss. Some of these issues usually show up during incidents or deployment failures.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify hidden dependencies that traditional code reviews often miss—issues that typically surface only during incidents or deployment failures.
 >
-> Use tools such as SonarQube, Roslyn, and NDepend to map explicit dependencies. Then use GitHub Copilot to identify undocumented or implicit dependencies by interpreting those outputs, analyzing the codebase, and cross-referencing design documentation. This keeps your architectural documentation up to date.
+> Start with tools like SonarQube, Roslyn, and NDepend to map explicit dependencies. GitHub Copilot then identifies undocumented or implicit dependencies by analyzing the codebase and cross-referencing design documentation. This keeps your architectural documentation up to date.
 >
-> For a more advanced solution, consider an agent-based approach. The solution can ingest historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time. For critical workloads, improve accuracy by training predictive models on historical deployment and incident data.
-> 
-> Pursue custom agentic solutions or specialized pre-trained models only when the return on investment is clear.
+> For advanced solutions, use an agent-based approach that ingests historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time. Train predictive models on this data to improve accuracy.
 
 ## Implement standards for addressing technical debt
 
@@ -98,7 +96,7 @@ Adopt a mindset that technical debt is intentional and necessary for your worklo
 
 For example, suppose your team standardized on a library. Over time, you need to switch to a different library for new functionality in the workload. That transition might result in technical debt. Frequently, transitions like this can leave the workload team supporting two technologies because they can't fully transition smoothly. The workload team must prioritize completing the transition because when the workload achieves the new functionality, stakeholders are satisfied and are less likely to consider the technical debt.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use AI to identify technical debt, quantify its impact, and justify remediation efforts to stakeholders. Off-the-shelf tools like CodeScene, Stepsize, GitHub Dependabot, WhiteSource, and Snyk's DeepCode offer quick value with lower implementation cost. For additional value, build an agent-based system to analyze your codebase, correlate findings with telemetry and incident data, integrate with third-party insights, track ecosystem changes, and alert developers when current dependencies introduce risks.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify technical debt, quantify its impact, and justify remediation efforts to stakeholders. Start with off-the-shelf tools like CodeScene, Stepsize, GitHub Dependabot, WhiteSource, and Snyk's DeepCode which offer quick value with lower implementation cost. For additional value, consider an agent-based system to analyze your codebase, correlate findings with telemetry and incident data, integrate with third-party insights, track ecosystem changes, and alert developers when current dependencies introduce risks.
 
 ## Standardize how you apply versioning to your artifacts
 
@@ -124,14 +122,13 @@ Implement a shift-left approach to testing by performing unit testing early and 
 
 Implement a variety of testing types, such as unit, smoke, integration, and acceptance testing. For a detailed review of these types of tests, see the [testing section](workload-supply-chain.md#incorporate-comprehensive-types-of-testing) of the [workload supply chain](./workload-supply-chain.md) recommendation guide.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Use an AI-powered shift-left testing strategy to improve quality earlier in the lifecycle. Evolve your test suite and test environment based on real-world usage and scenarios to ensure broad customer coverage. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Evolve your test suite and test environment based on real-world usage and scenarios to improve quality earlier in the lifecycle and ensure broad customer coverage.
 >
-> Use AI to create purpose-built test environments with the right changes, dependencies, and applicable mock services implementations to validate a specific change. Start with a library of templates and mock services, then evolve to autonomously provision environments from custom IaC without developer input.
+> Create purpose-built test environments with the right changes, dependencies, and applicable mock services implementations to validate a specific change. Start with a library of templates and mock services, then evolve to autonomously provision environments from custom IaC without developer input.
 >
-> Apply AI to detect recurring patterns in exploratory and UAT sessions and automatically script repetitive cases.
+> Detect recurring patterns in exploratory and UAT sessions, then automatically script repetitive cases.
 >
-> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Build an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases. Plan for significant integration work and maintain human oversight for any autonomous capabilities.
-
+> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Consider an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases. Plan for significant integration work and maintain human oversight for any autonomous capabilities.
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
