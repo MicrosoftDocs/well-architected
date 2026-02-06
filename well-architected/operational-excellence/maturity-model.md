@@ -44,7 +44,7 @@ The following are some of the most common and approachable AI capabilities used 
 
 > [!NOTE] 
 >
-> Adoption should follow a deliberate progression: begin with focused use cases such as summarization or content generation, then, as team competency matures, expose system functions as AI-enabled tools and introduce agentic interfaces for task-based reasoning, ultimately evolving toward multi-agent systems where specialized agents collaborate across integrated data and systems to tackle complex analysis and workflows.
+> Adoption should progress deliberately over time: Begin with focused use cases such as summarization or content generation, then introduce agentic interfaces that reason over tasks and workflows as capability and confidence grow. At higher levels of maturity, multi‑agent systems operate across integrated systems and data to support more complex operational scenarios.
 
 > [!div class="checklist"]
 >
