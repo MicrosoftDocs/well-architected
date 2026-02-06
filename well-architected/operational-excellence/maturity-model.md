@@ -22,7 +22,7 @@ The model is structured into five distinct maturity levels, each with a primary 
 
 # [:::image type="icon" source="../_images/ai.svg"::: **AI opportunities**](#tab/ai-opportunities)
 
-![Goal icon](../_images/goal.svg) **Modernize operations by deliberately embedding AI-driven tools that reduce manual, error-prone toil and deliver measurable gains while pragmatically balancing cost, risk, and time to value.**
+![Goal icon](../_images/goal.svg) **Modernize operations by intentionally embedding AI-driven tools to reduce manual, error-prone toil and deliver measurable value.**
 
 Evaluate operational workflows end to end to identify where AI can improve consistency and productivity, while pragmatically balancing cost, risk, and time to value.
 
