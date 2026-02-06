@@ -110,7 +110,7 @@ Like most agents, code generators may draw from multiple sources. All outputs sh
 
 Integrate generated artifacts into the standard developer lifecycle. This includes pull requests, code reviews, automated testing, and security scanning. Apply the same rigor as for human-authored code, including dependency checks and infrastructure-as-code scanning, to ensure reliability and compliance.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** . Human review is part of the cost model and must be factored into ROI. Automate validation as much as possible using linters, unit and integration tests, static analysis, and policy checks to reduce review effort and catch common issues early.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Human review remains part of the cost model and must be factored into ROI. In addition, increased artifact generation shifts throughput pressure downstream; testing, validation, and deployment workflows must be scaled accordingly to avoid introducing new bottlenecks. Automating validation wherever possible through linters, tests, static analysis, and policy checks is essential to preserve end‑to‑end flow and time to value.
 
 ##### Examples
 
