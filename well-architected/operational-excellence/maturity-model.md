@@ -28,7 +28,7 @@ Evaluate operational workflows end to end to identify where AI can improve consi
 
 #### Buy: Off-the-shelf GenAI solutions
 
-Off-the-shelf GenAI tools have built-in AI capabilities. They can be broadly categorized by intent. One is generic, interactive assistance tools like GitHub Copilot, which are context-dependent and can be used for a variety of tasks. These tools require little to no setup and are commonly used for knowledge work through prompt-driven chat. The other category is purpose-built tools and agents such as deployment agents, SRE agents, which are designed for specific functions. They can be integrated for developer productivity via IDE and CLI assistants. 
+Off-the-shelf GenAI tools have built-in AI capabilities. They can be broadly categorized by intent. One is generic, interactive assistance tools like GitHub Copilot, which are context-dependent and can be used for a variety of tasks. These tools require little to no setup and provide context‑aware assistance embedded directly into existing developer workflows. The other category is purpose-built tools and agents such as deployment agents, SRE agents, which are designed for specific functions. They can be integrated for developer productivity via IDE and CLI assistants. 
 
 There are also Azure services that have integrated AI features, which can come with additional costs.
 
