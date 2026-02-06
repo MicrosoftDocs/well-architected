@@ -44,7 +44,7 @@ In both of these models, the time between each phase of the rollout should be lo
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual rollout tuning creates friction and slows deployment. AI accelerates rollouts and reduces incidents by replacing subjective decision-making with data-driven recommendations.
 > 
-> Start with low to medium effort GenAI approach. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
+> Start with a low to medium GenAI approach. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
 >
 > Advanced agentic solutions can predict canary percentages, rollout timing, and target segments. When integrated with deployment tools, they automatically update rollout configurations. These solutions require deeper integration, governed write access, and platform support.
 >
