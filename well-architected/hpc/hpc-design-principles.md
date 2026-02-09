@@ -12,10 +12,11 @@ ms.update-cycle: 180-days
 
 The HPC design methodology is grounded in five design principles derived from the Azure Well‑Architected Framework (WAF) pillars. These principles guide architectural decisions across core HPC design areas such as compute, storage, networking, and job orchestration. Familiarity with these principles helps you understand their impact and the trade‑offs involved when they are not followed.
 
-This article summarizes key considerations and recommendations, organized by WAF pillar, to help you design HPC environments on Azure that are reliable, secure, cost‑effective, operationally excellent, and high‑performing. These recommendations are most relevant for large‑scale, long‑running HPC workloads and may be adjusted for smaller or exploratory workloads.
+This article summarizes key considerations and recommendations, organized by WAF pillar, to help you design HPC environments on Azure that are reliable, secure, cost‑effective, operationally excellent, and high‑performing. 
 
-> [!NOTE]
-> Maximizing performance and reliability often increases cost. Design decisions should be driven by business requirements and by clearly defined trade‑offs between performance, reliability, and cost.
+These recommendations are most relevant for large‑scale, long‑running HPC workloads and may be adjusted for smaller or exploratory workloads.
+
+Maximizing performance and reliability often increases cost. Design decisions should be driven by business requirements and by clearly defined trade‑offs between performance, reliability, and cost.
 
 ## Reliability
 
@@ -24,8 +25,11 @@ Building reliable HPC environments on Azure requires planning for failures at mu
 ### Considerations
 
 - **Job state preservation:** Long‑running HPC jobs are vulnerable to infrastructure failures, spot evictions, and maintenance events. Without systematic checkpointing, interruptions can force full job restarts, wasting compute hours and delaying results.
+
 - **Node failure tolerance:** Individual VM failures are expected in large‑scale deployments. The scheduling and orchestration layer must detect failures promptly and either reassign work to healthy nodes or preserve state for recovery.
+
 - **Data protection strategy:** HPC workflows generate data with varying durability requirements, ranging from disposable scratch files to irreplaceable simulation results. Protection mechanisms should align with data value without imposing unnecessary overhead on transient working data.
+
 - **Cross-region continuity:** Critical workloads may require the ability to resume computation in an alternate Azure region after a regional outage. This capability requires advance planning for data replication and environment reproducibility.
 
 ### Recommendations
@@ -45,9 +49,13 @@ HPC environments often process sensitive data, including proprietary research, r
 ### Considerations
 
 - **Network boundary enforcement:** Operate HPC clusters within defined network perimeters that restrict unauthorized access while permitting required communication between compute nodes, storage systems, and job submission endpoints.
+
 - **Identity and access governance:** Users require varying levels of access to HPC resources, from basic job submission to administrative cluster management. Permissions should follow least‑privilege principles and integrate with organizational identity systems.
+
 - **Regulatory compliance:** Organizations processing data subject to regulatory requirements such as HIPAA, ITAR, or FedRAMP must implement specific controls and maintain audit evidence to demonstrate compliance.
+
 - **Workload isolation:** Multi-tenant HPC environments or clusters processing sensitive data require mechanisms to prevent unauthorized access between users or jobs, both at the compute layer and within shared storage systems.
+
 - **Data protection controls:** Sensitive data requires encryption during storage and transmission. Access to protected datasets must be restricted to authorized users and jobs through enforced policies.
 
 ### Recommendations
@@ -67,10 +75,14 @@ Cloud‑based HPC enables elastic scaling, but costs can grow rapidly without de
 ### Considerations
 
 - **Storage cost management:** HPC workflows generate large data volumes with varied access patterns. Keeping cold data on high‑performance tiers increases costs without performance benefits.
+  
 - **Compute right-sizing:** Over‑provisioned VMs waste capacity, while under‑provisioned VMs extend job runtimes and increase total cost. Accurate workload profiling supports effective sizing.
+
 - **Elastic scaling alignment:** Static cluster provisioning misaligns costs with workload demand. Infrastructure should scale with queued jobs and contract when demand subsides.
+
 - **Interruptible workload economics:** Many HPC workloads tolerate interruption with checkpointing, making them suitable for discounted capacity.
-- **Operational overhead accounting:** otal cost includes infrastructure and operational effort. Managed services can reduce administrative overhead even if unit costs are higher.
+
+- **Operational overhead accounting:** Total cost includes infrastructure and operational effort. Managed services can reduce administrative overhead even if unit costs are higher.
 
 ### Recommendations
 
@@ -88,9 +100,13 @@ Operational maturity in HPC environments requires balancing user autonomy with s
 ### Considerations
 
 - **Infrastructure reproducibility:** Manual cluster provisioning introduces inconsistencies and delays. HPC environments should be deployed using automated, version‑controlled processes that produce consistent results across environments.
+
 - **Scheduler integration:** HPC users rely on established job schedulers. Forcing new submission models increases friction and slows adoption of cloud-based HPC.
+
 - **Workflow automation:** HPC pipelines often span data staging, preprocessing, computation, post-processing, and results delivery. Manual coordination increases error rates and limits throughput.
+
 - **Observability and diagnostics:** Failures in large-scale HPC jobs can be difficult to diagnose without comprehensive telemetry. Operators need visibility into job status, resource utilization, and system health.
+
 - **Change management discipline:** Updates to software stacks, schedulers, or infrastructure can introduce regressions. Changes should be validated and deployed through controlled, repeatable processes.
 
 ### Recommendations
@@ -110,9 +126,13 @@ HPC workloads require maximum computational throughput, making hardware selectio
 ### Considerations
 
 - **Workload-hardware alignment:** HPC applications vary widely in resource demands, including CPU-bound simulations, memory-intensive analytics, GPU-accelerated computations, and I/O-heavy workflows. Selecting inappropriate VM families limits achievable performance.
+
 - **Interconnect performance:** Tightly coupled parallel workloads are highly sensitive to network latency and bandwidth. Standard Ethernet networking can introduce bottlenecks that offset the benefits of horizontal scaling.
+
 - **Parallel storage throughput:** Large-scale HPC jobs generate concurrent access patterns that overwhelm traditional file servers. Storage systems must sustain high aggregate throughput across many nodes.
+
 - **Cluster topology optimization:** Physical VM proximity directly affects MPI performance. Distributed placement increases latency and degrades tightly coupled workload efficiency.
+
 - **Environment consistency:** Configuration drift, library mismatches, or software version inconsistencies across nodes introduce performance variability and complicate tuning and troubleshooting.
 
 ### Recommendations
