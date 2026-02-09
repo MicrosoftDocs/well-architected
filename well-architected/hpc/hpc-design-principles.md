@@ -36,10 +36,10 @@ Building reliable HPC environments on Azure requires planning for failures at mu
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Implement application-level checkpointing to [Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/) or [Azure Managed Lustre](https://learn.microsoft.com/en-us/azure/azure-managed-lustre/). Align checkpoint frequency with RPO targets and job criticality. | Protects long-running jobs from complete restart after failures. Jobs resume from last checkpoint rather than beginning, saving compute time and cost. |
+| Implement application-level checkpointing to [Azure Blob Storage](/azure/storage/blobs/) or [Azure Managed Lustre](/azure/azure-managed-lustre/). Align checkpoint frequency with RPO targets and job criticality. | Protects long-running jobs from complete restart after failures. Jobs resume from last checkpoint rather than beginning, saving compute time and cost. |
 | Use Azure CycleCloud or Azure Batch automatic retry policies to handle transient node failures and reschedule failed tasks without manual intervention. | Maintains job progress during temporary infrastructure issues. Automatic rescheduling eliminates manual monitoring and reduces time to completion. |
-| Replicate critical datasets and final results to [geo-redundant storage (GRS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy#geo-redundant-storage) or a paired Azure region. Use locally redundant storage for high-performance scratch data. | Balances data protection with performance needs. Critical data survives regional failures while temporary scratch data maintains high throughput during computation. |
-| Maintain infrastructure-as-code definitions using [Bicep](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/) or [Terraform](https://learn.microsoft.com/en-us/azure/developer/terraform/) in Azure DevOps or GitHub to enable repeatable cluster deployment in alternate regions during disaster recovery. | Enables faster recovery after catastrophic failures by reducing manual reconfiguration and improving deployment consistency. |
+| Replicate critical datasets and final results to [geo-redundant storage (GRS)](/azure/storage/common/storage-redundancy#geo-redundant-storage) or a paired Azure region. Use locally redundant storage for high-performance scratch data. | Balances data protection with performance needs. Critical data survives regional failures while temporary scratch data maintains high throughput during computation. |
+| Maintain infrastructure-as-code definitions using [Bicep](/azure/azure-resource-manager/bicep/) or [Terraform](/azure/developer/terraform/) in Azure DevOps or GitHub to enable repeatable cluster deployment in alternate regions during disaster recovery. | Enables faster recovery after catastrophic failures by reducing manual reconfiguration and improving deployment consistency. |
 
 
 ## Security
@@ -63,9 +63,9 @@ HPC environments often process sensitive data, including proprietary research, r
 | Recommendation | Benefit |
 |----------------|---------|
 | Deploy HPC clusters within isolated virtual networks using network security groups | Reduces the attack surface by limiting network access to only required endpoints while allowing necessary node‑to‑node and storage communication. |
-| Use Microsoft Entra ID for authentication, and integrate role [Azure RBAC](https://learn.microsoft.com/en-us/azure/role-based-access-control/) | Enforces least-privilege access and provides centralized identity governance across HPC resources. |
+| Use Microsoft Entra ID for authentication, and integrate role [Azure RBAC](/azure/role-based-access-control/) | Enforces least-privilege access and provides centralized identity governance across HPC resources. |
 | Use Secure administrative access using Azure Bastion | Prevents direct exposure of management ports and reduces the risk of unauthorized access. |
-| Enable [encryption at rest](https://learn.microsoft.com/en-us/azure/storage/common/storage-service-encryption) for all Azure storage services. Apply Azure policy to enforce security baselines. | Provides visibility into security posture, supports compliance audits, and enables rapid detection of misconfigurations or threats. Ensures consistent security controls across clusters and prevents configuration drift over time. |
+| Enable [encryption at rest](/azure/storage/common/storage-service-encryption) for all Azure storage services. Apply Azure policy to enforce security baselines. | Provides visibility into security posture, supports compliance audits, and enables rapid detection of misconfigurations or threats. Ensures consistent security controls across clusters and prevents configuration drift over time. |
 
 
 ## Cost Optimization
@@ -90,8 +90,8 @@ Cloud‑based HPC enables elastic scaling, but costs can grow rapidly without de
 |----------------|---------|
 | Use Azure Blob Storage lifecycle management to transition aging data from hot to cool or archive tiers. | Reduces storage costs while maintaining data accessibility. |
 | Analyze resource usage with Azure CycleCloud or Azure Batch analytics to select appropriate VM sizes. | Avoids unused capacity and balances performance with cost. |
-| Configure [Azure CycleCloud autoscaling](https://learn.microsoft.com/en-us/azure/cyclecloud/concepts/autoscale) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
-| Deploy [Azure Spot VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/spot-vms) for fault-tolerant workloads with checkpointing, with fallback to standard VMs. | Lowers compute costs for interruption‑tolerant workloads. |
+| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/concepts/autoscale) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
+| Deploy [Azure Spot VMs](/azure/virtual-machines/spot-vms) for fault-tolerant workloads with checkpointing, with fallback to standard VMs. | Lowers compute costs for interruption‑tolerant workloads. |
 
 ## Operational Excellence
 
@@ -113,10 +113,10 @@ Operational maturity in HPC environments requires balancing user autonomy with s
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Define HPC cluster infrastructure using Bicep or Terraform templates with [Azure Resource Manager](https://learn.microsoft.com/en-us/azure/azure-resource-manager/) to manage deployments as code. | Ensures consistent, reproducible deployments and prevents configuration drift. Infrastructure as code also enables faster recovery scenarios. |
-| Deploy Azure CycleCloud with native support for [Slurm](https://learn.microsoft.com/en-us/azure/cyclecloud/how-to/run-slurm-clusters), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
-| Use [Azure Batch for managed job scheduling](https://learn.microsoft.com/en-us/azure/batch/batch-job-schedule) with task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for multi-stage pipelines. | Automates complex workflows and ensures pipeline stages execute in the correct order without manual coordination. |
-| Configure [Azure Monitor](https://learn.microsoft.com/en-us/azure/azure-monitor/) with diagnostic logs, metrics, and  [Log Analytics workspaces](https://learn.microsoft.com/en-us/azure/azure-monitor/logs/log-analytics-overview) to build operational dashboards. | Improves visibility into cluster health and job progress, enabling faster troubleshooting and proactive operations. |
+| Define HPC cluster infrastructure using Bicep or Terraform templates with [Azure Resource Manager](/azure/azure-resource-manager/) to manage deployments as code. | Ensures consistent, reproducible deployments and prevents configuration drift. Infrastructure as code also enables faster recovery scenarios. |
+| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/how-to/run-slurm-clusters), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
+| Use [Azure Batch for managed job scheduling](/azure/batch/batch-job-schedule) with task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for multi-stage pipelines. | Automates complex workflows and ensures pipeline stages execute in the correct order without manual coordination. |
+| Configure [Azure Monitor](/azure/azure-monitor/) with diagnostic logs, metrics, and  [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-overview) to build operational dashboards. | Improves visibility into cluster health and job progress, enabling faster troubleshooting and proactive operations. |
 
 
 ## Performance Efficiency
@@ -139,10 +139,10 @@ HPC workloads require maximum computational throughput, making hardware selectio
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Select [HBv4](https://learn.microsoft.com/en-us/azure/virtual-machines/hbv4-series) or [HBv5 series VMs](https://learn.microsoft.com/en-us/azure/virtual-machines/hbv5-series) for CPU-intensive workloads, [NDv5 series](https://learn.microsoft.com/en-us/azure/virtual-machines/ndv5-series) for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligns hardware capabilities with application requirements, maximizing performance efficiency and value. |
-| Deploy [InfiniBand-enabled VM series](https://learn.microsoft.com/en-us/azure/virtual-machines/workloads/hpc/enable-infiniband) (HB, HC, ND) for MPI workloads requiring low-latency, high-bandwidth node-to-node communication. | Minimizes communication overhead and enables efficient scaling for tightly coupled parallel workloads. |
+| Select [HBv4](/azure/virtual-machines/hbv4-series) or [HBv5 series VMs](/azure/virtual-machines/hbv5-series) for CPU-intensive workloads, [NDv5 series](/azure/virtual-machines/ndv5-series) for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligns hardware capabilities with application requirements, maximizing performance efficiency and value. |
+| Deploy [InfiniBand-enabled VM series](/azure/virtual-machines/workloads/hpc/enable-infiniband) (HB, HC, ND) for MPI workloads requiring low-latency, high-bandwidth node-to-node communication. | Minimizes communication overhead and enables efficient scaling for tightly coupled parallel workloads. |
 | Use Azure Managed Lustre for high‑throughput scratch storage, or Azure NetApp Files for shared POSIX‑compliant file access with consistent performance. | Prevents storage bottlenecks by sustaining concurrent access from large numbers of compute nodes. |
-| Configure [Proximity Placement Groups](https://learn.microsoft.com/en-us/azure/virtual-machines/co-location) to place compute nodes within the same datacenter network segment. | Reduces inter‑node latency and improves message‑passing performance for communication‑intensive workloads. |
+| Configure [Proximity Placement Groups](/azure/virtual-machines/co-location) to place compute nodes within the same datacenter network segment. | Reduces inter‑node latency and improves message‑passing performance for communication‑intensive workloads. |
 
 
 ## Next Steps
