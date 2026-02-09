@@ -3,7 +3,7 @@ title: Architecture pattern for HPC workloads on Azure
 description: Design areas address the critical decisions that determine whether your HPC workload can run jobs efficiently, handle large-scale parallel processing, and meet performance targets
 author: padmalathas
 ms.author: prwilk
-ms.date: 02/06/2026
+ms.date: 03/06/2026
 ms.topic: concept-article
 ---
 
@@ -13,18 +13,19 @@ This article presents a foundational pattern for high-performance computing (HPC
 
 ## Design Considerations
 
-Before selecting Azure services, evaluate the following characteristics to inform your architectural decisions:
-
-| Characteristic | Key Questions |
-|----------------|---------------|
-| **Workload type** | Is the workload tightly coupled (requiring low-latency communication), loosely coupled (embarrassingly parallel), GPU-accelerated, memory-intensive, or data-intensive? |
-| **Scale requirements** | What is the expected throughput for compute, storage, and network? How many concurrent jobs need to run? What is the peak demand? |
-| **Performance needs** | What are the latency requirements for inter-node communication? What storage throughput is required? What is the acceptable job completion time? |
-| **Data lifecycle** | How much data is generated per job? How long must results be retained? What are the access patterns for input and output data? |
-| **Cost constraints** | What is the budget for compute resources? Can spot instances or preemptible capacity be used? What are the tradeoffs between performance and cost? |
-| **Compliance requirements** | Are there data residency or sovereignty requirements? What audit and logging capabilities are needed? What security controls must be enforced? |
+Before selecting Azure services, familiarize yourself with the following characteristics to better inform your architectural decisions. Use the following questions to characterize your HPC workload. 
 
 Based on these characteristics, classify and identify critical HPC resources. This exercise helps you track resource utilization and associated costs while focusing optimization efforts where they have the greatest impact. Organize resources into logical groups based on their function and lifetime.
+
+| Characteristic | Key Questions | Design Implications |
+| -------------- | ------------- | ------------------- |
+| **Workload type** | Is the workload tightly coupled (requiring low-latency communication), loosely coupled (independent tasks with no inter-node communication), GPU-accelerated, memory-intensive, or data-intensive? | Determines whether to use MPI-based clusters, high-throughput schedulers, GPU-enabled VMs, or data-centric architectures. |
+| **Scale requirements** | What is the expected throughput for compute, storage, and network? How many concurrent jobs need to run? What is the peak demand? | Influences cluster size, autoscaling strategy, and quota planning. |
+| **Performance needs** | What are the latency requirements for inter-node communication? What storage throughput is required? What is the acceptable job completion time? | Drives network selection (for example, InfiniBand), storage choice, and VM family. |
+| **Data lifecycle** | How much data is generated per job? How long must results be retained? What are the access patterns for input and output data? | Affects storage tiering, durability, and cost optimization. |
+| **Cost constraints** | What is the budget for compute resources? Can spot instances or preemptible capacity be used? What are the tradeoffs between performance and cost? | Guides use of spot instances, scheduling policies, and job retry strategies. |
+| **Compliance requirements** | Are there data residency or sovereignty requirements? What audit and logging capabilities are needed? What security controls must be enforced? | Determines region selection, encryption, logging, and access controls. |
+
 
 ## Basic Architecture
 
