@@ -90,7 +90,7 @@ Cloud‑based HPC enables elastic scaling, but costs can grow rapidly without de
 |----------------|---------|
 | Use Azure Blob Storage lifecycle management to transition aging data from hot to cool or archive tiers. | Reduces storage costs while maintaining data accessibility. |
 | Analyze resource usage with Azure CycleCloud or Azure Batch analytics to select appropriate VM sizes. | Avoids unused capacity and balances performance with cost. |
-| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/concepts/autoscale) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
+| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/how-to/configure-autoscaling.md#tab=auto-scaling) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
 | Deploy [Azure Spot VMs](/azure/virtual-machines/spot-vms) for fault-tolerant workloads with checkpointing, with fallback to standard VMs. | Lowers compute costs for interruption‑tolerant workloads. |
 
 ## Operational Excellence
@@ -114,7 +114,7 @@ Operational maturity in HPC environments requires balancing user autonomy with s
 | Recommendation | Benefit |
 |----------------|---------|
 | Define HPC cluster infrastructure using Bicep or Terraform templates with [Azure Resource Manager](/azure/azure-resource-manager/) to manage deployments as code. | Ensures consistent, reproducible deployments and prevents configuration drift. Infrastructure as code also enables faster recovery scenarios. |
-| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/how-to/run-slurm-clusters), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
+| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/qs-deploy-ccws.md#tab=how-to-deploy), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
 | Use [Azure Batch for managed job scheduling](/azure/batch/batch-job-schedule) with task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for multi-stage pipelines. | Automates complex workflows and ensures pipeline stages execute in the correct order without manual coordination. |
 | Configure [Azure Monitor](/azure/azure-monitor/) with diagnostic logs, metrics, and  [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-overview) to build operational dashboards. | Improves visibility into cluster health and job progress, enabling faster troubleshooting and proactive operations. |
 
@@ -139,7 +139,7 @@ HPC workloads require maximum computational throughput, making hardware selectio
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Select [HBv4](/azure/virtual-machines/hbv4-series) or [HBv5 series VMs](/azure/virtual-machines/hbv5-series) for CPU-intensive workloads, [NDv5 series](/azure/virtual-machines/ndv5-series) for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligns hardware capabilities with application requirements, maximizing performance efficiency and value. |
+| Select [HBv4](/azure/virtual-machines/hbv4-series) or [HBv5 series VMs](/azure/virtual-machines/sizes/high-performance-compute/hbv5-series) for CPU-intensive workloads, [NDv5 series](/azure/virtual-machines/sizes/gpu-accelerated/ndh100v5-series) for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligns hardware capabilities with application requirements, maximizing performance efficiency and value. |
 | Deploy [InfiniBand-enabled VM series](/azure/virtual-machines/workloads/hpc/enable-infiniband) (HB, HC, ND) for MPI workloads requiring low-latency, high-bandwidth node-to-node communication. | Minimizes communication overhead and enables efficient scaling for tightly coupled parallel workloads. |
 | Use Azure Managed Lustre for high‑throughput scratch storage, or Azure NetApp Files for shared POSIX‑compliant file access with consistent performance. | Prevents storage bottlenecks by sustaining concurrent access from large numbers of compute nodes. |
 | Configure [Proximity Placement Groups](/azure/virtual-machines/co-location) to place compute nodes within the same datacenter network segment. | Reduces inter‑node latency and improves message‑passing performance for communication‑intensive workloads. |
