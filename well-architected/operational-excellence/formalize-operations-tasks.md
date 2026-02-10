@@ -23,7 +23,7 @@ This guide explains how teams should define and maintain standard processes acro
 
 Break routine tasks into simple, discrete checklist items that are easy to follow and repeat. Each step should be clearly defined and actionable.
 
-Consider a use case where the workload has dependency on an open-source library. Routine task is apply updates to get security patches, bug fixes, and functionality improvements. The checklist might include items like: 
+Consider a use case where the workload has dependency on an open-source library. A routine task is to apply updates to get security patches, bug fixes, and functionality improvements. The checklist might include items like: 
 
 > [!div class="checklist"]
 >
