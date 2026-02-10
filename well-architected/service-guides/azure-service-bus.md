@@ -251,7 +251,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Collect monitoring data:** Monitor message flow health, namespace performance metrics, and dependencies. Azure Monitor integration provides essential metrics, logs, and distributed tracing capabilities for messaging infrastructure. Critical telemetry includes message throughput rates, queue depth trends, dead letter accumulation, throttling events, and connection pool utilization. Application Insights enables end-to-end tracing from publishers through Service Bus to consumers for complete visibility.
 >
- > - **Establish incident response procedures for messaging failures:** Address namespace failover making sure there's message recovery and subscription recreation. Geo-replication provides comprehensive automated regional failover with data replication, while geo-disaster recovery capabilities provide metadata-only automated regional failover when properly configured.
+ > - **Establish incident response procedures for messaging failures:** Address namespace failover making sure there's message recovery and subscription recreation. Geo-replication provides automated regional failover with data replication, while geo-disaster recovery capabilities provide metadata-only automated regional failover when properly configured.
 >
 >   Response strategies must account for message ordering guarantees, duplicate handling, validation of routing and filters, and manual intervention procedures for complex recovery scenarios while preserving delivery guarantees.
 >
