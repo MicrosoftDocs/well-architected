@@ -175,7 +175,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
- > - **Choose the right Service Bus service tier:** Service Bus provides multiple pricing tiers with different cost structures and capabilities. Factor in technical requirements that demand sessions, duplicate detection, geo-replication, and geo-disaster recovery in your selection of Service Bus tiers. Premium tier supports both geo-replication (recommended) and geo-disaster recovery for multi-region scenarios, while Standard tier lacks native geographic redundancy features. Avoid paying more for higher tiers if your design doesn't need advanced features.
+ > - **Choose the right Service Bus service tier:** Service Bus provides multiple pricing tiers with different cost structures and capabilities. Factor in technical requirements that demand sessions, duplicate detection, geo-replication, and geo-disaster recovery in your selection of Service Bus tiers. Premium tier supports both geo-replication and geo-disaster recovery for multi-region scenarios, while Standard tier lacks native geographic redundancy features. Avoid paying more for higher tiers if your design doesn't need advanced features.
 >
 >    In tier decisions, also consider capacity planning that accounts for peak volumes, concurrent connections, and message sizes. Premium tier delivers dedicated messaging units with predictable monthly costs, making it suitable for production workloads. Standard tier offers cost savings for non-production environments.
 >
