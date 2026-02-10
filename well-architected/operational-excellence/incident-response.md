@@ -18,7 +18,7 @@ When incidents occur, the workload team should be prepared with clear, structure
 
 There are two key aspects to incident response. The first is architectural, focusing on designing systems that support effective response procedures and prevent failures from cascading across components. The second is procedural, covering detection, containment, and triage to manage issues quickly, followed by root cause analysis and postmortems to prevent recurrence. Regular drills help maintain readiness and ensure the plan can be executed effectively.
 
-This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control. 
+This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control.  For detailed implementation guidance, including stepwise processes and playbooks, see the companion article: [Create an effective incident management plan to manage disruptions](../design-guides/incident-management.md).
 
 
 **Definitions**
