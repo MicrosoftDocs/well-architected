@@ -88,7 +88,7 @@ In your ADR, include:
 >
 > Start with tools like SonarQube, Roslyn, and NDepend to map explicit dependencies. GitHub Copilot then identifies undocumented or implicit dependencies by analyzing the codebase and cross-referencing design documentation. This keeps your architectural documentation up to date.
 >
-> For advanced solutions, use an agent-based approach that ingests historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time. Train predictive models on this data to improve accuracy.
+> For advanced solutions, use an agent-based approach that ingests historical build records, incident logs, deployment timelines, and codebase snapshots to perform forensic analysis over time.
 
 ## Implement standards for addressing technical debt
 
@@ -126,9 +126,9 @@ Implement a variety of testing types, such as unit, smoke, integration, and acce
 >
 > Create purpose-built test environments with the right changes, dependencies, and applicable mock services implementations to validate a specific change. Start with a library of templates and mock services, then evolve to autonomously provision environments from custom IaC without developer input.
 >
-> Detect recurring patterns in exploratory and UAT sessions, then automatically script repetitive cases.
+> AI can detect recurring patterns in manual testing including exploratory and UAT sessions. Then automatically pre-validate common paths with AI-generated tests.
 >
-> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Consider an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases. Plan for significant integration work and maintain human oversight for any autonomous capabilities.
+> Provide AI with incident descriptions, postmortems, and stack traces so it can turn incident data into proactive tests that align with your standards and compliance requirements. Consider an agent-based solution grounded in incident data and historical test runs to consistently produce high-quality test cases.
 
 **Require [DevSecOps](/devops/operate/security-in-devops) practices as part of your standard operating procedures.** Your workload team should understand the security practices related to software development and quality assurance. They must follow these practices without exception. For more information, see [Security development lifecycle guide](../security/secure-development-lifecycle.md).
 
