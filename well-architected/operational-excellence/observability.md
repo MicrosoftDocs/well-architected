@@ -70,7 +70,7 @@ It's common to use a combination approach. For example, monitoring agents can us
 
 ## Standardize data consolidation
 
-Move telemetry out of local silos and consolidate it into a central repository, if that's mandated by the organization. For multi-region solutions, collect and store data regionally first, then aggregate it centrally. However for mission-critical workloads, autonmous storage of data is recommended. 
+Move telemetry out of local silos and consolidate it into a central repository, if that's mandated by the organization. For multi-region solutions, collect and store data regionally first, then aggregate it centrally. However for mission-critical workloads, autonomous storage of data is recommended. 
 
 Use consistent formats and collection methods so data is accessible for analysis, dashboards, alerting, and reporting. Avoid manual retrieval from components, as it adds overhead and inconsistencies.
 
