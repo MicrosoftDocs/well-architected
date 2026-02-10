@@ -50,11 +50,13 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Consider limits that might pose design restrictions:** Azure Service Bus [quotas and tier-specific limits](/azure/service-bus-messaging/service-bus-quotas) affects the design. Choose a tier that gives you headroom for message processing capacity and avoids costly redesign. For example, if your evaluation of peak and burst throughput indicate higher limits, then Premium might be suitable. Similarly, for larger payloads, consider the Premium tier.
 >
+>   Detect and handle [`QuotaExceeded`](/azure/service-bus-messaging/service-bus-messaging-exceptions-latest#reason-quotaexceeded) exceptions in your application logic. If this occurs, drain messages from the queue or check if the message time-to-live settings are causing storage buildup. Use the [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker) to avoid continued retries while the quota is exceeded.
+>
 > - **Anticipate potential failures through failure mode analysis:** Failure mode analysis provides a systematic approach to anticipating potential failure scenarios and developing mitigation strategies to ensure messaging service resilience.
 >
 >    | Failure | Mitigation |
 >    |---------|------------|
->    | Service Bus namespace is not reachable | Use Azure Monitor to set up alerts for Service Bus availability. Configure geo-disaster recovery to automatically failover to a secondary region during outages. |
+>    | Service Bus namespace is not reachable | Use Azure Monitor to set up alerts for Service Bus availability. Catch exceptions from the client SDKand check the [`IsTransient`](/dotnet/api/azure.messaging.servicebus.servicebusexception.istransient) property to determine if a retry is appropriate. Configure geo-disaster recovery to automatically failover to a secondary region during outages. |
 >    | Message processing failures create poison messages | Configure dead letter queues to isolate undeliverable messages. Implement client retry policies with exponential backoff and circuit breaker patterns. |
 >    | High message volumes exceed throughput limits | Use Azure Monitor to track throughput metrics and set up alerts. Enable auto-scaling for Premium tier messaging units to handle traffic spikes. |
 >
@@ -62,9 +64,12 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - Instance-Level Redundancy: At the foundational level, distribute messaging across separate Service Bus instances to achieve instance-level redundancy. This >requires the application to implement custom failover logic or load-balancing strategies across multiple messaging endpoints.
 >
->   - Zonal-Level Redundancy: Enable availability zones to protect against datacenter-level failures. In the event of such a failure, the application may experience >temporary disruption; however, Service Bus will automatically replicate message data and metadata across multiple availability zones to maintain continuity.
+>   - Zonal-Level Redundancy: Enable availability zones to protect against datacenter-level failures. In the event of such a failure, the application may experience temporary disruption; however, Service Bus will automatically replicate message data and metadata across multiple availability zones to maintain continuity.
 >
->   - Region-Level Redundancy: For workloads demanding even greater resilience, consider implementing region-level redundancy. This can be achieved using an >active-active configuration across multiple namespaces in different regions.
+>   - Region-Level Redundancy: For workloads demanding even greater resilience, consider implementing region-level redundancy. This can be achieved using active or passive replication patterns:
+>
+>     - **Active replication**: The client sends every message to both regions. The receiver listens on both. Messages require a unique identifier so the client can discard duplicates.
+>     - **Passive replication**: The client sends to one region, falling back to the other on error. The receiver listens on both. This reduces duplicate messages, but the receiver must still handle them.
 >
 >    Ensure you select a Service Bus tier that supports these redundancy features, such as the Premium tier.
 >
@@ -98,7 +103,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Configure self-preservation mechanisms and resilience patterns:** Service Bus includes built-in self-preservation mechanisms designed to prevent failures from cascading across the messaging infrastructure. These protections can be configured at three levels: message-level, client-level, and namespace-level.
 >
->   - Message-Level Protection: Configure dead-letter queues to automatically isolate undeliverable messages, preventing them from blocking healthy message flow. Set parameters such as maximum delivery count and time-to-live (TTL) based on your workload requirements. Enable duplicate detection to avoid message reprocessing during retry scenarios by specifying a duplicate detection history window.
+>   - Message-Level Protection: Configure dead-letter queues to automatically isolate undeliverable messages, preventing them from blocking healthy message flow. Set parameters such as maximum delivery count and time-to-live (TTL) based on your workload requirements.
+>
+>     Use `PeekLock` mode (not Receive and Delete) to ensure messages aren't lost if a receiver fails. If the lock expires, the message becomes available to other receivers. If the message exceeds the maximum delivery count, it moves to the dead-letter queue.
 >
 >   - Client-Level Protection: Use client SDKs with built-in retry policies that include exponential backoff and circuit breaker capabilities to mitigate cascading failures. Implement connection pooling and client caching to reduce resource exhaustion, especially during high-throughput operations.
 >
@@ -115,6 +122,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | Enable multiple [concurrent receivers](/azure/service-bus-messaging/service-bus-performance-improvements) to increase message processing throughput and fault tolerance. Configure receiver patterns that balance parallelism with reliability requirements.<br><br>Use [partitioned entities](/azure/service-bus-messaging/service-bus-partitioning) to distribute load across multiple message brokers, understanding that message ordering is guaranteed only within individual partitions. | Distributes load across multiple message brokers for enhanced scalability while increasing overall message throughput through parallel processing capabilities. |
 | Set up [Azure Monitor alerts](/azure/service-bus-messaging/monitor-service-bus-reference) for critical Service Bus reliability metrics including dead letter message count thresholds, server error rates above baseline, and throttling events indicating capacity constraints. | Reduces mean time to detection for reliability problems and provides [automated alerting](/azure/azure-monitor/alerts/alerts-create-new-alert-rule) for critical reliability events.<br><br>Enables proactive detection of message delivery issues while identifying capacity constraints before availability impact. |
 | Enable [dead letter queues](/azure/service-bus-messaging/service-bus-dead-letter-queues) for all production queues and topics with proper monitoring procedures to track poison message accumulation and implement cleanup strategies. | Prevents poison messages from blocking healthy message processing and supports operational troubleshooting through dead letter queue inspection capabilities. |
+| Enable [duplicate detection](/azure/service-bus-messaging/duplicate-detection) to prevent duplicate messages from being *sent* to the queue within a specific history window.<br><br>This feature does not prevent a receiver from processing the same message more than once, so idempotent application logic is still required. | Filters out redundant messages created by producer retries or transient network issues. This feature does not prevent a receiver from processing the same message more than once, so idempotent application logic is still required, but the exposure to duplicate messages is reduced. |
 | Use separate namespaces to provide isolation between environments and prevent cross-environment failure propagation. Configure namespace-level security and access controls appropriately.<br><br>Implement Service Bus client [retry policies](/dotnet/api/azure.messaging.servicebus.servicebusclientoptions.retryoptions) with exponential backoff and circuit breaker patterns to handle transient failures gracefully. | Reduces application complexity by handling retries transparently while providing automatic protection against transient service issues.<br><br>Namespace isolation prevents cross-environment failure propagation and enables independent scaling and management of different workload components. |
 | Establish automated Service Bus configuration backup with [Azure Resource Manager templates](/azure/azure-resource-manager/templates/overview) that includes namespace metadata and definitions. Queue definitions, topic subscriptions, and access policies require backup through version control. | Automated backup procedures reduce manual effort and human error while version control for messaging infrastructure changes improves management.<br><br>Reduces recovery time objectives through automation and minimizes human error during recovery procedures. |
 
