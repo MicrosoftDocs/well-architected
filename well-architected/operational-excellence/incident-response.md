@@ -52,7 +52,7 @@ The plan must also include the **core procedures** the team will follow during d
 
 Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
 
-From human resourcing perspective, the team needs to balance their regular responsibilities with incident response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
+From a human resourcing perspective, the team needs to balance their regular responsibilities with incident response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, or central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
 
 > [!NOTE]
 > Work with your organization to prepare those support contracts in advance so that they are readily available during an incident.
@@ -73,7 +73,7 @@ Achieve this through techniques such as segmentation of resources, decoupling co
 
 A strong incident response plan depends on a well-designed monitoring stack. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** . An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
 >
 > Mitigate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
 
