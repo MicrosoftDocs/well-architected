@@ -20,7 +20,7 @@ If you don't consider tradeoffs and recommendations for operational excellence, 
 
 |&nbsp;|Code  |Recommendation  |
 |-|-|-|
-| &#9744; | [OE:01](devops-culture.md)  | **Define your standard practices to develop and operate your workload.** Align team members' specializations to clear practices for designing, deploying, and operating the workload, ensuring accountability, continuous improvement, and a blameless culture that supports learning..|
+| &#9744; | [OE:01](devops-culture.md)  | **Define your standard practices to develop and operate your workload.** Align team members' specializations with clear practices for designing, deploying, and operating the workload to ensure accountability, continuous improvement, and a blameless culture that supports learning. |
 | &#9744; | [OE:02](formalize-operations-tasks.md) | Use standardization as a way to make routine, ad-hoc, and emergency operations consistent and predictable.   |
 | &#9744; | [OE:03](formalize-development-practices.md) | Formalize processes across the full software development lifecycle from ideation to delivery, and make them transparent to the team and stakeholders.|
 | &#9744; | [OE:04](tools-processes.md) | **Enhance software development and quality assurance** by implementing industry-standard practices. Ensure clear role definitions and consistent processes by standardizing tools, source control, design patterns, documentation, and style guides.|
