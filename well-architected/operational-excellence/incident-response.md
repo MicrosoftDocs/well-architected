@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:08**| stablish a clear, structured incident management process with defined roles, documented procedures, and architecture designed for rapid detection, diagnosis, and recovery. |
+|**OE:08**| Establish a clear, structured incident management process with defined roles, documented procedures, and architecture designed for rapid detection, diagnosis, and recovery. |
 |---|---|
 
 When incidents occur, the workload team should be prepared with clear, structured procedures.  
