@@ -16,7 +16,6 @@ ms.topic: concept-article
 
 This guide describes the recommendations for designing and implementing your workload to enable automation. Design your workload with automation in mind to ensure that routine tasks such as provisioning resources, scaling, and deployments are performed quickly and reliably. Automation simplifies maintenance tasks and allows you to update, patch, and upgrade your systems more efficiently.
 
-
 ## Design workload components to support automation
 
 You can design your workload to support automation from the ideation phase to the on-going improvement phase. First, consider how you want to apply automation in your workload to help ensure that you're putting the necessary pieces in place. Think about your workload in terms of the Well-Architected Framework pillars to help plan for the types of automation you'll use. You can automate many functions of security, reliability, performance, operations, and cost control.
@@ -37,6 +36,8 @@ Design with automation in mind to minimize refactoring after your workload is ru
 
 After your workload is running in the cloud, it's important to prioritize continuous improvement. Observe your workload in action, analyze usage patterns, and review customer behavior related to your workload to identify areas where you can improve automation. Look for ways to enhance existing automation or introduce new automation to improve your customer experience. For example, you might have automated scaling enabled, but the workload increase is short-lived. You can integrate scale-in automation to decrease CPU usage when the load drops below the threshold.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify and improve automations that are regularly bypassed or manually overridden. Integrate automation logs, IcM systems, and monitoring data with AI tools to find patterns that trigger exceptions or bypasses. Agent-based solutions grounded in your project data can evaluate the effectiveness of your automations and recommend updates or retirement.
+
 The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
 
 ## Automate bootstrapping
@@ -44,6 +45,10 @@ The following sections of this guide offer recommendations on specific areas of 
 Bootstrapping refers to the configuration updates to a resource that must be made after it's provisioned, but before it's available as part of the workload pool. Bootstrapping is often associated with virtual machines (VMs), but many other resources must be set up as part of the deployment process including platform as a service (PaaS) technologies and container hosting technologies like Azure Kubernetes Service (AKS).
 
 Your cloud platform might provide bootstrapping solutions for you, which you should use where possible. For example, you can use VM extensions in Azure to make predefined configuration changes during the deployment process and customize your configuration changes by injecting PowerShell scripts.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Tools like Copilot or Claude Code can streamline repetitive configuration tasks like DSC setups, VM initialization, and environment variable management. Give these tools secure read-only access to analyze your code and design artifacts, then generate and validate configuration code in your IDE using quality prompts.
+>
+> For advanced automation, agent-based solutions can monitor production for drift, determine the intended state, and automatically update bootstrapping definitions. These solutions require significant engineering investment and ongoing human oversight when you integrate them with your existing tools.
 
 ## Incorporate automation into access management
 
