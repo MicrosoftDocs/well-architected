@@ -18,7 +18,6 @@ Software development is more than just producing code. Developers need to clearl
 
 This guide provides recommendations on how to run software development in a structured, predictable, and collaborative manner.
 
-
 ## Establish standards for managing change
 
 In software development, every unit of work is a change. Even new features represent a shift from a non-existent state to an implemented one.
