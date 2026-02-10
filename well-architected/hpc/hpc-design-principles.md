@@ -90,7 +90,7 @@ Cloud‑based HPC enables elastic scaling, but costs can grow rapidly without de
 |----------------|---------|
 | Use Azure Blob Storage lifecycle management to transition aging data from hot to cool or archive tiers. | Reduces storage costs while maintaining data accessibility. |
 | Analyze resource usage with Azure CycleCloud or Azure Batch analytics to select appropriate VM sizes. | Avoids unused capacity and balances performance with cost. |
-| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/how-to/configure-autoscaling.md#tab=auto-scaling) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
+| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/how-to/configure-autoscaling.md#auto-scaling) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
 | Deploy [Azure Spot VMs](/azure/virtual-machines/spot-vms) for fault-tolerant workloads with checkpointing, with fallback to standard VMs. | Lowers compute costs for interruption‑tolerant workloads. |
 
 ## Operational Excellence
@@ -114,7 +114,7 @@ Operational maturity in HPC environments requires balancing user autonomy with s
 | Recommendation | Benefit |
 |----------------|---------|
 | Define HPC cluster infrastructure using Bicep or Terraform templates with [Azure Resource Manager](/azure/azure-resource-manager/) to manage deployments as code. | Ensures consistent, reproducible deployments and prevents configuration drift. Infrastructure as code also enables faster recovery scenarios. |
-| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/qs-deploy-ccws.md#tab=how-to-deploy), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
+| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/qs-deploy-ccws.md#how-to-deploy), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
 | Use [Azure Batch for managed job scheduling](/azure/batch/batch-job-schedule) with task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for multi-stage pipelines. | Automates complex workflows and ensures pipeline stages execute in the correct order without manual coordination. |
 | Configure [Azure Monitor](/azure/azure-monitor/) with diagnostic logs, metrics, and  [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-overview) to build operational dashboards. | Improves visibility into cluster health and job progress, enabling faster troubleshooting and proactive operations. |
 
