@@ -57,7 +57,7 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Monitoring and alerting**: Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices to monitor and alert on anomalies.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time. Maintain human oversight to verify and approve all AI-generated changes.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time.
 
 ## Choose an appropriate automation tool
 
@@ -73,8 +73,7 @@ For any tool that you use to build your automation, make it easily accessible an
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You’ll boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
-> For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase. Maintain human oversight for any agent-based or autonomous capabilities.
-
+> For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
 
 ## Considerations
 
