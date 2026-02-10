@@ -113,14 +113,9 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can handle  repetitive tasks like reviewing logs, tickets, and discussions, so incident managers can stay focused on recovery efforts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
 >
-> Start by using AI to summarize reports, logs, transcripts, and draft postmortems so teams capture incident details quickly. As the workload evolves, apply AI to correlate data across multiple systems, detect patterns and hidden dependencies, and highlight recurring signals that suggest deeper issues.
->
-> As the AI-driven processes evolve, enable expertise-aware escalation that routes incidents to the most effective responders based on past resolutions, code ownership, and system knowledge. AI can provide proactive insights that predict failures or recommend preventive actions while humans retain validation and decision-making.
->
-> Progress incrementally: start with simple GenAI prompts, move to single-agent solutions, then integrate agentic workflows with Azure-native agents such as SRE agent and Azure Copilot and third-party tools. If those tools don't meet the requirements, build custom agentic GenAI solutions or predictive ML models integrated with monitoring and development tools.
-
+> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
 
 ## Bring agility and consistency through automation 
 
