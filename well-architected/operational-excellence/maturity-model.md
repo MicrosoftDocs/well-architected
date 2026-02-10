@@ -132,9 +132,9 @@ Effectiveness is measured, not assumed. Use dashboards to track metrics such as 
 
 ##### Examples
 
-- [OE:03 Formalize development practices](./formalize-development-practices.md#standardize-how-development-work-is-recorded).  Validate work descriptions and acceptance criteria against organizational templates to enforce a consistent quality bar. 
+- [OE:03 Formalize development practices](./formalize-development-practices.md).  Validate work descriptions and acceptance criteria against organizational templates to enforce a consistent quality bar. 
 - [OE:04 Standardize tools and processes](./tools-processes.md#implement-standards-for-addressing-technical-debt). Review the codebase to enforce quality bar and organizational standards and recording gaps as technical debt.
-- [OE:05 Use infrastructure as code](./infrastructure-as-code-design.md#enforce-security-in-iac-code).Enforce security standards by reviewing code, IaC templates, and designs to detect insecure patterns, policy violations, and weak configurations.
+- [OE:05 Use infrastructure as code](./infrastructure-as-code-design.md#enforce-security-in-iac-code). Enforce security standards by reviewing code, IaC templates, and designs to detect insecure patterns, policy violations, and weak configurations.
 
 #### &#10003; Action optimization agents
 
