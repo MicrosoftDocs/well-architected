@@ -1,5 +1,5 @@
 ---
-title: Architecture strategies for formalizing software development management practices
+title: Architecture strategies for formalizing software development practices
 description: Learn how to establish standards for managing your workload team's software development practices.
 author: claytonsiemens77
 ms.author: csiemens
@@ -7,18 +7,20 @@ ms.date: 11/15/2023
 ms.topic: concept-article
 ---
 
-# Architecture strategies for formalizing software development and management
+# Architecture strategies for formalizing software development practices
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:03**| Formalize software ideation and planning processes. Draw from established industry and organizational standards. Use a common, prioritized backlog and sufficiently detailed specifications. Based on outcomes, drive continuous improvements in your planning process. |
+|**OE:03**| Formalize processes across the full software development lifecycle from ideation to delivery, and make them transparent to the team and stakeholders. |
 |---|---|
 
-This guide describes the recommendations for managing software development practices in accordance with established standards. Your team's ability to produce high quality software relies on a structured, collaborative approach to development planning. Product owners and managers must be able to clearly understand and articulate to stakeholders the work that developers are doing at any time in a development cycle. Conversely, developers must understand the goals of the development cycle via well-written features, user stories, and acceptance criteria. Established standards define how development practices should be performed and allow the workload team to collaborate effectively, reducing the risk of confusion on goals and expectations.
 
+Developers need well-written business justification, functional specifications, and acceptance criteria to understand goals, while product owners and managers need clear visibility into the work developers are performing during each development cycle. Standardized practices ensure everyone is aligned, reducing confusion and improving delivery predictability.
 
-Formalize your software development practices to help ensure that product owners, project managers, and developers understand the goals of each sprint and deliver consistent quality to stakeholders.
- To review guidance on development practices, see the [continuous integration guide](release-engineering-continuous-integration.md).
+Formalizing development operations helps make it to review progress, manage expectations, and continuously improve workflows. 
+
+This guide provides recommendations for managing software development practices using established standards. Consistent, well-defined processes help teams produce high-quality software and collaborate effectively.
+
 
 ## Establish collaboration and communication standards
 
