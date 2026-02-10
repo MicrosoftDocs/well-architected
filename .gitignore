@@ -7,15 +7,13 @@ _repo.*/
 
 .openpublishing.buildcore.ps1
 .DS_Store
-azure-update-report/*.*
-
-.github\agents
-.github\instructions
-.github\prompts
-.github\memory
-.vscode
+azure-update-report/
+.github/agents
+.github/instructions
+.github/prompts
+.github/memory
+.vscode/
 well-architected/service-guides/*.yaml
-well-architected/service-guides/*_wip/
 wip/
 logs/
 node_modules/
