@@ -11,13 +11,16 @@ ms.topic: concept-article
 
 High Performance Computing (HPC) workloads solve compute‑intensive problems by running tasks across clusters of machines in parallel. Designing HPC workloads on Azure requires careful alignment between workload behavior, infrastructure choices, and operational practices.
 
-This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable. It applies to both new deployments and existing HPC environments being optimized.
+This article describes a design methodology that you can use to systematically define and refine requirements as it applies to the characteristics and common problems of HPC workloads. If you're uncertain about various design decisions and technology options, revisit this methodology to stay aligned with the patterns that're applicable to this class of workloads. It applies to both new deployments and existing HPC environments being optimized.
+
+
+This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable. [ This sentence suitable for Design principle]
 
 ## Understand workload coupling and communication
 
-HPC workloads can be categorized in several ways, such as by compute intensity, data access patterns, acceleration requirements, or job throughput. The [Getting started](get-started-overview.md) guidance introduces these broader workload categories to help establish overall context.
+HPC workloads can be categorized in several ways, such as by compute intensity, data access patterns, acceleration requirements, or job throughput. The get started guidance introduces these broader workload categories to help establish overall context.
 
-This section focuses specifically on workload coupling and communication patterns, because coupling has a direct and disproportionate impact on network selection, node placement, and performance-sensitive design decisions. Other workload characteristics such as whether a workload is GPU‑accelerated, data‑intensive, or high‑throughput are important, but they don't, by themselves, dictate the same low‑level architectural constraints.
+Focus on workload coupling and communication patterns. Because coupling has a direct and disproportionate impact on network selection, node placement, and performance-sensitive design decisions. Other workload characteristics such as whether a workload is GPU‑accelerated, data‑intensive, or high‑throughput are important, and can lead to architectural constraints to an extent.
 
 HPC workloads are composed of components with different communication patterns. Identifying these patterns early is critical because they directly influence compute, network, and placement decisions.
 
@@ -80,8 +83,6 @@ Monitor the signals that reveal how jobs and clusters behave at scale: job compl
 Automation in HPC environments works best when it’s intentional and measured. Use infrastructure-as-code to deploy clusters consistently, then automate scaling, recovery, and routine maintenance around workload demand. 
 
 Introduce automation incrementally, validate behavior under failure conditions, and use observability signals to confirm system state. The goal is reducing manual effort while retaining control over performance and reliability.
-
-Well-designed HPC environments maximize performance where it matters, remain resilient under failure, and operate efficiently as demand evolves.
 
 
 ## Next step
