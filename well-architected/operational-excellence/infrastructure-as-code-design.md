@@ -3,7 +3,7 @@ title: Architecture strategies for using infrastructure as code
 description: Learn how to use infrastructure as code (IaC) as the standard for all of your infrastructure deployments.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 

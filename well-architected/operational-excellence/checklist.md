@@ -3,7 +3,7 @@ title: Design review checklist for Operational Excellence
 description: Learn how to incorporate an operational excellence approach in your workload for repeatable, reliable, and safe deployments of infrastructure and code.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---

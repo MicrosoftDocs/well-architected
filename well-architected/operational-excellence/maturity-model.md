@@ -3,7 +3,7 @@ title: Operational Excellence Maturity Model
 description: Understand the maturity model levels of the Operational Excellence pillar.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 02/04/2026 
+ms.date: 02/11/2026 
 ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
