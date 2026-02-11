@@ -40,6 +40,10 @@ Use your cloud platform's native tools and other industry-proven tools that nati
 > [!NOTE]
 > Be mindful that as cloud providers and third-party developers update their tools and APIs, you can run the risk of unanticipated issues when using the latest version in your workload. Ensure that you thoroughly test new versions of tools and APIs before adopting them. Likewise, avoid using the 'latest' flag when calling on a tool or API in your deployment code. Be intentional about calling the latest known good version for your workload.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Developing and validating standards-based IaC templates, such as Bicep and Terraform, is often time-consuming and error-prone. AI streamlines template creation and validation, accelerating your modernization efforts. Review all AI-generated code to meet accuracy and compliance requirements.
+>
+> AI can reduce deployment risks by reviewing templates for misconfigurations and validating compliance with organizational policies. It can simulate, forecast, and summarize risks with natural language instructions.
+
 ## Use the right tool for the task
 
 Use the right tools for specific tasks and infrastructure types. Multiple tasks, beyond deployments, are involved in an infrastructure lifecycle. Configuration needs to be applied and maintained, for example, and the tool you use to script deployments, like Bicep, might not be the best tool for every management operation. 
@@ -50,10 +54,12 @@ Think about all the tasks and types of infrastructure that are in scope for your
 
 ## Support multiple environments
 
-Your scripts and templates should be flexible enough to easily deploy a variety of environments. Use parameters, variables, and configuration files to deploy a standard set of resources that can be modified to deploy any environment in your code promotion stack. Abstract settings like resource size, count, name, locations to deploy into, and some configuration settings. Be careful not to abstract too much, however. There are settings that can be abstracted with a parameter or variable that might not actually change over the course of the workload lifecycle, or that might change rarely. They shouldn't be abstracted.
+Your scripts and templates should be flexible enough to easily deploy a variety of environments. Use parameters, variables, and configuration files to deploy a standard set of resources that can be modified to deploy any environment in your code promotion stack. Abstract parameters like resource size, count, name, deployment location and configuration settings. Be careful not to abstract too much, however. There are settings that can be abstracted with a parameter or variable that might not actually change over the course of the workload lifecycle, or that might change rarely. They shouldn't be abstracted.
 
 > [!NOTE]
-> Avoid using different IaC assets for different environments. You shouldn't have different Terraform files for production and test environments, for example. All environments should use one file. You can manipulate that file to deploy into different environments as needed.
+> Use the same IaC assets in various environments for consistency as much as possible. For example, avoid having different Terraform files for production and test environments. All environments should use a single file that you can manipulate to deploy into different environments.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Keep your environment consistent and prevent configuration issues that affect quality or stability. AI can review your application code in pull requests to identify required IaC updates and recommend changes early. GitHub Copilot can analyze your code, design documents, and requirements to suggest updates, or enable developers to request infrastructure changes in natural language. Advanced agent-based solutions can infer infrastructure needs from code and other sources and generate pull requests with recommended IaC and configuration changes.
 
 ## Use the right balance when encapsulating functionality
 
@@ -87,6 +93,10 @@ Apply the principle of "security as code" to ensure that security is part of the
 
 **Test routine and non-routine activities.** Test deployments, configuration updates, and recovery processes, including deployment-rollback processes. 
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To strengthen your security posture and accelerate response times, integrate AI into your security reviews and threat modeling processes. 
+>
+> Enhance your existing security process with AI tools and features to highlight coding patterns that aren't safe and suggest secure alternatives. Generative AI can analyze IaC templates and architectural diagrams, then generate threat models and mitigations to support continuous threat modeling. Regularly update architectural diagrams and IaC templates.
+
 ## Adopt an immutable deployment model
 
 The choice between deploying mutable versus immutable infrastructure depends on a few factors. If your workload is business critical, it's best to use immutable infrastructure. Likewise, if you have a mature infrastructure design that's based on [deployment stamps](/azure/architecture/patterns/deployment-stamp), using immutable infrastructure can make sense, because you can deploy application code and new infrastructure reliably. Conversely, using mutable infrastructure can be a better choice if your [safe deployment practices](safe-deployments.md) dictate that rolling forward with deployments when mitigable deployment issues arise is the preferred option. In this case, you would probably update the infrastructure in place.
@@ -103,7 +113,7 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 
 ## Azure facilitation
 
-[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
+[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure Pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
 
 [Terraform](/azure/developer/terraform/overview) is another declarative IaC tool that's fully supported in Azure. It can be used to deploy and manage infrastructure, and can be integrated into your CI/CD pipeline.
 
@@ -124,7 +134,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
 - [Bicep](/azure/azure-resource-manager/bicep/overview)
-- [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
+- [Azure Pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 

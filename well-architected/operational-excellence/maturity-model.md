@@ -3,7 +3,7 @@ title: Operational Excellence Maturity Model
 description: Understand the maturity model levels of the Operational Excellence pillar.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 07/14/2025 
+ms.date: 02/04/2026 
 ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
@@ -18,8 +18,137 @@ When systems go live in production, operations become even more advanced. Teams 
 
 The most mature stage is all about optimization and innovation. Here, teams operate at scale, continuously adapting systems in real time to meet evolving business needs and technological shifts. However, this isn't a fixed destination; it's a dynamic mindset of always improving, always adapting.
 
-The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
+The model is structured into five distinct maturity levels, each with a primary goal and a set of core strategies. For meaningful productivity gains, start evaluating where AI can be embedded into your operations from the very beginning. Use the tabbed views below to explore each level. Be sure to also review the highlighted tradeoffs and associated risks as you progress.
 
+# [:::image type="icon" source="../_images/ai.svg"::: **AI opportunities**](#tab/ai-opportunities)
+
+![Goal icon](../_images/goal.svg) **Modernize operations by intentionally embedding AI-driven tools to reduce manual, error-prone toil and deliver measurable value.**
+
+Evaluate operational workflows end to end to identify where AI can improve consistency and productivity, while pragmatically balancing cost, risk, and time to value.
+
+#### Buy: Off-the-shelf GenAI solutions
+
+Off-the-shelf GenAI tools have built-in AI capabilities. They can be broadly categorized by intent. One is generic, interactive assistance tools like GitHub Copilot, which are context-dependent and can be used for a variety of tasks. These tools require little to no setup and provide context‑aware assistance embedded directly into existing developer workflows. The other category is purpose-built tools and agents such as deployment agents, SRE agents, which are designed for specific functions. They can be integrated for developer productivity via IDE and CLI assistants. 
+
+There are also Azure services that have integrated AI features, which can come with additional costs.
+
+#### Build: GenAI with custom implementation
+
+Custom GenAI embeds AI directly into operational and development workflows tailored to a specific workload. Custom agents can pull context from tickets, code repositories, metrics, and monitoring systems to produce insights that reflect the current state of operations and act within defined boundaries.
+
+More advanced implementations can generate and validate code or infrastructure against internal standards, route work based on expertise or availability, and apply custom ML models for specialized predictions. This approach enables deeper automation and tighter alignment with organizational processes, but it requires ongoing investment in engineering, data quality, governance, security, and maintenance.
+
+
+#### **AI functional patterns**
+The following are some of the most common and approachable AI capabilities used in practice, but this list is not exhaustive. Use this as inspiration to evaluate where in your operations you can inject AI for productivity gains. 
+
+> [!NOTE] 
+>
+> Adoption should progress deliberately over time: Begin with focused use cases such as summarization or content generation, then introduce agentic interfaces that reason over tasks and workflows as capability and confidence grow. At higher levels of maturity, multi‑agent systems operate across integrated systems and data to support more complex operational scenarios.
+
+> [!div class="checklist"]
+>
+> - [**Summarization**](#-summarization-agents). AI tools that read and condense information from documents, reports, logs, or conversations, producing concise summaries, key points, using language and terminology the users will understand.
+> - [**Recommendations**](#-recommendation-agents). AI tools that analyze multiple data sources together to detect patterns and provide context-aware recommendations for operational decisions.
+> - [**Artifact generation**](#-artifact-generation-agents). AI tools that convert written requirements into executable code, infrastructure definitions, and automated tests while adhering to defined standards.
+> - [**Policy validation**](#-policy-validation-agents). AI tools that review code, configurations, and workflows against policies, standards, and design documents to enforce compliance.
+> - [**Optimization actions**](#-action-optimization-agents). AI tools that use insights across artifacts to route work and take action on decisions.
+
+> [!CAUTION] 
+> 
+>   Safeguards are not hypothetical when involving agents. One unchecked model, one misapplied automation, or one over-permissive access setting can propagate errors, leak sensitive data, or compromise operational integrity at scale. 
+> 
+>   To protect sensitive data, all platforms must enforce strict PII masking and security trimming. Users see only the outputs they are authorized to access. This means AI output may be incomplete, but full visibility comes at the cost of potential exposure. 
+> 
+>  Human review remains a must, especially for architectural, security, and operational concerns. Reviews should focus on intent, risk, and fit with organizational standards rather than low-level syntax. Feedback from reviews should be captured to continuously improve prompts, templates, and standards.
+
+
+#### &#10003; Summarization agents
+
+Summarization agents typically use a simple, Copilot-style architecture with straightforward retrieval and response generation, making them relatively easy to implement and operate.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Summarization carries inherent correctness risk, particularly when synthesizing across multiple documents. While errors cannot be fully eliminated, operational risk can be reduced through explainability and incremental navigation. Systems should clearly indicate what content has been summarized and allow users to drill into the source material for validation.
+
+Inference costs can accumulate over time. Route straightforward requests to smaller, lower-cost models, and reserve more advanced models for complex multi-document synthesis, accepting the additional orchestration this may require. Provide concise initial summaries and allow users to drill down into supporting details and source content.
+
+Data management introduces additional hidden costs. Actively manage the data lifecycle to prevent index bloat caused by outdated documents or redundant versions. When historical context is necessary, retain prior content through deliberate versioning rather than uncontrolled duplication.
+
+Direct user feedback is valuable. Capture input on summary quality and usefulness, and use it to evaluate model routing decisions, index effectiveness, and the impact of caching or preprocessing strategies.
+
+##### Examples
+
+- [OE:01 DevOps culture](./devops-culture.md#establish-clear-roles-and-responsibilities). Extract structured elements such as action items, owners, deadlines, and risk statements from unstructured documents.
+- [OE:08 Incident response](./incident-response.md#turn-rca-findings-into-system-improvements). Summarize incidents, postmortems, security findings, and audit reports to quickly understand scope, impact, and outcomes
+
+#### &#10003; Recommendation agents
+
+AI agents that provide recommendations rely on reasoning-oriented models capable of analyzing multiple data sources. These models must have sufficient analytical depth to support cross-source correlation rather than relying on lightweight or purely generative approaches.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** While broader scope can add value, cross-referenced sources may be misweighted or misaligned with the original intent; over-reliance on such AI-generated responses risks amplifying errors and potentially compounding the problem with iterative calls. 
+>
+>   They typically increase per-request cost and inference latency. Minimize external calls by favoring fewer, richer queries over many fine-grained ones. Accessing and correlating multiple external sources at runtime can be expensive, so parallelize data access and, where feasible, preload data into shared indexes.
+
+Working with multiple sources adds integration complexity. Errors in a single source can propagate through the recommendation pipeline. Apply validation and security guardrails when combining inputs. When low latency is required, query sources in parallel. Preprocess steps that do not depend on the specific request, such as classification, enrichment, and lookups. Cache intermediate results and frequently used features to reduce repeated computation.
+
+Treat recommendation engines as decision-support systems rather than black boxes. Explainability is central to building trust and operational reliability. Systems should provide clear rationales for recommendations, highlighting key signals and contributing data sources. Consider including confidence indicators (for example, 0–100%) to help downstream systems or users gauge reliability.
+
+##### Examples
+
+- [OE:06 Designing a workload supply chain](./workload-supply-chain.md#incorporate-comprehensive-types-of-testing). Find customer-focused edge cases and scenarios that are  hard to detect and often overlooked to include in your test suite.
+- [OE:08 Incident management](./incident-response.md#allocate-sufficient-resources-for-incident-response-infrastructure-processes-and-staff). Validate vendor transition plans by having AI simulate the vendor support team using only the provided documentation, playbooks, health models, and escalation paths. The simulation highlights gaps and hidden dependencies before the handoff.
+- [OE:09 Implementing automation](./automate-tasks.md#integrate-automation-into-your-workload). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
+
+#### &#10003; Artifact generation agents
+
+AI agents can assist in generating code, infrastructure definitions, and tests, but their outputs may become part of a production workload. Code generation is inherently non-deterministic, and translating natural-language requirements into executable artifacts can produce results that diverge from the original intent. For this reason, clear ownership, explicit controls, and integration into existing engineering practices are essential. AI is most effective where the problem space is well understood and variation is limited, such as repetitive or standardized coding tasks, and guardrails should be applied to guide its outputs.
+
+Selecting the right models is critical. Use models suited for code generation and tool execution, and combine them where appropriate. A reasoning model can help with system analysis, planning, or decomposition, a code-focused model can generate the artifacts themselves, and additional models can support testing or deployment steps.
+
+Generation should be grounded in templates, reference implementations, coding guidelines, and examples that reflect organizational and industry standards. Clear standards help detect drift and enforce consistency. By using templates, AI output is more predictable. 
+
+Like most agents, code generators may draw from multiple sources. All outputs should be treated as untrusted until validated. Apply least-privilege principles to limit tool execution permissions and scope. Agents should never deploy or modify production resources without explicit, gated approval.
+
+Integrate generated artifacts into the standard developer lifecycle. This includes pull requests, code reviews, automated testing, and security scanning. Apply the same rigor as for human-authored code, including dependency checks and infrastructure-as-code scanning, to ensure reliability and compliance.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:** Human review remains part of the cost model and must be factored into ROI. In addition, increased artifact generation shifts throughput pressure downstream; testing, validation, and deployment workflows must be scaled accordingly to avoid introducing new bottlenecks. Automating validation wherever possible through linters, tests, static analysis, and policy checks is essential to preserve end‑to‑end flow and time to value.
+
+##### Examples
+
+- [OE:02 Standardize operations](./formalize-operations-tasks.md#document-standards-and-treat-it-as-a-living-asset). Generate code and document artifacts that adhere to organization standards, and keep standards documentation updated as assets evolve. 
+- [OE:07 Design a monitoring system](./observability.md#analyze-and-visualize-to-support-actionable-decisions). Generate integrated dashboards configurations that align engineering metrics with business outcomes by automatically selecting the right metrics across sources.
+- [OE:10 Automation design](./enable-automation.md#automate-bootstrapping). Autonomously monitor production environments for configuration drift, infer the intended state, and update bootstrapping definitions to keep systems aligned over time. 
+
+#### &#10003; Policy validation agents
+
+AI agents can assist in reviewing and validating assets against policies and standards. Their role is to support decisions, flag deviations, and enforce compliance, while humans retain final oversight.
+
+Validation begins with careful evaluation and testing before rollout. Standards should be versioned, and each asset should clearly reference the applicable policy, ensuring traceability. As policies evolve, maintenance overhead must be considered, and validation processes updated accordingly. Where possible, batch and parallelize reviews, and focus incremental checks on changes rather than rescanning all assets.
+
+Cost and performance require a careful balance. Consider the amount of historical data needed to make accurate predictions against the impact on storage, processing, and latency. Too little data reduces reliability, while too much increases cost.
+
+Security remains a key factor. Access to validation outputs should be restricted to authorized users, such as security reviewers, ensuring sensitive information is protected.
+
+Effectiveness is measured, not assumed. Use dashboards to track metrics such as issues detected versus issues in production, false positives, and coverage. Feed these insights back into the validation logic, prompts, and operational processes, continuously refining the agent's contribution.
+
+##### Examples
+
+- [OE:03 Formalize development practices](./formalize-development-practices.md#standardize-how-development-work-is-recorded). Validate work descriptions and acceptance criteria against organizational templates to enforce a consistent quality bar. 
+- [OE:04 Standardize tools and processes](./tools-processes.md#implement-standards-for-addressing-technical-debt). Review the codebase to enforce quality bar and organizational standards and recording gaps as technical debt.
+- [OE:05 Use infrastructure as code](./infrastructure-as-code-design.md#enforce-security-in-iac-code). Enforce security standards by reviewing code, IaC templates, and designs to detect insecure patterns, policy violations, and weak configurations.
+
+#### &#10003; Action optimization agents
+
+Action optimization agents extend beyond analysis and recommendations by taking direct operational actions. Because their outputs can modify systems or processes, these agents require careful design, oversight, and integration into workflows.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Security is a primary concern. Agents should ideally operate within a human-in-the-loop workflow, where proposed actions are reviewed and approved before execution in production. Access to tools and systems should follow the principle of least privilege, limiting the agent to only the permissions needed to perform its tasks. Detailed auditing is essential, capturing what actions were proposed, who approved them, and execution logs for traceability.
+
+Implement guardrails that enforce a minimal blast radius, keeping the scope of each change limited. Tool executions should be idempotent to allow safe retries, and the system should include validation and rollback mechanisms. Checkpoints, backups, or other recovery strategies can support safe correction of unintended changes.
+
+##### Examples
+
+- [OE:08 Incident management](./incident-response.md#build-monitoring-capabilities-for-rapid-detection). As soon as an alert fires, automatically gather context, correlate data, and perform initial triage. Engineers start with a clear incident picture instead of manual data collection.
+- [OE:09 Implementing automation](./automate-tasks.md#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
+- [OE:11 Safe deployment practices](./safe-deployments.md#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifying the optimum rollout timing, and the right target segment and percentages for your canary deployments.
 
 # [**Level 1: DevOps foundation**](#tab/level1)
 

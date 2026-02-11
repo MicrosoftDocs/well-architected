@@ -1,71 +1,86 @@
 ---
-title: Architecture strategies for formalizing routine and nonroutine tasks
+title: Architecture strategies for standardizing operations
 description: Learn how to formalize routine and nonroutine tasks by using documentation, checklists, or automation.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 01/15/2026
 ms.topic: concept-article
 ---
 
-# Architecture strategies for formalizing routine and nonroutine tasks
+# Architecture strategies for standardizing operations
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:02**| Formalize the way you run routine, as needed, and emergency operational tasks by using documentation, checklists, or automation. Strive for consistency and predictability for team processes and deliverables by adopting industry-leading practices and approaches, such as a shift left approach. |
+|**OE:02**| Use standardization as a way to make routine, ad-hoc, and emergency operations consistent and predictable.|
 |---|---|
 
-This guide describes the recommendations for formalizing routine and nonroutine tasks. Efficient and successful workload teams have consistent and predictable workload management practices. Optimize efficiency and consistency by adopting industry-proven tools and practices and by automating processes when it's practical. By being consistent about how routine, improvised, and emergency tasks are handled, you minimize the risk of being unprepared when issues arise. By taking a continuous improvement approach to workload management, you increase your team's consistency and efficiency throughout the workload's lifecycle.
+Predictable processes lead to predictable outcomes. Teams must standardize how work is done and follow those patterns consistently. Where needed, they should implement automation intentionally to reduce variability.
+
+This guide explains how teams should define and maintain standard processes across reliability, security, cost optimization, performance, and daily operations. The workload team owns these processes to manage and improve the workload, while aligning with organizational governance.
 
 
-Consistent processes make your work quality predictable, and predictable work quality makes workload support smoother. To achieve consistency in your processes, you need to be intentional and explicit about how you run processes in standard patterns. Use strategies like automation and shift-left approaches to minimize potential areas of unpredictability.
+## Define actionable checklists for routine tasks
 
-## Standardize processes
+Break routine tasks into simple, discrete checklist items that are easy to follow and repeat. Each step should be clearly defined and actionable.
 
-Process standardization takes many shapes. Describing every way that you might approach standardization is out of scope for this guide, but some general recommendations include:
+Consider a use case where the workload has dependency on an open-source library. A routine task is to apply updates to get security patches, bug fixes, and functionality improvements. The checklist might include items like: 
 
-- The processes that you standardize should cover all aspects of workload management: reliability, security, cost optimization, performance, and operational processes. The workload team should have as much ownership of the processes as they need to maintain and continuously improve the workload under the overall governance of the organization.
+> [!div class="checklist"]
+>
+> - Test the update in lower environments
+> - Submit a change request for production
+> - Deploy the update
+> - Update documentation to reflect the new version
 
-- The documentation that you produce captures your standard operating procedures and dictates how things are done, but the documentation is never final. Procedures should evolve as your workload and your team evolve. Regularly review and challenge standards to ensure that they're the right standards for your team right now. Your documentation should be templatized and version controlled to ensure consistency in the documentation formats and that there's a record of reviews and updates. Versioning also helps to reinforce requirements that the team conducts reviews of the documentation at regularly scheduled intervals.
+## Improvise checklists for emergency tasks
 
-- Break down routine, improvised, and emergency tasks into checklist items that are easy to understand. An example of a routine task is the process of applying an update to an open-source dependency. The workload might need to use an open-source library like an SDK to use a third-party message service. This SDK should be updated regularly for security patches, bug fixes, and functionality improvements.
+Emergency tasks differ by situation, but roles, responsibilities, and communication paths must always be clear. Teams should follow general standards and reusable checklists, even for new tasks.
 
-   When you determine that you need an update, the workload team might have a checklist that includes items like testing the update in lower environments, creating a change management request to deploy the update in production, and updating documentation, such as a wiki or knowledge base, to ensure that they reflect the correct version. Focus each checklist item on a discrete task that's clearly defined.
+For instance, an emergency fix might deploy a new resource. That deployment should use existing infrastructure-as-code standards and standard performance, security, and reliability tests. To accelerate the response, the checklist could be updated to include instructions on which low-risk, time-consuming items can be skipped with approval from authorized personnel.
 
-- Improvised and emergency tasks are scenario-specific, but operators should still clearly understand their roles and responsibilities. They need to know how to interact with the workload team and with other teams in the organization to efficiently work through those types of tasks.
+For disaster recovery emergencies, follow the incident response plan exactly as defined to ensure fast, coordinated action. For details on this scenario, see [Create an effective incident management plan to manage disruptions](/azure/well-architected/design-guides/incident-management).
 
-   For example, an improvised task might deploy a new type of resource, such as a machine learning service, that has been approved for enhancing the workload functionality. There might not be a fully realized checklist for the deployment and testing of this type of resource. However, there should be general checklists for adding new resources to your infrastructure as code templates and standards that cover infrastructure testing for performance, security, and reliability at each stage of your promotion chain.
+## Adopt industry-proven practices applicable to the workload
 
-   Likewise, your [incident response plan](incident-response.md) should clearly define roles and responsibilities and general processes and procedures. You must adhere to this plan in emergency situations to ensure that you handle them efficiently.
+Use established practices to reduce the time your team spends creating processes and standards. Agile methods like Scrum, visualizing work with Kanban boards, and adopting a shift-left approach are proven to improve workflow consistency and efficiency. Mature organizations often rely on version-controlled SOPs, wikis, and operational manuals to enforce standards.
 
-   Improvised and emergency operations are also good opportunities to learn how to improve your standard operating procedures. Ask the workload team to reflect on ways that the operations could have gone smoother, and determine whether an update to existing processes could be beneficial going forward.
+Rely on your team's experience to select practices that fit your workload lifecycle, and learn from other teams about approaches that have worked in similar contexts.
 
-## Adopt industry-proven practices
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: To reduce manual effort and drive consistency, begin by standardising the creation and review of common artefacts using Office Copilot and GitHub Copilot. Use these tools to generate documentation, pipeline definitions, test cases, and pull request content in a consistent manner. You can complement these capabilities with third-party tools such as SonarQube, which provide AI-assisted analysis for review scenarios.
+>
+> Adopting industry-standard practices can sometimes backfire. Teams may spend excessive effort on compliance, experience frustration, and delay delivering value while trying to follow best practices. AI can help detect when standards hinder rather than help. 
+>
+> Consider implementing an AI-driven solution that tracks historical signals, such as time spent on standards, developer sentiment, and defect rates. Start with **LLMs** (large language models) to spot patterns, then train **predictive models** on historical data to anticipate when standards might impede workflow and take proactive action.
 
-- Adopt industry-proven practices to minimize the time your team spends on inventing processes and standards. Following Agile practices with Scrum, organizing your work through Kanban boards, and adopting a shift-left ethos are all examples of practices that have been developed over many years and have been proven effective for organizations of any size. Many mature organizations use version-controlled standard operating procedures, wikis, new employee manuals, and operations manuals to enforce consistency.
+## Act early, stay proactive
 
-  Rely on your team's experience to decide which practices fit your workload lifecycle management. Learn from other teams about the standards that they've successfully implemented to understand how particular practices fit into your organizational structure.
+Encourage workload teams to take full ownership of their workloads across security, reliability, and cost efficiency. Teams should proactively identify improvements and add them to their backlog rather than waiting for other teams to act.
 
-  In this context, a shift-left ethos means that workload teams should be empowered to look for measures that can improve the security, reliability, and cost efficiency of the workload. Then, they add those improvement measures to their own backlog, rather than shifting the responsibility to outside teams.
-
-  For example, an exploratory test might uncover an area for improvement in security that might not have been discovered until it was exposed by security scans, which happen monthly or even less frequently. Encourage the workload team to take ownership of the workload in all aspects of its lifecycle and to contribute to its continuous improvement proactively, rather than relying on other teams.
+This strategy is particularly important for reliability and security checks. Suppose the team doesn't perform exploratory testing or take ownership of early security checks, a vulnerability could remain undetected until the next monthly scan, potentially exposing the workload to risk.
 
 ## Take advantage of centralized standards and resources
 
-- Incorporate organizational requirements and cross-cutting functions into your standard operating procedures. Your organization might have standards for some processes that you should adopt. However, you might also be empowered to develop your own standards for other processes, so look for ways to incorporate required standards into your processes. The processes that you own are likely to intersect with other teams' processes, so strive to align standards to a practicable extent.
+Use established organizational requirements and cross-team standards instead of creating new processes from scratch. Adopt mandatory standards where they exist, and build your own only when necessary, aligning with other teams wherever possible. Document any differences between your team's processes and others' to simplify collaboration, especially at intersection points like security or compliance.
 
-  Document where the workload team's and other team's processes diverge to ensure that the workload team can work better with other teams when there are intersection points. Central security teams might use different tools and procedures than the workload team, and the teams can collaborate more easily if they're aware of those differences.
+Pay attention to compliance requirements. Evaluate what extra steps might be needed in your procedure to fulfill those requirements. Understand applicable rules for your industry and region, embed them in your workflows, and regularly train the team to ensure consistent adherence.
 
-- Incorporate compliance requirements into your standard operating procedures. Depending on your industry and the regions in which you operate, there might be strict requirements about how to perform and document tasks. Make sure that you understand and incorporate those requirements while you build your standards. Regularly train the workload team on those requirements.
-
-## Implement automation
+## Implement automation, where practical
 
 Use automation to help achieve consistency. Automate tasks that are repetitive and prone to human error to relieve management burden from your team. Look for opportunities to automate processes, like generating ITSM tickets, for example. For more information, see the [Recommendations for implementing automation](automate-tasks.md).
 
 ## Govern open-source use
 
-Be intentional about your approach to open-source adoption. Standardize the rules about when the use of open-source tools is allowed, and ensure that you align with organizational and compliance requirements. You might want to create standards about workload team members' contributions to open-source projects and decide whether to open your in-house code to other development teams in the organization.
+Be intentional when adopting open-source tools. Define clear rules for when and how they can be used, ensuring alignment with organizational and compliance requirements. Decide whether workload team members can contribute to external open-source projects and whether in-house code can be shared with other teams.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Codifying standard operating procedures can carry the risk of leading to stagnation or complacency. Standards should be followed, but they shouldn't be rigid or static. Strive to find a balance between strict adherence and allowance for innovation so that your processes can evolve safely over time.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Standards help maintain consistency but shouldn't be rigid. Follow procedures while leaving room for innovation so processes can evolve safely over time.
+
+## Document standards and treat it as a living asset
+
+Documentation should capture standard operating procedures and clearly define how work is done. Make documentation effective by creating actionable checklists with references to relevant tools. 
+
+Procedures must evolve as your workload and team evolve, and standards should be regularly reviewed and challenged to ensure they remain appropriate. Use templates and version control to maintain consistency and keep a record of updates. For example, store runbooks in a version-controlled repository and require scheduled reviews as part of the team's operational cadence. Include authorship and review dates, and highlight changes in procedures.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Keeping documentation in sync with evolving assets and verifying standards compliance takes significant effort. With GitHub Copilot’s interactive analysis, you can generate and maintain standards documentation directly from your project assets. A more advanced option is to use agents grounded in your standards documentation to enforce compliance and generate new assets that follow those standards. For example, an agent can analyze a pull request, identify deviations, provide feedback, and, where appropriate, automatically update code to align with your standards.
 
 ## Azure facilitation
 
