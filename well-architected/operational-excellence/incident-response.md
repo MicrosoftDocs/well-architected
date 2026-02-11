@@ -3,7 +3,7 @@ title: Architecture strategies for designing an incident management (IcM) proces
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 01/15/2025
+ms.date: 01/15/2026
 ms.topic: concept-article
 ---
 
