@@ -56,7 +56,7 @@ The following are some of the most common and approachable AI capabilities used 
 
 > [!CAUTION] 
 > 
->   Safeguards is not hypothetical when involving agents. One unchecked model, one misapplied automation, or one over-permissive access setting can propagate errors, leak sensitive data, or compromise operational integrity at scale. 
+>   Safeguards are not hypothetical when involving agents. One unchecked model, one misapplied automation, or one over-permissive access setting can propagate errors, leak sensitive data, or compromise operational integrity at scale. 
 > 
 >   To protect sensitive data, all platforms must enforce strict PII masking and security trimming. Users see only the outputs they are authorized to access. This means AI output may be incomplete, but full visibility comes at the cost of potential exposure. 
 > 
@@ -148,7 +148,7 @@ Implement guardrails that enforce a minimal blast radius, keeping the scope of e
 
 - [OE:08 Incident management](./incident-response.md#build-monitoring-capabilities-for-rapid-detection). As soon as an alert fires, automatically gather context, correlate data, and perform initial triage. Engineers start with a clear incident picture instead of manual data collection.
 - [OE:09 Implementing automation](./automate-tasks.md#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
-- [OE:11 Safe deployment practices](./safe-deployments.md#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifing the optimum rollout timing, and the right target segment and percentages for your canary deployments.
+- [OE:11 Safe deployment practices](./safe-deployments.md#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifying the optimum rollout timing, and the right target segment and percentages for your canary deployments.
 
 # [**Level 1: DevOps foundation**](#tab/level1)
 

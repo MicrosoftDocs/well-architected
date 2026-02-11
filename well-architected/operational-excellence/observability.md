@@ -64,9 +64,9 @@ For infrastructure:
 
 Prioritize data transfer based on importance. Less urgent data can be transferred in batches, while time-sensitive information should be sent immediately.
 
-There are two fundamental models for collection. In a pull model, telemetry is collected a querying component, while push telemetry is emitted by components sending data outward. Choose a model based on factors that are applicable to your workload. For instance, are periodic snapshots sufficient, or near real-time data is needed? What's the expected telemetry volume, What's the data type: state-based or logs, events, and traces.
+There are two fundamental models for collection. In a pull model, telemetry is collected as a querying component, while push telemetry is emitted by components sending data outward. Choose a model based on factors that are applicable to your workload. For instance, are periodic snapshots sufficient, or near real-time data is needed? What's the expected telemetry volume, What's the data type: state-based or logs, events, and traces.
 
-It's common to use a combination approach. For example, monitoring agents can use a pull model, running locally alongside each application instance to periodically collect data and write it to shared storage. At the same time, a push model can be used for application telemetry, where each instance emits logs, traces, and metrics to a message queue or event stream as events occur.
+It's common to use a combination approach. For example, monitoring agents can use a pull model, running locally alongside each application instance to periodically collect data and write it to shared storage. At the same time, a push model can be used for application telemetry, where each instance emits logs, traces, and metrics to a message queue or eventstream as events occur.
 
 ## Standardize data consolidation
 

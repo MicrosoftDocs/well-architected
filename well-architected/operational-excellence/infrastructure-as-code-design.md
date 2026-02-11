@@ -113,7 +113,7 @@ The choice between deploying mutable versus immutable infrastructure depends on 
 
 ## Azure facilitation
 
-[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
+[Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview) and [Bicep](/azure/azure-resource-manager/bicep/overview) are Azure-native tools for deploying infrastructure by using declarative syntax. ARM templates are written in JSON, whereas Bicep is a domain-specific language. Both can easily be integrated into [Azure Pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines) or [GitHub Actions](/devops/deliver/iac-github-actions) CI/CD pipelines.
 
 [Terraform](/azure/developer/terraform/overview) is another declarative IaC tool that's fully supported in Azure. It can be used to deploy and manage infrastructure, and can be integrated into your CI/CD pipeline.
 
@@ -134,7 +134,7 @@ See the [Azure Virtual Desktop landing zone accelerator](/azure/cloud-adoption-f
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/overview)
 - [Bicep](/azure/azure-resource-manager/bicep/overview)
-- [Azure pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
+- [Azure Pipelines](/azure/azure-resource-manager/bicep/add-template-to-azure-pipelines)
 - [GitHub Actions](/devops/deliver/iac-github-actions)
 - [Terraform](/azure/developer/terraform/overview)
 
