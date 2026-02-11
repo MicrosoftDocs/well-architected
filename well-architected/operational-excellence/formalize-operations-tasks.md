@@ -3,7 +3,7 @@ title: Architecture strategies for standardizing operations
 description: Learn how to formalize routine and nonroutine tasks by using documentation, checklists, or automation.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 01/15/2026
 ms.topic: concept-article
 ---
 
