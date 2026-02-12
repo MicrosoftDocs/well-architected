@@ -3,7 +3,7 @@ title: Architecture strategies for implementing automation
 description: Learn how to automate tasks that are repetitive and prone to human error to gain efficiency, adhere to standards, and create consistency.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 

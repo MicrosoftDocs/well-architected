@@ -3,7 +3,7 @@ title: Architecture strategies for designing a workload development supply chain
 description: Learn how to design a workload development supply chain based on CI/CD pipelines that ensure a predictable, efficient workload lifecycle.
 author: simipaul
 ms.author: simipaul
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 
