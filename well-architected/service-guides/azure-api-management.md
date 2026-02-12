@@ -309,7 +309,7 @@ Foundational architecture that demonstrates the key recommendations: [API Manage
 API Management is often combined with the following services. Be sure to review their service guides or product documentation if your workload includes these services.
 
 - [Application Gateway](./azure-application-gateway.md)
-- [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview)
+- [Azure Managed Redis](/azure/redis/overview)
 - [Azure Front Door](./azure-front-door.md)
 - [Key Vault](/azure/key-vault/general/basic-concepts)
 - [Azure Virtual Network](./virtual-network.md)
