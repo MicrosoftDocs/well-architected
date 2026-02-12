@@ -3,7 +3,7 @@ title: How to use the Azure Well-Architected Framework documentation
 description: Learn about the Azure Well-Architected Framework, the five pillars of architectural excellence, and how to use the guidance to drive improvements in your workload.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 07/14/2025
+ms.date: 02/11/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---

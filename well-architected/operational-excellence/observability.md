@@ -3,7 +3,7 @@ title: Architecture strategies for designing a monitoring system
 description: Learn the recommendations for designing and creating an observability system. The system provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 01/26/2026
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 

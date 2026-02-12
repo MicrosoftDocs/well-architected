@@ -3,7 +3,7 @@ title: Architecture strategies for formalizing development practices
 description: Learn how to establish standards for managing your workload team's software development practices.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 01/22/2026
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 

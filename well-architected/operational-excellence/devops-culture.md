@@ -3,7 +3,7 @@ title: Architecture strategies for fostering DevOps culture
 description: Learn how to embrace DevOps culture principles and practices in your workload team to strengthen the team.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 01/15/2026
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 
