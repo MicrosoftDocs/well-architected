@@ -2,7 +2,7 @@
 title: Design methodology for HPC workloads on Azure
 description: Understand the architectural process of building a mature HPC application on Microsoft Azure.
 author: padmalathas
-ms.author: prwilk
+ms.author: padmalathas
 ms.date: 03/06/2026
 ms.topic: concept-article
 ---
@@ -13,8 +13,6 @@ High Performance Computing (HPC) workloads solve compute‑intensive problems by
 
 This article describes a design methodology that you can use to systematically define and refine requirements as it applies to the characteristics and common problems of HPC workloads. If you're uncertain about various design decisions and technology options, revisit this methodology to stay aligned with the patterns that're applicable to this class of workloads. It applies to both new deployments and existing HPC environments being optimized.
 
-
-This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable. [ This sentence suitable for Design principle]
 
 ## Understand workload coupling and communication
 
