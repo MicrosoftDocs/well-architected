@@ -2,7 +2,7 @@
 title: Design Principles for HPC Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an HPC workload.
 author: padmalathas
-ms.author: prwilk
+ms.author: padmalathas
 ms.date: 03/06/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
@@ -12,9 +12,9 @@ ms.update-cycle: 180-days
 
 The HPC design is grounded in principles derived from the Azure Well‑Architected Framework (WAF) pillars. These principles guide architectural decisions across core HPC design areas such as compute, storage, networking, and job orchestration. Familiarity with these principles helps you understand their impact and the trade‑offs involved when they are not followed. 
 
-These recommendations are most relevant for large‑scale, long‑running HPC workloads and may be adjusted for smaller or exploratory workloads.
+These recommendations are most relevant for large‑scale, long‑running HPC workloads and may be adjusted for smaller or exploratory workloads. This methodology helps architects and engineers design HPC environments that are efficient, scalable, reliable, and cost‑aware, while keeping operational complexity manageable.
 
-(Put a tradeoff icon for this) Maximizing performance and reliability often increases cost. Design decisions should be driven by business requirements and by clearly defined trade‑offs between performance, reliability, and cost.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off.** Maximizing performance and reliability often increases cost. Design decisions should be driven by business requirements and by clearly defined trade‑offs between performance, reliability, and cost.
 
 ## Reliability
 
@@ -61,7 +61,7 @@ HPC environments often process sensitive data, including proprietary research, r
 |----------------|---------|
 | Deploy HPC clusters within isolated virtual networks using network security groups | Reduces the attack surface by limiting network access to only required endpoints while allowing necessary node‑to‑node and storage communication. |
 | Use Microsoft Entra ID for authentication, and integrate role [Azure RBAC](/azure/role-based-access-control/) | Enforces least-privilege access and provides centralized identity governance across HPC resources. |
-| Use Secure administrative access using Azure Bastion | Prevents direct exposure of management ports and reduces the risk of unauthorized access. |
+| Use Secure administrative access using [Azure Bastion](/azure/bastion/secure-bastion) | Prevents direct exposure of management ports and reduces the risk of unauthorized access. |
 | Enable [encryption at rest](/azure/storage/common/storage-service-encryption) for all Azure storage services. Apply Azure policy to enforce security baselines. | Provides visibility into security posture, supports compliance audits, and enables rapid detection of misconfigurations or threats. Ensures consistent security controls across clusters and prevents configuration drift over time. | [Include policy point after this]
 
 
@@ -85,9 +85,9 @@ Cloud‑based HPC enables elastic scaling, but costs can grow rapidly without de
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Use Azure Blob Storage lifecycle management to transition aging data from hot to cool or archive tiers. | Reduces storage costs while maintaining data accessibility. |
-| Analyze resource usage with Azure CycleCloud or Azure Batch analytics to select appropriate VM sizes. | Avoids unused capacity and balances performance with cost. |
-| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/how-to/configure-autoscaling.md) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
+| Use [Azure Blob Storage lifecycle management](/azure/storage/blobs/lifecycle-management-policy-configure) to transition aging data from hot to cool or archive tiers. | Reduces storage costs while maintaining data accessibility. |
+| Analyze [resource usage with Azure CycleCloud](/azure/cyclecloud/concepts/usage-tracking) or [Azure Batch analytics](/azure/batch/batch-pool-vm-sizes) to select appropriate VM sizes. | Avoids unused capacity and balances performance with cost. |
+| Configure [Azure CycleCloud autoscaling](/azure/cyclecloud/how-to/configure-autoscaling) to provision compute nodes based on scheduler queue depth and deallocate idle nodes. | Aligns compute capacity with demand and eliminates idle spend. |
 | Deploy [Azure Spot VMs](/azure/virtual-machines/spot-vms) for fault-tolerant workloads with checkpointing, with fallback to standard VMs. | Lowers compute costs for interruption‑tolerant workloads. |
 
 ## Operational Excellence
@@ -138,9 +138,9 @@ HPC workloads require maximum computational throughput, making hardware selectio
 
 | Recommendation | Benefit |
 |----------------|---------|
-| Select HB series VMs for CPU-intensive workloads, ND series VMs for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligning hardware capabilities with application requirements, maximizes performance efficiency and value. |
+| Select [HB series VMs](/azure/virtual-machines/sizes/high-performance-compute/hb-family) for CPU-intensive workloads, [ND series VMs](/azure/virtual-machines/sizes/gpu-accelerated/nd-series) for GPU-accelerated workloads, and memory‑optimized VM families for data‑intensive analytics. | Aligning hardware capabilities with application requirements, maximizes performance efficiency and value. |
 | Deploy [InfiniBand-enabled VM series](/azure/virtual-machines/workloads/hpc/enable-infiniband) (HB, HC, ND) for MPI workloads requiring low-latency, high-bandwidth node-to-node communication. | Minimizes communication overhead and enables efficient scaling for tightly coupled parallel workloads. |
-| Use Azure Managed Lustre for high‑throughput scratch storage, or Azure NetApp Files for shared POSIX‑compliant file access with consistent performance. | Prevents storage bottlenecks by sustaining concurrent access from large numbers of compute nodes. |
+| Use [Azure Managed Lustre](/azure/azure-managed-lustre/blob-integration) for high‑throughput scratch storage, or Azure NetApp Files for shared POSIX‑compliant file access with consistent performance. | Prevents storage bottlenecks by sustaining concurrent access from large numbers of compute nodes. |
 | Configure [Proximity Placement Groups](/azure/virtual-machines/co-location) to place compute nodes within the same datacenter network segment. | Reduces inter‑node latency and improves message‑passing performance for communication‑intensive workloads. |
 
 ## Azure facilitation
