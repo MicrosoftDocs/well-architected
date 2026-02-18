@@ -826,6 +826,11 @@
 			"redirect_document_id": true
 		},
 		{
+			"source_path": "well-architected/service-guides/virtual-wan-service-guide.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-virtual-wan",
+			"redirect_document_id": true
+		},
+		{
 			"source_path": "well-architected/services/data/azure-sql-managed-instance/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-sql-managed-instance/operational-excellence",
 			"redirect_document_id": true
