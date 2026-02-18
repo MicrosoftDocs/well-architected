@@ -2,7 +2,7 @@
 title: HPC workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating HPC workloads on Azure.
 author: padmalathas
-ms.author: prwilk
+ms.author: padmalathas
 ms.date: 03/06/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
@@ -19,7 +19,7 @@ HPC workloads involve specialized roles such as computational scientists, resear
 
 ## What is an HPC workload?
 
-An HPC (High‑Performance Computing) workload is a class of computational tasks that require significantly more processing power, memory, and I/O throughput than a typical system can provide. These workloads are designed to handle compute‑intensive operations—such as large‑scale simulations, modeling, or data analysis—by leveraging parallel processing across multiple CPUs, GPUs, or nodes. 
+An HPC workload is a class of computational tasks that require significantly more processing power, memory, and I/O throughput than a typical system can provide. These workloads are designed to handle compute‑intensive operations such as large‑scale simulations, modeling, or data analysis by leveraging parallel processing across multiple CPUs, GPUs, or nodes. 
 
 Consider a pharmaceutical company designing a new drug. Researchers need to simulate how millions of molecular compounds interact with a target protein. Running these simulations on a standard computer would take years. With HPC, the work is distributed across thousands of processors working in parallel, completing the analysis in days. The workload requires specialized GPUs for molecular modeling, high-speed networks so processors can share results quickly, and fast storage systems that can feed data to all processors simultaneously.
 
