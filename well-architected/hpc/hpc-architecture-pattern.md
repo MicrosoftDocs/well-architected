@@ -2,7 +2,7 @@
 title: Architecture pattern for HPC workloads on Azure
 description: Design areas address the critical decisions that determine whether your HPC workload can run jobs efficiently, handle large-scale parallel processing, and meet performance targets
 author: padmalathas
-ms.author: prwilk
+ms.author: padmalathas
 ms.date: 03/06/2026
 ms.topic: concept-article
 ---
