@@ -391,7 +391,7 @@ This section explores how internet egress can be achieved while ensuring securit
   - Up to 16 IP addresses can be assigned to a single NAT gateway.
   - A default TCP idle timeout of 4 minutes. If idle timeout is altered to a higher value, flows will be held for longer, which will increase the pressure on the SNAT port inventory.
 
-- NAT gateway can't provide zonal isolation out-of-the-box. To get zonal redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
+- NAT gateway can't provide zonal isolation out-of-the-box. To get zone redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
 
 ### Design recommendations
 
@@ -416,7 +416,7 @@ While the application design strongly advocates independent regional deployment 
 
 ### Design Considerations
 
-- The application design approach for a mission-critical application endorses the use of independent regional deployments with zonal redundancy applied at all component levels within a single region.
+- The application design approach for a mission-critical application endorses the use of independent regional deployments with zone redundancy applied at all component levels within a single region.
 
 - An [Availability Zone (AZ)](/azure/reliability/availability-zones-overview) is a physically separate data center location within an Azure region, providing physical and logical fault isolation up to the level of a single data center.
 
@@ -448,7 +448,7 @@ While the application design strongly advocates independent regional deployment 
 
 - Use Private Link to establish communication directly between services in the same region or across regions (service in Region A communicating with service in Region B.
 
-- For application workloads that are extremely chatty between components, consider constraining a deployment stamp to a single zone and deploying multiple stamps across the different zones. This ensures zonal redundancy is maintained at the level of an encapsulated deployment stamp rather than a single application component.
+- For application workloads that are extremely chatty between components, consider constraining a deployment stamp to a single zone and deploying multiple stamps across the different zones. This ensures zone redundancy is maintained at the level of an encapsulated deployment stamp rather than a single application component.
 
 - Where possible, treat each deployment stamp as independent and disconnected from other stamps.
   - Use data platform technologies to synchronize state across regions rather than achieving consistency at an application level with direct network paths.
