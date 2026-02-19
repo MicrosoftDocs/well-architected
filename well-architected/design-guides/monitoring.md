@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
-# Design a comprehensive monitoring strategy for Azure workloads
+# How to design a effective monitoring system for Azure workloads
 
 Monitoring is the structured practice of collecting and analyzing telemetry to understand system health and behavior. Its purpose is simple: make system state observable through measurement. Effective monitoring connects technical signals to operational outcomes, enabling teams to detect anomalies, investigate failures, and make informed decisions about evolving the system.
 
@@ -18,7 +18,7 @@ As workloads grow more complex, monitoring must scale with them, from basic metr
 
 The monitoring system follows a linear progression and can be divided into four logical stages, each building on the insights of the previous one.
 
-:::image type="content" source="media/observability/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical stages, each building on the previous one.." lightbox="media/observability/monitor-pipeline.png" border="false":::
+:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical stages, each building on the previous one.." lightbox="media/observability/monitor-pipeline.png" border="false":::
 
 This guide explores those phases and provides best practices that you can use to design a monitoring system from signal to action. It doesn't cover specialized monitoring like security, reliability, or performance monitoring. The guidance builds on the key strategies outlined in  [Architecture strategies for designing a monitoring system](../operational-excellence/observability.md), which you should review first.
 
@@ -26,11 +26,11 @@ This guide explores those phases and provides best practices that you can use to
 
 | Term | Definition |
 |---|---|
-|**Logs** are timestamped records of discrete events.
+|**Logs** are timestamped records of discrete events. Logs help you investigate problems.
 |**traces** record the path of a request.
-|**Metrics** are numeric measurements captured at a point in time,
+|**Metrics** are numeric measurements captured at a point in time. Metrics help you monitor health and trends.
 
-## Decide where to add instrumentation
+## Enable instrumentation
 
 _Instrumentation_ is the practice of embedding code or tools within workload components to generate telemetry that reveals system behavior. Effective instrumentation follows two core principles: it must be end-to-end, capturing different types of signals across critical components of the workload; and it must be structured and searchable to support efficient querying and correlation.
 
@@ -43,38 +43,31 @@ Critical components that should be instrumented to emit telemetry are:
 - **Dependent services** – Track interactions with databases, web services, and other external or internal services that your workload relies on.  
 - **Build and release pipeline** – Capture telemetry from deployment and CI/CD processes to provide context for changes and incidents.
 
-Consider what type of signal you want to emit from those sources: logs, traces, and metrics.
+Consider what type of signal you want to emit from those sources: logs, traces, and metrics. Also consider the technology option for instrumentation. OpenTelemetry is a vendor-neutral standard for instrumenting applications and collecting telemetry data in a consistent way across programming languages. Because it is tool-agnostic, the data it generates can be sent to a wide range of monitoring platforms. 
 
 #### Logs and traces
 
-Monitoring relies on both logs and traces to provide visibility into system behavior. _Logs_ are timestamped records of discrete events, while _traces_ capture the path of requests and operations. Distributed tracing is valuable in distributed systems where where a single request may traverse multiple services, threads, or machines. 
+Monitoring relies on both logs and traces to help investigate problems. _Logs_ are timestamped records of discrete events, while _traces_ capture the path of requests and operations. Distributed tracing is valuable in distributed systems where where a single request may traverse multiple services, threads, or machines. 
 
 **Prefer structured and human- and machine-readable formats that use consistent schemas**, so that they are easier to parse and query.
 
+Instrumentation should **emit all necessary data** to understand system behavior, performance, and failure modes. Record every request with its origin, region, and relevant context to identify traffic hotspots and inform scaling or data repartitioning decisions. Exception logging should include inner exceptions, full call stacks, correlation IDs, and execution context, so that no critical debugging detail is lost. External dependencies are also critical, such as database queries, web service calls, and infrastructure interactions. For each dependency, track duration, success or failure status, retry attempts, and detailed error information. Monitoring patterns like latency spikes or transient failures provides early warning signs of systemic instability and enables proactive remediation.
+
 Make logs concise and focus on the point. Data should **include key contextual information** such as a timestamp, the source component, environment and deployment details, and so on. Ensure timestamps are written at log creation and formatted consistently. Additional contextual data, such as the user or activity ID associated with the event, helps support meaningful correlation across components and systems.
 
-**Make log verbosity configurable**. Constant logging can consume storage and processing resources unnecessarily, so detailed logs should be enabled primarily for troubleshooting or diagnostic purposes. **Categorize logs by operational concern**. For example, audit, security, debugging, and performance logs should be separated to prevent sensitive information from mixing with other data and to make filtering and analysis more efficient.
+**Make log verbosity configurable**. Constant logging can consume storage and processing resources unnecessarily and might make it harder to filter or debug complex systems.  **Categorize logs by operational concern**. For example, audit, security, debugging, and performance logs should be separated to make filtering and analysis more efficient. For sensitive workloads, make sure personal data or sensitive information is scrubbed before logging. 
 
 Logs can be stored using various technology options, including files, blobs, or structured storage such as database tables. **Choose the right storage option**. It should be efficient in parsing, querying, and long-term retention in line with your monitoring strategy.
 
-> [!NOTE]
->
-> Capture all relevant data to make logs actionable. Record requests and their locations or regions to identify hotspots and guide decisions such as application or data repartitioning. Log exceptions thoroughly, including inner exceptions, call stacks, and contextual information, so critical debug details are preserved.
->
-> Instrument all external calls, including database queries, web service calls, infrastructure service interactions  
->
-> For each dependency, record duration, success or failure, retry attempts, and error details. Patterns of transient failures can serve as early indicators of broader system instability.
-
-
 ### Metrics
 
-_Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics are most valuable when captured continuously over time to reveal trends, patterns, and anomalies.
+_Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics help you monitor health and when captured continuously over time to reveal trends, patterns, and anomalies. 
 
 **Identify which aspects of the system are critical to monitor** and determine the appropriate frequency for data collection. Capture too often, and you risk overloading the system; capture too infrequently, and you may miss important events or spikes. For example, CPU usage on a server can fluctuate rapidly from second to second, but sustained high usage over several minutes is typically what indicates a problem.
 
 #### Facilitate correlation across components
 
-Telemetry is most valuable when it can be **correlated across components**. Individual metrics, logs, or traces provide insight at a single layer, but understanding overall system behavior requires connecting data across the entire stack. For example, a thread ID might identify a task within a framework, while the same work could correspond to a user request in the application layer. By propagating identifiers and contextual information through all components, monitoring systems can link events, metrics, and traces into a unified view, supporting root cause analysis, performance optimization, and operational decision-making.
+Telemetry is most valuable when it can be **correlated across components**. For example, a thread ID might identify a task within a framework, while the same work could correspond to a user request in the application layer. By propagating identifiers and contextual information through all components, monitoring systems can link events, metrics, and traces into a unified view, supporting root cause analysis, performance optimization, and operational decision-making.
 
 Correlation is not always straightforward. Threads can be reused for multiple asynchronous operations, and a single request may span multiple threads or services. To address this complexity, **assign a unique activity ID to each request or operation and propagate it throughout its lifecycle**. The exact method for generating and including activity IDs depends on the technology used for tracing, but the principle remains the same: every unit of work should be identifiable across processes and machines.
 
@@ -83,85 +76,11 @@ Correlation is not always straightforward. Threads can be reused for multiple as
 All telemetry should be **timestamped consistently using Coordinated Universal Time (UTC)**. While timestamps are essential for correlation, they are not sufficient on their own, as machines in different time zones or networks may not be perfectly synchronized. Correlation should rely on unique identifiers and contextual information in addition to timestamps.
 
 
+## Collect instrumentation data
 
+Instrumented data must be collected and correlated for analysis. 
 
-
-Strive for data consistency
-Consistent data can help you analyze events and correlate them with user requests. Consider using a comprehensive and configurable logging package to gather information. Logging packages can help you avoid dependence on developers to adopt your approach as they implement different parts of the system.
-
-Gather data, such as input/output volume, number of requests, and memory, network, and CPU usage, from key performance counters. Some infrastructure services provide their own performance counters, such as:
-
-The number of connections to a database.
-The transaction rate.
-The number of transactions that succeed or fail.
-Applications might also define their own performance counters.
-
-Consider external dependencies
-Log all external service calls. Externals calls might be made to:
-
-Database systems.
-Web services.
-Other system-level services that are part of the infrastructure.
-Record information about the duration of each call and the success or failure of the call. If possible, capture information about all retry attempts and failures for any transient errors that occur.
-
-Ensure telemetry system compatibility
-In many cases, the instrumentation information is generated as a series of events and passed to a separate telemetry system for processing and analysis. A telemetry system is typically independent of any specific application or technology.
-
-Telemetry systems use defined schemas to parse information. The schema specifies a contract that defines the data fields and types that the telemetry system can ingest. Generalize the schema to allow for data arriving from various platforms and devices. A common schema should include fields relevant to all instrumentation events, such as:
-
-Event name.
-Event time.
-IP address of the sender.
-Details required for event correlation, including:
-User ID
-Device ID
-Application ID
-Remember that many devices can raise events for the same application, so the schema shouldn't depend on the device type. The application should support roaming or cross-device distribution. The schema can also include relevant domain fields for a particular scenario that's common across applications, such as:
-
-Information about exceptions.
-Application start and end events.
-Success or failure of web service API calls.
-Establish domain fields that produce the same set of events to build a set of common reports and analytics across applications. You might need to configure a schema to contain custom fields for capturing the details of application-specific events.
-
-OpenTelemetry is a vendor-neutral collection of APIs, SDKs, and other tools. You can use OpenTelemetry to instrument applications and generate meaningful telemetry consistently across languages. OpenTelemetry is tool-agnostic, so it's compatible with many observability platforms including open-source and commercial offerings. Microsoft is adopting OpenTelemetry as the standard tool for instrumentation.
-
-Optimize instrumentation code
-The following list summarizes best practices for instrumenting a distributed application running in the cloud:
-
-Make logs easy to read and easy to parse. Use structured logging where possible.
-
-Be concise and descriptive in log messages.
-
-Identify the source of the log.
-
-Add timestamp information as each log record is written.
-
-Use the same time zone and format for all timestamps.
-
-Categorize logs and write messages in the appropriate place.
-
-Don't reveal sensitive information about the system or personal information about users. Scrub this information before it's logged, but keep any relevant details.
-
-Log all critical exceptions but enable the administrator to turn logging on and off as needed for fewer exceptions and warnings.
-
-Capture and log all retry logic information. This data is useful in monitoring the transient health of the system.
-
-Trace out process calls, such as requests to external web services or databases.
-
-Don't mix log messages with different security requirements in the same log file.
-
-Ensure that all logging calls are fire-and-forget operations that don't block the progress of business operations. Exclude auditing events from this rule because they're critical to the business.
-
-Ensure that logging is extensible and doesn't have any direct dependencies on a concrete target.
-
-Ensure that all logging is fail-safe and doesn't trigger cascading errors.
-
-Treat instrumentation as an ongoing iterative process and review logs regularly.
-
-Use application profiling
-Implement profiling only when necessary because it can impose a significant overhead on the system. By using instrumentation, profiling records an event, such as a method call, every time it occurs. However, sampling records only selected events.
-
-Profiling selections can be time-based, such as once every n seconds, or frequency-based, such as once every n requests. If events occur frequently, profiling might cause too much of a burden on the system and affect overall performance. In this case, the sampling approach is preferable. However, if the frequency of events is low, sampling might miss them. In this case, profiling might be the better approach.
+For applications, use an Application Performance Management (APM) tool to automatically collect performance data.
 
 
 ## Terminology
