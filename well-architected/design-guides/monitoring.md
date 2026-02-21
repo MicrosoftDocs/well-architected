@@ -1,5 +1,5 @@
 ---
-title: Design a monitoring system for your Workload
+title: Build a monitoring system for Azure workloads
 description: Learn how to design and implement effective monitoring solutions for Azure workloads, including observability, alerting, and performance optimization strategies.
 author: PageWriter-MSFT 
 ms.author: prwilk 
@@ -20,100 +20,166 @@ The monitoring system follows a linear progression and can be divided into four 
 
 This guide explores the process of building those phases and provides best practices. It doesn't cover specialized monitoring like security, reliability, or performance monitoring. The guidance builds on the key strategies outlined in  [Architecture strategies for designing a monitoring system](../operational-excellence/observability.md), which you should review first.
 
-## Terminology
+## Phase 1 - Instrumentation
 
-| Term | Definition |
+_Instrumentation_ is the practice of embedding code or tools in your source to generate operational signals called _telemetry_. This refers to logs, traces, and metrics. _Logs_ are timestamped records of discrete events, while _traces_ record request paths across components. Distributed tracing is particularly valuable in systems where requests traverse multiple services or machines. _Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics help you monitor health and when captured continuously over time to reveal trends, patterns, and anomalies. 
+
+Start by deciding _what to track from the system_ so that you can analyze it later. Think about the layer of the system:
+
+- **Application logic**. Capture the flow of incoming requests like, their start times, durations, and status codes. Pay attention to exceptions and failures in your code. to uncover patterns and root causes. Also, track meaningful business events. For example, in an ecommerce workload, orders placed, payments processed, or messages handled.
+
+- **External dependencies**. Track communication with external dependencies like calls to databases, web services, and infrastructure components. Include their duration, status, retries, and errors.
+
+- **Platform and runtime components**. Because they don't technically fall under your ownership, you can only enable the telemetry collection. This includes components like frameworks, operating system, Azure resources. 
+
+#### Best practices for instrumentation
+
+When adding instrumentation, follows these simple principles: Maintain consistency, provide sufficient context, and structure telemetry to support later analysis. 
+
+- When choosing a technology, consider options where the solution is language-agnostic and can integrate with multiple monitoring platforms. OpenTelemetry is a vendor-neutral option that's adopted by a lot of application. 
+
+- **Record all relevant context consistently**. Include information about source component, environment, deployment, activity ID, user info, and dependency data. For example, timestamps should be recorded at the moment a log entry is created and formatted in a consistent, standardized way. All telemetry data should use Coordinated Universal Time (UTC) to ensure events can be accurately correlated across services, regions, and systems.
+
+- **Use structured telemetry**, which is recorded in both human- and machine-readable formats (JSON, MessagePack, Protobuf).
+
+- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, where as increase verbosity in production.
+
+- **Categorize by operational concern** to make filtering and analysis more efficient. For example separate telemetry data for, audit, security, debugging, or performance. 
+
+- **Enable correlation**. Assign a unique activity ID to each request and propagate it across services, threads, queues, dependencies. Correlation must rely on identifiers and context, not timestamps alone.
+
+#### Example: Instrumentation
+
+Consider an ecommerce application. when a customer places an order, a business transation begins. the API processes the payment, the database records the order, and a confirmation email is sent. Most of the time, everything completes within the expected timeframe. But suppose something breaks.
+
+Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
+
+With proper instrumentation, the request is tracked end-to-end across every component. Logs reveal that the payment API returned a 500 error. A distributed trace shows latency spiking specifically within the payment service. Metrics confirm that the checkout failure rate has climbed from 1% to 8% in 10 minutes. That makes diagnosis systematic and data-driven rather than speculative.
+
+
+## Phase 2 - Telemetry data collection and storage
+
+While instrumentation is about what operational signals should be tracked, this phase is about *where to route the telemetry data* and manage it responsibly.
+
+Telemetry usually comes from two main sources:
+
+- **Application-level telemetry**. Once the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be collected automatically using Application Performance Management (APM) tool. [Azure Application Insights](../service-guides/application-insights.md) is an APM that's well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. For example, you have an ASP.NET Core app hosted in App Service. Application Insights will automatically capture request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
+
+- **Platform logs**. There's telemetry generated from the infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource log that capture resource-specific events, like storage access logs, firewall events. 
+
+   Platform log collection requires explicit configuration. Enable Diagnostic settings for each resource and route logs to a storage solution. 
+
+  
+#### Telemetry data storage decision
+
+Data storage should be chosen based on how you plan to use it. Create a matrix that clearly highlights the use case, requirements, and technology choices. Here's an example:
+
+|Use Case|Recommended storage|
 |---|---|
-|**Logs** | Timestamped records of discrete events that help you investigate problems and understand system behavior. |
-|**Traces** | Records that track the path of a request across multiple components or services, essential for distributed system debugging. |
-|**Metrics** | Numeric measurements captured at specific points in time that help monitor health, performance trends, and system behavior patterns. |
-|**Telemetry** | Collective term for logs, traces, and metrics data generated by instrumented systems to provide visibility into operations. |
-|**Instrumentation** | The process of embedding code or tools in applications and infrastructure to generate telemetry data for monitoring purposes. |
-|**Observability** | The ability to understand the internal state of a system based on external outputs like metrics, logs, and traces. |
-|**APM (Application Performance Management)** | Tools and practices for monitoring application performance, user experience, and business transactions in real-time. |
-|**Correlation** | The process of linking related telemetry events across different components using identifiers to create a unified operational view. |
-|**SLO (Service Level Objective)** | Specific, measurable targets for service performance that define acceptable levels of reliability, availability, or performance. |
-|**KPI (Key Performance Indicator)** | Critical business and technical metrics that indicate the health and success of operations or business outcomes. |
-|**Golden Signals** | The four key metrics for monitoring distributed systems: latency, traffic, errors, and saturation. |
-|**Health Model** | A structured framework that maps system components, dependencies, and health states to support effective monitoring and alerting. |
-|**Synthetic Monitoring** | Automated testing that simulates user interactions to proactively monitor application availability and performance.
+|Interactive querying and troubleshooting|	[Azure Log Analytics](../service-guides/azure-log-analytics.md)|
+|Aggregate data storage|[Azure Databricks](../service-guides/azure-databricks.md)|
+|Long-term archival|	[Azure Blob Storage](../service-guides/azure-blob-storage.md)|
+|SIEM or security integration| [Event Hub](../service-guides/azure-event-hubs.md)|
+|Exploring trends and advanced analytics|	[Azure Data Explorer](/azure/data-explorer?utm_source=chatgpt.com)|
 
-## Instrumentation
+In some cases, you might send the same telemetry to multiple destinations for different purposes.
 
-_Instrumentation_ embeds code or tools in your source to generate telemetry such as logs and traces. Apply it across core business logic, deployment automation, or other critical code. Maintain consistency, provide sufficient context, and structure telemetry to support later analysis.
+#### Telemetry data lifecycle management
 
-When choosing a technology, consider options where the solution is language-agnostic and can integrate with multiple monitoring platforms. OpenTelemetry is a vendor-neutral option that's adopted by a lot of application. 
+Not all telemetry needs to live forever. Be clear on how long you want to retain based on the use of the data.  For example, raw debugging data may only require short-term retention, whereas performance metrics, historical trends, or auditing records may need long-term storage.
 
-For components outside your control, frameworks, runtime, operating systems, or platform resources, enable logging to capture relevant telemetry.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Telemetry data can grow significantly even within a short period of time. Set clear retention policies so that you keeo the data that truly matters while letting go of what doesn't. Like spot trends, anticipate capacity issues within the right time window. At the same time, you avoid paying for storage you don't really need.
 
-#### Logs and traces
+In addition to retention policies that archive older data to lower-cost storage. There are other techniques to optimize costs. Where appropriate, down-sample it to reduce storage usage while preserving sufficient resolution for analysis. Aggregate related events to reduce storage footprint and process data faster.
 
-Telemetry data refers to logs and traces. _Logs_ are timestamped records of discrete events, while _traces_ record request paths across components. Distributed tracing is particularly valuable in systems where requests traverse multiple services or machines.
+#### Telemetry data security
 
-Logs and traces should be structured, and recorded in both human- and machine-readable formats (JSON, MessagePack, Protobuf). Good telemetry is based on certain best practices:
+While telemetry isn't workload functional data, it's still critical from an operation perspective. From a security point: protect data against accidental deletion; control access with role-based access control (RBAC). Consider the use of:
 
-- Record all relevant context. Include timestamps, source component, environment, deployment, activity ID, user info, and dependency data. Be intentional about how you record the information. For example, timestamps should be written at log creation and formatted consistently.
-- Track communication with external dependencies like calls to databases, web services, and infrastructure components. Include their duration, status, retries, and errors.
-- Make log verbosity configurable because verbose logging can incur significant costs. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, where as increase verbosity in production.
-- Logs should be categorized by operational concern to make filtering and analysis more efficient. For example separate, audit, security, debugging, or performance. 
-- Sensitive data must be scrubbed before logging.
+- Enable soft delete to allow recovery within a defined period. Most Azure storage services offer soft delete. Refer to product documentation for details on the service you've chosen for your workload.
 
-#### Metrics 
+- Apply [resource locks](/azure/azure-resource-manager/management/lock-resources) to prevent unintended changes or deletions to important resources.
 
-_Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics help you monitor health and when captured continuously over time to reveal trends, patterns, and anomalies. 
+- Sensitive data must be encrypted and scrubbed of personally identifiable information. If you're workload needs to store telemetry for regulatory purposes, follow the governance policies according to those compliance requirements. 
 
-Application-level metrics can be generate at runtime and are automatically collected once you enable instrumentation through an Application Performance Management (APM) tool. These include request duration, dependency latency, failure rates, and throughput. The SDK handles the collection, so you don't need to manually emit these signals.
+## Phase 3 - Correlation, aggregation, analysis
 
-However, custom metrics reflecting business-specific logic, like orders processed, checkout success rate, or messages handled, must be emitted manually.
+Once telemetry is collected and stored, the next step is to turn raw data into insight. Analysis transforms logs, metrics, and traces into operational decisions. The outcome of this stage is to understand *what does the data mean*?
 
-#### Correlation across components
+Analyzing telemetry begins by structuring data around defined KPIs and performance metrics. Start by asking these questions:
 
-Telemetry is most valuable when it can be **correlated across components**. For example, a thread ID might identify a task within a framework, while the same work could correspond to a user request in the application layer. By propagating identifiers and contextual information through all components, monitoring systems can link events, metrics, and traces into a unified view, supporting root cause analysis, performance optimization, and operational decision-making.
+- Are users experiencing failures?
+- Is performance degrading?
+- Are dependencies slowing down?
+- Is capacity reaching limits?
+- Are business KPIs trending negatively?
 
-Correlation is not always straightforward. Threads can be reused for multiple asynchronous operations, and a single request may span multiple threads or services. Assign unique activity IDs to requests or operations, propagating them throughout their lifecycle. Provide sufficient context with each telemetry event like environment, process, machine, dependencies, and user identity. This will enable teams can trace operations end-to-end, analyze resource usage, and diagnose failures. All telemetry should be timestamped in Coordinated Universal Time (UTC), but correlation must rely on identifiers and context, not timestamps alone.
+To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example in the case of distrubuted tracing, aggregation involves combining events with the same activity or transaction ID are merged.
 
-## Data collection and storage
+Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
 
-Once emitted, telemetry must be aggregated and stored for analysis. 
+#### Example: Correlation, aggregation, analysis
 
-- **Application-level data** can be collected automatically using APM tools like Azure Application Insights, which captures logs, metrics, traces, dependencies, and user telemetry.  
-- **Platform logs** in Azure include activity logs that track subscription-level operations and resource logs that capture resource-specific events. These logs provide visibility into both administrative actions and resource-level behavior.
+Let's continue with the eCommerce example. With instrumentation in place, the team detected that checkout failure rate increased from 1% to 8% in 10 minutes. 
 
-Collection requires explicit configuration. Diagnostic settings must be enabled for each resource, and logs should be routed to a storage solution. Data storage should be chosen based on the type of telemetry, how it will be used, and access requirements. Typically, a Log Analytics workspace for querying, a storage account for archival, or an Event Hub for SIEM integration. A polyglot persistence approach works well: performance counters might reside in a SQL database for ad hoc analysis, trace logs in Azure Monitor Logs or Data Explorer, and security events in HDFS. The same data can be sent to multiple destinations if it serves different purposes, such as historical performance analysis and billing.
+Analyis revealed that the cause was the dependency on the database, which was under heavy load, because:
 
-Data should be protected against accidental deletion through resource locks or soft delete, and access should be secured with role-based access control. 
+- Application logs showed errors with timeout exceptions
+- Database latency doubled during that time
+- Platform logs showed that CPU on database server is at 90%
 
-Retention policies must balance the value of the data with storage costs: raw debugging data may only require short-term retention, whereas performance metrics, historical trends, or auditing records may need long-term storage. Older data can be down-sampled to reduce storage while preserving sufficient resolution for trend analysis. Sensitive or regulatory data must be encrypted and scrubbed of personally identifiable information.
+By retaining analysis data over time, teams can perform historical analysis to uncover trends. For example, consistent increases in database load or gradually rising response times can signal a change in architecture or optimization. For example, scaling the database or optimizing queries may be necessary.
 
-Implement safeguards to protect data from accidental deletion, like resource locks and soft delete, and secure access with role-based access control. When aggregating data during collection make sure sensitive or regulatory data is be encrypted, scrubbed of personally identifiable information, and managed according to compliance requirements.
+## Phase 4 - Visualization
 
-Determine the retention period for each type of telemetry based on its value. Short-term storage may suffice for raw debugging data, while performance metrics, historical trends, and billing or audit records often require longer retention. Archive older data to lower-cost storage. Where appropriate, down-sample it to reduce storage usage while preserving sufficient resolution for analysis. Clear retention policies support historical analysis, trend detection, and the early identification of potential operational issues, such as gradually increasing response times.
+With analysis in place, the next phase is to take action. *How do we make the insights visible and ensure the right people can act on them?*
 
-When combining data from multiple sources, aggregation ensures events with the same activity or transaction ID are merged, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage, balancing system load, resource usage, and latency. Data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
+Visualization converts complex telemetry into actionable insights using dashboards, charts, and reports.
 
-## Analysis
+#### Best practices for visualization
 
-Analyzing telemetry begins by structuring data around defined KPIs and performance metrics. Correlating application- and resource-level logs provides insight into complex workflows, enabling detection and diagnosis of issues across components. Unified query tools such as Azure Log Analytics simplify this process.
+- Align with your health model that show components should be labeled as Healthy, Degraded, or Unhealthy according your service level objectives (SLOs).
 
-For example, a three-tier application requires combining telemetry from the presentation tier, middle-tier microservices, and the database tier. Data may need preprocessing, filtering, aggregation, and formatting to produce a unified view of operations. Analysis focuses on removing noise, summarizing related data, correlating events, standardizing structure, and comparing results against KPIs to detect anomalies.
+- Display actionable data. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
 
-Clear retention policies allow for historical analysis, which helps identify trends and predict operational issues, such as gradually increasing response times that may indicate future performance degradation. Archiving older data to cheaper storage while retaining aggregated insights supports long-term operational planning.
+- Support interactive exploration. Allow filtering by time range, service, or deployment. Enable ad-hoc queries to investigate anomalies.
 
-## Visualization
+- Tailor dashboards for intended audience. For example, 
 
-Visualization converts analyzed data into actionable insights. Dashboards are the most common method, presenting information as charts, graphs, or other visual forms, with parameters that allow analysts to focus on specific time periods or metrics. Dashboards should align with the health model to indicate healthy, degraded, or unhealthy components. They should display actionable data to help teams quickly locate and diagnose issues. Custom dashboards for stakeholders or developers ensure relevant data is presented, while access should be restricted to prevent unauthorized changes.
+   |Audience| View|
+   |---|---|
+   |Developers|	Real-time logs, traces, error trends|
+   |Operators|	KPIs, resource utilization, alerts|
+   |Business stakeholders| High-level metrics, revenue-impact KPIs|
 
-Beyond static displays, dashboards should enable interactive exploration and ad-hoc querying. Where appropriate, data can be exported for deeper analysis using tools like Excel. Reporting complements dashboards by aggregating historical and current data. Operational reports summarize resource utilization, trends, exceptions, and efficiency. Security reports audit user actions and track resource usage for billing or compliance purposes. Reports can be generated on a schedule or on-demand using tools such as SQL Server Reporting Services.
+- Tailor dashboards for intended use. For example, 
 
+   |Use| View|
+   |---|---|
+   |Operational reports|Resource usage, trends, exceptions, efficiency|
+   |Security reports|Audit user actions, track anomalies for compliance|
+   |Business reports| KPI trends, revenue per user, transactions over time|
 
-## Set alerts
+#### Best practices for alerts
 
-Alerts notify operators when metrics or events exceed defined thresholds, providing real-time visibility into system health and enabling timely remediation. Alerts should contain enough context to support rapid diagnosis and can trigger automated responses, such as autoscaling, self-healing, or cost management actions.
+Visualization shows trends, but alerts notify you when action is needed.
 
-A structured alerting strategy defines ownership and response procedures, specifies alert scope and verbosity to reduce noise, and integrates with automated workflows for ticketing or remediation. Thresholds should provide sufficient lead time for corrective action and be based on historical data and testing. Alerts can also track platform service health and maintenance events.
+- Define thresholds based on historical data.
+- Include sufficient context and filter out false alarms
+- Integrate with automated workflows like your support ticketing systems, auto-remediation, scaling actions
+- Assign ownership to the responsible team
+- Set prioritization indicators like severity, which separate critical issues from informational notifications.
 
-Effective alerts reduce response times, support proactive remediation, and maintain workload reliability and performance.
+#### Example: Visualization and alerts
 
+Let's return to the eCommerce applciation. A developer oriented dashboard visualizes:
+
+- Latency trends over the past 24 hours
+- Failure rates by endpoint
+- Database CPU usage
+- Orders processed per minute
+
+From this dashboard, a developer can narrow in investigations about failure spikes when database CPU exceeds 85%. Meanwhile when latency exceeds 2 seconds for the checkout user flow, developer sees request ID, database load, and recent errors. At this point, with sufficient testing an automated workflow is triggered that scales database tier. 
 
 ## Azure facilitation
 

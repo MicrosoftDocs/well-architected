@@ -145,6 +145,29 @@ Balance automation and human oversight to ensure accuracy. Continuously review a
 
 Include monitoring and alerting in overall workload testing. Automate functions while keeping the ability to analyze trends for predicting operational issues and planning capacity.
 
+## Watch out for these antipatterns
+
+// think about design not operating. 
+
+Logging too little (missing context for debugging) or too much (creating noise and high storage costs).
+
+Failing to propagate correlation IDs across services, or analyzing logs/metrics in isolation.
+
+Ignoring business context. Emitting only technical metrics or analyzing data without connecting to business KPIs and objectives.
+
+Unconfigured or mismanaged telemetry. Enabling logging without proper diagnostic settings, or storing all telemetry in one place without purpose.
+
+Poor data governance. Keeping raw data indefinitely, ignoring retention policies, data protection, compliance, and encryption requirements.
+
+Not considering cost of monitoring. Not planning for storage and monitoring cost growth as telemetry volume increases.
+
+All over the place telemetry making inconsistent data, making queries and analysis difficult.
+
+Horribel dashboards that are cluttered, irrelevant, or not aligned with KPIs or health model.
+
+Alert fatiue. no context, ownership, or differentiation between critical vs informational.
+
+Ignoring trend analysis, reporting, and forecasting for proactive monitoring.
 
 ## Azure facilitation
 
