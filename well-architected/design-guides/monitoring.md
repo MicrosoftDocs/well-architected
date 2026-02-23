@@ -10,19 +10,19 @@ ms.update-cycle: 1095-days
 
 # How to build a monitoring system for Azure workloads
 
-Monitoring is the practice of collecting and analyzing telemetry to understand system health and behavior. Its purpose is to make the state of a system observable through measurement, connecting technical signals to operational outcomes. Proper monitoring allows teams to detect anomalies, investigate failures, and make informed decisions about evolving the system.
+Monitoring is the mindful practice of collecting and analyzing telemetry to understand system health and behavior. Its purpose is to make the state of a system observable through measurement, connecting technical signals to operational outcomes. Proper monitoring allows teams to detect anomalies, investigate failures, and make informed decisions.
 
-Monitoring should be treated as a core architectural capability, designed alongside the workload rather than added later. Think of it as its own system, with a dedicated stack and data flows, spanning infrastructure, application health, and build and release processes. As workloads grow, monitoring must scale from simple metrics to cross-service correlation and structured analysis in distributed systems. Across all cases, it must align with service objectives and operational needs.
+As a cloud solution architect, treat monitoring as a core architectural capability, designed alongside the workload rather than added later. Think of it as its own system, with a dedicated stack and data flows, spanning infrastructure, application health, and build and release processes. As workloads grow, monitoring must scale from simple metrics to cross-service correlation and structured analysis in distributed systems. Across all cases, it must align with service objectives and operational needs.
 
 The monitoring system follows a linear progression and can be divided into four logical stages, each building on the insights of the previous one.
 
-:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical stages, each building on the previous one.." lightbox="media/observability/monitor-pipeline.png" border="false":::
+:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical stages, each building on the previous one.." lightbox="_images/monitor-pipeline.png" border="false":::
 
 This guide explores the process of building those phases and provides best practices. It doesn't cover specialized monitoring like security, reliability, or performance monitoring. The guidance builds on the key strategies outlined in  [Architecture strategies for designing a monitoring system](../operational-excellence/observability.md), which you should review first.
 
 ## Phase 1 - Instrumentation
 
-_Instrumentation_ is the practice of embedding code or tools in your source to generate operational signals called _telemetry_. This refers to logs, traces, and metrics. _Logs_ are timestamped records of discrete events, while _traces_ record request paths across components. Distributed tracing is particularly valuable in systems where requests traverse multiple services or machines. _Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics help you monitor health and when captured continuously over time to reveal trends, patterns, and anomalies. 
+_Instrumentation_ is the process of embedding code or tools in your source to generate operational signals called _telemetry_. This refers to logs, traces, and metrics. _Logs_ are timestamped records of discrete events, while _traces_ record request paths across components. Distributed tracing is particularly valuable in systems where requests traverse multiple services or machines. _Metrics_ are numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. Unlike logs or traces, a single metric on its own provides limited insight; metrics help you monitor health and when captured continuously over time to reveal trends, patterns, and anomalies. 
 
 Start by deciding _what to track from the system_ so that you can analyze it later. Think about the layer of the system:
 
@@ -61,14 +61,20 @@ With proper instrumentation, the request is tracked end-to-end across every comp
 
 While instrumentation is about what operational signals should be tracked, this phase is about *where to route the telemetry data* and manage it responsibly.
 
+It's common to use monitoring agents that pull data and writes the information directly to common storage. 
+
+:::image type="content" source="media/observability/monitor-write-shared-storage.png" alt-text="Diagram that shows the use of a monitoring agent to pull information and write it to shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
+
 Telemetry usually comes from two main sources:
 
-- **Application-level telemetry**. Once the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be collected automatically using Application Performance Management (APM) tool. [Azure Application Insights](../service-guides/application-insights.md) is an APM that's well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. For example, you have an ASP.NET Core app hosted in App Service. Application Insights will automatically capture request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
+- **Application-level telemetry**. Once the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be pulled automatically using Application Performance Management (APM) tool. [Azure Application Insights](../service-guides/application-insights.md) is an APM that's well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. For example, you have an ASP.NET Core app hosted in App Service. Application Insights will automatically capture request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
 
 - **Platform logs**. There's telemetry generated from the infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource log that capture resource-specific events, like storage access logs, firewall events. 
 
-   Platform log collection requires explicit configuration. Enable Diagnostic settings for each resource and route logs to a storage solution. 
+   Enable Diagnostic settings for each resource and route logs to a storage solution.
 
+   Platform log collection requires explicit configuration. For example, Azure Monitor Agent. When installed on the VMs, it pulls local logs and delivers them to Azure Monitor, Microsoft Sentinel, and Microsoft Defender for Cloud.
+   
   
 #### Telemetry data storage decision
 
@@ -115,6 +121,8 @@ Analyzing telemetry begins by structuring data around defined KPIs and performan
 - Are business KPIs trending negatively?
 
 To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example in the case of distrubuted tracing, aggregation involves combining events with the same activity or transaction ID are merged.
+
+:::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
 
 Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
 
