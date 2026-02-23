@@ -193,7 +193,7 @@
               href: operational-excellence/safe-deployments.md
       - name: Performance Efficiency
         items: 
-        - name: Quick links
+        - name: Quick links 
           href: performance-efficiency/index.yml
         - name: Design principles
           href: performance-efficiency/principles.md
@@ -208,28 +208,40 @@
         - name: Key design strategies   
           items:
             - name: PE:01 Performance targets
+              displayName: performance benchmarking, latency optimization, throughput
               href: performance-efficiency/performance-targets.md
             - name: PE:02 Capacity planning
+              displayName: demand forecasting, resource allocation, autoscaling
               href: performance-efficiency/capacity-planning.md
             - name: PE:03 Selecting services 
+              displayName: paas vs iaas, azure regions, application demands
               href: performance-efficiency/select-services.md
-            - name: PE:04 Metrics and logs 
+            - name: PE:04 Metrics and logs
+              displayName: application performance monitoring (APM), distributed tracing, code instrumentation
               href: performance-efficiency/collect-performance-data.md
-            - name: PE:05 Scaling and partitioning 
+            - name: PE:05 Scaling and partitioning
+              displayName: horizontal scaling, autoscaling, scale units
               href: performance-efficiency/scale-partition.md
             - name: PE:06 Performance testing
+              displayName: load testing, stress testing, performance baseline
               href: performance-efficiency/performance-test.md
-            - name: PE:07 Code and infrastructure 
+            - name: PE:07 Code and infrastructure
+              displayName: memory management, asynchronous programming, connection pooling
               href: performance-efficiency/optimize-code-infrastructure.md
-            - name: PE:08 Data performance 
+            - name: PE:08 Data performance
+              displayName: query tuning, database indexing, data caching
               href: performance-efficiency/optimize-data-performance.md
-            - name: PE:09 Critical flows 
+            - name: PE:09 Critical flows
+              displayName: resource allocation, rate limiting, priority queues
               href: performance-efficiency/prioritize-critical-flows.md
             - name: PE:10 Operational tasks
+              displayName: blue-green deployment, database maintenance, deployment strategies
               href: performance-efficiency/optimize-operational-tasks.md
             - name: PE:11 Live-issues responses
+              displayName: incident response, performance troubleshooting, automated remediation
               href: performance-efficiency/respond-live-performance-issues.md
             - name: PE:12 Continuous performance optimization
+              displayName: performance tuning, automated testing, technical debt
               href: performance-efficiency/continuous-performance-optimize.md
 
     - name: Workloads
