@@ -47,13 +47,12 @@ HPC environments often process sensitive data, including proprietary research, r
 
 - **Network boundary enforcement:** Operate HPC clusters within defined network perimeters that restrict unauthorized access while permitting required communication between compute nodes, storage systems, and job submission endpoints.
 
-- **Identity and access governance:** Users require varying levels of access to HPC resources, from basic job submission to administrative cluster management. Permissions should follow least‑privilege principles and integrate with organizational identity systems.
+- **Identity, access governance and data protection controls:** Access to HPC resources should be governed by least‑privilege principles, providing users only the permissions required for roles ranging from job submission to cluster administration, and integrated with organizational identity systems. Sensitive data must be protected through encryption at rest and in transit, with enforced policies ensuring that only authorized users and jobs can access protected datasets.
 
 - **Regulatory compliance:** Organizations processing data subject to regulatory requirements such as HIPAA, ITAR, or FedRAMP must implement specific controls and maintain audit evidence to demonstrate compliance.
 
 - **Workload isolation:** Multi-tenant HPC environments or clusters processing sensitive data require mechanisms to prevent unauthorized access between users or jobs, both at the compute layer and within shared storage systems.
 
-- **Data protection controls:** Sensitive data requires encryption during storage and transmission. Access to protected datasets must be restricted to authorized users and jobs through enforced policies. [think of combining this with the Identity point]
 
 ### Recommendations
 
@@ -62,7 +61,8 @@ HPC environments often process sensitive data, including proprietary research, r
 | Deploy HPC clusters within isolated virtual networks using network security groups | Reduces the attack surface by limiting network access to only required endpoints while allowing necessary node‑to‑node and storage communication. |
 | Use Microsoft Entra ID for authentication, and integrate role [Azure RBAC](/azure/role-based-access-control/) | Enforces least-privilege access and provides centralized identity governance across HPC resources. |
 | Use Secure administrative access using [Azure Bastion](/azure/bastion/secure-bastion) | Prevents direct exposure of management ports and reduces the risk of unauthorized access. |
-| Enable [encryption at rest](/azure/storage/common/storage-service-encryption) for all Azure storage services. Apply Azure policy to enforce security baselines. | Provides visibility into security posture, supports compliance audits, and enables rapid detection of misconfigurations or threats. Ensures consistent security controls across clusters and prevents configuration drift over time. | [Include policy point after this]
+| Enable [encryption at rest](/azure/storage/common/storage-service-encryption) for all Azure storage services | Provides visibility into security posture, supports compliance audits, and enables rapid detection of misconfigurations or threats. Ensures consistent security controls across clusters and prevents configuration drift over time. | 
+| Apply Azure policy to enforce security baselines and policy compliance reporting across HPC clusters | Reduces misconfigurations and configuration drift, improves visibility into compliance posture, supports audit and regulatory requirements, and enables faster detection and remediation of security gaps at scale and without manual intervention. |
 
 
 ## Cost Optimization
@@ -112,7 +112,7 @@ Operational maturity in HPC environments requires balancing user autonomy with s
 | Recommendation | Benefit |
 |----------------|---------|
 | Define HPC cluster infrastructure using Bicep or Terraform templates with [Azure Resource Manager](/azure/azure-resource-manager/) to manage deployments as code. | Ensures consistent, reproducible deployments and prevents configuration drift. Infrastructure as code also enables faster recovery scenarios. |
-| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/how-to/qs-deploy-ccws.md), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
+| Deploy Azure CycleCloud with native support for [Slurm](/azure/cyclecloud/how-to/qs-deploy-ccws), PBS Pro, Grid Engine, or other schedulers that align with existing workflows. | Preserves user productivity by allowing existing job scripts and submission models to run unchanged. |
 | Use [Azure Batch for managed job scheduling](/azure/batch/batch-job-schedule) with task dependencies, or integrate CycleCloud clusters with workflow orchestration tools for multi-stage pipelines. | Automates complex workflows and ensures pipeline stages execute in the correct order without manual coordination. |
 | Enable [Azure Monitor](/azure/azure-monitor/) for diagnostic logs and metrics. Configure [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-overview) to build operational dashboards. | Improves visibility into cluster health and job progress, enabling faster troubleshooting and proactive operations. |
 | Maintain infrastructure-as-code definitions using [Bicep](/azure/azure-resource-manager/bicep/) or [Terraform](/azure/developer/terraform/) in Azure DevOps or GitHub to enable repeatable cluster deployment in alternate regions during disaster recovery. | Enables faster recovery after catastrophic failures by reducing manual reconfiguration and improving deployment consistency. |
