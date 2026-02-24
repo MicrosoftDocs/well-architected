@@ -124,7 +124,7 @@ Analyzing telemetry begins by structuring data around defined KPIs and performan
 
 To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID are merged.
 
-:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_image/service-instrumentation-data.png" border="false":::
+:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/service-instrumentation-data.png" border="false":::
 
 Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
 
