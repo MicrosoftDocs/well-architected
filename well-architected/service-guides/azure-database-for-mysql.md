@@ -43,7 +43,7 @@ Start your design strategy based on the [design review checklist for Reliability
 > [!div class="checklist"]
 >    
 >
-> - **Review known problems and service limitations that can affect reliability:** Azure Database for MySQL Flexible Server has documented [limitations](/azure/mysql/flexible-server/concepts-limitations) that directly affect reliability design decisions. Review these constraints before provisioning to avoid costly server recreation. Confirm zone-redundant HA requirements and network connectivity method at creation time since these settings can't change later. Account for global transaction identifier (GTID) mode turning on automatically when planning HA configuration.
+> - **Review known problems and service limitations that can affect reliability:** Azure Database for MySQL Flexible Server has documented [limitations](/azure/mysql/flexible-server/concepts-limitations) that directly affect reliability design decisions. Review these constraints before provisioning to avoid costly server recreation. Confirm zone-redundant HA requirements and network connectivity method at creation time since these settings can't change later. 
 >
 >    Plan initial [storage allocation](/azure/mysql/flexible-server/concepts-service-tiers-storage) carefully since provisioned storage can only scale up and can't be reduced. Avoid using read replicas if you need stop/start functionality, and budget for dump and restore procedures when planning major version upgrades. Select General Purpose or Memory Optimized tiers if your workload requires HA or read replicas.
 >
@@ -59,27 +59,35 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >    Consider same-zone HA when your workload accepts zone-level risk or prioritizes cost optimization with locally redundant storage (LRS). This option protects against server-level failures but not zone outages.
 >
->    Select zone-redundant HA mode during server provisioning since this setting can't change afterward. Verify GTID mode compatibility with your workload before enabling HA configuration, as GTID automatically turns on and restricts certain SQL operations.
+>    Select zone-redundant HA mode during server provisioning since this setting can't change afterward. 
 >
-> - **Design scaling strategies that maintain reliability during demand changes:** Plan scaling operations to minimize availability impact during demand changes. Schedule compute tier changes during low-traffic periods to manage the brief restart as the workload migrates to a new instance. Use HA-enabled servers to reduce primary downtime, as they perform scaling on the standby first. Rightsize initial storage allocations carefully since capacity can only increase after provisioning.
+> - **Design scaling strategies that maintain reliability during demand changes:** Plan scaling operations to minimize availability impact and distribute load across database instances.
 >
->    Use read replicas to distribute read workloads across up to 10 instances by using asynchronous binary log replication. Select General Purpose or Memory Optimized tiers for servers that need replicas, and monitor replication lag as it varies based on write volume on the primary.
+>    - Schedule compute tier changes during low-traffic periods to manage the brief restart as the workload migrates to a new instance. Use HA-enabled servers to reduce primary downtime, as they perform scaling on the standby first. Rightsize initial storage allocations carefully since capacity can only increase after provisioning.
 >
-> - **Monitor reliability health indicators and set up failure detection alerts:** Set up reliability-focused monitoring to detect service health degradation, replication problems, and resource saturation before they cause application failures. Track HA IO Status, HA SQL Status, and HA Replication Lag to verify standby synchronization health.
+>    - Use read replicas to distribute read workloads across up to 10 instances by using asynchronous binary log replication. Select General Purpose or Memory Optimized tiers for servers that need replicas, and monitor replication lag as it varies based on write volume on the primary.
 >
->    Monitor resource saturation indicators like CPU Percent, Memory Percent, Storage Percent, and IO Percent to reveal capacity pressure. Track Active Connections relative to max_connections to prevent connection exhaustion, and monitor Aborted Connections to detect connectivity problems.
+> - **Monitor reliability health indicators and set up failure detection alerts:** Set up reliability-focused monitoring to detect service health degradation, replication problems, and resource saturation before they cause application failures. Track HA synchronization status and replication lag to verify standby health.
 >
->    Set alert thresholds on HA replication lag, storage utilization approaching capacity, and sustained CPU or memory above 80-90 percent to trigger scaling evaluation before availability degrades.
+>    Monitor resource saturation indicators for compute, memory, storage, and I/O to reveal capacity pressure. Track active connections relative to connection limits to prevent exhaustion, and monitor aborted connections to detect connectivity problems.
 >
-> - **Apply configuration and self-preservation techniques to protect against failures:** Database configuration choices directly affect failover reliability. Add explicit primary keys to all tables to improve replication performance and reduce failover duration. Avoid relying on MySQL 8.0's auto-generated invisible primary keys for tables migrated from older versions, as these might be missing.
+>    Set alert thresholds on replication lag, storage utilization approaching capacity, and sustained compute or memory pressure to trigger scaling evaluation before availability degrades.
 >
->    Set up connection retry logic in the data access layer to handle brief disruptions during failover, maintenance, and scaling events. Account for DNS propagation delay after failover by configuring applications to retry dropped connections. Apply Azure resource locks and Azure Policy to protect against configuration drift.
+> - **Apply configuration and self-preservation techniques to protect against failures:** Apply database configuration and platform protection measures to improve failover reliability and prevent configuration drift.
 >
-> - **Design disaster recovery strategy with backup and geo-redundancy capabilities:** Set up disaster recovery with backup, geo-redundancy, and cross-region recovery to meet RPO and recovery time objective (RTO) requirements. Use automated backups that include daily snapshots and transaction log backups every five minutes, with retention configurable from 1 to 35 days.
+>    - Add explicit primary keys to all tables to improve replication performance and reduce failover duration.
 >
->    Enable geo-redundant backup storage to replicate data to a paired region for regional outage protection. Use geo-restore to create a new server through Universal Geo-restore, or deploy cross-region read replicas as an alternative DR mechanism with manual promotion. Avoid custom port configurations if you need geo-restore or geo-replica capabilities.
+>    - Set up connection retry logic in the data access layer to handle brief disruptions during failover, maintenance, and scaling events. Account for DNS propagation delay after failover by configuring applications to retry dropped connections.
 >
->    Adjust backup frequency to 6-, 12-, or 24-hour intervals for faster recovery of large databases. Select the appropriate redundancy level, noting that locally redundant storage is the default for non-HA and same-zone HA, but zone-redundant storage is used for zone-redundant HA. Enable geo-redundant backup if you need customer data replicated outside the deployed region.
+>    - Apply Azure resource locks and Azure Policy to protect against configuration drift.
+>
+> - **Design disaster recovery strategy with backup and geo-redundancy capabilities:** Set up disaster recovery with backup, geo-redundancy, and cross-region recovery to meet RPO and recovery time objective (RTO) requirements.
+>
+>    - Configure automated backup frequency and retention periods to achieve the RPO your workload requires. Adjust backup intervals for faster recovery of large databases.
+>
+>    - Enable geo-redundant backup storage to replicate data to a paired region for regional outage protection. Use geo-restore to create a new server through Universal Geo-restore, or deploy cross-region read replicas as an alternative DR mechanism with manual promotion. Avoid custom port configurations if you need geo-restore or geo-replica capabilities.
+>
+>    - Select the appropriate redundancy level, noting that locally redundant storage is the default for non-HA and same-zone HA, but zone-redundant storage is used for zone-redundant HA. Enable geo-redundant backup if you need customer data replicated outside the deployed region.
 >
 
 ### Configuration recommendations
@@ -112,17 +120,19 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >    Use Azure Policy built-in definitions to enforce key controls including private endpoint usage, SSL enforcement, customer-managed key (CMK) encryption, and Microsoft Entra authentication. Apply these policies to validate configuration compliance across server instances.
 >
-> - **Segment access through role-based controls:** Access control operates across two distinct planes. Use Azure RBAC to govern management operations and MySQL native privileges to control data plane operations, as Azure RBAC for data plane access isn't supported.
+> - **Segment access through role-based controls:** Implement layered access control across management and data planes to enforce least privilege and restrict administrative access.
 >
->    Follow least privilege principles for database user accounts. Grant minimum necessary privileges by using GRANT statements scoped to specific databases and tables, create separate accounts for each application component, and avoid assigning ALL PRIVILEGES or SUPER to application accounts.
+>    - Use Azure RBAC to govern management operations and MySQL native privileges to control data plane operations, as Azure RBAC for data plane access isn't supported.
 >
->    Limit Microsoft Entra admin configuration to one per server instance, and reserve the server admin account for emergency access only. Use Customer Lockbox to control Microsoft support access during support incidents.
+>    - Follow least privilege principles for database user accounts. Grant minimum necessary privileges scoped to specific databases and tables, create separate accounts for each application component, and avoid broad privilege assignments.
+>
+>    - Limit Microsoft Entra admin configuration to one per server instance, and reserve the server admin account for emergency access only. Use Customer Lockbox to control Microsoft support access during support incidents.
 >
 > - **Centralize identity management with Microsoft Entra ID:** Microsoft Entra-only authentication eliminates password-based access entirely. Set up applications to authenticate with short-lived tokens through managed identities or service principals. Assign a user-assigned managed identity and designate a Microsoft Entra administrator for each server instance, noting that only one administrator is allowed per server.
 >
 >    Use combined MySQL and Microsoft Entra authentication to support gradual migration from password-based to token-based access. Plan a transition timeline to Microsoft Entra-only mode after migrating all connections, as MySQL-only authentication lacks centralized identity governance.
 >
-> - **Restrict network exposure with connectivity controls:** Use virtual network integration to embed the server into a customer-managed virtual network with a private IP in the delegated subnet, eliminating public internet exposure. Set up the subnet with Microsoft.DBforMySQL/flexibleServers delegation before deployment and apply network security group (NSG) rules to control traffic flow.
+> - **Restrict network exposure with connectivity controls:** Use virtual network integration to embed the server into a customer-managed virtual network with a private IP in the delegated subnet, eliminating public internet exposure. Configure the required subnet delegation before deployment and apply network security group (NSG) rules to control traffic flow.
 >
 >    Limit public access mode to development and migration scenarios only. Plan migration to private connectivity through private endpoints or server redeployment with virtual network integration, as connectivity mode can't change after server creation.
 >
@@ -136,7 +146,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Harden server configuration and reduce attack surface:** Beyond encryption controls, harden server configuration by adjusting parameter-level security settings to reduce attack surface.
 >
->    Review and set server parameters like local_infile, log_bin_trust_function_creators, and validate_password to strengthen your security posture. Assign custom ports in the 25001-26000 range during server creation only if needed, noting that geo-restore and geo-replica operations don't support custom port configurations.
+>    Review and set security-related server parameters to strengthen your security posture. Assign custom ports during server creation only if needed, noting that geo-restore and geo-replica operations don't support custom port configurations.
 >
 > - **Protect connection credentials and application secrets:** Secure database credentials and secrets through identity-based authentication and centralized secret management to eliminate password exposure risks.
 >
@@ -186,7 +196,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   - Account for high availability doubling compute cost by deploying a standby replica with dedicated storage and compute. Include independent charges for read replicas at the same rates as the primary server.
 >
->   - Calculate backup storage costs, which are free up to 100% of provisioned server storage, with geo-redundant backup charged at twice the locally redundant rate. Include Accelerated Logs cost on General Purpose tier, which doubles when HA is enabled, but it's included on Memory Optimized tier.
+>   - Calculate backup storage costs, which are free up to 100% of provisioned server storage, with geo-redundant backup charged at twice the locally redundant rate. Factor in additional feature costs that vary by tier and HA configuration.
 >
 > - **Monitor database cost metrics and spending trends:** Use Azure Monitor metrics to gain visibility into compute utilization, storage consumption, IOPS usage, and backup storage that directly correlate with service costs.
 >
@@ -279,9 +289,9 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Establish safe deployment practices for server updates:** Coordinate maintenance windows, patching strategies, and parameter changes to minimize disruption while maintaining security and functionality. Balance near-zero-downtime capabilities with proper testing and workload-aware scheduling.
 >
->   - Set up Custom Managed Maintenance Window for production workloads to control the day and 60-minute Coordinated Universal Time (UTC) start window, minimizing disruption through managed maintenance with near-zero-downtime patching. Use Virtual Canary policy for nonproduction servers to validate patch compatibility before production rollout.
+>   - Set up a custom maintenance window for production workloads to control the day and time window, minimizing disruption through managed maintenance with near-zero-downtime patching. Use early-access maintenance policies for nonproduction servers to validate patch compatibility before production rollout.
 >
->   - Make sure all tables have primary keys, which the near-zero-downtime patching mechanism requires to minimize downtime to 10-30 seconds. Set up retry logic in the data access layer to handle brief connection interruptions during maintenance, and schedule maintenance during low-workload periods.
+>   - Make sure all tables have primary keys, which the near-zero-downtime patching mechanism requires to minimize downtime. Set up retry logic in the data access layer to handle brief connection interruptions during maintenance, and schedule maintenance during low-workload periods.
 >
 >   - Distinguish dynamic parameters that apply immediately to new connections from static parameters that require server restart. Account for static parameter changes restarting both primary and standby servers when HA is enabled, and test parameter changes in nonproduction environments.
 >
@@ -341,7 +351,7 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >    Slow_queries count identifies queries exceeding the long_query_time threshold for optimization. InnoDB Row Lock Time and Row Lock Waits reveal lock contention affecting transaction throughput, and lock_deadlocks and lock_timeouts indicate concurrency conflicts requiring query or schema changes.
 >
->    Azure Monitor provides one-minute granularity metrics across Availability, Latency, Saturation, and Traffic categories. Slow query logs and the Query Performance Insight workbook offer query-level visibility, and Log Analytics supports historical trend analysis through Kusto queries.
+>    Use Azure Monitor metrics, slow query logs, and the Query Performance Insight workbook for query-level visibility. Use Log Analytics for historical trend analysis through Kusto queries.
 >
 > - **Run performance testing:** Create load test workloads that reflect production query patterns, including read/write ratios, transaction complexity, and concurrency levels. Include peak period simulations to validate autoscale IOPS behavior and compute headroom. Test with production-representative data volumes because InnoDB buffer pool efficiency and query plans depend on data size.
 >
