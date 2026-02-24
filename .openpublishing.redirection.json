@@ -2429,6 +2429,11 @@
 		"source_path": "well-architected/service-guides/event-grid/reliability.md",
 		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
 		"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/operational-excellence/instrument-application.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
+			"redirect_document_id": true
 		}											
 	]
 }
