@@ -249,11 +249,15 @@ Start your design strategy based on the [design review checklist for Operational
 
 > [!div class="checklist"]
 >
-> - **Define server infrastructure by using code templates:** Use infrastructure as code (IaC) with Azure Resource Manager templates, Bicep, Terraform, or Azure CLI for declarative Flexible Server provisioning. Define HA mode, backup redundancy, network access mode, and MySQL version correctly in the initial deployment template, as these settings are immutable after creation and require server recreation to change.
+> - **Define server infrastructure by using code templates:** Use infrastructure as code (IaC) with Azure Resource Manager templates, Bicep, Terraform, or Azure CLI for declarative Flexible Server provisioning.
 >
->    Parameterize compute tier, SKU, storage size, IOPS, and backup retention for environment-specific variations.
+>   - Define HA mode, backup redundancy, network access mode, and MySQL version correctly in the initial deployment template, as these settings are immutable after creation and require server recreation to change.
 >
->    Deploy networking resources before server creation when using virtual network integration, then set up diagnostic settings and RBAC as post-provisioning layers. Set up drift detection for parameters modified through the portal outside IaC workflows.
+>   - Parameterize compute tier, SKU, storage size, IOPS, and backup retention for environment-specific variations.
+>
+>   - Deploy networking resources before server creation when using virtual network integration, then set up diagnostic settings and RBAC as post-provisioning layers. 
+>
+>   - Set up drift detection for parameters modified through the portal outside IaC workflows.
 >
 > - **Automate database schema deployments in pipelines:** Integrate database schema changes into deployment pipelines by using migration scripts with validation gates and rollback capability. Use tools like Flyway, Liquibase, or custom scripts to version-control schema changes and apply them through CI/CD pipeline stages.
 >
@@ -263,17 +267,21 @@ Start your design strategy based on the [design review checklist for Operational
 >
 >    Balance log detail level with performance impact since verbose logging affects server throughput. Set up the server logs feature for short-term file-based access alongside diagnostic settings for long-term analytics, and plan log routing to Event Hubs for security information and event management (SIEM) integration or Azure Storage for compliance archival.
 >
-> - **Define operational procedures for routine and emergency response:** Define operational procedures that span change management, maintenance scheduling, and emergency response for Flexible Server. Require on-demand backups as a gate before schema migrations, parameter changes, and version upgrades to create rollback points. Track backup consumption against the 50-backup-per-server limit and schedule cleanup of outdated backups.
+> - **Define operational procedures for routine and emergency response:** Establish documented procedures covering change management, maintenance coordination, and emergency recovery to ensure consistent operational practices across routine and critical scenarios.
 >
->    Reschedule maintenance events when they conflict with critical business periods, noting this capability is available only for General Purpose and Memory Optimized tiers. Set up Azure Service Health alerts to receive notifications about maintenance events and service incidents.
+>   - Require on-demand backups as a gate before schema migrations, parameter changes, and version upgrades to create rollback points. Track backup consumption against the 50-backup-per-server limit and schedule cleanup of outdated backups.
 >
->    Maintain a runbook for deleted server recovery, available within five days of deletion, including escalation paths and validation steps. Document post-restore reconfiguration steps since restored servers require HA reactivation, firewall rule updates, and parameter resets for time_zone and event_scheduler.
+>   - Reschedule maintenance events when they conflict with critical business periods, noting this capability is available only for General Purpose and Memory Optimized tiers. Set up Azure Service Health alerts to receive notifications about maintenance events and service incidents.
 >
-> - **Establish safe deployment practices for server updates:** Set up Custom Managed Maintenance Window for production workloads to control the day and 60-minute Coordinated Universal Time (UTC) start window, minimizing disruption through managed maintenance with near-zero-downtime patching. Use Virtual Canary policy for nonproduction servers to validate patch compatibility before production rollout.
+>   - Maintain a runbook for deleted server recovery, available within five days of deletion, including escalation paths and validation steps. Document post-restore reconfiguration steps since restored servers require HA reactivation, firewall rule updates, and parameter resets for time_zone and event_scheduler.
 >
->    Make sure all tables have primary keys, which the near-zero-downtime patching mechanism requires to minimize downtime to 10-30 seconds. Set up retry logic in the data access layer to handle brief connection interruptions during maintenance, and schedule maintenance during low-workload periods.
+> - **Establish safe deployment practices for server updates:** Coordinate maintenance windows, patching strategies, and parameter changes to minimize disruption while maintaining security and functionality. Balance near-zero-downtime capabilities with proper testing and workload-aware scheduling.
 >
->    Distinguish dynamic parameters that apply immediately to new connections from static parameters that require server restart. Account for static parameter changes restarting both primary and standby servers when HA is enabled, and test parameter changes in nonproduction environments.
+>   - Set up Custom Managed Maintenance Window for production workloads to control the day and 60-minute Coordinated Universal Time (UTC) start window, minimizing disruption through managed maintenance with near-zero-downtime patching. Use Virtual Canary policy for nonproduction servers to validate patch compatibility before production rollout.
+>
+>   - Make sure all tables have primary keys, which the near-zero-downtime patching mechanism requires to minimize downtime to 10-30 seconds. Set up retry logic in the data access layer to handle brief connection interruptions during maintenance, and schedule maintenance during low-workload periods.
+>
+>   - Distinguish dynamic parameters that apply immediately to new connections from static parameters that require server restart. Account for static parameter changes restarting both primary and standby servers when HA is enabled, and test parameter changes in nonproduction environments.
 >
 > - **Automate management and monitoring tasks:** Use built-in automation features and Azure Monitor integration to reduce manual operational overhead. Set up automated backups with adjustable intervals and retention periods to maintain recovery point objectives, and review Azure Advisor recommendations periodically for optimization suggestions on performance, reliability, and cost.
 >
@@ -313,11 +321,15 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >    Plan for connection pooling when concurrent application connections approach max_connections limits. Identify read versus write workload ratios to determine whether read replicas provide the horizontal read scale your workload requires, and include failover capacity in your planning.
 >
-> - **Choose compute tiers and SKUs based on performance requirements:** Select General Purpose or Memory Optimized tiers for production workloads to deliver sustained compute capacity without throttling. Use General Purpose (D-series) to provide balanced compute and memory with HA, read replica, and accelerated logs support.
+> - **Choose compute tiers and SKUs based on performance requirements:** Azure Database for MySQL offers three compute tiers with distinct performance characteristics and feature availability. Match tier selection to workload performance needs, scalability requirements, and feature dependencies.
 >
->    Choose Memory Optimized (E-series) when your workload requires higher memory-to-vCore ratios for cache-dependent and high-concurrency scenarios, delivering the lowest latency and highest queries per second (QPS). Limit Burstable (B-series) to development and testing because the CPU credit model throttles under sustained load.
+>   - Select General Purpose tier (D-series) for production workloads requiring sustained compute capacity without throttling. Provides balanced compute and memory with support for HA, read replicas, and accelerated logs. Use for most production scenarios where predictable performance and enterprise features are required.
 >
->    Select General Purpose or Memory Optimized tiers when you need HA, read replicas, or accelerated logs support. Account for IOPS limits that scale with compute size, and make sure InnoDB buffer pool allocation matches your working set requirements since it varies by SKU.
+>   - Choose Memory Optimized tier (E-series) when workloads require higher memory-to-vCore ratios for cache-dependent and high-concurrency scenarios. Delivers the lowest latency and highest queries per second (QPS). Best for memory-intensive workloads with large working sets or high-concurrency requirements.
+>
+>   - Limit Burstable tier (B-series) to development and testing environments because the CPU credit model throttles under sustained load. Doesn't support HA, read replicas, or accelerated logs, which aligns with nonproduction requirements.
+>
+>   - Account for IOPS limits that scale with compute size, and make sure InnoDB buffer pool allocation matches working set requirements since it varies by SKU. Select General Purpose or Memory Optimized tiers when you need HA, read replicas, or accelerated logs support.
 >
 > - **Define a scaling strategy:** Plan compute tier changes for low-traffic periods since they require server restarts taking 60 to 120 seconds, causing brief workload disruption. Apply storage increases online, but remember that allocation can never be reduced. Use autoscale IOPS to provide automatic I/O scaling based on demand without manual intervention.
 >
@@ -333,11 +345,13 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >    Test compute tier scaling to measure restart duration and application reconnection behavior. Simulate read replica lag under load and verify storage autogrow activation. Capture baseline metrics for query latency, throughput, IOPS consumption, and connection count to compare across IOPS settings and detect cache sizing problems during growth.
 >
-> - **Optimize database performance through configuration and features:** InnoDB buffer pool size determines how much working data is cached in memory, directly affecting the cache hit ratio. Set transaction log sizing to balance write throughput against crash recovery time. Select appropriate table storage strategy to affect performance and manageability for large databases.
+> - **Optimize database performance through configuration and features:** Tune MySQL engine parameters and Azure-specific features based on workload characteristics to maximize query performance, reduce resource contention, and improve overall database efficiency.
 >
->    Set up connection pooling at the proxy or application layer to reduce connection creation and teardown overhead under high concurrency. Monitor and close idle connections that consume server thread resources, reducing capacity for active queries.
+>   - InnoDB buffer pool size determines how much working data is cached in memory, directly affecting the cache hit ratio. Set transaction log sizing to balance write throughput against crash recovery time. Select appropriate table storage strategy to affect performance and manageability for large databases.
 >
->    Use accelerated logs to optimize transaction log operations by separating log I/O to high-performance storage. Verify feature availability by compute tier and region, and benchmark performance gains to quantify improvement for specific workloads.
+>   - Set up connection pooling at the proxy or application layer to reduce connection creation and teardown overhead under high concurrency. Monitor and close idle connections that consume server thread resources, reducing capacity for active queries.
+>
+>   - Use accelerated logs to optimize transaction log operations by separating log I/O to high-performance storage. Verify feature availability by compute tier and region, and benchmark performance gains to quantify improvement for specific workloads.
 >
 
 <!-- markdownlint-disable-next-line MD024 -->
