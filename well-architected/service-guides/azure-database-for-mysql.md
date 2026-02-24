@@ -19,7 +19,7 @@ azure.category:
 
 Azure Database for MySQL - Flexible Server is a fully managed, production-ready relational database service based on the MySQL Community Edition. It provides zone-redundant and local-redundant high availability (HA), managed maintenance windows, automatic backups with point-in-time restore, and elastic scaling across three compute tiers.
 
-This article assumes that as an architect, you've reviewed the [data options decision tree](https://learn.microsoft.com/azure/architecture/guide/technology-choices/data-options) and chose Azure Database for MySQL as the database for your workload.
+This article assumes that as an architect, you've reviewed the [data options decision tree](/azure/architecture/guide/technology-choices/data-options) and chose Azure Database for MySQL as the database for your workload.
 
 The guidance in this article provides architectural recommendations that are mapped to the principles of the [Well-Architected Framework pillars](/azure/well-architected/pillars).
 
@@ -108,7 +108,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 > [!div class="checklist"]
 >
-> - **Review the security baseline for Azure Database for MySQL:** The security baseline maps MySQL Flexible Server capabilities to Microsoft cloud security benchmark controls across network security, identity management, privileged access, data protection, logging, and backup. Review this baseline to understand available security controls and implementation approaches.
+> - **Review the security baseline for Azure Database for MySQL:** The [security baseline](/security/benchmark/azure/baselines/azure-database-for-mysql-flexible-server-security-baseline) maps MySQL Flexible Server capabilities to Microsoft cloud security benchmark controls across network security, identity management, privileged access, data protection, logging, and backup. Review this baseline to understand available security controls and implementation approaches.
 >
 >    Use Azure Policy built-in definitions to enforce key controls including private endpoint usage, SSL enforcement, customer-managed key (CMK) encryption, and Microsoft Entra authentication. Apply these policies to validate configuration compliance across server instances.
 >
@@ -371,7 +371,7 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
-Foundational architecture that demonstrates the key recommendations: [WordPress on Azure App Service](https://learn.microsoft.com/azure/architecture/example-scenario/infrastructure/wordpress-app-service).
+Foundational architecture that demonstrates the key recommendations: [WordPress on Azure App Service](/azure/architecture/example-scenario/infrastructure/wordpress-app-service).
 
 ## Related content
 
