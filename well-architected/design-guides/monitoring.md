@@ -36,21 +36,21 @@ Start by deciding _what to track from the system_. Think about the layers of the
 
 When adding instrumentation, follow these simple principles: Maintain consistency, provide sufficient context, and structure information for ease of analysis in later phases. 
 
-- **Choose technology that's language-agnostic and can integrate with multiple monitoring platforms**. OpenTelemetry is a vendor-neutral option that's adopted by a lot of application. 
+- **Choose technology that's language-agnostic and can integrate with multiple monitoring platforms**. OpenTelemetry is a vendor-neutral option that's adopted by a lot of applications. 
 
 - **Record all relevant context consistently**. Include information about source component, environment, deployment, activity ID, user info, and dependency data. For example, timestamps should be recorded at the moment a log entry is created and formatted in a consistent, standardized way. All telemetry data should use Coordinated Universal Time (UTC) to ensure events can be accurately correlated across services, regions, and systems.
 
 - **Use structured telemetry**, which is recorded in both human- and machine-readable formats (JSON, MessagePack, Protobuf).
 
-- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, where as increase verbosity in production.
+- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, whereas increase verbosity in production.
 
 - **Categorize by operational concern** to make filtering and analysis more efficient. For example separate telemetry data for audit, security, debugging, or performance. 
 
-- **Enable correlation**. Dstributed tracing is particularly valuable in systems where requests traverse multiple services or machines. Assign a unique activity ID to each request and propagate it across services, threads, queues, dependencies. Correlation must rely on identifiers and context, not timestamps alone.
+- **Enable correlation**. Distributed tracing is particularly valuable in systems where requests traverse multiple services or machines. Assign a unique activity ID to each request and propagate it across services, threads, queues, dependencies. Correlation must rely on identifiers and context, not timestamps alone.
 
 #### Example: Instrumentation
 
-Consider an ecommerce application. when a customer places an order, a business transation begins. The API processes the payment, the database records the order, and a confirmation email is sent. When the system works as expected, everything completes within the expected timeframe. But suppose something breaks.
+Consider an ecommerce application. when a customer places an order, a business transaction begins. The API processes the payment, the database records the order, and a confirmation email is sent. When the system works as expected, everything completes within the expected timeframe. But suppose something breaks.
 
 Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
 
@@ -96,19 +96,19 @@ In some cases, you might send the same telemetry to multiple destinations for di
 
 Not all telemetry needs to live forever. Be clear on how long you want to retain based on the use of the data.  For example, raw debugging data may only require short-term retention, whereas performance metrics, historical trends, or auditing records may need long-term storage.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Telemetry data can grow significantly even within a short period of time. Set clear retention policies so that you keeo the data that truly matters while letting go of what doesn't. Like spot trends, anticipate capacity issues within the right time window. At the same time, you avoid paying for storage you don't really need.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Telemetry data can grow significantly even within a short period of time. Set clear retention policies so that you keep the data that truly matters while letting go of what doesn't. Like spot trends, anticipate capacity issues within the right time window. At the same time, you avoid paying for storage you don't really need.
 
 In addition to retention policies that archive older data to lower-cost storage, there are other techniques to optimize costs. Where appropriate, down-sample it to reduce storage usage while preserving sufficient resolution for analysis. Aggregate related events to reduce storage footprint and process data faster.
 
 #### Telemetry data security
 
-While telemetry isn't workload functional data, it's still critical from an operation perspective. From a security point: protect data against accidental deletion; control access with role-based access control (RBAC). Consider the use of:
+While telemetry isn't workload functional data, it's still critical from an operational perspective. From a security point: protect data against accidental deletion; control access with role-based access control (RBAC). Consider the use of:
 
 - Enable soft delete to allow recovery within a defined period. Most Azure storage services offer soft delete. Refer to product documentation for details on the service you've chosen for your workload.
 
 - Apply [resource locks](/azure/azure-resource-manager/management/lock-resources) to prevent unintended changes or deletions to important resources.
 
-- Sensitive data must be encrypted and scrubbed of personally identifiable information. If you're workload needs to store telemetry for regulatory purposes, follow the governance policies according to those compliance requirements. 
+- Sensitive data must be encrypted and scrubbed of personally identifiable information. If your workload needs to store telemetry for regulatory purposes, follow the governance policies according to those compliance requirements. 
 
 ## Phase 3 - Correlation, aggregation, analysis
 
@@ -124,7 +124,7 @@ Analyzing telemetry begins by structuring data around defined KPIs and performan
 
 To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID are merged.
 
-:::image type="content" source="media/observability/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
+:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="media/observability/service-instrumentation-data.png" border="false":::
 
 Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
 
@@ -135,7 +135,7 @@ Let's continue with the eCommerce example. With instrumentation in place, the te
 //Art coming soon
 
 
-Analyis revealed that the cause was the dependency on the database, which was under heavy load, because:
+Analysis revealed that the cause was the dependency on the database, which was under heavy load, because:
 
 - Application logs showed errors with timeout exceptions
 - Database latency doubled during that time
@@ -185,7 +185,7 @@ Visualization shows trends, but alerts notify you when action is needed. Here ar
 
 #### Example: Visualization and alerts
 
-Let's return to the eCommerce applciation. A developer oriented dashboard visualizes:
+Let's return to the eCommerce application. A developer oriented dashboard visualizes:
 
 - Latency trends over the past 24 hours
 - Failure rates by endpoint
@@ -194,7 +194,7 @@ Let's return to the eCommerce applciation. A developer oriented dashboard visual
 
 From this dashboard, a developer can narrow in investigations about failure spikes when database CPU exceeds 85%. Meanwhile when latency exceeds 2 seconds for the checkout user flow, developer sees request ID, database load, and recent errors. At this point, with sufficient testing an automated workflow is triggered that scales database tier. 
 
-## monitoring antipatterns and how to avoid them
+## Monitoring antipatterns and how to avoid them
 
 The following antipatterns commonly undermine what monitoring can do for workloads. 
 
@@ -247,4 +247,4 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 - [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md)
 - [Create an effective incident management plan to manage disruptions](./incident-management.md)
 - [Performance efficiency design principles](../performance-efficiency/principles.md)
-- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring.md)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
