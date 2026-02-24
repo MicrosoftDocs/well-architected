@@ -112,9 +112,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >    Use Azure Policy built-in definitions to enforce key controls including private endpoint usage, SSL enforcement, customer-managed key (CMK) encryption, and Microsoft Entra authentication. Apply these policies to validate configuration compliance across server instances.
 >
->    Account for several baseline expectations that have known gaps. Plan alternative approaches for data leakage prevention and sensitive data classification, as these aren't natively supported. Use MySQL native privileges for data plane access since Azure role-based access control (RBAC) doesn't extend to this layer. Accept platform-managed TLS certificates without Key Vault integration.
->
-> - **Segment access through role-based controls:** Access control operates across two distinct planes. Use Azure RBAC to govern management operations like server configuration, firewall rules, and scaling. Apply MySQL native privileges to control data plane operations, as Azure RBAC for data plane access isn't supported.
+> - **Segment access through role-based controls:** Access control operates across two distinct planes. Use Azure RBAC to govern management operations and MySQL native privileges to control data plane operations, as Azure RBAC for data plane access isn't supported.
 >
 >    Follow least privilege principles for database user accounts. Grant minimum necessary privileges by using GRANT statements scoped to specific databases and tables, create separate accounts for each application component, and avoid assigning ALL PRIVILEGES or SUPER to application accounts.
 >
@@ -126,25 +124,27 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - **Restrict network exposure with connectivity controls:** Use virtual network integration to embed the server into a customer-managed virtual network with a private IP in the delegated subnet, eliminating public internet exposure. Set up the subnet with Microsoft.DBforMySQL/flexibleServers delegation before deployment and apply network security group (NSG) rules to control traffic flow.
 >
->    Add private endpoints to create a private IP address in the consumer virtual network that routes traffic over the Azure backbone network. Apply private endpoints to public access servers to provide private connectivity without redeployment, then turn off public network access.
->
 >    Limit public access mode to development and migration scenarios only. Plan migration to private connectivity through private endpoints or server redeployment with virtual network integration, as connectivity mode can't change after server creation.
 >
-> - **Encrypt data at rest and in transit:** Data at rest encryption uses platform-managed keys by default for all stored data, backups, and transaction logs. Use customer-managed keys with Azure Key Vault or Managed HSM to gain additional key life cycle control, which requires a user-assigned managed identity and a Key Vault with soft delete, 90-day retention, and purge protection.
+> - **Encrypt data at rest and in transit:** Protect stored data and network traffic through encryption mechanisms for both at-rest and in-transit scenarios.
 >
->    Enforce TLS 1.2 by default, or use TLS 1.3 on MySQL 8.0 and later for stronger security. Set the require_secure_transport parameter to control TLS enforcement, noting that Federal Information Processing Standards (FIPS)-compliant cipher suites apply automatically. Accept that mutual TLS and custom server certificates aren't supported.
+>    - Data at rest encryption uses platform-managed keys by default for all stored data, backups, and transaction logs. Use customer-managed keys with Azure Key Vault or Managed HSM to gain additional key life cycle control.
 >
->    Trust only root certificate authorities (CAs) in client configurations to avoid connection failures. Azure manages server certificates through DigiCert Global Root G2 and Microsoft RSA Root CA 2017 root CAs, with intermediate CA rotations occurring routinely without announcement.
+>    - Enforce TLS 1.2 by default, and use TLS 1.3 on MySQL 8.0 and later for stronger security. Set the require_secure_transport parameter to control TLS enforcement, noting that Federal Information Processing Standards (FIPS)-compliant cipher suites apply automatically.
 >
-> - **Harden server configuration and reduce attack surface:** Harden server configuration by adjusting parameter-level security settings and reducing attack surface. Set up TLS version enforcement through encryption controls, and accept that cipher suite customization isn't supported as FIPS-compliant suites are enforced automatically.
+>    - Trust only root certificate authorities (CAs) in client configurations to avoid connection failures. Azure manages server certificates through DigiCert Global Root G2 and Microsoft RSA Root CA 2017 root CAs, with intermediate CA rotations occurring routinely without announcement.
+>
+> - **Harden server configuration and reduce attack surface:** Beyond encryption controls, harden server configuration by adjusting parameter-level security settings to reduce attack surface.
 >
 >    Review and set server parameters like local_infile, log_bin_trust_function_creators, and validate_password to strengthen your security posture. Assign custom ports in the 25001-26000 range during server creation only if needed, noting that geo-restore and geo-replica operations don't support custom port configurations.
 >
-> - **Protect connection credentials and application secrets:** Use identity-based authentication through Microsoft Entra ID with managed identities to replace static passwords in application configurations. Set up token-based authentication to provide short-lived credentials that reduce the exposure window, and set connection strings by using Microsoft Entra authentication to eliminate embedded passwords.
+> - **Protect connection credentials and application secrets:** Secure database credentials and secrets through identity-based authentication and centralized secret management to eliminate password exposure risks.
 >
->    Store remaining MySQL native authentication passwords, including the server admin password from provisioning, in Azure Key Vault with restricted access. Retrieve secrets independently from applications, as Key Vault native integration for storing MySQL service credentials isn't supported.
+>    - Use identity-based authentication through Microsoft Entra ID with managed identities to replace static passwords with short-lived tokens, and set connection strings by using Microsoft Entra authentication to eliminate embedded passwords.
 >
->    Monitor Key Vault access closely when using CMK encryption, as loss of access makes the server inaccessible within 10 minutes. Create alerts for Key Vault access failures or key deletion events, and maintain key backups with documented recovery procedures.
+>    - Store remaining MySQL native authentication passwords, including the server admin password from provisioning, in Azure Key Vault with restricted access.
+>
+>    - Monitor Key Vault access closely when using CMK encryption, as loss of access makes the server inaccessible within 10 minutes. Create alerts for Key Vault access failures or key deletion events, and maintain key backups with documented recovery procedures.
 >
 > - **Turn on security monitoring and audit logging:** Audit logs track connection events, administrative operations, data definition language (DDL) and data manipulation language (DML) statements, and table access. Turn on the audit_log_enabled server parameter and select event types based on your security requirements.
 >
@@ -178,15 +178,15 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
-> - **Develop a cost model for database workload expenses:** Azure Database for MySQL Flexible Server costs span multiple billing dimensions including compute tier and vCore count, storage provisioned in gigabytes (GB), input/output operations per second (IOPS) model, backup storage beyond the free allowance, high availability standby replicas, and read replicas with independent billing. Build a cost model that accounts for all these dimensions.
+> - **Develop a cost model for database workload expenses:** Azure Database for MySQL Flexible Server costs span multiple billing dimensions including compute, storage, I/O, and replication. Build a cost model that accounts for all these dimensions and their interdependencies.
 >
->    Compare pay-as-you-go pricing that charges hourly for compute and per GB for storage against reserved instances offering 1-year or 3-year commitments with increasing discounts for longer terms. Account for compute costs varying significantly across tiers, with Burstable being the lowest-cost option and Memory Optimized being the highest.
+>   - Compare pay-as-you-go pricing that charges hourly for compute and per GB for storage against reserved instances offering discounts for longer terms. Account for compute costs varying significantly across tiers, with Burstable being the lowest-cost option and Memory Optimized being the highest.
 >
->    Understand that storage is billed per GB per month and can only scale up after provisioning, making initial sizing a long-term cost factor.
+>   - Understand that storage is billed per GB per month and can only scale up after provisioning, making initial sizing a long-term cost factor.
 >
->    Account for high availability doubling compute cost by deploying a standby replica with dedicated storage and compute. Include independent charges for read replicas at the same rates as the primary server.
+>   - Account for high availability doubling compute cost by deploying a standby replica with dedicated storage and compute. Include independent charges for read replicas at the same rates as the primary server.
 >
->    Calculate backup storage costs, which are free up to 100% of provisioned server storage, with geo-redundant backup charged at twice the locally redundant rate. Include Accelerated Logs cost on General Purpose tier, which doubles when HA is enabled, but it's included on Memory Optimized tier.
+>   - Calculate backup storage costs, which are free up to 100% of provisioned server storage, with geo-redundant backup charged at twice the locally redundant rate. Include Accelerated Logs cost on General Purpose tier, which doubles when HA is enabled, but it's included on Memory Optimized tier.
 >
 > - **Monitor database cost metrics and spending trends:** Use Azure Monitor metrics to gain visibility into compute utilization, storage consumption, IOPS usage, and backup storage that directly correlate with service costs.
 >
@@ -196,13 +196,15 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >    Watch for storage autogrow events that increase costs as the server approaches capacity limits. Apply resource tags to servers for cost allocation across teams, projects, or environments.
 >
-> - **Optimize server configuration to reduce ongoing costs:** Three compute tiers provide different cost-performance trade-offs: Burstable (B-series, 1-20 vCores) for intermittent workloads, General Purpose (D-series, 2-96 vCores) for balanced workloads, and Memory Optimized (E-series, 2-96 vCores) for memory-intensive workloads. Select the tier that matches your workload pattern to avoid overspending.
+> - **Optimize server configuration to reduce ongoing costs:** Rightsize compute tier, storage, and backup settings to match actual workload requirements and avoid overspending on unused capacity.
 >
->    Set backup retention to the minimum period that meets recovery requirements to reduce backup storage beyond the free allowance. Select locally redundant backup storage for workloads that don't require geo-disaster recovery to avoid the doubled cost of geo-redundant storage.
+>   - Three compute tiers provide different cost-performance trade-offs: Burstable for intermittent workloads, General Purpose for balanced workloads, and Memory Optimized for memory-intensive workloads. Select the tier that matches your workload pattern to avoid overspending.
 >
->    Provision storage conservatively since storage can only scale up, and turn on autogrow as a safety net rather than over-provisioning initially.
+>   - Set backup retention to the minimum period that meets recovery requirements to reduce backup storage beyond the free allowance. Select locally redundant backup storage for workloads that don't require geo-disaster recovery to avoid the doubled cost of geo-redundant storage.
 >
->    Compare Ddsv4/Edsv4 and Ddsv6/Edsv6 series pricing for the target region since newer generations might offer better price-performance ratios. Select Ddsv4/Edsv4 hardware generation when purchasing reservations because they automatically apply to v5 and v6 instances in the same tier and region.
+>   - Provision storage conservatively since storage can only scale up, and turn on autogrow as a safety net rather than over-provisioning initially.
+>
+>   - Compare Ddsv4/Edsv4 and Ddsv6/Edsv6 series pricing for the target region since newer generations might offer better price-performance ratios. Select Ddsv4/Edsv4 hardware generation when purchasing reservations because they automatically apply to v5 and v6 instances in the same tier and region.
 >
 > - **Establish spending controls for database resources:** Use Azure Policy, RBAC, and cost management to provide governance mechanisms that prevent costly database configurations and unauthorized resource changes.
 >
@@ -212,11 +214,11 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 > - **Optimize database configurations for each environment:** Production and nonproduction environments have fundamentally different reliability, performance, and cost requirements that should drive database configuration choices. Set up each environment appropriately to optimize costs.
 >
->    Select General Purpose or Memory Optimized tier for production based on workload performance requirements, and evaluate whether zone-redundant HA justifies the compute cost doubling. Size read replicas appropriately for their actual read workload rather than mirroring primary server specifications.
+>   - Select General Purpose or Memory Optimized tier for production based on workload performance requirements, and evaluate whether zone-redundant HA justifies the compute cost doubling. Size read replicas appropriately for their actual read workload rather than mirroring primary server specifications.
 >
->    Use the free tier for proof-of-concept and initial development. Reduce backup retention to 1-7 days and select locally redundant backup storage for nonproduction environments.
+>   - Use the free tier for proof-of-concept and initial development. Reduce backup retention to 1-7 days and select locally redundant backup storage for nonproduction environments.
 >
->    Deploy development servers in cost-effective regions when data residency requirements permit.
+>   - Deploy development servers in cost-effective regions when data residency requirements permit.
 >
 > - **Consolidate database resources to improve cost efficiency:** Azure Database for MySQL Flexible Server supports hosting multiple databases on a single server instance, which distributes fixed infrastructure costs across workloads. Evaluate consolidation candidates based on compatible performance requirements, security isolation needs, and acceptable noisy-neighbor risk to improve resource utilization.
 >
