@@ -214,7 +214,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >
 >   - Provision storage conservatively since storage can only scale up, and turn on autogrow as a safety net rather than over-provisioning initially.
 >
->   - Compare Ddsv4/Edsv4 and Ddsv6/Edsv6 series pricing for the target region since newer generations might offer better price-performance ratios. Select Ddsv4/Edsv4 hardware generation when purchasing reservations because they automatically apply to v5 and v6 instances in the same tier and region.
+>   - Compare hardware generation pricing across regions, since the same tier can have different costs depending on which generations are available in each region.
 >
 > - **Establish spending controls for database resources:** Use Azure Policy, RBAC, and cost management to provide governance mechanisms that prevent costly database configurations and unauthorized resource changes.
 >
@@ -335,11 +335,11 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - **Choose compute tiers and SKUs based on performance requirements:** Azure Database for MySQL offers three compute tiers with distinct performance characteristics and feature availability. Match tier selection to workload performance needs, scalability requirements, and feature dependencies.
 >
->   - Select General Purpose tier (D-series) for production workloads requiring sustained compute capacity without throttling. Provides balanced compute and memory with support for HA, read replicas, and accelerated logs. Use for most production scenarios where predictable performance and enterprise features are required.
+>   - Select General Purpose tier for production workloads requiring sustained compute capacity without throttling. Provides balanced compute and memory with support for HA, read replicas, and accelerated logs. Use for most production scenarios where predictable performance and enterprise features are required.
 >
->   - Choose Memory Optimized tier (E-series) when workloads require higher memory-to-vCore ratios for cache-dependent and high-concurrency scenarios. Delivers the lowest latency and highest queries per second (QPS). Best for memory-intensive workloads with large working sets or high-concurrency requirements.
+>   - Choose Memory Optimized tier when workloads require higher memory-to-vCore ratios for cache-dependent and high-concurrency scenarios. Delivers the lowest latency and highest queries per second (QPS). Best for memory-intensive workloads with large working sets or high-concurrency requirements.
 >
->   - Limit Burstable tier (B-series) to development and testing environments because the CPU credit model throttles under sustained load. Doesn't support HA, read replicas, or accelerated logs, which aligns with nonproduction requirements.
+>   - Limit Burstable tier to development and testing environments because the CPU credit model throttles under sustained load. Doesn't support HA, read replicas, or accelerated logs, which aligns with nonproduction requirements.
 >
 >   - Account for IOPS limits that scale with compute size, and make sure InnoDB buffer pool allocation matches working set requirements since it varies by SKU. Select General Purpose or Memory Optimized tiers when you need HA, read replicas, or accelerated logs support.
 >
