@@ -19,7 +19,7 @@ This guide describes the recommendations for network design. The focus is on **s
 
 You can strengthen your identity controls by implementing network-based access control measures. Along with identity-based access control, network security is a high priority for protecting assets. Proper network security controls can provide a defense-in-depth element that can help detect and contain threats, and prevent attackers from gaining entry into your workload.
 
-**Definitions**
+**Terminology**
 
 | Term |Definition |
 |---------|---------|

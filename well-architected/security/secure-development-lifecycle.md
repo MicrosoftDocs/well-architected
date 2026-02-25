@@ -3,7 +3,7 @@ title: Architecture strategies for securing a development lifecycle
 description: Learn about Well-Architected Framework Security recommendations for securing a development lifecycle. 
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 10/09/2023
+ms.date: 02/24/2026
 ms.topic: concept-article
 ---
 
@@ -11,170 +11,107 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Security checklist recommendation:**
 
-|**SE:02**|Maintain a secure development lifecycle by using a hardened, mostly automated, and auditable software supply chain. Incorporate a secure design by using threat modeling to safeguard against security-defeating implementations.|
+|**SE:02**|Align secure development lifecycle (SDL) throughout the software development lifecycle (SDLC) to ensure confidentiality, integrity, and availability of software and adopt a security-first mindset.|
 |--|---|
 
-**Related guide**: [Threat analysis](threat-model.md)
-
-This guide describes the **recommendations for hardening your code, development environment, and software supply chain** by applying security best practices throughout the development cycle. To understand this guidance, you should have knowledge of DevSecOps. 
+Application code is the core of every workload. Embed security throughout the SDLC by integrating controls at multiple stages of development. The goal is to make sure design decisions don't introduce avoidable security gaps and that code and configuration choices don't result in exploitable vulnerabilities. 
 
 :::image type="content" source="images/secure-development-lifecycle/devops-security.png" alt-text="A diagram of the security cycle.":::
 
-DevSecOps integrates security into DevOps processes by: 
+This guide describes security best practices to protect application code and prevent vulnerable implementation and the introduction of compromised components. Extend the best practices to third-party and open-source components to reduce supply chain risk. The focus is not on the infrastructure layer.
 
-- Automating security testing and validation.
+The guidance is grounded in SDL practices and assumes a foundational understanding of DevSecOps principles. It extends beyond application code to address the full software supply chain, including developer workstations, source repositories, build systems, and deployment environments. 
 
-- Implementing tools like security pipelines to scan code and infrastructure as code (IaC) for vulnerabilities.  
 
-At the core of a workload is the application code that implements business logic. The code and the process of developing code must be **free of security defects** to ensure confidentiality, integrity, and availability.  
-
-It's not enough to secure just the infrastructure plane by using controls on identity and networking and other measures. **Prevent bad implementation of code or a compromised code block** to strengthen your overall security posture. The usage plane, that is, the application code, must also be hardened. The process of integrating security into your development lifecycle is essentially a hardening process. Like resource hardening, tightening up code development is also context-agnostic. The focus is on enhancing security and not the functional requirements of the application. For information related to hardening, see [Recommendations for hardening resources](harden-resources.md).
-
-**Definitions** 
+**Terminology**
 
 | Term | Definition |
 |--|--|
+| Common Vulnerabilities and Exposures (CVE) | A publicly available database of known security vulnerabilities and exposures in software and hardware products. |
+| Defense-in-depth | A security strategy that uses multiple layers of protection to safeguard systems, so if one layer fails, others continue to provide security. |
+| DevSecOps | An approach that integrates security practices into the DevOps process, emphasizing collaboration between development, security, and operations teams throughout the software lifecycle. |
+| Dynamic Application Security Testing (DAST) | Security testing that analyzes applications during runtime to identify vulnerabilities by simulating real-world attack scenarios. |
+| Managed identity | An Azure feature that provides applications with an automatically managed identity in Microsoft Entra ID, eliminating the need to store credentials in code. |
+| Progressive exposure | A deployment strategy that gradually releases changes to subsets of users to minimize risk and contain potential issues. |
 | Security Development Lifecycle (SDL) | A set of practices provided by Microsoft that supports security assurance and compliance requirements. |
 | Software development lifecycle (SDLC) | A multistage, systematic process for developing software systems. |
+| Static Application Security Testing (SAST) | Security testing that analyzes source code, bytecode, or binaries without executing the program to identify potential vulnerabilities. |
+| STRIDE | A threat modeling methodology that categorizes threats into six types: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, and Elevation of privilege. |
+| Supply chain security | Protection of the entire software supply chain, including third-party components, development tools, and processes from compromise or tampering. |
+| Threat modeling | A structured process for identifying, evaluating, and mitigating potential security threats to a system early in the design phase. |
 
 
-Security measures should be integrated at multiple points into your existing Software Development Lifecycle (SDLC) to ensure: 
+## Think about security from day one
 
-- Design choices don't lead to security gaps. 
+During the earliest planning and architecture discussions, **define both functional and non-functional security requirements alongside business objectives**. Overlay the architecture with security controls. Think about isolation boundaries, outside-in and inside-out access, and sensitivity levels of that applies to workload data. We recommend following the [Security checklist](./checklist.md) diligently to develop the security dimension of the architecture. Also review [architecture design patterns that support security](design-patterns.md).
 
-- Application code and configuration don't create vulnerabilities because of exploitable implementation and improper coding practices. 
+To keep the team accountable, security considerations and outcomes must be added directly into backlog items so they're designed and delivered as part of the product. For example, consider an application that supports critical user flows enabling users to upload and manipulate data. Security deliverables must address how users interact with the system (enforcing strong authentication and authorization) to ensure only permitted actions are allowed. 
 
-- Software acquired via the supply chain doesn't introduce security threats. 
+Architects must explicitly document security trade-offs and formalize risk acceptance to ensure transparency and accountability. For example, a security decision might require measures to block OWASP vulnerabilities upfront. If stakeholders opt not to fund it, they must acknowledge and accept the resulting risk of application-layer attacks.
 
-- Application code, build, and deployment processes aren't tampered with.  
 
-- Vulnerabilities revealed through incidents are mitigated.  
+## Choose technology options that support security
 
-- Unused assets are properly decommissioned.  
+Identify the security controls required to achieve your desired outcomes and leverage Azure's native capabilities where possible. For example, define a segmentation strategy using identity, network, and resource boundaries, and select web application firewalls (WAFs) such as Azure Front Door or Azure Application Gateway to protect the application. When a WAF is needed at ingress, use these managed services instead of replicating their functionality in custom application code.
 
-- Compliance requirements aren't compromised or reduced.  
+Technical considerations also include selecting only trusted frameworks, libraries, and supply chain software, sourced from verified providers. Third-party vendors must meet your security requirements and maintain a responsible disclosure plan, promptly reporting any security incidents. Maintain a list of approved and disallowed assets, and, where possible, enforce guardrails in development pipelines to prevent use of unapproved components. For approved dependencies, automated scanning helps detect vulnerabilities early and consistently.
 
-- Audit logging is implemented in developer environments.
+Decide how to store application secrets and pre-shared keys in a secure manner. Never store credentials or secrets in the source code repository. Use external tools, such as Azure Key Vault, so that even if the source code is exposed, attackers can't gain access. Where possible, avoid using secrets altogether, for example, by leveraging managed identities. For more guidance, see [Recommendations for managing application secrets](application-secrets.md).
 
-The following sections provide security strategies for the commonly practiced phases of SDLC.
+## Make threat modeling a design discipline
 
+_Threat modeling_ helps you identify vulnerabilities, evaluate threats, and define mitigations early in the design phase. Start by defining the scope: set clear system boundaries and inventory your assets so you focus on what matters most. Gather detailed information about each component, including data flows and dependencies, and analyze each one from an attacker's perspective to determine how it could be exploited. Adopt an *assume breach* mindset—plan for control failures and apply defense-in-depth to limit impact.
 
-## Collect and document the security requirements
+Use an industry methodology such as [STRIDE](/azure/security/develop/threat-modeling-tool-threats) to classify threats and drive mitigation decisions. Document every identified threat, the controls that prevent it, and the response plan if those controls fail. Define clear timelines and ownership to remediate vulnerabilities quickly so they don't remain unaddressed.
 
-The goal of the requirements phase is to **gather and analyze the functional and non-functional requirements** for an application or a new feature of an application. This phase is important because it facilitates the creation of guardrails that are tailored to the objectives of the application. Protecting the data and integrity of your application should be a core requirement throughout every phase of the development lifecycle.  
+Track threat modeling results and revisit them throughout the workload lifecycle. Update the model as the architecture evolves to ensure new features and changes don't introduce unmanaged risk.
 
-For example, consider an application that needs to support critical user flows that enable the user to upload and manipulate data. The security design choices should cover assurances for the user's interaction with the application, like authenticating and authorizing the user identity, allowing only permitted actions on the data, and preventing SQL injection. Similarly, cover non-functional requirements like availability, scalability, and maintainability. Security choices should include segmentation boundaries, firewall ingress and egress, and other cross-cutting security concerns. 
+## Build secure coding expertise
 
-All these decisions should lead to a good definition of the security posture of the application. **Document the security requirements in an agreed-upon specification** and reflect it in the backlog. It should explicitly state the security investments and the tradeoffs and risks that the business is willing to take on if the investments aren't approved by business stakeholders. For example, you might document the need to use a web application firewall (WAF) in front of your application, like Azure Front Door or Azure Application Gateway. If business stakeholders aren't prepared to accept the additional cost of running a WAF, they need to accept the risk that application-layer attacks might be directed toward the application.
+Ensure the development team completes **formal, role-specific training in secure coding practices**. For example, web and API developers should know how to prevent cross-site scripting (XSS), while back-end developers should understand how to mitigate risks such as SQL injection and other database-layer attacks. Require developers to complete this training before granting access to production source code. Reinforce these skills through internal peer code reviews, which promote accountability, knowledge sharing, and continuous improvement.
 
-Security requirement gathering is a critical part of this phase. Without this effort, the design and implementation phases will be based on unstated choices, which can lead to security gaps. You might need to change the implementation later to accommodate security, which can be expensive.
+## Use security testing as a strategic control
 
-## Translate security requirements to technical requirements
+Make security testing a core engineering discipline. Establish a testing strategy that evaluates architecture, code, and runtime behavior continuously throughout the development lifecycle. Use a mix of architectural analysis, static and dynamic testing, dependency scanning, and automated guardrails. 
 
-During the design phase, **the security requirements are converted to technical requirements**. In your technical specification, document all design decisions to prevent ambiguity during implementation. Here are some typical tasks:
+Use static application security testing (SAST) to detect vulnerabilities in code as developers write it. Complement this with dynamic application security testing (DAST) to evaluate the running application and simulate real-world attack scenarios. 
 
-### Define the security dimension of the system architecture
+Integrate automated security scanning into build and integration workflows so that security becomes a quality gate. Scan dependencies and third-party components continuously, and treat vulnerable libraries as supply chain risks that require active management. Use linters and code analyzers to prevent sensitive data, such as credentials, from entering source control, and reinforce these protections with pipeline controls that detect and block secret exposure.
 
-  Overlay the architecture with security controls. For example, controls that are practical on the isolation boundaries per your [segmentation strategy](segmentation.md), the types of identities needed for the components of the application, and the type of encryption methods to use. For some example architectures, see the illustrations in the Example sections of the [Identity and access management](identity-access.md#example) and [Networking](networking.md#example) articles.
+Adopt industry standards as a way to boost confidence your security resilience. For more information, see the [Community resources](#community-links) section of this article.
 
-### Evaluate platform-provided affordances
 
-  It's important to understand the **division of responsibility between you and the cloud provider**. Avoid overlap with Azure native security controls, for example. You'll get better security coverage and be able to reallocate development resources to the needs of the application.
+## Write just enough code
 
-  For example, if your design calls for a web application firewall on ingress, you can offload that responsibility to a load balancer like Application Gateway or Azure Front Door. Avoid replicating features as custom code in your application. 
+Every line of code increases your attack surface. **Prioritize reuse over reinvention**. Use well-established frameworks and libraries that have already undergone security validation instead of duplicating functionality in custom code.
 
-  **Choose only trusted frameworks, libraries, and supply chain software.** Your design should also specify secure version control. Application dependencies should be sourced from trusted parties. **Third-party vendors should be able to meet your security requirements** and share their responsible disclosure plan. Any security incident should be promptly reported so that you can take necessary actions. Also, certain libraries might be prohibited by your organization. For example, software might be secure from vulnerabilities but still disallowed because of licensing restrictions.
+Adopt a platform-first mindset. Use managed Azure services and PaaS capabilities whenever possible to offload heavy lifting to Azure, such as authentication, encryption, scaling, and ingress protection. The less custom security logic you write, the lower your long-term risk.
 
-  To ensure that this guidance is followed by all contributors to the software, **maintain a list of approved and/or unapproved frameworks, libraries, and vendors**. When possible, place guardrails in the development pipelines to support the list. As much as possible, **automate the use of tools to scan dependencies** for vulnerabilities. 
+When you do write code, **default to deny**. Design authorization logic so that access is blocked unless explicitly allowed. Use allowlists for specific, approved entities, and ensure privileged operations succeed only when clearly authorized.
 
-### Determine the security design patterns that the application code should implement.
+## Fortify developer environments
 
-Patterns can support security concerns like segmentation and isolation, strong authorization, uniform application security, and modern protocols. Some operational patterns, such as the Quarantine pattern, can help verify and block the use of software that could potentially introduce security vulnerabilities.
+Your development environment is part of your attack surface. **Protect developer workstations with the same rigor as production systems**. This means enforce strong identity controls, apply network protections, and maintain disciplined patching. A compromised workstation can become a direct path into your codebase and build systems.
 
-  For more information, see [Architecture design patterns that support security](design-patterns.md).
+Treat build agents as high-value assets. They have privileged access to source code and build pipelines, which makes them attractive targets. **Authenticate and authorize access strictly, segment them at the network level, and subject them to continuous security monitoring.** Prefer Microsoft-hosted build agents over self-hosted ones to reduce operational risk and limit persistence, since they provide clean environments for each pipeline run. Custom agents increase management overhead and expand the attack surface.
 
-### Store application secrets securely
+Secure build credentials and remove temporary artifacts to prevent leakage. Where possible, isolate build agents by restricting inbound access and allowing only controlled outbound communication.
 
-  Securely implement the use of application secrets and pre-shared keys that your application uses. **Credentials and application secrets should never be stored in the source code tree.** Use external resources like Azure Key Vault to ensure that, if your source code becomes available to a potential attacker, no further access can be obtained. In general, find ways to avoid secrets. Using managed identities, when possible, is one way to achieve that goal. For more information, see [Recommendations for managing application secrets](application-secrets.md).
+Your **source code repository is a critical asset**. Grant access on a least-privilege, need-to-know basis. Establish structured, security-focused code review processes with clear approval workflows tied to business justification. Strong governance over repositories and pipelines reduces the likelihood of tampering and limits the impact of a breach.
 
-### Define test plans
+## Secure build and deployment pipelines
 
-  Define clear test cases for security requirements. Evaluate whether you can **automate those tests in your pipelines**. If your team has processes for manual testing, include security requirements for those tests. 
+Build and deployment pipelines are high-value targets and must be treated as part of your security boundary. Attackers  can tamper with your pipeline, inject malicious code, access secrets, or compromise downstream environments. 
 
-  > [!NOTE] 
-  > Perform threat modeling during this phase. Threat modeling can confirm that design choices are aligned with security requirements and expose gaps that you should mitigate. If your workload handles highly sensitive data, invest in security experts who can help you conduct threat modelling. 
+Start by maintaining clear visibility and control. **Keep an up-to-date inventory of all integrated components and dependencies**, and regularly verify that what runs in the pipeline matches what is approved. **Only use pipeline tasks and extensions from trusted, validated sources**, recognizing that they execute with privileged access. 
 
-  The initial threat modeling exercise should occur during the design phase when the software's architecture and high-level design are being defined. Doing it during that phase helps you to identify potential security issues before they're incorporated into the system's structure. However, this exercise isn't a one-time activity. It's a continuous process that should continue throughout the software's evolution.
+**Protect credentials by eliminating hard-coded secrets and favoring managed identities and secure secret stores.** **Segment pipeline stages to reduce unnecessary exposure** of sensitive assets and limit lateral movement if a stage is compromised.
 
-  For more information, see [Recommendations for threat analysis](threat-model.md).
+Environment isolation is equally important. **Strictly separate production and non-production systems**, avoid using production data in lower environments without equivalent protections, and prevent direct connectivity that could allow a breach to spread. Control risk through progressive exposure. **Release changes gradually, using feature flags or staged rollouts**, so that if a vulnerability surfaces, you contain the impact. Design your pipelines to support both regular and emergency deployments. Security fixes often require rapid response, and your process should allow quick roll-forward or rollback without compromising system stability. Establish clear communication and approval procedures to accelerate emergency changes responsibly.
 
-## Secure development and testing practices
+> [!Note] 
+> Always prioritize security fixes over convenience. But never compromise quality or introduce regressions. If you need to accelerate a fix through an emergency pipeline, assess which automated tests can be safely bypassed. Consider the tradeoff between each test's value and its execution time. For example, unit tests are quick and important, while integration or end-to-end tests may take longer but still provide critical coverage. Make these decisions intentionally to balance speed with confidence in the fix.
 
-During the development and testing phase, the goal is to **prevent security defects** and tampering in code, build, and deployment pipelines. 
-
-### Be well-trained in secure code practices
-
-  The development team should **have formal and specialized training in secure coding practices**. For example, web and API developers might need specific training to protect against cross-site scripting attacks, and back-end developers can benefit from in-depth training to avoid database-level attacks like SQL injection attacks.
-
-  Developers should be required to complete this training before they can gain access to production source code.
-
-  You should also perform internal peer code reviews to promote continuous learning.  
-
-### Use security test tools
-
-  Perform threat modeling to evaluate the security of the application's architecture.
-
-  Use **static application security testing (SAST)** to analyze code for vulnerabilities. Integrate this methodology into the developer environment to detect vulnerabilities in real time.  
-
-  Use **dynamic application security testing (DAST)** during runtime. This tool chain can check for errors in security domains and simulate a set of attacks to test the application's security resilience. When possible, integrate this tool into your build pipelines. 
-
-  Follow industry standards for secure coding practices. For more information, see the [Community resources](#community-links) section of this article. 
-
-  Use linters and code analyzers to prevent credentials from getting pushed to the source code repository. For example, .NET Compiler Platform (Roslyn) Analyzers inspect your application code.
-
-  During the build process, **use pipeline add-ons to catch credentials in the source code**. Scan all dependencies, like third-party libraries and framework components, as part of the continuous integration process. Investigate vulnerable components that are flagged by the tool. Combine this task with other code scanning tasks that inspect code churn, test results, and coverage.
-
-  Use a combination of tests. For information about security testing in general, see [Recommendations for security testing](test.md).
-
-### Write just enough code
-
-  When you reduce your code footprint, you also reduce the chances of security defects. **Reuse code and libraries that are already in use and have been through security validations** instead of duplicating code.
-
-  Taking advantage of Azure features is another way to prevent unnecessary code. One way is to use managed services. For more information, see [Use platform as a service (PaaS) options](/azure/architecture/guide/design-principles/managed-services).
-
-  **Write code with a deny-all approach by default.** Create allowlists only for entities that need access.  For example, if you have code that needs to determine whether a privileged operation should be allowed, you should write it so that the *deny* outcome is the default case and the *allow* outcome  occurs only when specifically permitted by code.
-
-### Protect developer environments
-
-  **Developer workstations need to be protected** with strong network and identity controls to prevent exposure. Make sure security updates are applied diligently. 
-
-  Build agents are highly privileged and have access to the build server and the code. They must be protected with the same rigor as your workload components. This means that **access to build agents must be authenticated and authorized**, they should be network-segmented with firewall controls, they should be subject to vulnerability scanning, and so on. Microsoft-hosted build agents should be preferred over self-hosted build agents. Microsoft-hosted agents provide benefits like clean virtual machines for each run of a pipeline. 
-
-  Custom build agents add management complexity and can become an attack vector. **Build machine credentials must be stored securely**, and you need to regularly remove any temporary build artifacts from the file system. You can achieve network isolation by only allowing outgoing traffic from the build agent, because it's using the pull model of communication with Azure DevOps.
-
-  **The source code repository must be safeguarded** as well. Grant access to code repositories on a need-to-know basis and reduce exposure of vulnerabilities as much as possible to avoid attacks. **Have a thorough process to review code** for security vulnerabilities. Use security groups for that purpose, and implement an approval process that's based on business justifications.
-
-## Protect code in deployment pipelines
-
-  It's not enough to just secure code. If it runs in exploitable pipelines, all security efforts are futile and incomplete. **Build and release environments must also be protected** because you want to prevent bad actors from running malicious code in your pipeline. 
-
-### Maintain an up-to-date inventory of every component that's integrated into your application
-
-  Every new component that's integrated into an application increases the attack surface. To ensure proper accountability and alerting when new components are added or updated, you should have an inventory of these components. Store it outside of the build environment. **On a regular basis, check that your manifest matches what's in your build process.** Doing so helps ensure that no new components that contain back doors or other malware are added unexpectedly.
-
-###  Pipeline tasks
-
-- **Pull tasks in your pipeline from trusted sources**, like Azure Marketplace. Run tasks that are written by your pipeline vendor. We recommend GitHub tasks or GitHub Actions. If you use GitHub workflows, prefer Microsoft-authored tasks. Also, validate tasks because they run in the security context of your pipeline. 
-
-- **Pipeline secrets.**  Deployment assets that run inside a pipeline have access to all the secrets in that pipeline. **Have proper segmentation in place for different stages of the pipeline** to avoid unnecessary exposure. Use secret stores that are built into the pipeline. Remember that you can avoid using secrets in some situations. Explore the use of workload identities (for pipeline authentication) and managed identities (for service-to-service authentication).
-
-### Keep different environments separate
-
-  Data used in different environments must be kept separate. **Production data shouldn't be used in lower environments** because those environments might not have the strict security controls that production has. Avoid connecting from a non-production application to a production database, and avoid connecting non-production components to production networks.
-
-### Progressive exposure
-
-  Use progressive exposure to **release features to a subset of users** based on chosen criteria. If there are issues, the impact is minimized to those users. This approach is a common risk mitigation strategy because it reduces surface area. As the feature matures and you have more confidence in security assurances, you can gradually release it to a broader set of users. 
 
 ## Protect code in production
 
@@ -193,21 +130,20 @@ The production phase presents the **last responsible opportunity to fix security
   > [!Note] 
   > Always prioritize security fixes over convenience. A security fix shouldn't introduce a regression or bug. If you want to accelerate the fix through an emergency pipeline, carefully consider which automated tests can be bypassed. Evaluate the value of each test against the execution time. For example, unit tests usually complete quickly. Integration or end-to-end tests can run for a long time.
 
+## Protect code in production
 
+Production is the **last line of defense** as in the final opportunity to address security gaps before they impact users. Keep a record of the golden image deployed to production to ensure a reliable reference for troubleshooting and recovery.
 
-## Maintain code security throughout its lifecycle
+Maintain a catalog of all deployed assets and their versions. This versioning is critical during incident response, system restoration, and vulnerability management. Automated comparisons against published Common Vulnerabilities and Exposures (CVE) help identify outdated or risky components quickly.
 
-The goal of this phase is to **make sure security posture doesn't decay over time**. SDLC is an ongoing agile process. Concepts covered in the preceding phases apply to this phase because requirements change over time.
+## Protect code from development to decomission
 
-**Patch management.** Keep software, libraries, and infrastructure components up to date with security patches and updates.
+**Protecting code is an ongoing responsibility**. The SDLC is iterative, and requirements evolve, so practices from earlier phases must continue to be applied and reinforced over time.
 
-**Continuous improvement.** Continuously assess and improve the security of the software development process by taking into account code reviews, feedback, lessons learned, and evolving threats.
+Keep all software, libraries, and infrastructure components up to date with timely security patches. Continuously assess and improve your processes by incorporating lessons from code reviews, feedback, incident investigations, and emerging threats. Promptly integrate fixes from production issues back into the development lifecycle to prevent recurrence.
 
-**Decommission legacy assets** that are stale or no longer in use. Doing so reduces the surface area of the application.
+Decommission legacy assets that are no longer in use to reduce the attack surface and simplify maintenance. Regularly refine secure coding practices to stay ahead of evolving threats, ensuring your security posture remains strong and resilient throughout the entire lifecycle.
 
-Maintenance also includes incident fixes. If issues are found in production, they need to be promptly integrated back into the process so that they don't recur. 
-
-Continuously improve your secure coding practices to keep up with the threat landscape. 
 
 ## Azure facilitation
 
