@@ -112,24 +112,6 @@ Environment isolation is equally important. **Strictly separate production and n
 > [!Note] 
 > Always prioritize security fixes over convenience. But never compromise quality or introduce regressions. If you need to accelerate a fix through an emergency pipeline, assess which automated tests can be safely bypassed. Consider the tradeoff between each test's value and its execution time. For example, unit tests are quick and important, while integration or end-to-end tests may take longer but still provide critical coverage. Make these decisions intentionally to balance speed with confidence in the fix.
 
-
-## Protect code in production
-
-The production phase presents the **last responsible opportunity to fix security gaps**. Keep a record of the golden image that's released in production. 
-
-### Keep versioned artifacts
-
-  **Keep a catalog of all deployed assets and their versions.** This information is useful during incident triage, when you're mitigating issues, and when you're getting the system back to working state. Versioned assets can also be compared against published Common Vulnerabilities and Exposures (CVE) notices. You should use automation to perform these comparisons.
-
-### Emergency fixes
-
-  Your automated pipeline design should have the flexibility to **support both regular and emergency deployments**. This flexibility is important to support rapid and responsible security fixes. 
-
-  A release is typically associated with multiple approval gates. Consider creating an emergency process to accelerate security fixes. The process might involve communication among teams. The pipeline should allow for quick roll-forward and rollback deployments that address security fixes, critical bugs, and code updates that occur outside of the regular deployment lifecycle.
-
-  > [!Note] 
-  > Always prioritize security fixes over convenience. A security fix shouldn't introduce a regression or bug. If you want to accelerate the fix through an emergency pipeline, carefully consider which automated tests can be bypassed. Evaluate the value of each test against the execution time. For example, unit tests usually complete quickly. Integration or end-to-end tests can run for a long time.
-
 ## Protect code in production
 
 Production is the **last line of defense** as in the final opportunity to address security gaps before they impact users. Keep a record of the golden image deployed to production to ensure a reliable reference for troubleshooting and recovery.
