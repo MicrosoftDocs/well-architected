@@ -292,8 +292,6 @@
           href: service-guides/azure-front-door.md
         - name: Azure Functions
           href: service-guides/azure-functions.md
-        - name: Azure IoT Hub
-          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
