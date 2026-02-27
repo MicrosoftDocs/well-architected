@@ -421,9 +421,14 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/devops/monitor-pipeline.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/observability",
-			"redirect_document_id": false
+			"source_path": "well-architected/scalability/index.yml",
+			"redirect_url": "/azure/well-architected/performance-efficiency/index",
+			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/service-guides/azure-db-mysql-cost-optimization.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-database-for-mysql",
+			"redirect_document_id": true
 		},
 		{
 			"source_path": "well-architected/devops/monitor-visualize-data.md",
