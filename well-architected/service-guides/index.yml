@@ -276,13 +276,6 @@ productDirectory:
       azureCategories:
         - analytics
         - management-and-governance
-    # Card
-    - title: Azure IoT Hub
-      summary: Connect, monitor, and manage IoT assets at scale.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: azure-iot-hub.md
-      azureCategories:
-        - iot
 additionalContent:
   sections:
     - title: Other resources
