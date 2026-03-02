@@ -194,7 +194,7 @@ We retired the following articles this month. The content was outdated and no lo
 
 - [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance about diagramming practices and architecture diagram types by adding new recommendations for clarity, accessibility, version control, and layered visuals. We also introduced new diagram categories and provided more detailed descriptions of diagram purposes and best practices.
 
-- [Architecture strategies for implementing automation](./operational-excellence/automate-tasks.md): We added Azure tools that you can use to automate tasks for your workload. Learn about automated management capabilities for networking services, including Azure Firewall customer-controlled maintenance, Azure Firewall fully qualified domain name (FQDN) filtering in destination network address translation (DNAT) rules, and Azure Front Door managed certificates.
+- [Architecture strategies for implementing automation](./operational-excellence/enable-automation.md): We added Azure tools that you can use to automate tasks for your workload. Learn about automated management capabilities for networking services, including Azure Firewall customer-controlled maintenance, Azure Firewall fully qualified domain name (FQDN) filtering in destination network address translation (DNAT) rules, and Azure Front Door managed certificates.
 
 - [Architecture strategies for networking and connectivity](./security/networking.md): We added Azure Network Security Perimeter to the list of Azure services that you can use to add defense-in-depth capabilities to your network.
 
