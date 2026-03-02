@@ -52,7 +52,6 @@ Start your design strategy based on the [design review checklist for Reliability
 >   *Configure health probes.* Set up startup, readiness, and liveness probes for all services to monitor and maintain application health.  
 >
 > - **Configure self-healing mechanisms to automatically restart unhealthy container instances.** Automatic restarts increase the reliability and availability of your applications. They help ensure quick recovery from failures without manual intervention. Use health probes to detect failing containers and configure resiliency policies to automatically handle retries and circuit breakers.
-> - **Use private endpoints for reliable private connectivity.** Configure [private endpoints](/azure/container-apps/how-to-use-private-endpoint) for your Container Apps environment to ensure that inbound traffic flows exclusively over your virtual network. Private endpoints eliminate dependency on public internet routing, which reduces the risk of connectivity disruptions caused by external network issues or outages.
 > - **Use premium ingress for high-traffic workloads.** Configure [premium ingress](/azure/container-apps/premium-ingress) to allocate dedicated resources and configurable scaling for the ingress proxy. Premium ingress supports custom time-outs, header limits, and workload profile selection for the proxy, which prevents the ingress layer from becoming a bottleneck under heavy load.
 
 ### Configuration recommendations
