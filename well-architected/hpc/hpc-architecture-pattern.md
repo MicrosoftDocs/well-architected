@@ -19,7 +19,7 @@ Based on these characteristics, classify and identify critical HPC resources. Th
 
 | Characteristic | Key Questions | Design Implications |
 | -------------- | ------------- | ------------------- |
-| **Workload type** | Is the workload tightly coupled (requiring low-latency communication), loosely coupled (independent tasks with no inter-node communication), GPU-accelerated, memory-intensive, or data-intensive? | Determines whether to use MPI-based clusters, high-throughput schedulers, GPU-enabled VMs, or data-centric architectures. |
+| **Workload type** | Is the workload tightly coupled (requiring low-latency communication), loosely coupled (independent tasks with no inter-node communication), GPU-accelerated, memory-intensive, or data-intensive? | Determines whether to use MPI-based clusters, high-throughput schedulers, GPU-enabled VMs, or data-centric architectures, and identifies the target operating system (such as Linux or Windows Server) based on application compatibility. |
 | **Scale requirements** | What is the expected throughput for compute, storage, and network? How many concurrent jobs need to run? What is the peak demand? | Influences cluster size, autoscaling strategy, and quota planning. |
 | **Performance needs** | What are the latency requirements for inter-node communication? What storage throughput is required? What is the acceptable job completion time? | Drives network selection (for example, InfiniBand), storage choice, and VM family. |
 | **Data lifecycle** | How much data is generated per job? How long must results be retained? What are the access patterns for input and output data? | Affects storage tiering, durability, and cost optimization. |
