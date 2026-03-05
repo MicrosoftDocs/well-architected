@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:09**| Establish clear strategies and actions for effective testing to ensure quality, reliability, and customer satisfaction throughout the workload lifecycle.
+|**OE:09**| Enhance the quality of your workload by adopting testing practices that align with business objectives and uphold quality standards. |
 |---|---|
 
 Testing is essential to verifying that your workload aligns with business goals and quality standards. Neglecting testing results in low-quality, unreliable systems that are fragile, expensive to maintain, and difficult to scale.
@@ -63,7 +63,7 @@ Even with strong testing and validation practices, some problems only surface un
 
 Testing in production should be planned, isolated, and monitored. By using this approach, you can gather real user feedback and performance data while minimizing disruptions to the broader user base. 
 
-Once you verify that your workload satisfies exit criteria, consider using production testing techniques such as canary deployments. This approach allows you to release updates to a small, targeted group of users first, helping to quickly uncover any problems that might not appear in pre-release environments. By using this approach, you can accelerate your testing process and potentially reduce associated costs.
+Consider progressive exposure strategies, such as canary releases, only after your workload has successfully met exit criteria and demonstrated strong quality standards. This approach allows you to release updates to a small, targeted group of users first, helping to quickly uncover any problems that might not appear in pre-release environments. By using this approach, you can accelerate your testing process and potentially reduce associated costs.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Exercise caution when conducting tests in production environments, as this action can directly affect real customers. Always implement safeguards and limit exposure to minimize potential negative impacts on your business. 
 
@@ -71,7 +71,7 @@ Once you verify that your workload satisfies exit criteria, consider using produ
 
 Test assets capture essential business rules, edge cases, historical defect patterns, and valuable organizational knowledge. When test quality degrades, teams waste valuable time debugging unreliable tests instead of identifying real defects in the system. This degradation causes frustration and developers lose trust in the test framework.
 
-Treat test assets with the same rigor as code assets in terms of design, review, and maintenance. Taking full responsibility for your test assets enhances both the reliability and overall quality of your testing framework.
+Treat test assets with the same rigor as code assets in terms of design. Taking full responsibility for your test assets enhances both the reliability and overall quality of your testing framework.
 
 Structure test code with the same architectural principles as your application code. Whenever possible, keep your tests alongside your code within the same repository to streamline maintenance and promote consistency. If your automation suite resides in a separate repository, implement equivalent governance controls such as mandatory code reviews, pull request policies, and build validation pipelines to maintain quality standards. 
 
@@ -101,7 +101,7 @@ Test suites deteriorate over time, with tests becoming unreliable, losing releva
 
 Use industry-standard test coverage and reporting tools within your framework to provide clear visibility into tested code paths, identify consistently failing tests, analyze long-term trends in test reliability, and trace the origins of failures for targeted improvements.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If logs are inconsistent and overly detailed, they might create more noise than value, making debugging harder. Implement structured logging with clear, actionable messages to ensure that logs provide meaningful insights without overwhelming your team.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If logs are inconsistent and overly detailed, they might create more noise than value, making debugging harder. Implement structured logging with clear, actionable messages and different verbosity levels to ensure that logs provide meaningful insights without overwhelming your team.
 
 ## Simulate realistic conditions
 
@@ -139,7 +139,7 @@ Evaluate the distinct requirements of each phase in your testing lifecycle and e
 
 Implementing a layered test coverage strategy for your workload provides rapid feedback, earlier defect detection, and faster releases. By structuring your tests in layers, you can quickly isolate and debug defects, making it easier to pinpoint issues and address them efficiently.
 
-The test pyramid model illustrates this layered approach. It distributes tests across different layers to maximize coverage while minimizing execution time and maintenance costs.
+The test pyramid model illustrates this layered approach applied to test automation. It distributes tests across different layers to maximize coverage while minimizing execution time and maintenance costs.
 
 - Base layer: Unit tests that verify individual components in isolation, execute quickly, and provide immediate feedback.
 - Middle layer: Integration tests that verify interactions between components and services, execute more slowly than unit tests but provide broader coverage of system behavior.
@@ -174,10 +174,10 @@ The following table demonstrates when to apply different test types throughout y
 |-------------|---------------|---------|
 | Manual Testing | Early development, UI changes, exploratory scenarios | Validate scenarios where human judgment is required |
 | Unit Testing | During development | Verify individual component logic in isolation | 
-| Integration Testing | After backend services stabilize | Validate interactions between components |
-| End-to-End (E2E) Testing | After core functionality is implemented | Ensure all systems work together for critical user journeys |
-| UI Testing | After the UI stabilizes | Detect visual and interaction problems |
-| Load and Performance Testing | Before releases | Ensure the system handles expected traffic levels | 
+| Integration Testing | Begin as soon as components are available | Validate interactions between components |
+| End-to-End (E2E) Testing | Begin when complete flows for critical user journeys are available | Ensure all systems work together for critical user journeys |
+| UI Testing | After the UI design stabilizes | Detect visual and interaction problems |
+| Load and Performance Testing | Begin as early as possible | Ensure the system handles expected traffic levels | 
 | Stress Testing | Before production readiness | Understand system limits and recovery behavior |
 | Security Testing | Throughout development cycle | Protect against vulnerabilities and threats |
 
