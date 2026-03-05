@@ -71,7 +71,7 @@ Once you verify that your workload satisfies exit criteria, consider using produ
 
 Test assets capture essential business rules, edge cases, historical defect patterns, and valuable organizational knowledge. When test quality degrades, teams waste valuable time debugging unreliable tests instead of identifying real defects in the system. This degradation causes frustration and developers lose trust in the test framework.
 
-Treat test assets with the same rigor as code assets in terms of design, review, and maintenance. Taking full responsibility for your test assets enhances both the reliability and overall quality of your testing framework.
+Treat test assets with the same rigor as code assets in terms of design. Taking full responsibility for your test assets enhances both the reliability and overall quality of your testing framework.
 
 Structure test code with the same architectural principles as your application code. Whenever possible, keep your tests alongside your code within the same repository to streamline maintenance and promote consistency. If your automation suite resides in a separate repository, implement equivalent governance controls such as mandatory code reviews, pull request policies, and build validation pipelines to maintain quality standards. 
 
