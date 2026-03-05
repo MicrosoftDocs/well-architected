@@ -18,13 +18,13 @@ At a high-level, the solution is designed using AI workload architecture pattern
 
 The data processing layer cleans, enriches, and indexes internal content and operational data so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the intelligent application orchestrates the workflow. It determines what data is needed, retrieves grounded context from the processing layer, and calls the appropriate model to generate a response. Foundation models are evaluated, tuned, or adapted for enterprise needs outside of runtime. At runtime, the intelligent application invokes trained models to produce grounded responses using retrieved enterprise data, while the training process remains decoupled from live operations. 
 
-Practices that span the lifecycle—responsible AI, testing and evaluation, MLOps/GenAIOps, and safe deployment—ensure the assistant behaves responsibly, can be validated systematically, and runs reliably in production. Platform services provide secure access to data and models, observability, cost control, and consistent governance and safety enforcement across the solution.
+Practices that span the lifecycle such as responsible AI, testing and evaluation, MLOps/GenAIOps, and safe deployment ensure the assistant behaves responsibly, can be validated systematically, and runs reliably in production. Platform services provide secure access to data and models, observability, cost control, and consistent governance and safety enforcement across the solution.
 
 While the AI assistant represents a specific business scenario, the top level architecture diagram reflects a generic AI workload design that can be adapted to many AI use cases with similar architectural characteristics. 
 
 ## [**High-level AI workload**](#tab/aiworkload)
 
-:::image type="content" source="./images/ai-workload-architecture-pattern.jpg" alt-text="Screenshot of typical AI workload architecture pattern showing data processing, model training, intelligent AI applications, AI practices, and platform services." lightbox="./images/ai-workload-architecture-pattern.jpg":::
+:::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Screenshot of typical AI workload architecture pattern showing data processing, model training, intelligent AI applications, AI practices, and platform services." lightbox="./images/ai-workload-architecture-pattern.png":::
 
 |Component|Description|
 |---|---|
@@ -34,47 +34,47 @@ While the AI assistant represents a specific business scenario, the top level ar
 |AI practices and process|These practices ensure AI solutions are consistent, repeatable, and trustworthy while meeting organizational and regulatory standards. Incorporate DevOps principles such as version control and automated pipelines into your MLOps workflows. For generative AI, extend these practices to include prompt management and content monitoring. Use iterative deployment strategies with fail-safes, and continually validate accuracy, performance, and bias throughout the AI lifecycle.|
 |Platform services and tools|Core cloud services and tools support AI workloads from development to deployment. Keep your AI workloads secure and cost-effective by protecting resources, optimizing spending, and monitoring system health through platform services. Use CI/CD pipelines to automatically deploy applications for greater reliability. Use specialized tools to scan and filter AI outputs for policy compliance, while endpoint security safeguards sensitive data.|
 
-### Characteristics consideration
+The table below describes the design considerations that is applied to the intelligent application workload and training/fine-tuning workload components of the architecture pattern.
 
-#### Resource lifetime and state
+| Design Characteristic | Description |
+|---|---|
+| Resource lifetime and state | Lifetime: What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary? State:What impact will the persisted state at this layer have on reliability or manageability? |
+| Resource scope and dependencies | Scope: Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region? Dependencies: What are the dependencies on other resources? |
+| Scalability and availability | Scale: What is the expected throughput for that resource? How much scale is provided by the resource to fit that demand? Availability: What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?|
+| Security and responsible AI | Considerations for security and responsible AI practices. |
 
-#### Resource scope and dependencies
-
-#### Scalability and availability
-
-#### Security and responsible AI
 
 ## [**Intelligent application workload**](#tab/intelligentaiworkload)
 
-The following diagram shows the components for the intelligent application that you should include in your design.
+The following diagram shows the components for the intelligent application to include in your design.
 
-:::image type="content" source="./images/gen-ai-workload.jpg" alt-text="Screenshot of intelligent application components." lightbox="./images/gen-ai-workload.jpg":::
+:::image type="content" source="./images/gen-ai-workload.png" alt-text="Screenshot of intelligent application components." lightbox="./images/gen-ai-workload.png":::
 
 |Component|Description|
 |---|---|
-|Client Layer|The client layer lets users and external systems connect with AI. It handles requests and returns AI-generated responses, ensuring an intuitive and accessible experience.|
-|Intelligence Layer - API|This layer bridges clients and intelligence capabilities through well-defined APIs. It routes requests to the right agent or orchestrator and ensures smooth, consistent interactions between clients and services. It manages data access, applies security protections, and enforces rate limits and quotas to prevent overload. For applications that only need a simple prediction, the layer can skip orchestration and send the request straight to the inference engine.|
-|Intelligence Layer - Orchestration||
-|Intelligence Layer - Conversation Management||
-|Inferencing Layer - Foundation or predictive Models||
+|Client layer|The client layer lets users and external systems connect with AI. It handles requests and returns AI-generated responses, ensuring an intuitive and accessible experience.|
+|Intelligence layer - API|This layer bridges clients and intelligence capabilities through well-defined APIs. It routes requests to the right agent or orchestrator and ensures smooth, consistent interactions between clients and services. It manages data access, applies security protections, and enforces rate limits and quotas to prevent overload. For applications that only need a simple prediction, the layer can skip orchestration and send the request straight to the inference engine.|
+|Intelligence layer - orchestration and agent compute|This layer is responsible for orchestrating and managing the interactions between AI components for each task. It uses various orchestration modes to execute the tasks. Task execution can follow a sequential, step-by-step processing where agents work one after the other, and a concurrent processing which allows multiple agents to work in parallel and combine their outputs. This layer identifies user intent and applies necessary safety checks to responses. It integrates with knowledge layer to get information and can use tools, to combine their outputs to give the best response.|
+|Intelligence layer - conversation management|This layer allows the system to hold a natural, flowing conversation by remembering previous messages, keeping track of ongoing topics and saving important parts of the conversation to maintain continuity for longer sessions. It also manages the data retention policy for the conversation.|
+|Inferencing layer - foundation or predictive models||
 |Knowledge||
 |Tools layer||
 
-### Characterstics consideration
+### Design consideration
 
 #### Resource lifetime and state
 
-#### Resource scope and dependencies
+#### Resource scope and dependencies 
 
-#### Scalability and availability
+#### Scalability and availability 
 
-### Security and responsible AI
+#### Security and responsible AI 
 
 ## [**Training and fine-tuning workload**](#tab/trainingmodelworkload)
 
 The following diagram shows the components required for training and fine-tuning data for the models that you include in your design.
 
-:::image type="content" source="./images/training-fine-tuning-workload.jpg" alt-text="Screenshot of training and fine-tuning data for the models." lightbox="./images/training-fine-tuning-workload.jpg":::
+:::image type="content" source="./images/training-fine-tuning-workload.png" alt-text="Screenshot of training and fine-tuning data for the models." lightbox="./images/training-fine-tuning-workload.png":::
 
 |Component|Description|
 |---|---|
@@ -86,15 +86,17 @@ The following diagram shows the components required for training and fine-tuning
 |Model Registry||
 |Inferencing Layer - Predictive Models||
 
-### Characteristics consideration
+### Design consideration
 
 #### Resource lifetime and state
 
-#### Resource scope and dependencies
+#### Resource scope and dependencies 
 
-#### Scalability and availability
+#### Scalability and availability 
 
-#### Security and responsible AI
+#### Security and responsible AI 
+
+---
 
 ## Baseline architectures for AI workloads
 These baseline examples serve as the recommended architecture for AI workloads.
