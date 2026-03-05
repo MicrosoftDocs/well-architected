@@ -53,7 +53,7 @@ Early detection enables teams to respond quickly. For example, prioritizing esse
 Testing isn't a one-time event. It should continue after the product launch as part of a continuous testing mindset. Regularly review, update, and expand your test suite to cover new features and address bugs discovered in production, maintaining long-term product quality.
 
 > [!NOTE]
-> Avoid deferring testing in large batches until after development is complete. Delaying tests can lead to missed problems, increased rework, and slower release cycles.
+> Avoid deferring testing in large batches until late in the delivery cycle. Delaying tests can lead to missed problems, increased rework, and slower release cycles.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Adopting early and continuous testing practices can increase operational costs and might initially slow down development or introduce friction within the team. Strike a balance by identifying which tests and changes are essential during the early stages of the development cycle, and which can be deferred to later phases, ensuring efficiency without compromising quality.
 
