@@ -273,7 +273,7 @@
         - name: Azure Databricks
           href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
-          href: service-guides/azure-db-mysql-cost-optimization.md
+          href: service-guides/azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
         - name: Azure Disk Storage
