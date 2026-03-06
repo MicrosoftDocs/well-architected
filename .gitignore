@@ -12,9 +12,10 @@ azure-update-report/
 .github/instructions
 .github/prompts
 .github/memory
-.vscode/
+.github/skills
+.vscode
 well-architected/service-guides/*.yaml
-wip/
-logs/
-node_modules/
-tools/
+wip
+logs
+node_modules
+tools
