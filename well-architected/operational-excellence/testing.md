@@ -115,8 +115,6 @@ Align your tests with both business objectives and Service Level Objectives (SLO
 
 Test data should represent real-world scenarios as closely as possible. Synthetic data can simulate authentic user scenarios while avoiding the complexity of production data handling. For example, synthetic testing can replicate real-world scenarios by generating representative data sets to evaluate how your workload performs under planned scaling conditions. If it becomes necessary to use actual customer data for testing purposes, ensure all information is properly anonymized to protect sensitive information.
 
-Full replication of production system for every test scenario is often impractical. Evaluate components of your workload that you can safely replicate for testing purposes without compromising critical business workflows. In cases where full replication isn't feasible, use mock services that accurately mirror production services to validate scenarios effectively without risking live operations.
-
 ### Simulate your production environment
 
 The production environment is the source of truth for understanding how your workload behaves in real-world conditions. Create an environment that closely mirrors real-world conditions, so you can trust that the system performs as expected in production.
@@ -131,9 +129,13 @@ When you mirror your environments to production, configuration drift can create 
 
 ## Build purpose-driven test environments 
 
-Design environments with a clear focus on their intended purpose. Intentionally design every test environment to match the specific stage and goals of testing. Tailor each environment to meet the requirements of the relevant testing objectives, whether for functional validation, integration testing, or other purposes. If a streamlined environment effectively serves the needs of functional or integration tests, prioritize that approach to maximize efficiency.
+Design environments with a clear focus on their intended purpose. Evaluate the distinct requirements of each phase in your testing lifecycle and ensure the environment aligns closely with the objectives of that phase. Intentionally design every test environment to match the specific stage and goals of testing, whether for functional validation, integration testing, or other purposes. If a streamlined environment effectively serves the needs of your tests, prioritize that approach to maximize efficiency.
 
-Evaluate the distinct requirements of each phase in your testing lifecycle and ensure the environment aligns closely with the objectives of that phase.
+Full replication of production systems for every test scenario is often impractical. Evaluate which components of your workload you can safely replicate for testing purposes without compromising critical business workflows. In cases where full replication isn't feasible, use mock services that accurately simulate production service behaviors to validate scenarios effectively without risking live operations.
+
+Purpose-driven test environments provide an ideal foundation for deploying mock services on ephemeral environments. Ephemeral environments offer a cost-effective way to simulate production conditions for testing. You can validate interactions and behaviors without the overhead of maintaining full production-like environments for every test scenario. These on-demand environments are created for specific test purposes and destroyed after use, reducing infrastructure costs while maintaining test quality.
+
+Building ephemeral environments requires your workload to reach a higher maturity level where automation with Infrastructure as Code (IaC) and deployment pipelines is well established. 
 
 ## Apply layered approach in test coverage
 
@@ -178,7 +180,7 @@ The following table demonstrates when to apply different test types throughout y
 | End-to-End (E2E) Testing | Begin when complete flows for critical user journeys are available | Ensure all systems work together for critical user journeys |
 | UI Testing | After the UI design stabilizes | Detect visual and interaction problems |
 | Load and Performance Testing | Begin as early as possible | Ensure the system handles expected traffic levels | 
-| Stress Testing | Before production readiness | Understand system limits and recovery behavior |
+| Stress Testing | Before the system is production-ready | Understand system limits and recovery behavior |
 | Security Testing | Throughout development cycle | Protect against vulnerabilities and threats |
 
 Prioritize test types based on risk and business impact. For customer-facing workloads, emphasize end-to-end and UI testing. For API-driven workloads, focus on integration and contract testing. For high-availability systems, invest in resilience and chaos testing.
