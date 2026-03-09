@@ -14,11 +14,32 @@ Monitoring is the mindful practice of collecting and analyzing telemetry to unde
 
 As a cloud solution architect, treat monitoring as a core architectural capability, and design it alongside the functional stack rather than later. Think of it as its own system, with a dedicated stack and data flows, that observes functional stack: infrastructure, application health, and build and release processes. As the workload grows, also evolve monitoring practices from simple metrics to cross-service correlation and structured analysis. 
 
-Typically, a monitoring flow follows a linear progression and can be divided into four logical stages, each building on the insights of the previous one.
+Typically, a monitoring flow follows a linear progression and can be divided into four logical phases, each building on the insights of the previous one.
 
-:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical stages, each building on the previous one.." lightbox="_images/monitor-pipeline.png" border="false":::
+:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical phases, each building on the previous one.." lightbox="_images/monitor-pipeline.png" border="false":::
 
 This guide explores the process of building those phases and provides best practices. It doesn't cover specialized monitoring use cases like security. The guidance builds on the key strategies outlined in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md), which you should review first.
+
+## Terminology
+
+| Term | Definition |
+|---|---|
+| **Monitoring** | The mindful practice of collecting and analyzing telemetry to understand system health and behavior. Makes the state of a system observable through measurement, connecting technical signals to operational outcomes. |
+| **Telemetry** | Operational signals generated from systems, referring to logs, traces, and metrics that provide insight into system behavior and performance. |
+| **Instrumentation** | The process of embedding code or tools in your source to generate operational signals called telemetry. |
+| **Logs** | Timestamped records of discrete events that capture what happened in a system at specific points in time. |
+| **Traces** | Records that track request paths across components, showing how a request flows through distributed systems. |
+| **Metrics** | Numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. When captured continuously over time, they reveal trends, patterns, and anomalies. |
+| **Distributed tracing** | A technique for tracking requests across multiple services or machines in distributed systems, using unique activity IDs propagated across components. |
+| **Activity logs** | Platform logs that track subscription-level operations such as resource creation, updates, and deletions. |
+| **Resource logs** | Platform logs that capture resource-specific events, such as storage access logs or firewall events. |
+| **APM (Application Performance Management)** | Tools that automatically capture telemetry from applications, including request rates, failure rates, dependency duration, and distributed traces. |
+| **KPIs (Key Performance Indicators)** | Business metrics that measure the success and health of a system from a business perspective. |
+| **SLOs (Service Level Objectives)** | Target levels of service reliability, performance, or availability that define when a component should be labeled as Healthy, Degraded, or Unhealthy. |
+| **Activity ID** | A unique identifier assigned to each request and propagated across services, threads, queues, and dependencies to enable correlation of related telemetry data. |
+| **Sampling** | A technique to reduce telemetry volume and costs by collecting only a representative subset of data while maintaining sufficient insight for analysis. |
+| **Aggregation** | The process of combining and consolidating telemetry data from multiple sources to create meaningful insights and reduce storage footprint. |
+
 
 ## Phase 1 - Instrumentation
 
@@ -54,7 +75,7 @@ Consider an ecommerce application. when a customer places an order, a business t
 
 Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
 
-// Art coming soon.
+:::image type="content" source="_images/order-failure-diagnosis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/order-failure-diagnosis.png" border="false":::
 
 With proper instrumentation, the request is tracked end-to-end across every component. Logs reveal that the payment API returned a 500 error. A distributed trace shows latency spiking specifically within the payment service. Metrics confirm that the checkout failure rate has climbed from 1% to 8% in 10 minutes. That makes diagnosis systematic and data-driven rather than speculative.
 
@@ -63,17 +84,19 @@ With proper instrumentation, the request is tracked end-to-end across every comp
 
 While instrumentation is about what operational signals should be tracked, this phase is about *where to route the telemetry data* and manage it responsibly.
 
-It's common to use monitoring agents that pull data and write the information directly to common storage. 
-
-:::image type="content" source="_images/monitor-write-shared-storage.png" alt-text="Diagram that shows the use of a monitoring agent to pull information and write it to shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
+It's common to use data collection services or monitoring agents that pull data and write the information directly to common storage. 
 
 Or, the agents can act as a passive receiver that wait for the data to be sent from the application.
 
-Telemetry usually comes from two main sources:
+:::image type="content" source="_images/monitor-write-shared-storage.png" alt-text="Diagram that shows instrumentation data stored in shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
 
-- **Application-level telemetry**. After the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be pulled automatically using Application Performance Management (APM) tool. [Azure Application Insights](../service-guides/application-insights.md) is an APM that's well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. For example, you have an ASP.NET Core app hosted in App Service. Application Insights will automatically capture request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
+Telemetry usually comes from these sources:
 
-- **Platform logs**. There's telemetry generated from the infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource log that capture resource-specific events, like storage access logs, firewall events. 
+- **Application-level telemetry**. After the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be pulled automatically using Application Performance Management (APM) tool, such as [Azure Application Insights](../service-guides/application-insights.md). It will automatically capture code metrics and also application specifics like request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
+
+- **Application host telemetry**. Application hosts emit several categories of telemetry. These signals help monitor the behavior of the application like resource utilization. Application Insights is well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. 
+
+- **Platform logs**. There's telemetry generated from the other infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource log that capture resource-specific events, like storage access logs, firewall events. 
 
    Enable Diagnostic settings for each resource and route logs to a storage solution.
 
@@ -82,7 +105,9 @@ Telemetry usually comes from two main sources:
   
 #### Telemetry data storage decision
 
-Data storage should be chosen based on how you plan to use it. Create a matrix that clearly highlights the use case, requirements, and technology choices. Here's an example:
+Data storage should be chosen based on how you plan to use it. For instance, there might be a need for quick analysis of some telemetry data so that the results can be sent directly to the visualization and alerting subsystem (hot analysis). And so, storage for the hot tier should be able to do real-time processing. Alternatively, data that's subjected to warm or cold analysis is held in storage while it awaits processing.
+
+Create a matrix that clearly highlights the use case, requirements, and technology choices. Here's an example:
 
 |Use Case|Recommended storage|
 |---|---|
@@ -94,11 +119,11 @@ Data storage should be chosen based on how you plan to use it. Create a matrix t
 
 In some cases, you might send the same telemetry to multiple destinations for different purposes.
 
-#### Telemetry peformance considerations
+#### Telemetry peformance and reliability considerations
 
 A single pplication can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system making sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
 
-:::image type="content" source="_images/queue-buffer-data.png" alt-text="Diagram that shows how you can use a queue to buffer instrumentation data." lightbox="_images/queue-buffer-data.png" border="false":::
+:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/service-instrumentation-data.png" border="false":::
 
 In this architecture, a monitoring agent publishes telemetry data to a queue. A separate, asynchronous process, such as a storage writing service, consumes messages from the queue and writes them to shared storage.
 
@@ -134,9 +159,9 @@ Analyzing telemetry begins by structuring data around defined KPIs and performan
 - Is capacity reaching limits?
 - Are business KPIs trending negatively?
 
-To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID.
+To reach conclusive results, this phase involves complex queries and reporting checking against target metrics.
 
-:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/service-instrumentation-data.png" border="false":::
+To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID. 
 
 Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
 
@@ -152,10 +177,9 @@ Analysis can also generate alerts to notify you when action is needed. Here are 
 
 #### Example: Correlation, aggregation, analysis
 
-Let's continue with the eCommerce example. With instrumentation in place, the team detected that checkout failure rate increased from 1% to 8% in 10 minutes. 
+Let's continue with the eCommerce example. After detecting that the checkout failure rate increased from 1% to 8% within 10 minutes, the team began investigating by correlating telemetry across multiple sources. They first queried the application logs and filtered them to the relevant time window, confirming an increase in request timeout exceptions. By grouping the results by dependency, they identified that the spike in failures occurred in requests that relied on the database. Then, queried the database request telemetry and confirmed that query latency had doubled, using correlation IDs to verify that the failing requests were directly affected by the increased latency. They examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
 
-//Art coming soon
-
+:::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/db-bottleneck-analysis.png" border="false":::
 
 Analysis revealed that the cause was the dependency on the database, which was under heavy load, because:
 
@@ -167,7 +191,7 @@ By retaining analysis data over time, teams can perform historical analysis to u
 
 ## Phase 4 - Visualization
 
-With analysis in place, the next stage is to take action. *How do we make the insights visible and ensure the right people can act on them?*
+With analysis in place, the next step is to take action. *How do we make the insights visible and ensure the right people can act on them?*
 
 Visualization converts complex telemetry into actionable insights using dashboards, charts, and reports.
 
