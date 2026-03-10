@@ -24,21 +24,19 @@ This guide explores the process of building those phases and provides best pract
 
 | Term | Definition |
 |---|---|
-| **Monitoring** | The mindful practice of collecting and analyzing telemetry to understand system health and behavior. Makes the state of a system observable through measurement, connecting technical signals to operational outcomes. |
-| **Telemetry** | Operational signals generated from systems, referring to logs, traces, and metrics that provide insight into system behavior and performance. |
+| **Activity ID** | A unique identifier assigned to each request and propagated across services, threads, queues, and dependencies to enable correlation of related telemetry data. |
+| **Activity logs** | Platform logs that track subscription-level operations such as resource creation, updates, and deletions. |
+| **Aggregation** | The process of combining and consolidating telemetry data from multiple sources to create meaningful insights and reduce storage footprint. |
+| **APM (Application Performance Management)** | Tools that automatically capture telemetry from applications, including request rates, failure rates, dependency duration, and distributed traces. |
+| **Distributed tracing** | A technique for tracking requests across multiple services or machines in distributed systems, using unique activity IDs propagated across components. |
 | **Instrumentation** | The process of embedding code or tools in your source to generate operational signals called telemetry. |
 | **Logs** | Timestamped records of discrete events that capture what happened in a system at specific points in time. |
-| **Traces** | Records that track request paths across components, showing how a request flows through distributed systems. |
 | **Metrics** | Numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. When captured continuously over time, they reveal trends, patterns, and anomalies. |
-| **Distributed tracing** | A technique for tracking requests across multiple services or machines in distributed systems, using unique activity IDs propagated across components. |
-| **Activity logs** | Platform logs that track subscription-level operations such as resource creation, updates, and deletions. |
+| **Monitoring** | The mindful practice of collecting and analyzing telemetry to understand system health and behavior. Makes the state of a system observable through measurement, connecting technical signals to operational outcomes. |
 | **Resource logs** | Platform logs that capture resource-specific events, such as storage access logs or firewall events. |
-| **APM (Application Performance Management)** | Tools that automatically capture telemetry from applications, including request rates, failure rates, dependency duration, and distributed traces. |
-| **KPIs (Key Performance Indicators)** | Business metrics that measure the success and health of a system from a business perspective. |
-| **SLOs (Service Level Objectives)** | Target levels of service reliability, performance, or availability that define when a component should be labeled as Healthy, Degraded, or Unhealthy. |
-| **Activity ID** | A unique identifier assigned to each request and propagated across services, threads, queues, and dependencies to enable correlation of related telemetry data. |
 | **Sampling** | A technique to reduce telemetry volume and costs by collecting only a representative subset of data while maintaining sufficient insight for analysis. |
-| **Aggregation** | The process of combining and consolidating telemetry data from multiple sources to create meaningful insights and reduce storage footprint. |
+| **Telemetry** | Operational signals generated from systems, referring to logs, traces, and metrics that provide insight into system behavior and performance. |
+| **Traces** | Records that track request paths across components, showing how a request flows through distributed systems. |
 
 
 ## Phase 1 - Instrumentation
@@ -149,7 +147,7 @@ While telemetry isn't workload functional data, it's still critical from an oper
 
 ## Phase 3 - Correlation, aggregation, analysis
 
-Once telemetry is collected and stored, the next step is to turn raw data (logs, metrics, and traces) into insight. The outcome of this phase is to understand *what does the data mean*?
+Once telemetry is collected and stored, the next step is to turn raw data (logs, metrics, and traces) into insight. The outcome of this phase is to understand *what does the data mean and how to ensure the right people can act on them?*?
 
 Analyzing telemetry begins by structuring data around defined KPIs and performance metrics. Start by asking these questions:
 
@@ -161,9 +159,39 @@ Analyzing telemetry begins by structuring data around defined KPIs and performan
 
 To reach conclusive results, this phase involves complex queries and reporting checking against target metrics.
 
-To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID. 
+To prepare data for analysis, a common step is to **aggregate data from multiple sources**. For example, for distributed tracing, aggregation involves combining events with the same activity or transaction ID. Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. 
 
-Data preparation is another task during aggregation. Here, duplicates are removed, and irrelevant data is filtered out. Consolidation or partitioning services can periodically retrieve, preprocess, and route data to appropriate storage. For example, data needed for alerts or rapid analysis should be stored in fast, indexed storage, and local copies may reduce alert latency.
+#### Correlation
+
+Correlation is the process of **linking telemetry data from multiple system layers** to understand what is happening across the entire application environment. While individual logs, metrics, or traces provide snapshots of activity, correlation connects these pieces together to reveal cause-and-effect relationships.
+
+Correlation is also important for diagnosing failures. An exception in a lower-level component (such as a database or infrastructure service) can propagate upward and cause application-level errors.
+
+To support effective correlation, telemetry data must include sufficient context, such as: activity IDs or correlation IDs, Timestamps in universal format, and service or component identifiers. Make sure that information is included during instrumentation. 
+
+
+#### Supporting hot, warm, and cold analysis
+
+Not all telemetry data is analyzed with the same urgency. Evaluate which flows need hot, warm, and cold analysis paths, which determine how quickly data must be processed and how it is stored.
+
+- **Hot analysis (real-time)**
+
+   Hot analysis processes telemetry immediately after it is generated. This path is used when rapid detection and response are critical. Because these scenarios are time-sensitive, data must be available instantly. The storage technology must support fast indexing and querying. Sometimes analysis runs close to where the data is produced to reduce latency.
+
+   Typical use cases include alerting systems, especially for security monitoring where detect and response must be done as soon as possible. 
+
+- **Warm analysis (near-real-time investigation)**
+
+   Warm analysis occurs after telemetry is collected and lightly aggregated. It usually involves correlating multiple telemetry sources to understand why something happened.
+
+   This analysis requires aggregation of multiple events, correlation, and statistical analysis across a group of events. 
+
+   It's common to use warm analysis for performance analysis and operational troubleshooting. 
+
+- **Cold analysis (historical long-term data)**
+
+   Cold analysis works with large volumes of historical telemetry data and usually runs on a scheduled or ad-hoc basis. This is useful for identifying trends over a long period. 
+
 
 #### Best practices for alerts
 
@@ -177,21 +205,26 @@ Analysis can also generate alerts to notify you when action is needed. Here are 
 
 #### Example: Correlation, aggregation, analysis
 
-Let's continue with the eCommerce example. After detecting that the checkout failure rate increased from 1% to 8% within 10 minutes, the team began investigating by correlating telemetry across multiple sources. They first queried the application logs and filtered them to the relevant time window, confirming an increase in request timeout exceptions. By grouping the results by dependency, they identified that the spike in failures occurred in requests that relied on the database. Then, queried the database request telemetry and confirmed that query latency had doubled, using correlation IDs to verify that the failing requests were directly affected by the increased latency. They examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
+Let's continue with the eCommerce example. By using hot analysis, it was  detecting that the checkout failure rate increased from 1% to 8% within 10 minutes, the team began investigating by correlating telemetry across multiple sources. 
+
+
+They first queried the application logs and filtered them to the relevant time window, confirming an increase in request timeout exceptions. By grouping the results by dependency, they identified that the spike in failures occurred in requests that relied on the database. Then, queried the database request telemetry and confirmed that query latency had doubled, using correlation IDs to verify that the failing requests were directly affected by the increased latency. 
+
+Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
 
 :::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/db-bottleneck-analysis.png" border="false":::
 
-Analysis revealed that the cause was the dependency on the database, which was under heavy load, because:
+Warm analysis revealed that the cause was the dependency on the database, which was under heavy load, because:
 
 - Application logs showed errors with timeout exceptions
 - Database latency doubled during that time
 - Platform logs showed that CPU on database server is at 90%
 
-By retaining analysis data over time, teams can perform historical analysis to uncover trends. For example, consistent increase in database load or gradually rising response times can indicate a change in architecture or optimization. For example, scaling the database or optimizing queries may be necessary.
+By retaining analysis data over time, teams can performed cold historical analysis to uncover trends. For example, consistent increase in database load or gradually rising response times can indicate a change in architecture or optimization. For example, scaling the database or optimizing queries may be necessary.
 
 ## Phase 4 - Visualization
 
-With analysis in place, the next step is to take action. *How do we make the insights visible and ensure the right people can act on them?*
+With analysis in place, the next step is to take action. *How do we make the insights visible?*
 
 Visualization converts complex telemetry into actionable insights using dashboards, charts, and reports.
 
@@ -236,7 +269,7 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 | Antipattern | Guidance |
 |---|---|
-|**Logging too Little, or too much**<br><br>- Missing contextual information required for troubleshooting. <br>- Excessive verbosity creating noise, high ingestion costs, and slow queries.|Strive for high signal, low noise: <br>- Define logging standards at design time.<br>- Log structured data with consistent fields.<br>- Include contextual fields such as: Correlation ID, User/tenant ID (when allowed), Operation name, Environment.<br>- Use log levels properly (Debug, Info, Warning, Error).<br>- Implement sampling for high-volume components.<br>- Periodically review log usefulness and cost.|
+|**Logging too little, or too much**<br><br>- Missing contextual information required for troubleshooting. <br>- Excessive verbosity creating noise, high ingestion costs, and slow queries.|Strive for high signal, low noise: <br>- Define logging standards at design time.<br>- Log structured data with consistent fields.<br>- Include contextual fields such as: Correlation ID, User/tenant ID (when allowed), Operation name, Environment.<br>- Use log levels properly (Debug, Info, Warning, Error).<br>- Implement sampling for high-volume components.<br>- Periodically review log usefulness and cost.|
 |**Missing correlation across services**<br><br>Correlation IDs are not propagated across services. Logs, metrics, and traces are analyzed in isolation.|Enable end-to-end traceability: <br>- Generate at the entry point if not included in the request, propagate the provided one if included.<br>- Adopt distributed tracing standards.<br>- Ensure logs, metrics, and traces share common identifiers.<br>- Correlate telemetry types during analysis.|
 |**Ignoring business context**<br><br>Monitoring is treated as purely technical and disconnected from business objectives. Only technical metrics (CPU, memory, latency) are emitted and analyzed.|Align monitoring to business value: <br>- Define business KPIs alongside technical SLIs.<br>- Instrument business events.<br>- Build dashboards that show business KPIs with supporting technical indicators.<br>- Align alerts severity with customer impact.|
 |**Unconfigured or mismanaged telemetry**<br><br>Logging is enabled without proper diagnostic configuration. All telemetry is stored in one place without purpose or categorization.|Design telemetry architecture intentionally: <br>- Define telemetry categories (Operational, Security, Audit, Business).<br>- Route data to appropriate stores based on usage.<br>- Configure retention and indexing policies.<br>- Regularly audit diagnostic settings.|
