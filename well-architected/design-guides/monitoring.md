@@ -28,7 +28,9 @@ This guide explores the process of building those phases and provides best pract
 | **Activity logs** | Platform logs that track subscription-level operations such as resource creation, updates, and deletions. |
 | **Aggregation** | The process of combining and consolidating telemetry data from multiple sources to create meaningful insights and reduce storage footprint. |
 | **APM (Application Performance Management)** | Tools that automatically capture telemetry from applications, including request rates, failure rates, dependency duration, and distributed traces. |
+| **Cold analysis** | Analysis that works with large volumes of historical telemetry data and usually runs on a scheduled or ad-hoc basis. This is useful for identifying trends over a long period. |
 | **Distributed tracing** | A technique for tracking requests across multiple services or machines in distributed systems, using unique activity IDs propagated across components. |
+| **Hot analysis** | Analysis that processes telemetry immediately after it is generated. This path is used when rapid detection and response are critical. |
 | **Instrumentation** | The process of embedding code or tools in your source to generate operational signals called telemetry. |
 | **Logs** | Timestamped records of discrete events that capture what happened in a system at specific points in time. |
 | **Metrics** | Numerical measurements of a system or resource at a specific point in time, often accompanied by one or more tags or dimensions. When captured continuously over time, they reveal trends, patterns, and anomalies. |
@@ -37,6 +39,7 @@ This guide explores the process of building those phases and provides best pract
 | **Sampling** | A technique to reduce telemetry volume and costs by collecting only a representative subset of data while maintaining sufficient insight for analysis. |
 | **Telemetry** | Operational signals generated from systems, referring to logs, traces, and metrics that provide insight into system behavior and performance. |
 | **Traces** | Records that track request paths across components, showing how a request flows through distributed systems. |
+| **Warm analysis** | Analysis that occurs after telemetry is collected and lightly aggregated. It usually involves correlating multiple telemetry sources to understand why something happened. |
 
 
 ## Phase 1 - Instrumentation
@@ -69,7 +72,7 @@ When adding instrumentation, follow these simple principles: Maintain consistenc
 
 #### Example: Instrumentation
 
-Consider an ecommerce application. when a customer places an order, a business transaction begins. The API processes the payment, the database records the order, and a confirmation email is sent. When the system works as expected, everything completes within the expected timeframe. But suppose something breaks.
+Consider an ecommerce application. When a customer places an order, a business transaction begins. The API processes the payment, the database records the order, and a confirmation email is sent. When the system works as expected, everything completes within the expected timeframe. But suppose something breaks.
 
 Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
 
@@ -94,7 +97,7 @@ Telemetry usually comes from these sources:
 
 - **Application host telemetry**. Application hosts emit several categories of telemetry. These signals help monitor the behavior of the application like resource utilization. Application Insights is well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. 
 
-- **Platform logs**. There's telemetry generated from the other infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource log that capture resource-specific events, like storage access logs, firewall events. 
+- **Platform logs**. There's telemetry generated from the other infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource logs that capture resource-specific events, like storage access logs, firewall events. 
 
    Enable Diagnostic settings for each resource and route logs to a storage solution.
 
@@ -117,9 +120,9 @@ Create a matrix that clearly highlights the use case, requirements, and technolo
 
 In some cases, you might send the same telemetry to multiple destinations for different purposes.
 
-#### Telemetry peformance and reliability considerations
+#### Telemetry performance and reliability considerations
 
-A single pplication can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system making sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
+A single application can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system making sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
 
 :::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/service-instrumentation-data.png" border="false":::
 
@@ -147,7 +150,7 @@ While telemetry isn't workload functional data, it's still critical from an oper
 
 ## Phase 3 - Correlation, aggregation, analysis
 
-Once telemetry is collected and stored, the next step is to turn raw data (logs, metrics, and traces) into insight. The outcome of this phase is to understand *what does the data mean and how to ensure the right people can act on them?*?
+Once telemetry is collected and stored, the next step is to turn raw data (logs, metrics, and traces) into insight. The outcome of this phase is to understand *what does the data mean and how to ensure the right people can act on them?*
 
 Analyzing telemetry begins by structuring data around defined KPIs and performance metrics. Start by asking these questions:
 
@@ -220,7 +223,7 @@ Warm analysis revealed that the cause was the dependency on the database, which 
 - Database latency doubled during that time
 - Platform logs showed that CPU on database server is at 90%
 
-By retaining analysis data over time, teams can performed cold historical analysis to uncover trends. For example, consistent increase in database load or gradually rising response times can indicate a change in architecture or optimization. For example, scaling the database or optimizing queries may be necessary.
+By retaining analysis data over time, teams performed cold historical analysis to uncover trends. For example, consistent increase in database load or gradually rising response times can indicate a change in architecture or optimization. For example, scaling the database or optimizing queries may be necessary.
 
 ## Phase 4 - Visualization
 
