@@ -7,6 +7,8 @@
     href: design-methodology.md
   - name: Design principles
     href: design-principles.md
+  - name: Design with an AI mindset
+    href: ai-strategy.md
   - name: Design areas
     items:
     - name: Billing and cost management

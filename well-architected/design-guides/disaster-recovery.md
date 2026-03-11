@@ -14,6 +14,11 @@ As a cloud solution architect, you play a key part in ensuring that recovery fro
 
 The plan should be based on strategies guided by business priorities and governed by measurable objectives. This article guides you through the process of developing a practical DR plan, starting with the foundational practices of restoring services to a mindset shift that defends business continuity under pressure.
 
+This article focuses on how to achieve business continuity through technical mitigations and processes. Before you begin, review the key strategies and pick the ones that make sense for your business. See [RE:09 Architecture strategies for disaster recovery](../reliability/disaster-recovery.md) for details.
+
+A DR plan should be built on the core principles of incident management, which serves as a prerequisite for effective DR planning. For guidance on developing an incident management plan, see [Develop an incident management practice to recover from disruptions](./incident-management.md).
+
+
 ## Terminology
 
 Before you start developing your plan, we recommend that you familiarize yourself with a common vocabulary. Establish these terms as shared language to enable clear communication and coordinated decision-making when activating the DR plan. 

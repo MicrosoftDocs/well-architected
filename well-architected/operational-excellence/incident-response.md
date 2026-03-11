@@ -3,22 +3,22 @@ title: Architecture strategies for designing an incident management (IcM) proces
 description: Learn how to set up emergency response processes and procedures that your team can follow to ensure that an issue is handled in a calm, orderly manner.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 10/27/2025
-ms.topic: conceptual
+ms.date: 02/11/2026
+ms.topic: concept-article
 ---
 
 # Architecture strategies for designing an incident management (IcM) process
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:08**| Establish a structured incident management process. Create an incident response plan that clearly documents all procedures. Clearly define human responsibilities, such as on-call rotations, incident management, emergency resource access, and running postmortems. Enable design strategies in the architecture that promote rapid detection, troubleshooting, and fixes. |
+|**OE:08**| Establish a clear, structured incident management process with defined roles, documented procedures, and architecture designed for rapid detection, diagnosis, and recovery. |
 |---|---|
 
 When incidents occur, the workload team should be prepared with clear, structured procedures.  
 
 There are two key aspects to incident response. The first is architectural, focusing on designing systems that support effective response procedures and prevent failures from cascading across components. The second is procedural, covering detection, containment, and triage to manage issues quickly, followed by root cause analysis and postmortems to prevent recurrence. Regular drills help maintain readiness and ensure the plan can be executed effectively.
 
-This article outlines proven strategies for designing an architecture that helps in response and a response plan that keeps the team calm, coordinated, and in control. 
+This article outlines proven strategies for designing an architecture that helps in response and a plan that keeps the team calm, coordinated, and in control.  For detailed implementation guidance, including stepwise processes and playbooks, see the companion article: [Create an effective incident management plan to manage disruptions](../design-guides/incident-management.md).
 
 
 **Definitions**
@@ -34,7 +34,34 @@ This article outlines proven strategies for designing an architecture that helps
 | RTO (Recovery Time Objective) | The maximum acceptable amount of time a system or service can be down after an incident before causing unacceptable impact. |
 | Triage | Assessing and prioritizing incidents to determine the appropriate response. |
 
+## Document the incident response plan
 
+An incident might relate to deployment, security, or performance issues. Regardless, create a core incident response plan that covers the entire process. Define supplemental procedures for each incident type that describe distinct detection methods, containment and recovery steps, the involved stakeholders specific to that type of incident. For example, your security incident plan might have processes related to involving Security Operations Center (SOC), which won't be applicable to a deployment incident.
+
+An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
+
+The plan must include a **communication and escalation structure** that outlines how incidents are reported, who is notified, and through which channels. This ensures that information moves quickly to the right people and prevents gaps or duplication during critical moments.
+
+The plan must also include the **core procedures** the team will follow during detection, triage, containment, and recovery. These steps provide a predictable framework for response and help maintain operational stability. Regular reviews of these procedures keep the plan aligned with system changes and lessons learned from previous incidents.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** An overly aggressive response strategy can trigger false alarms or unnecessary escalations.
+>
+> Similarly, automatic actions such as scaling or self-healing triggered by threshold breaches can incur extra costs and operational overhead. Since the optimal thresholds may not be obvious, validate them through testing in lower environments and carefully monitored production trials to align actions with your actual requirements.
+
+## Allocate sufficient resources for incident response infrastructure, processes, and staff
+
+Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
+
+From a human resourcing perspective, the team needs to balance their regular responsibilities with incident response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, or central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
+
+> [!NOTE]
+> Work with your organization to prepare those support contracts in advance so that they are readily available during an incident.
+
+Even with those external dependencies, expect some team members to work directly with vendors while others continue internal triage and remediation.
+
+Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access with appropriate permissions for logs and production environments.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Before transitioning support to external vendors, AI can role-play as a vendor team using only the documentation, playbooks, health models, and escalation paths the vendor has provided. It tests historical incidents to reveal gaps, such as missing knowledge of systems or misconfigured thresholds, or reliance on tribal knowledge. This allows teams to fix gaps proactively, ensuring smooth handoffs.
 
 ## Build containment and isolation in the architecture
 
@@ -42,14 +69,19 @@ Incidents are inevitable, so design your architecture to **restrict failures and
 
 Achieve this through techniques such as segmentation of resources, decoupling components with microservices, and applying design patterns like bulkheads or publisher/subscriber in your design. Also consider using external resources, where applicable. For example, instead of hardcoding configuration values inside the application, use an external configuration store to manage settings outside the application code or deployment package.
 
-
 ## Build monitoring capabilities for rapid detection
 
 A strong incident response plan depends on a well-designed monitoring stack. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
 
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
+>
+> Mitigate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
+
 Effective monitoring has two key dimensions. First, the response process should receive timely notifications from Azure on critical indicators such as service health, dependency status, security breaches, and data integrity. Second, **the solution itself must emit rich, structured telemetry, logs, metrics, and traces**, which enable deep analysis, triage, and root cause identification.
 
 The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common that investigations have delayed start because of manual data gathering. AI can make incident response faster and easier by automatically collecting context, correlating data, and performing initial triage as soon as an alert fires. Instead of starting from scratch, engineers get a clear picture immediately, incidents are routed to the right experts, and safe, common fixes can be suggested or automated with guardrails. With enough testing, consider building a solution that provides automated initial response with all that correlated context. 
 
 ## Facilitate with  diagnostic data and practices 
 
@@ -69,18 +101,6 @@ Key components should include observability data, timelines, ownership details, 
 
 Design your solution with auditing as a core requirement to support incident response. While audit trails are often viewed mainly as a security measure, they're equally critical for operational analysis. The system should capture detailed records of configuration changes, administrative actions, and operational procedures such as deployments, backups, and tuning activities.
 
-## Document the incident response plan
-
-An incident response plan should **define the key roles** involved in managing an incident and the responsibilities of each. Clear ownership reduces confusion and ensures that actions are coordinated from detection through resolution. Identify roles such as incident manager, technical lead, and communications lead to set up accountability and support consistent decision-making.
-
-The plan must include a **communication and escalation structure** that outlines how incidents are reported, who is notified, and through which channels. This ensures that information moves quickly to the right people and prevents gaps or duplication during critical moments.
-
-The plan must also include the **core procedures** the team will follow during detection, triage, containment, and recovery. These steps provide a predictable framework for response and help maintain operational stability. Regular reviews of these procedures keep the plan aligned with system changes and lessons learned from previous incidents.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** An overly aggressive response strategy can trigger false alarms or unnecessary escalations.
->
-> Similarly, automatic actions such as scaling or self-healing triggered by threshold breaches can incur extra costs and operational overhead. Since the optimal thresholds may not be obvious, validate them through testing in lower environments and carefully monitored production trials to align actions with your actual requirements.
-
 ## Test the plan
 
 Regularly test your incident response processes using dry runs or chaos engineering exercises. **Simulate realistic incidents to validate recoverability**, verify RTO and RPO targets, and ensure communication and escalation plans function under pressure. 
@@ -93,9 +113,14 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
+>
+> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
+
 ## Bring agility and consistency through automation 
 
 Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
+
 
 ## Azure facilitation
 
@@ -111,6 +136,8 @@ Microsoft offers Azure-related incident readiness training. For more information
 Use [connection monitor](/azure/network-watcher/connection-monitor-overview) in Azure Network Watcher to continuously track network connectivity and performance across Azure resources. During emergency incidents, custom workbooks in connection monitor provide real-time visibility into connectivity health, latency trends, and alert status. To do an effective RCA and achieve faster resolution, use [connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) inside the Network Watcher suite of diagnostics tools.
 
 Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze virtual network flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in traffic analytics allows teams to monitor live traffic behavior, receive alerts, and use timeline and topology views to quickly identify affected network segments and respond effectively.
+
+Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Azure AI Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
 
 ## Related links
 

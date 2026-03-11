@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Virtual Machines and Scale Sets
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Machines.
 author: PageWriter-MSFT
 ms.author: mattmcinnes
-ms.date: 08/17/2025
+ms.date: 11/21/2025
 ms.topic: concept-article
 products:
   - azure-virtual-machines
@@ -62,6 +62,8 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Explore the automatic recovery options.** Azure supports health degradation monitoring and self-healing features for VMs. For example, scale sets provide [automatic instance repairs](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs). In more advanced scenarios, self-healing involves using Azure Site Recovery, having a passive standby to fail over to, or redeploying from infrastructure as code (IaC). The method that you choose should align with the business requirements, your organizational operations, and support your ability to conduct [recovery drills](/azure/site-recovery/azure-to-azure-tutorial-dr-drill). For more information, see [VM service disruptions](/azure/virtual-machines/overview#service-disruptions).
 >
 > - **Rightsize the VMs and their dependencies.** Understand your VM's expected work to ensure that it's not undersized and can handle the maximum load. Have extra capacity to mitigate failures.
+>
+> - **Ensure always-on VMs stay running.** Virtual Machines in Azure can shut down, which is a distinct state than the resource being deleted. For VMs that are designed to stay running, use a `ReadOnly` [resource lock](/azure/azure-resource-manager/management/lock-resources) to prevent accidental stopping of the VM. This will not prevent the OS from rebooting if needed for updates, but will prevent an operator error through the Azure portal or CLI.
 >
 > - **Create a comprehensive disaster recovery plan.** Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery.
 >
@@ -178,7 +180,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Recommendation | Benefit |
 | :------------------------------| :-----------|
 | (VMs, scale set) **Choose the right VM plan size and SKU.** Identify the best [VM sizes](/azure/virtual-machines/sizes) for your workload. <br> Use the VM selector to identify the best VM for your workload. See [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) and [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) pricing. <br><br> For workloads like highly parallel batch processing jobs that can tolerate some interruptions, consider using [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms). Spot virtual machines are good for experimenting, developing, and testing large-scale solutions.  | SKUs are priced according to the capabilities that they offer. If you don't need advanced capabilities, don't overspend on SKUs. <br><br> Spot virtual machines take advantage of the surplus capacity in Azure at a lower cost. |
-| (Scale set) **Mix regular VMs with spot virtual machines.** <br> Flexible orchestration lets you **[distribute spot virtual machines](/azure/virtual-machine-scale-sets/spot-priority-mix)** based on a specified percentage. | Reduce compute infrastructure costs by applying the deep discounts of spot virtual machines. |
+| (Scale set) **Mix regular VMs with spot virtual machines.** <br> Flexible orchestration lets you **[distribute spot virtual machines](/azure/virtual-machine-scale-sets/spot-priority-mix)** based on a specified percentage. <br><br> Use **[Spot Placement Score](/azure/virtual-machines/spot-placement-score)** to make data-driven decisions about choosing the best regions and VM sizes to maximize availability and reduce capacity-related failures. | Reduce compute infrastructure costs by applying the deep discounts of spot virtual machines. <br> Spot Placement Score assessment can help improve the overall success rate of deploying Spot VMs. |
 | (Scale set) **Reduce the number of VM instances when demand decreases.** <br> **[Set a scale-in policy](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-scale-in-policy)** based on criteria. | Scaling in resources when they're not in use reduces the number of VMs that run in the scale set, which saves costs. |
 | (VMs) **Stop VMs during off-hours.** You can use the **[Azure Automation Start/Stop](/azure/azure-functions/start-stop-vms/overview)** feature and configure it according to your business needs. | The Start/Stop feature is a low-cost automation option that can significantly affect your idle instance costs. |
 | (VMs) **Free up CPU resources** by using **[Azure Boost](/azure/azure-boost/overview)**. | Offloading back-end virtualization processes frees up CPU resources for the guest virtual machines. This optimization results in improved performance. Azure Boost is only available on specific VMs, so ensure that you also [choose VM sizes that have Azure Boost enabled](/azure/azure-boost/overview#current-availability). |
@@ -308,3 +310,4 @@ Consider the following articles as resources that demonstrate the recommendation
   - [Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/overview)
 
 <!-- Updated: August 17, 2025 for Azure Update 497393 -->
+<!-- Updated: November 21, 2025 for Azure Update 511898 -->

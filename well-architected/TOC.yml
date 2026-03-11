@@ -9,21 +9,21 @@
         href: what-is-well-architected-framework.md
       - name: How to be a proficient architect
         items:
-        - name: Architect's fundamentals
+        - name: Architect role
           href: architect-role/fundamentals.md
-        - name: Deliverables
+        - name: Responsibilities
           items: 
-          - name: Checklist
-            href: architect-role/checklist.md
-          - name: Architecture design specification
+          - name: Align with business requirements
+            href: architect-role/design-business-requirements.md
+          - name: Build architecture design specification
             href: architect-role/architecture-design-specification.md
-          - name: Design diagrams
+          - name: Create design diagrams
             href: architect-role/design-diagrams.md
-          - name: Architecture decision record
+          - name: Maintain an architecture decision record
             href: architect-role/architecture-decision-record.md
-          - name: Collaboration with implementors
+          - name: Collaborate with implementors
             href: architect-role/collaboration.md
-          - name: Consultative support
+          - name: Provide consultative support
             href: architect-role/ongoing-support.md            
     - name: Pillars
       items: 
@@ -273,19 +273,15 @@
         - name: Azure Databricks
           href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
-          href: service-guides/azure-db-mysql-cost-optimization.md
+          href: service-guides/azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
         - name: Azure Disk Storage
           href: service-guides/azure-disk-storage.md
         - name: Azure Event Grid
-          items:
-            - name: Reliability
-              href: service-guides/event-grid/reliability.md
-            - name: Operational excellence
-              href: service-guides/event-grid/operational-excellence.md
+          href: service-guides/azure-event-grid.md
         - name: Azure Event Hubs
-          href: service-guides/event-hubs.md
+          href: service-guides/azure-event-hubs.md
         - name: Azure ExpressRoute
           href: service-guides/azure-expressroute.md
         - name: Azure Files
@@ -296,8 +292,6 @@
           href: service-guides/azure-front-door.md
         - name: Azure Functions
           href: service-guides/azure-functions.md
-        - name: Azure IoT Hub
-          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -328,23 +322,29 @@
           href: service-guides/virtual-machines.md
         - name: Azure Virtual Network
           href: service-guides/virtual-network.md
+        - name: Azure Virtual WAN
+          href: service-guides/azure-virtual-wan.md
     - name: Design guides
       items:
+      - name: Overview
+        href: ./design.md
       - name: Health modeling
         href: ./design-guides/health-modeling.md      
-      - name: Implementing recommendations
-        href: ./design-guides/implementing-recommendations.md
+      - name: Incident management plan
+        href: ./design-guides/incident-management.md
       - name: Optimize using flows
         href: ./design-guides/optimize-workload-using-flows.md
-      - name: Handle transient faults
+      - name: Transient faults
         href: ./design-guides/handle-transient-faults.md
-      - name: Develop a disaster recovery plan
+      - name: Disaster recovery plan
         href: ./design-guides/disaster-recovery.md
-      - name: Develop background jobs
+      - name: Background jobs
         href: ./design-guides/background-jobs.md
       - name: Data partitioning
-        href: reliability/partition-data.md
+        href: ./design-guides/partition-data.md
       - name: Continuous integration 
         href: ./design-guides/release-engineering-continuous-integration.md
       - name: Regions and availability zones
         href: ./design-guides/regions-availability-zones.md
+      - name: WAF assessments and recommendations
+        href: ./design-guides/implementing-recommendations.md

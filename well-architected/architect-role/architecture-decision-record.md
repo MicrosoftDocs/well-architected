@@ -1,5 +1,5 @@
 ---
-title: Architecture decision record
+title: Maintain an architecture decision record (ADR) 
 description: Learn about the benefits of creating an architecture decision record in the design process to document decisions, justifications, and implications.
 author: ckittel
 ms.author: chkittel
@@ -8,7 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
 
-# Architecture decision record
+# Maintain an architecture decision record (ADR) 
 
 An architecture decision record (ADR) is one of the most important deliverables of a solution architect. This record documents architectural decisions that you make throughout the design process. It also provides context-specific justifications and implications for each decision.
 

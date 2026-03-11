@@ -5,7 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 10/10/2024
 ms.topic: concept-article
-ms.update-cycle: 1095-days  
+ms.update-cycle: 1095-days
 ---
 
 # Performance Efficiency tradeoffs

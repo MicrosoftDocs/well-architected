@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Functions
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations for Azure Functions.
 author: PageWriter-MSFT
 ms.author: mohamad
-ms.date: 08/17/2025
+ms.date: 11/21/2025
 ms.topic: concept-article
 ms. service: waf
 ms. subservice: waf-service-guide
@@ -70,6 +70,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | Use **Durable Functions** for orchestrating complex workflows and long-running processes. [Learn more about Durable Functions](/azure/azure-functions/durable/durable-functions-overview). | Provides reliable operation of long-running workflows, with built-in state management and automatic retries.  |
 | Implement **monitoring** and **centralized logging** by using Application Insights. [Set up Application Insights](/azure/azure-functions/configure-monitoring). | Enhances monitoring and troubleshooting by providing detailed insights into function operations and dependencies. |
 |**Scale out automatically** based on the Functions hosting plan, trigger type, and demand. [Learn more about scaling](/azure/azure-functions/functions-scale). | Helps ensure that your application can handle increases in traffic without manual intervention, which improves reliability and performance. |
+|**Use Availability Zones for enhanced resilience.** The [Flex Consumption plan](/azure/azure-functions/flex-consumption-plan) supports deployment across Availability Zones for zone-redundant resilience. | Provides protection against datacenter-level failures through automatic failover across availability zones, enhancing overall application reliability. |
 
 ## Security
 
@@ -95,7 +96,8 @@ Start your design strategy based on the [design review checklist for Security](.
 |----------------|---------|
 | **Enable managed identities** for secure access to Azure resources. [Enable managed identities](/azure/app-service/overview-managed-identity) | Simplifies credential management by eliminating the need to store and rotate secrets. This approach enhances security. |
 | Use **Azure Key Vault** for secrets management and regular rotation. [Integrate Key Vault with Azure Functions](/azure/app-service/app-service-key-vault-references). | Helps protect sensitive information, such as API keys and connection strings, by storing it securely and automating secret rotation when it isn't feasible to use a managed identity. |
-| [**Integrate with a virtual network** and use **private endpoints**](/azure/azure-functions/functions-create-vnet). | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints aren't available in the Consumption hosting plan. |
+|[**Integrate with a virtual network** and use **private endpoints**](/azure/azure-functions/functions-create-vnet). | Secures function apps by restricting access to your internal network and preventing exposure to the public internet. </br></br> Virtual network integration and private endpoints aren't available in the Consumption hosting plan. |
+|**Use network-restricted Key Vault and App Configuration access.** The [Flex Consumption plan](/azure/azure-functions/flex-consumption-plan) supports network-restricted references to Key Vault and App Configuration services. | Enhances security by enabling secure access to configuration and secrets through private network connectivity, reducing exposure to public endpoints. |
 
 ## Cost Optimization
 
@@ -122,6 +124,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Recommendation | Benefit |
 |----------------|---------|
 | Use the **Consumption plan** for workloads with unpredictable traffic. [Understand the Consumption plan](/azure/azure-functions/functions-scale). | Reduces costs by charging only for the resources used when functions are performed, which avoids costs associated with idle resources. |
+|**Consider the Flex Consumption plan** for workloads requiring both cost efficiency and advanced features. See, [Flex Consumption](/azure/azure-functions/flex-consumption-plan). | Combines serverless cost benefits with enhanced capabilities like Availability Zones and VNet integration, providing cost optimization with improved reliability and security features. |
 | Reserve capacity for **[Elastic Premium plans](/azure/azure-functions/functions-premium-plan) or [Dedicated App Service plans](/azure/azure-functions/dedicated-plan)** if your workload is predictable. | Lowers costs through discounted pricing for predictable workloads with steady usage patterns. |
 | Regularly **monitor costs** and set up alerts for anomalies. [Monitor costs with alerts](/azure/cost-management-billing/cost-management-billing-overview#monitor-costs-with-alerts). | Helps identify cost spikes early, which enables proactive management and optimization. |
 
@@ -209,3 +212,4 @@ Consider the following resources to further explore the recommendations highligh
 - [Getting started with Azure Functions](/azure/azure-functions/functions-get-started)
 
 <!-- Updated: August 17, 2025 for Azure Update 498149 -->
+<!-- Updated: November 21, 2025 for Azure Update 512379 -->
