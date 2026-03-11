@@ -14,8 +14,24 @@ This guide describes the recommendations for designing a data partitioning strat
 
 In many large-scale solutions, *partitions* are used to divide data so that it can be managed and accessed separately. Partitioning data improves scalability, reduces contention, and optimizes performance. Implement data partitioning to divide data by usage pattern. For example, you can archive older data in inexpensive data storage. Choose your partitioning strategy carefully to maximize the benefits and minimize adverse effects.
 
-> [!NOTE]
-> In this article, the term *partitioning* means the process of physically dividing data into separate data stores. It differs from SQL Server table partitioning.
+## Terminology
+
+Before you start designing your data partitioning strategy, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Bounded context** | A distinct business area or domain that defines clear boundaries for data and functionality, often the basis for functional partitioning decisions. |
+| **Cross-partition operation** | A query or transaction that accesses data across multiple partitions. These operations typically have higher latency and complexity than single-partition operations. |
+| **Eventual consistency** | A consistency model where data updates propagate across partitions over time. The system guarantees that all replicas eventually converge to the same state. |
+| **Functional partitioning** | A strategy that aggregates and stores data according to how each bounded context or business domain uses it. Example: separate partitions for orders and inventory. |
+| **Horizontal partitioning** | A strategy that divides data into multiple stores with identical schemas. Each partition (shard) contains a subset of rows based on partition key values. Also known as sharding. |
+| **Hot partition** | A partition that experiences disproportionately high access rates or load compared to other partitions. Can cause performance bottlenecks and availability issues. |
+| **Partitioning** | The process of physically dividing data into separate data stores. In this context, it differs from SQL Server table partitioning. |
+| **Rebalancing** | The process of redistributing data across partitions to maintain even load distribution, optimize performance, and prevent hot partitions. |
+| **Replica** | A copy of a partition maintained in a separate location or server. Provides redundancy for availability and can improve read performance through load distribution. |
+| **Shard** | A horizontal partition that contains a subset of data rows from a larger dataset. Each shard has the same schema but different data. |
+| **Shard key** | The data attribute or combination of attributes that determines which shard contains a particular data item. Critical for achieving even data distribution. Also known as partition key. |
+| **Vertical partitioning** | A strategy that divides data by columns or fields rather than rows. Different subsets of fields are stored in separate partitions based on access patterns. |
 
 You can partition data to:
 

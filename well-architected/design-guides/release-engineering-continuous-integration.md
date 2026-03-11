@@ -29,6 +29,27 @@ Continuous integration can help you deliver high-quality software more quickly b
 - Provide quick feedback on detected problems.
 - Where applicable, produce deployable assets or packages that include the updated code.
 
+## Terminology
+
+Before you start implementing continuous integration, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Artifact** | A deployable output from the build process, such as compiled code, container images, or deployment packages. |
+| **Automated test** | A test that runs automatically as part of the CI pipeline to validate code quality and detect issues without manual intervention. |
+| **Build** | The process that compiles source code, runs tests, and produces artifacts for deployment. |
+| **Build agent** | A compute resource that executes the tasks and operations within a CI pipeline. Can be self-hosted or cloud-hosted. |
+| **Continuous integration (CI)** | A practice that integrates source control systems with automated pipelines to build, test, and validate code changes automatically. |
+| **CI pipeline** | An automated workflow that builds, tests, and validates code changes when developers commit to source control. Also known simply as pipeline. |
+| **Integration test** | A test that validates how different components or services work together, often more comprehensive than unit tests. |
+| **Nightly build** | A scheduled build that runs at regular intervals (typically overnight) to execute longer-running test suites such as integration and UI tests. |
+| **Pull request** | A request to merge code changes from one branch into another. Triggers the CI pipeline to validate the proposed changes before integration. |
+| **Release build** | A comprehensive build that includes compilation, tests, documentation, compliance reports, and signing. Produces the final version for production deployment. |
+| **Source control** | A system that tracks and manages changes to code over time. Examples include Git, Azure Repos, and GitHub. |
+| **Status badge** | A visual indicator (typically an image) that displays the current state of builds or tests, often shown in repository documentation. |
+| **Test-driven development (TDD)** | A development practice where developers write tests before writing the code that satisfies those tests. |
+| **Unit test** | A test that validates individual functions or components in isolation to ensure they behave as expected. |
+
 ## Automate continuous integration with pipelines
 
 To achieve continuous integration, use software solutions to manage, integrate, and automate the process. A common practice is to use a continuous integration pipeline.

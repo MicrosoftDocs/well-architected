@@ -16,6 +16,23 @@ This workload optimization process is iterative and involves three key steps: (1
 
 :::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a three-step process with five actions. The first step is to define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to define the flow requirements. To define flow requirements, you need to establish technical targets. The third step is to design the flow. To design the flow, you need to follow flow design best practices and develop and test the flow. There's an arrow from the build and test action back to the first action (understand prerequisites) that indicates iterations of this process." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The process to optimize workloads using flows.*
 
+## Terminology
+
+Before you start optimizing your workload using flows, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Business impact** | The effect that a flow's availability or unavailability has on revenue, reputation, operations, or compliance. Informs criticality ratings and technical targets. |
+| **Business process** | A series of sequential actions or stages that fulfill a business requirement, such as to sell products online or to process customer support requests. |
+| **Criticality** | A qualitative label that indicates the relative importance of a flow to business operations. Teams typically rate flows as low, medium, or high according to business impact. |
+| **Escalation path** | A defined sequence of individuals or teams to contact to resolve flow issues. Each level has broader scope and authority. |
+| **Process owner** | The individual responsible for the business process that a flow supports, with authority over business requirements and priorities. |
+| **Service Level Agreement (SLA)** | A formal commitment that specifies expected service availability and performance levels, often as a percentage of uptime. |
+| **Service Level Objective (SLO)** | An internal target for service performance and reliability that helps teams meet or exceed SLA commitments. |
+| **System flow** | A flow that determines communication and data exchange between workload components. It operates independently of direct user interaction. |
+| **Technical targets** | Measurable goals for a flow that align with the five Well-Architected Framework pillars: reliability, security, cost, operational excellence, and performance. |
+| **User flow** | A flow that determines how users interact with the workload. It defines the sequence of actions users take to accomplish specific tasks. |
+
 ## Define the flow
 
 Before you can define flow requirements, you need to understand the business drivers for the flow. The prerequisites to defining a flow are identifying the business process and use case its supports. When you understand the prerequisites, you can start documenting the flow.

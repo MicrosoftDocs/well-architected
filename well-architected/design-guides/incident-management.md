@@ -22,6 +22,8 @@ This article doesn't cover disasters that require specialized recovery efforts. 
 
 ## Terminology
 
+Before you start developing your incident management plan, familiarize yourself with these key terms.
+
 | Term | Definition |
 |---|---|
 | **Blast radius** | The scope of impact or affected area when an incident occurs, which containment strategies aim to limit. |
