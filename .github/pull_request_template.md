@@ -1,4 +1,4 @@
-**Before you open this PR, submit a contribution request and contact the WAF team (Priyanka Williams and Jose Varela) to discuss your contribution. If you don't submit a contribution request, we might close your PR.
+**Before you open this PR, submit a [contribution request](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxxUz-ZV53lLrgTaBjGRmtBUMkhJWUFPREJYUlFHNDVONUsxQ0VZOTFRTS4u) and contact the WAF team (Priyanka Wilkins and Jose Varela) to discuss your contribution. If you don't submit a contribution request, we might close your PR.
 Ensure that your guidance is unique and aligns with the WAF content model so that it adds clear value where it matters most. Content added to WAF is used for AI consumption and affects the overall confidence score.**
 
 After you get approval from the WAF team:  
