@@ -23,11 +23,11 @@ Before you start the assessment process, familiarize yourself with these key ter
 
 | Term | Definition |
 |------|------------|
-| **Brownfield workload** | Existing workload that's already deployed and operational, requiring assessment as part of continuous improvement efforts. |
+| **Brownfield workload** | Existing workload that's already deployed and operational, which requires assessment as part of continuous improvement efforts. |
 | **Greenfield workload** | New workload in the initial design phase, where the assessment helps establish a baseline and guide design decisions. |
-| **Software development lifecycle (SDLC)** | Structured process for planning, creating, testing, and deploying software systems, into which Well-Architected recommendations should be integrated. |
-| **Technical debt** | Shortcuts, suboptimal solutions, or known problems in a workload that should be addressed to maintain quality and prevent future problems. |
-| **Tradeoff** | Compromise between competing design goals where optimizing one pillar might negatively affect another, requiring careful evaluation and prioritization. |
+| **Software development lifecycle (SDLC)** | Structured process for planning, creating, testing, and deploying software systems where you integrate Well-Architected Framework recommendations. |
+| **Technical debt** | Shortcuts, suboptimal solutions, or known problems in a workload that you should address to maintain quality and prevent future problems. |
+| **Tradeoff** | Compromise between competing design goals where optimizing one pillar might negatively affect another, which requires careful evaluation and prioritization. |
 
 ## When to take the assessment
 

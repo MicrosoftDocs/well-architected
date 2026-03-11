@@ -27,7 +27,7 @@ Before you start developing your incident management plan, familiarize yourself 
 | Term | Definition |
 |---|---|
 | **Blast radius** | The scope of impact or affected area when an incident occurs, which containment strategies aim to limit. |
-| **Break-glass accounts** | Emergency credentials that have elevated privileges used during critical incidents, strictly controlled with clear usage guidelines. |
+| **Break-glass accounts** | Emergency credentials that have elevated privileges used during critical incidents, which are strictly controlled with clear usage guidelines. |
 | **Bridge team** | The triage team that assembles to investigate an incident, also called the *engineering bridge*. It consists of relevant technical experts and decision-makers. |
 | **Containment** | The first step in incident remediation that isolates affected components to prevent the problem from spreading to other parts of the workload. |
 | **Incident management (IcM)** | The structured process of detecting, triaging, mitigating, and resolving incidents while coordinating communication and capturing lessons learned. |
@@ -36,7 +36,7 @@ Before you start developing your incident management plan, familiarize yourself 
 | **Retrospective** | A blameless post-incident review process focused on identifying lessons learned and actionable improvements rather than assigning blame. |
 | **Root cause analysis (RCA)** | A systematic process of investigating an incident to identify the underlying factors responsible for the problem and prevent recurrence. |
 | **Severity level** | A classification system, like critical, high, medium, and low, that determines the appropriate response level based on business impact and affected users. |
-| **Triage** | The process of analyzing and prioritizing incidents to determine severity, impact, and appropriate response actions. |
+| **Triage** | The process of analyzing and prioritizing incidents to determine severity, effect, and appropriate response actions. |
 
 ## Preparation
 

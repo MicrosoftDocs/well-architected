@@ -36,19 +36,19 @@ Before you start implementing continuous integration, familiarize yourself with 
 | Term | Definition |
 |------|------------|
 | **Artifact** | A deployable output from the build process, such as compiled code, container images, or deployment packages. |
-| **Automated test** | A test that runs automatically as part of the CI pipeline to validate code quality and detect issues without manual intervention. |
+| **Automated test** | A test that runs automatically as part of the CI pipeline to validate code quality and detect problems without manual intervention. |
 | **Build** | The process that compiles source code, runs tests, and produces artifacts for deployment. |
-| **Build agent** | A compute resource that executes the tasks and operations within a CI pipeline. Can be self-hosted or cloud-hosted. |
+| **Build agent** | A self-hosted or cloud-hosted compute resource that runs the tasks and operations within a CI pipeline. |
 | **Continuous integration (CI)** | A practice that integrates source control systems with automated pipelines to build, test, and validate code changes automatically. |
-| **CI pipeline** | An automated workflow that builds, tests, and validates code changes when developers commit to source control. Also known simply as pipeline. |
+| **CI pipeline** | An automated workflow that builds, tests, and validates code changes when developers commit to source control. |
 | **Integration test** | A test that validates how different components or services work together, often more comprehensive than unit tests. |
-| **Nightly build** | A scheduled build that runs at regular intervals (typically overnight) to execute longer-running test suites such as integration and UI tests. |
+| **Nightly build** | A scheduled build that runs at regular intervals (typically overnight) to run longer-running test suites, such as integration and UI tests. |
 | **Pull request** | A request to merge code changes from one branch into another. Triggers the CI pipeline to validate the proposed changes before integration. |
 | **Release build** | A comprehensive build that includes compilation, tests, documentation, compliance reports, and signing. Produces the final version for production deployment. |
 | **Source control** | A system that tracks and manages changes to code over time. Examples include Git, Azure Repos, and GitHub. |
 | **Status badge** | A visual indicator (typically an image) that displays the current state of builds or tests, often shown in repository documentation. |
-| **Test-driven development (TDD)** | A development practice where developers write tests before writing the code that satisfies those tests. |
-| **Unit test** | A test that validates individual functions or components in isolation to ensure they behave as expected. |
+| **Test-driven development (TDD)** | A development practice where developers write tests before they write the code that satisfies those tests. |
+| **Unit test** | A test that validates individual functions or components in isolation to ensure that they behave as expected. |
 
 ## Automate continuous integration with pipelines
 

@@ -25,13 +25,13 @@ Before you start optimizing your workload using flows, familiarize yourself with
 | **Business impact** | The effect that a flow's availability or unavailability has on revenue, reputation, operations, or compliance. Informs criticality ratings and technical targets. |
 | **Business process** | A series of sequential actions or stages that fulfill a business requirement, such as to sell products online or to process customer support requests. |
 | **Criticality** | A qualitative label that indicates the relative importance of a flow to business operations. Teams typically rate flows as low, medium, or high according to business impact. |
-| **Escalation path** | A defined sequence of individuals or teams to contact to resolve flow issues. Each level has broader scope and authority. |
+| **Escalation path** | A defined sequence of individuals or teams to contact to resolve flow problems. Each level has broader scope and authority. |
 | **Process owner** | The individual responsible for the business process that a flow supports, with authority over business requirements and priorities. |
-| **Service Level Agreement (SLA)** | A formal commitment that specifies expected service availability and performance levels, often as a percentage of uptime. |
-| **Service Level Objective (SLO)** | An internal target for service performance and reliability that helps teams meet or exceed SLA commitments. |
+| **Service-level agreement (SLA)** | A formal commitment that specifies expected service availability and performance levels, often as a percentage of uptime. |
+| **Service-level objective (SLO)** | An internal target for service performance and reliability that helps teams meet or exceed SLA commitments. |
 | **System flow** | A flow that determines communication and data exchange between workload components. It operates independently of direct user interaction. |
-| **Technical targets** | Measurable goals for a flow that align with the five Well-Architected Framework pillars: reliability, security, cost, operational excellence, and performance. |
-| **User flow** | A flow that determines how users interact with the workload. It defines the sequence of actions users take to accomplish specific tasks. |
+| **Technical targets** | Measurable goals for a flow that align with the five Well-Architected Framework pillars: Reliability, Security, Cost, Operational Excellence, And Performance Efficiency. |
+| **User flow** | A flow that determines how users interact with the workload. It defines the sequence of actions that users take to accomplish specific tasks. |
 
 ## Define the flow
 
@@ -87,7 +87,7 @@ For more information, see [Flow examples](#flow-examples).
 
 Utilize the use case to establish the technical targets of the flow. Define measurable targets for the flow that align to the five pillars of the Well-Architected Framework (WAF). These pillars provide a framework for setting technical targets:
 
-- *Reliability targets*: Assess each flow's importance and set reliability targets accordingly. Determine performance thresholds and establish clear service level agreements (SLAs) and objectives (SLOs). Higher criticality flows require more stringent reliability targets.
+- *Reliability targets*: Assess each flow's importance and set reliability targets accordingly. Determine performance thresholds and establish clear service-level agreements (SLAs) and service-level objectives (SLOs). Higher criticality flows require more stringent reliability targets.
 
 - *Security targets*: Analyze the security needs of each flow based on data sensitivity and user activities. Implement and continuously update security measures to meet these needs while ensuring compliance with regulatory standards.
 
