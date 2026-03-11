@@ -3,7 +3,7 @@ title: HPC workloads on Azure
 description: Learn about architectural considerations, including common challenges and key design areas, for building and operating HPC workloads on Azure.
 author: padmalathas
 ms.author: padmalathas
-ms.date: 03/06/2026
+ms.date: 03/10/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
