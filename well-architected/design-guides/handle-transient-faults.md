@@ -210,7 +210,6 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 - [Retry pattern](/azure/architecture/patterns/retry)
 - [Throttling pattern](/azure/architecture/patterns/throttling)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-- [A blog post on idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 - [Dead-letter queue pattern](/azure/service-bus-messaging/service-bus-dead-letter-queues)
