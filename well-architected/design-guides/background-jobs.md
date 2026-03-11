@@ -19,6 +19,23 @@ Background jobs help minimize the load on the application UI, which improves ava
 
 To choose which task to designate as a background job, consider whether the task runs without user interaction and whether the UI needs to wait for the task to complete. Tasks that require the user or the UI to wait while they run are typically not appropriate background jobs.
 
+## Terminology
+
+Before you start developing your background jobs, familiarize yourself with these terms. This vocabulary helps establish clear communication and understanding across the team when designing, implementing, and managing background jobs.
+
+| Term | Definition |
+|------|------------|
+| **Asynchronous processing** | Processing operations independently from the main application flow without waiting for their completion. Enables non-blocking operations where the calling process continues without waiting for the background task to finish. |
+| **Background job** | Automated task that runs independently of the user interface without requiring user interaction. Typically handles operations like batch processing, data transformation, scheduled maintenance, or long-running workflows. |
+| **Checkpoint** | Saved state of a long-running task that allows recovery from the last known good point rather than restarting from the beginning. Critical for resilient background job implementations. |
+| **Dead letter queue** | Special queue that stores messages that can't be processed successfully after multiple attempts. Prevents poison messages from blocking the main processing queue while preserving them for investigation and resolution. |
+| **Event-driven trigger** | Mechanism that initiates a background task in response to an action or event, such as a message arriving in a queue, a file being uploaded, or a database record being updated. |
+| **Idempotent** | Property of an operation that produces the same result regardless of how many times it's executed with the same input. Essential for background jobs that might process duplicate messages or retry after failures. |
+| **Poison message** | Message that repeatedly causes processing failures, potentially blocking the queue and preventing other messages from being processed. Requires special handling to prevent system-wide disruption. |
+| **Schedule-driven trigger** | Timer-based mechanism that initiates a background task at specified times or intervals, such as daily maintenance jobs, periodic data processing, or scheduled report generation. |
+| **Singleton** | Design pattern ensuring only one instance of a background job runs at a time, even when multiple compute instances are available. Used for jobs that must not run concurrently, such as data consistency operations. |
+| **WebJob** | Azure App Service feature that enables running scripts or programs as background tasks within the context of a web app. Supports both continuous and triggered execution modes. |
+
 ## Evaluate the need for background jobs
 
 Some examples of background jobs are:
