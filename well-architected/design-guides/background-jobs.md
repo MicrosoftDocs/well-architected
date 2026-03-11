@@ -29,10 +29,8 @@ Before you start developing your background jobs, familiarize yourself with thes
 | **Background job** | Automated task that runs independently of the UI without requiring user interaction. Typically handles operations like batch processing, data transformation, scheduled maintenance, or long-running workflows. |
 | **Checkpoint** | Saved state of a long-running task that supports recovery from the last known good point rather than restarting from the beginning. Critical for resilient background job implementations. |
 | **Dead-letter queue** | Special queue that stores messages that don't process successfully after multiple attempts. Prevents poison messages from blocking the main processing queue while preserving them for investigation and resolution. |
-| **Event-driven trigger** | Mechanism that initiates a background task in response to an action or event, such as a message arriving in a queue, a file being uploaded, or a database record being updated. |
 | **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs with the same input. Essential for background jobs that might process duplicate messages or retry after failures. |
 | **Poison message** | Message that repeatedly causes processing failures, which potentially blocks the queue and prevents processing other messages. Requires special handling to prevent system-wide disruption. |
-| **Schedule-driven trigger** | Timer-based mechanism that initiates a background task at specified times or intervals, such as daily maintenance jobs, periodic data processing, or scheduled report generation. |
 | **Singleton** | Design pattern that ensures that only one instance of a background job runs at a time, even when multiple compute instances are available. Used for jobs that must not run concurrently, such as data consistency operations. |
 | **WebJob** | Azure App Service feature that supports running scripts or programs as background tasks within the context of a web app. Supports both continuous and triggered execution modes. |
 

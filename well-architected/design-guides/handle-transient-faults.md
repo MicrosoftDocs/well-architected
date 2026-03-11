@@ -20,7 +20,7 @@ Before you start implementing transient fault handling, familiarize yourself wit
 
 | Term | Definition |
 |------|------------|
-| **Circuit breaker** | Design pattern that prevents repeated attempts to an operation that's likely to fail. After a threshold of failures, the circuit *opens* and requests fail immediately without attempting the operation, which allows the service time to recover. |
+| **Circuit Breaker pattern** | Design pattern that prevents repeated attempts to an operation that's likely to fail. After a threshold of failures, the circuit *opens* and requests fail immediately without attempting the operation, which allows the service time to recover. |
 | **Dead-letter queue** | Special queue that stores messages that can't process successfully after multiple attempts. Prevents problematic messages from blocking the main processing queue while preserving them for investigation and resolution. |
 | **Exponential back-off** | Retry strategy where the wait time between retry attempts increases exponentially, such as 3 seconds, 12 seconds, 30 seconds. Helps prevent overwhelming a recovering service with repeated requests. |
 | **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs. Essential for retry logic to avoid unintended side effects when operations repeat. |
