@@ -1,4 +1,7 @@
-Before selecting the "Create pull request" button:  
+**Before you open this PR, submit a contribution request and contact the WAF team (Priyanka Williams and Jose Varela) to discuss your contribution. If you don't submit a contribution request, we might close your PR.
+Ensure that your guidance is unique and aligns with the WAF content model so that it adds clear value where it matters most. Content added to WAF is used for AI consumption and affects the overall confidence score.**
+
+After you get approval from the WAF team:  
 
 1. Enter a meaningful title above^, using a prefix if necessary and keywords "New" or "Update" indicating the nature of changes.
 
