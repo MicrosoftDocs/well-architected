@@ -1,0 +1,53 @@
+### YamlMime:Landing
+
+title: HPC workload documentation
+summary: Learn about architectural challenges of designing high-performance computing (HPC) workloads. It focuses on design strategies for all the characteristics of HPC workloads. Its designed for workloads that need more computational power than standard applications can provide. Consider using HPC when your work involves processing massive amounts of data, running complex calculations that take hours or days, or solving problems that require many computers working together simultaneously.
+metadata: 
+  title: HPC workload documentation
+  description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
+  services: na
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 02/06/2026
+  ms.topic: landing-page
+  ms.collection: na
+
+
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is a HPC workload?
+            url: get-started-overview.md
+      - linkListType: concept
+        links:
+          - text: Design methodology
+            url: hpc-design-methodology.md
+          - text: Design principles
+            url: hpc-design-principles.md            
+          - text: Architecture pattern 
+            url: hpc-architecture-pattern.md         
+ # Card
+  - title: Reference example
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Host GPU based workloads with AKS
+            url: /azure/architecture/reference-architectures/containers/aks-gpu/gpu-aks  
+ # Card
+  - title: Learn
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Run High Performance Computing applications on Azure
+            url: /training/paths/run-high-performance-computing-applications-azure/
+          - text: Choose the best service level for HPC workloads
+            url: /training/modules/choose-service-level-azure-netapp-files-hpc-applications/
+          - text: Optimize tightly coupled HPC applications
+            url: /training/modules/optimize-tightly-coupled-hpc-apps/
