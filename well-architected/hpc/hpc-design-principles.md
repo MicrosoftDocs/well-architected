@@ -3,7 +3,7 @@ title: Design Principles for HPC Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an HPC workload.
 author: padmalathas
 ms.author: padmalathas
-ms.date: 03/06/2026
+ms.date: 03/10/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -45,13 +45,13 @@ HPC environments often process sensitive data, including proprietary research, r
 
 ### Considerations
 
-- **Network boundary enforcement:** Operate HPC clusters within defined network perimeters that restrict unauthorized access while permitting required communication between compute nodes, storage systems, and job submission endpoints.
+- **Network boundary enforcement:** HPC environments often process sensitive or high‑value data while supporting large numbers of users running custom, performance‑critical workloads. Security design must protect these assets without introducing controls that degrade throughput, latency, or job scalability. As a result, HPC security is most effective when addressed at the architectural level rather than through inline or host‑based tooling.
 
-- **Identity, access governance and data protection controls:** Access to HPC resources should be governed by least‑privilege principles, providing users only the permissions required for roles ranging from job submission to cluster administration, and integrated with organizational identity systems. Sensitive data must be protected through encryption at rest and in transit, with enforced policies ensuring that only authorized users and jobs can access protected datasets.
+- **Identity, access governance and data protection controls:** Identity‑centric access and accountability are critical in shared HPC systems. Access to login, job submission, and data services should be strongly authenticated and attributable to a specific user, project, or service identity, enabling effective auditing, incident investigation, and governance without disrupting established HPC workflows.
 
-- **Regulatory compliance:** Organizations processing data subject to regulatory requirements such as HIPAA, ITAR, or FedRAMP must implement specific controls and maintain audit evidence to demonstrate compliance.
+- **Regulatory compliance:** HPC security controls should be risk‑based and mission‑aware. Different workloads running on the same infrastructure might have varying data sensitivity, regulatory requirements, and collaboration needs. Security posture should align with data classification and workload criticality, rather than applying uniform controls that either constrain productivity or fall short of compliance requirements.
 
-- **Workload isolation:** Multi-tenant HPC environments or clusters processing sensitive data require mechanisms to prevent unauthorized access between users or jobs, both at the compute layer and within shared storage systems.
+- **Workload isolation:** Multi‑tenant HPC systems require strong isolation between users, jobs, and data. User‑submitted code should be treated as untrusted by default, with separation enforced across access, management, compute, and storage components to reduce the risk of accidental or malicious data exposure and limit lateral movement within the environment.
 
 
 ### Recommendations
