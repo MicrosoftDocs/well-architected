@@ -3,7 +3,7 @@ title: Design methodology for HPC workloads on Azure
 description: Understand the architectural process of building a mature HPC application on Microsoft Azure.
 author: padmalathas
 ms.author: padmalathas
-ms.date: 03/06/2026
+ms.date: 03/10/2026
 ms.topic: concept-article
 ---
 
