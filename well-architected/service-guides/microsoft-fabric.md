@@ -74,12 +74,56 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 
 > [!div class="checklist"]
 >
+> - **Right-size and plan compute capacity.** Compute is the primary cost driver in Microsoft Fabric, billed by provisioned capacity (CUs), not actual usage. Underutilized capacity still incurs cost. Plan for growth by scaling up (larger capacities) or scaling out (additional capacities).
+>
+>   Do cost modeling exercise based on workloads usage patterns: peak or average usage, interactive or background operations, and continuous or intermittent ingestion. 
+> 
+>   Align use of Fabric capabilities with the cost model. For example, background operations like dataset refreshes, Notebook jobs, can count against capacity if scheduled at the same time. Take advantage of Fabric's surge protection to stagger usage.
+>
+>   Validate sizing and pricing with POCs or load tests.
+>
+> - **Consolidate workloads to improve utilization.** A single capacity can host multiple workspaces and workloads. Determine which workloads can be pooled on shared capacity can improve utilization.  
+>
+> - **Choose the appropriate billing model.** Use pay-as-you-go (PAYG) for bursty workloads that can be paused or resized, and reserved capacity for predictable workloads. Most often, hybrid approaches are applied. For example, reserving capacity for baseline demand and using PAYG to handle peak usage.
+>
+> - **Manage capacity usage and scaling.** Costs accrue while capacity is active, regardless of utilization. 
+>
+>   Fabric capabilities like bursting can prevent performance degradation and should be used. But make sure cost model accounts for the extra usage that is tracked as capacity debt. Fabric slows or throttles workloads later to repay that debt. If that happens frequently, you might need to upgrade capacity.
+> 
+>   Autoscale capabilities for workloads such as Spark and data warehousing should be used carefully to prevent unexpected compute charges. Configure upper limits to prevent runaway costs, and monitor CU consumption to avoid unexpected charges.
+> 
+> - **Optimize storage usage.** Storage is billed separately in Microsoft OneLake. Apply data lifecycle management (archiving, retention, cleanup) and maximize in-place sharing (shortcuts, free mirroring) to reduce duplication. Keep in mind that storage costs continue even when compute is paused; backup and soft-deleted items may create hidden costs.
+>
+> - **Minimize additional operational costs.** Track data ingestion, query complexity, data transfers, and cross-region movement to avoid hidden charges.
+>
+> - **Review licensing requirements.** Power BI content creation or publishing may require Power BI Pro licenses, even when using Fabric capacity. Verify requirements per Fabric SKU. 
+>
+> - **Establish cost visibility and governance.** Monitor capacity utilization by workspace and workload, investigate spikes, and configure budget alerts for anomalies. 
+>
+>   Use tagging and reporting to attribute consumption to teams, and export billing/usage to Fabric dashboards for CU usage, storage, and forecasts. 
+>
+>   Apply workspace-level controls. For example, capacity policies, limits on SKUs, pause schedules for non-production environments. Assign capacity-level cost ownership, and use the Fabric Chargeback App for shared capacities. Integrate with governance frameworks such as Microsoft Purview.
+>
+> - **Optimize environment costs.** Microsoft Fabric SKUs provide the same functional capabilities, regardless of the environment. 
+>
+>   Non-production environments should use smaller capacities and be paused when idle. Also, Fabric supports ephemeral environments, allowing capacities to be provisioned and de-provisioned automatically. Use deployment pipelines to separate dev/test/production workloads and enforce governance.
+>
+> - **Use automation to reduce costs.** Automate scaling, pausing, and resizing via Azure Resource Manager APIs or tools like Bicep, Terraform, Azure CLI, PowerShell, orchestrated through Azure Automation, Logic Apps, or Fabric Pipelines. Automation can also manage lifecycle tasks, such as provisioning temporary environments, archiving obsolete data, and detecting unused artifacts. Ensure automation aligns with the pricing model; pausing reserved capacities doesn't reduce costs.
+>
 
 ### Recommendations
 
 | Recommendation | Benefit |
 | ----- | ----- |
-| Monitor [Microsoft Fabric capacity metrics](/fabric/admin/service-admin-premium-capacity-management) and implement automated capacity scaling policies based on usage patterns. Configure alerts for capacity utilization thresholds to prevent performance degradation and cost overruns. | Optimizes capacity costs by automatically adjusting resources based on actual demand while preventing performance issues during peak usage periods, resulting in 20-40% cost savings compared to fixed capacity allocation. |
+|Understand the cost drivers for your Fabric workload. <br><br> [Understand your Azure bill on a Fabric capacity](/fabric/enterprise/azure-billing)|The invoice meters will help you with cost analysis. |
+|Use the [Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) for estimating new workloads. <br><br> Validate estimates with POCs or load tests to ensure they reflect real-world conditions.|Helps predict the required capacity and associated costs based on expected usage patterns.|
+|Use [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) for Azure-based resources used with Fabric.|Provides estimates for resources that are part of the workload.|
+|Use [Microsoft Cost Management + Billing](/azure/cost-management-billing/) for reviewing costs.|Helps track, analyze, and optimize ongoing Fabric costs.|
+|Monitor [Microsoft Fabric capacity metrics](/fabric/admin/service-admin-premium-capacity-management) and implement automated capacity scaling policies based on usage patterns. Configure alerts for capacity utilization thresholds to prevent performance degradation and cost overruns.|Optimizes capacity costs by automatically adjusting resources based on actual demand while preventing performance issues during peak usage periods, resulting in 20-40% cost savings compared to fixed capacity allocation.|
+|Monitor costs with [Solution Accelerator: Fabric Cost Analysis](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis).|Provides a holistic view on Microsoft Fabric cost aspects founded on FinOps practices.|
+|Use [Fabric Chargeback App](/fabric/enterprise/chargeback-app) to build chargeback processes that fairly allocate costs based on actual consumption.|Helps you understand which teams, users, and workloads are driving capacity usage.|
+|Take advantage of [Fabric surge protection](/fabric/enterprise/surge-protection) for background operations to avoid unnecessary scaling.|Prevents overload from too many simultaneous background jobs, reducing unnecessary capacity spikes and associated costs.|
+|Mitigate capacity spikes with [smoothing](/fabric/enterprise/throttling#smoothing) to spread usage across time windows.|Prevents sharp usage spikes in capacity metrics by averaging workload demand, leading to more predictable cost patterns and reduced peak capacity requirements.|
 
 ## Operational Excellence
 
@@ -236,9 +280,11 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 You might have to make design tradeoffs if you use the approaches in the pillar checklists.
 
-:::image type="icon" source="../_images/trade-off.svg"::: **Analyze performance and cost trade-offs**
+:::image type="icon" source="../_images/trade-off.svg"::: **Cost and Performance**
 
-Balancing performance and cost in Microsoft Fabric requires careful consideration of capacity allocation, workload distribution, and usage patterns. Over-provisioning leads to unnecessary costs, while under-provisioning can impact user experience and analytical performance.
+- In Microsoft Fabric, hosting multiple workspaces and workloads on a single capacity can improve compute utilization and reduce storage duplication through in-place data sharing. However, consolidation introduces potential resource contention ("noisy neighbor"), where heavy workloads (for example pipelines or refreshes) may affect interactive performance or reliability. 
+
+- While bursting accelerates workloads, the additional compute usage is smoothed across future timepoints, which can temporarily consume capacity later and potentially affect other workloads. In highly shared environments, this may lead to resource contention or delayed background tasks if capacity remains busy repaying smoothed usage.
 
 ## Scenario architecture
 
