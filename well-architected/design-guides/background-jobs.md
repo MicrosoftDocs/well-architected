@@ -166,7 +166,7 @@ Configure background tasks that are initiated by messages or that process messag
 
   Background tasks should be idempotent, which means that when the task processes the same message more than once, it doesn't cause an error or inconsistency in the application's data. Some operations are naturally idempotent, for example if a stored value is set to a specific new value. However, some operations cause inconsistencies, for example if a value is added to an existing stored value without verifying that the stored value is still the same as when the message was originally sent. Configure Service Bus queues to automatically remove duplicated messages. For more information, see [Idempotent message processing](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
-- Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)).
+- Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/azure/architecture/guide/technology-choices/messaging).
 
 ## Make jobs scalable
 
