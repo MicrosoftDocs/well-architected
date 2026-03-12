@@ -3,13 +3,69 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 02/06/2026
+ms.date: 03/13/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## February 2026
+
+### Updated articles
+
+- [Architecture best practices for Azure Database for MySQL](./service-guides/azure-database-for-mysql.md): We rewrote the Azure Database for MySQL service guide to make its recommendations more actionable across the Cost Optimization, Operational Excellence, and Performance Efficiency pillars. We expanded and reorganized checklists and configuration recommendations for rightsizing, reservations, policy-based governance, automation, observability, scaling, read replicas, and performance tuning. We standardized terminology, corrected links, and improved consistency.
+
+- [Networking and connectivity for mission-critical workloads on Azure](./mission-critical/mission-critical-networking-connectivity.md): We updated the networking and connectivity guidance to use consistent zone redundancy terminology throughout key design sections. We replaced *zonal redundancy* with *zone redundancy* in NAT gateway guidance, regional deployment considerations, and deployment stamp recommendations.
+
+- [Architecture strategies for formalizing development practices](./operational-excellence/formalize-development-practices.md): We updated this article to expand the AI opportunity guidance for work item quality. We recommend Copilot and grounded AI agents draft standardized work descriptions, validate compliance, and create work items from code review and root-cause analysis outputs.
+
+- [Architecture strategies for standardizing operations](./operational-excellence/formalize-operations-tasks.md): We updated this article with clearer AI guidance to support consistent operations. We added recommendations to use Office Copilot and GitHub Copilot to generate and review common artifacts. We also included advanced guidance to use grounded agents to enforce standards, detect process friction, and suggest or apply compliant updates.
+
+- [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We updated the observability guidance to improve clarity and consistency across telemetry collection and dashboard recommendations. We improved the AI opportunity guidance for key performance indicators (KPIs) and dashboard design by emphasizing assisted instrumentation, integrated analysis, and required human oversight. We also corrected terminology and wording in key sections, including pull versus push collection and autonomous storage guidance for mission-critical workloads.
+
+### AI integration in the Operational Excellence pillar
+
+These updates modernize the Operational Excellence guidance by integrating opportunities to use AI. They affect most files in the Opex pillar's core guidance. The revised content gives organizations clear direction to improve day-to-day operations, reduce manual toil, increase productivity, and make better operational decisions through AI. It also equips workload teams to evaluate AI solutions and make informed decisions by considering potential return on investment (ROI) alongside security and reliability trade-offs.
+
+- [Architecture strategies for implementing automation](./operational-excellence/automate-tasks.md): We updated the automation guidance to make the language more direct and actionable. We clarified how to use AI for low-risk production tuning, script generation, and automation portfolio analysis, including advanced large language model-based correlation of code, telemetry, and incident data to find new automation opportunities.
+
+- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We updated the Operational Excellence checklist to clarify and strengthen key recommendations for OE:01, OE:02, and OE:03, with clearer guidance on accountability, standardized operations, and end-to-end development life cycle practices. We also emphasized incident management (IcM) in OE:08 for consistency.
+
+- [Architecture strategies for fostering development operations (DevOps) culture](./operational-excellence/devops-culture.md): We updated the DevOps culture guidance to improve the AI opportunity section and clarify how teams can use Copilot and custom agents to identify bottlenecks and implement targeted automation. We also clarified that integrated AI assistants can deliver low maintenance effort and high cumulative ROI when the right data sources support them.
+
+- [Architecture strategies for enabling automation in a workload](./operational-excellence/enable-automation.md): We updated the automation-enablement guidance to improve the AI recommendations and focus on practical use cases. We emphasize using AI and grounded agents to detect bypassed automations, evaluate automation effectiveness, and improve or retire weak automations. We also clarified how Copilot or Claude Code can help generate and validate bootstrapping configuration code.
+
+- [Architecture strategies for formalizing development practices](./operational-excellence/formalize-development-practices.md): We updated this article to expand the AI opportunity guidance for work item quality. We recommend Copilot and grounded AI agents draft standardized work descriptions, validate compliance, and create work items from code review and root-cause analysis outputs.
+
+- [Architecture strategies for standardizing operations](./operational-excellence/formalize-operations-tasks.md): We updated this article with clearer AI guidance to support consistent operations. We added recommendations to use Office Copilot and GitHub Copilot to generate and review common artifacts. We also included advanced guidance to use grounded agents to enforce standards, detect process friction, and suggest or apply compliant updates.
+
+- [Architecture strategies for designing an IcM process](./operational-excellence/incident-response.md): We updated the IcM guidance to improve clarity, fix key wording problems, and strengthen consistency across the article. We revised the AI opportunity sections to focus on practical incident-analysis automation, including summarization, pattern detection, and workflow integration with IcM and software development life cycle (SDLC) tools.
+
+- [Architecture strategies for using infrastructure as code (IaC)](./operational-excellence/infrastructure-as-code-design.md): We updated the IaC guidance to make the AI recommendations clearer and more actionable across template creation, environment consistency, and security review workflows. We emphasize using AI to validate standards-based Bicep and Terraform templates, detect required IaC changes from application updates, and strengthen threat modeling and secure coding practices.
+
+- [Operational Excellence maturity model](./operational-excellence/maturity-model.md): We significantly expanded the Operational Excellence maturity model by adding a comprehensive AI opportunities framework and guidance to embed AI from early maturity stages. We introduced structured buy-versus-build guidance, defined five AI functional patterns with examples across Operational Excellence recommendations, and added explicit risk, trade-off, governance, and human-oversight guidance for agentic scenarios.
+
+- [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We updated the observability guidance to improve clarity and consistency across telemetry collection and dashboard recommendations. We improved the AI opportunity guidance for KPIs and dashboard design by emphasizing assisted instrumentation, integrated analysis, and required human oversight. We also corrected terminology and wording in key sections, including pull versus push collection and autonomous storage guidance for mission-critical workloads.
+
+- [Architecture strategies for safe deployment practices](./operational-excellence/safe-deployments.md): We updated the safe deployment guidance to strengthen the AI opportunity section for rollout tuning. We provide clearer phased guidance from low-to-medium generative AI (GenAI) approaches to advanced agentic automation that can optimize canary percentages, rollout timing, and target segments. We also clarified prerequisites and trade-offs for deeper integration, governed write access, and custom predictive models.
+
+- [Architecture strategies for standardizing tools and processes](./operational-excellence/tools-processes.md): We updated the tools and processes guidance to make the AI recommendations more practical and action-oriented across tool selection, repository strategy, dependency analysis, technical debt management, and testing. The guidance provides clearer progression from off-the-shelf tools to advanced agent-based approaches, with stronger emphasis on measurable value, lower implementation cost, and proactive risk detection.
+
+- [Architecture strategies for designing a workload development supply chain](./operational-excellence/workload-supply-chain.md): We refined the AI opportunity guidance across failure analysis, IaC, deployment timing, testing, and review gates to make recommendations clearer, more practical, and more precise. We reduced prescriptive language, consolidated overlapping points, and reinforced human oversight, least-privilege access, approval steps, and audit trails.
+
+- [How to use the Well-Architected Framework documentation](.//what-is-well-architected-framework.md): We added a new *Adopt AI in your operations* section to the framework overview that guides teams on intentionally adopting AI in operational workflows. We direct readers to the Operational Excellence maturity model as a practical entry point and highlight AI opportunities throughout recommendation guides.
+
+### Azure updates feed
+
+This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
+
+### Editorial updates
+
+- [Architecture best practices for Azure Databricks](./service-guides/azure-databricks.md): We improved clarity and consistency throughout the Azure Databricks service guide with enhanced wording in operational excellence and performance efficiency recommendations. We updated formatting in tables and checklists, corrected links, updated terminology for consistency, and improved sentence structure and flow to make guidance more actionable and easier to follow.
+
+- [Azure Virtual WAN service guide](./service-guides/azure-virtual-wan.md): We updated the Virtual WAN service guide across Cost Optimization, Operational Excellence, and Performance Efficiency to improve clarity and consistency throughout recommendations. We strengthened guidance on cost modeling, resource tagging, hub capacity planning, IaC automation, monitoring and alerting, progressive deployment practices, and performance testing while improving overall wording and alignment with Microsoft style conventions.
 
 ## January 2026
 
@@ -306,19 +362,3 @@ This month, we made significant updates to some of our service guides. Here are 
 - [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
 
 - [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellence to make the recommendations more concise, focused, and actionable.
-
-## February 2025
-
-### Updated articles
-
-- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md): We updated this guide for easier readability by streamlining several sections. We also moved the guides for [handling transient faults](./design-guides/handle-transient-faults.md) and [developing background jobs](./design-guides/background-jobs.md) into the design guide area to make the Reliability pillar easier to use.
-
-- [Design review checklist for Reliability](./reliability/checklist.md): We simplified the design review checklist for Reliability to make the recommendations more concise, focused, and actionable.
-
-#### Service guides
-
-This month, we made significant updates to some of our service guides. Here are the highlights:
-
-- [Azure Front Door](./service-guides/app-service-web-apps.md): We improved content clarity by rephrasing various sections and adding more detailed explanations. We updated links and references to other relevant Azure documentation and removed redundant or outdated information. We aligned content with the latest Azure Front Door features and best practices.
-
-- [Azure IoT Hub](./service-guides/azure-iot-hub.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on using Azure IoT Hub for secure device-to-cloud communication, managing device identities, and optimizing costs.
