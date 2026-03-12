@@ -3,7 +3,7 @@ title: Architecture strategies for safe deployment practices
 description: Learn about recommendations for safe deployment practices (SDP). Define how to safely make any change to your workload through deployments.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 
@@ -41,6 +41,14 @@ When deployment issues occur, the goal is to catch them as early as possible to 
 Another common deployment model is a blue-green approach. In this model, two identical sets, or pools, of workload infrastructure are deployed. Both pools are able to handle a full production load. The first (blue) pool runs the current version of the deployment where all users land. The second (green) pool is updated with the new feature and internally tested. After internal testing, a subset of the production traffic is routed from the blue pool to the green pool. Like canary deployments, the rollout is progressive as you shift more of the traffic over to the green pool in successively larger rollout waves. After you finish the rollout, the update pool becomes the blue pool and the green pool is ready for the next deployment. The two pools are logically separated from each other to protect from malfunctions. You can deploy a variation of the blue-green model in a workload that uses the [Deployment Stamps](/azure/architecture/patterns/deployment-stamp) design pattern by deploying on one stamp at a time.
 
 In both of these models, the time between each phase of the rollout should be long enough to enable you to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
+
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual rollout tuning creates friction and slows deployment. AI accelerates rollouts and reduces incidents by replacing subjective decision-making with data-driven recommendations.
+> 
+> Start with a low to medium GenAI approach. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
+>
+> Advanced agentic solutions can predict canary percentages, rollout timing, and target segments. When integrated with deployment tools, they automatically update rollout configurations. These solutions require deeper integration, governed write access, and platform support.
+>
+> Custom predictive models offer higher accuracy but need significant investment in training infrastructure and ML expertise. They may not be practical for most teams.
 
 ## Develop robust workload health models
 

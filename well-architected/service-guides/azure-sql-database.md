@@ -40,6 +40,7 @@ The purpose of the Reliability pillar is to provide continued functionality by *
 Start your design strategy based on the [design review checklist for Reliability](../reliability/checklist.md). Determine its relevance to your business requirements while keeping in mind the reliability of SQL Database. Extend the strategy to include more approaches as needed.
 
 > [!div class="checklist"]
+>
 > - **Familiarize yourself with SQL Database product reliability guidance:**
 >   For more information, see the following resources:
 >   - [Business continuity overview](/azure/azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview)
@@ -49,11 +50,16 @@ Start your design strategy based on the [design review checklist for Reliability
 > - **Choose appropriate SKU configurations:** Use the Business Critical tier for critical workloads because it offers the highest reliability guarantees.
 >
 >   Consider the SQL Database Hyperscale tier to meet strict recovery time objective and recovery point objective targets when the Business Critical tier isn't practical. The Hyperscale tier uses storage snapshots rather than traditional database backup mechanisms, which provide zero downtime and rapid recovery.
+>
+>   If you consistently reach database connection limits (concurrent workers, logins, and sessions) using optimized code, evaluate if migrating a different SKU would help.
 > - **Build redundancy to improve resiliency:** Enhance the availability of your databases by using active geo-replication, failover groups, and zone-redundancy.
 > - **Use native disaster recovery and backup features:** Use geo-restore to recover from a service outage. You can restore a database on any SQL Database server or a managed instance in any Azure region. Restoration uses the most recent geo-replicated backups.
 >
 >   Use point-in-time restore to recover from human error. Point-in-time restore returns your database to an earlier point in time to recover data from inadvertent changes.
-> - **Monitor reliability and overall health indicators of SQL Database:** Monitor SQL Database in near real-time to detect reliability incidents.
+> - **Monitor reliability and overall health indicators of SQL Database:** Monitor SQL Database in near real-time to detect reliability incidents. Use [`sys.event_log`](/sql/relational-databases/system-catalog-views/sys-event-log-azure-sql-database) to troubleshoot connection failures or deadlocks. Configure alerts for failed connections.
+> - **Isolate connection pools in your client code:** Ensure that [connection pools](/azure/azure-sql/database/performance-guidance#optimize-connectivity-and-connection-pooling) are isolated for distinct functional areas within your application. To isolate a pool, modify the connection string for a specific module, such as by adding a unique `Application Name` (for example, `Application Name=BackgroundReporting` versus `Application Name=UserTraffic`).
+>
+>   This isolation ensures that a resource-intensive task, like a background job, doesn't consume all available connections and block critical user-facing operations, which mitigates cascading failures within that client instance.
 > - **Implement retry logic and backoff logic:** Use these features to handle transient faults in your application.
 > - **Shard data:** Replicate your schema across multiple databases, storing a subset of your data in each instance. [Sharding](/azure/azure-sql/database/elastic-scale-introduction#sharding) can provide fault isolation, where the failure of one database instance does not impact the availability of other instances in the pool.
 > - **Back up your TDE encryption keys:** When you use customer-managed keys for Transparent Data Encryption (TDE), back up the keys to Azure Key Vault.
@@ -109,7 +115,7 @@ Start your design strategy based on the [design review checklist for Security](.
 | Use [Azure Private Link for SQL Database](/azure/azure-sql/database/private-endpoint-overview) to enforce secure communication over [private endpoints](/azure/private-link/private-endpoint-overview). | Private Link provides private connectivity between your database and virtual network so that you can disable public access.  |
 | Scan for vulnerabilities with the Microsoft Defender for SQL Database [vulnerability assessment](/azure/azure-sql/database/sql-vulnerability-assessment). | The SQL vulnerability assessment is a built-in service for SQL Database that identifies and helps remediate potential security vulnerabilities. It provides actionable steps and customized remediation scripts based on Microsoft best practices. |
 | Detect anomalous activities by using [advanced threat protection for SQL Database](/azure/azure-sql/database/threat-detection-configure). These activities can indicate unusual and potentially harmful attempts to access or exploit databases. | Advanced threat protection provides security alerts for anomalous activities, which helps you detect and respond to potential threats when they occur. Alerts are integrated into Microsoft Defender for Cloud. |
-| Track database events by using [SQL Database auditing](/azure/azure-sql/database/auditing-overview).| Auditing helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations. |
+| Track database events by using [SQL Database auditing](/azure/azure-sql/database/auditing-overview).<br><br>Enable [immutable storage](/azure/azure-sql/database/auditing-overview#remarks) policies for these audit logs.| Auditing helps you maintain regulatory compliance, understand database activity, and gain insight into discrepancies and anomalies that could indicate business concerns or suspected security violations.<br><br>Immutable blob storage ensures Write-Once-Read-Many (WORM) compliance, preventing tampering with audit trails. |
 | Configure a [user-assigned managed identity](/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity) as the server identity. | Managed identities for Azure resources eliminate the need to manage credentials in code. |
 | Disable SQL-based authentication and [allow Microsoft Entra authentication only](/azure/azure-sql/database/authentication-aad-configure). | Microsoft Entra for authentication centralizes your identity, access, and authorization management and provides granular permissions to SQL Database resources. |
 
@@ -204,7 +210,11 @@ Start your design strategy based on the [design review checklist for Performance
 >
 >   Applications that connect to SQL Database should use the latest connection providers, for example the latest [OLE DB driver](/sql/connect/oledb/oledb-driver-for-sql-server) or [ODBC driver](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
 >
+>   Use connection pooling within your application code. Connection pooling significantly reduces the overhead of establishing new connections. Most drivers, like ADO.NET, enable it by default. [Monitor Azure SQL Database](/azure/azure-sql/database/monitoring-sql-database-azure-monitor) connection performance and resource usage to identify bottlenecks, such as excessive idle connections or insufficient pool limits.
+>
 >   When you use elastic pools, familiarize yourself with [resource governance](/azure/azure-sql/database/elastic-pool-resource-management).
+>
+> - **Evaluate auditing scope:** For large OLTP workloads or environments with many databases, consider using database-level auditing instead of server-level auditing. Server-level auditing consolidates logs into a single folder, which can degrade performance.
 >
 > - **Prefer native SQL functions:** You can improve query performance by reducing application processing overhead while providing SQL standard compliance. This is a concern for international applications that require Unicode support.
 

@@ -275,7 +275,7 @@
         - name: Azure Databricks
           href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
-          href: service-guides/azure-db-mysql-cost-optimization.md
+          href: service-guides/azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
         - name: Azure Disk Storage
@@ -294,8 +294,6 @@
           href: service-guides/azure-front-door.md
         - name: Azure Functions
           href: service-guides/azure-functions.md
-        - name: Azure IoT Hub
-          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
@@ -327,9 +325,11 @@
         - name: Azure Virtual Network
           href: service-guides/virtual-network.md
         - name: Azure Virtual WAN
-          href: service-guides/virtual-wan-service-guide.md
+          href: service-guides/azure-virtual-wan.md
     - name: Design guides
       items:
+      - name: Overview
+        href: ./design.md
       - name: Health modeling
         href: ./design-guides/health-modeling.md      
       - name: Incident management plan

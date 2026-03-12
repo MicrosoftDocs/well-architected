@@ -141,7 +141,7 @@ For IaaS (infrastructure as a service) systems, use [Azure Site Recovery](/azure
 - [Azure Kubernetes Service](/azure/aks/operator-best-practices-multi-region)
 - [Azure SQL Database](/azure/azure-sql/database/disaster-recovery-guidance)
 - [Azure Event Hubs](/azure/event-hubs/event-hubs-geo-dr?tabs=portal)
-- [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-how-to-geo-replication)
+- [Azure Managed Redis](/azure/reliability/reliability-managed-redis)
 
 Many Azure products have built-in backup capabilities. Familiarize yourself with these capabilities and include them in recovery procedures.
 

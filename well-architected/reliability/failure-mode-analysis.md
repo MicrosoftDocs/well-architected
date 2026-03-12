@@ -27,6 +27,9 @@ If you skip FMA altogether or perform an incomplete analysis, your workload is a
 | Mitigation | The activities that you have identified to address problems either proactively or reactively. |
 | Detection | Your infrastructure, data, and app monitoring and alerting processes and procedures. |
 
+> [!NOTE]
+> Distinguish failures from errors. A failure is an unexpected event within a system that prevents it from continuing to function normally. For example, a hardware malfunction that causes a network partition is a failure. Usually, failures require intervention or specific design for that class of failures. In contrast, errors are an expected part of normal operations, are dealt with immediately and the system will continue to operate at the same capacity following an error. For example, errors discovered during input validation can be handled through business logic.
+
 Review and implement the [recommendations for identifying flows](identify-flows.md). It’s assumed that you have identified and prioritized user and system flows based on criticality.
 
 The data that you have gathered and the artifacts that you have created in your work provide you with a concrete description of your data paths involved throughout the flows. To be successful in your FMA work, accuracy and thoroughness in your artifacts is critical.
@@ -51,7 +54,7 @@ Identify and document the dependencies in your workload, and include them in you
 
 ## Evaluate failure points
 
-In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. These failure modes include:
+In your workload's critical flows, consider each component and determine how that component, and its dependencies, might be affected by a failure mode. Remember that there are many failure modes to consider when planning for resiliency and recovery. Any one component can be affected by more than one failure mode at any given time. Consider read failures and write failures separately because the impact and possible mitigation steps vary. Failure modes include:
 
 - Regional outage. An entire Azure region is unavailable.
 
@@ -109,8 +112,6 @@ Use [Azure Monitor](/azure/azure-monitor/overview) and [Log Analytics](/azure/az
 
 Use [connection monitor](/azure/network-watcher/connection-monitor-overview) and [connection troubleshoot](/azure/network-watcher/connection-troubleshoot-overview) in Azure Network Watcher to model and validate network connectivity scenarios before deployment. By simulating synthetic tests and troubleshooting potential routing paths, these tools help you anticipate and document possible failure modes in your network architecture. Also, by analyzing historical virtual network flow logs with [traffic analytics](/azure/network-watcher/traffic-analytics), you can identify patterns of blocked or anomalous traffic that might inform your FMA documentation across the Azure infrastructure.
 
-For information about applying FMA principles to common Azure services, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
-
 ## Example
 
 The following table shows an FMA example for an e-commerce website that's hosted on Azure App Service instances with Azure SQL databases and is fronted by Azure Front Door.
@@ -120,7 +121,7 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | Component | Risk | Likelihood | Effect/Mitigation/Note | Outage |
 |-----------|------|------------|------------------------|--------|
 | Microsoft Entra ID | Service outage | Low | Full workload outage. Dependent on Microsoft to remediate. | Full |
-| Microsoft Entra ID | Misconfiguration | Medium | Users unable to sign in. No downstream effect. Help desk reports configuration issue to identity team. | None |
+| Microsoft Entra ID | Misconfiguration | Medium | Users unable to sign in. No downstream effect. Code catches authentication exceptions. Help desk reports configuration issue to development team. | External only |
 | Azure Front Door | Service outage | Low | Full outage for external users. Dependent on Microsoft to remediate. | External only |
 | Azure Front Door | Regional outage | Very low | Minimal effect. Azure Front Door is a global service, so global traffic routing directs traffic through non-effected Azure regions. | None |
 | Azure Front Door | Misconfiguration | Medium | Misconfigurations should be caught during deployment. If these happen during a configuration update, administrators must roll back changes. Configuration update causes a brief external outage. | External only |
@@ -134,9 +135,8 @@ The following table shows an FMA example for an e-commerce website that's hosted
 | App Service | Availability zone outage | Low | No effect. App services have been deployed as zone redundant. Without zone redundancy, there's a potential for effect. | None |
 | App Service | DDoS attack | Medium | Minimal effect. Ingress traffic is protected by Azure Front Door and Azure Web Application Firewall. | None |
 
-## Related links
+## Related link
 
-- [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis)
 - [Resiliency and dependencies](../resiliency/design-resiliency.md)
 
 ## Reliability checklist  

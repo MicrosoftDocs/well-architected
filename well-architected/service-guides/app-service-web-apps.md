@@ -53,8 +53,6 @@ Start your design strategy based on the [design review checklist for Reliability
 >   |Failure of external dependencies | Use design patterns such as the [Retry pattern](/azure/architecture/patterns/retry) and the [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker). Monitor the external dependencies and set appropriate time-outs. |
 >   |Failure because of traffic getting routed to unhealthy instances| Monitor instance health. Consider responsiveness, and avoid sending requests to unhealthy instances. |
 >
->   For more information, see [Failure mode analysis for Azure applications](/azure/architecture/resiliency/failure-mode-analysis).
->
 > - **Build redundancy:** Build redundancy in the application and supporting infrastructure. Spread instances across availability zones to improve fault tolerance. Traffic is routed to other zones if one zone fails. Deploy your application across multiple regions to help ensure that your app remains available, even if an entire region experiences an outage.
 >
 >   Build similar levels of redundancy in dependent services. For instance, application instances bind to blob storage. Consider configuring the associated storage account with zone-redundant storage if an application uses a zone-redundant deployment.
