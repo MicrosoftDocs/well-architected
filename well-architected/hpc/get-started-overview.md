@@ -50,7 +50,7 @@ While HPC offers greater computing capability, adopting or scaling HPC workloads
 
 - **Steep learning curve**: Teams need specialized skills in parallel programming (MPI, multi-threading), performance tuning, and HPC-specific technologies that are scarce and expensive to acquire.
 
-When you design a HPC workload your design methodology should always solve for the preceding challenges, for more information see [Design methodology for HPC workloads](hpc-design-methodology.md).
+When you design an HPC workload your design methodology should always solve for the preceding challenges, for more information see [Design methodology for HPC workloads](hpc-design-methodology.md).
 
 
 ## Broad HPC workload categories
