@@ -146,6 +146,10 @@ sections:
         summary: Design and operationalize workloads that are expected to be always available and resilient to failures.
         url: ./mission-critical/index.yml
       - componentType: summary-card
+        title: HPC
+        summary: Design strategies for all the characteristics of HPC workloads.
+        url: ./hpc/index.yml        
+      - componentType: summary-card
         title: Sustainability
         summary: Plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
         url: ./sustainability/index.yml
