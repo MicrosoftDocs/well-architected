@@ -243,7 +243,9 @@
       - name: Azure VMware Solution
         href: azure-vmware/index.yml                             
       - name: Mission-critical
-        href: mission-critical/index.yml                     
+        href: mission-critical/index.yml
+      - name: HPC
+        href: hpc/index.yml        
       - name: Oracle on IaaS
         href: oracle-iaas/index.yml       
       - name: Software as a service (SaaS)
