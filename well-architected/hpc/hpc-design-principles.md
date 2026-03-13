@@ -3,7 +3,7 @@ title: Design Principles for HPC Workloads on Azure
 description: Review the design principles of the Azure Well-Architected Framework. Learn how to apply these principles to an HPC workload.
 author: padmalathas
 ms.author: padmalathas
-ms.date: 03/10/2026
+ms.date: 03/06/2026
 ms.topic: concept-article
 ms.update-cycle: 180-days  
 ---
@@ -35,7 +35,7 @@ Building reliable HPC environments on Azure requires planning for failures at mu
 | Recommendation | Benefit |
 |----------------|---------|
 | Implement application-level checkpointing to [Azure Blob Storage](/azure/storage/blobs/) or [Azure Managed Lustre](/azure/azure-managed-lustre/). <br> Align checkpoint frequency with RPO targets and job criticality. | Protects long-running jobs from complete restart after failures. Jobs resume from last checkpoint rather than beginning, saving compute time and cost. |
-| Use Azure CycleCloud (AI to link appropriatetopic) or Azure Batch automatic retry policies to handle transient node failures and reschedule failed tasks without manual intervention. | Maintains job progress during temporary infrastructure issues. Automatic rescheduling eliminates manual monitoring and reduces time to completion. |
+| Use [Azure CycleCloud](/azure/cyclecloud/common-issues/node-cyclecloud-connectivity)  or [Azure Batch automatic retry policies](/azure/batch/error-handling) to handle transient node failures and reschedule failed tasks without manual intervention. | Maintains job progress during temporary infrastructure issues. Automatic rescheduling eliminates manual monitoring and reduces time to completion. |
 | Replicate critical datasets and final results to [geo-redundant storage (GRS)](/azure/storage/common/storage-redundancy#geo-redundant-storage) or a paired Azure region. Use locally redundant storage for high-performance scratch data. | Balances data protection with performance needs. Critical data survives regional failures while temporary scratch data maintains high throughput during computation. |
 
 
@@ -45,13 +45,13 @@ HPC environments often process sensitive data, including proprietary research, r
 
 ### Considerations
 
-- **Network boundary enforcement:** HPC environments often process sensitive or high‑value data while supporting large numbers of users running custom, performance‑critical workloads. Security design must protect these assets without introducing controls that degrade throughput, latency, or job scalability. As a result, HPC security is most effective when addressed at the architectural level rather than through inline or host‑based tooling.
+- **Network boundary enforcement:** Operate HPC clusters within defined network perimeters that restrict unauthorized access while permitting required communication between compute nodes, storage systems, and job submission endpoints.
 
-- **Identity, access governance and data protection controls:** Identity‑centric access and accountability are critical in shared HPC systems. Access to login, job submission, and data services should be strongly authenticated and attributable to a specific user, project, or service identity, enabling effective auditing, incident investigation, and governance without disrupting established HPC workflows.
+- **Identity, access governance and data protection controls:** Access to HPC resources should be governed by least‑privilege principles, providing users only the permissions required for roles ranging from job submission to cluster administration, and integrated with organizational identity systems. Sensitive data must be protected through encryption at rest and in transit, with enforced policies ensuring that only authorized users and jobs can access protected datasets.
 
-- **Regulatory compliance:** HPC security controls should be risk‑based and mission‑aware. Different workloads running on the same infrastructure might have varying data sensitivity, regulatory requirements, and collaboration needs. Security posture should align with data classification and workload criticality, rather than applying uniform controls that either constrain productivity or fall short of compliance requirements.
+- **Regulatory compliance:** Organizations processing data subject to regulatory requirements such as HIPAA, ITAR, or FedRAMP must implement specific controls and maintain audit evidence to demonstrate compliance.
 
-- **Workload isolation:** Multi‑tenant HPC systems require strong isolation between users, jobs, and data. User‑submitted code should be treated as untrusted by default, with separation enforced across access, management, compute, and storage components to reduce the risk of accidental or malicious data exposure and limit lateral movement within the environment.
+- **Workload isolation:** Multitenant HPC environments or clusters processing sensitive data require mechanisms to prevent unauthorized access between users or jobs, both at the compute layer and within shared storage systems.
 
 
 ### Recommendations
@@ -124,7 +124,7 @@ HPC workloads require maximum computational throughput, making hardware selectio
 
 ### Considerations
 
-- **Workload-hardware alignment:** HPC applications vary widely in resource demands, including CPU-bound simulations, memory-intensive analytics, GPU-accelerated computations, and I/O-heavy workflows. Unsuitable VM sizes limits achievable performance.
+- **Workload-hardware alignment:** HPC applications vary widely in resource demands, including CPU-bound simulations, memory-intensive analytics, GPU-accelerated computations, and I/O-heavy workflows. Unsuitable VM sizes limit achievable performance.
 
 - **Interconnect performance:** Tightly coupled parallel workloads are highly sensitive to network latency and bandwidth. Standard Ethernet networking can introduce bottlenecks that offset the benefits of horizontal scaling.
 
@@ -144,7 +144,28 @@ HPC workloads require maximum computational throughput, making hardware selectio
 | Configure [Proximity Placement Groups](/azure/virtual-machines/co-location) to place compute nodes within the same datacenter network segment. | Reduces inter‑node latency and improves message‑passing performance for communication‑intensive workloads. |
 
 ## Azure facilitation
-Use the concluding sentence for the above mentioned azure services with respective WAF links.
+
+Azure provides a comprehensive set of services that support HPC workloads across all Well-Architected Framework pillars. The following services enable organizations to build resilient, secure, cost-effective, operationally excellent, and high-performance HPC environments.
+
+**Reliability**: Azure Blob Storage, Managed Lustre, Batch, and CycleCloud use GRS, IaC, checkpointing, retries, and fast recovery to protect long‑running jobs. These services ensure HPC workloads can recover quickly from failures and maintain progress toward completion.
+
+For more information, see [Reliability design principles](/azure/well-architected/reliability/principles).
+
+**Security**: Azure networking, identity, access control, and secrets management provide defense‑in‑depth security for HPC environments. These services enable network isolation, identity-based access control, private connectivity, and comprehensive encryption to protect sensitive computational workloads and research data from unauthorized access.
+
+For more information, see [Security design principles](/azure/well-architected/security/principles).
+
+**Cost Optimization**: Azure Blob Storage lifecycle management, Azure Batch analytics, CycleCloud autoscaling, Spot VMs, and Azure Cost Management help reduce HPC costs through automation, scaling, and discounted compute. These capabilities ensure HPC resources deliver maximum value without unnecessary expenditure.
+
+For more information, see [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles).
+
+**Operational Excellence**: Azure Resource Manager, Bicep, Terraform, Azure CycleCloud, Azure Batch, and Azure Monitor automate HPC deployments, scheduling, and monitoring, reducing operational overhead and improving cluster reliability.
+
+For more information, see [Operational Excellence design principles](/azure/well-architected/operational-excellence/principles).
+
+**Performance Efficiency**: HBv4, HBv5, and NDv5 VMs with InfiniBand, Azure Managed Lustre, Azure NetApp Files, and Proximity Placement Groups provide the specialized compute, storage, and low‑latency networking needed for high‑performance HPC workloads.
+
+For more information, see [Performance Efficiency design principles](/azure/well-architected/performance-efficiency/principles).
 
 ## Next Steps
 

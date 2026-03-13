@@ -102,7 +102,7 @@ productDirectory:
     - title: Azure Database for MySQL
       summary: Use a managed MySQL database service for app developers.
       imageSrc: https://static.docs.com/ui/media/product/azure/database-mysql-server.svg
-      url: azure-db-mysql-cost-optimization.md
+      url: azure-database-for-mysql.md
       azureCategories:
         - databases
     # Card
@@ -276,13 +276,6 @@ productDirectory:
       azureCategories:
         - analytics
         - management-and-governance
-    # Card
-    - title: Azure IoT Hub
-      summary: Connect, monitor, and manage IoT assets at scale.
-      imageSrc: https://static.docs.com/ui/media/product/azure/iot-hub.svg
-      url: azure-iot-hub.md
-      azureCategories:
-        - iot
 additionalContent:
   sections:
     - title: Other resources
