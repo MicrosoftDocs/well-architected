@@ -25,6 +25,8 @@ landingContent:
             url: overview.md
           - text: Common architectural challenges
             url: overview.md#common-architectural-challenges
+          - text: Architecture patterns
+            url: overview.md#architecture-pattern
       - linkListType: concept
         links:
           - text: Design methodology for Fabric workloads
@@ -35,7 +37,7 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Know your constraints
+          - text: Know your constraints and boundaries
             url: reliability.md#start-with-constraints-know-your-boundaries
           - text: Understand where failures happen
             url: reliability.md#understand-where-failures-happen
@@ -51,10 +53,10 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Establish a security baseline
-            url: security.md#establish-a-security-baseline
-          - text: Create isolation boundaries
-            url: security.md#create-isolation-boundaries
+          - text: Start with a security baseline
+            url: security.md#start-with-a-baseline
+          - text: Design isolation boundaries
+            url: security.md#design-isolation-boundaries
           - text: Use identity as the primary security perimeter
             url: security.md#use-identity-as-the-primary-security-perimeter
           - text: Secure network communications
@@ -83,27 +85,30 @@ landingContent:
     linkLists:
       - linkListType: concept
         links:
-          - text: Prepare your team readiness
-            url: operational-excellence.md#prepare-your-team-readiness
-          - text: Automate operations
-            url: operational-excellence.md#automate-operations
+          - text: Prepare your team
+            url: operational-excellence.md#prepare-your-team
           - text: Deploy changes safely
             url: operational-excellence.md#deploy-changes-safely
+          - text: Automate operations
+            url: operational-excellence.md#automate-operations
           - text: Monitor your environment
             url: operational-excellence.md#monitor-your-environment
-          - text: Test and validate solutions
-            url: operational-excellence.md#test-and-validate-solutions
+          - text: Have an incident response plan
+            url: operational-excellence.md#have-an-incident-response-plan
 
  # Card
   - title: Improve performance efficiency
     linkLists:
       - linkListType: concept
         links:
-          - text: Plan capacity effectively
-            url: performance-efficiency.md#capacity-planning
+          - text: Plan capacity deliberately
+            url: performance-efficiency.md#plan-capacity-deliberately
+          - text: Design scaling strategies
+            url: performance-efficiency.md#design-scaling-strategies
           - text: Monitor performance issues
             url: performance-efficiency.md#monitor-performance-issues
           - text: Do performance testing
             url: performance-efficiency.md#do-performance-testing
           - text: Optimize performance
             url: performance-efficiency.md#optimize-performance
+

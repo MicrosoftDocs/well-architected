@@ -2,7 +2,7 @@
 title: Security considerations for Microsoft Fabric workloads
 description: Overview of security considerations for workloads running on Microsoft Fabric.
 author: prwilk
-ms.author: PageWriter[MSFT]
+author: PageWriter-MSFT
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
