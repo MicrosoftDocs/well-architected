@@ -1,7 +1,7 @@
 ---
 title: Reliability considerations for Microsoft Fabric workloads
 description: Overview of reliability considerations for workloads running on Microsoft Fabric.
-author: prwilk
+ms.author: prwilk
 author: PageWriter-MSFT
 ms.date: 03/14/2026
 ms.topic: concept-article
