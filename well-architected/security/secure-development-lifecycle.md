@@ -3,7 +3,7 @@ title: Architecture strategies for securing a development lifecycle
 description: Learn about Well-Architected Framework Security recommendations for securing a development lifecycle. 
 author: PageWriter-MSFT
 ms.author: prwilk 
-ms.date: 02/24/2026
+ms.date: 03/16/2026
 ms.topic: concept-article
 ---
 
