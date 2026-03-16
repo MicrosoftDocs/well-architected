@@ -1,0 +1,109 @@
+### YamlMime:Landing
+
+title: Microsoft Fabric Well-Architected documentation
+summary: Learn about designing and implementing well-architected workloads on Microsoft Fabric. The articles provide architectural guidance and prescriptive approaches across the five pillars of the Well-Architected Framework. Design your Fabric solutions with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
+metadata: 
+  title: Microsoft Fabric Well-Architected documentation
+  description: Apply the five pillars of the Well-Architected Framework to design and operate reliable, secure, cost-effective, and high-performing workloads on Microsoft Fabric.
+  services: fabric
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 03/15/2026
+  ms.topic: landing-page
+  ms.collection: na
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+
+ # Card
+  - title: Get started
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is a Well-Architected Microsoft Fabric workload?
+            url: overview.md
+          - text: Common architectural challenges
+            url: overview.md#common-architectural-challenges
+      - linkListType: concept
+        links:
+          - text: Design methodology for Fabric workloads
+            url: overview.md#design-methodology
+
+ # Card
+  - title: Optimize reliability
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Know your constraints
+            url: reliability.md#start-with-constraints-know-your-boundaries
+          - text: Understand where failures happen
+            url: reliability.md#understand-where-failures-happen
+          - text: Define reliability goals for your workloads
+            url: reliability.md#define-reliability-goals-for-your-workloads
+          - text: Build self-healing through redundancy
+            url: reliability.md#build-self-healing-through-redundancy
+          - text: Plan for disaster recovery
+            url: reliability.md#plan-for-disaster-recovery
+
+ # Card
+  - title: Secure your workloads
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Establish a security baseline
+            url: security.md#establish-a-security-baseline
+          - text: Create isolation boundaries
+            url: security.md#create-isolation-boundaries
+          - text: Use identity as the primary security perimeter
+            url: security.md#use-identity-as-the-primary-security-perimeter
+          - text: Secure network communications
+            url: security.md#secure-network-communications
+          - text: Harden workload assets
+            url: security.md#harden-workload-assets
+
+ # Card
+  - title: Optimize costs
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Identify key cost drivers
+            url: cost-optimization.md#identify-key-cost-drivers
+          - text: Model costs effectively
+            url: cost-optimization.md#model-costs-effectively
+          - text: Monitor costs and implement governance
+            url: cost-optimization.md#monitor-costs-and-implement-governance
+          - text: Optimize environment costs
+            url: cost-optimization.md#optimize-environment-costs
+          - text: Reduce costs through automation
+            url: cost-optimization.md#reduce-costs-through-automation
+
+ # Card
+  - title: Achieve operational excellence
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Prepare your team readiness
+            url: operational-excellence.md#prepare-your-team-readiness
+          - text: Automate operations
+            url: operational-excellence.md#automate-operations
+          - text: Deploy changes safely
+            url: operational-excellence.md#deploy-changes-safely
+          - text: Monitor your environment
+            url: operational-excellence.md#monitor-your-environment
+          - text: Test and validate solutions
+            url: operational-excellence.md#test-and-validate-solutions
+
+ # Card
+  - title: Improve performance efficiency
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Plan capacity effectively
+            url: performance-efficiency.md#capacity-planning
+          - text: Monitor performance issues
+            url: performance-efficiency.md#monitor-performance-issues
+          - text: Do performance testing
+            url: performance-efficiency.md#do-performance-testing
+          - text: Optimize performance
+            url: performance-efficiency.md#optimize-performance
