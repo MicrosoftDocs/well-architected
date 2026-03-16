@@ -95,15 +95,23 @@ When you do write code, **default to deny**. Design authorization logic so that 
 
 Your development environment is part of your attack surface. **Protect developer workstations with the same rigor as production systems**. This means enforce strong identity controls, apply network protections, and maintain disciplined patching. A compromised workstation can become a direct path into your codebase and build systems.
 
-Treat build agents as high-value assets. They have privileged access to source code and build pipelines, which makes them attractive targets. **Authenticate and authorize access strictly, segment them at the network level, and subject them to continuous security monitoring.** Prefer Microsoft-hosted build agents over self-hosted ones to reduce operational risk and limit persistence, since they provide clean environments for each pipeline run. Custom agents increase management overhead and expand the attack surface.
-
-Secure build credentials and remove temporary artifacts to prevent leakage. Where possible, isolate build agents by restricting inbound access and allowing only controlled outbound communication.
-
 Your **source code repository is a critical asset**. Grant access on a least-privilege, need-to-know basis. Establish structured, security-focused code review processes with clear approval workflows tied to business justification. Strong governance over repositories and pipelines reduces the likelihood of tampering and limits the impact of a breach.
+
+Also, network access should be segmented so developers don't have direct access to production systems. 
+
+Development tools can also help improve security by using IDE extensions that monitor code as it is written and scan local builds for vulnerabilities. Credentials must be protected by ensuring secrets are not stored in configuration files and by using credential managers when access to secrets is required. 
+
+Develoeprs should follow approved developer tools and use installations that are managed centrally. Development environments, such as GitHub Codespaces and Microsoft Dev Box, can enforce security by providing isolated, centrally managed workspaces. 
+
+Even tests should be run in a controlled environment with only the minimum permissions necessary.
 
 ## Secure build and deployment pipelines
 
-Build and deployment pipelines are high-value targets and must be treated as part of your security boundary. Attackers  can tamper with your pipeline, inject malicious code, access secrets, or compromise downstream environments. 
+Build and deployment pipelines are prime targets. Attackers  can tamper with your pipeline, inject malicious code, access secrets, or compromise downstream environments. 
+
+Treat build agents as high-value assets. They have privileged access to source code and build pipelines, which makes them attractive targets. **Authenticate and authorize access strictly, segment them at the network level, and subject them to continuous security monitoring.** Prefer Microsoft-hosted build agents over self-hosted ones to reduce operational risk and limit persistence, since they provide clean environments for each pipeline run. Custom agents increase management overhead and expand the attack surface.
+
+Secure build credentials and remove temporary artifacts to prevent leakage. Where possible, isolate build agents by restricting inbound access and allowing only controlled outbound communication.
 
 Start by maintaining clear visibility and control. **Keep an up-to-date inventory of all integrated components and dependencies**, and regularly verify that what runs in the pipeline matches what is approved. **Only use pipeline tasks and extensions from trusted, validated sources**, recognizing that they execute with privileged access. 
 
