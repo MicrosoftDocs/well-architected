@@ -24,9 +24,9 @@ This guidance applies the Azure Well-Architected Framework to Microsoft Fabric w
 |---|---|
 | [**Reliability**](./reliability.md) | Design workloads in Fabric that recover gracefully from platform or workload failures, leverage capacities, multi-region replication, and failover strategies, and maintain predictable availability for users. |
 | [**Security**](./security.md) | Protect data, identities, and workloads in Fabric through workspace isolation, role-based access, managed identities, encryption, secure networking, and continuous monitoring. |
+| [**Cost Optimization**](./cost-optimization.md) | Control Fabric spending by aligning capacity sizing to workloads, sharing resources strategically, automating scaling and pauses, monitoring utilization, and governing retention and workloads across environments. |
 | [**Operational Excellence**](./operational-excellence.md) | Deploy and operate Fabric workloads with confidence by combining Deployment Pipelines, version control, automated testing, progressive rollouts, logging, and proactive monitoring. |
 | [**Performance Efficiency**](./performance-efficiency.md) | Ensure Fabric workloads scale and respond efficiently by right-sizing capacities, isolating heavy workloads, optimizing queries and pipelines, and leveraging caching, incremental refresh, and bursting. |
-| [**Cost Optimization**](./cost-optimization.md) | Control Fabric spending by aligning capacity sizing to workloads, sharing resources strategically, automating scaling and pauses, monitoring utilization, and governing retention and workloads across environments. |
 
 ## Common architectural challenges
 

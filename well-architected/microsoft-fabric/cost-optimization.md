@@ -1,8 +1,8 @@
 ---
 title: Cost considerations for Microsoft Fabric workloads
 description: Overview of cost considerations for workloads running on Microsoft Fabric.
-author: prwilk
-ms.author: Page-Writer[MSFT]
+author: Page-Writer[MSFT] 
+ms.author: prwilk
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
