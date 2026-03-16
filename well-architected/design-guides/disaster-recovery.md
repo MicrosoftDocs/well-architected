@@ -18,10 +18,9 @@ This article focuses on how to achieve business continuity through technical mit
 
 A DR plan should be built on the core principles of incident management, which serves as a prerequisite for effective DR planning. For guidance on developing an incident management plan, see [Develop an incident management practice to recover from disruptions](./incident-management.md).
 
-
 ## Terminology
 
-Before you start developing your plan, we recommend that you familiarize yourself with a common vocabulary. Establish these terms as shared language to enable clear communication and coordinated decision-making when activating the DR plan. 
+Before you start developing your plan, familiarize yourself with these key terms.
 
 | Term | Definition |
 |------|------------|
