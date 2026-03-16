@@ -265,9 +265,9 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/dedicated-gateway#connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
   - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
 
-- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
+- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zone failures within a region.
 
-- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zonal failures.
+- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zone failures.
   - The Paxos consensus protocol is applied to achieve quorum across replicas within a region.
 
 - An Azure Cosmos DB account can easily be configured to replicate data across multiple regions to mitigate the risk of a single region becoming unavailable.
@@ -453,7 +453,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Select an optimal 'hub' deployment region where conflict resolution will occur in a multi-region-write configuration, and all writes will be performed in a single-region-write configuration.
   - Consider distance relative to other deployment regions and associated latency in selecting a primary region, and requisite capabilities such as Availability Zones support.
 
-- Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zonal failures within a region.
+- Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zone failures within a region.
 
 - Use Azure Cosmos DB for NoSQL since it offers the most comprehensive feature set, particularly where performance tuning is concerned.
   - Alternative APIs should primarily be considered for migration or compatibility scenarios.
