@@ -2,7 +2,7 @@
 title: Performance Efficiency for Microsoft Fabric workloads
 description: Overview of workload performance running on Microsoft Fabric.
 author: prwilk
-ms.author: Page-Writer[MSFT]
+ms.author: PageWriter[MSFT]
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
@@ -28,7 +28,7 @@ During this baseline phase, focus on metrics such as:
 - Concurrency levels
 - Response times for critical operations
 
-Tools like the [Fabric Capacity Metrics App](https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app) help reveal usage patterns over time, including daily peaks and background processing activity. These patterns help you determine whether the capacity can handle sustained load or whether scaling or workload isolation is required.
+Tools like the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app) help reveal usage patterns over time, including daily peaks and background processing activity. These patterns help you determine whether the capacity can handle sustained load or whether scaling or workload isolation is required.
 
 Capacity planning must also account for service limits and quotas. Each Fabric SKU has defined constraints including total CUs, Spark vCore limits, memory availability, and throughput ceilings. If too many workloads run simultaneously, these limits can create contention.
 
@@ -46,17 +46,17 @@ These dependencies should be evaluated early in the design process because they 
 
 For larger solutions, isolating architectural layers across workspaces or capacities can reduce contention. For example, you might separate data preparation workloads, orchestration pipelines, and presentation workloads so one layer cannot starve another of compute resources.
 
-Load testing and validation are critical. Simulate realistic workloads, gradually increasing concurrency to identify performance breakpoints. Test across all workload types: Spark jobs, Power BI refreshes, and data integration pipelines. Monitor CU usage, throttling, and response times using the [Fabric Capacity Metrics App](https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app). Keep in mind that Fabric smooths background operations over 24 hours, so short stress tests may not reflect sustained usage.
+Load testing and validation are critical. Simulate realistic workloads, gradually increasing concurrency to identify performance breakpoints. Test across all workload types: Spark jobs, Power BI refreshes, and data integration pipelines. Monitor CU usage, throttling, and response times using the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app). Keep in mind that Fabric smooths background operations over 24 hours, so short stress tests may not reflect sustained usage.
 
 Validate your capacity assumptions through load testing. Simulate realistic workloads with increasing concurrency levels to identify performance breakpoints. Monitor CU usage, throttling events, and response times while running Spark jobs, Power BI refreshes, and pipeline executions together. Because Fabric smooths background operations over a 24-hour period, short stress tests may not accurately represent sustained demand. Longer test windows often reveal issues that quick tests miss.
 
-Ongoing capacity management relies on continuous monitoring. Use the [Fabric Capacity Metrics App](https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app), [Workspace Monitoring](https://learn.microsoft.com/en-us/fabric/data-factory/workspace-monitoring), and workload-specific tools to track utilization trends, detect spikes, and identify bottlenecks. Incorporate real-time alerts or automated responses for proactive capacity management and regularly review telemetry from dependent components like pipelines or Spark jobs to refine scaling strategies.
+Ongoing capacity management relies on continuous monitoring. Use the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app), [Workspace Monitoring](/fabric/data-factory/workspace-monitoring), and workload-specific tools to track utilization trends, detect spikes, and identify bottlenecks. Incorporate real-time alerts or automated responses for proactive capacity management and regularly review telemetry from dependent components like pipelines or Spark jobs to refine scaling strategies.
 
 
 ### Choosing SKU and Tiers Based on Performance Requirements
 
 
-Selecting the right [Microsoft Fabric SKU](https://learn.microsoft.com/en-us/fabric/enterprise/licenses#capacity) determines how much compute and memory your workloads can use. Each capacity tier provides a fixed number of CUs, which affects concurrency limits, query throughput, and the responsiveness of interactive workloads.
+Selecting the right [Microsoft Fabric SKU](/fabric/enterprise/licenses#capacity) determines how much compute and memory your workloads can use. Each capacity tier provides a fixed number of CUs, which affects concurrency limits, query throughput, and the responsiveness of interactive workloads.
 
 | SKU / Capacity  | Compute and Memory (CUs)      | Typical Workloads                                                     | Performance Characteristics                                                                       |
 | --------------- | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
@@ -103,9 +103,9 @@ To keep your workloads running smoothly, you need visibility into the right metr
 - Real-time workloads, ingestion latency and queries per second are key indicators of system health.
 - Errors and throttling events, including Spark "capacity exceeded" messages or throttling events.
 
-Fabric provides several tools that help monitor these signals. Use the [Capacity Metrics App](https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app) for a top-level view, the [Real-Time Hub for Capacity Events](https://learn.microsoft.com/en-us/fabric/real-time-hub/explore-fabric-capacity-overview-events) for live monitoring of capacity-level events, and workspace/item-specific monitoring for detailed insight into Spark jobs, pipelines, and Semantic Models. Fabric lets you add custom tracking too - capture step durations or data processed if Fabric doesn't automatically provide it.
+Fabric provides several tools that help monitor these signals. Use the [Capacity Metrics App](/fabric/enterprise/metrics-app) for a top-level view, the [Real-Time Hub for Capacity Events](/fabric/real-time-hub/explore-fabric-capacity-overview-events) for live monitoring of capacity-level events, and workspace/item-specific monitoring for detailed insight into Spark jobs, pipelines, and Semantic Models. Fabric lets you add custom tracking too - capture step durations or data processed if Fabric doesn't automatically provide it.
 
-For deeper analysis, leverage Query Insights, DMVs, Spark UI, and Data Factory UI, and consider integrating logs with [Azure Monitor or Log Analytics](https://learn.microsoft.com/en-us/azure/azure-monitor/overview). Use threshold-based alerts and [Fabric Activator](https://learn.microsoft.com/en-us/fabric/real-time-intelligence/data-activator/activator-introduction) to catch bottlenecks before they impact users. Always keep an eye on dependencies: external data sources, gateways, and network performance can become silent bottlenecks.
+For deeper analysis, leverage Query Insights, DMVs, Spark UI, and Data Factory UI, and consider integrating logs with [Azure Monitor or Log Analytics](/azure/azure-monitor/overview). Use threshold-based alerts and [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction) to catch bottlenecks before they impact users. Always keep an eye on dependencies: external data sources, gateways, and network performance can become silent bottlenecks.
 
 Focus only on issues that need action, like failures, extreme durations, or high capacity use that could cause throttling. Review your alerts regularly to reduce noise and avoid alert fatigue.
 

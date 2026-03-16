@@ -1,6 +1,8 @@
 - name: Microsoft Fabric
   href: index.yml
   items:
+    - name: Get started
+      href: overview.md
     - name: Reliability
       href: reliability.md
     - name: Security

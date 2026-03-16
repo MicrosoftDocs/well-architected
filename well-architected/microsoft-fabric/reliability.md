@@ -2,7 +2,7 @@
 title: Reliability considerations for Microsoft Fabric workloads
 description: Overview of reliability considerations for workloads running on Microsoft Fabric.
 author: prwilk
-ms.author: Page-Writer[MSFT]
+ms.author: PageWriter[MSFT]
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
@@ -28,9 +28,9 @@ Fabric is SaaS, so low-level infrastructure tweaks aren't in your hands. You sti
 Some Fabric behaviors are by design and can be restrictive. Microsoft Fabric official documentation maintains up-to-date lists of well-known issues, preview constraints, and platform behaviors. Pay attention to workspace boundaries, feature differences when Private Endpoint is used, and how data moves across workspaces.
 
 > Refer to:
-- [Data warehouse limitations](https://learn.microsoft.com/en-us/fabric/data-warehouse/limitations)
-- [Data engineering notebook limitations](https://learn.microsoft.com/en-us/fabric/data-engineering/notebook-limitation)
-- [Workspace fundamentals](https://learn.microsoft.com/en-us/fabric/fundamentals/workspaces)
+- [Data warehouse limitations](/fabric/data-warehouse/limitations)
+- [Data engineering notebook limitations](/fabric/data-engineering/notebook-limitation)
+- [Workspace fundamentals](/fabric/fundamentals/workspaces)
 
 
 ## Understand where failures happen

@@ -2,7 +2,7 @@
 title: Security considerations for Microsoft Fabric workloads
 description: Overview of security considerations for workloads running on Microsoft Fabric.
 author: prwilk
-ms.author: Page-Writer[MSFT]
+ms.author: PageWriter[MSFT]
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
@@ -22,7 +22,7 @@ Before you dive into network rules or encryption settings, define a security bas
 
 Compare your current tenant configuration against the baseline. Are identity policies strict enough? Are monitoring and logging pipelines in place to detect unusual activity? If gaps exist, mitigate them early.
 
-> Refer to: [Microsoft Fabric baseline](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/fabric-security-baseline)
+> Refer to: [Microsoft Fabric baseline](/security/benchmark/azure/baselines/fabric-security-baseline)
 
 ## Design isolation boundaries
 
@@ -36,7 +36,7 @@ Capacities can be another isolation tool. Dedicated capacities for sensitive wor
 
 There are identity and networking capabilities that ensure segmentation. They are described in the sections below. 
 
-> Refer to: [Manage workspaces in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/fundamentals/workspaces)
+> Refer to: [Manage workspaces in Microsoft Fabric](/fabric/fundamentals/workspaces)
 
 ## Use identity as the primary security perimeter
 
@@ -52,7 +52,7 @@ Identity and access activity appears in Fabric audit logs and Entra ID sign-in l
 
 Tenant and capacity roles (Fabric Admin, Capacity Admin, Capacity Contributor) separate management of compute/storage from content access. For example, a Capacity Admin can manage scaling but cannot read sensitive finance datasets unless explicitly granted.
 
-> Refer to: [Role-based access control (RBAC) in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/security/permission-model)
+> Refer to: [Role-based access control (RBAC) in Microsoft Fabric](/fabric/security/permission-model)
 
 ## Secure network communications
 
@@ -73,11 +73,11 @@ If workloads require access to on-premises systems, use the on-premises data gat
 Monitor network-related activity through private link logs and on-premises data gateway logs. These logs record connection attempts, successes, failures, and throughput, which can help identify unexpected connection patterns or misconfigured access paths.
 
 > Refer to these articles: 
->
-> [Secure your network with Azure VNets](https://learn.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)
-> [Private Link and VNet integration](https://learn.microsoft.com/en-us/azure/private-link/)
-> [Network security groups (NSGs)](https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview)
-> [Azure Firewall documentation](https://learn.microsoft.com/en-us/azure/firewall/)
+
+- [Secure your network with Azure VNets](/azure/virtual-network/virtual-networks-overview)
+- [Private Link and VNet integration](/azure/private-link/)
+- [Network security groups (NSGs)](/azure/virtual-network/network-security-groups-overview)
+- [Azure Firewall documentation](/azure/firewall/)
 
 
 ## Data encryption
@@ -95,10 +95,10 @@ Fabric does not provide built-in encryption for data being processed in memory. 
 
 > Refer to these articles: 
 >
-> [Encryption in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/security/security-overview#secure‑data)
-> [OneLake encryption and storage security](https://learn.microsoft.com/en-us/fabric/onelake/security)
-> [Azure Key Vault documentation](https://learn.microsoft.com/en-us/azure/key-vault/)
-> [Customer-managed keys (CMK) in Azure](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/fabric-security-baseline)
+> [Encryption in Microsoft Fabric](/fabric/security/security-overview#secure‑data)
+> [OneLake encryption and storage security](/fabric/onelake/security)
+> [Azure Key Vault documentation](/azure/key-vault/)
+> [Customer-managed keys (CMK) in Azure](/security/benchmark/azure/baselines/fabric-security-baseline)
 
 
 ## Harden workload assets
@@ -126,7 +126,7 @@ Track configuration settings through Fabric admin APIs or automation scripts and
 Workloads often need to access databases, APIs, or storage. Do not store secrets in notebooks, scripts, or pipelines. Use Azure Key Vault, with dynamic retrieval at runtime. Rotate secrets in a controlled fashion, coordinating with dependent workloads. Where possible, rely on workspace identity or service principals, avoiding static credentials entirely.
 
 
-> Refer to: [Key Vault secrets integration ](https://learn.microsoft.com/en-us/azure/key-vault/secrets/)
+> Refer to: [Key Vault secrets integration ](/azure/key-vault/secrets/)
 
 ## Security Monitoring 
 
@@ -144,11 +144,11 @@ Configure alerts for events that may indicate security risks, such as:
 Correlation across services can reveal suspicious patterns. For example, a risky sign-in followed by large data exports may indicate a compromised account.
 
 > Refer to these articles: 
->
-> [Audit log search in Microsoft 365](https://learn.microsoft.com/en-us/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
-> [Sentinel data connectors for Microsoft 365](https://learn.microsoft.com/en-us/azure/sentinel/connect-data-sources)
-> [Microsoft Entra ID authentication events](https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-sign-ins)
-> [Microsoft Defender for Cloud Apps documentation](https://learn.microsoft.com/en-us/defender-cloud-apps/)
+
+- [Audit log search in Microsoft 365](/microsoft-365/compliance/search-the-audit-log-in-security-and-compliance)
+- [Sentinel data connectors for Microsoft 365](/azure/sentinel/connect-data-sources)
+- [Microsoft Entra ID authentication events](/entra/identity/monitoring-health/concept-sign-ins)
+- [Microsoft Defender for Cloud Apps documentation](/defender-cloud-apps/)
 
 
 ## Security Testing
@@ -171,8 +171,8 @@ Penetration testing should follow Microsoft cloud penetration testing rules of e
 
 > Refer to these articles: 
 >
-> [Microsoft Cloud Penetration Testing Rules of Engagement](https://learn.microsoft.com/en-us/security/penetration-testing)
-> [Fabric REST APIs](https://learn.microsoft.com/en-us/rest/api/fabric/)
+> [Microsoft Cloud Penetration Testing Rules of Engagement](/security/penetration-testing)
+> [Fabric REST APIs](/rest/api/fabric/)
 
 
 ## Secure Development Lifecycle (SDL)
@@ -189,5 +189,5 @@ Separate development workspaces from production environments. Conditional access
 
 > Refer to these articles: 
 >
-> [Git integration in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/cicd/git-integration/intro-to-git-integration)
-> [Deployment pipelines in Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines)
+> [Git integration in Microsoft Fabric](/fabric/cicd/git-integration/intro-to-git-integration)
+> [Deployment pipelines in Microsoft Fabric](/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines)

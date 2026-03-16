@@ -2,7 +2,7 @@
 title: Microsoft Fabric workloads
 description: Overview of architectural considerations for workloads running on Microsoft Fabric.
 author: prwilk
-ms.author: Page-Writer[MSFT]
+ms.author: PageWriter[MSFT]
 ms.date: 03/14/2026
 ms.topic: concept-article
 ---
@@ -19,6 +19,7 @@ This guidance applies the Azure Well-Architected Framework to Microsoft Fabric w
 
 ## Architecture pattern
 
+// image
 
 | Pillar | Focus |
 |---|---|

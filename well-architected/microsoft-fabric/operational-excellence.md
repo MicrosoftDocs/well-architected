@@ -1,7 +1,7 @@
 ---
 title: Operational excellence for Microsoft Fabric workloads
 description: Overview of workload operations running on Microsoft Fabric.
-author: Page-Writer[MSFT]
+author: PageWriter[MSFT]
 ms.author: prwilk
 ms.date: 03/14/2026
 ms.topic: concept-article
@@ -89,13 +89,13 @@ Correlate logs across systems to understand not just what failed, but why. Sever
 
 | Tool                                       | Purpose                                       | Typical Use                                                                                         |
 | ------------------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
-| [Microsoft Fabric Capacity Metrics App](https://learn.microsoft.com/en-us/fabric/enterprise/metrics-app) | Monitor capacity health and compute usage     | Track CU consumption, throttling events, autoscale behavior, and storage usage over a 14-day window |
-| [Workspace Monitoring](https://learn.microsoft.com/en-us/fabric/data-factory/workspace-monitoring) | Provide workload-level observability          | Capture logs and metrics for supported Fabric workloads within a workspace                          |
-| [OneLake Diagnostics](https://learn.microsoft.com/en-us/fabric/onelake/onelake-diagnostics-overview) | Monitor data access activity                  | Analyze how data is accessed within a workspace and investigate storage-related issues              |
+| [Microsoft Fabric Capacity Metrics App](/fabric/enterprise/metrics-app) | Monitor capacity health and compute usage     | Track CU consumption, throttling events, autoscale behavior, and storage usage over a 14-day window |
+| [Workspace Monitoring](/fabric/data-factory/workspace-monitoring) | Provide workload-level observability          | Capture logs and metrics for supported Fabric workloads within a workspace                          |
+| [OneLake Diagnostics](/fabric/onelake/onelake-diagnostics-overview) | Monitor data access activity                  | Analyze how data is accessed within a workspace and investigate storage-related issues              |
 | [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction)                      | Event-driven monitoring and automation        | Trigger alerts or automated actions when Fabric events or capacity signals occur                    |
 | [Fabric Unified Admin Monitoring (FUAM)](https://blog.robsewell.com/blog/fuam-fabric-unified-admin-monitoring) | Consolidated tenant-wide monitoring           | Aggregate monitoring data across the Fabric tenant for centralized operational insights             |
-| [Azure Monitor / Log Analytics](https://learn.microsoft.com/en-us/azure/azure-monitor/overview) | External monitoring and long-term analysis    | Store, query, and visualize exported Fabric logs and metrics                                        |
-| [Microsoft 365 Audit Logs](https://learn.microsoft.com/en-us/fabric/admin/service-admin-portal-audit-logs) | Track user activity and administrative events | Capture Fabric audit logs and forward them to external monitoring systems                           |
+| [Azure Monitor / Log Analytics](/azure/azure-monitor/overview) | External monitoring and long-term analysis    | Store, query, and visualize exported Fabric logs and metrics                                        |
+| [Microsoft 365 Audit Logs](/fabric/admin/service-admin-portal-audit-logs) | Track user activity and administrative events | Capture Fabric audit logs and forward them to external monitoring systems                           |
 
 #### Manage monitoring data
 
