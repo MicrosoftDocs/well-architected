@@ -93,7 +93,7 @@ Your monitoring strategy should focus on the places where failures are likely. T
 
 Fabric provides rich telemetry, but pair it with your own health probes and dashboards. Integrate  with Azure Monitor.  Early alerts give your team time to act before users notice anything. Correlate logs and metrics across systems to spot the root cause quickly, not just the symptom.
 
-For more information about what to monitor, see <link>
+For more information about what to monitor, see //link
 
 ## Apply self-preservation techniques
 
