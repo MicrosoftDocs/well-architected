@@ -66,6 +66,8 @@ Use an industry methodology such as [STRIDE](/azure/security/develop/threat-mode
 
 Track threat modeling results and revisit them throughout the workload lifecycle. Update the model as the architecture evolves to ensure new features and changes don't introduce unmanaged risk.
 
+> Refer to: [Microsoft Threat Modeling Tool](/azure/security/develop/threat-modeling-tool)
+
 ## Build secure coding expertise
 
 Ensure the development team completes **formal, role-specific training in secure coding practices**. For example, web and API developers should know how to prevent cross-site scripting (XSS), while back-end developers should understand how to mitigate risks such as SQL injection and other database-layer attacks. Require developers to complete this training before granting access to production source code. Reinforce these skills through internal peer code reviews, which promote accountability, knowledge sharing, and continuous improvement.
@@ -114,9 +116,9 @@ Environment isolation is equally important. **Strictly separate production and n
 
 ## Protect code in production
 
-Production is the **last line of defense** as in the final opportunity to address security gaps before they impact users. Keep a record of the golden image deployed to production to ensure a reliable reference for troubleshooting and recovery.
+Production is the **last line of defense** for protecting developer code before it reaches users. Teams should maintain a record of the **golden image** deployed to production and keep a catalog of all deployed assets and their versions to support troubleshooting, incident response, and vulnerability management. It also can influence configuration drift mechanisms. Automated checks against published CVEs help identify outdated or risky components quickly. 
 
-Maintain a catalog of all deployed assets and their versions. This versioning is critical during incident response, system restoration, and vulnerability management. Automated comparisons against published Common Vulnerabilities and Exposures (CVE) help identify outdated or risky components quickly.
+Development environments shouldn't have direct production access. That access should be restricted. Also, regularly rotate secrets and certificates, and conduct security-focused exercises such as tabletop simulations and red-teaming to validate defenses. 
 
 ## Protect code from development to decomission
 
