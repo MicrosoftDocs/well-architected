@@ -85,7 +85,7 @@ Start your design strategy based on the [design review checklist for Reliability
 | Recommendation|Benefit|
 |-----------|-------- |
 |Size virtual networks and subnets according to your scaling strategy. Choose fewer, larger virtual networks to accommodate redundancy as a mitigation strategy for failures. <br><br> Ensure that there isn't overlapping address space with other virtual networks that you need to communicate with, and plan the address space in advance. <br><br> For more information, see [Create, change, or delete a virtual network](/azure/virtual-network/manage-virtual-network).| By overprovisioning, you can ensure that the network scales efficiently without experiencing address-space limitations. <br><br> Plan the address space in advance to help prevent conflicts and ensure a smooth, scalable network architecture. |
-|Use the [Standard IP SKU](/azure/virtual-network/ip-services/public-ip-addresses#sku) for better reliability support through availability zones. By default, public IP addresses are deployed across multiple zones unless restricted to one zone.|This SKU helps ensure that communication within a public IP address remains operational during zonal failures.|
+|Use the [Standard IP SKU](/azure/virtual-network/ip-services/public-ip-addresses#sku) for better reliability support through availability zones. By default, public IP addresses are deployed across multiple zones unless restricted to one zone.|This SKU helps ensure that communication within a public IP address remains operational during zone failures.|
 
 ## Security
 

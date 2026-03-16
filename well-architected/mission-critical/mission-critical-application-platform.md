@@ -43,7 +43,7 @@ Not every workload supports or requires running multiple regions simultaneously.
 
 ### Design considerations
 
-- **Regional and zonal capabilities**. Not all services and capabilities are available in every Azure region. This consideration could affect the regions you choose. Also, [availability zones](/azure/reliability/availability-zones-region-support) aren't available in every region.
+- **Regional and zone capabilities**. Not all services and capabilities are available in every Azure region. This consideration could affect the regions you choose. Also, [availability zones](/azure/reliability/availability-zones-region-support) aren't available in every region.
 
 - **Regional pairs**. Azure regions are grouped into [regional pairs](/azure/best-practices-availability-paired-regions) that consist of two regions in a single geography. Some Azure services use paired regions to ensure business continuity and to provide a level of protection against data loss. For example, Azure geo-redundant storage (GRS) replicates data to a secondary paired region automatically, ensuring that data is durable if the primary region isn't recoverable. If an outage affects multiple Azure regions, at least one region in each pair is prioritized for recovery.
 
@@ -270,7 +270,7 @@ This native service provides a range of features, including geo-replication, Mic
 
 Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
 
-In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to provide protection against zonal failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
+In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to provide protection against zone failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
 
 Host images close to the consuming compute resources, within the same Azure regions.
 
