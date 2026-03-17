@@ -73,8 +73,8 @@ sections:
       - componentType: image
         src: ./_images/disaster-recovery-criticality-tiers.png
         alt: "Diagram that shows the disaster recovery criticality tiers."
-      - title: Featured update - Develop a multi-region disaster recovery plan
-        summary: "Disaster recovery is the set of strategies and processes used to restore critical workloads and data after major disruptions such as outages or natural disasters. These events surpass the capabilities of built-in cloud resiliency. A well-structured disaster recovery plan defines roles, procedures, and communication protocols to ensure business continuity, minimize downtime, and enable reliable recovery across multiple regions."
+      - title: Featured update - Boost your operations by using AI
+        summary: "Apply AI opportunities across the Operational Excellence pillar by aligning AI adoption with the full maturity journey—from foundational practices and standardization through production operations and optimization at scale. Use AI to automate and optimize deployment, monitoring, testing, and operational workflows. Evaluate where AI fits at each maturity level by balancing potential ROI with security, reliability, and operational trade‑offs."
         componentType: text
         links:
           - componentType: link
