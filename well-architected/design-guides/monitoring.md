@@ -213,7 +213,7 @@ Let's continue with the eCommerce example. By using hot analysis, it was  detect
 
 They first queried the application logs and filtered them to the relevant time window, confirming an increase in request timeout exceptions. By grouping the results by dependency, they identified that the spike in failures occurred in requests that relied on the database. Then, queried the database request telemetry and confirmed that query latency had doubled, using correlation IDs to verify that the failing requests were directly affected by the increased latency. 
 
-Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
+Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization hit and remained at 90% for the time period, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
 
 :::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/db-bottleneck-analysis.png" border="false":::
 
