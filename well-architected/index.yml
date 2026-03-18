@@ -71,15 +71,15 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/ai-operations.svg
+        src: ./_images/ai-operations.png
         alt: "Diagram that shows AI opportunities in the maturity model."
       - title: Featured update - Boost your operations by using AI
         summary: "Apply AI opportunities across the Operational Excellence pillar by aligning AI adoption with the full maturity journey—from foundational practices and standardization through production operations and optimization at scale. Use AI to automate and optimize deployment, monitoring, testing, and operational workflows. Evaluate where AI fits at each maturity level by balancing potential ROI with security, reliability, and operational trade‑offs."
         componentType: text
         links:
           - componentType: link
-            url: design-guides/disaster-recovery.md
-            text: Develop a multi-region disaster recovery plan
+            url: operational-excellence/maturity-model.md
+            text: Operational Excellence maturity model
 # cards section (4)
   - componentType: grid
     title: Pillars
