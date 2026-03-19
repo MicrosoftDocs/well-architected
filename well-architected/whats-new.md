@@ -25,13 +25,11 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We reorganized this article to focus on designing observability rather than technical implementation details. We expanded the definitions table. We restructured content around strategic design principles including aligning telemetry with health models and key performance indicators (KPIs), standardizing data consolidation, tailoring storage for usage patterns, correlating data for end-to-end insights, and defining alerts around meaningful operational conditions. The revised content uses outcome-focused language that emphasizes how observability supports continuous improvement and informed decisions rather than focusing on pipeline mechanics.
 
+This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
+
 ### AI integration in the Operational Excellence pillar
 
 We [integrated AI opportunities throughout the Operational Excellence pillar's core guidance](./service-guides/azure-container-apps.md), with an emphasis on applying AI across the full maturity journey. The revised content shows how teams can use AI to improve day‑to‑day operations, reduce manual toil, increase productivity, and support better operational decision‑making as practices evolve from individual tasks to integrated, production‑ready workflows. It also helps workload teams evaluate where AI fits at each maturity level and make informed decisions by balancing potential return on investment (ROI) with security and reliability trade‑offs.
-
-### Azure updates feed
-
-This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
 
 ### Editorial updates
 
