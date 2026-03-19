@@ -101,9 +101,9 @@ Also, network access should be segmented so developers don't have direct access 
 
 Development tools can also help improve security by using IDE extensions that monitor code as it is written and scan local builds for vulnerabilities. Credentials must be protected by ensuring secrets are not stored in configuration files and by using credential managers when access to secrets is required. 
 
-Develoeprs should follow approved developer tools and use installations that are managed centrally. Development environments, such as GitHub Codespaces and Microsoft Dev Box, can enforce security by providing isolated, centrally managed workspaces. 
+Developers should follow approved developer tools and use installations that are managed centrally. Development environments, such as GitHub Codespaces and Microsoft Dev Box, can enforce security by providing isolated, centrally managed workspaces. 
 
-Even tests should be run in a controlled environment with only the minimum permissions necessary.
+Tests should also be run in a controlled environment with only the minimum permissions necessary.
 
 ## Secure build and deployment pipelines
 
