@@ -25,7 +25,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We reorganized this article to focus on designing observability rather than technical implementation details. We expanded the definitions table. We restructured content around strategic design principles including aligning telemetry with health models and key performance indicators (KPIs), standardizing data consolidation, tailoring storage for usage patterns, correlating data for end-to-end insights, and defining alerts around meaningful operational conditions. The revised content uses outcome-focused language that emphasizes how observability supports continuous improvement and informed decisions rather than focusing on pipeline mechanics.
 
-This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
 
 ### AI integration in the Operational Excellence pillar
 
