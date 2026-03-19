@@ -64,7 +64,7 @@ When adding instrumentation, follow these simple principles: Maintain consistenc
 
 - **Use structured telemetry**, which is recorded in both human- and machine-readable formats (JSON, MessagePack, Protobuf).
 
-- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, whereas increase verbosity in production. Another strategy is to align verbosity with the criticality of the component.
+- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Increase verbosity in lower environments, and pull back on verbosity in production. Another strategy is to align verbosity with the criticality of the component.
 
 - **Categorize by operational concern** to make filtering and analysis more efficient. For example, indicate purpose in telemetry data whether it's for audit, security, debugging, or performance. 
 
@@ -308,9 +308,9 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 - [Log Analytics](/azure/azure-monitor/log-query/log-query-overview) is the analytics engine for querying and correlating multi-tier logs with advanced trending capabilities.
 
-- [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) provides specialized monitoring for virtual machine workloads with performance maps and dependency tracking.
+- [Azure VM Insights](/azure/azure-monitor/insights/vminsights-overview) provides specialized monitoring for virtual machine workloads with performance maps and dependency tracking.
 
-- [Azure Monitor for containers](/azure/azure-monitor/insights/container-insights-overview) offers container-specific monitoring with cluster health, node performance, and pod-level insights.
+- [Azure Container Insights](/azure/azure-monitor/insights/container-insights-overview) offers container-specific monitoring with cluster health, node performance, and pod-level insights.
 
 - [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview) provides network-specific monitoring, diagnostics, and analytics for Azure networking resources.
 
