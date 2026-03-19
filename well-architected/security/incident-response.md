@@ -24,7 +24,7 @@ However, you also have a responsibility to protect your workload. It's important
 
 This guide provides recommendations for you and your workload team to help you rapidly detect, triage, and investigate attacks.
 
-**Definitions** 
+**Terminology**
 
 | Term | Definition |
 |---|---|

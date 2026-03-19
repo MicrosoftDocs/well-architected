@@ -20,7 +20,7 @@ Establish testing rigor through cadence and verification from multiple perspecti
 
 This guide provides recommendations for testing the security posture of your workload. Implement these testing methods to improve your workload's resistance to attacks and maintain confidentiality, integrity, and availability of resources.
 
-**Definitions**
+**Terminology**
 
 |Term   |Definition   |
 |---------|---------|
