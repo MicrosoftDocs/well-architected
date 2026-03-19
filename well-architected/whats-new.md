@@ -29,7 +29,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### AI integration in the Operational Excellence pillar
 
-We [integrated AI opportunities throughout the Operational Excellence pillar's core guidance](./operational-excellence/maturity-model?tabs=ai-opportunities), with an emphasis on applying AI across the full maturity journey. The revised content shows how teams can use AI to improve day‑to‑day operations, reduce manual toil, increase productivity, and support better operational decision‑making as practices evolve from individual tasks to integrated, production‑ready workflows. It also helps workload teams evaluate where AI fits at each maturity level and make informed decisions by balancing potential return on investment (ROI) with security and reliability trade‑offs.
+We [integrated AI opportunities throughout the Operational Excellence pillar's core guidance](./operational-excellence/maturity-model.md), with an emphasis on applying AI across the full maturity journey. The revised content shows how teams can use AI to improve day‑to‑day operations, reduce manual toil, increase productivity, and support better operational decision‑making as practices evolve from individual tasks to integrated, production‑ready workflows. It also helps workload teams evaluate where AI fits at each maturity level and make informed decisions by balancing potential return on investment (ROI) with security and reliability trade‑offs.
 
 ### Editorial updates
 
