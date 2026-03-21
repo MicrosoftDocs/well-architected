@@ -122,6 +122,8 @@ Validate thresholds using past experience and regular testing. Use fast storage 
 
 Automate alerting and link alerts to ticketing systems. Monitor cloud platform service health, outages, maintenance, and advisories.
 
+AI-powered operations tools such as [Azure SRE Agent](https://aka.ms/sreagent/ga) can analyze alert patterns and diagnose common issues like pod crash loops or elevated error rates. These tools support configurable autonomy, starting with recommended actions and progressively enabling automated responses within defined guardrails.
+
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**:  AI can be used to dynamically define "healthy" system behavior by learning patterns across business contexts like peak traffic, promotions, quiet periods, and regional variations. AI can then analyze metrics, logs, and incident data to predict issues and recommend thresholds. 
 
 ## Design scalable, durable telemetry pipelines
@@ -182,3 +184,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
+
+<!-- Updated: 2026-03-21 for Azure Update 558321 -->

@@ -71,6 +71,8 @@ Be mindful of factors that can complicate your operations when you build your au
 
 For any tool that you use to build your automation, make it easily accessible and manageable for your operators. Provide clear and easy-to-use interfaces for your workload team. You can provide access to CI/CD pipelines, APIs, and libraries. Like the workload that the automation supports, you need to manage the automation holistically. Secure automation to the same degree as other workload components. Monitor automation and subject it to the same testing protocols as other workload components.
 
+For incident response and operational diagnostics, consider AI-powered automation tools like [Azure SRE Agent](https://aka.ms/sreagent/ga). SRE Agent supports configurable autonomy levels from advisory to automated response and learns from interactions through built-in memory. The tradeoff is automated action risk in production versus faster incident resolution. Implement guardrails and approval workflows for high-severity scenarios.
+
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You’ll boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
 > For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
@@ -164,3 +166,4 @@ Refer to the complete set of recommendations.
 <!-- Azure Update: 497160 - 2025-01-23 -->
 <!-- Azure Update: 497428 - 2025-01-22 -->
 <!-- Azure Update: 496631 - 2025-05-21 -->
+<!-- Updated: 2026-03-21 for Azure Update 558321 -->
