@@ -72,6 +72,8 @@ Sometimes your flows are already running on different resources. In these cases,
 
 - *Fine-tune configurations*. Fine-tune other settings, like networking or data storage options, to better align with the flow's performance and budget requirements.
 
+For batch processing flows that tolerate interruptions, evaluate Azure Spot VMs as the unified interruptible compute tier in Azure Batch. Azure Batch consolidated Low-Priority and Spot VMs into a single infrastructure, simplifying the cost-optimization model. Verify that your eviction handling strategy is in place because eviction rates can differ from the previous Low-Priority model. For more information, see [Use Spot VMs with Batch workloads](/azure/batch/batch-spot-vms).
+
 ## Separate dissimilar flows
 
 Separating dissimilar flows onto different resources is a process of allocating distinct tasks with varying computational needs to dedicated resources. Dissimilar flows are flows that have different attributes. These attributes can include computational requirements, data dependencies, I/O operations, latency sensitivity, security needs, and compliance requirements. It's often more cost efficient to run different types of flows on separate resources. Doing so enables precise resource allocation to each flow, which reduces unnecessary expenditures and ensures maximum efficiency.
@@ -125,3 +127,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Cost Optimization checklist](checklist.md)
+
+<!-- Updated: 2026-03-21 for Azure Update 543279 -->
