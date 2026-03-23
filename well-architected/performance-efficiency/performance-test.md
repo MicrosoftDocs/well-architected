@@ -1,9 +1,9 @@
 ---
 title: Architecture strategies for performance testing
 description: Learn best practices for performance testing. See how to select tools, configure environments, and take other steps to help workloads meet performance targets.
-author: stephen-sumner
-ms.author: ssumner
-ms.date: 11/15/2023
+author: simipaul
+ms.author: simipaul
+ms.date: 03/19/2026
 ms.topic: concept-article
 ---
 
@@ -11,25 +11,60 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|**PE:06**| Test performance. Perform regular testing in an environment that matches the production environment. Compare results against the performance targets and the performance benchmark. |
+|**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives.|
 |---|---|
 
-This guide describes the recommendations for testing. Performance testing helps you evaluate the functionality of a workload in various scenarios. It involves testing the workload's response time, throughput, resource utilization, and stability to help ensure that the workload meets its performance requirements.
+Performance testing evaluates whether your workload consistently meets defined targets that support your business objectives. It helps you detect degradation, proactively address issues, and maintain alignment with service-level agreements. It involves testing the workload's response time, throughput, resource utilization, and stability to help ensure that the workload meets its performance requirements.
 
-Testing helps to prevent performance issues. It also helps ensure that your workload meets its service-level agreements. Without performance testing, a workload can experience performance degradations that are often preventable. Workload performance can drift from performance targets and established baselines.
-
-**Definitions**
-
-| Term | Definition |
-| --- | --- |
-| Chaos testing | A performance test that aims to test the resilience and stability of a system by deliberately introducing random and unpredictable failures or disruptions. |
-| Load test | A performance test that measures system performance under typical and heavy load. |
-| Performance baseline | A set of metrics that represent the behavior of a workload under normal conditions as validated by testing. |
-| Stress test | A performance test that overloads a system until it breaks. |
-| Synthetic test | A performance test that simulates user requests in an application. |
+Performance testing is essential to validate that your workload delivers the performance your business demands. This guide describes recommendations for performance testing that help you evaluate performance metrics in various scenarios, establish meaningful baselines, and continuously optimize over time.
+This guide walks you through key phases of performance testing: formalizing your strategy, preparing tests, executing them, analyzing results, and establishing ongoing practices. By following these steps, you'll gain confidence that your workload performs reliably under real-world conditions and aligns with your performance objectives.
 
 
-Performance testing helps you gather measurable data on a workload. When you run tests early enough, they also help you build workloads to the right specifications. You should conduct performance tests as early as possible in the software development lifecycle. Early testing allows you to catch and fix performance issues earlier in development. You can use a proof of concept (POC) if production code isn't ready.
+## Formalize performance test strategy
+
+Create a performance test strategy that documents your approach and aligns with business objectives. A well-defined strategy helps ensure consistent testing practices and sets clear expectations with stakeholders.
+
+**Document requirements and performance targets.** Work with stakeholders to establish specific performance goals, such as supporting a defined number of concurrent users or achieving specific response times. Translate these requirements into measurable test cases and scripts that validate your workload meets business needs.
+
+**Define acceptance criteria.** Specify measurable metrics that determine test success. Include thresholds for response time, throughput, error rates, and resource utilization. Review and update these criteria as business needs evolve.
+
+**Identify critical user flows.** Collaborate with stakeholders to determine which user journeys and transactions are most important to test. Focus testing efforts on processes that have the greatest impact on user experience and business operations.
+
+**Document workload and resource limitations.** Clearly outline resource constraints, such as available infrastructure, budget, and time. Setting realistic performance targets based on actual service boundaries prevents unrealistic expectations and ensures meaningful test results. 
+
+**Define test environment requirements.** Specify infrastructure needs, data requirements, and network configurations necessary to conduct meaningful performance tests that mirror production conditions.
+
+**Select and evaluate testing tools.** List required performance testing tools and assess team expertise with each tool. Include APM tools, load testing platforms, and monitoring solutions. Plan for training if gaps exist in team capabilities.
+
+**Establish reporting standards.** Define reporting formats and create dashboards for performance results. Standardized reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders.
+
+**Create release-specific test plans.** Develop detailed test plans for each release that align with your overall strategy. As your testing process matures, refine plans to address specific scenarios, expected workload changes, and new features.
+
+## Test early, test often and test what’s important
+
+Performance testing identifies key metrics and establishes clear benchmarks. Start testing as early as possible in the software development lifecycle to catch and fix issues before they become costly. Early testing directly informs workload specifications, prompts design modifications, and validates architectural choices against performance goals. Test results provide evidence that guides code optimization, helping teams focus on areas with the greatest impact.
+
+Focus testing on what matters most. Prioritize critical user journeys, high traffic workflows, and business critical transactions. Testing the right scenarios ensures maximum value and addresses performance characteristics that directly impact user experience and business outcomes.
+
+Performance testing isn't a one-time event. Continuously test as your workload evolves and requirements change. Use insights from initial tests to enhance performance in subsequent iterations. Regular testing shows which optimizations to prioritize and whether changes deliver measurable improvements.
+
+### Test in Production
+
+Some performance requirements can only be validated in production. Test environments can't fully replicate real-world conditions, user behavior, or infrastructure characteristics that affect performance.
+
+Conduct controlled production testing. Run stress tests during off-peak hours to understand how your application behaves under resource exhaustion and recovers from failures. Production testing reveals how the workload performs under actual conditions including:
+- Realistic user behavior patterns and data volumes
+- True network latency and bandwidth variations
+- Geographic distribution effects
+- Third-party API performance and dependencies
+- Actual caching behavior and infrastructure characteristics
+
+Production tests expose issues that only emerge under real load and provide accurate baselines for future optimization. Use these insights to validate assumptions made in test environments and inform design decisions. 
+
+Plan and monitor production tests carefully. Implement automated safeguards that can halt tests if they negatively impact users. Use techniques such as automated rollback mechanisms and real-time monitoring and alerting to ensure quick response and minimize disruptions.
+
+:::image type="icon" source="../_images/risk.svg"::: Risk: Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact.
+
 
 ## Prepare the test
 
