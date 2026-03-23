@@ -58,7 +58,11 @@ The foundation of this framework lies in the pillars. If you don't have a compre
 
 - **Design principles**. Provide the foundation of good design, each of which has a specific goal. The principles also describe the recommended approaches.
 
-- **Design Review Checklists**. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation. 
+- **Design Review Checklists**. A collection of key strategies used by customers to design and build confidence in their workload. Each checklist item represents an individual **key design strategy** that provide a deep dive on the strategy required for a particular concept.
+
+- **Design Guides**. Provide prescriptive guidance that shows how to implement specific checklist strategies. These guides reflect insights from real-world customer implementations and offer practical, proven examples.
+
+If you are in a customer-facing role, we encourage you to share successful implementation ideas with us, as we aim to expand our collection of design guides that map to the checklist items within each pillar.
 
 - **Cloud design patterns**. Be sure to understand the related **cloud design patterns**. They're mapped to the pillars they directly support.
 
