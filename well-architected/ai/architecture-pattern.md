@@ -24,6 +24,8 @@ While the AI assistant represents a specific business scenario, the top level ar
 
 ## [**High-level AI workload**](#tab/aiworkload)
 
+The following diagram shows the high-level components of an AI workload architecture pattern to include in your design.
+
 :::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Screenshot of typical AI workload architecture pattern showing data processing, model training, intelligent AI applications, AI practices, and platform services." lightbox="./images/ai-workload-architecture-pattern.png":::
 
 |Component|Description|
@@ -101,8 +103,8 @@ The following diagram shows the components required for training and fine-tuning
 ## Baseline architectures for AI workloads
 These baseline examples serve as the recommended architecture for AI workloads.
 
-<ul>
-      <li>
+<ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
@@ -121,7 +123,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
             </div>
         </article>
     </li>
-    <li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
@@ -140,7 +142,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
             </div>
         </article>
     </li>
-    <li>
+    <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                <a class="is-undecorated is-full-height is-block"
