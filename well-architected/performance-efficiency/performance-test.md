@@ -14,13 +14,13 @@ ms.topic: concept-article
 |**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives.|
 |---|---|
 
-Performance testing evaluates whether your workload consistently meets defined targets that support your business objectives. It helps you detect degradation, proactively address issues, and maintain alignment with service-level agreements. It involves testing the workload's response time, throughput, resource utilization, and stability to help ensure that the workload meets its performance requirements.
+Performance testing is a non-functional test that evaluates how a workload performs under various conditions. It helps you detect degradation, proactively address issues, and maintain alignment with service-level agreements.
 
-Performance testing is essential to validate that your workload delivers the performance your business demands. This guide describes recommendations for performance testing that help you evaluate performance metrics in various scenarios, establish meaningful baselines, and continuously optimize over time.
-This guide walks you through key phases of performance testing: formalizing your strategy, preparing tests, executing them, analyzing results, and establishing ongoing practices. By following these steps, you'll gain confidence that your workload performs reliably under real-world conditions and aligns with your performance objectives.
+When you conduct performance testing, you validate that your workload consistently meets defined targets and delivers the performance your business demands. It involves testing the workload's response time, throughput, resource utilization, and stability to help ensure that the workload meets its performance requirements. 
 
+This guide describes recommendations for performance testing that help you evaluate performance metrics in various scenarios, establish meaningful baselines, and continuously optimize over time.
 
-## Formalize performance test strategy
+## Formalize performance test strategy 
 
 Create a performance test strategy that documents your approach and aligns with business objectives. A well-defined strategy helps ensure consistent testing practices and sets clear expectations with stakeholders.
 
@@ -34,9 +34,11 @@ Create a performance test strategy that documents your approach and aligns with 
 
 **Define test environment requirements.** Specify infrastructure needs, data requirements, and network configurations necessary to conduct meaningful performance tests that mirror production conditions.
 
-**Select and evaluate testing tools.** List required performance testing tools and assess team expertise with each tool. Include APM tools, load testing platforms, and monitoring solutions. Plan for training if gaps exist in team capabilities.
+**Identify testing tools.** List required performance testing tools and assess team expertise with each tool. Include APM tools, load testing platforms, and monitoring solutions. Plan for training if gaps exist in team capabilities.
 
-**Establish reporting standards.** Define reporting formats and create dashboards for performance results. Standardized reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders.
+**Testing ownership and responsibilities.** Assign clear ownership for test planning, execution, and analysis. Define roles for performance engineers, developers, and operations teams to ensure accountability and collaboration throughout the testing process.
+
+**Establish reporting & defect management standards.** Define reporting formats and create dashboards for performance results. Standardized reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders.
 
 **Create release-specific test plans.** Develop detailed test plans for each release that align with your overall strategy. As your testing process matures, refine plans to address specific scenarios, expected workload changes, and new features.
 
@@ -50,7 +52,7 @@ Performance testing isn't a one-time event. Continuously test as your workload e
 
 ### Test in Production
 
-Some performance requirements can only be validated in production. Test environments can't fully replicate real-world conditions, user behavior, or infrastructure characteristics that affect performance.
+Test environments can't fully replicate real-world conditions, user behavior, or infrastructure characteristics that affect performance. Some performance requirements can only be validated in production. 
 
 Conduct controlled production testing. Run stress tests during off-peak hours to understand how your application behaves under resource exhaustion and recovers from failures. Production testing reveals how the workload performs under actual conditions including:
 - Realistic user behavior patterns and data volumes
