@@ -14,7 +14,7 @@ ms.topic: concept-article
 |**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives. |
 |---|---|
 
-Performance testing is a non‑functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service‑level agreements.
+Performance testing is a non-functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service-level agreements.
 
 By measuring key indicators such as response time, throughput, resource utilization, and overall stability, performance testing verifies that your workload consistently meets defined targets and delivers the level of performance your business requires.
 
@@ -43,9 +43,7 @@ Create release-specific test plans that translate your strategy into actionable 
 
 ## Test early, test often, and focus testing
 
-Early performance analysis catches architectural bottlenecks before they become costly to remedy. Start performance testing as early as possible in the software development lifecycle to inform design decisions, validate architectural choices against performance goals, and identify optimization opportunities. 
-
-Developers can validate performance during local development by profiling code, measuring response times, and identifying resource-intensive operations. 
+Early performance analysis catches architectural bottlenecks before they become costly to remedy. Start performance testing as early as possible in the software development lifecycle to inform design decisions, validate architectural choices against performance goals, and identify optimization opportunities. For example, developers can validate performance during local development by profiling code, measuring response times, and identifying resource-intensive operations. 
 
 Focus testing on what matters most. Test results provide evidence that guides code optimization, helping teams focus efforts on areas with the greatest performance impact. Prioritize testing on critical user journeys, high-traffic workflows, and business-critical transactions that directly impact user experience and business outcomes. 
 
@@ -81,7 +79,7 @@ Multiple test approaches help you capture full requirements early, reveal tradeo
 
 Evaluate different test types and select tools that integrate with your observability platform. Assess team expertise, research available support and training, evaluate licensing costs, and validate tool compatibility through proof-of-concept testing.
  
-The following table illustrates the primary purpose of different performance testing types and when to apply them. While this table isn’t an exhaustive list, it serves as an illustrative example.
+The following table illustrates the primary purpose of different performance testing types and when to apply them. While this table isn't an exhaustive list, it serves as an illustrative example.
 
 | Testing Type | When to Apply | Primary Purpose |
 |-------------|---------------|---------|
@@ -94,17 +92,17 @@ The following table illustrates the primary purpose of different performance tes
 
 # Simulate realistic conditions
 
-Performance test conditions must represent real usage to provide accurate insights into resource consumption, system behavior under load, and hidden performance issues. Testing under realistic conditions identifies optimization opportunities across network bandwidth, database response times, and compute resource usage. Results from these tests serve as valid baselines for future comparisons.
+Performance test conditions must represent real usage to provide accurate insights into resource consumption, system behavior under load, and hidden performance issues. Testing under realistic conditions helps you find optimization opportunities across network bandwidth, database response times, and compute resource usage. Use results from these tests as valid baselines for future comparisons.
 
-Design test scenarios that replicate workload patterns such as concurrent user access, peak load periods, and specific transaction sequences. Testing under different patterns identifies performance bottlenecks and informs resource allocation decisions. Ensure scenarios align with business goals so performance outcomes reflect true user value.
+Design test scenarios that replicate workload patterns such as concurrent user access, peak load periods, and specific transaction sequences. Testing under different patterns helps you identify performance bottlenecks and informs resource allocation decisions. Make sure scenarios align with business goals so performance outcomes reflect true user value.
 
-Generate realistic load patterns using synthetic data with production data characteristics. This determines which system resources require optimization and ensures collected metrics represent genuine usage patterns. Use production-like datasets (properly anonymized) to highlight data management behaviors such as transaction consistency, latency, and volume handling.
+Generate realistic load patterns by using synthetic data that has production data characteristics. This approach helps you determine which system resources need optimization and ensures collected metrics represent genuine usage patterns. Use production-like datasets (properly anonymized) to highlight data management behaviors such as transaction consistency, latency, and volume handling.
 
-Create diverse test data sets representing various scenarios, user profiles, and data volumes. Include parameters such as user credentials, input data, and randomization to mimic different user behaviors. Validate measurable metrics (response time, throughput, error rates, resource utilization) against defined thresholds for each user flow.
+Create diverse test data sets that represent various scenarios, user profiles, and data volumes. Include parameters such as user credentials, input data, and randomization to mimic different user behaviors. Validate measurable metrics like response time, throughput, error rates, and resource utilization against defined thresholds for each user flow.
 
-Include third-party integration calls when testing under load to determine behavior with external dependencies. Avoid directly mocking these services in your tests to maintain realism.
+Include third-party integration calls when testing under load to see how the system behaves with external dependencies. Avoid directly mocking these services in your tests to maintain realism.
 
-Build test environments that closely mirror production configuration. Match compute SKU, autoscaling settings, caching, and network conditions. Provision sufficient resources (CPU, memory, disk) along with external dependencies required for the workload. Implement automated validation checks to prevent configuration drift and ensure correct versions are deployed before running tests.
+Build test environments that closely mirror production configuration. Match compute SKU, autoscaling settings, caching, and network conditions. Provision enough resources (CPU, memory, disk) along with external dependencies required for the workload. Implement automated validation checks to prevent configuration drift and ensure correct versions are deployed before running tests.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
 
@@ -114,7 +112,7 @@ Performance test assets contain critical knowledge about your workload's expecte
 
 Store performance test scenarios, configurations, data generation code, and scripts in version control. Implement governance with code reviews, pull requests, and validations. Enforce quality standards through naming conventions, modular structure, and parameterization that separates load generation, monitoring, and result analysis into distinct, reusable components.
 
-Design test scripts with clear pass/fail criteria aligned to performance SLAs. Ensure tests are independent and reset state between runs to establish consistent baselines. Validate test scripts to ensure reliable execution. Separate test suites by type (load tests, stress tests, soak tests) rather than mixing them.
+Design test scripts with clear pass or fail criteria aligned to performance SLAs. Ensure tests are independent and reset state between runs to establish consistent baselines. Validate test scripts to ensure reliable execution. Separate test suites by type (load tests, stress tests, soak tests) rather than mixing them.
 
 Regularly review and update performance test scenarios to reflect current user behavior. Traffic patterns shift as user populations grow, feature usage changes, and new capabilities are introduced. Update test scripts to reflect new capacity limits, data shapes, architectural changes, and usage patterns. Keep performance baselines current while maintaining SLO commitments.
 
