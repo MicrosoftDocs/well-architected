@@ -13,6 +13,8 @@ As a cloud solution architect, make intentional decisions about security in Micr
 
 This article describes how to apply practical, actionable security controls within Fabric, using its built-in features like workspaces, workspace identities, managed virtual networks, and customer-managed keys. 
 
+![Fabric security](./images/fabric-security.png)
+
 
 ## Start with a baseline
 

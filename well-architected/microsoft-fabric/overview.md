@@ -19,7 +19,7 @@ This guidance applies the Azure Well-Architected Framework to Microsoft Fabric w
 
 ## Architecture pattern
 
-// image
+![Microsoft Fabric Architecture](./images/fabric-architecture.png)
 
 | Pillar | Focus |
 |---|---|

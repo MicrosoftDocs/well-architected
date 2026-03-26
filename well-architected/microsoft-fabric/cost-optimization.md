@@ -82,7 +82,7 @@ Cost optimization requires continuous visibility into how Fabric resources are u
 
 A practical way to manage Fabric spending is to treat cost governance as a simple loop:
 
-// image
+![Fabric cost governance](./images/fabric-cost-governance.png)
 
 | Step        | Goal                         | Examples                                                     |
 | ----------- | ---------------------------- | ------------------------------------------------------------ |
