@@ -112,7 +112,7 @@ Performance test assets contain critical knowledge about your workload's expecte
 
 Store performance test scenarios, configurations, data generation code, and scripts in version control. Implement governance with code reviews, pull requests, and validations. Enforce quality standards through naming conventions, modular structure, and parameterization that separates load generation, monitoring, and result analysis into distinct, reusable components.
 
-Design test scripts with clear pass or fail criteria aligned to performance SLAs. Ensure tests are independent and reset state between runs to establish consistent baselines. Validate test scripts to ensure reliable execution. Separate test suites by type (load tests, stress tests, soak tests) rather than mixing them.
+Design test scripts with clear pass or fail criteria aligned to performance service-level agreements (SLAs). Ensure tests are independent and reset state between runs to establish consistent baselines. Validate test scripts to ensure reliable execution. Separate test suites by type (load tests, stress tests, soak tests) rather than mixing them.
 
 Regularly review and update performance test scenarios to reflect current user behavior. Traffic patterns shift as user populations grow, feature usage changes, and new capabilities are introduced. Update test scripts to reflect new capacity limits, data shapes, architectural changes, and usage patterns. Keep performance baselines current while maintaining SLO commitments.
 
@@ -127,7 +127,11 @@ Instrument performance tests to capture:
 
 Establish automated analysis of performance test results. Implement automated checks that compare results against baselines, identify anomalies, and flag when performance degrades beyond acceptable thresholds.
 
-Generate performance test reports that provide visibility into performance trends across test runs, comparison against established baselines, identification of regressions introduced by code changes, and distribution of response times at different percentiles.
+Generate performance test reports that provide visibility into:
+- Performance trends across multiple test runs
+- Comparison of results against established baselines
+- Identification of performance regressions introduced by code changes
+- Distribution of response times at different percentiles
 
 Use Application Performance Monitoring (APM) tools to track trends over time, identify consistently degrading metrics, and enable data-driven decisions about performance improvements.
 
