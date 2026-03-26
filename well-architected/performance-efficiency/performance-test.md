@@ -71,7 +71,7 @@ Monitor tests continuously to detect issues early. Implement automated safeguard
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact.
 
-# Incorporate different types of testing
+## Incorporate different types of testing
 
 Performance testing includes a range of tests that evaluate speed, stability, and scalability under various conditions. Each test type targets distinct performance aspects and uncovers unique insights, enabling full evaluation beyond functional testing.
 
@@ -90,7 +90,7 @@ The following table illustrates the primary purpose of different performance tes
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Performance testing across all test types requires significant time and infrastructure investment. Start with foundational load testing and expand to specialized testing based on observed risks and business requirements.
 
-# Simulate realistic conditions
+## Simulate realistic conditions
 
 Performance test conditions must represent real usage to provide accurate insights into resource consumption, system behavior under load, and hidden performance issues. Testing under realistic conditions helps you find optimization opportunities across network bandwidth, database response times, and compute resource usage. Use results from these tests as valid baselines for future comparisons.
 
