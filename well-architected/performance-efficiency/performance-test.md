@@ -1,6 +1,6 @@
 ---
 title: Architecture strategies for performance testing
-description: Learn best practices for performance testing. See how to select tools, configure environments, and take other steps to help workloads meet performance targets.
+description: Learn best practices for performance testing to help workloads meet performance targets.
 author: simipaul
 ms.author: simipaul
 ms.date: 03/19/2026
@@ -11,237 +11,137 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives.|
+|**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives. |
 |---|---|
 
-Performance testing is a non-functional test that evaluates how a workload performs under various conditions. It helps you detect degradation, proactively address issues, and maintain alignment with service-level agreements.
+Performance testing is a non‑functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service‑level agreements.
 
-When you conduct performance testing, you validate that your workload consistently meets defined targets and delivers the performance your business demands. It involves testing the workload's response time, throughput, resource utilization, and stability to help ensure that the workload meets its performance requirements. 
+By measuring key indicators such as response time, throughput, resource utilization, and overall stability, performance testing verifies that your workload consistently meets defined targets and delivers the level of performance your business requires.
 
-This guide describes recommendations for performance testing that help you evaluate performance metrics in various scenarios, establish meaningful baselines, and continuously optimize over time.
+This article provides strategies for achieving performance targets through realistic testing practices so your workloads remain aligned with evolving business objectives.
 
-## Formalize performance test strategy 
+## Formalize performance test strategy
 
-Create a performance test strategy that documents your approach and aligns with business objectives. A well-defined strategy helps ensure consistent testing practices and sets clear expectations with stakeholders.
+Create a documented performance test strategy that aligns your testing approach with your workload's performance objectives and business goals. A formalized strategy ensures consistent testing, sets clear expectations with stakeholders, and provides a framework for measuring success. 
 
-**Document requirements and performance targets.** Work with stakeholders to establish specific performance goals, such as supporting a defined number of concurrent users or achieving specific response times. Translate these requirements into measurable test cases and scripts that validate your workload meets business needs.
+Document requirements and performance targets. Establish specific performance goals aligned with service-level objectives (SLOs), such as supporting a defined number of concurrent users or achieving specific response times. Translate business requirements into measurable test cases that validate these objectives.
 
-**Define acceptance criteria.** Specify measurable metrics that determine test success. Include thresholds for response time, throughput, error rates, and resource utilization. Review and update these criteria as business needs evolve.
+Define clear criteria that determine when to start testing (entry criteria), what constitutes test success (acceptance criteria), and when testing can stop (exit criteria). These measurable metrics prevent ambiguity and ensure stakeholder alignment.
 
-**Identify critical user flows.** Collaborate with stakeholders to determine which user journeys and transactions are most important to test. Focus testing efforts on processes that have the greatest impact on user experience and business operations.
+Identify critical user flows from the performance perspective. Collaborate with stakeholders to determine which user journeys and transactions are most important to test. 
 
-**Document workload and resource limitations.** Clearly outline resource constraints, such as available infrastructure, budget, and time. Setting realistic performance targets based on actual service boundaries prevents unrealistic expectations and ensures meaningful test results. 
+Document the types of performance testing your workload requires, the tools needed to execute them, and the resource constraints (infrastructure, budget, time) that influence testing decisions. Setting realistic targets based on actual service boundaries prevents unrealistic expectations.
 
-**Define test environment requirements.** Specify infrastructure needs, data requirements, and network configurations necessary to conduct meaningful performance tests that mirror production conditions.
+Specify test environment requirements, including infrastructure needs, data characteristics, and network configurations necessary to conduct meaningful performance tests that mirror production conditions. Assign clear ownership for test planning, execution, and analysis across performance engineers, developers, and operations teams.
 
-**Identify testing tools.** List required performance testing tools and assess team expertise with each tool. Include APM tools, load testing platforms, and monitoring solutions. Plan for training if gaps exist in team capabilities.
+Establish standardized reporting formats and dashboards for performance results. Consistent reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders. Define how defects are logged, prioritized, and tracked through resolution.
 
-**Testing ownership and responsibilities.** Assign clear ownership for test planning, execution, and analysis. Define roles for performance engineers, developers, and operations teams to ensure accountability and collaboration throughout the testing process.
+Create release-specific test plans that translate your strategy into actionable testing activities for each deployment.
 
-**Establish reporting & defect management standards.** Define reporting formats and create dashboards for performance results. Standardized reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders.
+> [!NOTE]
+> Tailor your performance testing strategy to your specific workload characteristics. A high-traffic consumer application requires different performance testing approaches than an internal batch processing system.
 
-**Create release-specific test plans.** Develop detailed test plans for each release that align with your overall strategy. As your testing process matures, refine plans to address specific scenarios, expected workload changes, and new features.
+## Test early, test often, and focus testing
 
-## Test early, test often and test what’s important
+Early performance analysis catches architectural bottlenecks before they become costly to remedy. Start performance testing as early as possible in the software development lifecycle to inform design decisions, validate architectural choices against performance goals, and identify optimization opportunities. 
 
-Performance testing identifies key metrics and establishes clear benchmarks. Start testing as early as possible in the software development lifecycle to catch and fix issues before they become costly. Early testing directly informs workload specifications, prompts design modifications, and validates architectural choices against performance goals. Test results provide evidence that guides code optimization, helping teams focus on areas with the greatest impact.
+Developers can validate performance during local development by profiling code, measuring response times, and identifying resource-intensive operations. 
 
-Focus testing on what matters most. Prioritize critical user journeys, high traffic workflows, and business critical transactions. Testing the right scenarios ensures maximum value and addresses performance characteristics that directly impact user experience and business outcomes.
+Focus testing on what matters most. Test results provide evidence that guides code optimization, helping teams focus efforts on areas with the greatest performance impact. Prioritize testing on critical user journeys, high-traffic workflows, and business-critical transactions that directly impact user experience and business outcomes. 
 
-Performance testing isn't a one-time event. Continuously test as your workload evolves and requirements change. Use insights from initial tests to enhance performance in subsequent iterations. Regular testing shows which optimizations to prioritize and whether changes deliver measurable improvements.
+Continuously test as your workload evolves. Use insights from initial tests to enhance performance in subsequent iterations. Analyze test results to determine whether acceptance criteria are met, examine data to understand system behavior under various conditions, and identify bottlenecks with root cause analysis.
 
-### Test in Production
+Establish baseline measurements by recording performance metrics during initial tests. In subsequent runs, compare results against established baselines and thresholds to detect performance changes. Regular testing shows which optimizations to prioritize and whether changes deliver measurable improvements.
 
-Test environments can't fully replicate real-world conditions, user behavior, or infrastructure characteristics that affect performance. Some performance requirements can only be validated in production. 
+Incorporate performance tests in deployment pipelines and run periodic automated tests to detect performance drift before it reaches production.
 
-Conduct controlled production testing. Run stress tests during off-peak hours to understand how your application behaves under resource exhaustion and recovers from failures. Production testing reveals how the workload performs under actual conditions including:
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Early performance testing requires dedicated infrastructure and specialized expertise, increasing operational costs. Balance this investment against the cost of performance problems discovered late and production incidents.
+
+## Validate performance in production
+
+Test environments can't fully replicate real-world conditions that affect performance. Production tests expose issues that only emerge under actual usage and provide accurate baselines for future optimization. Some performance requirements can only be validated where real users, data, and infrastructure intersect.
+
+Conduct controlled production testing during off-peak hours to understand how your workload behaves under resource exhaustion and recovers from failures. Production testing reveals performance characteristics under actual conditions including:
+
 - Realistic user behavior patterns and data volumes
 - True network latency and bandwidth variations
 - Geographic distribution effects
 - Third-party API performance and dependencies
 - Actual caching behavior and infrastructure characteristics
 
-Production tests expose issues that only emerge under real load and provide accurate baselines for future optimization. Use these insights to validate assumptions made in test environments and inform design decisions. 
+Monitor tests continuously to detect issues early. Implement automated safeguards that halt tests if they negatively impact users, such as automated rollback mechanisms and real-time alerting. These techniques ensure quick response and minimize disruptions.
 
-Plan and monitor production tests carefully. Implement automated safeguards that can halt tests if they negatively impact users. Use techniques such as automated rollback mechanisms and real-time monitoring and alerting to ensure quick response and minimize disruptions.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact.
 
-:::image type="icon" source="../_images/risk.svg"::: Risk: Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact.
+# Incorporate different types of testing
 
+Performance testing includes a range of tests that evaluate speed, stability, and scalability under various conditions. Each test type targets distinct performance aspects and uncovers unique insights, enabling full evaluation beyond functional testing.
 
-## Prepare the test
+Multiple test approaches help you capture full requirements early, reveal tradeoffs that influence technical decisions (compute resources, data store selection, scaling strategies), surface bottlenecks that shape workload design, and guide capacity planning as requirements shift.
 
-Preparing performance tests refers to setting up and arranging the resources, configurations, and test scenarios that you need to conduct performance testing effectively.
+Evaluate different test types and select tools that integrate with your observability platform. Assess team expertise, research available support and training, evaluate licensing costs, and validate tool compatibility through proof-of-concept testing.
+ 
+The following table illustrates the primary purpose of different performance testing types and when to apply them. While this table isn’t an exhaustive list, it serves as an illustrative example.
 
-### Define acceptance criteria
+| Testing Type | When to Apply | Primary Purpose |
+|-------------|---------------|---------|
+| Load Testing | Begin as early as possible | Ensure the system handles expected user load under normal and peak usage | 
+| Stress Testing | Before the system is production-ready | Understand system limits and recovery behavior |
+| Spike Testing | Begin as early as possible | Ensure the system handles abrupt traffic spikes |
+| Endurance/Soak Testing | Conducted after initial load test | Ensure the system can handle steady load to detect memory leaks or performance degradation |
 
-Acceptance criteria specify the performance requirements that a workload needs to meet to be considered acceptable or successful. Define criteria that align with the performance targets.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Performance testing across all test types requires significant time and infrastructure investment. Start with foundational load testing and expand to specialized testing based on observed risks and business requirements.
 
-*Review performance targets.* Performance targets define your desired level of performance for your workload. Review the performance targets that are established for the workload. Performance targets are metrics that can involve response time, throughput, resource utilization, or any other relevant performance indicators. For example, you might have a target for your response time to be under a certain threshold, such as less than 2 seconds.
+# Simulate realistic conditions
 
-*Define acceptance criteria.* Translate the performance targets into specific acceptance criteria that you can use to evaluate the performance of your workload. For example, suppose your performance target for response time is 2 seconds or less. Your acceptance criterion could be *The average response time of the workload should be less than 2 seconds*. Use these acceptance criteria to determine whether the workload meets the desired level of performance.
+Performance test conditions must represent real usage to provide accurate insights into resource consumption, system behavior under load, and hidden performance issues. Testing under realistic conditions identifies optimization opportunities across network bandwidth, database response times, and compute resource usage. Results from these tests serve as valid baselines for future comparisons.
 
-When you define acceptance criteria, it's important to focus on users and their expectations. Acceptance criteria help ensure that the delivered work meets user needs and requirements. Keep in mind the following considerations for incorporating the user perspective into acceptance criteria:
+Design test scenarios that replicate workload patterns such as concurrent user access, peak load periods, and specific transaction sequences. Testing under different patterns identifies performance bottlenecks and informs resource allocation decisions. Ensure scenarios align with business goals so performance outcomes reflect true user value.
 
-- *User requirements*: Understand the user needs and goals for the workload. Consider how the workload should perform to satisfy these requirements.
+Generate realistic load patterns using synthetic data with production data characteristics. This determines which system resources require optimization and ensures collected metrics represent genuine usage patterns. Use production-like datasets (properly anonymized) to highlight data management behaviors such as transaction consistency, latency, and volume handling.
 
-- *User experience*: Define acceptance criteria that capture the desired user experience. Include factors such as response time, usability, accessibility, and overall satisfaction.
+Create diverse test data sets representing various scenarios, user profiles, and data volumes. Include parameters such as user credentials, input data, and randomization to mimic different user behaviors. Validate measurable metrics (response time, throughput, error rates, resource utilization) against defined thresholds for each user flow.
 
-- *Functional requirements*: Address the specific functionality that the user expects to see in the workload. Define acceptance criteria around these functional requirements to help ensure that they're met.
+Include third-party integration calls when testing under load to determine behavior with external dependencies. Avoid directly mocking these services in your tests to maintain realism.
 
-- *Use cases*: Consider different scenarios or use cases that the user might encounter. Define acceptance criteria based on these use cases to validate the workload's performance in real-world situations.
+Build test environments that closely mirror production configuration. Match compute SKU, autoscaling settings, caching, and network conditions. Provision sufficient resources (CPU, memory, disk) along with external dependencies required for the workload. Implement automated validation checks to prevent configuration drift and ensure correct versions are deployed before running tests.
 
-*Set acceptance thresholds.* Determine the thresholds within the acceptance criteria that indicate whether the workload meets the performance targets. These thresholds define the acceptable range of performance for each metric. For example, suppose the acceptance criterion for response time is less than 2 seconds. You can set the threshold at 2.5 seconds. This level indicates that any response time over 2.5 seconds is considered a performance issue.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
 
-*Define passing criteria.* Establish the criteria for determining whether the workload passed or failed the performance test. You might define passing as meeting all the acceptance criteria or achieving a certain percentage of them.
+## Maintain test quality through governance and observability
 
-### Select the test type
+Performance test assets contain critical knowledge about your workload's expected behavior, acceptable performance thresholds, and realistic traffic patterns. Outdated or poorly maintained test assets produce unreliable performance data that undermines testing value.
 
-To select the right type of performance test, it's important to align the test with your acceptance criteria. The acceptance criteria define the conditions that need to be met for a requirement or bug fix to be considered done. Performance tests should aim to verify whether a workload meets these acceptance criteria and performs as expected under specified conditions. Aligning the performance test type with the acceptance criteria helps ensure that the test focuses on meeting the performance expectations that the criteria define.
+Store performance test scenarios, configurations, data generation code, and scripts in version control. Implement governance with code reviews, pull requests, and validations. Enforce quality standards through naming conventions, modular structure, and parameterization that separates load generation, monitoring, and result analysis into distinct, reusable components.
 
-- *Understand acceptance criteria*. Review the acceptance criteria for the requirement or bug fix. The criteria outline the specific conditions and functionalities to be met.
+Design test scripts with clear pass/fail criteria aligned to performance SLAs. Ensure tests are independent and reset state between runs to establish consistent baselines. Validate test scripts to ensure reliable execution. Separate test suites by type (load tests, stress tests, soak tests) rather than mixing them.
 
-- *Identify relevant performance metrics*. Based on the acceptance criteria, determine the performance metrics that are critical to achieving the desired outcomes. For example, if the acceptance criteria focus on response time, prioritizing load testing might be appropriate.
+Regularly review and update performance test scenarios to reflect current user behavior. Traffic patterns shift as user populations grow, feature usage changes, and new capabilities are introduced. Update test scripts to reflect new capacity limits, data shapes, architectural changes, and usage patterns. Keep performance baselines current while maintaining SLO commitments.
 
-- *Select an appropriate test type*. Evaluate the available test types and choose the one that best aligns with the identified performance metrics and acceptance criteria.
+Integrate observability into performance testing to understand not just whether your workload meets performance targets, but why performance behaves the way it does under load. Without observability, performance test failures require extensive investigation to diagnose root causes.
 
-The following table provides a sample of test types and their use cases.
+Instrument performance tests to capture:
 
-| Test type | Description | Use case |
-| --- | --- | --- |
-| Load testing | Simulate realistic user loads to measure how your workload performs under expected peak workloads. | Determines load tolerance. |
-| Stress testing | Push your workload beyond its normal limits to identify its breaking points and measure its ability to recover. | Determines resilience and robustness. |
-| Soak testing (endurance testing) | Run your workload under sustained high loads for an extended period to identify performance degradation, memory leaks, or resource issues. | Evaluates stability and reliability over time. |
-| Spike testing | Simulate sudden increases in user load to assess how your workload handles abrupt changes in demand. | Measures the ability to scale and maintain performance during peak periods. |
-| Compatibility testing | Test your workload's performance across various platforms, browsers, or devices. | Helps ensure consistent performance across various environments. |
+- Application performance metrics: response times, throughput, error rates
+- Infrastructure metrics: CPU, memory, network, disk utilization
+- Database performance metrics: query execution times, connection pool status
+- External dependency performance: API calls, third-party service latency
 
-Prioritize your selected test types based on the characteristics and requirements of your workload. Consider factors such as the criticality of performance metrics, user expectations, business priorities, and known issues or vulnerabilities.
+Establish automated analysis of performance test results. Implement automated checks that compare results against baselines, identify anomalies, and flag when performance degrades beyond acceptable thresholds.
 
-### Select testing tools
+Generate performance test reports that provide visibility into performance trends across test runs, comparison against established baselines, identification of regressions introduced by code changes, and distribution of response times at different percentiles.
 
-Choose appropriate tools based on the type of performance testing that you want to run. Evaluate the testing environment's infrastructure, resources, and constraints. Choose testing tools that support the desired test types and provide the necessary features for monitoring, measurement, analysis, and reporting.
-
-An application performance monitoring (APM) tool provides deep insights into applications and is an essential testing tool. It helps you trace individual transactions and map their paths through various workload services. After testing, you should use the APM tool to analyze and compare testing data against your performance baseline.
-
-Use profiling tools to identify performance bottlenecks in your code. Profiling helps identify areas of the code that consume the most resources and need optimization. It provides insights into the execution time and memory usage of different parts of the code.
-
-The following steps can help you select the appropriate testing tools:
-
-- *Identify testing requirements*. Begin by understanding the specific requirements of your performance testing. Consider various factors:
-  - The type of workload
-  - Performance metrics to measure, such as response time and throughput
-  - The complexity of the workload architecture
-  - The testing environment, such as cloud-based, on-premises, or hybrid
-
-- *Research testing tools*. Conduct research to identify performance testing tools that align with your requirements. Consider commercial and open-source tools that are available in the market. Look for tools that support your desired types of performance testing, such as load testing or stress testing, and that provide features for measuring performance metrics.
-
-- *Evaluate tool features*. Assess the features that each testing tool provides. Look for capabilities such as simulation of realistic user behavior and scalability to handle large user loads. Consider support for various protocols and technologies, integration with other testing tools or frameworks, and reporting and analysis capabilities.
-
-- *Consider compatibility and integration*. Determine the compatibility of the testing tools with your existing infrastructure and technologies. Ensure that the tools can be easily integrated into your testing environment and can communicate with the necessary workload for monitoring and analysis.
-
-- *Evaluate cost and licensing*. Assess the cost structure and licensing terms that are associated with the testing tools. Consider factors such as the initial investment, maintenance costs, and support costs. Also consider other licensing requirements that depend on the number of users or virtual users.
-
-- *Conduct a POC*. Select a few tools that appear to be the most suitable based on your evaluation. Conduct a small-scale POC to validate the usability, features, and effectiveness of the tools in your specific testing scenario.
-
-- *Consider support and training*. Evaluate the level of support and training that the tool's vendor or community provides. Determine the availability of documentation, tutorials, and technical support channels to assist with any challenges or issues that might arise during the testing process.
-
-### Create test scenarios
-
-Creating test scenarios refers to the process of designing specific situations or conditions that are suitable for testing the performance of a workload. Test scenarios are created to emulate realistic user behavior and workload patterns. These scenarios provide a way for performance testers to evaluate how the workload performs under various conditions.
-
-Test scenarios make it possible to replicate various workload patterns, such as concurrent user access, peak load periods, or specific transaction sequences. By testing the workload under different workload patterns, you can identify performance bottlenecks and optimize resource allocation.
-
-- *Define user behavior*. Emulate realistic user behavior and workload patterns by identifying the steps and actions that users perform when they interact with the workload. Consider activities such as signing in, performing searches, submitting forms, or accessing specific features. Break down each scenario into specific steps and actions that represent the user's interaction with the workload. You can include navigating through pages, performing transactions, or interacting with various elements of the workload.
-
-- *Determine data involvement*. Identify the test data required to run the test scenarios. You might include creating or generating realistic data sets that represent various scenarios, user profiles, or data volumes. Ensure that the test data is diverse and covers different use cases to provide a comprehensive performance evaluation.
-
-- *Design test scripts*. Create test scripts that automate the execution of the defined test scenarios. Test scripts typically consist of a sequence of actions, HTTP requests, or interactions with workload APIs or user interfaces. Use performance testing tools or programming languages to write the scripts, considering factors such as parameterization, correlation, and dynamic data handling. Validate the test scripts for correctness and functionality. Debug any issues, such as script errors, missing or incorrect actions, or data-related problems. Test script validation is crucial to help ensure accurate and reliable performance test execution.
-
-- *Configure test variables and parameters*. Configure variables and parameters within test scripts to introduce variability and simulate real-world scenarios. Include parameters such as user credentials, input data, or randomization to mimic different user behaviors and workload responses.
-
-- *Iteratively refine scripts*. Continuously refine and enhance test scripts based on feedback, test results, or changing requirements. Consider optimizing script logic, parameterization, and error handling, or adding extra validation and checkpoints.
-
-### Configure the test environment
-
-Configuring a test environment refers to the process of setting up the infrastructure, software, and network configurations that you need to create an environment that closely resembles your production environment.
-
-To set up your testing environment in a way that boosts performance efficiency, include the following steps in your configuration process:
-
-- *Mirror your production environment*. Set up your test environment to closely resemble your production environment. Consider factors such as infrastructure configuration, network settings, and software configurations. The goal is to ensure that the performance test results are representative of real-world conditions.
-
-- *Provision sufficient resources*. Allocate adequate resources such as CPU, memory, and disk space to the test environment. Ensure that the available resources can handle the expected workload and provide accurate performance measurements.
-
-- *Replicate network conditions*. Configure the network settings in the test environment to replicate the expected network conditions during the actual workload deployment. You need to include bandwidth, latency, and network protocols.
-
-- *Install and configure dependencies*. Install the software, libraries, databases, and other dependencies that are required for the workload to run correctly. Configure these dependencies to match the expected production environment.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are costs associated with maintaining separate test environments, storing data, using tooling, and running tests. Know the cost of performance testing, and find a way to optimize spending.
-
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Production data can contain sensitive information. Without a robust scrubbing and masking strategy, you risk leaking sensitive data when you use production data for testing.
-
-## Perform the tests
-
-Run the performance tests by using the chosen testing tool. Testing involves measuring and recording performance metrics, monitoring health, and capturing any performance issues that arise.
-
-Monitor and collect performance metrics such as response time, throughput, CPU and memory utilization, and other relevant indicators.
-
-Use the defined test scenarios to put the workload under expected loads.  Conduct tests under these varying load conditions. For example, use levels, such as normal, peak, and stress levels, to analyze the behavior of the workload in various scenarios.
-
-## Analyze the results
-
-Analyzing the test results involves examining the collected data and metrics from the performance tests to gain insights into the performance of the workload. The goal is to identify performance issues and use the feedback to adjust priorities in application development. The following actions are key steps for analyzing test results.
-
-*Review performance metrics.* Look at the performance metrics that you collect during performance testing, such as response times, throughput, error rates, CPU and memory utilization, and network latency. Analyze these metrics to understand the overall performance of the workload.
-
-- *Identify bottlenecks*. Evaluate the performance metrics to identify any bottlenecks or areas of inefficient performance. The evaluation can include high response times, resource constraints, database issues, network latency, and scalability limitations. Pinpointing the root causes of these bottlenecks helps you prioritize performance improvements.
-
-- *Correlate metrics*. Assess the relationships and correlations between various performance metrics. For example, analyze how increased load or resource utilization affects response times. Understanding these correlations can provide valuable insights into workload behavior under different conditions. Look for patterns and trends in the performance data over time. Analyze performance under different load levels or during specific periods. Detecting trends can help identify seasonal variations, peak usage times, or recurring performance issues.
-
-*Evaluate acceptance criteria.* Compare the retest results against the predefined acceptance criteria and performance goals. Assess whether the workload meets the desired performance standards. If the workload doesn't meet the acceptance criteria, further investigate and refine the optimizations.
-
-*Iterate and refine the analysis.*  Make other adjustments and improvements as needed. Use the collected data and metrics to diagnose specific performance issues. The diagnosis might involve tracing through the workload components, examining log files, monitoring resource usage, or analyzing error messages. Dig deeper into the data to understand the underlying causes of performance problems.
-
-Based on the analysis of the test results, prioritize identified performance issues and implement necessary improvements. The improvements can involve optimizing code, tuning database queries, improving caching mechanisms, and optimizing network configurations.
-
-## Establish baselines
-
-Baselines provide a reference point for comparing performance results over time. Baselines should be meaningful snapshots of workload performance—you don't need to use every test as a baseline.
-
-Consider the workload objectives, and document performance snapshots that allow you to learn over time and optimize. Use these baseline measurements as a benchmark for future performance tests, and use them to identify any degradation or improvement.
-
-To establish baselines for performance testing and use them as a benchmark for future performance tests, follow these steps:
-
-- *Identify performance metrics*. Determine the specific performance metrics that you want to measure and track. Examples include:
-  - Response time, or how quickly the workload responds to requests.
-  - Throughput, or the number of requests that are processed per unit of time.
-  - Resource utilization, such as CPU, memory, and disk usage.
-
-- *Record meaningful measurements*. Record the performance metrics that you obtain during the test as the baseline measurements. These measurements represent the starting point against which you compare future performance tests.
-
-- *Compare future tests*. In subsequent performance tests, compare the performance metrics against the established baselines and thresholds. The comparison allows you to identify any improvements or degradation in performance.
-
-## Test continuously
-
-Continuous testing involves the ongoing monitoring and refinement of your tests. Continuous testing helps you maintain consistent and acceptable levels of performance. A workload should provide a consistent and acceptable level of performance relative to the baseline. You should tune the workload over time to produce consistent performance that's within the acceptable limits of performance. Here are some key practices:
-
-- *Set degradation limits*. Define numeric thresholds that specify the level of performance degradation that's acceptable over time. By setting these limits, you can monitor performance fluctuations and receive alerts when the performance falls below the defined threshold.
-
-- *Include quality assurance*. Incorporate performance requirements, such as CPU utilization and maximum requests per second, into the quality assurance process. Treat performance requirements with the same level of importance as functional requirements. This process helps ensure that the workload meets the defined performance requirements before you deploy it to production.
-
-- *Automate alerting*. In live environments, rapid detection and response are crucial. Set up automated alerting systems that use the performance baseline as their reference. If there's a significant deviation in performance, the necessary teams are alerted immediately to act.
-
-- *Test changes*. Some performance issues might only manifest in a live setting. Apply thorough testing practices for proposed code and infrastructure changes. Use code instrumentation to gain insights into the application's performance characteristics, such as hot paths, memory allocations, and garbage collection. This testing ensures that any change introduced doesn't degrade performance beyond the acceptable limits.
+Use Application Performance Monitoring (APM) tools to track trends over time, identify consistently degrading metrics, and enable data-driven decisions about performance improvements.
 
 ## Azure facilitation
 
-**Perform the tests**: [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate performance testing into your CI/CD pipeline. You can incorporate load testing as a step in your pipeline to validate the performance and scalability of your applications.
+[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate performance testing into your CI/CD pipeline. You can incorporate load testing as a step in your pipeline to validate the performance and scalability of your applications.
 
 [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) provides a way for you to inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
 
 [Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
 
-**Analyzing the results**: [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Testing takes time and skill to perform and can affect operational efficiency.
+[Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
 
 ## Related links
 
