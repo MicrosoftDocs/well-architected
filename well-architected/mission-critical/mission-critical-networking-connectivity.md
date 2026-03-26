@@ -391,7 +391,7 @@ This section explores how internet egress can be achieved while ensuring securit
   - Up to 16 IP addresses can be assigned to a single NAT gateway.
   - A default TCP idle timeout of 4 minutes. If idle timeout is altered to a higher value, flows will be held for longer, which will increase the pressure on the SNAT port inventory.
 
-- NAT gateway can't provide zonal isolation out-of-the-box. To get zone redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
+- NAT gateway can't provide zone isolation out-of-the-box. To get zone redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
 
 ### Design recommendations
 
@@ -424,7 +424,7 @@ While the application design strongly advocates independent regional deployment 
 
 - Availability Zone connectivity depends on regional characteristics, and therefore traffic entering a region via an edge location may need to be routed between zones to reach its destination. This will add a ~1ms-2ms latency given inter-zone routing and 'speed of light' constraints, but this should only have a bearing for hyper sensitive workloads.
 
-- Availability Zones are treated as logical entities within the context of a single subscription, so different subscriptions might have a different zonal mapping for the same region. For example, zone 1 in Subscription A could correspond to the same physical data center as zone 2 in subscription B.
+- Availability Zones are treated as logical entities within the context of a single subscription, so different subscriptions might have a different zone mapping for the same region. For example, zone 1 in Subscription A could correspond to the same physical data center as zone 2 in subscription B.
 
 - With application scenarios that are extremely chatty between application components, spreading application tiers across zones can introduce significant latency and increased costs. It's possible to mitigate this within the design by constraining a deployment stamp to a single zone and deploying multiple stamps across the different zones.
 

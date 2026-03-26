@@ -1,0 +1,11 @@
+- name: HPC 
+  href: index.yml
+  items:
+    - name: Get started
+      href: get-started-overview.md
+    - name: Design methodology
+      href: hpc-design-methodology.md
+    - name: Design principles
+      href: hpc-design-principles.md
+    - name: Architecture pattern
+      href: hpc-architecture-pattern.md

@@ -19,6 +19,21 @@ Background jobs help minimize the load on the application UI, which improves ava
 
 To choose which task to designate as a background job, consider whether the task runs without user interaction and whether the UI needs to wait for the task to complete. Tasks that require the user or the UI to wait while they run are typically not appropriate background jobs.
 
+## Terminology
+
+Before you start developing your background jobs, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Asynchronous processing** | Processing operations independently from the main application flow without waiting for their completion. Supports nonblocking operations where the calling process continues without waiting for the background task to finish. |
+| **Background job** | Automated task that runs independently of the UI without requiring user interaction. Typically handles operations like batch processing, data transformation, scheduled maintenance, or long-running workflows. |
+| **Checkpoint** | Saved state of a long-running task that supports recovery from the last known good point rather than restarting from the beginning. Critical for resilient background job implementations. |
+| **Dead-letter queue** | Special queue that stores messages that don't process successfully after multiple attempts. Prevents poison messages from blocking the main processing queue while preserving them for investigation and resolution. |
+| **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs with the same input. Essential for background jobs that might process duplicate messages or retry after failures. |
+| **Poison message** | Message that repeatedly causes processing failures, which potentially blocks the queue and prevents processing other messages. Requires special handling to prevent system-wide disruption. |
+| **Singleton** | Design pattern that ensures that only one instance of a background job runs at a time, even when multiple compute instances are available. Used for jobs that must not run concurrently, such as data consistency operations. |
+| **WebJob** | Azure App Service feature that supports running scripts or programs as background tasks within the context of a web app. Supports both continuous and triggered execution modes. |
+
 ## Evaluate the need for background jobs
 
 Some examples of background jobs are:
@@ -151,7 +166,7 @@ Configure background tasks that are initiated by messages or that process messag
 
   Background tasks should be idempotent, which means that when the task processes the same message more than once, it doesn't cause an error or inconsistency in the application's data. Some operations are naturally idempotent, for example if a stored value is set to a specific new value. However, some operations cause inconsistencies, for example if a value is added to an existing stored value without verifying that the stored value is still the same as when the message was originally sent. Configure Service Bus queues to automatically remove duplicated messages. For more information, see [Idempotent message processing](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
-- Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/previous-versions/msp-n-p/dn589781(v=pandp.10)) and [Idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns).
+- Some messaging systems, such as Azure Storage queues and Service Bus queues, support a dequeue count property that indicates how many times a message from the queue is read. This data is useful for handling repeated messages and poison messages. For more information, see [Asynchronous messaging primer](/azure/architecture/guide/technology-choices/messaging).
 
 ## Make jobs scalable
 

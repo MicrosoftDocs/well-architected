@@ -18,7 +18,7 @@ This guide describes the recommendations for securing sensitive information in a
 
 Credentials, such as API keys, Open Authorization (OAuth) tokens, and Secure Shell (SSH) keys are secrets. Some credentials, such as client-side OAuth tokens, can be dynamically created at runtime. Dynamic secrets still need to be safeguarded despite their temporary nature. Noncredential information, like certificates and digital signature keys, can also be sensitive. Compliance requirements might cause configuration settings that aren't typically considered secret to be treated as application secrets.
 
-**Definitions** 
+**Terminology** 
 
 |Term   |Definition   |
 |---------|---------|
