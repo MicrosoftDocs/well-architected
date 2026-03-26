@@ -91,9 +91,9 @@ Treat each capacity as a self-contained unit. If one saturates, others continue 
 
 Your monitoring strategy should focus on the places where failures are likely. Track service availability, pipeline success, job runtimes, and capacity usage. Don’t ignore dependencies: on-prem gateways, APIs, and internal services can silently become points of failure.
 
-Fabric provides rich telemetry, but pair it with your own health probes and dashboards. Integrate  with Azure Monitor.  Early alerts give your team time to act before users notice anything. Correlate logs and metrics across systems to spot the root cause quickly, not just the symptom.
+Fabric provides rich telemetry, but pair it with your own health probes and dashboards. Integrate  with Azure Monitor. Early alerts give your team time to act before users notice anything. Correlate logs and metrics across systems to spot the root cause quickly, not just the symptom.
 
-For more information about what to monitor, see //link
+For more information about what to monitor, see [What is workspace monitoring?](/fabric/fundamentals/workspace-monitoring-overview)
 
 ## Apply self-preservation techniques
 

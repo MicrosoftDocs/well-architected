@@ -98,7 +98,7 @@ Fabric does not provide built-in encryption for data being processed in memory. 
 > Refer to these articles: 
 >
 > [Encryption in Microsoft Fabric](/fabric/security/security-overview#secure‑data)
-> [OneLake encryption and storage security](/fabric/onelake/security)
+> [OneLake encryption and storage security](/fabric/onelake/security/get-started-security)
 > [Azure Key Vault documentation](/azure/key-vault/)
 > [Customer-managed keys (CMK) in Azure](/security/benchmark/azure/baselines/fabric-security-baseline)
 
@@ -173,7 +173,7 @@ Penetration testing should follow Microsoft cloud penetration testing rules of e
 
 > Refer to these articles: 
 >
-> [Microsoft Cloud Penetration Testing Rules of Engagement](/security/penetration-testing)
+> [Microsoft Cloud Penetration Testing Rules of Engagement](https://www.microsoft.com/msrc/pentest-rules-of-engagement)
 > [Fabric REST APIs](/rest/api/fabric/)
 
 
