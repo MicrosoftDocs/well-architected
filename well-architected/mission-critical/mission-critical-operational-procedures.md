@@ -65,7 +65,7 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 ### Design considerations
 
-- **Built-in operations of Azure services**. Azure services provide built-in (enabled by default) and configurable platform capabilities, like zonal redundancy and geo-replication. An application's reliability depends on these operations. Certain configurable capabilities incur an additional cost, like the multi-write deployment configuration for Azure Cosmos DB. Avoid building custom solutions unless you absolutely need to.
+- **Built-in operations of Azure services**. Azure services provide built-in (enabled by default) and configurable platform capabilities, like zone redundancy and geo-replication. An application's reliability depends on these operations. Certain configurable capabilities incur an additional cost, like the multi-write deployment configuration for Azure Cosmos DB. Avoid building custom solutions unless you absolutely need to.
 
 - **Operational access and execution time**. Most required operations are exposed and accessible through the Azure Resource Manager API or the Azure portal. However, certain operations require assistance from support engineers. For example, a restore from a periodic backup of an Azure Cosmos DB database, or the recovery of a deleted resource, can be performed only by Azure support engineers via a support case. This dependency might affect the downtime of the application. For stateless resources, we recommend that you redeploy instead of waiting for support engineers to try to recover deleted resources.
 
@@ -125,7 +125,7 @@ Mission-critical design strongly endorses the principle of ephemeral stateless a
 
 Key, secret, and certificate expirations are a common cause of application outage. Secret management for a mission-critical application must provide the needed security and offer an appropriate level of availability to align with your maximum-reliability requirements. You need to perform key, secret, and certificate rotation on a regular basis by using a managed service or as part of update management, and apply processes for code and configuration changes.
 
-Many Azure services support Microsoft Entra authentication instead of relying on connection strings / keys. Using Microsoft Entra ID greatly reduces operational overhead. If you do use a secret management solution, it should integrate with other services, support zonal and regional redundancy, and provide integration with Microsoft Entra ID for authentication and authorization. Key Vault provides these features.
+Many Azure services support Microsoft Entra authentication instead of relying on connection strings / keys. Using Microsoft Entra ID greatly reduces operational overhead. If you do use a secret management solution, it should integrate with other services, support zone and regional redundancy, and provide integration with Microsoft Entra ID for authentication and authorization. Key Vault provides these features.
 
 ### Design considerations
 

@@ -18,7 +18,7 @@ If your data isn't protected, it can be maliciously modified, which leads to los
 
 This guide describes the recommendations for encrypting and protecting your data. Encryption is the process of using cryptography algorithms to **make the data unreadable and lock the data with a key**. In the encrypted state, data can't be deciphered. It can only be decrypted by using a key that's paired with the encryption key.
 
-**Definitions**
+**Terminology**
 
 |Terms   |Definition   |
 |---------|---------|

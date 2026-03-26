@@ -18,7 +18,7 @@ This guide describes the recommendations for monitoring and threat detection. Mo
 
 Monitoring is an Operational Excellence approach that's applied across all Well-Architected Framework pillars. This guide provides recommendations only from a security perspective. General concepts of monitoring, like code instrumentation, data collection, and analysis, are out of scope for this guide. For information about core monitoring concepts, see [Recommendations for designing and building an observability framework](../operational-excellence/observability.md).
 
-**Definitions** 
+**Terminology**
 
 | Term | Definition |
 |---|---|

@@ -20,14 +20,18 @@ Health modeling bridges the gap between tribal operational knowledge and actiona
 
 This guide offers practical guidance about health modeling, including how to build a model that assesses the runtime health of a workload and all of its subsystems.
 
-|Terminology|Definition|
+## Terminology
+
+Before you start developing your health model, familiarize yourself with these key terms.
+
+| Terminology | Definition |
 |---|---|
-|Health modeling|An observability exercise that uses business context to interpret monitoring data as health states.|
-|Health model|A graphical representation of logical entities and their relationships for a given scope. Each node has a health state definition to rationalize monitoring data across the model.|
-|Health entity|A logical component that represents an individual unit of a system, a logical combination of multiple related entities, or the overall system.|
-|Health state|A defined and measurable status that provides meaningful operational insights about the health of an entity.|
-|Health signal|Individual data streams that provide insights into the operational behavior of an entity.|
-|Model of models|An aggregated modeling scope in which entities represent distinct health models for component systems.|
+| **Health modeling** | An observability exercise that uses business context to interpret monitoring data as health states. |
+| **Health model** | A graphical representation of logical entities and their relationships for a given scope. Each node has a health state definition to rationalize monitoring data across the model. |
+| **Health entity** | A logical component that represents an individual unit of a system, a logical combination of multiple related entities, or the overall system. |
+| **Health state** | A defined and measurable status that provides meaningful operational insights about the health of an entity. |
+| **Health signal** | Individual data streams that provide insights into the operational behavior of an entity. |
+| **Model of models** | An aggregated modeling scope in which entities represent distinct health models for component systems. |
 
 We recommend that you watch this video to get a high-level understanding of health modeling.
 

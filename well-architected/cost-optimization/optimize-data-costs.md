@@ -134,7 +134,7 @@ To optimize data replication for cost optimization, consider the following guide
 
 - *Choose the right replication strategy*: Select a replication technology that aligns with your goals for cost optimization. Consider the service-level agreement (SLA) requirements for your workload.
 
-  Evaluate options such as synchronous replication, asynchronous replication, or a combination of both. Base the decision on factors like data consistency requirements and network bandwidth considerations. Assess the level of availability that you need for your workload, and evaluate the need for zonal versus regional redundancy.
+  Evaluate options such as synchronous replication, asynchronous replication, or a combination of both. Base the decision on factors like data consistency requirements and network bandwidth considerations. Assess the level of availability that you need for your workload, and evaluate the need for zone versus regional redundancy.
 
 - *Optimize network bandwidth*: Minimize the usage of network bandwidth by implementing compression and data deduplication techniques. These techniques can reduce the amount of data transferred during replication, which can save costs.
 
