@@ -169,7 +169,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >       > [!IMPORTANT]
 >       >
 >       > Purchase reserved instances to reduce Azure costs for workloads that have stable usage. Manage usage to make sure that you're not paying for more resources than you're using. Keep reserved instances simple and keep management overhead low to reduce costs.
->   - **[Savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview)**: If you commit to spend a fixed hourly amount on compute services for one or three years, then this plan can reduce costs.
+>   - **[Savings plan](/azure/cost-management-billing/savings-plan/savings-plan-overview)**: If you commit to spend a fixed hourly amount on compute services for one or three years, then this plan can reduce costs.
 >   - **[Azure Hybrid Benefit](/azure/cost-management-billing/scope-level/)**: Save when you migrate your on-premises VMs to Azure.
 > - **Monitor usage.** Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when they're not in use. Monitoring is a key approach of Operational Excellence. For more information, see the recommendations in [Operational Excellence](#operational-excellence).
 >
