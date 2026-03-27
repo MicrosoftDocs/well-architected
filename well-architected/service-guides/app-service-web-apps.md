@@ -73,7 +73,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >    Regularly test your autoscaling rules. Simulate load scenarios to verify that your app scales as expected. You should log scaling events so that you can troubleshoot problems that might arise and optimize your scaling strategy over time.
 >
->    App Service has a limitation on the number of instances within a plan, which can affect scaling reliability. To address this, one strategy is to deploy identical stamps, with each stamp running its own App Service plan instance and endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single-zone deployments and Azure Front Door for multiple-region deployments. This approach is ideal for mission-critical applications when reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>    App Service has a limitation on the number of instances within a plan, which can affect scaling reliability. To address this, one strategy is to deploy identical stamps, with each stamp running its own App Service plan instance and endpoint. It's essential that you front all stamps with an external load balancer to distribute traffic across them. Use Azure Application Gateway for single-zone deployments and Azure Front Door for multiple-region deployments. This approach is ideal for mission-critical applications when reliability is crucial. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service.md).
 >
 > - **Plan your recoverability:** Redundancy is crucial for business continuity. Fail over to another instance if one instance is unreachable. Explore automatic healing capabilities in App Service, such as automatic repair of instances.
 >
@@ -257,7 +257,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Deploy immutable units:** Implement the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) to compartmentalize App Service into an immutable stamp. App Service supports the use of containers, which are inherently immutable. Consider [custom containers](/azure/app-service/configure-custom-container) for your App Service web app.
 >
->    Each stamp represents a self-contained unit that you can quickly scale out or scale in. Units that are based on this stamp are temporary and stateless. Stateless design simplifies operations and maintenance. This approach is ideal for mission-critical applications. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service).
+>    Each stamp represents a self-contained unit that you can quickly scale out or scale in. Units that are based on this stamp are temporary and stateless. Stateless design simplifies operations and maintenance. This approach is ideal for mission-critical applications. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service.md).
 >
 >   Use an infrastructure as code (IaC) technology, such as Bicep, to stamp out units with repeatability and consistency.
 >

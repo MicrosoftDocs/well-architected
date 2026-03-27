@@ -60,7 +60,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Baseline with App Services
-            url: /azure/architecture/guide/networking/global-web-applications/mission-critical-app-service
+            url: /azure/architecture/guide/networking/global-web-applications/mission-critical-app-service.md
 
  # Card
   - title: Learn
