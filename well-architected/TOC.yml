@@ -311,11 +311,7 @@
         - name: Azure SQL Database
           href: service-guides/azure-sql-database.md
         - name: Azure SQL Managed Instance
-          items:
-            - name: Reliability
-              href: service-guides/azure-sql-managed-instance/reliability.md
-            - name: Operational excellence
-              href: service-guides/azure-sql-managed-instance/operational-excellence.md
+          href: service-guides/azure-sql-managed-instance.md
         - name: Azure Traffic Manager
           href: service-guides/azure-traffic-manager.md
         - name: Azure Virtual Machines
