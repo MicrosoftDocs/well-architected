@@ -16,7 +16,7 @@ As a cloud solution architect, treat monitoring as a core architectural capabili
 
 Typically, a monitoring flow follows a linear progression and can be divided into four logical phases, each building on the insights of the previous one.
 
-:::image type="content" source="_images/monitor-pipeline.png" alt-text="Diagram showing the end to end flow of a monitoring system. It breaks monitoring into four logical phases, each building on the previous one.." lightbox="_images/monitor-pipeline.png" border="false":::
+:::image type="content" source="_images/monitor-pipeline.png" alt-text="Linear flow diagram showing four monitoring phases: Data sources and instrumentation (apps/workloads, app platform, Azure platform, custom sources), Collection and storage (metrics, logs, traces, APM telemetry, custom metrics, resource logs, activity logs), Analysis (filtering, aggregation and correlation, deduplication, KPI and trend analysis, alerting), and Visualization (dashboards, reports, ad-hoc queries, interactive exploration, health models)." lightbox="_images/monitor-pipeline.png" border="false":::
 
 This guide explores the process of building those phases and provides best practices. It doesn't cover specialized monitoring use cases like security. The guidance builds on the key strategies outlined in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md), which you should review first.
 
@@ -76,7 +76,7 @@ Consider an ecommerce application. When a customer places an order, a business t
 
 Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
 
-:::image type="content" source="_images/order-failure-diagnosis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/order-failure-diagnosis.png" border="false":::
+:::image type="content" source="_images/order-failure-diagnosis.png" alt-text="Order failure diagnosis diagram showing an eCommerce checkout process flow from customer order through payment API, database, and email service ending in failure. Below shows three telemetry types for diagnosis: application logs showing payment API 500 error, distributed trace highlighting high latency in payment service, and metrics showing checkout failure rate increasing from 1% to 8% in 10 minutes." lightbox="_images/order-failure-diagnosis.png" border="false":::
 
 With proper instrumentation, the request is tracked end-to-end across every component. Logs reveal that the payment API returned a 500 error. A distributed trace shows latency spiking specifically within the payment service. Metrics confirm that the checkout failure rate has climbed from 1% to 8% in 10 minutes. That makes diagnosis systematic and data-driven rather than speculative.
 
@@ -89,7 +89,7 @@ It's common to use data collection services or monitoring agents that pull data 
 
 Or, the agents can act as a passive receiver that wait for the data to be sent from the application.
 
-:::image type="content" source="_images/monitor-write-shared-storage.png" alt-text="Diagram that shows instrumentation data stored in shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
+:::image type="content" source="_images/monitor-write-shared-storage.png" alt-text="Direct collection architecture diagram showing two application instances, each with monitoring agents that collect ETL files, OS event logs, application trace logs, and custom trace logs, then write directly to shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
 
 Telemetry usually comes from these sources:
 
@@ -124,7 +124,7 @@ In some cases, you might send the same telemetry to multiple destinations for di
 
 A single application can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system making sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
 
-:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/service-instrumentation-data.png" border="false":::
+:::image type="content" source="_images/service-instrumentation-data.png" alt-text="Queuing architecture diagram showing two application instances with data collection services that gather ETL files, OS event logs, application trace logs, and custom trace logs, then publish to a message queue. A storage writing service consumes from the queue, followed by consolidation and cleanup service, before storing in shared storage." lightbox="_images/service-instrumentation-data.png" border="false":::
 
 In this architecture, a monitoring agent publishes telemetry data to a queue. A separate, asynchronous process, such as a storage writing service, consumes messages from the queue and writes them to shared storage.
 
@@ -215,7 +215,7 @@ They first queried the application logs and filtered them to the relevant time w
 
 Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
 
-:::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Diagram that shows an example of using a service to consolidate instrumentation data." lightbox="_images/db-bottleneck-analysis.png" border="false":::
+:::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Database bottleneck correlation analysis showing three telemetry sources identifying checkout failure cause: application logs showing timeout errors and request timeout exceptions, database performance metrics showing latency doubling, and platform logs revealing 90% CPU utilization and high CPU usage on the database server." lightbox="_images/db-bottleneck-analysis.png" border="false":::
 
 Warm analysis revealed that the cause was the dependency on the database, which was under heavy load, because:
 
