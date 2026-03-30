@@ -64,7 +64,7 @@ When adding instrumentation, follow these simple principles: Maintain consistenc
 
 - **Use structured telemetry**, which is recorded in both human- and machine-readable formats (JSON, MessagePack, Protobuf).
 
-- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Pull back on verbosity in lower environments, whereas increase verbosity in production. Another strategy is to align verbosity with the criticality of the component.
+- **Make log verbosity configurable** because verbose logging can incur significant costs. Also, it can lead to noise making querying and filtering challenging. One strategy could be to set log levels according to the environment. Increase verbosity in lower environments, and pull back on verbosity in production. Another strategy is to align verbosity with the criticality of the component.
 
 - **Categorize by operational concern** to make filtering and analysis more efficient. For example, indicate purpose in telemetry data whether it's for audit, security, debugging, or performance. 
 
@@ -93,9 +93,9 @@ Or, the agents can act as a passive receiver that wait for the data to be sent f
 
 Telemetry usually comes from these sources:
 
-- **Application-level telemetry**. After the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be pulled automatically using Application Performance Management (APM) tool, such as [Azure Application Insights](../service-guides/application-insights.md). It will automatically capture code metrics and also application specifics like request rate, failure rate, dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
+- **Application-level telemetry**. After the application is instrumented by using SDKs or standards like OpenTelemetry, telemetry data can be pulled automatically using Application Performance Management (APM) tool, such as [Azure Application Insights](../service-guides/application-insights.md). It will automatically capture custom business metrics like **OrderPlaced** and **NewUserProfileCreated**, and diagnostics data like application exceptions,  dependency duration, and distributed traces. Then, that data is ingested into Azure Monitor Logs for analysis. Application Insights gives you the ability to control data retention periods, configure sampling, and manage certain privacy settings.
 
-- **Application host telemetry**. Application hosts emit several categories of telemetry. These signals help monitor the behavior of the application like resource utilization. Application Insights is well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. 
+- **Application host telemetry**. Application hosts emit several categories of telemetry. These signals help monitor the behavior of the application platform, like request rate, request queue length, response time, dependency call count, and HTTP status code distribution. Application Insights is well-integrated with most Azure application hosting services like Azure Functions, App Service, and Virtual Machines. 
 
 - **Platform logs**. There's telemetry generated from the other infrastructure that the application runs on. In Azure, that's mainly _activity logs_ and _resource logs_. Activity logs track  subscription-level operations (resource creation, updates, deletes). Resource logs that capture resource-specific events, like storage access logs, firewall events. 
 
@@ -213,7 +213,7 @@ Let's continue with the eCommerce example. By using hot analysis, it was  detect
 
 They first queried the application logs and filtered them to the relevant time window, confirming an increase in request timeout exceptions. By grouping the results by dependency, they identified that the spike in failures occurred in requests that relied on the database. Then, queried the database request telemetry and confirmed that query latency had doubled, using correlation IDs to verify that the failing requests were directly affected by the increased latency. 
 
-Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization remained at 90%, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
+Based on the collected metrics, they examined platform metrics during the same period and observed that the database server CPU utilization hit and remained at 90% for the time period, confirming that infrastructure-level database resource exhaustion was driving the request timeouts.
 
 :::image type="content" source="_images/db-bottleneck-analysis.png" alt-text="Database bottleneck correlation analysis showing three telemetry sources identifying checkout failure cause: application logs showing timeout errors and request timeout exceptions, database performance metrics showing latency doubling, and platform logs revealing 90% CPU utilization and high CPU usage on the database server." lightbox="_images/db-bottleneck-analysis.png" border="false":::
 
@@ -308,9 +308,9 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 - [Log Analytics](/azure/azure-monitor/log-query/log-query-overview) is the analytics engine for querying and correlating multi-tier logs with advanced trending capabilities.
 
-- [Azure Monitor for VMs](/azure/azure-monitor/insights/vminsights-overview) provides specialized monitoring for virtual machine workloads with performance maps and dependency tracking.
+- [Azure VM Insights](/azure/azure-monitor/insights/vminsights-overview) provides specialized monitoring for virtual machine workloads with performance maps and dependency tracking.
 
-- [Azure Monitor for containers](/azure/azure-monitor/insights/container-insights-overview) offers container-specific monitoring with cluster health, node performance, and pod-level insights.
+- [Azure Container Insights](/azure/azure-monitor/insights/container-insights-overview) offers container-specific monitoring with cluster health, node performance, and pod-level insights.
 
 - [Network Watcher](/azure/network-watcher/network-watcher-monitoring-overview) provides network-specific monitoring, diagnostics, and analytics for Azure networking resources.
 
