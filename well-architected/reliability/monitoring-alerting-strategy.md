@@ -3,7 +3,7 @@ title: Architecture strategies for designing a reliable monitoring and alerting 
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
-ms.date: 2/13/2024
+ms.date: 3/30/2026
 ms.topic: concept-article
 ---
 
@@ -14,129 +14,80 @@ ms.topic: concept-article
 |**RE:10**| Measure and model the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
 |---|---|
 
-This guide describes the recommendations for designing a reliable monitoring and alerting strategy. Implement this strategy to keep your operations teams informed of your environment's health status and ensure that you meet the established reliability targets for your workload.
+To evaluate whether a system meets reliability expectations, analyze signals that provide a horizontal view, capturing current health, trends over time, contractual performance, and usage patterns. Anchor these measurements within the architecture to get a vertical view, showing where signals originate and where issues must be diagnosed and resolved.
+
+The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first.
+
 
 **Definitions**
 
 | Term | Definition |
 |---------|---------|
-| Metrics | Numerical values that are collected at regular intervals. Metrics describe some aspects of a system at a particular time. |
-| Resource logs | Data that a system generates. It provides information about the state of the system. |
-| Traces | Data that provides information about the path that a request travels through services and components. |
+| **SLA (Service Level Agreement)** | External commitments to customers. Failing to meet SLAs can lead to financial penalties, reputational damage, or degraded user experience. |
+| **SLO (Service Level Objectives)** | Internal performance and reliability targets used to define thresholds that trigger alerts and measure system health against business objectives. |
+| **MTTD (Mean Time To Detection)** | The average time it takes to detect when a failure or issue has occurred in the system. A key metric for measuring the effectiveness of monitoring and alerting strategies. |
+| **Health Model** | A representation of system condition using clear health states (healthy, degraded, unhealthy) with real-time signals and hierarchical drill-down capability from overall system to individual components. |
+| **Synthetic Transactions** | Automated tests that simulate real user actions and interactions to validate system health and detect issues from a customer perspective, providing external validation of system availability. |
+| **Correlation IDs** | Unique identifiers used to trace transactions and requests across multiple services and components, enabling root cause analysis in distributed systems. |
+| **Health States** | Standardized system condition indicators including healthy (normal operation), degraded (reduced functionality), and unhealthy (significant issues affecting availability or performance). |
+| **Availability Targets** | Defined objectives for system uptime, operational throughput, and response times that the system must meet to fulfill business requirements and customer expectations. |
+| **Observability** | The practice of collecting, analyzing, and acting upon detailed operational data across system layers to understand system behavior and quickly identify issues. |
+| **Semantic Logs** | Application logs that capture meaningful business events and operations with structured data, enabling better analysis of system behavior and user impact. |
 
 
-Before you create a monitoring and alerting strategy, perform the following tasks for your workload as part of your reliability planning:
 
-- Identify [critical and noncritical flows](identify-flows.md).
+## Monitor all layers of the system
 
-- Perform [failure mode analysis (FMA)](failure-mode-analysis.md) for your flows.
+Every layer of the system, applications, data/storage, and network, should be instrumented to capture key health and reliability signals.
 
-- Identify [reliability targets](metrics.md).
+At the application layer, monitor success, failure, and latency using semantic logs, performance metrics, and health probes. Use correlation IDs to trace transactions across services for root cause analysis. Collect logs asynchronously to avoid blocking requests, and separate diagnostic logs from auditing logs to maintain reliability. External validation through synthetic transactions and endpoint probes ensures customer-visible health.
 
-- Design for reliability by implementing [redundancy](redundancy.md), [scaling](scaling.md), [self-preservation, and self-healing](self-preservation.md).
+For data and storage, track availability, write success rates, query durations, timeouts, locks, memory pressure, and wait times. Analyze trends over time to detect bottlenecks or capacity issues and distinguish transient from persistent failures.
 
-- Design a robust [testing strategy](testing-strategy.md).
+At the network layer, monitor connectivity, latency, packet loss, bandwidth, and traffic patterns. Combine synthetic network tests, endpoint probes, and flow logs to detect anomalies, routing inefficiencies, or security issues. Correlate network metrics with platform data to identify root causes of performance or availability problems.
 
-- [Model the health](../design-guides/health-modeling.md) of your workload and its components.
+What to monitor in detail for each layer is covered in the [Monitoring Design Guide](../design-guides/monitoring.md).
 
-Create a monitoring and alerting strategy to ensure that your workload operates reliably. A monitoring and alerting strategy provides awareness to your operations teams so they're notified of changes in your workload's condition and can quickly address issues. Build a robust and reliable monitoring strategy by creating a [health model](../design-guides/health-modeling.md) for your critical flows and the components that these critical flows comprise. The health model defines healthy, degraded, and unhealthy states. Design your operational posture to immediately catch changes in these states. When health states change from healthy to degraded or unhealthy, alerting mechanisms trigger the [automatic corrective measures](testing-strategy.md) and notifies appropriate teams.
+## Track availability targets
 
-Implement the following recommendations to design a monitoring and alerting strategy that meets the requirements of your business.
+Track whether a system meets defined targets for availability, throughput, and response times. These targets are often formalized as SLAs, which represent external commitments to customers. Failing to meet them can lead to financial penalties, reputational damage, or degraded user experience. The exact definition of each target depends on the workload and business requirements. For more information, see [Reliability targets](./metrics.md).
 
-## Implement an overall monitoring strategy
+This strategy requires monitoring key indicators such as overall system uptime, operational throughput (successful transactions or requests per second), response times, and fault or exception rates. Metrics should be tracked over time, and operators must be able to drill down to the subsystems or components that contribute to any violations. Even failures hidden by redundancy or failover should be captured to enable root cause analysis and prevent recurrence.
 
-- Understand the difference between [metrics](/azure/azure-monitor/essentials/data-platform-metrics), [logs](/azure/azure-monitor/logs/data-platform-logs), and [traces](/azure/azure-monitor/app/asp-net-trace-logs).
+Collect timestamped data from multiple sources. These include endpoint monitoring, exception and fault logs, warning logs, user request traces, third-party service availability, and system performance counters. Some of this data overlaps with signals used in health, availability, and performance monitoring, but it is aggregated specifically to measure reliability targets and SLA compliance.
 
-- Enable [logging](/azure/azure-monitor/essentials/resource-logs) for all cloud resources. Use automation and governance in your deployments to enable diagnostic logging throughout your environment.
+Analysis should combine real-time and historical perspectives. Real-time monitoring detects unavailability and triggers immediate alerts. Historical analysis calculates service availability percentages and component failure rates, and correlates failures with system load or user activity. Root causes, such as service downtime, network connectivity loss, or timeouts, should be classified to identify recurring patterns and support preventive actions. Aggregated metrics also feed SLA reporting, showing compliance with defined uptime and performance objectives.
 
-- Forward all diagnostic logs to a centralized data sink and analytics platform, like a [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview). If you have regional data sovereignty requirements, you must use local data sinks in the regions that are subject to those requirements.
+## Track recoverability targets
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There are cost implications for storing and querying logs. Notice how your log analysis and retention affects your budget, and determine the best balance of utilization to meet your requirements. For more information, see [Best practices for cost optimization](/azure/azure-monitor/best-practices-logs#cost-optimization).
+Monitor your system's ability to recover from failures and return to normal operation within defined time objectives. Recoverability targets include Recovery Time Objective (RTO) - the maximum acceptable time to restore service after a failure, and Recovery Point Objective (RPO) - the maximum acceptable amount of data loss measured in time.
 
-- If your workloads are subject to one or more compliance frameworks, some of the component logs that handle sensitive information are also subject to those frameworks. Send the relevant component logs to a security information and event management (SIEM) system, like [Microsoft Sentinel](/azure/sentinel/overview).
+Track key recovery indicators such as backup completion rates, restore operation success rates, failover execution times, and data synchronization lag. Monitor the health and availability of backup systems, disaster recovery infrastructure, and automated recovery processes. Implement regular recovery testing to validate that your systems can meet defined RTO and RPO targets under various failure scenarios.
 
-- Create a [log retention policy](/azure/azure-monitor/logs/data-retention-archive) that incorporates long-term retention requirements that the compliance frameworks impose on your workload.
+Collect metrics on backup frequency, backup size trends, cross-region replication latency, and the success rates of automated recovery procedures. Additionally, track manual intervention requirements during recovery processes to identify opportunities for automation and process improvement.
 
-- Use [structured logging](https://stackify.com/what-is-structured-logging-and-why-developers-need-it) for all log messages to optimize querying the log data.
 
-- Configure alerts to trigger when values pass critical thresholds that correlate to a health model state change, like green to yellow or red.
+## Represent system health with a health model 
 
-  Threshold configuration is a practice of continuous improvement. As your workload evolves, the thresholds you define might change. In some cases, [dynamic thresholds](/azure/azure-monitor/alerts/alerts-dynamic-thresholds) are a good option for your monitoring strategy.
+A health model represents the system's condition using clear health states (healthy, degraded, unhealthy) and real-time signals, with the ability to drill down from the overall system to individual components. It gives operators a direct and consistent view of what is working and what is not. The goal is to pinpoint faults quickly so that, during incidents, operators can take action without needing to interpret raw metrics or navigate complex dashboards, ultimately reducing mean time to detection (MTTD).
 
-- Consider using alerts when states improve, such as red to yellow or red to green, so that the operations teams can track these events for future reference.
+The health model should reflect user impact rather than just infrastructure status. It should follow a hierarchical structure so issues can be traced from components to services and up to the full system. Use synthetic checks with real user traffic to get a more accurate picture of health. The health model components should have thresholds with service level objectives (SLOs) to trigger alerts.
 
-- Visualize the real-time health of your environment.
+Health modeling requires collecting detailed operational data across the system: request traces and application logs, infrastructure metrics, results from synthetic transactions that simulate user actions, and more. What to collect is described in the "Monitor all layers of the system" section above.
 
-- Use data that's gathered during incidents to continuously improve your health models and your monitoring and alerting strategy.
+Your health model should provide both real-time and trend-based insights to deliver early warnings and, where possible, trigger automated remediation. Real-time analysis should alert on changes in health state, based on threshold breaches, failed requests, or error spikes, whatever aligns with your business objectives. Trend or predictive analysis, in contrast, identifies patterns over time, such as gradual latency increases or rising throughput, to anticipate potential failures or capacity issues before they impact users.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Health modeling can be challenging because it requires collecting detailed signals across the system. Relying only on easy-to-collect metrics, such as CPU or memory utilization, can miss what's truly important for the workload or business. Including user experience data and synthetic transactions helps provide a complete picture. Defining what "healthy" means may require effort and team alignment, but it improves detection speed and operational response. However, poorly tuned thresholds can cause alert fatigue and reduce the model's effectiveness.
+
+For more information, see the design guide on [Health modeling](../design-guides/health-modeling.md).
+
+## Azure facilitation
 
 - Incorporate cloud platform monitoring and alerting services, including:
 
   - Platform-level health, like [Azure Service Health](/azure/service-health/service-health-overview).
 
   - Resource-level health, like [Azure Resource Health](/azure/service-health/resource-health-overview).
-
-- Incorporate purpose-built advanced monitoring and analytics that your cloud provider offers, like Azure Monitor [insight tools](/azure/azure-monitor/overview#insights).
-
-- Implement backup and recovery monitoring to capture:
-
-  - The data replication status to ensure that your workload achieves recovery within the target recovery point objective (RPO).
-
-  - Successful and failed backups and recoveries.
-  
-  - The recovery duration to inform your [disaster recovery planning](disaster-recovery.md).
-
-## Monitor applications
-
-- Create health probes or [check functions](/azure/architecture/patterns/health-endpoint-monitoring) and run them regularly from outside the application. Ensure that you test from multiple locations that are geographically close to your customers.
-
-- Log data while the application runs in the production environment. You need sufficient information to diagnose the cause of issues in the production state.
-
-- Log events at service boundaries. Include a correlation ID that flows across service boundaries. If a transaction flows through multiple services and one of them fails, the correlation ID helps you track requests across your application and pinpoint why the transaction failed.
-
-- Use asynchronous logging. Synchronous logging operations sometimes block your application code, which causes requests to back up as logs are written. Use asynchronous logging to preserve availability during application logging.
-
-- Separate application logging from auditing. Audit records are commonly maintained for compliance or regulatory requirements and must be complete. To avoid dropped transactions, maintain audit logs separate from diagnostic logs.
-
-- Use [telemetry correlation](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to ensure that you can map transactions through the end-to-end application and critical system flows. This process is vital for performing root cause analysis (RCA) for failures. Collect platform-level metrics and logs, such as CPU percentage, network in, network out, and disk operations per second, from the application to inform a health model and to detect and predict issues. This approach can help distinguish between transient and nontransient faults.
-
-- Use white box monitoring to instrument the application with semantic logs and metrics. Collect application-level metrics and logs, such as memory consumption or request latency, from the application to inform a health model and to detect and predict issues.
-
-- Use black box monitoring to measure platform services and the resulting customer experience. Black box monitoring tests externally visible application behavior without knowledge of the internals of the system. This approach is common for measuring customer-centric service-level indicators (SLIs), service-level objectives (SLOs), and service-level agreements (SLAs).
-
-> [!NOTE]
-> For more information about application monitoring, see [Health Endpoint Monitoring pattern](/azure/architecture/patterns/health-endpoint-monitoring#issues-and-considerations).
-
-## Monitor data and storage
-
-- Monitor the availability metrics of your storage containers. When this metric drops below 100 percent, it indicates failing writes. Transient drops in availability might happen when your cloud provider manages the load. Track the availability trends to determine if there's an issue with your workload.
-
-  In some cases, a drop in the availability metrics for a storage container indicates a bottleneck in the compute layer that's associated with the storage container.
-
-- There are many metrics to monitor for databases. In the context of reliability, the important metrics to monitor include:
-
-  - Query duration
-
-  - Timeouts
-
-  - Wait times
-
-  - Memory pressure
-
-  - Locks
-
-## Monitor network traffic
-
-- To maintain network reliability, it's important to have continuous monitoring and diagnostics in place. Regularly test network connectivity and performance by using synthetic tests and health checks across your critical network paths.
-  
-- Collect and analyze network logs and metrics, such as latency, packet loss, and bandwidth utilization. This approach helps you detect problems early and distinguish between temporary and ongoing faults. By correlating network events with platform-level metrics, you can quickly identify the underlying cause of problems and troubleshoot effectively.
-
-- Equip your network monitoring to deliver end-to-end visibility. This approach enables your team to respond rapidly to incidents and keep your network running smoothly.
-
-- Effective network monitoring also requires deep visibility into traffic patterns. Continuously collect, analyze and enrich network flow logs to identify anomalies, blocked or malicious traffic, and bandwidth hotspots.
-  
-- Monitoring traffic helps surface unexpected behaviors, such as unauthorized access or inefficient routing. It also supports proactive detection of potential failures or security threats. By understanding both the volume and type of network flows, teams can optimize resource allocation, maintain performance targets, and ensure that the network supports business needs.
-
-## Azure facilitation
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
 
@@ -161,13 +112,6 @@ Implement the following recommendations to design a monitoring and alerting stra
 ## Example
 
 For examples of real-world monitoring solutions, see [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring) and [Baseline architecture for an Azure Kubernetes Service cluster](/azure/architecture/reference-architectures/containers/aks/baseline-aks#monitor-and-collect-metrics).
-
-## Related links
-
-- [Alerting for DevOps](../devops/alerts.md)
-- [Alerting for operations](../devops/monitor-alerts.md)
-- [Monitoring and diagnostics guidance](/azure/architecture/best-practices/monitoring)
-- [Web application monitoring on Azure](/azure/architecture/web-apps/guides/monitoring/app-monitoring)
 
 ## Community links
 
