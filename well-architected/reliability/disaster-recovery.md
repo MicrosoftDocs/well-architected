@@ -3,7 +3,7 @@ title: Architecture strategies for disaster recovery
 description: Learn how to design a disaster recovery strategy for a workload. 
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 11/19/2025
 ms.topic: concept-article
 ---
 
