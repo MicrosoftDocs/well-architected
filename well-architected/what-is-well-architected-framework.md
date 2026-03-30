@@ -58,11 +58,13 @@ The foundation of this framework lies in the pillars. If you don't have a compre
 
 - **Design principles**. Provide the foundation of good design, each of which has a specific goal. The principles also describe the recommended approaches.
 
-- **Design Review Checklists**. A collection of key strategies used by customers to design and build confidence in their workload. Each checklist item represents an individual **key design strategy** that provides a deep dive on the strategy required for a particular concept within the pillar.
+- **Checklists**. A collection of key strategies used by customers to design and build confidence in their workload. Each checklist item represents an individual key design strategy.
 
-- **Cloud design patterns**. Be sure to understand the related **cloud design patterns**. They're mapped to the pillars they directly support.
+- **Key design strategies** provides a deep dive on individual key design strategies required for a particular concept within a pillar. These strategies focus on what to do and why it matters, without going into the details of how to implement them.
 
 - **Tradeoffs**. Each architectural decision entails a series of considerations. These **tradeoffs** represent recognized and accepted compromises that balance the various aspects of the framework. Tradeoffs are noted with this icon :::image type="icon" source="./_images/trade-off.svg"::: and risks are noted with this icon :::image type="icon" source="./_images/risk.svg":::.
+
+- **Design patterns**. They're mapped to the pillars they directly support. They can help make intentional tradeoffs within workloads and optimize for desired outcomes.
 
 - **Maturity model**. Describes phased approach to adopt the Azure Well-Architected Framework by starting with easy or essential recommendations. As business needs evolve, gradually improve systems—from early-stage workloads to mature, business-critical solutions.
 
