@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:10**| Automate highly procedural tasks that don't need human insight or adaptability, and that yield a return on investment. Design automation upfront for operations such as lifecycle concerns, bootstrapping, and applying governance and compliance guardrails. Treat all automation the same as workload components, and apply the Well-Architected Framework pillars to their design and implementation.|
+|**OE:10**| Automate repetitive, procedural tasks that deliver clear return on investment. Simplify your design by favouring off-the-shelf automation tools over custom solutions. Apply the Well-Architected Framework pillars to their design and implementation.|
 |---|---|
 
 Design your workload with automation in mind to ensure routine tasks like provisioning, scaling, deployments, and maintenance are performed quickly, reliably, and consistently. Automating repetitive, error-prone tasks enables teams to work more efficiently while reducing human error.
@@ -28,11 +28,11 @@ Design with automation in mind to minimize refactoring. Choose tools based on wo
 
 Examples of proactive automation planning:
 
-- *Deployment*: Automate application and infrastructure deployments to ensure predictable standards. Plan with deployment standards, team training, and necessary infrastructure.
+- *Deployment*: Plan for deployment standards, team training, and the required infrastructure upfront so that automated application and infrastructure deployments consistently meet predictable standards.
 
-- *Validation*: Automatically validate compliance requirements by using orchestration or policy tools. Identify appropriate validation tools and implement required systems.
+- *Validation*: Automatically validate compliance requirements by using orchestration or policy tools. Identify and implement the appropriate validation tools and supporting systems.
 
-- *Automatic scaling*: Use automatic scaling to achieve reliability and performance requirements. Allocate IP address space and subnets ahead of time for scaling, redundancy, and growth.
+- *Automatic scaling*: Use automatic scaling to meet reliability and performance requirements. Plan and allocate IP address space and subnets ahead of time for scaling, redundancy, and growth.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Balance control versus efficiency when enabling automation. Your workload might not be mature enough for certain automation, or you might need flexibility that automation doesn't provide. Consider your team's skill set. If automation requires tools that your team isn't equipped to support, use a less comprehensive design as an intermediate step.
 
@@ -48,29 +48,23 @@ Consider the following recommendations to ensure that you prioritize tasks that 
 
 - **Focus on your return on investment.** High-value automation requires minimal management overhead and adds a demonstrable degree of efficiency. For example, if you save your operations team an hour each day by automating database entries, they get time to find other areas for improvement.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
+
 ### Areas to implement automation
 
 Adopt automation throughout your entire workload lifecycle, from development to day-to-day management. Use the following list of examples to help you consider the broad areas of your workload lifecycle that can benefit from automation. You can automate:
 
-- **Pipeline definition, execution, and management**: Use continuous integration and continuous delivery (CI/CD) tools like Azure DevOps to automatically define pipelines and automate build, test, deployment, and reporting tasks.
+- **Pipeline definition, execution, and management**: Use continuous integration and continuous delivery (CI/CD) tools like Azure DevOps to automatically define pipelines and automate build, test, deployment, and reporting tasks. Use predefined rules to automate approval decisions for workflows and tightly scope and test your automated approvals to reduce risk especially in production.
 
 - **Deployments**: Use tools like Azure Resource Manager templates, Bicep, Terraform, and Ansible to automate your workload development and release processes. Deploy and update your infrastructure by using the same automation platforms with an infrastructure as code (IaC) approach.
 
 - **Testing**: Many tools are available for automating your testing processes. These tools can relieve a significant burden from your quality assurance team and ensure that tests are standardized and reliable.
 
-- **Scaling**: Use platform-provided functionality to automatically scale your infrastructure when load increases or decreases.
+- **Scaling and self-healing**: Use platform-provided functionality to automatically scale your infrastructure when load increases or decreases. Trigger automated remediation actions from monitoring alerts to recover malfunctioning components or jobs. For more information, see [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
 
 - **Monitoring and alerting**: Use tooling that's available in your monitoring solution to automatically enroll newly deployed resources and configure alert-triggered actions to help hasten remediation when problems arise. Take advantage of the automation functionality that your observability platform provides. Automatically enroll new devices to monitor and alert on anomalies.
 
-- **Self-healing**: Use alerts that your monitoring system generates to automate actions and recover malfunctioning components or jobs. For more information, see [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md).
-
-- **Configuration management**: Use orchestration and policy tooling to ensure that all of your resources run the same configuration and that compliance requirements are enforced across your workload.
-
-- **Other administrative tasks**: Use scripts to automate repetitive tasks like updating database records or DNS records.
-
-- **Approvals**: Enable systems to automatically make approval decisions based on predefined rules to improve efficiency for workflows that have approval gates. This method encourages the use of standardized forms and templates. Automatic approval in production environments can be risky. Tightly focus and test your automated approvals to ensure specific criteria are defined.
-
-- **New user and new employee onboarding**: Automate tasks associated with onboarding new application users or employees, like database updates and credential creation.
+- **Configuration management and other operational tasks**: Use orchestration and policy tooling to ensure that all of your resources run the same configuration and that compliance requirements are enforced across your workload. Automate repetitive tasks associated with onboarding new application users or employees, like database updates, credential creation or DNS updates.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time.
 
@@ -79,6 +73,8 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 Developing automation in-house is time intensive and introduces a management burden. Use off-the-shelf tools whenever possible. Between commercial, open source, and cloud platform tools, many options are available. Rely on your team's expertise to guide tool selection. Focus on solutions that match their skills without a steep learning curve. Prioritize tools that address specific automation tasks rather than acquiring general-purpose tools first.
 
 Be mindful of factors that complicate operations, like version lock-in and plugin overuse. Plugins for tools like Jenkins or Azure DevOps add functionality and should be adopted when beneficial. However, using multiple plugins for a single task complicates updates and troubleshooting. Be judicious with plugins. Avoid solutions with framework version dependencies as they're a burden to maintain over time. Standardize your automation tools and plugins, and use source control for all automation projects.
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution. Be judicious. Narrowly focus on filling gaps that off-the-shelf solutions can't address, and minimize complexities like dependencies.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Deliver secure and reliable deployments faster by using AI to create consistent automation scripts. Tools like GitHub Copilot can generate CI/CD scripts, templatize configurations, and validate compliance. Advanced agent-based solutions can translate product requirements and standards directly into code. These solutions require accurate, up-to-date design documents, standards, and access to your codebase. Always review and test AI-generated code to ensure it meets your quality and security standards.
 
@@ -134,27 +130,13 @@ Design your application and infrastructure to allow for automated user onboardin
 
 Automate Desired State Configuration (DSC) in your resources to ensure they meet compliance and business requirements. DSC automation quickly catches and remediates configuration drift. You can automate DSC by using orchestration tools or policy management tools.
 
-Think of orchestration tools, like Azure DevOps services or Jenkins, as push-based mechanisms. They allow you to push configuration updates through a workflow event, like a manual or automated deployment. These updates run as part of a task sequence defined in your deployment script. 
-
-Policy management tools use pull-based mechanisms. A system runs at the foundational level of your workload and periodically polls the workload to check its state against your defined DSC. If the poll identifies a misalignment or configuration drift, the tool takes corrective action. 
-
 Choose between orchestration tools or policy management tools:
 
-- **Orchestration tools** don't have built-in capabilities to proactively poll your workload for configuration drift. Integrate them into your CI/CD pipeline to maintain a standard for IaC deployment and management. An advantage of using orchestration tools is that resources are always fully configured when deployed.
+- **Orchestration tools** like Azure DevOps services or Jenkins, don't have built-in capabilities to proactively poll your workload for configuration drift. Integrate them into your CI/CD pipeline to maintain a standard for IaC deployment and management. An advantage of using orchestration tools is that resources are always fully configured when deployed.
 
 - **Policy management tools** allow you to define policies that affect one or more groups of resources. These policies are enforced when the resource checks in with the policy management system. An advantage of using policy management is that these systems aren't code driven, making them easier for operators to adopt.
 
 When deciding between orchestration or policy tools, consider whether configuration updates must be made at deployment time, if defining updates in code fits your operational practices, and how many resource types you plan to deploy. Policy tools might be easier for managing many configurations across resource types.
-
-## Considerations
-
-- Sometimes the efficiencies you gain from automation outweigh the management burden of developing your own solution. Be judicious. Narrowly focus on filling gaps that off-the-shelf solutions can't address, and minimize complexities like dependencies.
-
-- Complex automation that requires a high degree of maintenance can be difficult for operations teams to manage and troubleshoot. Keep automated tasks focused on only performing discrete jobs. Try to minimize dependencies on other tools or components.
-
-- Be thoughtful about using manual processes. If you don't automate an operation, thoroughly document the manual process with step-by-step checklists. This documentation reduces human error and helps design future automation.
-
-- With hybrid manual-automated approaches, provide necessary context and information so humans can make informed decisions at critical points.
 
 ## Azure facilitation
 Azure offers many tools to help you automate tasks for your workload.
