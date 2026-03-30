@@ -4,7 +4,7 @@ description: "Learn how to build resilient, secure, and efficient database workl
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
-ms.date: 08/17/2025
+ms.date: 03/30/2026
 ms.subservice: waf-service-guide
 products:
   - azure-sql-managed-instance
