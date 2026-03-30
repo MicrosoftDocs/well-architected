@@ -44,7 +44,7 @@ Your test plan is a detailed document that guides testing execution for a specif
 A well-structured test plan makes testing efficient and aligned with the release's goals and timelines. It's your reference point for tracking progress and making informed decisions throughout testing.
 
 > [!NOTE]
-> Avoid this anti-pattern: testing before you clearly define your overall test strategy and plan. A solid test plan keeps your efforts focused and aligned with workload goals.
+> Don't start testing before you clearly define your overall test strategy and plan. A solid test plan keeps your efforts focused and aligned with workload goals.
 
 ## Test early, test often, test what matters
 
@@ -65,9 +65,9 @@ Testing isn't a one-time event. Keep testing after launch as part of a continuou
 
 Even with strong testing and validation practices, some problems only appear under real-world production traffic. To find issues you can't simulate, perform controlled testing in production with safeguards that limit user exposure and reduce risk.
 
-Plan, isolate, and monitor production testing. This approach lets you gather real user feedback and performance data while minimizing disruptions to the broader user base.
+Plan, isolate, and monitor production testing. This way of doing things, lets you gather real user feedback and performance data while minimizing disruptions to the broader user base.
 
-Consider progressive exposure strategies, such as canary releases, only after your workload meets exit criteria and demonstrates strong quality. This approach releases updates to a small, targeted group of users first, helping you quickly uncover problems that might not appear in pre-release environments. By using this approach, you accelerate your testing process and potentially reduce associated costs.
+Consider progressive exposure strategies, such as canary releases, only after your workload meets exit criteria and demonstrates strong quality. This approach releases updates to a small, targeted group of users first, helping you quickly uncover problems that might not appear in pre-release environments. With this approach, you accelerate your testing process and potentially reduce associated costs.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Be cautious when you test in production, as it directly affects real customers. Always implement safeguards and limit exposure to minimize potential negative impacts on your business.
 
@@ -85,12 +85,10 @@ The test pyramid model illustrates this layered approach for test automation. It
 
 You can more easily integrate base and middle layer tests into your pipelines because they have minimal dependencies. This integration enables swift feedback when tests fail and lets the build process stop immediately, preventing faulty code from progressing further.
 
-> [!NOTE]
-> Don't include every possible test in the build pipeline. This choice slows release cycles and risks important tests being bypassed. Focus on tests that directly protect critical workflows and provide meaningful confidence in system quality.
-
 As your test coverage grows, pipeline execution time can increase significantly. Maintain a fast feedback loop by using parallel and distributed test execution strategies, keeping pipelines efficient even as coverage increases. 
 
-Strategic decisions about skipping or deferring tests are as important as what you test. Consider skipping tests for temporary prototype code, third-party libraries, simple getters and setters without business logic, and legacy code scheduled for removal. Document these decisions so your team can revisit them as context changes.
+> [!NOTE]
+> Don't include every possible test in the build pipeline. This choice slows release cycles and risks important tests being bypassed. Focus on tests that directly protect critical workflows and provide meaningful confidence in system quality.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** There's a tradeoff between test coverage and pipeline efficiency. While larger test suites increase coverage, they also increase execution time and cost. They don't always deliver a meaningful return on investment.
 
@@ -161,16 +159,18 @@ Proactively plan regular updates to your test cases as you introduce new feature
 
 #### Manage test technical debt
 
+Schedule regular test maintenance sprints to address accumulating debt before it becomes overwhelming.
+
 Flaky tests, duplicate coverage, obsolete tests, and poor test design all contribute to test debt. 
 When you identify unreliable tests, prioritize fixing or removing them to maintain the integrity of your test suite. A smaller set of reliable tests is more valuable than a large set of flaky tests.
 
-Evaluate your list of reliable tests and the tests consistently prone to external changes. Separate reliable, consistent tests from tests prone to external changes. You might not be able to automate tests that are prone to external changes, like UI tests affected by frequent UI changes. This separation helps you decide which tests to automate and which to keep as manual tests.
+Strategic decisions about skipping or deferring tests are as important as what you test. Consider skipping tests for trivial or low-risk code such as simple getters and setters without business logic, extremely rare edge cases, third-party libraries, and legacy code scheduled for removal. Document these decisions so your team can revisit them as context changes.
+
+Evaluate your test suite and separate reliable, consistent tests from those prone to external changes. Tests that frequently break due to factors outside your control such as UI tests impacted by frequent UI updates, may not be good candidates for automation. This separation helps you decide which tests to automate and which to keep manual.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** When you remove fragile tests, you reduce your automation coverage. Balance this reduction by focusing automation on stable interfaces and critical workflows while accepting manual testing for frequently changing UI elements.
 
 Not all tests deserve ongoing maintenance. Retire tests for features you removed, tests that duplicate coverage, and tests that no longer provide value. Document why you're removing tests so the decision is clear to your team.
-
-Schedule regular test maintenance sprints to address accumulating debt before it becomes overwhelming.
 
 ### Extend observability to your test framework
 
