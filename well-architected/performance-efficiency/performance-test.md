@@ -16,7 +16,7 @@ ms.topic: concept-article
 
 Performance testing is a non-functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service-level agreements.
 
-By measuring key indicators such as response time, throughput, resource utilization, and overall stability, performance testing verifies that your workload consistently meets defined targets and delivers the level of performance your business requires.
+When you measure response times, throughput, resource usage, and stability, you gather evidence that your workload consistently meets defined targets and delivers the level of performance your business requires. 
 
 This article provides strategies for achieving performance targets through realistic testing practices so your workloads remain aligned with evolving business objectives.
 
@@ -147,9 +147,9 @@ Use Application Performance Monitoring (APM) tools to track trends over time, id
 
 [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) provides a way for you to inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
 
-[Azure Load Testing](/azure/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
+[Azure Load Testing](/azure/app-testing/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
 
-[Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
+[Azure Monitor](/azure/azure-monitor/fundamentals/overview) is a comprehensive monitoring solution for collecting, analyzing, and responding to telemetry from your cloud and on-premises environments. [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Monitor that provides APM features. You can use Application Insights to monitor applications during development and testing and also in production.
 
 ## Related links
 
