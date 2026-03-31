@@ -29,7 +29,7 @@
 			"source_path": "well-architected/service-guides/azure-openai.md",
 			"redirect_url": "/azure/ai-foundry/openai/overview",
 			"redirect_document_id": false
-		},		
+		},
 		{
 			"source_path": "well-architected/security/security-patterns.md",
 			"redirect_url": "/azure/well-architected/security/design-patterns",
@@ -372,12 +372,12 @@
 		},
 		{
 			"source_path": "well-architected/devops/automation-overview.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/devops/automation-tasks.md",
-			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation",
 			"redirect_document_id": false
 		},
 		{
@@ -974,7 +974,7 @@
 			"source_path": "well-architected/service-guides/application-insights/security.md",
 			"redirect_url": "/azure/well-architected/service-guides/application-insights",
 			"redirect_document_id": false
-		},		
+		},
 		{
 			"source_path": "well-architected/services/monitoring/log-analytics/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-log-analytics",
@@ -1347,7 +1347,7 @@
 		},
 		{
 			"source_path": "well-architected/implementing-recommendations.md",
-			"redirect_url": "/azure/well-architected/design-guides/implementing-recommendations", 
+			"redirect_url": "/azure/well-architected/design-guides/implementing-recommendations",
 			"redirect_document_id": false
 		},
 		{
@@ -1384,7 +1384,7 @@
 			"source_path": "well-architected/cross-cutting-guides/health-model.md",
 			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
 			"redirect_document_id": true
-		},		
+		},
 		{
 			"source_path": "well-architected/service-guides/virtual-machines-review.md",
 			"redirect_url": "/azure/well-architected/service-guides/virtual-machines",
@@ -1418,38 +1418,38 @@
 		{
 			"source_path": "well-architected/oracle-iaas/overview.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/get-started",
-			"redirect_document_id": false																			
-		},	
+			"redirect_document_id": false
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-cost.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-opex.md ",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-overview.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-performance-efficiency.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-reliability.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/hybrid/hybrid-security.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
-		}, 
+		},
 		{
 			"source_path": "well-architected/oracle-iaas/old-articles/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
@@ -1475,7 +1475,7 @@
 			"redirect_url": "/azure/well-architected/oracle-iaas/review-design-principles",
 			"redirect_document_id": false
 		},
-		{																
+		{
 			"source_path": "well-architected/service-guides/azure-app-service/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
 			"redirect_document_id": true
@@ -1488,7 +1488,7 @@
 		{
 			"source_path": "well-architected/service-guides/azure-app-service/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/app-service-web-apps",
-			"redirect_document_id": false																	
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/oracle-iaas/decouple-exadata.md",
@@ -2042,7 +2042,7 @@
 		},
 		{
 			"source_path": "well-architected/operational-excellence/automate-tasks#target-tasks-to-automate",
-			"redirect_url": "/azure/well-architected/operational-excellence/automate-tasks#evaluate-tasks-to-automate",
+			"redirect_url": "/azure/well-architected/operational-excellence/enable-automation#evaluate-tasks-to-automate",
 			"redirect_document_id": false
 		},
 		{
@@ -2250,7 +2250,7 @@
 			"redirect_url": "/azure/well-architected/service-guides/azure-traffic-manager",
 			"redirect_document_id": false
 		},
-    {
+		{
 			"source_path": "well-architected/service-guides/azure-stack-hub/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-local",
 			"redirect_document_id": false
@@ -2289,7 +2289,7 @@
 			"source_path": "well-architected/service-guides/storage-accounts/cost-optimization.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-blob-storage",
 			"redirect_document_id": false
-    	},
+		},
 		{
 			"source_path": "well-architected/service-guides/azure-batch/reliability.md",
 			"redirect_url": "/azure/batch/",
@@ -2334,8 +2334,8 @@
 			"source_path": "well-architected/reliability/background-jobs.md",
 			"redirect_url": "/azure/well-architected/design-guides/background-jobs",
 			"redirect_document_id": false
-    },
-    {
+		},
+		{
 			"source_path": "well-architected/service-guides/iot-hub.md",
 			"redirect_url": "/azure/iot-hub/",
 			"redirect_document_id": false
@@ -2354,8 +2354,8 @@
 			"source_path": "well-architected/reliability/partition-data.md",
 			"redirect_url": "/azure/well-architected/design-guides/partition-data",
 			"redirect_document_id": true
-    		},
-    		{
+		},
+		{
 			"source_path": "well-architected/service-guides/api-management/operational-excellence.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-api-management",
 			"redirect_document_id": false
@@ -2389,8 +2389,8 @@
 			"source_path": "well-architected/service-guides/azure-databricks-security.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-databricks",
 			"redirect_document_id": true
-		},					
-        {
+		},
+		{
 			"source_path": "well-architected/reliability/highly-available-multi-region-design.md",
 			"redirect_url": "/azure/well-architected/reliability/redundancy",
 			"redirect_document_id": true
@@ -2410,7 +2410,7 @@
 			"redirect_url": "/azure/well-architected/service-guides/azure-service-bus",
 			"redirect_document_id": false
 		},
-    {
+		{
 			"source_path": "well-architected/operational-excellence/mitigation-strategy.md",
 			"redirect_url": "/azure/well-architected/operational-excellence/incident-response",
 			"redirect_document_id": false
@@ -2424,26 +2424,31 @@
 			"source_path": "well-architected/service-guides/event-hubs.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-event-hubs",
 			"redirect_document_id": false
-		},								
-    {
+		},
+		{
 			"source_path": "well-architected/architect-role/checklist.md",
 			"redirect_url": "/azure/well-architected/architect-role/fundamentals",
 			"redirect_document_id": true
 		},
 		{
-		"source_path": "well-architected/service-guides/event-grid/operational-excellence.md",
-		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
-		"redirect_document_id": false
+			"source_path": "well-architected/service-guides/event-grid/operational-excellence.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
+			"redirect_document_id": false
 		},
 		{
-		"source_path": "well-architected/service-guides/event-grid/reliability.md",
-		"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
-		"redirect_document_id": false
+			"source_path": "well-architected/service-guides/event-grid/reliability.md",
+			"redirect_url": "/azure/well-architected/service-guides/azure-event-grid",
+			"redirect_document_id": false
 		},
 		{
-		"source_path": "well-architected/security/threat-model.md",
-		"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
-		"redirect_document_id": true
+			"source_path": "well-architected/operational-excellence/instrument-application.md",
+			"redirect_url": "/azure/well-architected/operational-excellence/observability",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/security/threat-model.md",
+			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
+			"redirect_document_id": true
 		}														
 	]
 }
