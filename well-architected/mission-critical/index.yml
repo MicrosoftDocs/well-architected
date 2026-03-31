@@ -54,14 +54,7 @@ landingContent:
             url: mission-critical-security.md
           - text: Operational procedures
             url: mission-critical-operational-procedures.md     
- # Card
-  - title: Reference example
-    linkLists:
-      - linkListType: architecture
-        links:
-          - text: Baseline with App Services
-            url: /azure/architecture/guide/networking/global-web-applications/mission-critical-app-service.md
-
+ 
  # Card
   - title: Learn
     linkLists:
