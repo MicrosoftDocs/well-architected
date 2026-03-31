@@ -29,7 +29,7 @@ If you don't consider tradeoffs and recommendations for operational excellence, 
 | &#9744; | [OE:07](observability.md) <br> [OE:07](instrument-application.md)  | **Design and implement a monitoring system** to capture and expose telemetry, metrics, and logs from your infrastructure and code. Use this data to validate design choices and guide future design and business decisions.|
 | &#9744; | [OE:08](incident-response.md) | **Establish a clear, structured incident management process** with defined roles, documented procedures, and architecture designed for rapid detection, diagnosis, and recovery. |
 | &#9744; | [OE:09](testing.md) | **Enhance the quality of your workload** by adopting testing practices that align with business objectives and uphold quality standards.|
-| &#9744; | [OE:10](enable-automation.md) | **Automate repetitive, procedural tasks** that deliver clear return on investment. Simplify your design by favouring off-the-shelf automation tools over custom solutions. Apply the Well-Architected Framework pillars to their design and implementation.|
+| &#9744; | [OE:10](enable-automation.md) | **Design automation to be reliable, secure, and maintainable** across the workload lifecycle. Automate repetitive, procedural tasks that deliver clear return on investment.|
 | &#9744; | [OE:11](safe-deployments.md) | **Clearly define your workload's safe deployment practices.** Focus on small, incremental releases with quality gates. Use modern deployment patterns and progressive exposure to manage risk. Plan for both routine and emergency deployments.|
 
 

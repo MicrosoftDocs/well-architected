@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:10**| Automate repetitive, procedural tasks that deliver clear return on investment. Simplify your design by favouring off-the-shelf automation tools over custom solutions. Apply the Well-Architected Framework pillars to their design and implementation.|
+|**OE:10**| Design automation to be reliable, secure, and maintainable across the workload lifecycle. Automate repetitive, procedural tasks that deliver clear return on investment.|
 |---|---|
 
 Design your workload with automation in mind to ensure routine tasks like provisioning, scaling, deployments, and maintenance are performed quickly, reliably, and consistently. Automating repetitive, error-prone tasks enables teams to work more efficiently while reducing human error.
@@ -176,7 +176,7 @@ Administrators define deployment environments as catalog items hosted in a GitHu
 
 **Azure Monitor action groups**: To automatically run self-healing operations when alerts trigger, use [Azure Monitor action groups](/azure/azure-monitor/alerts/action-groups). Define operations using runbooks, Azure functions, or webhooks.
 
-## Example
+**Example**
 
 For an example of using Automation in tandem with other Azure services, see [Ops automation by using Azure Event Grid](/azure/architecture/solution-ideas/articles/ops-automation-using-event-grid). This example uses Logic Apps and Event Grid to automate operational tasks.
 

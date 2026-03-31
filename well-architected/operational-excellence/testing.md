@@ -35,7 +35,7 @@ Your test strategy generally stays consistent across releases for a given worklo
 > [!NOTE]
 > Don't apply the same standardized strategy to different workloads. They have unique considerations that need unique approaches.
 
-### Create your test plan
+### Create your plan
 
 Once you agree on the test strategy with your team, formalize it in a test plan with use cases aligned to business objectives.
 
@@ -43,14 +43,17 @@ Your test plan is a detailed document that guides testing execution for a specif
 
 A well-structured test plan makes testing efficient and aligned with the release's goals and timelines. It's your reference point for tracking progress and making informed decisions throughout testing.
 
+Example: For an e‑commerce checkout system, the test strategy establishes a consistent approach across all releases. It defines that payment flows are always prioritized, specifies standard tools such as Selenium for UI testing, JMeter for load testing, and OWASP ZAP for security testing, and clarifies team responsibilities for different test types.
+The test plan for the v2.5 release focuses on adding Apple Pay support. It defines exactly what to test for Apple Pay in this release, allocates resources (two engineers and three iOS devices), sets a four‑week schedule, and establishes clear entry criteria (code complete and environment configured) and exit criteria (all tests pass, zero critical bugs, and a two‑second SLA).
+
 > [!NOTE]
 > Don't start testing before you clearly define your overall test strategy and plan. A solid test plan keeps your efforts focused and aligned with workload goals.
 
 ## Test early, test often, test what matters
 
-Start testing at the earliest stages of your software development lifecycle. When you find critical problems late, you face increased rework and slower releases. Too often, developers overlook testing requirements at the design stage, which negatively impacts the overall quality. 
+Start testing at the earliest stages of your software development lifecycle. When you find critical problems late, you face increased rework and slower releases. Too often, architects overlook testing requirements at the design stage, which negatively impacts the overall quality. 
 
-Developers should embrace a quality assurance mindset. Make testing an integral part of your development process. Take ownership of writing and maintaining tests alongside your code. Think about testing even during design. Use it to clarify requirements and spot potential limitations.
+Developers should embrace a quality assurance mindset. Think about testing even during design. Use it to clarify requirements and spot potential limitations. Make testing an integral part of your development process. Take ownership of writing and maintaining tests alongside your code. 
 
 When you detect issues early, you can respond quickly. For example, you might prioritize essential design changes that impact user experience over routine bug fixes. Acting early reduces last-minute surprises and delays.
 
@@ -88,7 +91,7 @@ You can more easily integrate base and middle layer tests into your pipelines be
 As your test coverage grows, pipeline execution time can increase significantly. Maintain a fast feedback loop by using parallel and distributed test execution strategies, keeping pipelines efficient even as coverage increases. 
 
 > [!NOTE]
-> Don't include every possible test in the build pipeline. This choice slows release cycles and risks important tests being bypassed. Focus on tests that directly protect critical workflows and provide meaningful confidence in system quality.
+> Don't include every possible test in the initial build pipeline that compiles and validates your code. This choice slows release cycles and risks important tests being bypassed. Focus on tests that directly protect critical workflows and provide meaningful confidence in system quality.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** There's a tradeoff between test coverage and pipeline efficiency. While larger test suites increase coverage, they also increase execution time and cost. They don't always deliver a meaningful return on investment.
 
@@ -238,9 +241,15 @@ Building ephemeral environments requires your workload to reach a higher maturit
 
 ## Azure facilitation
 
-[Azure Test Plans](/azure/devops/test/overview) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+[Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders. It includes [Test Analytics](/azure/devops/pipelines/test/test-analytics) to track your test quality over time and identify areas for improvement.
 
-[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate testing into your CI/CD pipeline. 
+[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate testing into your CI/CD pipeline. You can also use [GitHub Actions](https://azure.github.io/actions/) integrated with Azure. 
+
+[Azure App Testing](/azure/app-testing/overview-what-is-azure-app-testing) is a service that support functional and performance tests. It allows you to run functional tests with Playwright Workspaces and performance tests using [Azure Load Testing](/azure/app-testing/load-testing/overview-what-is-azure-load-testing). 
+
+[Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) can help spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security.
+
+Azure also provides platform‑native tools that support reliability, performance, and security testing.
 
 ## Related links
 
