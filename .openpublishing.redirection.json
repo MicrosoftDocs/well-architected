@@ -2443,7 +2443,7 @@
 		{
 			"source_path": "well-architected/security/threat-model.md",
 			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
-			"redirect_document_id": true
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/operational-excellence/instrument-application.md",
