@@ -147,9 +147,9 @@ Include monitoring and alerting in overall workload testing. Automate functions 
 
 Many monitoring failures stem from poor architectural choices rather than tooling limitations. 
 
-Don't just fix the symptoms, but analyze why the antipattern emerged and address the underlying design weakness. Then apply mitigation whether thats' using clear telemetry standards, drive towards business-aligned metrics, or cost awareness.
+Don't just fix the symptoms, but analyze why the antipattern emerged and address the underlying design weakness. Then apply mitigation whether that's using clear telemetry standards, drive towards business-aligned metrics, or cost awareness.
 
-We recommend reading this section in the companion implementationg guide: [Antipatterns and how to avoid them](../design-guides/monitoring.md#monitoring-antipatterns-and-how-to-avoid-them). 
+We recommend reading this section in the companion implementation guide: [Antipatterns and how to avoid them](../design-guides/monitoring.md#monitoring-antipatterns-and-how-to-avoid-them). 
 
 ## Azure facilitation
 
