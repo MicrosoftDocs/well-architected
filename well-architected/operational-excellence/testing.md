@@ -245,7 +245,7 @@ Building ephemeral environments requires your workload to reach a higher maturit
 
 [Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate testing into your CI/CD pipeline. You can also use [GitHub Actions](https://azure.github.io/actions/) integrated with Azure. 
 
-[Azure App Testing](/azure/app-testing/overview-what-is-azure-app-testing) is a service that support functional and performance tests. It allows you to run functional tests with [Playwright Workspaces](/azure/app-testing/playwright-workspaces/overview-what-is-microsoft-playwright-workspaces) and performance tests using [Azure Load Testing](/azure/app-testing/load-testing/overview-what-is-azure-load-testing). 
+[Azure App Testing](/azure/app-testing/overview-what-is-azure-app-testing) is a service that supports functional and performance tests. It allows you to run functional tests with [Playwright Workspaces](/azure/app-testing/playwright-workspaces/overview-what-is-microsoft-playwright-workspaces) and performance tests using [Azure Load Testing](/azure/app-testing/load-testing/overview-what-is-azure-load-testing). 
 
 [Azure Deployment Environments](/azure/deployment-environments/overview-what-is-azure-deployment-environments) can help spin up app infrastructure with project-based templates that establish consistency and best practices while maximizing security.
 
