@@ -84,9 +84,7 @@
             - name: SE:01 Security baseline
               href: security/establish-baseline.md
             - name: SE:02 Secure development lifecycle
-              href: security/secure-development-lifecycle.md
-            - name: SE:02 Threat analysis
-              href: security/threat-model.md              
+              href: security/secure-development-lifecycle.md           
             - name: SE:03 Data classification
               href: security/data-classification.md
             - name: SE:04 Segmentation
@@ -241,7 +239,9 @@
       - name: Azure VMware Solution
         href: azure-vmware/index.yml                             
       - name: Mission-critical
-        href: mission-critical/index.yml                     
+        href: mission-critical/index.yml
+      - name: HPC
+        href: hpc/index.yml        
       - name: Oracle on IaaS
         href: oracle-iaas/index.yml       
       - name: Software as a service (SaaS)
@@ -271,7 +271,7 @@
         - name: Azure Databricks
           href: service-guides/azure-databricks.md
         - name: Azure Database for MySQL
-          href: service-guides/azure-db-mysql-cost-optimization.md
+          href: service-guides/azure-database-for-mysql.md
         - name: Azure Database for PostgreSQL
           href: service-guides/postgresql.md
         - name: Azure Disk Storage
@@ -290,8 +290,6 @@
           href: service-guides/azure-front-door.md
         - name: Azure Functions
           href: service-guides/azure-functions.md
-        - name: Azure IoT Hub
-          href: service-guides/azure-iot-hub.md
         - name: Azure Kubernetes Service
           href: service-guides/azure-kubernetes-service.md
         - name: Azure Load Balancer
