@@ -1,10 +1,10 @@
 ---
-title: "Architecture Best Practices for Azure SQL Managed Instance"
-description: "Learn how to build resilient, secure, and efficient database workloads on Azure SQL Managed Instance by following Well-Architected Framework best practices."
+title: Architecture Best Practices for Azure SQL Managed Instance
+description: Learn how to build resilient, secure, and efficient database workloads on Azure SQL Managed Instance by following Well-Architected Framework best practices.
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
-ms.date: 03/30/2026
+ms.date: 03/31/2026
 ms.subservice: waf-service-guide
 products:
   - azure-sql-managed-instance
@@ -17,7 +17,7 @@ azure.category:
 
 # Architecture best practices for Azure SQL Managed Instance
 
-Azure SQL Managed Instance is a fully managed platform as a service (PaaS) database engine that provides near-complete compatibility with the latest SQL Server Enterprise Edition. It combines an instance-scoped deployment model with virtual network–native networking, delivering broad SQL Server feature support alongside the operational advantages of a managed platform. SQL Managed Instance targets SQL Server workloads that rely on instance-scoped features like cross-database queries, SQL Server Agent, Service Broker, and common language runtime (CLR) integration.
+Azure SQL Managed Instance is a fully managed platform as a service (PaaS) database engine that provides near-complete compatibility with the latest SQL Server Enterprise Edition. It combines an instance-scoped deployment model with virtual network-native networking, delivering broad SQL Server feature support alongside the operational advantages of a managed platform. SQL Managed Instance targets SQL Server workloads that rely on instance-scoped features like cross-database queries, SQL Server Agent, Service Broker, and common language runtime (CLR) integration.
 
 This article assumes that as an architect, you've reviewed the [data store decision tree](/azure/architecture/guide/technology-choices/data-store-decision-tree) and chose Azure SQL Managed Instance as the database engine for your workload.
 
@@ -31,7 +31,7 @@ This review focuses on the interrelated decisions for the following Azure resour
 - Azure SQL Managed Instance
 
 > [!NOTE]
-> This service guide builds on guidance in the [Azure SQL Database service guide](./azure-sql-database.md). Azure SQL Managed Instance shares the SQL Server database engine with Azure SQL Database but uses an instance-scoped deployment model with distinct architecture, networking, and feature capabilities. Review the SQL Database guide for shared platform guidance. This guide focuses on MI-specific capabilities and architectural considerations.
+> This service guide builds on guidance in the [Azure SQL Database service guide](./azure-sql-database.md). SQL Managed Instance shares the SQL Server database engine with SQL Database but uses an instance-scoped deployment model with distinct architecture, networking, and feature capabilities. Review the SQL Database guide for shared platform guidance. This guide focuses on SQL Managed Instance-specific capabilities and architectural considerations.
 
 ## Reliability
 
@@ -47,7 +47,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Review SQL Managed Instance quotas, limits, and known issues:** SQL Managed Instance enforces regional deployment [limits](/azure/azure-sql/managed-instance/resource-limits), database counts, and storage ceilings that vary by subscription type and tier. Higher-tier deployments consume more vCore quota, which constrains regional capacity planning.
 >
->   - Factor in [known problems](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues) that affect failover groups, backup behavior during replication link usage, and migration constraints from older SQL Server versions. Review these limitations during initial design to avoid constraints that are hard to fix later.
+>   - Factor in [known problems](/azure/azure-sql/managed-instance/doc-changes-updates-known-issues) that affect failover groups, backup behavior during replication link usage, and migration constraints from older SQL Server versions. Review these limitations during initial design to avoid constraints that you can't easily fix later.
 >
 > - **Anticipate potential failures:** Use failure mode analysis to anticipate failures and plan mitigations for SQL Managed Instance.
 >
@@ -67,9 +67,9 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - Anticipate extended timelines for first-in-subnet creation, which takes significantly longer because of virtual cluster provisioning. Concurrent operations queue sequentially within a subnet.
 >
->   - Size subnets with future scaling headroom. Undersized subnets constrain growth, and mixed hardware generations create separate virtual clusters that consume additional addresses.
+>   - Size subnets with future scaling headroom. Undersized subnets constrain growth, and mixed hardware generations create separate virtual clusters that consume additional IP addresses.
 >
->   - Pre-provision standby instances when you need strict scaling response times. Isolate production workloads in dedicated subnets to prevent cross-instance operation blocking.
+>   - Preprovision standby instances when you need strict scaling response times. Isolate production workloads in dedicated subnets to prevent cross-instance operation blocking.
 >
 > - **Configure monitoring and alerting for instance health and replication status:** Prioritize alerts on the metrics that signal reliability risks early. Track instance availability through Resource Health events, monitor management operation status transitions through Activity Log, and verify automated backup completion regularly because backup failures can surface silently when storage fills or DNS issues arise. For instances configured with failover groups, alert on replication lag against RPO thresholds to detect geo-replication drift before it causes unacceptable data-loss exposure.
 >
@@ -105,7 +105,7 @@ Start your design strategy based on the [design review checklist for Reliability
 
 The purpose of the Security pillar is to provide **confidentiality, integrity, and availability** guarantees to the workload.
 
-The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of Azure SQL Managed Instance.
+The [Security design principles](/azure/well-architected/security/security-principles) provide a high-level design strategy for achieving those goals by applying approaches to the technical design of SQL Managed Instance.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
@@ -186,7 +186,7 @@ Start your design strategy based on the [design review checklist for Security](.
 
 Cost Optimization focuses on **detecting spend patterns, prioritizing investments in critical areas, and optimizing in others** to meet the organization's budget while meeting business requirements.
 
-The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to Azure SQL Managed Instance and its environment.
+The [Cost Optimization design principles](/azure/well-architected/cost-optimization/principles) provide a high-level design strategy for achieving those goals and making tradeoffs as necessary in the technical design related to SQL Managed Instance and its environment.
 
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
@@ -243,7 +243,7 @@ Operational Excellence primarily focuses on procedures for **development practic
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to Azure SQL Managed Instance.
+Start your design strategy based on the [design review checklist for Operational Excellence](../operational-excellence/checklist.md) for defining processes for observability, testing, and deployment related to SQL Managed Instance.
 
 > [!div class="checklist"]
 >
@@ -303,7 +303,7 @@ The [Performance Efficiency design principles](/azure/well-architected/performan
 <!-- markdownlint-disable-next-line MD024 -->
 ### Workload design checklist
 
-Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for Azure SQL Managed Instance.
+Start your design strategy based on the [design review checklist for Performance Efficiency](../performance-efficiency/checklist.md). Define a baseline that's based on key performance indicators for SQL Managed Instance.
 
 > [!div class="checklist"]
 >
@@ -362,14 +362,14 @@ Start your design strategy based on the [design review checklist for Performance
 
 ## Azure policies
 
-Azure provides an extensive set of built-in policies related to Azure SQL Managed Instance and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
+Azure provides an extensive set of built-in policies related to SQL Managed Instance and its dependencies. Some of the preceding recommendations can be audited through Azure Policy. For example, you can check whether:
 
 - SQL managed instances should use customer-managed keys to encrypt data at rest.
 - SQL managed instances should have Microsoft Entra-only authentication enabled.
 - Public network access on SQL managed instances should be disabled.
 - SQL managed instances should avoid using GRS backup redundancy.
 
-For comprehensive governance, review the [Azure Policy built-in definitions for Azure SQL Managed Instance](/azure/governance/policy/samples/built-in-policies#sql) and other policies that might affect the security of your database workload.
+For comprehensive governance, review the [Azure Policy built-in definitions for SQL Managed Instance](/azure/governance/policy/samples/built-in-policies#sql) and other policies that might affect the security of your database workload.
 
 ## Azure Advisor recommendations
 
@@ -379,7 +379,7 @@ For more information, see [Azure Advisor](/azure/advisor).
 
 ## Example architecture
 
-Foundational architecture that demonstrates the key recommendations: [Fully managed and secured app on Azure SQL Managed Instance](/azure/architecture/example-scenario/apps/fully-managed-secure-apps).
+Foundational architecture that demonstrates the key recommendations: [Fully managed and secured app on SQL Managed Instance](/azure/architecture/example-scenario/apps/fully-managed-secure-apps).
 
 ## Related content
 
