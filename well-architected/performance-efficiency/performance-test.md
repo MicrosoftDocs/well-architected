@@ -43,11 +43,17 @@ Create release-specific test plans that translate your strategy into actionable 
 
 ## Test early, test often, and focus testing
 
-Early performance analysis catches architectural bottlenecks before they become costly to remedy. Start performance testing as early as possible in the software development lifecycle to inform design decisions, validate architectural choices against performance goals, and identify optimization opportunities. For example, developers can validate performance during local development by profiling code, measuring response times, and identifying resource-intensive operations. 
+Early performance analysis catches architectural bottlenecks before they become costly to remedy.
 
-Focus testing on what matters most. Test results provide evidence that guides code optimization, helping teams focus efforts on areas with the greatest performance impact. Prioritize testing on critical user journeys, high-traffic workflows, and business-critical transactions that directly impact user experience and business outcomes. 
+Start performance testing as early as possible in the software development lifecycle. You don't need a complete application to begin. Developers can profile code locally, measure response times, and identify resource-intensive operations. Early testing informs design decisions, validates architectural choices against performance goals, and identifies optimization opportunities.
 
-Continuously test as your workload evolves. Use insights from initial tests to enhance performance in subsequent iterations. Analyze test results to determine whether acceptance criteria are met, examine data to understand system behavior under various conditions, and identify bottlenecks with root cause analysis.
+Focus testing on what matters most. Prioritize testing on critical user journeys, high-traffic workflows, and business-critical transactions that directly impact user experience and business outcomes.
+
+Test continuously as your workload evolves. Each code change might introduce performance regressions. Run tests regularly to catch these changes early. 
+
+Use test results to guide optimization. Performance data tells you where to focus your improvement efforts. Don't guess at bottlenecks—let the data show you where optimization will have the biggest impact.
+
+Use insights from initial tests to enhance performance in subsequent iterations. Analyze test results to determine whether acceptance criteria are met, examine data to understand system behavior under various conditions, and identify bottlenecks with root cause analysis.
 
 Establish baseline measurements by recording performance metrics during initial tests. In subsequent runs, compare results against established baselines and thresholds to detect performance changes. Regular testing shows which optimizations to prioritize and whether changes deliver measurable improvements.
 
