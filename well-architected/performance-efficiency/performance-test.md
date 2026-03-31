@@ -22,23 +22,23 @@ This article provides strategies for achieving performance targets through reali
 
 ## Formalize your performance testing strategy
 
- A formalized strategy can make sure your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. 
+ Your performance strategy can make sure your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
 
- Your performance strategy outlines how you test performance that supports your workload's performance goals and business outcomes. A documented strategy gives everyone a shared playbook. 
+Start with clear requirements and targets. Define and document specific performance goals, such as how many concurrent users you need to support or which response-time thresholds you must meet. Make sure these goals align with your service-level objectives (SLOs), and translate them into measurable test objectives.
 
-**Start with clear requirements and targets.** Define and document specific performance goals, such as how many concurrent users you need to support or which response-time thresholds you must meet. Make sure these goals align with your service-level objectives (SLOs), and translate them into measurable test objectives.
+Be clear about your criteria from the start. Define when to start testing (entry criteria), what proves test success (acceptance criteria), and when testing can stop (exit criteria). Using measurable metrics removes ambiguity and keeps everyone aligned.
 
-**Be clear about your criteria from the start.** Define when to start testing (entry criteria), what proves test success (acceptance criteria), and when testing can stop (exit criteria). Using measurable metrics removes ambiguity and keeps everyone aligned.
+Identify the user flows that matter most from a performance perspective. Work with stakeholders to agree on the key user journeys and transactions that should be prioritized for testing.
 
-**Identify the user flows that matter most from a performance perspective.** Work with stakeholders to agree on the key user journeys and transactions that should be prioritized for testing.
+Document your testing approach. Capture the types of tests you'll run (load tests, stress tests, spike tests), the tools you'll use, and the constraints you're working within (budget, time, infrastructure limits). Being realistic about your service boundaries helps you set achievable targets.
 
-Document the types of performance testing your workload requires, the tools needed to execute them, and the resource constraints (infrastructure, budget, time) that influence testing decisions. Setting realistic targets based on actual service boundaries prevents unrealistic expectations.
+Specify your test environment requirements. Your test environment should mirror production as closely as possible. Document what infrastructure, data characteristics, and network configurations you need to run meaningful tests. Weigh the investment in test infrastructure against the risk of performance problems in production. 
 
-Specify test environment requirements, including infrastructure needs, data characteristics, and network configurations necessary to conduct meaningful performance tests that mirror production conditions. Assign clear ownership for test planning, execution, and analysis across performance engineers, developers, and operations teams.
+Create standard reports and dashboards. When test results are presented consistently, they're easier to understand and compare over time. Define how you'll report findings to stakeholders and how you'll track defects from discovery to resolution.
 
-Establish standardized reporting formats and dashboards for performance results. Consistent reporting makes it easier to interpret results, track trends over time, and communicate findings to stakeholders. Define how defects are logged, prioritized, and tracked through resolution.
+Performance testing requires specific expertise. Assign clear ownership for test planning, execution, and analysis across performance engineers, developers, and operations teams.
 
-Create release-specific test plans that translate your strategy into actionable testing activities for each deployment.
+Translate strategy into release plans. For each deployment, create a specific test plan that turns your strategy into concrete actions.
 
 > [!NOTE]
 > Tailor your performance testing strategy to your specific workload characteristics. A high-traffic consumer application requires different performance testing approaches than an internal batch processing system.
