@@ -257,7 +257,7 @@ Start your design strategy based on the [design review checklist for Operational
 >
 > - **Deploy immutable units:** Implement the [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp) to compartmentalize App Service into an immutable stamp. App Service supports the use of containers, which are inherently immutable. Consider [custom containers](/azure/app-service/configure-custom-container) for your App Service web app.
 >
->    Each stamp represents a self-contained unit that you can quickly scale out or scale in. Units that are based on this stamp are temporary and stateless. Stateless design simplifies operations and maintenance. This approach is ideal for mission-critical applications. For more information, see [Mission-critical baseline with App Service](/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service.md).
+>    Each stamp represents a self-contained unit that you can quickly scale out or scale in. Units that are based on this stamp are temporary and stateless. Stateless design simplifies operations and maintenance. This approach is ideal for mission-critical applications.
 >
 >   Use an infrastructure as code (IaC) technology, such as Bicep, to stamp out units with repeatability and consistency.
 >
