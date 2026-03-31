@@ -1,9 +1,10 @@
 ---
 title: Architecture strategies for testing
-description: Learn how to design for testability and apply test practices to achieve reliable, high-quality workload.
+description: Learn how to apply testing practices that help you deliver reliable, high-quality workloads.
 author: simipaul
 ms.author: simipaul
-ms.date: 02/25/2026
+ms.reviewer: simipaul
+ms.date: 03/31/2026
 ms.topic: concept-article
 ---
 
@@ -43,8 +44,7 @@ Your test plan is a detailed document that guides testing execution for a specif
 
 A well-structured test plan makes testing efficient and aligned with the release's goals and timelines. It's your reference point for tracking progress and making informed decisions throughout testing.
 
-Example: For an e‑commerce checkout system, the test strategy establishes a consistent approach across all releases. It defines that payment flows are always prioritized, specifies standard tools such as Selenium for UI testing, JMeter for load testing, and OWASP ZAP for security testing, and clarifies team responsibilities for different test types.
-The test plan for the v2.5 release focuses on adding Apple Pay support. It defines exactly what to test for Apple Pay in this release, allocates resources (two engineers and three iOS devices), sets a four‑week schedule, and establishes clear entry criteria (code complete and environment configured) and exit criteria (all tests pass, zero critical bugs, and a two‑second SLA).
+Example: For an e‑commerce checkout system, the test strategy establishes a consistent approach across all releases. It defines that payment flows are always prioritized, specifies testing tools for the system such as Selenium for UI testing, JMeter for load testing, and OWASP ZAP for security testing, and clarifies team responsibilities for different test types. The test plan for the v2.5 release focuses on adding Apple Pay support. It defines exactly what to test for Apple Pay in this release, allocates resources (two engineers and three iOS devices), sets a four‑week schedule, and establishes clear entry criteria (code complete and environment configured) and exit criteria (all tests pass, zero critical bugs, and a two‑second SLA).
 
 > [!NOTE]
 > Don't start testing before you clearly define your overall test strategy and plan. A solid test plan keeps your efforts focused and aligned with workload goals.
