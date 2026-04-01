@@ -2499,6 +2499,8 @@
 			"source_path": "well-architected/service-guides/azure-sql-managed-instance/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/azure-sql-managed-instance",
 			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/security/threat-model.md",
 			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
 			"redirect_document_id": true
