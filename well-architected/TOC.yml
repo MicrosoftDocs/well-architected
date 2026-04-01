@@ -241,9 +241,7 @@
       - name: Mission-critical
         href: mission-critical/index.yml
       - name: HPC
-        href: hpc/index.yml        
-      - name: Oracle on IaaS
-        href: oracle-iaas/index.yml       
+        href: hpc/index.yml     
       - name: Software as a service (SaaS)
         href: saas/index.yml        
       - name: SAP

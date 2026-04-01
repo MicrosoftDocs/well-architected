@@ -1436,6 +1436,46 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/oracle-iaas/choose-compute-storage.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/design-applications.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/get-started.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/index.yml",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/monitor-workloads.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/optimize-business-continuity-disaster-recovery.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/optimize-security.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/oracle-iaas/review-design-principles.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/oracle-on-azure/",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/hybrid/hybrid-performance-efficiency.md",
 			"redirect_url": "/azure/architecture/browse/?azure_categories=hybrid",
 			"redirect_document_id": false
