@@ -179,12 +179,10 @@
               href: operational-excellence/workload-supply-chain.md
             - name: OE:07 Monitoring system
               href: operational-excellence/observability.md
-            - name: OE:07 Instrument an application
-              href: operational-excellence/instrument-application.md
             - name: OE:08 Incident response
               href: operational-excellence/incident-response.md
-            - name: OE:09 Task automation
-              href: operational-excellence/automate-tasks.md
+            - name: OE:09 Testing strategy
+              href: operational-excellence/testing.md
             - name: OE:10 Automation design
               href: operational-excellence/enable-automation.md
             - name: OE:11 Safe deployment practices
@@ -243,9 +241,7 @@
       - name: Mission-critical
         href: mission-critical/index.yml
       - name: HPC
-        href: hpc/index.yml        
-      - name: Oracle on IaaS
-        href: oracle-iaas/index.yml       
+        href: hpc/index.yml     
       - name: Software as a service (SaaS)
         href: saas/index.yml        
       - name: SAP
@@ -325,7 +321,9 @@
       - name: Overview
         href: ./design.md
       - name: Health modeling
-        href: ./design-guides/health-modeling.md      
+        href: ./design-guides/health-modeling.md
+      - name: Monitoring
+        href: ./design-guides/monitoring.md      
       - name: Incident management plan
         href: ./design-guides/incident-management.md
       - name: Optimize using flows
