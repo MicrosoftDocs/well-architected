@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|**PE:06**| Enhance your workloads performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieve your business objectives. |
+|**PE:06**| Enhance your workload's performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieves your business objectives. |
 |---|---|
 
 Performance testing is a non-functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service-level agreements.
@@ -22,7 +22,7 @@ This article provides strategies for achieving performance targets through reali
 
 ## Formalize your performance testing strategy
 
-Your performance strategy can make sure your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
+A performance strategy ensures your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
 
 **Start with clear requirements and targets.** Define and document specific performance goals, such as how many concurrent users you need to support or which response-time thresholds you must meet. Make sure these goals align with your service-level objectives (SLOs), and translate them into measurable test objectives.
 
@@ -53,15 +53,15 @@ Focus testing on what matters most. Prioritize testing on critical user journeys
 
 Test continuously as your workload evolves. Each code change might introduce performance regressions. Run tests regularly to catch these changes early. Incorporate performance tests in deployment pipelines and run periodic automated tests to detect performance drift before it reaches production.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Early performance testing requires dedicated infrastructure and specialized expertise, increasing operational costs. Balance this investment against the cost of performance problems discovered late and production incidents.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Early performance testing requires dedicated infrastructure and specialized expertise, which increases operational costs. Balance this investment against the cost of performance problems discovered late and production incidents.
 
 ## Validate performance in production
 
-Test environments can't fully replicate real-world conditions that affect performance. Production tests expose issues that only surface under actual usage and provide accurate baselines for future optimization. Some performance requirements can only be validated where real users, data, and infrastructure intersect.
+Test environments can't fully replicate real-world conditions that affect performance. Production tests expose problems that only surface under actual usage and provide accurate baselines for future optimization. Some performance requirements can only be validated where real users, data, and infrastructure intersect.
 
 Run controlled production testing. Schedule tests during off-peak hours to understand how your workload behaves under resource exhaustion and recovers from failures. 
 
-Production testing reveals performance characteristics under actual conditions including:
+Production testing reveals performance characteristics under actual conditions, including:
 - Realistic user behavior patterns and data volumes
 - True network latency and bandwidth variations
 - Geographic distribution effects
@@ -70,15 +70,15 @@ Production testing reveals performance characteristics under actual conditions i
 
 For mission-critical workloads, test in production or a production-like environment to capture real-world performance characteristics.
 
-Use progressive testing techniques. Start with small percentages of traffic and gradually increase. Monitor for response times, throughput, error rates, and resource utilization at each step. This gradual approach limits risk while identifying the breaking point, revealing bottlenecks, and providing an accurate view of system behaviour under increasing demand. 
+Use progressive testing techniques. Start with small percentages of traffic and gradually increase. Monitor response times, throughput, error rates, and resource utilization at each step. This gradual approach limits risk while identifying the breaking point, revealing bottlenecks, and providing an accurate view of system behavior under increasing demand. 
 
-Monitor production tests continuously to find issues early. Implement automated safeguards that halt tests if they negatively impact users, such as automated rollback mechanisms and real-time alerting. These techniques ensure quick response and minimize disruptions.
+Monitor production tests continuously to find problems early. Implement automated safeguards that halt tests if they negatively impact users, such as automated rollback mechanisms and real-time alerting. These techniques ensure quick response and minimize disruptions.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact. The benefits of realistic testing must be balanced against the potential business impact of disrupting live users.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact. Balance the benefits of realistic testing against the potential business impact of disrupting live users.
 
 ## Incorporate different types of testing
 
-Performance testing covers a range of tests that assess speed, stability, and scalability under various conditions. Each test type targets distinct performance aspects of your workload. It uncovers unique insights, and enables full evaluation that goes beyond functional testing. 
+Performance testing covers a range of tests that assess speed, stability, and scalability under various conditions. Each test type targets distinct performance aspects of your workload. It uncovers unique insights and enables a full evaluation that goes beyond functional testing. 
 
 Running multiple test types helps you capture requirements early, understand tradeoffs that influence technical decisions (compute resources, data store selection, scaling strategies), surface bottlenecks that shape your architecture, and guide capacity planning as your business grows.
 
@@ -107,11 +107,11 @@ Your performance tests should match real-world conditions so your results are me
 
 ### Use real-world usage patterns and data characteristics
 
-Your test scenarios should reflect actual usage patterns such as concurrent user access, peak load periods, and specific transaction sequences. Make sure scenarios align with business goals so performance outcomes reflect true user value. When you test with different patterns, you can identify performance bottlenecks, inform resource allocation decisions and optimization opportunities. 
+Your test scenarios should reflect actual usage patterns such as concurrent user access, peak load periods, and specific transaction sequences. Make sure scenarios align with business goals so performance outcomes reflect true user value. When you test with different patterns, you can identify performance bottlenecks, inform resource allocation decisions, and find optimization opportunities. 
 
 Your test data should look like real production data. Use synthetic data that has production data characteristics. Reserve production datasets (properly anonymized) for certain scenarios such as to highlight data management behaviors like transaction consistency, latency, and volume handling.
 
-Create diverse test data sets that represent various scenarios, user profiles, and data volumes. Input variations and randomization to mimic real user diversity. Include edge cases that might cause performance problems, such as large payloads, complex queries, or high concurrency. 
+Create diverse test data sets that represent various scenarios, user profiles, and data volumes. Use input variations and randomization to mimic real user diversity. Include edge cases that might cause performance problems, such as large payloads, complex queries, or high concurrency. 
 
 When testing under load, include actual third-party API calls. Mocking external dependencies makes tests run faster and more predictably, but it hides real-world performance problems. If your app depends on a payment processor API, test with real calls to understand end-to-end latency.
 
@@ -132,16 +132,16 @@ For non-critical workloads, testing in a scaled-down environment that mimics pro
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
 
-### Analyse results to identify trends and guide optimization
+### Analyze results to identify trends and guide optimization
 
-Performance data tells you where to focus your improvement efforts and where optimization will have the biggest impact.
+Performance data shows where to focus your improvement efforts and where optimization has the biggest impact.
 
 Use test results to assess whether acceptance criteria are met and guide optimization. Establish your baseline measurements. 
 
-Baselines help you identify trends and anomalies and whether optimization changes deliver improvements. Record performance metrics during initial tests, this is your baseline, a snapshot of "normal" performance. In subsequent runs, compare new results against this baseline to detect performance changes. Examine the data to understand system behaviour under various conditions. Look for patterns that show where performance degrades. Use this insight to prioritize optimization efforts. 
+Baselines help you identify trends and anomalies and whether optimization changes deliver improvements. Record performance metrics during initial tests. This recording is your baseline, a snapshot of "normal" performance. In subsequent runs, compare new results against this baseline to detect performance changes. Examine the data to understand system behavior under various conditions. Look for patterns that show where performance degrades. Use this insight to prioritize optimization efforts. 
 
 > [!NOTE]
-> Regularly review and update your baselines after significant changes to your workload, such as architectural changes, new features, or scaling adjustments. With this you make sure that your performance targets remain relevant. 
+> Regularly review and update your baselines after significant changes to your workload, such as architectural changes, new features, or scaling adjustments. By doing this, you make sure that your performance targets remain relevant. 
 
 ## Treat your performance test assets as important as code assets
 
@@ -149,13 +149,13 @@ Your performance test assets contain critical knowledge about your workload's ex
 
 ### Structure and govern your test assets
 
-Store all test assets in version control such as test scenarios, configurations, data generation code, and scripts. Use the same development practices for your test assets as you do for your application code, with code reviews, pull requests, and validations. 
+Store all test assets in version control, such as test scenarios, configurations, data generation code, and scripts. Use the same development practices for your test assets as you do for your application code, with code reviews, pull requests, and validations. 
 
-Apply good coding practices and standards with clear naming conventions, modular structure, and parameterizatio. Separates load generation, monitoring, and result analysis into reusable components. 
+Apply good coding practices and standards with clear naming conventions, modular structure, and parameterization. Separate load generation, monitoring, and result analysis into reusable components. 
 
-Keep load tests, stress tests, and endurance tests in separate suites. Don't mix them, each type has different setup requirements, run durations, and success criteria. 
+Keep load tests, stress tests, and endurance tests in separate suites. Don't mix them. Each type has different setup requirements, run durations, and success criteria. 
 
-Design test scripts with clear pass or fail criterial aligned to performance service-level agreements (SLAs). Validate measurable metrics like response time, throughput, error rates, and resource utilization against defined thresholds for each user flow.
+Design test scripts with clear pass or fail criteria aligned to performance service-level agreements (SLAs). Validate measurable metrics like response time, throughput, error rates, and resource utilization against defined thresholds for each user flow.
 
 Each test should reset state before running. Tests that depend on previous runs produce inconsistent results. Validate test scripts to ensure reliable execution. You need reliable baselines to track performance trends over time.
 
@@ -173,7 +173,7 @@ Schedule regular reviews to ensure your tests and data still reflect actual usag
 
 ### Extend observability and automate analysis
 
-Bring observability into your performance testing so you can understand whether your workload meets performance targets and why it behaves the way it does under load. Without observability, you would spend significant time investigating test failures to diagnose root causes. 
+Bring observability into your performance testing so you can understand whether your workload meets performance targets and why it behaves the way it does under load. Without observability, you'd spend significant time investigating test failures to diagnose root causes. 
 
 When tests reveal problems, your instrumentation should help you identify root causes. Distributed tracing, detailed logging, and correlated metrics provide the visibility you need to understand performance issues and guide optimization efforts.
 
@@ -195,9 +195,9 @@ Use Application Performance Monitoring (APM) tools to track trends over time, id
 
 ## Azure facilitation
 
-[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) makes it possible for you to integrate performance testing into your CI/CD pipeline. You can incorporate load testing as a step in your pipeline to validate the performance and scalability of your applications.
+[Azure Pipelines](/azure/devops/pipelines/get-started/what-is-azure-pipelines) enables you to integrate performance testing into your CI/CD pipeline. You can add load testing as a step in your pipeline to validate the performance and scalability of your applications.
 
-[Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) provides a way for you to inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
+[Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) helps you inject real-world faults into your application so that you can run controlled fault injection experiments. The experiments help you measure, understand, and improve your cloud application and service resilience.
 
 [Azure Load Testing](/azure/app-testing/load-testing/overview-what-is-azure-load-testing) is a load testing service that generates high-scale load on any application. Load Testing provides capabilities for automating load tests and integrating them into your continuous integration and continuous delivery (CI/CD) workflow. You can define test criteria, such as average response time or error thresholds, and automatically stop load tests based on specific error conditions. Load Testing offers a dashboard that provides live updates and detailed resource metrics of Azure application components during a load test. You can analyze the test results, identify performance bottlenecks, and compare multiple test runs to understand performance regressions over time.
 
