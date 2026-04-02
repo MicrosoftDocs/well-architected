@@ -282,7 +282,7 @@ You might need to make design tradeoffs if you use the approaches in the pillar 
 
 :::image type="icon" source="../_images/trade-off.svg"::: **High availability through redundancy and isolation**
 
-- **High availability.** Redundancy affects costs. For example, provisioning at least three units to avoid zonal outages might not be financially feasible for your workload. Costs increase further with a multiregion architecture, which requires at least six units, or three units per region. A multiregion setup also adds operational costs for coordinating safe deployments, reliable scaling, and failover coordination with back ends.
+- **High availability.** Redundancy affects costs. For example, provisioning at least three units to avoid zone outages might not be financially feasible for your workload. Costs increase further with a multiregion architecture, which requires at least six units, or three units per region. A multiregion setup also adds operational costs for coordinating safe deployments, reliable scaling, and failover coordination with back ends.
 
 - **Isolation.** Isolating workloads across workspaces or API Management instances adds operational complexity because it includes managing a multitenant system that has compute isolation.
 
@@ -309,7 +309,7 @@ Foundational architecture that demonstrates the key recommendations: [API Manage
 API Management is often combined with the following services. Be sure to review their service guides or product documentation if your workload includes these services.
 
 - [Application Gateway](./azure-application-gateway.md)
-- [Azure Cache for Redis](/azure/azure-cache-for-redis/cache-overview)
+- [Azure Managed Redis](/azure/redis/overview)
 - [Azure Front Door](./azure-front-door.md)
 - [Key Vault](/azure/key-vault/general/basic-concepts)
 - [Azure Virtual Network](./virtual-network.md)

@@ -25,7 +25,7 @@ Security baselines should be published widely throughout your organization so th
 
 This guide provides recommendations about setting a security baseline that's based on internal and external factors. Internal factors include business requirements, risks, and asset evaluation. External factors include industry benchmarks and regulatory standards.
 
-**Definitions** 
+**Terminology**
 
 | Term | Definition |
 |---|---|

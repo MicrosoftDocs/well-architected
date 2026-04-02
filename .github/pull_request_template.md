@@ -1,4 +1,8 @@
-Before selecting the "Create pull request" button:  
+**Before you create this PR, submit a [contribution request](aka.ms/contributions). If you don't submit a contribution request, we might close your PR. Ensure that your guidance is unique and aligns with the WAF content model so that it adds clear value where it matters most. Content added to WAF is used for AI consumption and affects the overall confidence score.**
+
+If you have any questions, contact [the WAF team](mailto:pnp-well-architected-content@microsoft.com).
+
+After you get approval from the WAF team:  
 
 1. Enter a meaningful title above^, using a prefix if necessary and keywords "New" or "Update" indicating the nature of changes.
 

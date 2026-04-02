@@ -3,7 +3,7 @@ title: Architecture strategies for safe deployment practices
 description: Learn about recommendations for safe deployment practices (SDP). Define how to safely make any change to your workload through deployments.
 author: claytonsiemens77
 ms.author: csiemens
-ms.date: 11/15/2023
+ms.date: 02/11/2026
 ms.topic: concept-article
 ---
 
@@ -42,6 +42,14 @@ Another common deployment model is a blue-green approach. In this model, two ide
 
 In both of these models, the time between each phase of the rollout should be long enough to enable you to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual rollout tuning creates friction and slows deployment. AI accelerates rollouts and reduces incidents by replacing subjective decision-making with data-driven recommendations.
+> 
+> Start with a low to medium GenAI approach. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
+>
+> Advanced agentic solutions can predict canary percentages, rollout timing, and target segments. When integrated with deployment tools, they automatically update rollout configurations. These solutions require deeper integration, governed write access, and platform support.
+>
+> Custom predictive models offer higher accuracy but need significant investment in training infrastructure and ML expertise. They may not be practical for most teams.
+
 ## Develop robust workload health models
 
 Develop a robust health model as part of your observability platform and reliability strategies. Your health model should provide in-depth visibility into the components and overall health of the workload. During a rollout, if you receive an alert about a health change relating to an end user, the rollout should immediately halt and an investigation into the cause of the alert should be performed to help determine the next course of action. If there are no issues reported by end users and all health indicators stay green throughout the bake time, the rollout should continue. Be sure to include usage metrics in your health model to help ensure that a lack of user-reported issues and negative health signals aren't hiding an issue. For more information, see [Building a health model](../design-guides/health-modeling.md).
@@ -64,7 +72,7 @@ Rolling back changes, especially database, schema, or other stateful component c
 
 - Use a release flow or trunk-based branching structure, which enforces tightly synced collaboration across the development team, instead of a Gitflow or environment-based branching structure.
 
-- Automate as much of your SDP as possible. For detailed guidance on automating IaC and application continuous integration and continuous delivery (CI/CD) processes, see [Recommendations for implementing automation](automate-tasks.md).
+- Automate as much of your SDP as possible. For detailed guidance on automating IaC and application continuous integration and continuous delivery (CI/CD) processes, see [Recommendations for implementing automation](enable-automation.md).
 
 - Use CI practices to regularly integrate code changes into repositories. CI practices can help you identify integration conflicts and reduce the likelihood of large, risky merges. For more information, see the [Continuous integration guide](/azure/well-architected/devops/release-engineering-ci).
 

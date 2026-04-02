@@ -63,6 +63,8 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 > - **Rightsize the VMs and their dependencies.** Understand your VM's expected work to ensure that it's not undersized and can handle the maximum load. Have extra capacity to mitigate failures.
 >
+> - **Ensure always-on VMs stay running.** Virtual Machines in Azure can shut down, which is a distinct state than the resource being deleted. For VMs that are designed to stay running, use a `ReadOnly` [resource lock](/azure/azure-resource-manager/management/lock-resources) to prevent accidental stopping of the VM. This will not prevent the OS from rebooting if needed for updates, but will prevent an operator error through the Azure portal or CLI.
+>
 > - **Create a comprehensive disaster recovery plan.** Disaster preparedness involves creating a comprehensive plan and deciding on a technology for recovery.
 >
 >   Dependencies and stateful components, such as attached storage, can complicate recovery. If disks go down, then that failure affects the VM's functioning. Include a clear process for these dependencies in your recovery plans.

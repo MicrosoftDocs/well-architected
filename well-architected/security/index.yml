@@ -62,8 +62,6 @@ landingContent:
             url: data-classification.md
           - text: Monitor workload security
             url: monitor-threats.md
-          - text: Model threats
-            url: threat-model.md
   - title: Protect workload assets
     linkLists:
       - linkListType: how-to-guide

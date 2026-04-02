@@ -27,7 +27,7 @@ From a technical control perspective, **identity is always the primary perimeter
 
 
 
-**Definitions** 
+**Terminology** 
 
 
 |Terms   |Definition   |

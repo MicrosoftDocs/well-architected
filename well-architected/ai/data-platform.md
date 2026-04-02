@@ -251,7 +251,7 @@ Reliability for the search index should mirror that of your inference endpoint a
 
 Each step must meet similar uptime and performance expectations. To achieve this, when you choose the data platform, look for:
 
-- High availability and zone redundancy capabilities to survive zonal and regional outages.
+- High availability and zone redundancy capabilities to survive zone and regional outages.
 - Automatic recovery and easy index rebuilding to prevent the use of a corrupted index for inferencing.
 - Index aliasing or swap capabilities to enable updates with zero downtime.
 

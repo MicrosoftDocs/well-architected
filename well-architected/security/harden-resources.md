@@ -20,7 +20,7 @@ Security hardening is an intentional self-preservation exercise. The goal is to 
 
 **Security hardening is an ongoing process** that requires continuous monitoring and adaptation to evolving threats and vulnerabilities.
 
-**Definitions** 
+**Terminology**
 
 | Term | Definition |
 |---|---|

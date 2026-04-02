@@ -140,7 +140,7 @@ For reliability, it's important to track connection metrics, such as monitoring 
 
 Failures range from intermittent to slightly extended transient failures and catastrophic outages.
 
-In Level 1, focus on platform failures. Even though they're beyond your control, you should still have strategies for handling them. For example, address zonal outages by using availability zones. Anticipate transient faults at the platform level and handle them in your workload.
+In Level 1, focus on platform failures. Even though they're beyond your control, you should still have strategies for handling them. For example, address zone outages by using availability zones. Anticipate transient faults at the platform level and handle them in your workload.
 
 The process of handling these failures varies based on complexity. Start documenting potential platform-level failures, their associated risks, and mitigation strategies. This exercise is primarily theoretical and matures with automation at later levels.
 

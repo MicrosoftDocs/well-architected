@@ -46,7 +46,7 @@ The 'Four Vs of Big Data' provide a framework to better understand requisite cha
   - *Will there be a risk of data loss?*
 
 - Features such as Time to Live (TTL) can be used to manage data growth by automatically deleting records after an elapsed time, using either record creation or modification.
-  - For example, Azure Cosmos DB provides an in-built [TTL](/azure/cosmos-db/sql/time-to-live) capability.
+  - For example, Azure Cosmos DB provides an in-built [TTL](/azure/cosmos-db/time-to-live) capability.
 
 **Velocity**
 
@@ -265,9 +265,9 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/dedicated-gateway#connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
   - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
 
-- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zonal failures within a region.
+- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zone failures within a region.
 
-- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zonal failures.
+- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zone failures.
   - The Paxos consensus protocol is applied to achieve quorum across replicas within a region.
 
 - An Azure Cosmos DB account can easily be configured to replicate data across multiple regions to mitigate the risk of a single region becoming unavailable.
@@ -366,7 +366,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
   - The change feed can be used to populate a secondary store for additional data platform redundancy or for subsequent analytical scenarios.
 
 - If delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
-  - A [Soft Delete](/azure/cosmos-db/sql/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
+  - A [Soft Delete](/azure/cosmos-db/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
     - Instead of explicitly deleting data records, data records are *updated* by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
     - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
   - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
@@ -453,7 +453,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - Select an optimal 'hub' deployment region where conflict resolution will occur in a multi-region-write configuration, and all writes will be performed in a single-region-write configuration.
   - Consider distance relative to other deployment regions and associated latency in selecting a primary region, and requisite capabilities such as Availability Zones support.
 
-- Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zonal failures within a region.
+- Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zone failures within a region.
 
 - Use Azure Cosmos DB for NoSQL since it offers the most comprehensive feature set, particularly where performance tuning is concerned.
   - Alternative APIs should primarily be considered for migration or compatibility scenarios.
@@ -477,7 +477,7 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 - [Indexing](/azure/cosmos-db/index-overview) is also crucial for performance, so ensure index exclusions are used to reduce RU/s and storage requirements.
   - Only index those fields that are needed for filtering within queries; design indexes for the most-used predicates.
 
-- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/sql/best-practice-dotnet#checklist).
+- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/best-practice-dotnet#checklist).
   - Implement [retry logic](/azure/architecture/best-practices/retry-service-specific#cosmos-db) within the SDK on clients.
 
 - Use service-managed encryption keys to reduce management complexity.

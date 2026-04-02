@@ -14,6 +14,22 @@ This guide describes the recommendations for handling transient faults in your c
 
 This article provides general guidance for transient fault handling. For information about implementing retries in your application code to handle transient faults, see the [retry pattern](/azure/architecture/patterns/retry) and when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
 
+## Terminology
+
+Before you start implementing transient fault handling, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Circuit Breaker pattern** | Design pattern that prevents repeated attempts to an operation that's likely to fail. After a threshold of failures, the circuit *opens* and requests fail immediately without attempting the operation, which allows the service time to recover. |
+| **Dead-letter queue** | Special queue that stores messages that can't process successfully after multiple attempts. Prevents problematic messages from blocking the main processing queue while preserving them for investigation and resolution. |
+| **Exponential back-off** | Retry strategy where the wait time between retry attempts increases exponentially, such as 3 seconds, 12 seconds, 30 seconds. Helps prevent overwhelming a recovering service with repeated requests. |
+| **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs. Essential for retry logic to avoid unintended side effects when operations repeat. |
+| **Jitter** | Random delay added to retry intervals to prevent multiple clients from retrying simultaneously. Helps avoid synchronized retry storms that could overwhelm a recovering service. |
+| **Retry policy** | Combination of all retry strategy elements, including detection mechanism, interval type, actual interval values, and number of retry attempts. Defines how an application responds to transient failures. |
+| **Throttling** | Practice of limiting the rate of requests to a service or resource to protect it from overload. Often triggers transient faults when limits are exceeded, which requires appropriate retry strategies. |
+| **Timeout** | Maximum duration to wait for an operation to complete before considering it failed. Consider timeouts when you design retry strategies to avoid operations exceeding total allowed time. |
+| **Transient fault** | Temporary failure that's self correcting and likely to succeed if retried after a suitable delay. Examples include momentary network loss, service unavailability, or timeouts because of busy services. |
+
 ## Transient Faults
 
 Transient faults can occur in any environment, on any platform or operating system, and in any kind of application. For solutions that run on local on-premises infrastructure, the performance and availability of the application and its components are typically maintained via expensive and often underused hardware redundancy, and components and resources are located close to each other. This approach makes failure less likely, but transient faults can still occur, as can outages caused by unforeseen events like external power supply or network issues, or by disaster scenarios.
@@ -194,7 +210,6 @@ See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reli
 - [Retry pattern](/azure/architecture/patterns/retry)
 - [Throttling pattern](/azure/architecture/patterns/throttling)
 - [Compensating Transaction pattern](/azure/architecture/patterns/compensating-transaction)
-- [A blog post on idempotency patterns](https://blog.jonathanoliver.com/idempotency-patterns)
 - [Connection Resiliency](/ef/core/miscellaneous/connection-resiliency)
 - [Inject mock services](/aspnet/core/test/integration-tests#inject-mock-services)
 - [Dead-letter queue pattern](/azure/service-bus-messaging/service-bus-dead-letter-queues)

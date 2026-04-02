@@ -3,13 +3,79 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/10/2025
+ms.date: 03/13/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## February 2026
+
+### Updated articles
+
+- [Architecture best practices for Azure Database for MySQL](./service-guides/azure-database-for-mysql.md): We rewrote the Azure Database for MySQL service guide to make its recommendations more actionable across all five Well-Architected Framework pillars. We expanded and reorganized checklists and configuration recommendations for rightsizing, reservations, policy-based governance, automation, observability, scaling, read replicas, and performance tuning. We scoped the article exclusively for the Azure Database for MySQL flexible server deployment option. We standardized terminology, corrected links, and improved consistency.
+
+- [Networking and connectivity for mission-critical workloads on Azure](./mission-critical/mission-critical-networking-connectivity.md): We made zone redundancy terminology consistent throughout key design sections. We replaced *zonal redundancy* with *zone redundancy* in NAT gateway guidance, regional deployment considerations, and deployment stamp recommendations.
+
+- [Architecture strategies for formalizing development practices](./operational-excellence/formalize-development-practices.md): We reframed collaboration and communication as aspects of change management to emphasize that every unit of work is a change. We consolidated user story characteristics into five clear principles: independent, negotiable, valuable, estimable, and testable.
+
+- [Architecture strategies for standardizing operations](./operational-excellence/formalize-operations-tasks.md): We reorganized content into distinct sections that cover routine checklists, emergency procedures, industry-proven practices, and shift-left ownership. These changes make it easier to understand how to apply standards across different operational scenarios. The revised content uses more direct, action-oriented language and treats documentation as a living asset that must evolve with the workload and team.
+
+- [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We reorganized this article to focus on designing observability rather than technical implementation details. We expanded the definitions table. We restructured content around strategic design principles including aligning telemetry with health models and key performance indicators (KPIs), standardizing data consolidation, tailoring storage for usage patterns, correlating data for end-to-end insights, and defining alerts around meaningful operational conditions. The revised content uses outcome-focused language that emphasizes how observability supports continuous improvement and informed decisions rather than focusing on pipeline mechanics.
+
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md).
+
+### AI integration in the Operational Excellence pillar
+
+We [integrated AI opportunities throughout the Operational Excellence pillar's core guidance](./operational-excellence/maturity-model.md), with an emphasis on applying AI across the full maturity journey. The revised content shows how teams can use AI to improve day‑to‑day operations, reduce manual toil, increase productivity, and support better operational decision‑making as practices evolve from individual tasks to integrated, production‑ready workflows. It also helps workload teams evaluate where AI fits at each maturity level and make informed decisions by balancing potential return on investment (ROI) with security and reliability trade‑offs.
+
+### Editorial updates
+
+- [Architecture best practices for Azure Databricks](./service-guides/azure-databricks.md): We improved clarity and consistency throughout the Azure Databricks service guide with enhanced wording in Operational Excellence and Performance Efficiency recommendations. We updated formatting in tables and checklists, corrected links, updated terminology for consistency, and improved sentence structure and flow to make guidance more actionable and easier to follow.
+
+- [Architecture best practices for Azure Virtual WAN](./service-guides/azure-virtual-wan.md): We improved clarity and consistency throughout recommendations in the Cost Optimization, Operational Excellence, and Performance Efficiency sections. We strengthened guidance about cost modeling, resource tagging, hub capacity planning, IaC automation, monitoring and alerting, progressive deployment practices, and performance testing while improving overall wording and alignment with Microsoft style conventions.
+
+## January 2026
+
+### Updated articles
+
+- [Architecture best practices for Azure Event Grid](./service-guides/azure-event-grid.md): We replaced the previous Event Grid Reliability and Operational Excellence articles with a comprehensive service guide that covers all five Well-Architected Framework pillars. We added extensive new guidance for Security, Cost Optimization, and Performance Efficiency, and significantly expanded the Reliability and Operational Excellence content to include modern practices like chaos engineering, infrastructure as code (IaC), and CI/CD integration.
+
+- [Architecture strategies for self-healing and self-preservation](./reliability/self-preservation.md): We expanded the self-healing actions guidance with a new example about using dead-letter queues to handle corrupt messages that can block queue processing. We also improved the formatting of the automated self-healing section for better readability.
+
+- [Architecture best practices for Azure Service Bus](./service-guides/azure-service-bus.md): We added guidance to help mitigate several failure modes, including detecting quota exceptions, checking the `IsTransient` property for retry decisions, and using `PeekLock` mode to prevent message loss. We expanded the region-level redundancy section with active and passive replication patterns for greater resilience. We also added a new recommendation for enabling duplicate detection to filter out redundant messages from producer retries.
+
+- [Architecture best practices for Azure Blob Storage](./service-guides/azure-blob-storage.md): We added guidance to always use the Blob Storage client library SDK for its built-in transient fault handling capabilities. We also expanded the secondary read options guidance to include graceful degradation when both primary and secondary reads fail.
+
+- [Architecture strategies for failure mode analysis](./reliability/failure-mode-analysis.md): We added guidance to help distinguish failures from errors. It clarifies that failures are unexpected events that require intervention and errors are expected parts of normal operations. We also added a recommendation to consider read failures and write failures separately because their impact and mitigation steps vary.
+
+- [Architecture best practices for Azure SQL Database](./service-guides/azure-sql-database.md): We added guidance for isolating connection pools in client code to prevent cascading failures when resource-intensive tasks consume available connections. We also added recommendations for using immutable storage for audit logs, monitoring with `sys.event_log`, and evaluating database-level versus server-level auditing for performance. We expanded performance guidance to include connection pooling best practices and SKU evaluation when reaching connection limits.
+
+- [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md): We updated reference URLs for Azure Cosmos DB documentation links throughout the article.
+
+## December 2025
+
+### New articles
+
+- [Align technical strategy with business requirements](./architect-role/design-business-requirements.md): Learn about a five-step process to turn business needs into actionable technical requirements. This guidance helps architects clarify goals, uncover real motivations, evaluate trade-offs, and recommend strategies that balance technical soundness with business priorities.
+
+- [Architecture best practices for Azure Virtual WAN](./service-guides/virtual-wan-service-guide.md): Get architectural best practices for Virtual WAN that align with the Well-Architected Framework pillars. Learn how to design for reliability, security, cost optimization, operational excellence, and performance efficiency, with practical recommendations for connectivity, redundancy, monitoring, and scaling in global networks.
+
+### Updated articles
+
+- [Architecture best practices for Azure Event Hubs](./service-guides/azure-event-hubs.md): We improved clarity and modernized language across Operational Excellence and Performance Efficiency sections. We added new automation and policy-based cost control recommendations, streamlined configuration advice, and enhanced guidance for monitoring, scaling, and testing. These changes make it easier to apply best practices and optimize your Event Hubs workloads.
+
+- [Develop an architecture design specification](./architect-role/architecture-design-specification.md): We clarified the importance of aligning design decisions with business needs and stakeholder goals. We added references to the business requirements guide, condensed the functional specification section, and added a link to detailed disaster recovery planning resources. These changes make it easier to create clear, actionable architecture specifications that support both technical and business objectives.
+
+- [Solution architect's responsibilities and guiding principles](./architect-role/fundamentals.md): We clarified responsibilities, provided a practical checklist of deliverables, and emphasized the importance of aligning architecture with business requirements. We streamlined the guiding principles, added actionable advice for decision-making, supportability, and continuous learning, and improved guidance about how to collaborate with platform teams. These changes help architects deliver clear, effective, and adaptable solutions.
+
+- [Architecture best practices for Azure NetApp Files](./service-guides/azure-netapp-files.md): We added new guidance about file access logging, cross-tenant customer-managed keys, and the Flexible service level for decoupling throughput from capacity. We improved recommendations for cost optimization, security, and operational monitoring, and added details about using short-term clones and enhanced estimators. These updates help strengthen security, optimize costs, and improve performance and flexibility for your workloads.
+
+- [Architecture best practices for Azure API Management](./service-guides/azure-api-management.md): We added the latest tier capabilities, including Premium v2, and clarified recommendations for reliability, security, and cost optimization. We improved guidance about redundancy, access control, and performance, and streamlined language throughout the article. These changes help you make more informed decisions and apply best practices for API Management workloads.
+
+- We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture best practices for Azure Database for MySQL and cost optimization](./service-guides/azure-db-mysql-cost-optimization.md), [Architecture best practices for Azure Functions](./service-guides/azure-functions.md), and [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
 
 ## November 2025
 
@@ -154,7 +220,7 @@ We retired the following articles this month. The content was outdated and no lo
 
 - [Architecture design diagrams](./architect-role/design-diagrams.md): We updated the guidance about diagramming practices and architecture diagram types by adding new recommendations for clarity, accessibility, version control, and layered visuals. We also introduced new diagram categories and provided more detailed descriptions of diagram purposes and best practices.
 
-- [Architecture strategies for implementing automation](./operational-excellence/automate-tasks.md): We added Azure tools that you can use to automate tasks for your workload. Learn about automated management capabilities for networking services, including Azure Firewall customer-controlled maintenance, Azure Firewall fully qualified domain name (FQDN) filtering in destination network address translation (DNAT) rules, and Azure Front Door managed certificates.
+- [Architecture strategies for implementing automation](./operational-excellence/enable-automation.md): We added Azure tools that you can use to automate tasks for your workload. Learn about automated management capabilities for networking services, including Azure Firewall customer-controlled maintenance, Azure Firewall fully qualified domain name (FQDN) filtering in destination network address translation (DNAT) rules, and Azure Front Door managed certificates.
 
 - [Architecture strategies for networking and connectivity](./security/networking.md): We added Azure Network Security Perimeter to the list of Azure services that you can use to add defense-in-depth capabilities to your network.
 
@@ -266,53 +332,3 @@ This month, we made significant updates to some of our service guides. Here are 
 - [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
 
 - [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellence to make the recommendations more concise, focused, and actionable.
-
-## February 2025
-
-### Updated articles
-
-- [Recommendations for self-healing and self-preservation](./reliability/self-preservation.md): We updated this guide for easier readability by streamlining several sections. We also moved the guides for [handling transient faults](./design-guides/handle-transient-faults.md) and [developing background jobs](./design-guides/background-jobs.md) into the design guide area to make the Reliability pillar easier to use.
-
-- [Design review checklist for Reliability](./reliability/checklist.md): We simplified the design review checklist for Reliability to make the recommendations more concise, focused, and actionable.
-
-#### Service guides
-
-This month, we made significant updates to some of our service guides. Here are the highlights:
-
-- [Azure Front Door](./service-guides/app-service-web-apps.md): We improved content clarity by rephrasing various sections and adding more detailed explanations. We updated links and references to other relevant Azure documentation and removed redundant or outdated information. We aligned content with the latest Azure Front Door features and best practices.
-
-- [Azure IoT Hub](./service-guides/azure-iot-hub.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on using Azure IoT Hub for secure device-to-cloud communication, managing device identities, and optimizing costs.
-
-## January 2025
-
-### Updated articles
-
-- [How to use the Azure Well-Architected Framework documentation](.//what-is-well-architected-framework.md): We added a new section on adopting a phased learning process, emphasizing the importance of improving workload quality iteratively.
-
-#### Service guides
-
-This month, we made significant updates to many of our service guides. Here are some highlights:
-
-- [Azure App Service (Web Apps)](./service-guides/app-service-web-apps.md): Added and updated several design considerations and recommendations, including guidance on redundancy, taking advantage of the App Service auto-heal feature, and leveraging the App Service Resiliency Score Report.
-
-- [Azure Functions](./service-guides/azure-functions-security.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on the use of managed identities, network security controls, cost monitoring, CI/CD pipelines, and autoscaling.
-
-- [Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We refreshed this guide to improve the structure and presentation of the content, and to reflect the latest best practices for configuring Azure Kubernetes Service (AKS) to protect your workloads and data, optimize costs, and improve operational efficiency.
-
-- [Azure Load Balancer](./service-guides/azure-load-balancer.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on optimizing your load balancing configurations, using the Global tier to load balance across Azure regions, and how to improve operational efficiency.
-
-- [Azure Service Fabric](./service-guides/azure-service-fabric-well-architected-framework.md): We refreshed this guide to improve the structure and presentation of the content and introduced new guidance to help you optimize your Service Fabric workloads.
-
-- [Azure Traffic Manager](./service-guides/azure-traffic-manager.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on load balancing across regions, enhancing DNS security, and using diagnostic logs and traffic view dashboards to optimize and troubleshoot Traffic Manager profiles.
-
-- [Azure Virtual Network](./service-guides/virtual-network.md): We refreshed and expanded this guide to cover all Well-Architected pillars. We also introduced new design considerations and recommendations, including guidance on adding redundancy, segmenting networks for security, and monitoring traffic patterns. Use infrastructure as code in your deployments, optimize network traffic, and leverage Azure Network Watcher for performance insights.
-
-## December 2024
-
-### New articles
-
-- [Azure Well-Architected Framework Perspective on Azure Disk Storage](./service-guides/azure-disk-storage.md): Find new design considerations and configuration recommendations for optimizing Azure Disk Storage within the Azure Well-Architected Framework. Explore guidance on key areas such as reliability, security, cost optimization, operational excellence, and performance efficiency, as well as strategies and best practices to enhance storage management for Azure Virtual Machines.
-
-### Azure IoT Hub workload guidance retirement
-
-- This month, we announced the deprecation of Azure IoT Hub workload documentation in the repo. The content was outdated and no longer aligned to the Azure Well-Architected Framework.

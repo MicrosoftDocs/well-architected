@@ -62,7 +62,7 @@ The following image shows the possible scopes for scale units. The scopes range 
 
 ## Global distribution
 
-It's impossible to avoid failure in any highly distributed environment. This section provides strategies to mitigate many fault scenarios. The application must be able to withstand regional and zonal failures. It must be deployed in an active/active model so that the load is distributed among all regions.
+It's impossible to avoid failure in any highly distributed environment. This section provides strategies to mitigate many fault scenarios. The application must be able to withstand regional and zone failures. It must be deployed in an active/active model so that the load is distributed among all regions.
 
 Watch this video to get an overview of how to plan for failures in mission-critical applications and maximize resiliency:
 <br><br>
