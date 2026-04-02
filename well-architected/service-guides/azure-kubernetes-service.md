@@ -141,7 +141,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >   
 > - (Cluster) **Get the best rates for your workload.** Use the appropriate VM SKU for each node pool because it directly affects the cost to run your workloads. Choosing a high-performance VM without proper utilization can lead to wasteful spending. Selecting a less powerful VM can cause performance problems and increased downtime.
 >
->   If you properly planned for capacity and your workload is predictable and will exist for an extended period of time, sign up for [Azure Reservations](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to reduce your resource costs.
+>   If you properly planned for capacity and your workload is predictable and will exist for an extended period of time, sign up for [Azure Reservations](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-overview#determine-your-savings-plan-commitment) to reduce your resource costs.
 >
 >   Choose [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms) to use unutilized Azure capacity with significant discounts. These discounts can reach up to 90% of pay-as-you-go prices. If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes.
 >
