@@ -129,7 +129,7 @@ Here are some decision points to get you started. Make those decisions keeping i
 >
 >   | Approach | Benefit | Tradeoff | Example Azure service |
 >   |----------|---------|----------|-----------------------|
->   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | Microsoft Foundry Tools for specific tasks, like [Azure Vision in Foundry Tools](/azure/ai-services/computer-vision/overview), [Azure Document Intelligence in Foundry Tools](/azure/ai-services/document-intelligence/overview), and [Speech service](/azure/ai-services/speech-service/overview) |
+>   | Buy prebuilt models | Most efficient and lowest-maintenance option; fast to implement with proven tools | Limited ability to customize for unique business needs or differentiated features | Foundry Tools for specific tasks, like [Azure Vision in Foundry Tools](/azure/ai-services/computer-vision/overview), [Azure Document Intelligence in Foundry Tools](/azure/ai-services/document-intelligence/overview), and [Azure Speech in Foundry Tools](/azure/ai-services/speech-service/overview) |
 >   | Customize existing models | Enables quick customization of model behavior without requiring expertise or complex training processes | Requires sufficient high-quality examples or data | [Custom speech](/azure/ai-services/speech-service/custom-speech-overview) |
 >   | Build your own models | Maximum flexibility and control; can be tailored to highly specific problems and use proprietary data | High cost, long development cycles, and requires specialized skills | [Azure Machine Learning](/azure/machine-learning/overview-what-is-azure-machine-learning) |
 > 

@@ -48,7 +48,7 @@ Agentic workloads require specialized persona management built on key areas:
 
 Consider a CI/CD pipeline for an AI workload with agentic personas for code review, testing orchestration, and deployment validation. When a developer submits code changes, the Dev Router agent analyzes the code changes and routes the request dynamically to the right testing agent,  based on the type of changes. Unlike traditional pipelines with fixed routing rules, this approach allows agent personas to join or leave the system dynamically, creating non-deterministic behavior that needs specialized persona management for governance, security, and accountability.
 
-Each agent persona needs different permissions. For example, the unit testing agent needs access to the repo where the source is located, but a load testing agent may also need access to Azure AI Foundry, Azure Monitor and other resources. Because agent interactions are dynamic, you need just-in-time permission provisioning and audit trails that connect autonomous agent decisions back to responsible human personas. This ensures accountability even when agents make unexpected tool choices at runtime.
+Each agent persona needs different permissions. For example, the unit testing agent needs access to the repo where the source is located, but a load testing agent may also need access to Microsoft Foundry, Azure Monitor and other resources. Because agent interactions are dynamic, you need just-in-time permission provisioning and audit trails that connect autonomous agent decisions back to responsible human personas. This ensures accountability even when agents make unexpected tool choices at runtime.
 
 ## How to define personas
 
@@ -85,42 +85,42 @@ You can use cards to define the services a persona needs to be able to access wi
 
 |GenAI Data Scientist (P006)| 
 |---| 
-| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team<br>&#128313; Component access: Azure AI Foundry, Azure OpenAI Service, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps, inner loop development<br>&#128313; Skills: Azure AI Foundry, Azure OpenAI Service, Python, model knowledge (LLM, SLM), fine-tuning, RAG, agentic solutions 
+| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team<br>&#128313; Component access: Foundry, Azure OpenAI Service, Azure AI Search, Azure Storage, Azure Key Vault <br>&#128313; Processes: GenAIOps, inner loop development<br>&#128313; Skills: Foundry, Azure OpenAI Service, Python, model knowledge (LLM, SLM), fine-tuning, RAG, agentic solutions 
 
 |GenAI Chat Developer (P007)| 
 |---| 
-| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Azure AI Foundry, Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices, inner loop development<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS,  agentic solutions 
+| Team: Engineering Team<br>&#128313; Primary interaction: AI Team<br>&#128313; Component access: Foundry, Azure Web Apps, Azure API Management, Azure Cosmos DB, Azure Container Apps, Azure Functions <br>&#128313; Processes: DevOps, event-driven processing, microservices, inner loop development<br>&#128313; Skills: Web application architecture (front end/back end), React, Node.js, HTML, CSS,  agentic solutions 
 
 |Dev Router Agent (P010)| 
 |---| 
-| Team: Engineering Team (automation)<br>&#128313; Primary interaction: Unit Test Agent, Load Test Agent<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Registry<br>&#128313; Processes: Automated agent routing, DevOps<br>&#128313; Skills: Python, Agent-2-Agent 
+| Team: Engineering Team (automation)<br>&#128313; Primary interaction: Unit Test Agent, Load Test Agent<br>&#128313; Component access: Azure DevOps, GitHub, Foundry, Azure Container Registry<br>&#128313; Processes: Automated agent routing, DevOps<br>&#128313; Skills: Python, Agent-2-Agent 
 
 |Dev Unit Test Agent (P011)| 
 |---| 
-| Team: Engineering Team (automated)<br>&#128313; Primary interaction: Dev Router Agent, AI Team, Engineering Team<br>&#128313; Component access: Azure DevOps, GitHub, Azure AI Foundry, Azure Container Apps, MCP Server Tools<br>&#128313; DevOps<br>&#128313; Skills: Test automation, code coverage analysis, performance benchmarking, mcp-testing frameworks 
+| Team: Engineering Team (automated)<br>&#128313; Primary interaction: Dev Router Agent, AI Team, Engineering Team<br>&#128313; Component access: Azure DevOps, GitHub, Foundry, Azure Container Apps, MCP Server Tools<br>&#128313; DevOps<br>&#128313; Skills: Test automation, code coverage analysis, performance benchmarking, mcp-testing frameworks 
 
 
 #### Operations personas
 
 |AI Data Engineer (P001)| 
 |---| 
-| Team: Data Ingestion Team<br>&#128313; Primary interaction: AI Development Team, Operations Team<br>&#128313; Component access: Azure Data Factory, Azure Databricks, Azure AI Foundry, Azure SQL Database, Azure Storage <br>&#128313; Processes: DataOps, ETL, ELT<br>&#128313; Skills: SQL, Python, PySpark 
+| Team: Data Ingestion Team<br>&#128313; Primary interaction: AI Development Team, Operations Team<br>&#128313; Component access: Azure Data Factory, Azure Databricks, Foundry, Azure SQL Database, Azure Storage <br>&#128313; Processes: DataOps, ETL, ELT<br>&#128313; Skills: SQL, Python, PySpark 
 
 |BI Analyst (P003)| 
 |---| 
-| Team: Analytics Team<br>&#128313; Primary interaction: Data Ingestion Team<br>&#128313; Component access: Power BI, Azure Data Explorer, Azure AI Foundry, Azure Storage <br>&#128313; Processes: Data analysis, data warehousing<br>&#128313; Skills: SQL, Python, PySpark | 
+| Team: Analytics Team<br>&#128313; Primary interaction: Data Ingestion Team<br>&#128313; Component access: Power BI, Azure Data Explorer, Foundry, Azure Storage <br>&#128313; Processes: Data analysis, data warehousing<br>&#128313; Skills: SQL, Python, PySpark | 
 
 |Discriminative AI Data Scientist (P004)| 
 |---| 
-| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team, Operations Team<br>&#128313; Component access: Azure Machine Learning (for training scenarios), Azure AI Foundry, Azure Databricks, Azure Storage, Azure Key Vault <br>&#128313; Processes: MLOps, MLflow<br>&#128313; Skills: Azure AI Foundry, Azure Machine Learning, Python, model training, production model monitoring 
+| Team: AI Team<br>&#128313; Primary interaction: Data Ingestion Team, DevOps Team, Operations Team<br>&#128313; Component access: Azure Machine Learning (for training scenarios), Foundry, Azure Databricks, Azure Storage, Azure Key Vault <br>&#128313; Processes: MLOps, MLflow<br>&#128313; Skills: Foundry, Azure Machine Learning, Python, model training, production model monitoring 
 
 |Build Agent MLOps (P009)| 
 |---| 
-| Team: Engineering Team (automated)<br>&#128313; Primary interaction: AI Team, Operations Team<br>&#128313; Component access: Azure AI Foundry, Azure Machine Learning (for training scenarios), Azure DevOps, GitHub <br>&#128313; Processes: Processing and serving of Lambda, outer loop MLOps, automated deployment<br>&#128313; Skills: Python, PySpark, model versioning 
+| Team: Engineering Team (automated)<br>&#128313; Primary interaction: AI Team, Operations Team<br>&#128313; Component access: Foundry, Azure Machine Learning (for training scenarios), Azure DevOps, GitHub <br>&#128313; Processes: Processing and serving of Lambda, outer loop MLOps, automated deployment<br>&#128313; Skills: Python, PySpark, model versioning 
 
 |Production Monitoring Agent (P012)| 
 |---| 
-|Team: Operations Team (automated)<br>&#128313; Primary interaction: AI Team, Engineering Team, Operations Team<br>&#128313; Component access: Azure Monitor, Azure Application Insights, Azure Log Analytics, Azure AI Foundry<br>&#128313; Processes: Continuous monitoring, anomaly detection, performance tracking, automated alerting<br>&#128313; Skills: Monitoring automation, log analysis, performance metrics, alerting workflows 
+|Team: Operations Team (automated)<br>&#128313; Primary interaction: AI Team, Engineering Team, Operations Team<br>&#128313; Component access: Azure Monitor, Azure Application Insights, Azure Log Analytics, Foundry<br>&#128313; Processes: Continuous monitoring, anomaly detection, performance tracking, automated alerting<br>&#128313; Skills: Monitoring automation, log analysis, performance metrics, alerting workflows 
 
 ## Use case: Personas for AI processes
 

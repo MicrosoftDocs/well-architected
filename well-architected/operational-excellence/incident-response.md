@@ -137,7 +137,7 @@ Use [connection monitor](/azure/network-watcher/connection-monitor-overview) in 
 
 Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze virtual network flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in traffic analytics allows teams to monitor live traffic behavior, receive alerts, and use timeline and topology views to quickly identify affected network segments and respond effectively.
 
-Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Azure AI Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
+Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Microsoft Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
 
 ## Related links
 
