@@ -10,15 +10,15 @@ ms.update-cycle: 1095-days
 
 # Collaborate with workload and platform teams
 
-Collaboration between architects and workload and platform teams prevents misalignment, avoids costly rework, and keeps projects moving smoothly. This article outlines practical steps for architects during implementation, including continuous collaboration tasks, proof-of-concept (POC) usage, and technical debt management to help you succeed.
+Delivering architecture specifications isn't a one-time task. Architects should engage with the workload team throughout implementation. This article outlines practical steps for architects during implementation, including continuous collaboration tasks, proof-of-concept (POC) usage, and technical debt management to help you succeed.
 
 ## Continuous collaboration tasks
 
-- **Provide clarity**. Clarify specifications so implementation teams stay unblocked. Participate in iteration planning and team meetings to address potential blockers. Architects should remain accessible after solutions are delivered, providing clarity on prior decisions and supporting teams as requirements evolve.
+- **Provide clarity**. Be available to clarify specifications so implementation teams stay unblocked. Participate in iteration planning and team meetings to address potential blockers.
 
-- **Advise on implementation sequencing**. The transition from design to production is inherently iterative, with change expected throughout. Architects should reflect this reality in their sequencing decisions by prioritizing high‑risk components and critical path items early, allowing teams to identify feasibility issues and apply lessons learned across the workload.
+- **Advise on implementation sequencing**. The transition from design to production is inherently iterative, with change expected throughout. Reflect this reality in your sequencing decisions by prioritizing high‑risk components and critical path items early, allowing teams to identify feasibility issues and apply lessons learned across the workload.
 
-- **Set implementation review checkpoints**. Establish regular checkpoints to compare the implementation with the architectural specification with your workload teams. This practice helps ensure the team implements your design according to your specifications, and that the specification meets the predicted requirements. A working feedback loop can mitigate against design or implementation errors.
+- **Set implementation review checkpoints**. Ensure that workload teams establish regular checkpoints to compare the implementation with the architectural specification. This practice helps ensure the team implements your design according to your specifications, and that the specification meets the predicted requirements. A working feedback loop can mitigate against design or implementation errors.
 
 - **Communicate with stakeholders**. Architects use their established relationship with stakeholders and understanding of the workload to relay implementation team concerns or negotiate requirement changes.
 
@@ -28,14 +28,14 @@ Collaboration between architects and workload and platform teams prevents misali
 
 Architects use POCs in their designs to inform decisions about the design specifications for the workload architecture. These POCs can also provide insight into the feasibility of the actual workload implementation.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Never consider POC code as production-ready. POCs are often built without security, logging, or error handling to prove a specific concept quickly. Discourage your workload teams from copy and pasting POC code into the production codebase. Instead, they should use the POC to learn, then they write the production code by using established engineering standards.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Never consider POC code as production-ready. POCs are often built without security, logging, or error handling to prove a specific concept quickly. Be explicit that POC code is disposable and should not be copy-pasted into the production codebase. Instead, use the POC to learn, then write the production code using established engineering standards.
 
 ## Manage technical debt
 
 Sometimes, to meet a deadline or other constraints, a team might incur technical debt. The architect's role is to ensure the debt is:
 
-- **Intentional**: The debt is taken on deliberately, not accidentally. Being intentional about technical debt allows architects to make deliberate trade-offs, document them, and plan for repayment. Being intentional helps ensure short-term agility without compromising long-term scalability and compliance.
-- **Documented**: Track the debt in the backlog. Documented technical debt quantifies risk and cost, giving Azure architects and leaders a shared, auditable backlog. Architects can use the backlog to align remediation with roadmap milestones, budget cycles, and platform guardrails.
+- **Intentional**: The debt is taken on deliberately, not accidentally. Being intentional about technical debt enables your to make deliberate trade-offs, document them, and plan for repayment. Being intentional helps ensure short-term agility without compromising long-term scalability and compliance.
+- **Documented**: Track the debt in the backlog. Documented technical debt quantifies risk and cost, giving you an auditable backlog. Use the backlog to align remediation with roadmap milestones, budget cycles, and platform guardrails.
 - **Repayable**: Use the learnings gathered when you take on technical debt to create a thorough, cost-effective plan to address it in future iterations.
 
 ## Collaboration with platform teams
@@ -46,7 +46,7 @@ Advocate for *golden paths* - secure and automated ways to consume platform reso
 
 ## Mentorship and knowledge sharing
 
-Architects set the tone. Explain decisions early and often through reviews and "lunch-and-learn" sessions to empower the implementation team to make decisions that align with the overall vision.
+Set the tone. Explain decisions early and often through reviews and "lunch-and-learn" sessions to empower the implementation team to make decisions that align with the overall vision.
 
 ## Next steps
 
