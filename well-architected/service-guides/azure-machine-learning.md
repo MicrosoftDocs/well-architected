@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Machine Learning
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Machine Learning.
 author: lnyswonger
 ms.author: lnyswonger
-ms.date: 03/11/2024
+ms.date: 09/29/2025
 ms.topic: concept-article
 ms.collection: ce-skilling-ai-copilot
 products:
