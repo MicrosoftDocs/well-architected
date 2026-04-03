@@ -35,31 +35,35 @@ This diagram shows the key components you need in your AI workload design.
 |AI practices and process|These practices keep your AI solution reliable and trustworthy. You incorporate DevOps principles like version control and automated pipelines into your MLOps workflows. For generative AI, you also manage prompts and monitor content. Deploy iteratively with safeguards in place, and continuously check for accuracy, performance, and bias.|
 |Platform services and tools|Core cloud services and tools support your AI workloads from development to deployment. They help you secure your resources, control costs, and monitor system health. Use CI/CD pipelines to deploy automatically and reliably. Use specialized tools to scan AI outputs for compliance, and protect sensitive data with endpoint security.|
 
-The following sections break down design considerations for the intelligent application and training/fine-tuning components.
+The following section breaks down design considerations for the intelligent application and training/fine-tuning components.
 
 ### Design consideration
 
-TODO: Define characteristic and why it's important, risk and tradeoff for each component, high-level implication of each component.
+When you design your AI workload architecture, consider the following design characteristics to make informed decisions about component design and interactions. Each characteristic has implications for how you design your solution, the tradeoffs you might encounter, and the risks to manage.
 
-When designing your AI workload architecture, consider the following design characteristics to make informed decisions about component design and interactions. Each characteristic has implications for how you structure your solution, the tradeoffs you might encounter, and the risks to manage.
+#### Lifetime and state
 
-#### Resource lifetime and state
+**Lifetime** refers to the expected duration of a resource's existence and activeness within the workload. What's the expected lifetime of the resource, relative to other resources in the solution?
 
-Lifetime: What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary? State: What impact does the persisted state at this layer have on reliability or manageability?
+**State** refers to the data or information that a resource maintains over time. What impact does the persisted state at this layer have on reliability?
 
-#### Resource reach and dependencies 
+#### Reach and dependencies 
 
-Reach: Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region? Dependencies: What are the dependencies on other resources?
+**Reach** refers to the extent to which a resource needs to be accessible or distributed. Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region? 
+
+**Dependencies** refer to the relationships and reliance on other resources. What are the dependencies on other resources?
 
 #### Scalability and availability 
 
-Scale: What is the expected throughput for that resource? How much scale does the resource provide to fit that demand? Availability: What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
+**Scalability** refers to the ability of a resource to handle increased load or demand. What is the expected throughput for that resource? How much scale does the resource provide to fit that demand? 
+
+**Availability** refers to the ability of a resource to remain operational and accessible. What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
 
 #### Security and responsible AI 
 
-Security: What measures are in place to protect data and ensure compliance with regulations? Responsible AI: How does the system ensure ethical AI practices, including fairness, transparency, and accountability?
+**Security** refers to the measures in place to protect data and ensure compliance with regulations. What measures are in place to protect data and ensure compliance with regulations? 
 
-
+**Responsible AI** refers to the practices that ensure ethical AI, including fairness, transparency, and accountability. How does the system ensure ethical AI practices, including fairness, transparency, and accountability?
 
 ## [**Intelligent application workload**](#tab/intelligentaiworkload)
 
@@ -70,7 +74,7 @@ This diagram shows the key components of the intelligent application workload to
 |Component|Description|
 |---|---|
 |Client layer|The client layer lets users and external systems connect with AI. This layer takes your requests and returns AI-generated responses, while making sure the experience is straightforward and easy to use.|
-|Intelligence layer - API|The Intelligence layer – API bridges clients and the intelligence features of the system through well-defined APIs. It's responsible for directing requests to the right agent or orchestration process, making sure interactions between users and services are smooth and consistent. This layer also handles how data is accessed, puts security measures in place, and sets limits to prevent the system from getting overloaded. If an app just needs a simple prediction, this layer can skip the complex orchestration steps and send the request directly to the inference engine for a fast response.|
+|Intelligence layer - API|The Intelligence layer API bridges clients and the intelligence features of the system through well-defined APIs. It's responsible for directing requests to the right agent or orchestration process, making sure interactions between users and services are smooth and consistent. This layer also handles how data is accessed, puts security measures in place, and sets limits to prevent the system from getting overloaded. If an app just needs a simple prediction, this layer can skip the complex orchestration steps and send the request directly to the inference engine for a fast response.|
 |Intelligence layer - orchestration and agent compute|Orchestration and agent compute layer is responsible for coordinating how different AI components work together to get each task done. Depending on what's required, it can run tasks one after the other or let several agents work at the same time and then merge their results. It figures out user intent, checks responses to make sure they're safe, integrates with the knowledge layer for information, and uses tools to combine everything and give you the best answer.|
 |Intelligence layer - conversation management|Conversation management layer is the system's memory and conversation manager. It lets the AI chat naturally by recalling previous messages, keeping track of ongoing topics, and storing important parts from the discussion, so conversations can flow smoothly even during long sessions. It also looks after how the conversation data is kept or deleted, ensuring your information is handled responsibly.|
 |Inferencing layer - foundation or predictive models|Inferencing layer is where a trained model makes predictions, generates content, or provides decisions based on the information it receives. The process starts by loading your AI model, prepping the data, running the predictions, and then formatting the results so they're available immediately (real-time) or later on(batch processing).|
@@ -97,12 +101,7 @@ This diagram shows the key components required for training and fine-tuning data
 
 |Component|Description|
 |---|---|
-|Data Sources|Data sources contain a wide range of data that help train and fine-tune the models. Typically, these sources include:
--	Structured data from relational databases like SQL Server, which have clear schemas and relationships.
--	Semi-structured data such as application logs and telemetry, often in JSON or XML formats.
--	Unstructured data such as image files, videos, audio, and text documents like PDFs.
--	Real-time streams from sensors, devices, or event sources.
-Gather data from various sources such as proprietary sources owned by the organization, user-generated content from interactions, expert feedback and collaboration, and public sources like websites, research papers, and shared databases.|
+|Data Sources|Data sources contain a wide range of data that help train and fine-tune the models. Typically, these sources include: <br> - Structured data from relational databases like SQL Server, which have clear schemas and relationships. <br> - Semi-structured data such as application logs and telemetry, often in JSON or XML formats. <br> - Unstructured data such as image files, videos, audio, and text documents like PDFs. <br> - Real-time streams from sensors, devices, or event sources. <br> Gather data from various sources such as proprietary sources owned by the organization, user-generated content from interactions, expert feedback and collaboration, and public sources like websites, research papers, and shared databases.|
 |Data Aggregation Store|Think of a data aggregation store as the central hub for all the information you collect from various sources. It’s a place where your raw data is kept in its original form before any processing begins. Use tools like Azure Data Lake Storage or Azure Synapse Analytics for this kind of storage. As the data moves through different stages of processing, its structure gets refined, fields and columns are named consistently, values are checked for accuracy, and everything is organized to make reporting and analytics easier. You can always trace where the data came from, see what changes were made, and know which process transformed it. Versioning also ensures you have historical snapshots as your data evolves.|
 |Data Processing Platform|At this stage, turn the raw data into a useful dataset for machine learning and analytics. The process starts by collecting data from multiple sources, cleaning, and enriching it, so you get high-quality datasets and features that are ready for model training and analysis. This layer supports ETL pipelines, follows a medallion architecture, and enables feature and data enrichment based on existing patterns. It typically uses tools such as  Azure Data Factory, Synapse Analytics, and Spark.|
 |Feature Store|A feature store is a central place for storing precomputed features, so teams can easily reuse them across different machine learning models. It keeps track of feature definitions, transformations, and metadata like ownership, update frequency, data sources, and versioning. This structure helps teams build models faster and ensures consistency, making model behavior more predictable. Azure Machine Learning's feature store also offers versioning and lineage, and organizations can choose to set it up centrally, in a distributed way, or as a hybrid.|
@@ -131,10 +130,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-               <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-chat">
-                 :::image type="content" source="./images/baseline-microsoft-foundry.svg" alt-text="Microsoft Foundry chat reference architecture.":::
-                </a>
+                <img role="presentation" alt="Diagram shows the baseline Microsoft Foundry chat reference architecture." src="./images/baseline-microsoft-foundry.svg">
             </figure>
             <div>
                 <div>
@@ -150,10 +146,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-               <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/ai-ml/architecture/baseline-microsoft-foundry-landing-zone">
-                 :::image type="content" source="./images/baseline-microsoft-foundry-landing-zone.svg" alt-text="Microsoft Foundry chat reference in Azure landing zone.":::
-                </a>
+                <img role="presentation" alt="Diagram shows the baseline Microsoft Foundry chat reference in Azure landing zone." src="./images/baseline-microsoft-foundry-landing-zone.svg">
             </figure>
             <div>
                 <div>
@@ -169,10 +162,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-               <a class="is-undecorated is-full-height is-block"
-                 href="/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end">
-                 :::image type="content" source="./images/azure-analytics.svg" alt-text="App Services baseline architecture diagram.":::
-                </a>
+                <img role="presentation" alt="Diagram shows the Analytics end-to-end with Azure Synapse architecture." src="./images/azure-analytics.svg">
             </figure>
             <div>
                 <div>
