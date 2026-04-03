@@ -15,7 +15,7 @@ It helps you design, deploy, and govern AI solutions on Azure. You get baseline 
 
 Here's an example: an organization builds an enterprise AI assistant that lets employees ask natural language questions about internal documents and operational data. At a high level, you design the solution using the AI workload architecture pattern, which shows how data, applications, models, practices, and platform services work together to deliver a secure, scalable, and well-governed AI system.  
 
-The data processing layer cleans, enriches, and indexes internal content and operational data so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the intelligent application orchestrates the workflow. It figures out what data's needed, retrieves context from the processing layer, and calls the right model to generate a response. Foundation models are evaluated, tuned, or adapted for enterprise needs outside of runtime. At runtime, the intelligent application invokes trained models to produce responses grounded in your enterprise data, while the training process stays separate from live operations. 
+The data processing layer cleans, enriches, and indexes internal content and operational data so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the intelligent application orchestrates the workflow. It figures out what data is needed, retrieves context from the processing layer, and calls the right model to generate a response. You evaluate, tune, or adapt foundation models for enterprise needs outside of runtime. At runtime, the intelligent application invokes trained models to produce responses grounded in your enterprise data, while the training process stays separate from live operations. 
 
 Practices that span the lifecycle such as responsible AI, testing and evaluation, MLOps/GenAIOps, and safe deployment ensure the assistant behaves responsibly, can be validated systematically, and runs reliably in production. Platform services provide secure access to data and models, observability, cost control, and consistent governance and safety enforcement across the solution.
 
@@ -23,29 +23,29 @@ While the AI assistant represents a specific business scenario, the architecture
 
 ## [**High-level AI workload**](#tab/aiworkload)
 
-This diagram shows the key components you'll need in your AI workload design.
+This diagram shows the key components you need in your AI workload design.
 
 :::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools." lightbox="./images/ai-workload-architecture-pattern.png":::
 
 |Component|Description|
 |---|---|
-|Data processing and analytics|Data processing and analytics is where you gather raw data from different sources and bring it to a central repository. From there, you clean the data, transform it, and organize it into datasets that are ready for model training, fine-tuning, and grounding your AI applications. It doesn’t interact with users directly and enables accurate, efficient AI interactions downstream.|
-|Model training and fine-tuning|Model training is where your models learn and improve. You follow a repeatable process, train models on data, track different versions and monitor what's working. You keep improving as new data comes in with MLOps practices to maintain performance and alignment with business needs.|
+|Data processing and analytics|Data processing and analytics is where you gather raw data from different sources and bring it to a central repository. From there, you clean the data, transform it, and organize it into datasets that are ready for model training, fine-tuning, and grounding your AI applications. It doesn't interact with users directly and enables accurate, efficient AI interactions downstream.|
+|Model training and fine-tuning|Model training is where your models learn and improve. You follow a repeatable process, train models on data, track different versions, and monitor what's working. You keep improving as new data comes in with MLOps practices to maintain performance and alignment with business needs.|
 |Intelligent AI applications|Intelligent AI applications is where users actually interact with your AI. It brings together pretrained models and the logic that controls how AI responds. Your application finds the right information, crafts prompts, builds intuitive interfaces, and learns from feedback. It's the control plane for AI interactions, combining traditional application logic with AI-driven reasoning.|
-|AI practices and process|These are the practices that keep your AI solution reliable and trustworthy. You incorporate DevOps principles like version control and automated pipelines into your MLOps workflows. For generative AI, you also manage prompts and monitor content. Deploy iteratively with safeguards in place, and continuously check for accuracy, performance, and bias.|
+|AI practices and process|These practices keep your AI solution reliable and trustworthy. You incorporate DevOps principles like version control and automated pipelines into your MLOps workflows. For generative AI, you also manage prompts and monitor content. Deploy iteratively with safeguards in place, and continuously check for accuracy, performance, and bias.|
 |Platform services and tools|Core cloud services and tools support your AI workloads from development to deployment. They help you secure your resources, control costs, and monitor system health. Use CI/CD pipelines to deploy automatically and reliably. Use specialized tools to scan AI outputs for compliance, and protect sensitive data with endpoint security.|
 
 The following sections break down design considerations for the intelligent application and training/fine-tuning components.
 
 ### Design consideration
 
-TODO: Define Characteristic and why is it important, risk and tradeoff for each component, high level implication of each component.
+TODO: Define characteristic and why it's important, risk and tradeoff for each component, high-level implication of each component.
 
-When designing your AI workload architecture, consider the following design characteristics to make informed decisions about component design and interactions. Each characteristic has implications for how you structure your solution, the tradeoffs you may encounter, and the risks to manage.
+When designing your AI workload architecture, consider the following design characteristics to make informed decisions about component design and interactions. Each characteristic has implications for how you structure your solution, the tradeoffs you might encounter, and the risks to manage.
 
 #### Resource lifetime and state
 
-Lifetime: What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary? State: What impact will the persisted state at this layer have on reliability or manageability?
+Lifetime: What's the expected lifetime of the resource, relative to other resources in the solution? Should the resource outlive or share the lifetime with the entire system or region, or should it be temporary? State: What impact does the persisted state at this layer have on reliability or manageability?
 
 #### Resource reach and dependencies 
 
@@ -53,7 +53,7 @@ Reach: Is the resource required to be globally distributed? Can the resource com
 
 #### Scalability and availability 
 
-Scale: What is the expected throughput for that resource? How much scale is provided by the resource to fit that demand? Availability: What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
+Scale: What is the expected throughput for that resource? How much scale does the resource provide to fit that demand? Availability: What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
 
 #### Security and responsible AI 
 
@@ -79,7 +79,7 @@ This diagram shows the key components of the intelligent application workload to
 
 ### Design considerations
 
-TODO: What is this component doing for this characteristic and why is it important, risk and tradeoff for each component.
+TODO: What each component does for this characteristic and why it's important. Include the risk and tradeoff for each component.
 
 #### Resource lifetime and state
 
@@ -97,22 +97,22 @@ This diagram shows the key components required for training and fine-tuning data
 
 |Component|Description|
 |---|---|
-|Data Sources|Data sources contain wide range of data help train and fine-tune the models. Typically, these include:
+|Data Sources|Data sources contain a wide range of data that help train and fine-tune the models. Typically, these sources include:
 -	Structured data from relational databases like SQL Server, which have clear schemas and relationships.
 -	Semi-structured data such as application logs and telemetry, often in JSON or XML formats.
 -	Unstructured data such as image files, videos, audio, and text documents like PDFs.
 -	Real-time streams from sensors, devices, or event sources.
-These data are gathered from various sources such as proprietary sources owned by the organisation, user-generated content from interactions, expert feedback and collaboration, and public sources like websites, research papers, and shared databases.|
-|Data Aggregation Store|Think of a data aggregation store as the central hub for all the information you collect from various sources. It’s a place where your raw data is kept in its original form before any processing begins. Tools like Azure Data Lake Storage or Azure Synapse Analytics are used for this kind of storage. As the data moves through different stages of processing, its structure gets refined, fields and columns are named consistently, values are checked for accuracy, and everything is organized to make reporting and analytics easier. You can always trace where the data came from, see what changes were made, and know which process transformed it. Versioning also ensures you have historical snapshots as your data evolves.|
-|Data Processing Platform|At this stage, the raw data gets turned into useful dataset for machine learning and analytics. The process starts by collecting data from multiple sources, cleans and enriches it, so you get high-quality datasets and features that are ready for model training and analysis. This layer supports ETL pipelines, follows a medallion architecture, and enables feature and data enrichment based on existing patterns. It typically uses tools such as  Azure Data Factory, Synapse Analytics, and Spark.|
-|Feature Store|A feature store is a central place for storing pre-computed features, so teams can easily reuse them across different machine learning models. It keeps track of feature definitions, transformations, and metadata like ownership, update frequency, data sources, and versioning. This helps teams build models faster and ensures consistency, making model behavior more predictable. Azure Machine Learning's feature store also offers versioning and lineage, and organizations can choose to set it up centrally, in a distributed way, or as a hybrid.|
-|Training Platform|A compute environment that is used to train and fine-tune machine learning models at scale. It lets you select algorithms to see which performs best, automatically tests different parameter values, manages retries and dependencies, and supports repeated training cycles for ongoing model improvement. Every training run’s metrics, parameters, and artifacts are tracked, and the environment can be hosted on Azure Machine Learning, Databricks, or Kubernetes.|
+Gather data from various sources such as proprietary sources owned by the organization, user-generated content from interactions, expert feedback and collaboration, and public sources like websites, research papers, and shared databases.|
+|Data Aggregation Store|Think of a data aggregation store as the central hub for all the information you collect from various sources. It’s a place where your raw data is kept in its original form before any processing begins. Use tools like Azure Data Lake Storage or Azure Synapse Analytics for this kind of storage. As the data moves through different stages of processing, its structure gets refined, fields and columns are named consistently, values are checked for accuracy, and everything is organized to make reporting and analytics easier. You can always trace where the data came from, see what changes were made, and know which process transformed it. Versioning also ensures you have historical snapshots as your data evolves.|
+|Data Processing Platform|At this stage, turn the raw data into a useful dataset for machine learning and analytics. The process starts by collecting data from multiple sources, cleaning, and enriching it, so you get high-quality datasets and features that are ready for model training and analysis. This layer supports ETL pipelines, follows a medallion architecture, and enables feature and data enrichment based on existing patterns. It typically uses tools such as  Azure Data Factory, Synapse Analytics, and Spark.|
+|Feature Store|A feature store is a central place for storing precomputed features, so teams can easily reuse them across different machine learning models. It keeps track of feature definitions, transformations, and metadata like ownership, update frequency, data sources, and versioning. This structure helps teams build models faster and ensures consistency, making model behavior more predictable. Azure Machine Learning's feature store also offers versioning and lineage, and organizations can choose to set it up centrally, in a distributed way, or as a hybrid.|
+|Training Platform|A compute environment that you use to train and fine-tune machine learning models at scale. It lets you select algorithms to see which performs best, automatically tests different parameter values, manages retries and dependencies, and supports repeated training cycles for ongoing model improvement. It tracks every training run’s metrics, parameters, and artifacts. You can host the environment on Azure Machine Learning, Databricks, or Kubernetes.|
 |Model Registry|A version-controlled repository that lets you store, manage, and track machine learning models as they progress from development to production. Tools like Azure Machine Learning Model Registry make this easy by keeping model binaries, metadata, training configurations, and lineage organized. You can compare different model versions and roll back to a previous one if required.|
-|Inferencing Layer - Predictive Models|Trained models are used to generate predictions or make decisions based on data. You can deploy them as real-time REST APIs for quick predictions or as batch endpoints for processing large datasets asynchronously. Besides client applications, models are also called during data processing such as to extract entities or sentiment for data enrichment, and to handle data normalization and transformation.|
+|Inferencing Layer - Predictive Models|Use trained models to generate predictions or make decisions based on data. You can deploy them as real-time REST APIs for quick predictions or as batch endpoints for processing large datasets asynchronously. Besides client applications, models are also called during data processing such as to extract entities or sentiment for data enrichment, and to handle data normalization and transformation.|
 
 ### Design consideration
 
-TODO: What is this component doing for this characteristic and why is it important, risk and tradeoff for each component.
+TODO: What each component does for this characteristic and why it's important. Include the risk and tradeoff for each component.
 
 #### Resource lifetime and state
 
