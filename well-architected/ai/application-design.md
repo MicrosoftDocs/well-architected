@@ -16,7 +16,7 @@ There are many choices to consider when you design intelligent capabilities into
 
 As discussed in the [Get started](./get-started.md) article, whether to build your own model or use a prebuilt model is one of the first important decisions to make. When you use a prebuilt model, consider the following points:
 
-- **Catalog sources:** Explore repositories like the Hugging Face Model Hub, TensorFlow Hub, and the [Azure AI Foundry portal](https://ai.azure.com?cid=learnDocs) model catalog to find pretrained models. These platforms provide an extensive catalog of models for various tasks.
+- **Catalog sources:** Explore repositories like the Hugging Face Model Hub, TensorFlow Hub, and the [Microsoft Foundry portal](https://ai.azure.com?cid=learnDocs) model catalog to find pretrained models. These platforms provide an extensive catalog of models for various tasks.
 
 - **Licensing:** Make sure that the model's licensing terms fit your security, compliance, and application goals, especially if you plan to distribute the application or integrate it with other services.
 
@@ -63,7 +63,7 @@ When you design your application architecture, first determine whether you're bu
 
 Inferencing applications perform single-step operations like classification, translation, or summarization. These applications have simpler architectures.
 
-**Typical architecture:** The client communicates with an AI gateway that provides authentication, quotas, safety, and routing. That gateway calls into the model serving layer such as Azure AI Foundry, Azure Kubernetes Service (AKS), or managed online endpoints. Where practical, the results might be cached for future inferencing calls before being returned to the client.
+**Typical architecture:** The client communicates with an AI gateway that provides authentication, quotas, safety, and routing. That gateway calls into the model serving layer such as Foundry, Azure Kubernetes Service (AKS), or managed online endpoints. Where practical, the results might be cached for future inferencing calls before being returned to the client.
 
 Inferencing applications typically feature direct model calls, require minimal orchestration, focus on performance and throughput, and don't require complex state management.
 
