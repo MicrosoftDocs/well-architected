@@ -22,7 +22,7 @@ Delivering architecture specifications isn't a one-time task. Architects should 
 
 - **Communicate with stakeholders**. Architects use their established relationship with stakeholders and understanding of the workload to relay implementation team concerns or negotiate requirement changes.
 
-- **Make environment recommendations**. Workload design often extends beyond designing for production and its disaster recovery. Architects can also assist workload teams in right-sizing preproduction environments. 
+- **Make environment recommendations**. Workload design often extends beyond designing for production and its disaster recovery. Architects can also assist workload teams in right-sizing preproduction environments.
 
 ## Use a proof of concept (POC)
 
@@ -34,7 +34,7 @@ Architects use POCs in their designs to inform decisions about the design specif
 
 Sometimes, to meet a deadline or other constraints, a team might incur technical debt. The architect's role is to ensure the debt is:
 
-- **Intentional**: The debt is taken on deliberately, not accidentally. Being intentional about technical debt enables you to make deliberate trade-offs, document them, and plan for repayment. Being intentional helps ensure short-term agility without compromising long-term scalability and compliance.
+- **Intentional**: The debt is taken on deliberately, not accidentally. Being intentional helps ensure short-term agility without compromising long-term viability.
 - **Documented**: Track the debt in the backlog. Documented technical debt quantifies risk and cost, giving you an auditable backlog. Use the backlog to align remediation with roadmap milestones, budget cycles, and platform guardrails.
 - **Repayable**: Use the learnings gathered when you take on technical debt to create a thorough, cost-effective plan to address it in future iterations.
 
