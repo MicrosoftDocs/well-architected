@@ -3,7 +3,7 @@ title: Architect collaboration with workload teams
 description: Learn how architects collaborate with workload teams. Discover continuous tasks, POC usage, and technical debt strategies to improve delivery.
 author: ckittel
 ms.author: chkittel
-ms.date: 11/24/2025
+ms.date: 04/07/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
