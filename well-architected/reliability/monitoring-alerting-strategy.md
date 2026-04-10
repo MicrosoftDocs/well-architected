@@ -14,7 +14,7 @@ ms.topic: concept-article
 |**RE:10**| Measure and model the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
 |---|---|
 
-To evaluate whether a system meets reliability expectations, analyze signals that provide a horizontal view, capturing current health, trends over time, contractual performance, and usage patterns. Anchor these measurements within the architecture to get a vertical view, showing where signals originate and where issues must be diagnosed and resolved.
+The goal is to evaluate whether a system meets reliability expectations. This involves analyzing cross-cutting signals like, current health, trends over time, contractual performance, and usage patterns. Combine those observations to the actual technical stack, showing where signals originate and where issues must be diagnosed and resolved.
 
 The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first.
 
@@ -35,6 +35,32 @@ The key strategies in this article build on the foundational operational practic
 | **Semantic Logs** | Application logs that capture meaningful business events and operations with structured data, enabling better analysis of system behavior and user impact. |
 
 
+## Be informed about platfom reliability status
+
+Get visibility into Azure platform health so you can quickly determine whether mitigation responsibility lies with your workload or the platform. Use [Azure Service Health](/azure/service-health/) get notifications about changes on platform status, like:
+
+- Active outages affecting Azure resources that are part of your workload
+- Information about planned maintenance events that might cause disruptions
+- Identify regional or service-specific degradations
+
+
+## Treat capacity as a reliability constraint
+
+Every deployment unit or stamp has a finite limit. Explicitly define the ceiling for each stamp and monitor its capacity.  Measure metrics, such as:
+
+- Maximum concurrent users
+- Throughput limits
+- Resource saturation thresholds
+
+The key strategy is to detect approaching saturation early enough to act, rather than reacting after degradation begins.
+
+## Validate redundancy through load distribution
+
+Uneven load distribution across redundant instances can indicate failure conditions. Validate that redundancy is functioning as intended by monitoring:
+
+- Traffic and request distribution across instances or regions
+- Failover routing behavior under normal conditions
+- Imbalances that persist over time
 
 ## Monitor all layers of the system
 
@@ -60,12 +86,18 @@ Analysis should combine real-time and historical perspectives. Real-time monitor
 
 ## Track recoverability targets
 
-Monitor your system's ability to recover from failures and return to normal operation within defined time objectives. Recoverability targets include Recovery Time Objective (RTO) - the maximum acceptable time to restore service after a failure, and Recovery Point Objective (RPO) - the maximum acceptable amount of data loss measured in time.
+Treat every test or real incident as a measurable event, using the monitoring data to validate that the defined recoverability targets can be met. Measure both system capabilities and operational readiness under failure conditions. Here are some example metrics:
 
-Track key recovery indicators such as backup completion rates, restore operation success rates, failover execution times, and data synchronization lag. Monitor the health and availability of backup systems, disaster recovery infrastructure, and automated recovery processes. Implement regular recovery testing to validate that your systems can meet defined RTO and RPO targets under various failure scenarios.
+- Time to detect an issue
+- Time to initiate response
+- Time to recover (RTO alignment)
+- Data loss exposure (RPO alignment)
+- Failover execution time and success rates
+- Backup and restore success rates
+- Replication latency and data synchronization lag
+- Manual intervention required during recovery
 
-Collect metrics on backup frequency, backup size trends, cross-region replication latency, and the success rates of automated recovery procedures. Additionally, track manual intervention requirements during recovery processes to identify opportunities for automation and process improvement.
-
+Some of those metrics can also surface operational state. Whether that's unclear procedures, decision-making bottlenecks,  inaccessible documentation, all impact the team's ability to meet recovery objectives. Use monitoring data to improve those processes. 
 
 ## Represent system health with a health model 
 
