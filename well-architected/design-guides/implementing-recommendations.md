@@ -17,6 +17,17 @@ Before starting the assessment, it is essential to prioritize the pillars accord
 > [!TIP]
 > The Azure Well-Architected Review assessment contains multiple sub assessments, be sure to select "Core Well-Architected Review" when prompted. This will allow you to evaluate your full workload, not just a specific technology.
 
+## Terminology
+
+Before you start the assessment process, familiarize yourself with these key terms.
+
+| Term | Definition |
+|------|------------|
+| **Brownfield workload** | Existing workload that's already deployed and operational, which requires assessment as part of continuous improvement efforts. |
+| **Greenfield workload** | New workload in the initial design phase, where the assessment helps establish a baseline and guide design decisions. |
+| **Software development lifecycle (SDLC)** | Structured process for planning, creating, testing, and deploying software systems where you integrate Well-Architected Framework recommendations. |
+| **Technical debt** | The estimated future cost of addressing shortcuts, suboptimal solutions, or known problems in a workload that you should address to maintain quality and prevent future problems. |
+
 ## When to take the assessment
 
 For greenfield workloads, we recommend that you perform the assessment during the initial design process, entering the proposed decisions. The guidance then acts as a baseline and starts a feedback loop that you can use to refine the workload design as you make additional design decisions and periodically capture them in additional assessment milestones.

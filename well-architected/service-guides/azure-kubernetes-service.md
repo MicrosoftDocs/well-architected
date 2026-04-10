@@ -90,7 +90,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >   Use Kubernetes role-based access control (RBAC) with Microsoft Entra ID for [least privilege access](/azure/aks/azure-ad-rbac). Protect configuration and secrets by minimizing the allocation of administrator privileges.
 >
-> - (Cluster) **Integrate with security monitoring and security information and event management tools.** Use Microsoft Defender for Containers with [Microsoft Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and the workloads that run on them. Enable [AKS connector for Microsoft Sentinel](https://docs.azure.cn/en-us/sentinel/data-connectors/azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
+> - (Cluster) **Integrate with security monitoring and security information and event management tools.** Use Microsoft Defender for Containers with [Microsoft Sentinel](/azure/sentinel/overview) to detect and quickly respond to threats across your clusters and the workloads that run on them. Enable [AKS connector for Microsoft Sentinel](/azure/sentinel/data-connectors-reference#azure-kubernetes-service-aks) to stream your AKS diagnostics logs into Microsoft Sentinel.
 >
 > - (Cluster and workload) **Implement segmentation and network controls.** To prevent data exfiltration, ensure that only authorized and safe traffic is allowed, and contain the blast radius of a security breach.
 >
@@ -141,7 +141,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >   
 > - (Cluster) **Get the best rates for your workload.** Use the appropriate VM SKU for each node pool because it directly affects the cost to run your workloads. Choosing a high-performance VM without proper utilization can lead to wasteful spending. Selecting a less powerful VM can cause performance problems and increased downtime.
 >
->   If you properly planned for capacity and your workload is predictable and will exist for an extended period of time, sign up for [Azure Reservations](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview#determine-your-savings-plan-commitment) to reduce your resource costs.
+>   If you properly planned for capacity and your workload is predictable and will exist for an extended period of time, sign up for [Azure Reservations](/azure/aks/faq#can-i-apply-azure-reservation-discounts-to-my-aks-agent-nodes) or a [savings plan](/azure/cost-management-billing/savings-plan/savings-plan-overview#determine-your-savings-plan-commitment) to reduce your resource costs.
 >
 >   Choose [Azure Spot Virtual Machines](/azure/virtual-machines/spot-vms) to use unutilized Azure capacity with significant discounts. These discounts can reach up to 90% of pay-as-you-go prices. If Azure needs capacity back, the Azure infrastructure evicts the Spot nodes.
 >
@@ -243,7 +243,9 @@ Start your design strategy based on the [design review checklist for Performance
 >
 > - (Cluster and workload) **Conduct performance testing.** Perform ongoing load testing activities that exercise both the pod and cluster autoscaler. Compare results against the performance targets and the established baselines.
 >   
-> - (Cluster and workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools to allow independent scaling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows. 
+> - (Cluster and workload) **Scale workloads and flows independently.** Separate workloads and flows into different node pools to allow independent scaling. Follow the guidance in [Optimize workload design using flows](/azure/well-architected/design-guides/optimize-workload-using-flows) to identify and prioritize your flows.
+>
+> - (Cluster) **Optimize DNS resolution.** Take advantage of LocalDNS that's enabled automatically using [node auto-provisioning](/azure/aks/node-auto-provisioning-aksnodeclass#localdns-configuration). LocalDNS improves performance by reducing network overhead and speeding up service discovery for microservices applications with high inter-service communication rates. Its local caching removes DNS bottlenecks by reducing external DNS queries and provides continued name resolution even when upstream DNS services experience outages. Node auto-provisioning integration maintains optimal network performance without sacrificing operational automation capabilities. 
 
 ### Configuration recommendations
 
@@ -254,7 +256,6 @@ Start your design strategy based on the [design review checklist for Performance
 |(Workload) Use AKS [advanced scheduler features](/azure/aks/operator-best-practices-advanced-scheduler) to implement advanced balancing of resources for workloads that require them. | As you manage AKS clusters, you often need to isolate teams and workloads. Advanced features that the Kubernetes scheduler provides let you control which pods can be scheduled on certain nodes. They also let you control how multipod applications can be appropriately distributed across the cluster.|
 |(Workload) Use [KEDA](/training/modules/aks-app-scale-keda/) to build a meaningful autoscale ruleset based on signals that are specific to your workload.|Not all scale decisions can be derived from CPU or memory metrics. Scale considerations often come from more complex or even external data points. KEDA allows your applications to scale based on events, such as the number of messages in a queue or the length of a topic lag.|
 |(Cluster) Enable [Azure Monitor High Scale mode for Container Insights](/azure/azure-monitor/containers/container-insights-high-scale#enable-high-scale-mode-for-monitoring-add-on) for large-scale Kubernetes deployments with hundreds of nodes. It reduces resource consumption while maintaining observability.|Enables monitoring and reduces agent resource overhead and improves data collection performance. This optimization is beneficial for enterprise environments running hundreds of nodes where standard monitoring approaches can impact cluster performance and increase costs.|
-|(Cluster) Enable [LocalDNS](/azure/aks/coredns-custom) for large-scale AKS clusters to improve DNS resolution by handling queries locally and reducing latency. |LocalDNS improves performance by reducing network overhead and speeding up service discovery. Its local caching removes DNS bottlenecks by cutting down on external DNS queries, and it provides continued name resolution even when upstream DNS services experience outages.|
 
 ## Azure policies
 
@@ -314,5 +315,6 @@ Build implementation expertise by using the following product documentation:
 <!-- Updated: August 17, 2025 for Azure Update 498258 -->
 <!-- Updated: August 17, 2025 for Azure Update 498242 -->
 <!-- Updated: October 13, 2025 for Azure Update 503034 -->
+<!-- Updated: March 17, 2026 for Azure Update 557203 -->
 
 

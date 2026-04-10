@@ -66,7 +66,7 @@ Pay attention to compliance requirements. Evaluate what extra steps might be nee
 
 ## Implement automation, where practical
 
-Use automation to help achieve consistency. Automate tasks that are repetitive and prone to human error to relieve management burden from your team. Look for opportunities to automate processes, like generating ITSM tickets, for example. For more information, see the [Recommendations for implementing automation](automate-tasks.md).
+Use automation to help achieve consistency. Automate tasks that are repetitive and prone to human error to relieve management burden from your team. Look for opportunities to automate processes, like generating ITSM tickets, for example. For more information, see the [Recommendations for implementing automation](enable-automation.md).
 
 ## Govern open-source use
 
@@ -90,8 +90,7 @@ The Well-Architected Framework also provides detailed guidance on the processes 
 
 ## Related links
 
-- [Recommendations for implementing automation](automate-tasks.md)
-- [Recommendations for enabling automation in your workload](enable-automation.md)
+- [Recommendations for implementing and enabling automation in your workload](enable-automation.md)
 - [Recommendations for formalizing software development management practices](formalize-development-practices.md)
 
 ## Operational Excellence checklist

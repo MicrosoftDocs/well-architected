@@ -165,7 +165,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Data can be [archived](/azure/azure-monitor/logs/data-retention-archive) or [exported](/azure/azure-monitor/logs/logs-data-export) from Log Analytics workspaces for long term retention and/or auditing purposes.
 
-- [Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provide a deployment option that enables Availability Zones for protection from zonal failures in supported Azure regions. Dedicated Clusters require a minimum daily data ingest commitment.
+- [Dedicated Clusters](/azure/azure-monitor/logs/logs-dedicated-clusters) provide a deployment option that enables Availability Zones for protection from zone failures in supported Azure regions. Dedicated Clusters require a minimum daily data ingest commitment.
 
 - Log Analytics workspaces are deployed into a specified Azure region.
 
@@ -178,7 +178,7 @@ A unified data sink is required to ensure all operational data is swiftly stored
 
 - Log Analytics workspace data [can be exported to Azure Storage or Azure Event Hubs on a continuous, scheduled, or one-time basis](/azure/azure-monitor/logs/logs-data-export).
   - Data export allows for long-term data archiving and protects against possible operational data loss due to unavailability.
-  - Available export destinations are Azure Storage or Azure Event Hubs. Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zonal or regional. Data export to Azure Storage stores the data within .json files.
+  - Available export destinations are Azure Storage or Azure Event Hubs. Azure Storage can be configured for different [redundancy levels](/azure/storage/common/storage-redundancy) including zone-redundant storage (ZRS) or geo-redundant storage (GRS). Data export to Azure Storage stores the data within .json files.
   - Data export destinations must be within the same Azure region as the Log Analytics workspace. An event hub data export destination to be within the same region as the Log Analytics workspace. Azure Event Hubs geo-disaster recovery isn't applicable for this scenario.
   - There are several [data export limitations](/azure/azure-monitor/logs/logs-data-export#limitations). Only specific [tables in the workspace are supported](/azure/azure-monitor/logs/logs-data-export#supported-tables) for data export.
   - [Archiving](/azure/azure-monitor/logs/data-retention-archive) can be used to store data in a Log Analytics workspace for long-term retention at a reduced cost without exporting it.

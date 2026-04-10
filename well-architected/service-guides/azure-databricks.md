@@ -297,6 +297,8 @@ Start your design strategy based on the [design review checklist for Operational
 > - **Develop backup and recovery procedures.** [Backup and recovery procedures](/azure/well-architected/reliability/disaster-recovery) ensure BCuity through protection of workspace configurations, analytics source code, job definitions, and data assets. Backup and recovery procedures include automated backup schedules and cross-region replication that meet RTOs and recovery point objectives (RPOs).
 >
 > - **Implement team collaboration and knowledge management.** Team collaboration practices optimize Azure Databricks productivity through shared workspace organization, notebook collaboration features, and documentation standards that facilitate knowledge transfer and reduce project duplication across development teams.
+>
+> - **Use serverless workspaces for rapid environment provisioning.** Serverless workspaces provide fully managed workspace types with preconfigured serverless compute, default DBFS storage, and other benefits. These workspaces enable workspace creation from Azure portal, automatic Unity Catalog enablement, and native integration with Entra ID for all tenant users. This gives the ease of instantly creating workspaces without provisioning compute or storage, reducing manual operations.
 
 ### Recommendations
 
@@ -436,3 +438,5 @@ Balance performance and cost to get the most value from your workloads. Overprov
 
 - [Azure Databricks documentation](/azure/databricks/)
 - [Introduction to the well-architected data lakehouse](/azure/databricks/lakehouse-architecture/)
+
+<!-- Updated: March 17, 2026 for Azure Update 550845 -->

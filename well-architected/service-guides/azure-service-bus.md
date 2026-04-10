@@ -64,7 +64,7 @@ Start your design strategy based on the [design review checklist for Reliability
 >
 >   - Instance-Level Redundancy: At the foundational level, distribute messaging across separate Service Bus instances to achieve instance-level redundancy. This >requires the application to implement custom failover logic or load-balancing strategies across multiple messaging endpoints.
 >
->   - Zonal-Level Redundancy: Enable availability zones to protect against datacenter-level failures. In the event of such a failure, the application may experience temporary disruption; however, Service Bus will automatically replicate message data and metadata across multiple availability zones to maintain continuity.
+>   - Zone-Level Redundancy: Enable availability zones to protect against datacenter-level failures. In the event of such a failure, the application may experience temporary disruption; however, Service Bus will automatically replicate message data and metadata across multiple availability zones to maintain continuity.
 >
 >   - Region-Level Redundancy: For workloads demanding even greater resilience, consider implementing region-level redundancy. This can be achieved using active or passive replication patterns:
 >

@@ -197,7 +197,7 @@ Security, privacy, and data residency requirements should guide your choice. Ide
 |---------------|------------------------------|----------------------------------------|
 | **Data cleansing** | Azure Data Factory, Azure Databricks, Microsoft Fabric Dataflows | Apache NiFi, Apache Airflow |
 | **Data transformation** | Azure Databricks, Azure Synapse Analytics, Microsoft Fabric Data Engineering | Azure Data Factory Pipelines |
-| **Data enrichment** | Azure AI Document Intelligence, Azure OpenAI Service, Azure AI Search | Custom Python APIs or third-party AI services |
+| **Data enrichment** | Azure Document Intelligence in Foundry Tools, Azure OpenAI Service, Azure AI Search | Custom Python APIs or third-party AI services |
 | **Workflow orchestration** | Azure Data Factory Pipelines, Databricks Jobs | Apache Airflow, Apache NiFi |
 | **RAG Workflows** | Azure OpenAI Service, Azure AI Search, Azure Databricks | Microsoft Fabric Data Science |
   
@@ -251,7 +251,7 @@ Reliability for the search index should mirror that of your inference endpoint a
 
 Each step must meet similar uptime and performance expectations. To achieve this, when you choose the data platform, look for:
 
-- High availability and zone redundancy capabilities to survive zonal and regional outages.
+- High availability and zone redundancy capabilities to survive zone and regional outages.
 - Automatic recovery and easy index rebuilding to prevent the use of a corrupted index for inferencing.
 - Index aliasing or swap capabilities to enable updates with zero downtime.
 
@@ -305,7 +305,7 @@ Similar to other types of data, have processes to remove sensitive or personal d
 |---------------|------------------------------|----------------------------------------|
 | **Vector search and semantic search** | Azure AI Search, Azure Cosmos DB (vector search), Azure Database for PostgreSQL (pgvector) | Pinecone, Weaviate, Chroma, Qdrant |
 | **Full-text search and keyword indexing** | Azure AI Search | Elasticsearch, Apache Solr, Azure SQL Database Full-Text Search |
-| **Multimodal data processing** | Azure AI Search (with skillsets), Azure AI Document Intelligence, Azure AI Vision | Custom processing with OpenAI APIs, Amazon Textract |
+| **Multimodal data processing** | Azure AI Search (with skillsets), Document Intelligence, Azure Vision in Foundry Tools | Custom processing with OpenAI APIs, Amazon Textract |
 | **Automatic data refresh and indexing** | Azure AI Search (with indexers), Azure Data Factory triggers | Custom polling solutions, Apache NiFi, change data capture |
 | **High-availability and reliability** | Azure AI Search (zone redundancy), Azure Cosmos DB (global distribution) | Multi-region deployments, load balancers, Azure Traffic Manager |
 | **Index aliasing and zero-downtime updates** | Azure AI Search (index aliases), Azure Cosmos DB | Blue-green deployment patterns, custom routing logic |

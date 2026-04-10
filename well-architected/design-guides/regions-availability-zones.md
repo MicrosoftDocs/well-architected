@@ -3,8 +3,9 @@ title: Architecture Strategies for Using Availability Zones and Regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions for reliability and resiliency.
 author: johndowns
 ms.author: jodowns
-ms.date: 11/13/2023
+ms.date: 09/08/2025
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ---
 
 # Architecture strategies for using availability zones and regions
@@ -21,7 +22,7 @@ The Azure regions that you use for your solution are a critical choice. The [Sel
 
 - **Performance Efficiency:** Availability zones are connected together through a high-bandwidth, low-latency network link. This link is sufficient for most workloads to enable synchronous replication and communication across the zones. However, if you test your workload and determine that it's sensitive to network latency across zones, you might need to consider physically locating your workload's components close together to minimize latency when they communicate.
 
-- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. For a highly available solution, you might also need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required. It's a good practice to automate your deployment and management processes. For more information, see the Operational Excellence pillar guides, including [OE:05 Infrastructure as code](../operational-excellence/infrastructure-as-code-design.md), [OE:09 Task automation](../operational-excellence/automate-tasks.md), [OE:10 Automation design](../operational-excellence/enable-automation.md), and [OE:11 Deployment practices](../operational-excellence/safe-deployments.md).
+- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. For a highly available solution, you might also need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required. It's a good practice to automate your deployment and management processes. For more information, see the Operational Excellence pillar guides, including [OE:05 Infrastructure as code](../operational-excellence/infrastructure-as-code-design.md), [OE:10 Automation design](../operational-excellence/enable-automation.md), and [OE:11 Deployment practices](../operational-excellence/safe-deployments.md).
 
 The Security pillar applies regardless of how you design your solution. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
 
@@ -30,23 +31,25 @@ The Security pillar applies regardless of how you design your solution. Usually,
 >
 > Consider other workload approaches when you need the specific benefits that those approaches provide, but be aware of the trade-offs.
 
-**Definitions**
+## Terminology
+
+Before you start designing your deployment strategy across availability zones and regions, familiarize yourself with these key terms.
 
 | Term | Definition |
 |-|-|
-| Active-active | An architecture in which multiple instances of a solution actively process requests at the same time. |
-| Active-passive | An architecture in which one instance of a solution is designated as the *primary* and processes traffic, and one or more *secondary* instances are deployed to serve traffic if the primary instance is unavailable. |
-| Asynchronous replication | A data replication approach in which data is written and committed to one location. At a later time, the changes are replicated to another location. |
-| Availability zone | [A separated group of datacenters within a region][availability-zones-overview]. Each availability zone is independent of the other availability zones and has its own power, cooling, and networking infrastructure. [Many regions support availability zones][azure-regions-with-availability-zone-support]. |
-| Datacenter | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
-| Locally redundant deployment | A deployment model in which a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
-| Multi-region deployment| A deployment model in which resources are deployed into multiple Azure regions. |
-| Paired regions | A relationship between two Azure regions. [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired][regions-with-availability-zones-and-no-region-pair]. |
-| Region | A geographic perimeter that contains a set of datacenters. |
-| Region architecture | The specific configuration of the Azure region, including the number of availability zones and whether the region is paired with another region. |
-| Synchronous replication | A data replication approach in which data is written and committed to multiple locations. Each location must acknowledge completion of the write operation before the overall write operation is considered complete. |
-| Zonal (pinned) deployment | A deployment model in which a resource is deployed into a specific availability zone. |
-| Zone-redundant deployment | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
+| **Active-active** | An architecture in which multiple instances of a solution actively process requests at the same time. |
+| **Active-passive** | An architecture in which one instance of a solution is designated as the *primary* and processes traffic, and one or more *secondary* instances are deployed to serve traffic if the primary instance is unavailable. |
+| **Asynchronous replication** | A data replication approach in which data is written and committed to one location. At a later time, the changes are replicated to another location. |
+| **Availability zone** | [A separated group of datacenters within a region][availability-zones-overview]. Each availability zone is independent of the other availability zones and has its own power, cooling, and networking infrastructure. [Many regions support availability zones][azure-regions-with-availability-zone-support]. |
+| **Datacenter** | A facility that contains servers, networking equipment, and other hardware to support Azure resources and workloads. |
+| **Locally redundant deployment** | A deployment model in which a resource is deployed into a single region without reference to an availability zone. In a region that supports availability zones, the resource might be deployed in any of the region's availability zones. |
+| **Multi-region deployment** | A deployment model in which resources are deployed into multiple Azure regions. |
+| **Paired regions** | A relationship between two Azure regions. [Some Azure regions][azure-region-pairs] are connected to another defined region to enable specific types of multi-region solutions. [Newer Azure regions aren't paired][regions-with-availability-zones-and-no-region-pair]. |
+| **Region** | A geographic perimeter that contains a set of datacenters. |
+| **Region architecture** | The specific configuration of the Azure region, including the number of availability zones and whether the region is paired with another region. |
+| **Synchronous replication** | A data replication approach in which data is written and committed to multiple locations. Each location must acknowledge completion of the write operation before the overall write operation is considered complete. |
+| **Zonal (pinned) deployment** | A deployment model in which a resource is deployed into a specific availability zone. |
+| **Zone-redundant deployment** | A deployment model in which a resource is deployed across multiple availability zones. Microsoft manages data synchronization, traffic distribution, and failover if a zone experiences an outage. |
 
 ## Understand how regions and availability zones are organized in Azure
 
