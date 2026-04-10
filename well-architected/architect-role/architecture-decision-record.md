@@ -34,13 +34,15 @@ Start the ADR at the onset of a workload and maintain it throughout the workload
 
 - Avoid hiding consequences of decisions intentionally or accidentally.
 
+- Always include context and rationale. A record without justification loses its value over time as stakeholders can't evaluate whether the decision still applies when circumstances change.
+
 - Keep records pithy, assertive, on-topic, and factual.
 
 - Avoid making decision records design guides. If more justification or design ideation is available, provide a link to a document as supplemental material, but the decision must be clear and stand alone without that material.
 
 ## Workload documentation repository
 
-This log should be readily available and stored openly with the workload's documentation.
+This log should be readily available and stored openly with the workload's documentation. A decision that's made but never recorded will likely be forgotten, leading to repeated debates or later changes that unknowingly contradict the original intent.
 
 An architect can help a workload team achieve recommendations of Operational Excellence by helping to establish and maintain a document and asset repository. Architects help teams place all of their assets into the repository, such as this decision log. They also encourage the teams' unified adoption of a single source of truth to be used for reference, audits, and incident response.
 
