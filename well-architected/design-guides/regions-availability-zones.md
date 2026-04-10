@@ -3,8 +3,9 @@ title: Architecture Strategies for Using Availability Zones and Regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions for reliability and resiliency.
 author: johndowns
 ms.author: jodowns
-ms.date: 11/13/2023
+ms.date: 09/08/2025
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ---
 
 # Architecture strategies for using availability zones and regions
