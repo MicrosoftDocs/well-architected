@@ -1,14 +1,14 @@
 ### YamlMime:Landing
 
 title: Microsoft Fabric Well-Architected documentation
-summary: Learn about designing and implementing well-architected workloads on Microsoft Fabric. The articles provide architectural guidance and prescriptive approaches across the five pillars of the Well-Architected Framework. Design your Fabric solutions with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
+summary: Learn about designing workloads on Microsoft Fabric with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
 metadata: 
   title: Microsoft Fabric Well-Architected documentation
   description: Apply the five pillars of the Well-Architected Framework to design and operate reliable, secure, cost-effective, and high-performing workloads on Microsoft Fabric.
   services: fabric
   author: PageWriter-MSFT
   ms.author: prwilk
-  ms.date: 03/15/2026
+  ms.date: 04/10/2026
   ms.topic: landing-page
   ms.collection: na
 

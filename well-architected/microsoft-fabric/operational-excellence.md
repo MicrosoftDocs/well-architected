@@ -22,7 +22,7 @@ Data engineers need to be fluent in Spark transformations, Lakehouse design, and
 
 Take the time to map roles and responsibilities. Who owns capacity monitoring? Who can approve a production deployment? Who is on call when a critical pipeline fails? Document these boundaries clearly. 
 
-Formalize skills through certifications like DP-600 or DP-700. Also, learn through Microsoft Official guidance on Fabric. Pay attendion to Microsoft Entra ID knowledge because it's essential for integrated governance and identity management.
+Formalize skills through certifications like DP-600 or DP-700. Also, learn through Microsoft Official guidance on Fabric. Pay attention to Microsoft Entra ID knowledge because it's essential for integrated governance and identity management.
 
 ## Deploy changes safely
 
@@ -173,3 +173,8 @@ Fabric supports a wide range of testing tools:
 - CI/CD validation: Azure DevOps and GitHub Actions
 - Automation testing: Fabric REST APIs
 - Custom integration tests: Python and PowerShell scripts
+
+
+## Next steps
+
+Review the best practices, organized by pillars. Follow the guidance in [Performance Efficiency](./performance-efficiency.md).

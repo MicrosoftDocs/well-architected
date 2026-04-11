@@ -3,13 +3,13 @@ title: Cost considerations for Microsoft Fabric workloads
 description: Overview of cost considerations for workloads running on Microsoft Fabric.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 03/14/2026
+ms.date: 04/10/2026
 ms.topic: concept-article
 ---
 
 # Cost considerations for Microsoft Fabric workloads
 
-Managing costs in Microsoft Fabric requires architectural foresight, operational discipline, and smart automation, from understanding how capacities, storage, and data movement drive expenses, to enforcing effective governance.
+Managing costs in Microsoft Fabric requires architectural foresight, operational discipline, and smart automation. Have a clear understanding of how capacities, storage, and data movement drive expenses, to enforcing effective governance.
 
 This article provides architects and engineers with a practical framework to control costs without compromising performance or reliability. You'll learn how to estimate costs, forecast total ownership, and apply optimization strategies through automation, environment management, and governance, ensuring cost control scales alongside your workloads.
 
@@ -70,10 +70,10 @@ Modeling both scale-up scenarios (larger capacities) and scale-out architectures
 
 Before deploying large workloads, use available tools to estimate and validate projected costs:
 
-* [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) - estimates required capacity for expected workloads.
-* [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) - models compute and storage costs across scenarios.
-* [Microsoft Cost Management and Billing](/azure/cost-management-billing/) - monitors and analyzes actual spending after deployment.
-* [Fabric cost analysis tools](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) from the Microsoft Fabric Toolbox
+-  [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) - estimates required capacity for expected workloads.
+- [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) - models compute and storage costs across scenarios.
+- [Microsoft Cost Management and Billing](/azure/cost-management-billing/) - monitors and analyzes actual spending after deployment.
+- [Fabric cost analysis tools](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) from the Microsoft Fabric Toolbox
 
 
 ## Monitor costs and implement governance
@@ -165,3 +165,6 @@ Consolidation is about maximizing resource efficiency by sharing capacities and 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Sharing capacities lowers costs but can impact performance: spikes in one workload may slow others (noisy neighbor issues). Highly variable or mission-critical workloads may need dedicated capacities. Fixed-capacity scaling can create large jumps in resources, so scaling out is often smoother. Consolidation also adds monitoring and governance complexity, especially when teams need clear visibility into their own usage.
 
 
+## Next steps
+
+Review the best practices, organized by pillars. Follow the guidance in [Operational Excellence](./operational-excellence.md).

@@ -77,7 +77,7 @@ Vertical scaling is typically fast and requires only a short pause while the cap
 
 Horizontal scaling, on the other hand, distributes workloads across multiple capacities. This approach works well when workloads are modular or when multiple teams operate independently. By assigning separate workspaces or solution components to different capacities, each workload receives dedicated compute resources and avoids contention with others.
 
-Fabric’s separation of compute and storage supports this model effectively. Data prepared in one capacity can be shared through OneLake without physically copying it, enabling architectures such as data mesh patterns where multiple domains publish and consume shared datasets.
+Fabric's separation of compute and storage supports this model effectively. Data prepared in one capacity can be shared through OneLake without physically copying it, enabling architectures such as data mesh patterns where multiple domains publish and consume shared datasets.
 
 As your architecture scales, maintain modular components wherever possible. Pipelines, datasets, warehouses, and analytical models should be able to scale independently. Partitioning large datasets—by date, region, or another logical key—helps keep queries focused on smaller slices of data and improves performance.
 
@@ -98,7 +98,7 @@ To keep your workloads running smoothly, you need visibility into the right metr
 
 - Capacity utilization reveals how much of the available compute your workloads are consuming. Sustained high utilization on interactive workloads often leads to slower query responses for users.
 - Memory usage is another important signal, especially for Power BI semantic models and Spark jobs. Large models or inefficient queries can exhaust available memory and degrade performance across the capacity.
-- Concurrency levels show how many operations are running simultaneously compared to the capacity’s limits. High concurrency can increase queue times even when individual workloads are efficient.
+- Concurrency levels show how many operations are running simultaneously compared to the capacity's limits. High concurrency can increase queue times even when individual workloads are efficient.
 - Job execution metrics, such as query duration, dataset refresh times, pipeline execution time, and Spark job runtime.
 - Real-time workloads, ingestion latency and queries per second are key indicators of system health.
 - Errors and throttling events, including Spark "capacity exceeded" messages or throttling events.

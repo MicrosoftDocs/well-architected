@@ -3,13 +3,13 @@ title: Security considerations for Microsoft Fabric workloads
 description: Overview of security considerations for workloads running on Microsoft Fabric.
 ms.author: prwilk
 author: PageWriter-MSFT
-ms.date: 03/14/2026
+ms.date: 04/10/2026
 ms.topic: concept-article
 ---
 
 # Security considerations for Microsoft Fabric workloads
 
-As a cloud solution architect, make intentional decisions about security in Microsoft Fabric. Think how  your workloads operate, who can access them, and how you contain risks. As an architect, your role is to build security resilience.
+As a cloud solution architect, make intentional decisions about security in Microsoft Fabric. Think how your workloads operate, who can access them, and how you contain risks. As an architect, your role is to build security resilience.
 
 This article describes how to apply practical, actionable security controls within Fabric, using its built-in features like workspaces, workspace identities, managed virtual networks, and customer-managed keys. 
 
@@ -20,7 +20,7 @@ This article describes how to apply practical, actionable security controls with
 
 Before you dive into network rules or encryption settings, define a security baseline for your Fabric environment. Think of it as a blueprint that outlines how data should be protected, who can touch it, and what compliance requirements must be met.
 
-**Use the Azure security baseline for Fabric**, aligned with the Microsoft cloud security benchmark (MCSB), as a reference when defining security controls. Use it, but don't treat it as a checklist but treat it as a starting point for conversations about your environment, governance policies, and risk tolerance.
+**Use the Azure security baseline for Fabric**, aligned with the Microsoft cloud security benchmark (MCSB), as a reference when defining security controls. Use it, but don't treat it as a checklist; instead, treat it as a starting point for conversations about your environment, governance policies, and risk tolerance.
 
 Compare your current tenant configuration against the baseline. Are identity policies strict enough? Are monitoring and logging pipelines in place to detect unusual activity? If gaps exist, mitigate them early.
 
@@ -193,3 +193,7 @@ Separate development workspaces from production environments. Conditional access
 >
 > [Git integration in Microsoft Fabric](/fabric/cicd/git-integration/intro-to-git-integration)
 > [Deployment pipelines in Microsoft Fabric](/fabric/cicd/deployment-pipelines/intro-to-deployment-pipelines)
+
+## Next steps
+
+Review the best practices, organized by pillars. Follow the guidance in [Cost Optimization](./cost-optimization.md).
