@@ -62,7 +62,7 @@ When you're designing workloads in Microsoft Fabric, think of **self healing as 
 
 Redundancy exists at multiple layers, and understanding which layer affects your workloads helps you make smarter design decisions:
 
-| Level              | How it Works                                                                         | What You Control                                                                                           |
+| Level              | How it works                                                                         | What you control                                                                                           |
 | ------------------ | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
 | **Instance-level** | Individual node failover happens automatically.                                      | Mostly managed by Fabric; ensure workloads can resume without manual intervention.                         |
 | **Zone-level**     | Azure Availability Zones spread workloads across physical locations within a region. | Design your workloads to tolerate zone-level failover; no extra setup needed, but test failover scenarios. |

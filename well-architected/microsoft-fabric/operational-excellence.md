@@ -87,7 +87,7 @@ Focus monitoring on signals that reveal issues or trends:
 
 Correlate logs across systems to understand not just what failed, but why. Several specialized tools provide deeper operational insight:
 
-| Tool                                       | Purpose                                       | Typical Use                                                                                         |
+| Tool                                       | Purpose                                       | Typical use                                                                                         |
 | ------------------------------------------ | --------------------------------------------- | --------------------------------------------------------------------------------------------------- |
 | [Microsoft Fabric Capacity Metrics App](/fabric/enterprise/metrics-app) | Monitor capacity health and compute usage     | Track CU consumption, throttling events, autoscale behavior, and storage usage over a 14-day window |
 | [Workspace Monitoring](/fabric/data-factory/workspace-monitoring) | Provide workload-level observability          | Capture logs and metrics for supported Fabric workloads within a workspace                          |

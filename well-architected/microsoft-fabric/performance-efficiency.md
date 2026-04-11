@@ -13,7 +13,7 @@ From a design perspective, every choice you make directly affects how your users
 
 This guide gives your best practices that you can apply through the lifecycle of your workload. Key concepts covered are: planning capacity, monitoring performance, testing, tuning for efficiency, and scaling confidently. 
 
-## Plan capacity deliberately
+## Plan capacity intentionally
 
 Capacity planning in Microsoft Fabric determines how much compute is available to run your workloads and how effectively different workloads share those resources.
 
@@ -53,12 +53,12 @@ Validate your capacity assumptions through load testing. Simulate realistic work
 Ongoing capacity management relies on continuous monitoring. Use the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app), [Workspace Monitoring](/fabric/data-factory/workspace-monitoring), and workload-specific tools to track utilization trends, detect spikes, and identify bottlenecks. Incorporate real-time alerts or automated responses for proactive capacity management and regularly review telemetry from dependent components like pipelines or Spark jobs to refine scaling strategies.
 
 
-### Choosing SKU and Tiers Based on Performance Requirements
+## Choose SKU and Tiers Based on Performance Requirements
 
 
 Selecting the right [Microsoft Fabric SKU](/fabric/enterprise/licenses#capacity) determines how much compute and memory your workloads can use. Each capacity tier provides a fixed number of CUs, which affects concurrency limits, query throughput, and the responsiveness of interactive workloads.
 
-| SKU / Capacity  | Compute and Memory (CUs)      | Typical Workloads                                                     | Performance Characteristics                                                                       |
+| SKU / Capacity  | Compute and memory (CUs)      | Typical workloads                                                     | Performance characteristics                                                                       |
 | --------------- | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
 | **F2–F8**       | Small compute, minimal memory | Development environments, light ETL, small reports                    | Handles limited concurrency and smaller datasets; suitable for experimentation or small workloads |
 | **F16–F64**     | Moderate compute and memory   | Standard ETL pipelines, moderate Power BI usage, smaller ML workloads | Supports mixed workloads and moderate concurrency                                                 |

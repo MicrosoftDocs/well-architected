@@ -26,13 +26,13 @@ These options can be combined to support different usage patterns. For example, 
 
 Once the pricing model is understood, the next step is identifying what actually drives costs in a Fabric environment.
 
-| Cost Driver                  | How It Impacts Cost                                     | Considerations                                              |
+| Cost driver                  | How it impacts cost                                     | Considerations                                              |
 | ---------------------------- | ------------------------------------------------------- | ----------------------------------------------------------- |
-| **Compute (Capacity Units)** | Primary cost driver for Fabric workloads                | Larger capacities and longer active durations increase cost |
+| **Compute (capacity units)** | Primary cost driver for Fabric workloads                | Larger capacities and longer active durations increase cost |
 | **Storage (OneLake)**        | Charged per GB stored                                   | Includes datasets, historical data, and cached results      |
-| **Data Processing**          | Ingestion, transformations, and queries consume compute | Complex queries and heavy pipelines increase CU usage       |
-| **Data Transfer**            | Cross-region or external data movement                  | Egress charges may apply depending on architecture          |
-| **Retention and Caching**    | Long-term storage policies                              | Larger retention windows increase monthly storage cost      |
+| **Data processing**          | Ingestion, transformations, and queries consume compute | Complex queries and heavy pipelines increase CU usage       |
+| **Data transfer**            | Cross-region or external data movement                  | Egress charges may apply depending on architecture          |
+| **Retention and caching**    | Long-term storage policies                              | Larger retention windows increase monthly storage cost      |
 
 Because compute capacity is provisioned ahead of time, costs are tied to the size of the capacity available, not the actual workload utilization. This means underutilized capacities can still generate significant cost.
 
@@ -120,7 +120,7 @@ Microsoft Fabric doesn't provide separate feature tiers for dev, test, or produc
 
 A common approach is to spin up environments according to their purpose.
 
-| Environment  | Typical Configuration                        | Cost Optimization Approach                        |
+| Environment  | Typical configuration                        | Cost optimization approach                        |
 | ------------ | -------------------------------------------- | ------------------------------------------------- |
 | Development  | Small capacities or shared capacity          | Pause when idle, scale up temporarily for testing |
 | Testing / QA | Small to medium capacities                   | Run during validation windows only                |
@@ -136,7 +136,7 @@ Another strategy is to create temporary environments for testing or validation. 
 
 Some Fabric solutions support multiple tenants or customers. In these cases, environment design also affects cost allocation. Common isolation models include:
 
-| Isolation Model                        | Description                                 | Cost Implication                                 |
+| Isolation model                        | Description                                 | Cost implication                                 |
 | -------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
 | Shared workspace on shared capacity    | Multiple tenants share the same environment | Lowest cost but limited isolation                |
 | Separate workspaces on shared capacity | Logical separation with shared compute      | Balanced cost and isolation                      |

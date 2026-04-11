@@ -130,7 +130,7 @@ Workloads often need to access databases, APIs, or storage. Do not store secrets
 
 > Refer to: [Key Vault secrets integration ](/azure/key-vault/secrets/)
 
-## Security Monitoring 
+## Security monitoring 
 
 Fabric records user and administrative activities through audit logs. They show who accessed what, when, and from where. Combine them with Purview data loss prevention (DLP), on-premises gateway logs, or Microsoft Defender for Cloud Apps telemetry to get a full picture. Centralize all this in a SIEM like Microsoft Sentinel.
 
