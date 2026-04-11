@@ -19,7 +19,7 @@ This guide provides design guidance to solution architects who want to design an
 
 ## Architecture pattern
 
-![This diagram shows a typical architecture for workloads running on Microsoft Fabric.](./images/fabric-architecture.png)
+:::image type="content" source="./images/fabric-architecture.png" alt-text="AThis diagram shows a typical architecture for workloads running on Microsoft Fabric." border="false" lightbox="./images/fabric-architecture.png":::
 
 | Pillar | Focus |
 |---|---|

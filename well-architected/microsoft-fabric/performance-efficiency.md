@@ -17,7 +17,7 @@ This guide gives your best practices that you can apply through the lifecycle of
 
 Capacity planning in Microsoft Fabric determines how much compute is available to run your workloads and how effectively different workloads share those resources.
 
-Fabric capacities provide compute resources measured in Capacity Units (CUs). Every operation—Spark jobs, SQL queries, pipeline activities, and Power BI refreshes—consumes CUs from the capacity that hosts the workload. If demand exceeds available compute, operations slow down, queue, or eventually trigger throttling.
+Fabric capacities provide compute resources measured in Capacity Units (CUs). Every operation, Spark jobs, SQL queries, pipeline activities, and Power BI refreshes, consumes CUs from the capacity that hosts the workload. If demand exceeds available compute, operations slow down, queue, or eventually trigger throttling.
 
 A good starting point is the [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator), which provides an initial estimate of required CUs based on workload characteristics. However, estimates alone are rarely enough. The most reliable approach is to establish a baseline by deploying representative workloads on a trial or small Fabric capacity and monitoring how they behave in practice.
 
@@ -66,12 +66,12 @@ Selecting the right [Microsoft Fabric SKU](/fabric/enterprise/licenses#capacity)
 | **F1024–F2048** | Very large compute and memory | Mission-critical analytics, large Spark workloads, AI/ML processing   | Designed for heavy workloads and strict performance expectations                                  |
 
 
-Larger capacities provide more headroom for concurrency and memory-intensive workloads, but efficient architecture often matters more than raw capacity size. Even smaller SKUs can perform well when workloads are optimized—for example by pre-aggregating data in OneLake, enabling query folding in Power BI, and pushing heavy transformations into distributed Spark processing.
+Larger capacities provide more headroom for concurrency and memory-intensive workloads, but efficient architecture often matters more than raw capacity size. Even smaller SKUs can perform well when workloads are optimized, for example by pre-aggregating data in OneLake, enabling query folding in Power BI, and pushing heavy transformations into distributed Spark processing.
 
 
 ## Design scaling strategies
 
-Think about scaling in two dimensions. _Vertical scaling_ increases the size of an individual capacity by upgrading to a larger SKU. This provides more compute, memory, and throughput for workloads that cannot easily be distributed across multiple environments—for example, a large semantic model supporting many concurrent users or a complex Spark pipeline.
+Think about scaling in two dimensions. _Vertical scaling_ increases the size of an individual capacity by upgrading to a larger SKU. This provides more compute, memory, and throughput for workloads that cannot easily be distributed across multiple environments, for example, a large semantic model supporting many concurrent users or a complex Spark pipeline.
 
 Vertical scaling is typically fast and requires only a short pause while the capacity resizes.
 
@@ -79,7 +79,7 @@ Horizontal scaling, on the other hand, distributes workloads across multiple cap
 
 Fabric's separation of compute and storage supports this model effectively. Data prepared in one capacity can be shared through OneLake without physically copying it, enabling architectures such as data mesh patterns where multiple domains publish and consume shared datasets.
 
-As your architecture scales, maintain modular components wherever possible. Pipelines, datasets, warehouses, and analytical models should be able to scale independently. Partitioning large datasets—by date, region, or another logical key—helps keep queries focused on smaller slices of data and improves performance.
+As your architecture scales, maintain modular components wherever possible. Pipelines, datasets, warehouses, and analytical models should be able to scale independently. Partitioning large datasets, by date, region, or another logical key, helps keep queries focused on smaller slices of data and improves performance.
 
 Signals that it may be time to scale include:
 
