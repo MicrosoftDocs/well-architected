@@ -65,10 +65,6 @@ Review the [Cost Optimization principles](../cost-optimization/principles.md), f
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off: Cost Optimization and Performance Efficiency.** Balancing cost with performance in database management involves trade-offs. Efficient index design speeds up queries but can increase costs because of metadata management and index size. Similarly, partitioning large tables can improve query performance and reduce storage load, but it incurs additional costs. Conversely, techniques that avoid excessive indexing can reduce costs but might affect performance if they're not managed properly.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Trade-off: Cost Optimization and Operational Excellence.** Apply the same development rigor to model training as to any workload code. Develop and test data processing, feature engineering, and training logic in lower environments that do not have access to production training data. After validation, promote the code to the training environment.
->
-> This approach ensures training code is validated before it touches production data. However, it requires maintaining a separate, secure training environment with controlled access to production data, distinct from the environment used for developing data processing code.
-
 ## Operational Excellence
 
 The primary objective of Operational Excellence is to deliver capabilities efficiently throughout the development lifecycle. Achieving this goal involves establishing repeatable processes that support the design methodology of experimentation and yield results to improve model performance. Operational Excellence is also about maintaining the accuracy of models over time, implementing effective monitoring practices and governance to minimize risks, and developing change management processes to adapt to model drift.
