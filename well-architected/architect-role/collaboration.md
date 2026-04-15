@@ -1,9 +1,9 @@
 ---
-title: Architect collaboration with workload teams
+title: Architect Collaboration With Workload Teams
 description: Learn how architects collaborate with workload teams. Discover continuous tasks, POC usage, and technical debt strategies to improve delivery.
 author: ckittel
 ms.author: chkittel
-ms.date: 04/07/2026
+ms.date: 04/15/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -18,7 +18,7 @@ Delivering architecture specifications isn't a one-time task. Architects should 
 
 - **Advise on implementation sequencing**. The transition from design to production is inherently iterative, with change expected throughout. Reflect this reality in your sequencing decisions by prioritizing high‑risk components and critical path items early, allowing teams to identify feasibility issues and apply lessons learned across the workload.
 
-- **Set implementation review checkpoints**. Ensure that workload teams establish regular checkpoints to compare the implementation with the architectural specification. This practice helps ensure the team implements your design according to your specifications, and that the specification meets the predicted requirements. A working feedback loop can mitigate against design or implementation errors.
+- **Set implementation review checkpoints**. Ensure that workload teams establish regular checkpoints to compare the implementation with the architectural specification. This practice helps ensure that the team implements your design according to your specifications and that the specification meets the predicted requirements. A working feedback loop can mitigate against design or implementation errors.
 
 - **Communicate with stakeholders**. Architects use their established relationship with stakeholders and understanding of the workload to relay implementation team concerns or negotiate requirement changes.
 
@@ -42,11 +42,11 @@ Sometimes, to meet a deadline or other constraints, a team might incur technical
 
 Some organizations split responsibilities between workload and platform teams, as seen in Azure landing zones. For workloads that partner with platform teams to co-deliver solutions and value, it's important to collaborate with those teams.
 
-Advocate for *golden paths* - secure and automated ways to consume platform resources. If you don't collaborate with platform teams, your design might miss taking cost advantage of available platform-provided offerings or you might design a solution that violates platform-mandated constraints on workloads.
+Advocate for *golden paths*—secure and automated ways to consume platform resources. If you don't collaborate with platform teams, your design might miss the cost advantages of available platform-provided offerings, or you might design a solution that violates platform-mandated constraints on workloads.
 
 ## Mentorship and knowledge sharing
 
-Set the tone. Explain decisions early and often through reviews and "lunch-and-learn" sessions to empower the implementation team to make decisions that align with the overall vision.
+Set the tone. Explain decisions early and often through reviews and *lunch-and-learn* sessions to empower the implementation team to make decisions that align with the overall vision.
 
 ## Next steps
 
