@@ -93,7 +93,6 @@ For organizations with stricter requirements, Customer-Managed Keys (CMK) can pr
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Using CMK introduces operational dependencies. The key vault must remain available and accessible. If the key is disabled or deleted, workspace data becomes inaccessible until the key is restored. Key rotation, access policies, and audit controls also become your responsibility.
 
-Fabric does not provide built-in encryption for data being processed in memory. If encryption-in-use is required, use extra encryption techniques. For example, sensitive values could be encrypted by your application before ingestion, so Fabric processes only encrypted data that your application can decrypt. This approach is user-managed and requires careful design to maintain usability and performance.
 
 
 > Refer to these articles: 
