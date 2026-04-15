@@ -100,6 +100,8 @@ Minimizing data transfer refers to the reduction of data movement across network
 - *Use caching.* Consider the benefits of caching to minimize data transfer.
 - *Use a content delivery network.* A content delivery network can store frequently read static data closer to users. It reduces data movement across the network and helps offload bandwidth usage.
 
+For data ingestion into Lakehouse architectures, evaluate free-tier offerings that reduce initial ingestion costs. For example, [Lakeflow Connect Free Tier](https://aka.ms/adblakeflowfree) in Azure Databricks provides 100 free DBUs per workspace per day for SaaS and database ingestion. Data is governed by Unity Catalog. Factor in the free tier capacity limit when sizing initial deployments because standard pricing applies beyond the threshold.
+
 ### Optimize security and compliance
 
 Certain production data demands higher security and compliance requirements. These measures might impose extra costs related to data protection, encryption, backup, retention, and auditing.
@@ -242,3 +244,4 @@ Refer to the complete set of recommendations.
 > [Cost Optimization checklist](checklist.md)
 
 <!-- Updated: August 5, 2025 for Azure Update 498558 -->
+<!-- Updated: 2026-03-21 for Azure Update 558810 -->

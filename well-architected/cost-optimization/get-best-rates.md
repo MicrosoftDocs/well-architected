@@ -151,6 +151,8 @@ Try these tasks:
 
 Committing to the right discount options is where you act on your evaluation. You're equipped with the available options. You communicated your needs and workload data to the various providers. Now you need to lock in the discounted rates for a defined period, which can result in significant cost savings compared to pay-as-you-go pricing.
 
+Azure Batch consolidated Low-Priority and Spot VM models into a unified Spot VM infrastructure. Existing API and SDK references to Low-Priority VMs automatically allocate Spot capacity with no code changes required. Verify that your Spot eviction handling strategy accounts for potential differences in eviction rates compared to the former Low-Priority model. For workloads that require guaranteed capacity, evaluate dedicated on-demand nodes. For more information, see [Use Spot VMs with Batch workloads](/azure/batch/batch-spot-vms).
+
 ## Decide whether to build or buy a solution
 
 Building a solution in-house allows for granular control over the features and configuration. This control can help you eliminate unnecessary functionality and optimize rates. However, building a solution in-house requires significant upfront investment in development time and maintenance.
@@ -248,3 +250,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Cost Optimization checklist](checklist.md)
+
+<!-- Updated: 2026-03-21 for Azure Update 543279 -->

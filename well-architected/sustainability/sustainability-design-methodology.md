@@ -78,6 +78,9 @@ You get granular emissions data within Azure portal for the last 12 months' usag
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
 
+> [!IMPORTANT]
+> The Emissions Impact Dashboard for Azure retires on March 31, 2027. After this date, the dashboard is inaccessible and technical support is discontinued. Export historical emissions data before retirement to avoid data loss. Evaluate [Azure Carbon Optimizer](/azure/carbon-optimization/) as the recommended alternative for ongoing carbon tracking and optimization. Carbon Optimizer offers deeper integration with Azure resource management.
+
 Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
 
 We recommend you use this tool to get the insights and transparency you need to understand your carbon footprint and to measure and track emissions over time.
@@ -158,3 +161,5 @@ Review the design principles for sustainability.
 
 > [!div class="nextstepaction"]
 > [Design principles](sustainability-design-principles.md)
+
+<!-- Updated: 2026-03-21 for Azure Update 558278 -->

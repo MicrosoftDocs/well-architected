@@ -114,6 +114,7 @@ Design dashboards and reports around operational health models. Visualizations s
 
 Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
 
+For database workloads, evaluate built-in monitoring dashboards that cloud services provide. For example, Azure Database for PostgreSQL offers [built-in Grafana dashboards](https://aka.ms/azure-postgres-dashboards-grafana) in the Azure portal through Azure Monitor integration. These dashboards show CPU usage, storage, active connections, and query throughput with log correlation, reducing the need for separate monitoring deployments.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Dashboards often focus on either business or engineering metrics. AI can analyze data from all relevant sources and help design integrated dashboards with the right configurations and visualization. This reduces manual effort and surfaces insights that might otherwise be overlooked.
 
@@ -124,6 +125,8 @@ Set alerts based on workload health, not arbitrary values. Alerts should be acti
 Validate thresholds using past experience and regular testing. Use fast storage for alert-generating data to enable rapid notification. Configure alerts for well-defined scopes and adjust verbosity to minimize noise.
 
 Automate alerting and link alerts to ticketing systems. Monitor cloud platform service health, outages, maintenance, and advisories.
+
+AI-powered operations tools such as [Azure SRE Agent](https://aka.ms/sreagent/ga) can analyze alert patterns and diagnose common issues like pod crash loops or elevated error rates. These tools support configurable autonomy, starting with recommended actions and progressively enabling automated responses within defined guardrails.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**:  AI can be used to dynamically define "healthy" system behavior by learning patterns across business contexts like peak traffic, promotions, quiet periods, and regional variations. AI can then analyze metrics, logs, and incident data to predict issues and recommend thresholds. 
 
@@ -192,3 +195,6 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
+
+<!-- Updated: 2026-03-21 for Azure Update 558140 -->
+<!-- Updated: 2026-03-21 for Azure Update 558321 -->
