@@ -102,7 +102,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Plan capacity deliberately
-            url: performance-efficiency.md#plan-capacity-deliberately
+            url: performance-efficiency.md#plan-capacity-intentionally
           - text: Design scaling strategies
             url: performance-efficiency.md#design-scaling-strategies
           - text: Monitor performance issues
