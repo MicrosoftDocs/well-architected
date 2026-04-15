@@ -116,6 +116,7 @@ Default settings favor usability over strict security. Key hardening steps inclu
 - Restrict workspace creation to admins to prevent sprawl and misconfigurations.
 - Enforce the use of sensitivity labels on all content, potentially blocking exports for sensitive data. 
 - Disable basic authentication for data sources when alternatives exist. Prefer OAuth, managed identity, or service principals for authentication.
+- Templatize workspace configurations to the extent possible to maintain your security posture.
 
 Fabric enforces TLS 1.2+ and modern authentication, but extra caution is needed when connecting to legacy data sources; always prefer secure protocols and identities.
 
