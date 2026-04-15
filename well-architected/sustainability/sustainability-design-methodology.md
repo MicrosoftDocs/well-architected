@@ -74,9 +74,12 @@ Read the full [SCI specification on GitHub](https://github.com/Green-Software-Fo
 
 [Azure carbon optimization](/azure/carbon-optimization/overview) is an Azure service that helps you understand the carbon emissions of your cloud workloads. Carbon optimization provides insights into the carbon emissions of your Azure resources and helps you optimize your cloud workloads for sustainability.
 
-You get granular emissions data within Azure Portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
+You get granular emissions data within Azure portal for the last 12 months' usage of all your Azure products and services. You can also view the carbon emissions of your resources by region, subscription, and resource group.
 
 #### Carbon tracking and reporting with the Emissions Impact Dashboard
+
+> [!IMPORTANT]
+> The Emissions Impact Dashboard for Azure retires on March 31, 2027. After this date, the dashboard is inaccessible and technical support is discontinued. Export historical emissions data before retirement to avoid data loss. Evaluate [Azure Carbon Optimizer](/azure/carbon-optimization/) as the recommended alternative for ongoing carbon tracking and optimization. Carbon Optimizer offers deeper integration with Azure resource management.
 
 Microsoft offers the [Emissions Impact Dashboard](https://www.microsoft.com/sustainability/emissions-impact-dashboard) for Azure and Microsoft 365, which helps you measure your cloud-based emissions and carbon savings potential.
 
@@ -158,3 +161,5 @@ Review the design principles for sustainability.
 
 > [!div class="nextstepaction"]
 > [Design principles](sustainability-design-principles.md)
+
+<!-- Updated: 2026-03-21 for Azure Update 558278 -->

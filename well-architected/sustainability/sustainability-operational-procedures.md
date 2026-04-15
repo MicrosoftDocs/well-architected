@@ -25,6 +25,9 @@ In this section, you'll learn about best practices and guidelines to measure and
 
 ### The Emissions Impact Dashboard
 
+> [!IMPORTANT]
+> The Emissions Impact Dashboard for Azure retires on March 31, 2027. Export historical emissions data before retirement to avoid data loss. Migrate to [Azure Carbon Optimizer](/azure/carbon-optimization/) for ongoing carbon monitoring and optimization. Carbon Optimizer provides deeper integration with Azure resource management and more actionable optimization recommendations.
+
 An essential aspect of working toward any sustainability goal is tracking and quantifying progress. If you can't track and measure the impact, you'll never be sure if the efforts are worthwhile. The Emissions Impact Dashboard is a Power BI dashboard that will give you a measure of the carbon impact of all your services and resource groups in your Azure subscription(s).
 
 The Emissions Impact Dashboards produce insights in various forms, and allows for a wide range of reporting capabilities:
@@ -174,3 +177,5 @@ Review the design considerations for networking and connectivity.
 
 > [!div class="nextstepaction"]
 > [Networking and connectivity](sustainability-networking.md)
+
+<!-- Updated: 2026-03-21 for Azure Update 558278 -->

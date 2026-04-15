@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Machine Learning
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Machine Learning.
 author: lnyswonger
 ms.author: lnyswonger
-ms.date: 03/11/2024
+ms.date: 09/29/2025
 ms.topic: concept-article
 ms.collection: ce-skilling-ai-copilot
 products:
@@ -30,7 +30,7 @@ This review focuses on the interrelated decisions for these Azure resources:
 The review doesn't address connected resources such as data stores or Azure Key Vault.
 
 > [!NOTE]
-> For generative AI applications and AI agents, consider [Azure AI Foundry](/azure/ai-foundry/what-is-azure-ai-foundry) as the preferred development platform. Azure AI Foundry is specifically designed for building, testing, and deploying generative AI solutions, including RAG (Retrieval Augmented Generation) applications and multi-modal AI experiences. 
+> For generative AI applications and AI agents, consider [Microsoft Foundry](/azure/ai-foundry/what-is-azure-ai-foundry) as the preferred development platform. Foundry is specifically designed for building, testing, and deploying generative AI solutions, including RAG (Retrieval Augmented Generation) applications and multi-modal AI experiences. 
 >
 > Azure Machine Learning remains the comprehensive platform for traditional machine learning workloads, end-to-end MLOps pipelines, custom model training, and scenarios requiring advanced data preparation and feature engineering. If you're currently using Azure Machine Learning, continue to use it for your existing workloads and traditional ML scenarios.
 
