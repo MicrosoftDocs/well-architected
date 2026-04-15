@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Cost considerations for Microsoft Fabric workloads
 
-Managing costs in Microsoft Fabric requires architectural foresight, operational discipline, and smart automation. Have a clear understanding of how capacities, storage, and data movement drive expenses, to enforcing effective governance.
+Managing costs in Microsoft Fabric requires architectural foresight, operational discipline, and smart automation. Have a clear understanding of how capacities, storage, and data movement drive expenses to help you enforce effective cost governance.
 
 This article provides architects and engineers with a practical framework to control costs without compromising performance or reliability. You'll learn how to estimate costs, forecast total ownership, and apply optimization strategies through automation, environment management, and governance, ensuring cost control scales alongside your workloads.
 

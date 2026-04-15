@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Microsoft Fabric workload operations
 
-Microsoft Fabric as a SaaS platform handles a lot of the operations, but it doesn't remove the responsibility for running workloads that actually meet business expectations. Operational excellence is about making deliberate choices, understanding trade-offs, and ensuring that your teams can operate, scale, and recover workloads confidently.
+Because Microsoft Fabric is a SaaS platform, Microsoft handles most of the operations. You still have a responsibility for running workloads that actually meet business expectations though. Operational excellence is about making deliberate choices, understanding trade-offs, and ensuring that your teams can operate, scale, and recover workloads confidently.
 
 This article provides practical guidance on team readiness, safe deployment practices, monitoring, incident response, and testing strategies so that architects and engineers can operate Fabric with confidence and predictability.
 
@@ -150,7 +150,7 @@ In some scenarios, failback may require re-deploying workspaces or restoring dat
 
 Fabric relies primarily on Microsoft's internal monitoring systems to detect infrastructure-level failures and trigger failover events. Because you can't directly initiate platform failover, operational monitoring should focus on detecting solution-level failures, such as pipeline errors and workload disruptions or deployment issues. Some failures may impact specific Fabric experiences or dependencies, requiring targeted recovery actions. For example, workspace-level or item-level corruption
 
-A good strategy is to complement this with CI/CD pipeline monitoring and error detection, which can stop deployment promotions when failures occur.
+A good strategy is to complement your health monitoring approach with CI/CD pipeline monitoring and error detection, which can stop deployment promotions when failures occur.
 
 ## Don't assume everything works
 

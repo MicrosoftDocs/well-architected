@@ -19,7 +19,7 @@ This article guides you through thinking about reliability in a practical, archi
 
 Before you can make your workloads resilient, you need to know the limits of your playground. Each Fabric capacity defines how much compute and memory is available. If you're running a heavy Spark job, refreshing a large semantic model, or handling dozens of concurrent Power BI queries, hitting those limits can cause delays or failures.
 
-Subscription quotas add another layer. Not all tenants are created equal; some regions may cap capacities differently. **Plan ahead and request quota increases before you hit hard limits.** 
+Subscription quotas can add additional limits to factor into your approach. Not all tenants are created equal; some regions may cap capacities differently. **Plan ahead and request quota increases before you hit hard limits.** 
 
 Your workspace design matters because it acts as isolation boundaries. Some behaviors, especially with preview features or private endpoints, can differ depending on the workspace, so test and design with those nuances in mind.
 

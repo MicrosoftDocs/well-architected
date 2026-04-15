@@ -34,7 +34,7 @@ Within those boundaries, item-level permissions let you control access to tables
 
 Capacities can be another isolation tool. Dedicated capacities for sensitive workloads reduce the risk that a noisy neighbor consumes resources or introduces failure. Tenancy isolation in OneLake ensures that even if someone misconfigures access, your data isn't exposed outside intended boundaries.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: The trade-off is operational complexity. More workspaces and dedicated capacities mean more management overhead. But the payoff is localized failures, predictable access, and clear accountability.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Adding more workspaces and dedicated increases operational complexity and management overhead. But the payoff is localized failures, predictable access, and clear accountability.
 
 There are identity and networking capabilities that ensure segmentation. They are described in the sections below. 
 

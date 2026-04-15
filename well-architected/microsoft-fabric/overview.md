@@ -9,9 +9,9 @@ ms.topic: concept-article
 
 # Microsoft Fabric workloads
 
-Microsoft Fabric is a unified analytics platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. Teams can build complete analytics solutions from raw data to business insights on a shared platform and storage layer.
+Microsoft Fabric is a unified analytics platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. Teams can build complete analytics solutions from raw data handling to business insights on a shared platform and storage layer.
 
-Because Fabric combines many analytics capabilities in one place, architectural decisions have wide impact. Capacity sizing affects both pipelines and queries. Data design influences refresh times and report performance. Security configuration determines how teams collaborate and how data is governed.
+Because Fabric combines many analytics capabilities in one platform, architectural decisions have wide impact. Capacity sizing affects both pipelines and queries. Data design influences refresh times and report performance. Security configuration determines how teams collaborate and how data is governed.
 
 Across these workloads, architects face the same challenge: building solutions that remain reliable, secure, performant, and cost-efficient while operating smoothly at scale.
 
