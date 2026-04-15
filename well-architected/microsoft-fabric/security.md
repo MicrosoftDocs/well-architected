@@ -86,6 +86,7 @@ Monitor network-related activity through private link logs and on-premises data 
 
 Fabric encrypts data at rest and in transit by default. Network communication between clients and services uses HTTPS with TLS 1.2 or higher.
 
+Fabric does not provide built-in encryption for data being processed in memory. If encryption-in-use is required, use extra encryption techniques. For example, sensitive values could be encrypted by your application before ingestion, so Fabric processes only encrypted data that your application can decrypt. This approach is user-managed and requires careful design to maintain usability and performance.
 Microsoft manages TLS certificates for Fabric endpoints, including certificate renewal and validation. Data stored in **OneLake or associated analytical stores** is encrypted using **AES-256 with Microsoft-managed keys**. 
 
 For organizations with stricter requirements, Customer-Managed Keys (CMK) can provide additional control over key rotation and revocation. Note that not all Fabric artifacts currently support CMK, so you may need workspace segmentation to separate supported and unsupported items. Double encryption is also supported where data is encrypted with the platform's key, and that key is itself encrypted using your Azure Key Vault key.
