@@ -114,6 +114,7 @@ Design dashboards and reports around operational health models. Visualizations s
 
 Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
 
+For database workloads, evaluate built-in monitoring dashboards that cloud services provide. For example, Azure Database for PostgreSQL offers [built-in Grafana dashboards](https://aka.ms/azure-postgres-dashboards-grafana) in the Azure portal through Azure Monitor integration. These dashboards show CPU usage, storage, active connections, and query throughput with log correlation, reducing the need for separate monitoring deployments.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Dashboards often focus on either business or engineering metrics. AI can analyze data from all relevant sources and help design integrated dashboards with the right configurations and visualization. This reduces manual effort and surfaces insights that might otherwise be overlooked.
 
@@ -192,3 +193,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
+
+<!-- Updated: 2026-03-21 for Azure Update 558140 -->
