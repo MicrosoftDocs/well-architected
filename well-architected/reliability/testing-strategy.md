@@ -1,9 +1,10 @@
 ---
 title: Architecture strategies for designing a reliability testing strategy
 description: Learn how to design a reliability testing strategy that focuses on validating and optimizing the reliability of your workload.
-author: claytonsiemens77
-ms.author: csiemens
-ms.date: 11/15/2023
+author: simipaul
+ms.author: simipaul
+ms.reviewer: simipaul
+ms.date: 04/13/2026
 ms.topic: concept-article
 ---
 
@@ -11,10 +12,15 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing. |
+|**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Ensure that your graceful degradation implementation and scaling strategies are effective by performing reliability testing. 
+
+Enhance your workloads reliability by testing for resiliency and availability in your workload.|
 |---|---|
 
 This guide describes the recommendations for designing a reliability testing strategy to validate and optimize the reliability of your workload. Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. This guide provides general testing guidance and guidance that's specific to fault injection and chaos engineering.
+
+Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. 
+This guide provides guidance on how to validate and optimize the reliability of your workload through testing practices. 
 
 **Definitions**
 
@@ -25,6 +31,58 @@ This guide describes the recommendations for designing a reliability testing str
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
 | Recoverability | The ability to restore normal operations after a disruption within agreed recovery time (RTO) and recovery point (RPO) targets. |
 | Resiliency | The ability of a workload to withstand faults (transient errors, infrastructure outages, demand spikes) and continue operating within an acceptable user experience. |
+
+
+## Formalize your reliability testing strategy
+
+When you have a formalized reliability testing strategy, you can align your testing with your reliability goals and make sure that there is a consistent approach to reliability testing. Your test strategy keeps your testing consistent and test plan makes it actionable and measureable. 
+
+It’s important to have a clear strategy for reliability testing that includes the following elements:
+- Bring everyone on board with the most critical user and system flows, as well as your Service Level Objectives (SLOs), Service Level Agreements (SLAs), Recovery Point Objectives (RPOs), and Recovery Time Objectives (RTOs). Make sure to manage expectations by clearly documenting any known limitations in your workload’s design and architecture.
+- Think about what types of reliability testing your workload needs. Identify the key reliability risks and failure modes for your workload, and prioritize them based on their potential impact on your customers and business. Use this information to guide your testing efforts. Consider the environment, who owns the process, how often tests should run, and what tools you’ll use.
+- Keep stakeholders informed by setting up clear reporting practices that highlight any trade-offs or limitations uncovered during your testing. Set up dashboards and metrics to track your test outcomes, and put a defect management process in place to catch and address any issues early.
+- Use your testing results to build failure mitigation playbooks and disaster recovery plans, so you’re ready to respond quickly when issues arise.
+- Define entry and exit criteria for every stage of reliability testing, so everyone knows when a phase starts and finishes.
+- Finally, create your test plans from your overall strategy for each release. This means covering test data, environments, the metrics you want to gather, expected results, risks, mitigation plans, and making sure everyone knows their role.
+
+> [!NOTE]
+> Tailor your reliability testing strategy to your specific workload characteristics. Consider factors such as the complexity of your workload, the criticality of your services, and the potential impact of failures on your customers and business. For example, a mission-critical workload that serves a large number of customers might require more extensive reliability testing than a less critical workload with fewer users.
+
+## Test early and test often
+
+Start testing for reliability as early as possible in your development lifecycle. The earlier you catch and fix reliability issues, the faster and cheaper it is to address them.
+
+During the design phase, think through failure scenarios by adding resilience patterns like retries, timeouts, circuit breakers, and graceful degradation into your architecture. 
+
+Focus your early testing on the critical flows and components that you identified during your design phase. These are the areas where reliability issues can have the biggest impact on your customers and business.
+
+Validate that your design includes enough observability. Make sure you're capturing the right metrics to identify and debug outages across your application, data, and infrastructure layers.
+
+Make sure you're also testing your monitoring and alerting systems early to validate that you'll have visibility when failures occur in production.
+
+During development, validate your resilience mechanisms right away. Test retry logic, validate timeout behaviors, and simulate exceptions and failures in unit tests. 
+
+Align your tests with your reliability objectives and make sure they run automatically as part of your build and deployment processes. This continuous validation ensures that new changes don't introduce regressions in your workload's reliability posture.
+
+When you start testing early and continuously, you can: 
+- Verify self-preservation techniques are properly implemented
+- Confirm that your system is designed to handle and recover from failures
+- Identify whether your current design, resources, and data need optimization before production
+- Proactively detect bottlenecks and risks in your infrastructure or dependencies
+- Build failure mitigation playbooks based on your early test results
+
+## Validate reliability in production
+
+If your workload demands the highest level of resilience, production testing is where you’ll really see the impact of critical user and system flows. But be mindful—there’s always a risk of customer disruption, so keep tests controlled and low risk.
+Running reliability tests in production builds confidence in your recovery mechanisms, validates real-world resilience, and helps you catch issues early. Traffic patterns and data are never quite the same as in test environments, and hidden dependencies often appear. That’s why specific tests in production can reveal opportunities for SKU optimisation and inform key architectural decisions. You’ll also see firsthand how things like geo-location affect your workload.
+Any failures you encounter in production can be added to your failure mitigation playbook, making your recovery plans stronger over time. Starting with basic recovery plans is a great way to begin, and as you test dependency flows, you can spot tight coupling or hidden dependencies and see how redundancy strategies perform. Graceful degradation testing lets you evaluate how your system operates with reduced functionality during failures. Simulating third-party failures—by disabling or throttling calls to external APIs—shows whether your fallbacks and retry logic are up to scratch.
+Don’t forget about availability monitoring. Measuring uptime, error rates, latency, and tracking SLAs and SLOs will help you spot real reliability issues early. Controlled failover testing, such as switching traffic between instances, zones, or regions and triggering backup systems, should be done during low-traffic windows or gradually to minimise risk.
+Chaos experiments can also be valuable—injecting failures, killing instances, adding latency, or dropping requests in a small, controlled way exposes hidden dependencies and verifies your system’s resilience in real-world conditions. Auto-scaling validation lets you observe how your system responds to real traffic spikes, ensuring your scaling policies actually work. And finally, canary releases allow you to observe behaviour before rolling out changes fully, giving you an extra layer of confidence.
+
+
+## Apply layered test approach
+## Incorporate different types of testing
+## simulate realistic conditions
 
 ## Test reliability preparedness
 
