@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Performance Efficiency checklist recommendation:**
 
-|**PE:06**| Enhance your workload's performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieves your business objectives. |
+|**PE:06**| Optimize your workload's performance by regularly testing in a production-like environment to ensure your workload reaches the desired performance targets and achieves your business objectives. |
 |---|---|
 
 Performance testing is a non-functional testing practice used to evaluate how a workload behaves under various conditions. It helps you identify performance degradation early, address issues proactively, and ensure continued alignment with service-level agreements.
@@ -20,7 +20,11 @@ When you measure response times, throughput, resource usage, and stability, you 
 
 This article provides strategies for achieving performance targets through realistic testing practices so your workloads remain aligned with evolving business objectives. 
 
+//TODO synthetic transactions, and hypothesis-driven experimentation
+
 ## Formalize your performance testing strategy
+//TODO Consider tying this to SLOs and diving deeper into how to identify metrics that translate into SLO. Defining targets per layer/component
+
 
 A performance strategy ensures your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
 
