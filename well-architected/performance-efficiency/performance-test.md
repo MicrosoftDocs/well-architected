@@ -24,13 +24,18 @@ This article provides strategies for achieving performance targets through reali
 
 ## Formalize your performance testing strategy
 //TODO Consider tying this to SLOs and diving deeper into how to identify metrics that translate into SLO. Defining targets per layer/component
+Localize the guidance to performance - formalize
+//TODO Identify budgets - environments , metrics
+Eg: Key user flows is already covered in operational so we don't use it for performance, security, reliability test guide
+Security - data with PII 
+
 
 
 A performance strategy ensures your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
 
-**Start with clear requirements and targets.** Define and document specific performance goals, such as how many concurrent users you need to support or which response-time thresholds you must meet. Make sure these goals align with your service-level objectives (SLOs), and translate them into measurable test objectives.
+**Define your performance targets and assign budgets.** Define and document specific performance goals, such as how many concurrent users you need to support or which response-time thresholds you must meet. Make sure these goals align with your service-level objectives (SLOs), and translate them into measurable test objectives.
 
-**Be clear about your criteria from the start.** Define when to start testing (entry criteria), what proves test success (acceptance criteria), and when testing can stop (exit criteria). Using measurable metrics removes ambiguity and keeps everyone aligned.
+**Be clear about your criteria from the start.** Define when to start testing (entry criteria), what proves test success (acceptance criteria), and when testing can stop (exit criteria). Using measurable metrics removes ambiguity and keeps everyone aligned. //Performance oriented criteria
 
 **Identify the user flows that matter most from a performance perspective.** Work with stakeholders to agree on the key user journeys and transactions that should be prioritized for testing.
 
@@ -49,9 +54,12 @@ A performance strategy ensures your testing is consistent, sets clear expectatio
 
 ## Test early, test often, and focus on what matters
 
+Keep: Developers can profile code locally, measure response times, and identify resource-intensive operations. Early testing informs design decisions, validates architectural choices against performance goals, and identifies optimization opportunities.
+
+// Rest duplicate guidance to remove
 Early performance analysis catches architectural bottlenecks before they become costly to remedy.
 
-Start performance testing as early as possible in the software development lifecycle. You don't need a complete application to begin. Developers can profile code locally, measure response times, and identify resource-intensive operations. Early testing informs design decisions, validates architectural choices against performance goals, and identifies optimization opportunities.
+Start performance testing as early as possible in the software development lifecycle. You don't need a complete application to begin. 
 
 Focus testing on what matters most. Prioritize testing on critical user journeys, high-traffic workflows, and business-critical transactions that directly impact user experience and business outcomes.
 
@@ -78,6 +86,8 @@ Use progressive testing techniques. Start with small percentages of traffic and 
 
 Monitor production tests continuously to find problems early. Implement automated safeguards that halt tests if they negatively impact users, such as automated rollback mechanisms and real-time alerting. These techniques ensure quick response and minimize disruptions.
 
+//Rephrase to localise for performance testing - creates extra load, disrupt traffic.
+You need to allocate extra capacity for testing.
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Production testing directly affects real customers. Always implement safeguards, limit exposure, and have rollback plans ready to minimize potential business impact. Balance the benefits of realistic testing against the potential business impact of disrupting live users.
 
 ## Incorporate different types of testing
@@ -94,7 +104,9 @@ Choose tools that support the types of tests you plan to run. As you compare tes
  
 The following table shows when to use each test type and what it reveals about your workload.While this table isn't an exhaustive list, it serves as an illustrative example.
 
-| Testing Type | When to Apply | Primary Purpose | What It Reveals |
+//TODO add more performance oriented details for each test type. How to implement them - which environment to run these. Cost considerations to add.
+
+| Testing Type | When to Apply | Primary Purpose | What It Reveals | 
 |-------------|---------------|-----------------|-----------------|
 | Load Testing | Start early, run frequently | Verify system handles expected user volumes under normal and peak usage | Baseline performance, capacity limits, scaling effectiveness |
 | Stress Testing | Before the system is production-ready | Understand system limits and breaking points | Maximum capacity, failure modes, recovery behavior |
@@ -137,12 +149,15 @@ For non-critical workloads, testing in a scaled-down environment that mimics pro
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
 
 ### Analyze results to identify trends and guide optimization
-
+// Update to baseline and release wont have regressions
+// Add guidance on setting aside dedicated time for performance optimization - deisgn principle guidance.
 Performance data shows where to focus your improvement efforts and where optimization has the biggest impact.
 
 Use test results to assess whether acceptance criteria are met and guide optimization. Establish your baseline measurements. 
 
 Baselines help you identify trends and anomalies and whether optimization changes deliver improvements. Record performance metrics during initial tests. This recording is your baseline, a snapshot of "normal" performance. In subsequent runs, compare new results against this baseline to detect performance changes. Examine the data to understand system behavior under various conditions. Look for patterns that show where performance degrades. Use this insight to prioritize optimization efforts. 
+
+Optimization should be driven by data.
 
 > [!NOTE]
 > Regularly review and update your baselines after significant changes to your workload, such as architectural changes, new features, or scaling adjustments. By doing this, you make sure that your performance targets remain relevant. 
@@ -159,11 +174,11 @@ Apply good coding practices and standards with clear naming conventions, modular
 
 Keep load tests, stress tests, and endurance tests in separate suites. Don't mix them. Each type has different setup requirements, run durations, and success criteria. 
 
-Design test scripts with clear pass or fail criteria aligned to performance service-level agreements (SLAs). Validate measurable metrics like response time, throughput, error rates, and resource utilization against defined thresholds for each user flow.
+Design test scripts with clear pass or fail criteria aligned to performance service-level objectives (SLOs). Validate measurable metrics like response time, throughput, error rates, and resource utilization against defined thresholds for each user flow.
 
 Each test should reset state before running. Tests that depend on previous runs produce inconsistent results. Validate test scripts to ensure reliable execution. You need reliable baselines to track performance trends over time.
 
-### Maintain your tests and data
+### Maintain your tests and data - chnages that impact your tests
 
 Stale test data leads to unrealistic test results. Always generate fresh test data that reflects current production data characteristics. 
 
@@ -175,7 +190,7 @@ Stale test data leads to unrealistic test results. Always generate fresh test da
 
 Schedule regular reviews to ensure your tests and data still reflect actual usage.
 
-### Extend observability and automate analysis
+### Capture performance metrics and automate analysis
 
 Bring observability into your performance testing so you can understand whether your workload meets performance targets and why it behaves the way it does under load. Without observability, you'd spend significant time investigating test failures to diagnose root causes. 
 
