@@ -82,6 +82,8 @@ Be mindful of factors that complicate operations, like version lock-in and plugi
 
 For any tool you use, make it easily accessible and manageable for operators. Provide easy-to-use interfaces and access to CI/CD pipelines, APIs, and libraries. Manage automation holistically like the workload it supports. Secure it to the same degree, monitor it, and subject it to the same testing protocols.
 
+For incident response and operational diagnostics, consider AI-powered automation tools like [Azure SRE Agent](https://aka.ms/sreagent/ga). SRE Agent supports configurable autonomy levels from advisory to automated response and learns from interactions through built-in memory. The tradeoff is automated action risk in production versus faster incident resolution. Implement guardrails and approval workflows for high-severity scenarios.
+
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
 > For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
