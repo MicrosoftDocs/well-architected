@@ -14,7 +14,7 @@ A _cloud solution architect_ is responsible for guiding the component and topolo
 
 As an architect, your role is to gather input from stakeholders, understand the business context, and shape a design that balances technical, operational, and business considerations. Take advantage of your experience in development, operations, QA, disaster recovery, and managing both incremental and large-scale changes to make informed decisions. Design not just for the "happy path", but also for operational realities such as observability and supportability. Identify trade-offs and accepted risks to prevent hidden technical debt and keep stakeholders fully informed.
 
-This article outlines the common checklist of deliverables and the guiding principles that make them achievable. 
+This article outlines the common checklist of deliverables and the guiding principles that make them achievable.
 
 ## Architect's responsibilities
 
@@ -40,6 +40,8 @@ Before a cloud architect can design a solution, they must understand the outcome
 The architect asks probing questions, ground requests in reality, and steer conversations toward obtaining goals.
 
 ## Have a decision-making framework
+
+Your architecture is the accumulation of the decisions you make. You're responsible for each individual choice and for how they combine. A series of reasonable decisions can still produce a poor outcome if their interactions aren't considered.
 
 Start by identifying key decisions upfront. Draw on your past experience to anticipate where choices will matter most, and make sure to log them clearly.
 

@@ -3,8 +3,9 @@ title: Architecture Strategies for Using Availability Zones and Regions
 description: This article provides guidance to help you understand when to deploy workloads across availability zones or regions for reliability and resiliency.
 author: johndowns
 ms.author: jodowns
-ms.date: 11/13/2023
+ms.date: 09/08/2025
 ms.topic: concept-article
+ms.update-cycle: 1095-days
 ---
 
 # Architecture strategies for using availability zones and regions
@@ -21,7 +22,7 @@ The Azure regions that you use for your solution are a critical choice. The [Sel
 
 - **Performance Efficiency:** Availability zones are connected together through a high-bandwidth, low-latency network link. This link is sufficient for most workloads to enable synchronous replication and communication across the zones. However, if you test your workload and determine that it's sensitive to network latency across zones, you might need to consider physically locating your workload's components close together to minimize latency when they communicate.
 
-- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. For a highly available solution, you might also need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required. It's a good practice to automate your deployment and management processes. For more information, see the Operational Excellence pillar guides, including [OE:05 Infrastructure as code](../operational-excellence/infrastructure-as-code-design.md), [OE:09 Task automation](../operational-excellence/automate-tasks.md), [OE:10 Automation design](../operational-excellence/enable-automation.md), and [OE:11 Deployment practices](../operational-excellence/safe-deployments.md).
+- **Operational Excellence:** A complex architecture takes more effort to deploy, configure, and manage. For a highly available solution, you might also need to plan how to fail over to a secondary set of resources. Failover, failback, and transparently redirecting your traffic can be complex, especially when manual steps are required. It's a good practice to automate your deployment and management processes. For more information, see the Operational Excellence pillar guides, including [OE:05 Infrastructure as code](../operational-excellence/infrastructure-as-code-design.md), [OE:10 Automation design](../operational-excellence/enable-automation.md), and [OE:11 Deployment practices](../operational-excellence/safe-deployments.md).
 
 The Security pillar applies regardless of how you design your solution. Usually, decisions about whether and how you use availability zones and regions doesn't change your security posture. Azure applies the same security rigor to every region and availability zone.
 

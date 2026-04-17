@@ -169,7 +169,7 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 >       > [!IMPORTANT]
 >       >
 >       > Purchase reserved instances to reduce Azure costs for workloads that have stable usage. Manage usage to make sure that you're not paying for more resources than you're using. Keep reserved instances simple and keep management overhead low to reduce costs.
->   - **[Savings plan](/azure/cost-management-billing/savings-plan/savings-plan-compute-overview)**: If you commit to spend a fixed hourly amount on compute services for one or three years, then this plan can reduce costs.
+>   - **[Savings plan](/azure/cost-management-billing/savings-plan/savings-plan-overview)**: If you commit to spend a fixed hourly amount on compute services for one or three years, then this plan can reduce costs.
 >   - **[Azure Hybrid Benefit](/azure/cost-management-billing/scope-level/)**: Save when you migrate your on-premises VMs to Azure.
 > - **Monitor usage.** Continuously monitor usage patterns and detect unused or underutilized VMs. For those instances, shut down VM instances when they're not in use. Monitoring is a key approach of Operational Excellence. For more information, see the recommendations in [Operational Excellence](#operational-excellence).
 >
@@ -185,6 +185,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | (VMs) **Stop VMs during off-hours.** You can use the **[Azure Automation Start/Stop](/azure/azure-functions/start-stop-vms/overview)** feature and configure it according to your business needs. | The Start/Stop feature is a low-cost automation option that can significantly affect your idle instance costs. |
 | (VMs) **Free up CPU resources** by using **[Azure Boost](/azure/azure-boost/overview)**. | Offloading back-end virtualization processes frees up CPU resources for the guest virtual machines. This optimization results in improved performance. Azure Boost is only available on specific VMs, so ensure that you also [choose VM sizes that have Azure Boost enabled](/azure/azure-boost/overview#current-availability). |
 | (VMs, scale set) **Take advantage of license mobility by using Azure Hybrid Benefit.** VMs have a licensing option that allows you to bring your own on-premises [Windows Server OS licenses](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) to Azure. <br> Azure Hybrid Benefit also lets you bring certain Linux subscriptions to Azure. | You can maximize your on-premises licenses while getting the benefits of the cloud. |
+
+Azure Batch consolidated Low-Priority and Spot VMs into a unified Spot VM infrastructure, simplifying the interruptible compute pricing model. If your workload uses Batch pools with Low-Priority VMs, the migration is automatic and requires no code changes. Verify that Spot eviction handling is in place because eviction rates might differ from the former Low-Priority model. For more information, see [Use Spot VMs with Batch workloads](/azure/batch/batch-spot-vms).
 
 ## Operational Excellence
 
@@ -311,3 +313,4 @@ Consider the following articles as resources that demonstrate the recommendation
 
 <!-- Updated: August 17, 2025 for Azure Update 497393 -->
 <!-- Updated: November 21, 2025 for Azure Update 511898 -->
+<!-- Updated: 2026-03-21 for Azure Update 543279 -->

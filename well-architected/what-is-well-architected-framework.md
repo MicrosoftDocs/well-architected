@@ -3,7 +3,8 @@ title: How to use the Azure Well-Architected Framework documentation
 description: Learn about the Azure Well-Architected Framework, the five pillars of architectural excellence, and how to use the guidance to drive improvements in your workload.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 02/11/2026
+ms.reviewer: simipaul
+ms.date: 03/31/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -50,7 +51,7 @@ The primary objective of the Well-Architected Framework is to set you up for suc
 
 ## Building blocks of the framework
 
-The Well-Architected Framework is structured in a layered approach: pillars, workload, and service guides.
+The Well-Architected Framework is structured in a layered approach: pillars, workload, service guides, and design guides.
 
 #### Pillars
 
@@ -58,11 +59,13 @@ The foundation of this framework lies in the pillars. If you don't have a compre
 
 - **Design principles**. Provide the foundation of good design, each of which has a specific goal. The principles also describe the recommended approaches.
 
-- **Design Review Checklists**. Each item on the checklist is accompanied by one or more **Recommendation guides** that describe key strategies and how Azure helps you attain the recommendation. 
+- **Checklists**. A collection of key strategies used by customers to design and build confidence in their workload. Each checklist item represents an individual key design strategy.
 
-- **Cloud design patterns**. Be sure to understand the related **cloud design patterns**. They're mapped to the pillars they directly support.
+- **Key design strategies** provides a deep dive on individual key design strategies required for a particular concept within a pillar. These strategies focus on what to do and why it matters, without going into the details of how to implement them.
 
 - **Tradeoffs**. Each architectural decision entails a series of considerations. These **tradeoffs** represent recognized and accepted compromises that balance the various aspects of the framework. Tradeoffs are noted with this icon :::image type="icon" source="./_images/trade-off.svg"::: and risks are noted with this icon :::image type="icon" source="./_images/risk.svg":::.
+
+- **Design patterns**. They're mapped to the pillars they directly support. They can help make intentional tradeoffs within workloads and optimize for desired outcomes.
 
 - **Maturity model**. Describes phased approach to adopt the Azure Well-Architected Framework by starting with easy or essential recommendations. As business needs evolve, gradually improve systems—from early-stage workloads to mature, business-critical solutions.
 
@@ -82,7 +85,7 @@ Service guides play a key role in making decisions about individual Azure compon
 
 For more information, see [the available guides](./service-guides/index.yml).
 
-#### Design essentials
+#### Design guides
 
 Design guides serve as focused resources that deliver prescriptive guidance for applying the framework’s key strategies. They draw directly from the foundational approaches defined in the pillar recommendations, yet intentionally extend across pillars to show how these strategies interact in practice. Instead of covering entire architectural journeys, design guides concentrate on a specific practice or choice, giving teams clear, targeted direction to put WAF principles into action.
 
