@@ -4,23 +4,19 @@ ms.reviewer: simipaul
 description: Learn how to design, deploy, and govern AI workloads on Azure with architectural patterns, baseline references, and best practices for secure, scalable systems.
 author: simipaul
 ms.author: simipaul
-ms.date: 04/10/2026
+ms.date: 04/17/2026
 ms.topic: concept-article
 ---
 
 # Azure architecture pattern for AI workloads
 
-An AI architecture pattern is a reusable framework that shows you the core components and interactions you'll find in AI workloads. 
+This article provides architectural patterns and baseline reference architectures to help you design, deploy, and govern AI workloads on Azure. It covers the core components, interactions, and best practices for building secure, scalable, and well-governed AI systems.
 
-It helps you design, deploy, and govern AI solutions on Azure. You get baseline reference architectures and best practices to build secure, scalable, and well-governed AI systems. 
+Use this architecture pattern as a baseline when designing AI workloads. Start with the core components and interactions shown in the pattern, then adapt them to match your business goals, technical constraints, and risk posture.
 
-Here's an example: an organization builds an enterprise AI assistant that lets employees ask natural language questions about internal documents and operational data. At a high level, you design the solution using the AI workload architecture pattern, which shows how data, applications, models, practices, and platform services work together to deliver a secure, scalable, and well-governed AI system.  
+For example, an organization might build an enterprise AI assistant that lets employees ask natural language questions about internal documents and operational data. Internal content is cleaned, enriched, and indexed so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the application figures out what data is needed, retrieves relevant context, and calls the right model to generate a grounded response. Across the lifecycle, practices like responsible AI, testing, and safe deployment keep the assistant reliable, and underlying platform services enforce governance, security, and cost control.
 
-The data processing layer cleans, enriches, and indexes internal content and operational data so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the intelligent application orchestrates the workflow. It figures out what data is needed, retrieves context from the processing layer, and calls the right model to generate a response. You evaluate, tune, or adapt foundation models for enterprise needs outside of runtime. At runtime, the intelligent application invokes trained models to produce responses grounded in your enterprise data, while the training process stays separate from live operations. 
-
-Practices that span the lifecycle such as responsible AI, testing and evaluation, MLOps/GenAIOps, and safe deployment ensure the assistant behaves responsibly, can be validated systematically, and runs reliably in production. Platform services provide secure access to data and models, observability, cost control, and consistent governance and safety enforcement across the solution.
-
-While the AI assistant represents a specific business scenario, the architecture diagram reflects a generic AI workload design you can adapt to many AI use cases with similar characteristics. 
+While this AI assistant represents a specific business scenario, the architecture pattern that follows is generic enough to adapt to many AI use cases with similar characteristics.
 
 ## High-level AI workload architecture
 
@@ -30,15 +26,24 @@ This diagram shows the key components you need in your AI workload design.
 
 |Component|Description|
 |---|---|
-|Data processing and analytics|Data processing and analytics is where you gather raw data from different sources and bring it to a central repository. From there, you clean the data, transform it, and organize it into datasets that are ready for model training, fine-tuning, and grounding your AI applications. It doesn't interact with users directly and enables accurate, efficient AI interactions downstream.|
-|Model training and fine-tuning|Model training is where your models learn and improve. You follow a repeatable process, train models on data, track different versions, and monitor what's working. You keep improving as new data comes in with MLOps practices to maintain performance and alignment with business needs.|
-|Intelligent AI applications|Intelligent AI applications is where users actually interact with your AI. It brings together pretrained models and the logic that controls how AI responds. Your application finds the right information, crafts prompts, builds intuitive interfaces, and learns from feedback. It's the control plane for AI interactions, combining traditional application logic with AI-driven reasoning.|
-|AI practices and process|These practices keep your AI solution reliable and trustworthy. You incorporate DevOps principles like version control and automated pipelines into your MLOps workflows. For generative AI, you also manage prompts and monitor content. Deploy iteratively with safeguards in place, and continuously check for accuracy, performance, and bias.|
-|Platform services and tools|Core cloud services and tools support your AI workloads from development to deployment. They help you secure your resources, control costs, and monitor system health. Use CI/CD pipelines to deploy automatically and reliably. Use specialized tools to scan AI outputs for compliance, and protect sensitive data with endpoint security.|
+|Data processing and analytics|Gather raw data from different sources, clean it, transform it, and organize it into datasets ready for model training, fine-tuning, and grounding. This layer doesn't interact with users directly but enables accurate, efficient AI interactions downstream.|
+|Model training and fine-tuning|Train models on your data, track versions, and monitor performance through a repeatable process. Use MLOps practices to keep improving as new data comes in and maintain alignment with business needs.|
+|Intelligent AI applications|This is where users interact with your AI. It combines pretrained models with application logic to find the right information, craft prompts, build interfaces, and learn from feedback.|
+|AI practices and process|Keep your AI solution reliable by incorporating DevOps principles, version control, and automated pipelines into MLOps workflows. Deploy iteratively with safeguards, and continuously check for accuracy, performance, and bias.|
+|Platform services and tools|Core cloud services that secure your resources, control costs, and monitor system health from development to deployment. Use CI/CD pipelines for reliable automation and specialized tools to scan AI outputs for compliance.|
 
-The next section breaks down the architecture into two main workloads: the intelligent application workload and the training and fine-tuning workload. Each workload has its own design considerations for lifetime and state, reach and dependencies, scalability and availability, and security and responsible AI.
+## Workload breakdown
 
-## [**Intelligent application workload**](#tab/intelligentaiworkload)
+This section breaks down the architecture into two main workloads: the intelligent application workload and the training and fine-tuning workload. Each workload has its own design considerations for lifetime and state, reach and dependencies, scalability and availability, and security and responsible AI.
+
+|Design characteristic|Description|
+|---|---|
+|Lifetime and state|**Lifetime** refers to the expected duration of a resource's existence and activeness within the workload. <br> **State** refers to the data or information that a resource maintains over time.|
+|Reach and dependencies|**Reach** refers to the extent to which a resource needs to be accessible or distributed. <br> **Dependencies** refer to the relationships and reliance on other resources.|
+|Scalability and availability|**Scalability** is the ability of a resource to handle increased load or demand. <br> **Availability** is the ability of a resource to remain operational and accessible.|
+|Security and responsible AI|**Security** refers to the measures that protect data and ensure compliance with regulations. <br> **Responsible AI** refers to the practices that ensure ethical AI, including fairness, transparency, and accountability.|
+
+### [**Intelligent application workload**](#tab/intelligentaiworkload)
 
 This diagram shows the key components of the intelligent application workload to include in your design.
 
@@ -54,69 +59,53 @@ This diagram shows the key components of the intelligent application workload to
 |Knowledge layer|Knowledge layer is where the system gets the information and context it needs to answer questions accurately. It makes sure data is accessed securely, using permissions and authorisation. The knowledge layer helps AI follow the RAG approach by searching through indexes or vector databases to find just the right content. It lets AI access various internal and external data sources in a consistent way, whether that's through MCP or REST protocols.|
 |Tools layer|Tools layer is where business actions and external capabilities are made accessible. The intelligence layer can trigger these actions or connect with other systems by calling tools or agents in a standardised way, whether that's through MCP, A2A, or OpenAPI/REST. These capabilities are presented as actionable options, ready for the intelligence layer to use, and they might be handled directly by the workload or by external services.|
 
-## Design consideration
+### Design considerations
 
-When you design your intelligent application workload architecture, consider the following design characteristics to make informed decisions about component design and interactions.
+When designing your intelligent application workload architecture, consider the following design characteristics to make informed decisions about component design and interactions.
 
-### Lifetime and state
+#### Lifetime and state
 
-**Lifetime** refers to the expected duration of a resource's existence and activeness within the workload. What's the expected lifetime of the resource, relative to other resources in the solution?
+The Intelligence API, orchestration, inference, and knowledge layers are all long-lived services that run for the lifetime of your workload. Invest in availability, monitoring, and operational excellence for each service. 
 
-**State** refers to the data or information that a resource maintains over time. What impact does the persisted state at this layer have on reliability?
-
-Intelligence API, orchestration, inference, and knowledge layer are all long-lived services that run for the lifetime of your workload. Invest in availability, monitoring, and operational excellence for each one. 
-
-Each layer evolves at a different pace, so you need deliberate deployment coordination. The Intelligence API evolves slowly to stay stable and maintain backward compatibility. Orchestration and agent layer evolves more rapidly as you add new capabilities. Inference layer gets updated when you deploy new models. The knowledge layer evolves continuously as data changes.
+Each layer evolves at a different pace, so you need deliberate deployment coordination. The Intelligence API evolves slowly to stay stable and maintain backward compatibility. Orchestration and agent layers evolve more rapidly as you add new capabilities. The inference layer gets updated when you deploy new models. The knowledge layer evolves continuously as data changes.
 
 Stateless components can be allocated or deallocated on demand, while stateful components manage data that persists across interactions. 
 
-Intelligence API, orchestration, and inference layers are stateless, which makes them easy to scale by adding more instances. Orchestration layer may hold ephemeral state during execution but doesn't persist it beyond request handling. Ephemeral state reduces operational complexity, but it limits failure recovery options, so design carefully for retries and idempotency. 
+The Intelligence API, orchestration, and inference layers are stateless, which makes them easy to scale by adding more instances. The orchestration layer might hold ephemeral state during execution but doesn't persist it beyond request handling. Ephemeral state reduces operational complexity, but it limits failure recovery options, so design carefully for retries and idempotency. 
 
-Conversation management session data that can last from minutes to days. Longer sessions enable richer conversations but cost more and increase privacy risk. Knowledge layer stores data in indexes and databases that evolve as you add, update, or remove information.
+Conversation management session data can last from minutes to days. Longer sessions enable richer conversations but cost more and increase privacy risk. The knowledge layer stores data in indexes and databases that evolve as you add, update, or remove information.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Lifetime and state management decisions directly impact cost, reliability, and performance. Long‑lived, stateful components require greater investment in scaling and resilience, while stateless, ephemeral components are more cost‑effective but may introduce latency from cold starts or external state retrieval.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Lifetime and state management decisions directly impact cost, reliability, and performance. Long‑lived, stateful components require greater investment in scaling and resilience, while stateless, ephemeral components are more cost‑effective but might introduce latency from cold starts or external state retrieval.
 
-### Reach and dependencies
+#### Reach and dependencies
 
-**Reach** refers to the extent to which a resource needs to be accessible or distributed. Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region? 
+The Intelligence API is the only publicly exposed endpoint in the architecture, everything else stays internal. You can deploy it in multiple regions to keep users close to an endpoint and improve resilience.
 
-**Dependencies** refer to the relationships and reliance on other resources. What are the dependencies on other resources?
+The orchestration layer sits at the center, operates within your network, and coordinates everything such as conversation state, model calls, knowledge retrieval, and tool invocation. Failures here block the entire system, so make it highly available. 
 
-Intelligence API is the only publicly exposed endpoint in the architecture, everything else stays internal. You can deploy it in multiple regions to keep users close to an endpoint and improve resilience.
+The inference layer runs internally without external dependencies. Deploy it close to the orchestrator to keep latency low. 
 
-Orchestration layer sits at the center, operate within your network and coordinate everything such as conversation state, model calls, knowledge retrieval, and tool invocation. Failures here block the entire system, so make it highly available. 
+The knowledge and tools layers are internal but might depend on external systems. These external dependencies can introduce delays or availability issues that affect response quality.
 
-Inference layer runs internally without external dependencies. Deploy it close to the orchestrator to keep latency low. 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Multiregion deployment improves performance and resilience but increases cost. Single-region deployment is more cost-effective but might result in higher latency for users far from the region.
 
-Knowledge and tools layers are internal but might depend on external systems. These external dependencies can introduce delays or availability issues that affect response quality.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Multi-region deployment improves performance and resilience but increases cost. Single-region deployment is more cost-effective but may result in higher latency for users far from the region.
-
-### Scalability and availability
-
-**Scalability** is the ability of a resource to handle increased load or demand. What is the expected throughput for that resource? How much scale does the resource provide to fit that demand? 
-
-**Availability** is the ability of a resource to remain operational and accessible. What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
+#### Scalability and availability
 
 Your intelligent application has two scaling patterns. Stateless layers like the API, orchestration, and inference scale by adding more instances. Data layers like conversation management and knowledge scale by spreading data across multiple stores through mechanisms like read replicas, partitioning, and sharding.
 
-Intelligence API scales out to handle more requests. Deploy it across multiple zones or regions for better availability and to keep users close to an endpoint.
+The Intelligence API scales out to handle more requests. Deploy it across multiple zones or regions for better availability and to keep users close to an endpoint.
 
 Orchestration and agent compute sit at the center of your system, so failures here block everything. Add more instances, use load balancing, and have failover ready so the system keeps running when individual instances fail. 
 
-Inference layer scales based on what your models need. Add more instances with GPUs as demand grows. Use infrastructure as code (IaC) to quickly recreate environments during recovery. 
+The inference layer scales based on what your models need. Add more instances with GPUs as demand grows. Use infrastructure as code (IaC) to quickly recreate environments during recovery. 
 
 Conversation management scales with the number of concurrent users. Use copies and backups to keep session data available. 
 
-Knowledge layer scales based on how much data you have and how often it gets queried. Use efficient indexing and database tuning to keep responses fast. Set up copies in multiple locations for availability.
+The knowledge layer scales based on how much data you have and how often it gets queried. Use efficient indexing and database tuning to keep responses fast. Set up copies in multiple locations for availability.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Stateless components can scale quickly but might introduce cold-start latency. Data components provide durability but require more planning for scaling. Balance these factors based on expected load and business requirements. 
 
-### Security and responsible AI 
-
-**Security** refers to the measures that protect data and ensure compliance with regulations. What measures protect data and ensure compliance with regulations? 
-
-**Responsible AI** refers to the practices that ensure ethical AI, including fairness, transparency, and accountability. How does the system ensure ethical AI practices, including fairness, transparency, and accountability?
+#### Security and responsible AI 
 
 Each layer in your intelligent application carries different risks and needs its own controls. Tools can trigger real-world actions, knowledge shapes what your AI knows, and inference produces outputs users see. Restrict access at every layer, monitor what's happening, and make sure you can explain how decisions get made.
 
@@ -126,7 +115,7 @@ The knowledge layer needs high-quality, unbiased data to produce trustworthy out
 
 The inference layer should only be accessible to operations roles and the orchestration layer's identity. Monitor outputs through a validation service that checks for toxicity and other safety issues. Validate models before deployment to catch bias, and keep rollback mechanisms ready if problems show up in production.
 
-## [**Training and fine-tuning workload**](#tab/trainingmodelworkload)
+### [**Training and fine-tuning workload**](#tab/trainingmodelworkload)
 
 This diagram shows the key components of training and fine-tuning workload to include in your design.
 
@@ -142,15 +131,11 @@ This diagram shows the key components of training and fine-tuning workload to in
 |Model Registry|A version-controlled repository that lets you store, manage, and track machine learning models as they progress from development to production. Tools like Azure Machine Learning Model Registry make this easy by keeping model binaries, metadata, training configurations, and lineage organized. You can compare different model versions and roll back to a previous one if required.|
 |Inferencing Layer - Predictive Models|Use trained models to generate predictions or make decisions based on data. You can deploy them as real-time REST APIs for quick predictions or as batch endpoints for processing large datasets asynchronously. Besides client applications, models are also called during data processing such as to extract entities or sentiment for data enrichment, and to handle data normalization and transformation.|
 
-## Design consideration
+### Design considerations
 
 When you design your training and fine-tuning workload architecture, consider the following design characteristics to make informed decisions about component design and interactions.
 
-### Lifetime and state
-
-**Lifetime** refers to the expected duration of a resource's existence and activeness within the workload. What's the expected lifetime of the resource, relative to other resources in the solution?
-
-**State** refers to the data or information that a resource maintains over time. What impact does the persisted state at this layer have on reliability?
+#### Lifetime and state
 
 Long-term persistent components enable historical analysis and model retraining on past data. Data aggregation store, feature store, and model registry are long-term, persistent stores that grow with new imports, features, and model versions.
 
@@ -160,11 +145,7 @@ Inference layer is stateless and ephemeral. Deploy it on demand for occasional b
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Long-term persistent components provide durability and historical context but require ongoing maintenance and storage costs. Ephemeral, stateless components are more cost-effective and scalable but require robust failure handling and might introduce latency from cold starts.
 
-### Reach and dependencies 
-
-**Reach** refers to the extent to which a resource needs to be accessible or distributed. Is the resource required to be globally distributed? Can the resource communicate with other resources, located globally or within that region? 
-
-**Dependencies** refer to the relationships and reliance on other resources. What are the dependencies on other resources? 
+#### Reach and dependencies 
 
 Keep your data stores, processing, training, and inference in the same region to minimize latency and cost. Only distribute when data residency requirements mandate it. Most components are internal only, which reduces your attack surface but requires secure access for developers and operators. 
 
@@ -178,11 +159,7 @@ The training platform depends on the feature store and aggregated data generated
 
 The model registry is unique because it needs both internal access (for training to write models) and external access (for AI applications to deploy models to inference environments). Use push deployment models to minimize external reach of sensitive components.
 
-### Scalability and availability 
-
-**Scalability** is the ability of a resource to handle increased load or demand. What is the expected throughput for that resource? How much scale does the resource provide to fit that demand? 
-
-**Availability** is the ability of a resource to remain operational and accessible. What is the impact on availability from a disaster at this layer? Would it cause a systemic outage or only a localized capacity or availability issue?
+#### Scalability and availability 
 
 Your training components need to grow with your data and remain available when you need them. Data stores like the Data Aggregation Store, Feature Store, and Model Registry scale through partitioning, replication, and efficient indexing as more data, features, and models get added over time. Keep these components highly available with redundancy, backups, and failover strategies so your data and models are accessible whenever training platform or inference needs them.
 
@@ -190,11 +167,7 @@ Compute platforms like Data Processing and Training scale differently. They add 
 
 Your inference layer typically handles batch processing in this context, so optimize it for throughput rather than low latency. You can scale horizontally with less expensive compute resources since you're processing large volumes of data without needing real-time responsiveness.
 
-### Security and responsible AI 
-
-**Security** refers to the measures that protect data and ensure compliance with regulations. What measures protect data and ensure compliance with regulations? 
-
-**Responsible AI** refers to the practices that ensure ethical AI, including fairness, transparency, and accountability. How does the system ensure ethical AI practices, including fairness, transparency, and accountability?
+#### Security and responsible AI 
 
 Address security and responsible AI at every layer. Use defense-in-depth with access controls, encryption, and auditing. Follow least privilege consistently: ETL gets read-only access to sources, training writes only to the model registry, and inference reads only. Map your data flows to keep regulated data in required regions, and track who accessed what, when, and why.
 
@@ -217,6 +190,7 @@ These baseline examples serve as the recommended architecture for AI workloads.
 
 <ul class="columns is-multiline has-margin-left-none has-margin-bottom-none has-padding-top-medium">
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block" href="/azure/architecture/ai-ml/architecture/baseline-azure-ai-foundry-chat">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <img role="presentation" alt="Diagram shows the baseline Microsoft Foundry chat reference architecture." src="./images/baseline-microsoft-foundry.svg">
@@ -231,8 +205,10 @@ These baseline examples serve as the recommended architecture for AI workloads.
                 </div>
             </div>
         </article>
+        </a>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block" href="/azure/architecture/ai-ml/architecture/baseline-azure-ai-foundry-landing-zone">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <img role="presentation" alt="Diagram shows the baseline Microsoft Foundry chat reference in Azure landing zone." src="./images/baseline-microsoft-foundry-landing-zone.svg">
@@ -247,8 +223,10 @@ These baseline examples serve as the recommended architecture for AI workloads.
                 </div>
             </div>
         </article>
+        </a>
     </li>
     <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
+        <a class="is-undecorated is-full-height is-block" href="/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
                 <img role="presentation" alt="Diagram shows the Analytics end-to-end with Azure Synapse architecture." src="./images/azure-analytics.svg">
@@ -263,12 +241,9 @@ These baseline examples serve as the recommended architecture for AI workloads.
                 </div>
             </div>
         </article>
+        </a>
     </li>
 </ul>
-
-## Design areas
-
-Use the provided design guidance to navigate the key design decisions and reach an optimal solution. For more information, see [the key design areas](/azure/well-architected/ai/get-started#ai-workload-design-areas).
 
 ## Next step
 
