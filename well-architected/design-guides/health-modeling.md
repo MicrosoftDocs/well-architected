@@ -294,4 +294,4 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+> [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring.md)

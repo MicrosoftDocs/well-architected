@@ -319,4 +319,4 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 - [Recommendations for designing and creating an observability framework](../operational-excellence/observability.md)
 - [Create an effective incident management plan to manage disruptions](./incident-management.md)
 - [Performance efficiency design principles](../performance-efficiency/principles.md)
-- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring.md)

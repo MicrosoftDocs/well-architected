@@ -142,7 +142,7 @@ Using Microsoft's AI and DevOps tools, teams can automatically turn retrospectiv
 ## Related links
 
 - [Recommendations for designing and creating an observability framework](observability.md)
-- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring.md)
 - [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
 ## Operational Excellence checklist  
