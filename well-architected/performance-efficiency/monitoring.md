@@ -3,7 +3,7 @@ title: Architecture strategies for collecting performance data
 description: Learn recommendations for collecting performance data (metrics and logs) to help you assess the performance of a workload.  
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 11/15/2023    
+ms.date: 04/20/2026 
 ms.topic: concept-article
 ---
 
@@ -19,6 +19,7 @@ Without performance data, underlying issues and optimization opportunities go un
 This article describes design strategies for implementing multi-layer performance measurement that captures latency, throughput, and resource behavior to establish baselines and identify performance degradation across the workload.
 
 The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first.
+
 
 **Definitions**
 
@@ -155,29 +156,17 @@ When direct alerting on an external dependency is not possible, use indirect sig
 
 ## Azure facilitation
 
-**Centralizing, segmenting, and retaining performance data**: [Azure Monitor](/azure/azure-monitor/overview) collects and aggregates data from every layer and component of your workload across multiple Azure and non-Azure subscriptions and tenants. It stores the data in a common data platform for consumption by a common set of tools that can correlate, analyze, visualize, and/or respond to the data.
+[Azure Monitor](/azure/azure-monitor/overview) provides a unified platform for collecting, analyzing, and responding to performance data across your entire workload. It aggregates data from applications, infrastructure, and external sources into a common data platform.
 
-You need at least one [Log Analytics workspace](/azure/azure-monitor/logs/log-analytics-workspace-overview) to enable Azure Monitor Logs. You can use a single workspace for all your data collection. You can also create multiple workspaces based on requirements to segment performance data. It also allows you to define [retention policies](/azure/azure-monitor/logs/data-retention-archive).
+**Data collection and storage**: Use [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-workspace-overview) to centralize your performance data with configurable [retention policies](/azure/azure-monitor/logs/data-retention-archive). Create multiple workspaces to segment data by environment or compliance requirements.
 
-**Collecting application performance data**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) is a feature of Azure Monitor that helps you monitor the performance and availability of your application. It provides application-level insights by collecting telemetry data such as request rates, response times, and exception details. You can enable Application Insights for your application and configure it to collect the necessary performance data. Application Insights also supports [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation). Configure distributed tracing for all flows. To build end-to-end transaction flows, correlate events that come from different application components or tiers.
+**Application monitoring**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) collects application-level telemetry including request rates, response times, and exceptions. Enable [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to correlate performance across distributed components.
 
-Performance counters are a powerful way to monitor the performance of your application. Azure provides various performance counters that you can use to collect data about CPU usage, memory usage, disk I/O, network traffic, and more. If you configure your application to emit performance counter data, Azure Monitor collects and stores the data for analysis.
+**Infrastructure monitoring**: Enable [diagnostic settings](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) on all Azure services to collect platform logs and metrics. Use [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview) for detailed VM performance data.
 
-**Collecting resource performance data**: Most Azure services generate platform logs and metrics that provide diagnostic and auditing information. By enabling diagnostic settings, you can specify the platform logs and metrics to collect and store. For correlation purposes, enable diagnostics for all supported services and then send the logs to the same destination as your application logs.
+**Database and storage**: Azure Monitor provides built-in monitoring for Azure SQL Database, MySQL, PostgreSQL, and storage services. Azure Storage Analytics tracks key performance indicators like throughput and latency across Blob, Table, and Queue Storage.
 
-**Collecting database and storage performance data**: Azure Monitor allows you to collect performance data for databases in Azure. You can enable monitoring for Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL, and other database services. Azure Monitor provides metrics and logs for monitoring database performance, including CPU use, memory use, and query performance. To be notified of issues, you can set up alerts based on performance thresholds.
-
-Azure offers performance recommendations for databases, such as SQL Server on Azure Virtual Machines. These recommendations help you optimize the performance of your database workloads. They include suggestions for collecting performance counters, capturing wait statistics, and gathering performance data during peak hours.
-
-Azure Storage Analytics allows you to collect performance data for Azure Storage services like Blob Storage, Table Storage, and Queue Storage. You can enable logging and metrics for your storage accounts to monitor key performance indicators, such as the number of read/write operations, throughput, and latency.
-
-**Collecting operating system performance data:** The Azure Diagnostics extension enables you to collect detailed performance data from your virtual machines (VMs), including CPU, memory, disk I/O, and network traffic. This data can be sent to Azure Monitor or other storage services for analysis and alerting.
-
-**Validating and analyzing performance data**: Within Azure Monitor, you can use Azure Monitor Logs to collect, analyze, and visualize log data from your applications and systems. You can configure Azure Monitor Logs to ingest logs from your application, including application-level logs and infrastructure logs. By aggregating logs, you can cross-query events and gain insights into the performance of your application. For more information, see [Azure Monitor Logs cost calculations and options](/azure/azure-monitor/logs/cost-logs) and [Pricing for Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/).
-
-In Azure Monitor, you can define alert rules to monitor specific performance metrics and trigger alerts based on predefined conditions. For example, you can create an alert rule to notify you when CPU usage exceeds a certain threshold or when response time goes above a specified limit. Configure the alert rule to send notifications to the desired recipients.
-
-When you create an alert rule, you can define the criteria that determine when an alert should be triggered. You can set thresholds, aggregation methods, time windows, and the frequency of evaluation. Define the criteria based on your performance monitoring requirements. In addition to sending notifications, you can specify actions to be taken when an alert is triggered. Actions can include sending emails, calling webhooks, or running Azure functions. Choose the appropriate actions to respond to the specific alert scenario.
+**Alerting and analysis**: Create alert rules with customizable thresholds, time windows, and actions (email, webhooks, Azure Functions). Use Azure Monitor Logs to cross-query and correlate performance data. For pricing details, see [Azure Monitor pricing](https://azure.microsoft.com/pricing/details/monitor/).
 
 ## Examples
 
@@ -186,6 +175,7 @@ When you create an alert rule, you can define the criteria that determine when a
 - [Enterprise monitoring with Azure Monitor](/azure/architecture/example-scenario/monitoring/enterprise-monitoring)
 
 ## Related links
+
 
 - [Platform metrics](/azure/azure-monitor/platform/data-platform-metrics#what-can-you-do-with-azure-monitor-metrics)
 - [Diagnostic settings](/azure/azure-monitor/platform/diagnostic-settings)

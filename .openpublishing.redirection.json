@@ -2504,6 +2504,11 @@
 			"source_path": "well-architected/security/threat-model.md",
 			"redirect_url": "/azure/well-architected/security/secure-development-lifecycle",
 			"redirect_document_id": true
-		}														
+		},
+		{
+			"source_path": "well-architected/performance-efficiency/collect-performance-data.md",
+			"redirect_url": "/azure/well-architected/performance-efficiency/monitoring",
+			"redirect_document_id": true
+		}																	
 	]
 }

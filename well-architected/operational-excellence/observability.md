@@ -185,7 +185,7 @@ We recommend reading this section in the companion implementation guide: [Antipa
 - [Instrumentation guide](../devops/monitor-instrument.md)
 - [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
 - [Recommendations for monitoring and threat detection](../security/monitor-threats.md)
-- [Recommendations for collecting performance data](../performance-efficiency/collect-performance-data.md)
+- [Recommendations for collecting performance data](../performance-efficiency/monitoring.md)
 
 ## Community links
 

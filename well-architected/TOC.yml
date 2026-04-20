@@ -214,7 +214,7 @@
               href: performance-efficiency/select-services.md
             - name: PE:04 Performance monitoring
               displayName: application performance monitoring (APM), distributed tracing, code instrumentation
-              href: performance-efficiency/collect-performance-data.md
+              href: performance-efficiency/monitoring.md
             - name: PE:05 Scaling and partitioning
               displayName: horizontal scaling, autoscaling, scale units
               href: performance-efficiency/scale-partition.md
