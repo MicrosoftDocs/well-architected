@@ -96,7 +96,9 @@ Use polyglot persistence to store different data types in technologies suited fo
 
 Also, separate data storage by environment. This prevents non-critical environment data from complicating production monitoring.
 
-Plan retention for short-term detailed data and long-term trend analysis. Archive older telemetry to lower-cost storage. Keep frequently accessed data in faster storage systems. Implement data protection with resource locks, soft delete, and role-based access control.
+Plan retention based on how you'll use the data. Keep high-resolution data for short-term analysis and debugging, and retain lower-resolution aggregates for long-term trends. Move older or infrequently accessed data to cheaper storage, and keep recent data in faster systems for quick analysis. This balances performance with cost. Set retention periods to match operational needs and compliance requirements so data is available when needed without unnecessary storage overhead.
+
+Treat monitoring data like any other critical data. Apply appropriate protection—access control, soft delete, and safeguards against accidental changes. 
 
 ## Correlate data for end-to-end insights
 
