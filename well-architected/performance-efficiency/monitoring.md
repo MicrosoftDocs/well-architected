@@ -14,11 +14,11 @@ ms.topic: concept-article
 |**PE:04**| Establish consistent performance measurement so behavior can be analyzed over time, compared against baselines, and used to detect degradation, inefficiency, and scaling gaps. |
 |---|---|
 
-Without performance data, underlying issues and optimization opportunities go unnoticed, leading to higher latency, reduced throughput, inefficient resource usage, and degraded user experience. It also slows diagnosis and troubleshooting, increasing resolution time and overall operational impact.
+Without performance data, underlying issues and optimization opportunities go unnoticed, leading to degraded user experience. 
 
 This article describes design strategies for implementing multi-layer performance measurement that captures latency, throughput, and resource behavior to establish baselines and identify performance degradation across the workload.
 
-The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first.
+The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first. Recommendations in this guide are scoped to performance. For information about reliability, see [RE:10 Architecture strategies for Reliability monitoring](../reliability/monitoring.md) 
 
 
 **Definitions**
@@ -46,9 +46,11 @@ Collect performance data using your monitoring tools and represent them as perce
 
 ## Define your performance improvement boundaries
 
-Define clear performance boundaries so you know exactly what is included in your measurements. Break down latency across the system instead of treating it as a single number. Attribute time to each layer where that's edge services, gateways, compute, and dependencies, to see where delays actually occur.
+Define clear performance boundaries so you know exactly what is included in your measurements. Break down latency across the system instead of treating it as a single number. For example, attribute time to each layer where that's edge services, gateways, compute, and dependencies, to see where delays actually occur.
 
-Break down performance signals to understand where time is actually spent across the system, rather than treating latency as a single number. Separate what you control from what you don't: your code, services, infrastructure, and direct dependencies versus external factors such as client-side conditions, DNS resolution, ISP latency, or device constraints. This distinction prevents misattribution and keeps optimization focused on areas where you can make changes, while still reflecting the full end-to-end user experience. When it affects user experience, it should either be compensated for through design or mitigated through improvements in the controllable parts of the system.
+Separate what you control from what you don't: your code, services, infrastructure, and direct dependencies versus external factors such as client-side conditions, DNS resolution, ISP latency, or device constraints. This distinction prevents misattribution and keeps optimization focused on areas where you can make changes, while still reflecting the full end-to-end user experience. 
+
+Evaluate when and where performance issues affect user experience. Compensate that degradation through design or mitigate through improvements in the controllable parts of the system.
 
 ## Segment signals by environment and purpose
 
@@ -56,25 +58,35 @@ Segment performance data so each signal reflects a clear context. Separate by en
 
 Keep production and nonproduction data separate. Production data reflects real user impact and should drive monitoring and alerts. Nonproduction data is useful for testing and tuning, but mixing it with production skews results and hides real issues.
 
-Use a single, consistent dataset within each environment for both targets and alerts. If alerts are based on different data than your performance targets, they become unreliable and hard to trust.
-
 Separate performance metrics from business metrics. Performance metrics track system behavior and workload health, while business metrics track outcomes. Even when they overlap, keep them in distinct streams so each can be analyzed and used independently.
 
-## Track performance over time
+## Create scoped and actionable performance alerts
 
-Track how performance evolves so you can distinguish normal behavior from meaningful change. Establish baselines that represent expected system performance, then compare current behavior against them to detect drift, including regressions and improvements.
+The goal of alerting is early detection of performance degradation before it becomes user-visible or business-impacting. Build alerts at two levels: end-to-end user experience and core internal transactions that represent critical system paths under load.
 
-Connect performance changes to operational events such as deployments, configuration updates, and scaling actions. Annotate timelines with these events so shifts in behavior have clear context and can be traced back to likely causes.
+Use a single, consistent dataset within each environment for both targets and alerts. If alerts are based on different data than your performance targets, they become unreliable and hard to trust.
 
-Use this ongoing visibility as a feedback loop for engineering decisions. Feed performance insights into planning and prioritization, and treat them as inputs to regular work rather than only incident response.
+Create alerts that are actionable and clearly tied to performance outcomes. Each alert should indicate what threshold was breached, the potential impact, and the components involved so it's clear where to investigate and what is affected. Start with standard, well-known thresholds, then refine them over time based on observed system behavior and workload characteristics.
 
-Continuously refine performance objectives as the system evolves. Adjust SLOs, thresholds, and expectations based on observed behavior and usage patterns so that targets remain realistic and aligned with actual user experience.
+When direct alerting on an external dependency is not possible, use indirect signals such as dependency call duration, error rates, or timeout behavior to approximate its impact on system performance.
 
 ## Monitor elasticity and dynamic behavior
 
 Measure how your system responds to changes in demand and scaling events.
 
 Track cold start and initialization latency to understand how startup overhead affects responsiveness, especially during scale-out events. Monitor scale-out and scale-in behavior to evaluate how quickly the system adapts to changes in load and whether scaling actions keep pace with demand.
+
+## Track performance over time
+
+Track how performance evolves with changes in your design and external factors. 
+
+Establish baselines that represent expected system performance, then compare current behavior against them to detect drift, including regressions and improvements.
+
+Connect performance changes to operational events such as deployments, configuration updates, and scaling actions. Annotate timelines with these events so shifts in behavior have clear context and can be traced back to likely causes.
+
+Use this ongoing visibility as a feedback loop for engineering decisions. Feed performance insights into planning and prioritization, and treat them as inputs to regular work rather than only incident response.
+
+Continuously refine performance objectives as the system evolves. Adjust SLOs, thresholds, and expectations based on observed behavior and usage patterns so that targets remain realistic and aligned with actual user experience.
 
 ## Collect application performance data
 
@@ -96,15 +108,15 @@ Avoid duplicating lower-level performance signals already exposed by the platfor
 
 Collect resource-level performance data to understand how infrastructure components behave under load and how they contribute to overall workload performance.
 
-Collect metrics and logs for all resources. Track compute and storage utilization against expected ranges to confirm under-provisioning isn't introducing latency and degrading performance under load.
-
 Each service exposes platform-specific metrics that reflect its health and performance characteristics. Use [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) to export this data so it can be accessed for alerting, dashboards, and longer-term analysis beyond short-lived platform retention.
+
+Collect metrics and logs for all resources. Track compute and storage utilization against expected ranges to confirm under-provisioning isn't introducing latency and degrading performance under load.
 
 Monitor network traffic as part of resource performance. Analyze traffic flow across subnets and service boundaries to understand latency, congestion, and data transfer patterns that may impact workload performance.
 
 ## Collect database and storage data
 
-Database and storage systems produce specialized performance signals that are essential for identifying bottlenecks, validating capacity, and understanding workload behavior. These signals typically come from built-in monitoring tools and system-generated logs.
+Database and storage systems produce specialized performance signals for identifying bottlenecks, validating capacity, and understanding workload behavior. These signals typically come from built-in monitoring tools and system-generated logs.
 
 Focus on key performance dimensions:
 
@@ -145,14 +157,6 @@ Sample OS performance counters at regular intervals to capture time-based behavi
 
 Use these signals to identify resource saturation at the operating system level and to distinguish between application-level inefficiencies and infrastructure constraints.
 
-
-## Build performance alerts at multiple levels
-
-The goal of alerting is early detection of performance degradation before it becomes user-visible or business-impacting. Build alerts at two levels: end-to-end user experience and core internal transactions that represent critical system paths under load.
-
-Create alerts that are actionable and clearly tied to performance outcomes. Each alert should indicate what threshold was breached, the potential impact, and the components involved so it's clear where to investigate and what is affected. Start with standard, well-known thresholds, then refine them over time based on observed system behavior and workload characteristics.
-
-When direct alerting on an external dependency is not possible, use indirect signals such as dependency call duration, error rates, or timeout behavior to approximate its impact on system performance.
 
 ## Azure facilitation
 
