@@ -38,22 +38,11 @@ Find out about recent changes in the Azure Well-Architected Framework.
 - [Architecture Best Practices for Azure Container Apps](./service-guides/azure-container-apps.md)([#d234a4d1](https://github.com/MicrosoftDocs/well-architected/commit/d234a4d1)) ([diff](https://github.com/MicrosoftDocs/well-architected/compare/6101b4e1787a769e12db5ec11823b7125ce27b4c..d234a4d1688ab7a1d6333f4aac311ca464570f32#diff-45ba094bd021610399c0fb77400504957c77aa9758107d4de624d7a5cb545c25)) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/service-guides/azure-container-apps.md)) ([PR:3121](https://github.com/MicrosoftDocs/well-architected-pr/pull/3121), [PR:3106](https://github.com/MicrosoftDocs/well-architected-pr/pull/3106))
     - **Notes:** Freshness pass of the Azure container service guide    
 
+- We clarified zonal redundancy terminology and made its usage consistent throughout several articles, for example [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md) and [Reliability design principles](./reliability/principles.md).
+
+- We added a terminology table to design guides that previously didn't include one, for example [Recommendations for developing background jobs](./design-guides/background-jobs.md) and [Recommendations for handling transient faults](./design-guides/handle-transient-faults.md).
+
 - This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture Best Practices for Azure Databricks](./service-guides/azure-databricks.md) and [Architecture Best Practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
-
-### Zonal redundancy terminology updates
-
-We clarified zonal redundancy terminology and made its usage consistent throughout several articles, for example:
-
-- [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md)
-- [Reliability design principles](./reliability/principles.md)
-
-### Terminology table updates
-
-We added a terminology table to design guides that previously didn't include one, for example:
-
-- [Recommendations for developing background jobs](./design-guides/background-jobs.md)
-- [Recommendations for handling transient faults](./design-guides/handle-transient-faults.md)
-- [Recommendations for using continuous integration](./design-guides/release-engineering-continuous-integration.md)
 
 ## February 2026
 
