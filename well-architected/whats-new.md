@@ -42,23 +42,18 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Zonal redundancy terminology updates
 
-We clarified zonal redundancy terminology and made its usage consistent.
+We clarified zonal redundancy terminology and made its usage consistent throughout several articles, for example:
 
 - [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md)
+- [Reliability design principles](./reliability/principles.md)
 
 ### Terminology table updates
 
-We added a terminology table to design guides that previously didn't include one.
+We added a terminology table to design guides that previously didn't include one, for example:
 
 - [Recommendations for developing background jobs](./design-guides/background-jobs.md)
 - [Recommendations for handling transient faults](./design-guides/handle-transient-faults.md)
-- [Health modeling for workloads](./design-guides/health-modeling.md)
-- [Complete an Azure Well-Architected Review assessment](./design-guides/implementing-recommendations.md)
-- [Develop an Incident Management Practice to Recover from Disruptions](./design-guides/incident-management.md)
-- [Optimize workload design using flows](./design-guides/optimize-workload-using-flows.md)
-- [Data partitioning recommendations for reliability](./design-guides/partition-data.md)
-- [Architecture Strategies for Using Availability Zones and Regions](./design-guides/regions-availability-zones.md)
-- [Recommendations for using continuous integration](./design-guides/release-engineering-continuous-integration.md)([#4380c04e](https://github.com/MicrosoftDocs/well-architected/commit/4380c04e)) 
+- [Recommendations for using continuous integration](./design-guides/release-engineering-continuous-integration.md)
 
 ## February 2026
 
