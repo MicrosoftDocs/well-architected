@@ -3,13 +3,62 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 03/13/2026
+ms.date: 04/21/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## March 2026
+
+### New articles
+
+- [Build a monitoring system for Azure workloads](./design-guides/monitoring.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/design-guides/monitoring.md)) ([PR:3086](https://github.com/MicrosoftDocs/well-architected-pr/pull/3086))
+    - **Notes:** New monitoring design guide
+- [Architecture strategies for testing](./operational-excellence/testing.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/operational-excellence/testing.md)) ([PR:3096](https://github.com/MicrosoftDocs/well-architected-pr/pull/3096))
+    - **Notes:** New Operational excellence testing recommendations guide
+- [HPC workloads on Azure](./hpc/get-started-overview.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/hpc/get-started-overview.md)) ([PR:3114](https://github.com/MicrosoftDocs/well-architected-pr/pull/3114))
+    - **Notes:** New WAF Workload for High performance computing (HPC). Includes four articles
+    - [Architecture pattern for HPC workloads on Azure](./hpc/hpc-architecture-pattern.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/hpc/hpc-architecture-pattern.md)) ([PR:3114](https://github.com/MicrosoftDocs/well-architected-pr/pull/3114))
+    - [Design methodology for HPC workloads on Azure](./hpc/hpc-design-methodology.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/hpc/hpc-design-methodology.md)) ([PR:3114](https://github.com/MicrosoftDocs/well-architected-pr/pull/3114))
+    - [Design Principles for HPC Workloads on Azure](./hpc/hpc-design-principles.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/hpc/hpc-design-principles.md)) ([PR:3114](https://github.com/MicrosoftDocs/well-architected-pr/pull/3114))
+
+### Updated articles
+
+- [Architecture Best Practices for Azure SQL Managed Instance](./service-guides/azure-sql-managed-instance.md) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/service-guides/azure-sql-managed-instance.md)) ([PR:3152](https://github.com/MicrosoftDocs/well-architected-pr/pull/3152))
+    - **Notes:**Complete rewrite of the service guide. Uses the latest templates and adds guidance across the board in all 5 pillars. Positioned to extend the guidance in the SQL Database guide with managed-instance specific guidance and not duplicating guidance in the base
+- [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md)([#b601c4c1](https://github.com/MicrosoftDocs/well-architected/commit/b601c4c1)) ([diff]()) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/operational-excellence/observability.md)) ([PR:3086](https://github.com/MicrosoftDocs/well-architected-pr/pull/3086))
+    - **Notes:** Full revamp of the recommendations guide, content restructured, and new guidance was added. Now more focus on the strategies, while the implementation and process guidance has moved to the new Monitoring design guide
+- [Architecture strategies for enabling and implementing automation in a workload](./operational-excellence/enable-automation.md)([#63e45f86](https://github.com/MicrosoftDocs/well-architected/commit/63e45f86)) ([diff](https://github.com/MicrosoftDocs/well-architected/compare/297ec709c6cf43f8f8179199e4374c49ac831102..f941ad979ae70829a9dc4872821a1c38f6a56d8c#diff-35f570d2c1649ce109b74428ff7b1212fa448febb89cd3f0f02637a0e97ac276)) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/operational-excellence/enable-automation.md)) ([PR:3096](https://github.com/MicrosoftDocs/well-architected-pr/pull/3096))
+    - **Notes:** Complete revamp of the automation focused guides (previously OE:09 and OE:10), content of these two are now consolidated into one guide (OE:10), while the new OE:08 focuses on testing
+- [Architecture strategies for securing a development lifecycle](./security/secure-development-lifecycle.md)([#9635953d](https://github.com/MicrosoftDocs/well-architected/commit/9635953d)) ([diff](https://github.com/MicrosoftDocs/well-architected/compare/8b10b6a646f66d78ed80bb7a4811d371a57df8d6..d7588e9db653cbdd034ad3a24a4620dfcb822a2a#diff-1fe78d8dcb3cd575e166eb071153329f892088c978c2716c244b2f355dec2d0a)) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/security/secure-development-lifecycle.md)) ([PR:3095](https://github.com/MicrosoftDocs/well-architected-pr/pull/3095))
+    - **Notes:** Complete revamp of the SE:02 recommendations guide. Guidance from two articles consolidated into one, and new guidance added
+- [Architecture Best Practices for Azure Container Apps](./service-guides/azure-container-apps.md)([#d234a4d1](https://github.com/MicrosoftDocs/well-architected/commit/d234a4d1)) ([diff](https://github.com/MicrosoftDocs/well-architected/compare/6101b4e1787a769e12db5ec11823b7125ce27b4c..d234a4d1688ab7a1d6333f4aac311ca464570f32#diff-45ba094bd021610399c0fb77400504957c77aa9758107d4de624d7a5cb545c25)) ([history](https://github.com/MicrosoftDocs/well-architected/commits/main/well-architected/service-guides/azure-container-apps.md)) ([PR:3121](https://github.com/MicrosoftDocs/well-architected-pr/pull/3121), [PR:3106](https://github.com/MicrosoftDocs/well-architected-pr/pull/3106))
+    - **Notes:** Freshness pass of the Azure container service guide    
+
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture Best Practices for Azure Databricks](./service-guides/azure-databricks.md) and [Architecture Best Practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
+
+### Zonal redundancy terminology updates
+
+We clarified zonal redundancy terminology and made its usage consistent.
+
+- [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md)
+
+### Terminology table updates
+
+We added a terminology table to design guides that previously didn't include one.
+
+- [Recommendations for developing background jobs](./design-guides/background-jobs.md)
+- [Recommendations for handling transient faults](./design-guides/handle-transient-faults.md)
+- [Health modeling for workloads](./design-guides/health-modeling.md)
+- [Complete an Azure Well-Architected Review assessment](./design-guides/implementing-recommendations.md)
+- [Develop an Incident Management Practice to Recover from Disruptions](./design-guides/incident-management.md)
+- [Optimize workload design using flows](./design-guides/optimize-workload-using-flows.md)
+- [Data partitioning recommendations for reliability](./design-guides/partition-data.md)
+- [Architecture Strategies for Using Availability Zones and Regions](./design-guides/regions-availability-zones.md)
+- [Recommendations for using continuous integration](./design-guides/release-engineering-continuous-integration.md)([#4380c04e](https://github.com/MicrosoftDocs/well-architected/commit/4380c04e)) 
 
 ## February 2026
 
@@ -325,10 +374,3 @@ This month, we made significant updates to some of our service guides. Here are 
 
 - [Architecture Best Practices for Azure Virtual Machines and Scale Sets](./service-guides/virtual-machines.md): We made updates to the guidance about Azure Virtual Machines and Scale Sets. Explore the fully updated content including new recommendations for configuring automatic recovery options to protect your workloads.
 
-## March 2025
-
-### Updated articles
-
-- [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
-
-- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellence to make the recommendations more concise, focused, and actionable.
