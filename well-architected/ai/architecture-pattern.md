@@ -16,7 +16,7 @@ Use this architecture pattern as a baseline when designing AI workloads. Start w
 
 For example, an organization might build an enterprise AI assistant that lets employees ask natural language questions about internal documents and operational data. Internal content is cleaned, enriched, and indexed so the assistant can retrieve trusted, up-to-date context. When a user asks a question, the application figures out what data is needed, retrieves relevant context, and calls the right model to generate a grounded response. Across the lifecycle, practices like responsible AI, testing, and safe deployment keep the assistant reliable, and underlying platform services enforce governance, security, and cost control.
 
-While this AI assistant represents a specific business scenario, the architecture pattern that follows is generic enough to adapt to many AI use cases with similar characteristics.
+While this AI assistant represents a specific business scenario, the architecture pattern that it follows is generic enough to adapt to many AI use cases with similar characteristics.
 
 ## High-level AI workload architecture
 
