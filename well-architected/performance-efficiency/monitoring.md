@@ -18,7 +18,7 @@ Without performance data, underlying issues and optimization opportunities go un
 
 This article describes design strategies for implementing multi-layer performance measurement that captures latency, throughput, and resource behavior to establish baselines and identify performance degradation across the workload.
 
-The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first. Recommendations in this guide are scoped to performance. For information about reliability, see [RE:10 Architecture strategies for Reliability monitoring](../reliability/monitoring.md) 
+The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first. Recommendations in this guide are scoped to performance. For information about reliability, see [RE:10 Architecture strategies for Reliability monitoring](../reliability/monitoring.md). 
 
 
 **Definitions**
@@ -70,7 +70,7 @@ Create alerts that are actionable and clearly tied to performance outcomes. Each
 
 When direct alerting on an external dependency is not possible, use indirect signals such as dependency call duration, error rates, or timeout behavior to approximate its impact on system performance.
 
-## Monitor elasticity and dynamic behavior
+## Monitor elasticity
 
 Measure how your system responds to changes in demand and scaling events.
 
@@ -88,9 +88,6 @@ Use this ongoing visibility as a feedback loop for engineering decisions. Feed p
 
 Continuously refine performance objectives as the system evolves. Adjust SLOs, thresholds, and expectations based on observed behavior and usage patterns so that targets remain realistic and aligned with actual user experience.
 
-### Generate data when necessary
-
-If your workload's usage patterns are not consistent and often have periods of no utilization you will be missing data that helps build confidence that the system is going to meet performance expectations when utilization returned. In those cases, you should introduce synthetic transactions into your production performance monitoring. This is synthetic data that you send through the system that allow you to activate many parts of your workload without disrupting business data or starving resources from actual users. Sythentic usage data then helps provide a smoother set of metrics that might allow you to detect time-of-day or similar patterns where spotty metric data might not uncover.
 
 ## Collect application performance data
 
@@ -145,7 +142,7 @@ For databases, extend monitoring to workload-specific behavior:
 
 Use these signals together to distinguish between slow queries, resource saturation, and structural inefficiencies. This enables targeted optimization across both storage systems and database workloads.
 
-### Collect operating system performance data
+## Collect operating system performance data
 
 For infrastructure-based workloads, collect operating system-level metrics to understand how compute resources are being utilized and where resource constraints may occur. 
 
@@ -161,6 +158,12 @@ Sample OS performance counters at regular intervals to capture time-based behavi
 
 Use these signals to identify resource saturation at the operating system level and to distinguish between application-level inefficiencies and infrastructure constraints.
 
+
+### Generate synthetic data, when necessary
+
+If your system isn't used consistently, it's hard to tell whether it will perform well when traffic returns.
+
+To address this, use synthetic transactions, which sends automated requests through your system. These simulate real usage without affecting actual users or data. This helps in keeping parts of your system active, generate consistent performance metrics, and reveal patterns (like time-of-day issues) that irregular usage might hide.
 
 ## Azure facilitation
 
