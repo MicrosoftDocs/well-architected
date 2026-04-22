@@ -38,7 +38,7 @@ The key strategies in this article build on the foundational operational practic
 
 ## Use percentile-based metrics
 
-Measure performance metrics, like latency, response time, or load times, with percentiles (p50, p95, p99), not averages. Averages can be misleading. If most requests are fast but a few are extremely slow, the average won't reflect the bad experience. 
+Measure performance metrics, like latency, response time, or load times, with percentiles (p50, p95, p99), not averages. Averages can be misleading. If most requests are fast but a few are extremely slow, the average will hide the bad experience.
 
 Percentiles show the tail behavior, which is important for understanding user experience. p50 represents typical performance, p95 shows what most users experience under load, and p99 captures the worst-case performance or the outliers.
 
@@ -66,7 +66,7 @@ The goal of alerting is early detection of performance degradation before it bec
 
 Use a single, consistent dataset within each environment for both targets and alerts. If alerts are based on different data than your performance targets, they become unreliable and hard to trust.
 
-Create alerts that are actionable and clearly tied to performance outcomes. Each alert should indicate what threshold was breached, the potential impact, and the components involved so it's clear where to investigate and what is affected. Start with standard, well-known thresholds, then refine them over time based on observed system behavior and workload characteristics.
+Create alerts that are actionable and clearly tied to performance outcomes. Each alert should indicate what threshold had a sustained breach, the potential impact, and the components involved so it's clear where to investigate and what is affected. Start with standard, well-known thresholds, then refine them over time based on observed system behavior and workload characteristics.
 
 When direct alerting on an external dependency is not possible, use indirect signals such as dependency call duration, error rates, or timeout behavior to approximate its impact on system performance.
 
@@ -87,6 +87,10 @@ Connect performance changes to operational events such as deployments, configura
 Use this ongoing visibility as a feedback loop for engineering decisions. Feed performance insights into planning and prioritization, and treat them as inputs to regular work rather than only incident response.
 
 Continuously refine performance objectives as the system evolves. Adjust SLOs, thresholds, and expectations based on observed behavior and usage patterns so that targets remain realistic and aligned with actual user experience.
+
+### Generate data when necessary
+
+If your workload's usage patterns are not consistent and often have periods of no utilization you will be missing data that helps build confidence that the system is going to meet performance expectations when utilization returned. In those cases, you should introduce synthetic transactions into your production performance monitoring. This is synthetic data that you send through the system that allow you to activate many parts of your workload without disrupting business data or starving resources from actual users. Sythentic usage data then helps provide a smoother set of metrics that might allow you to detect time-of-day or similar patterns where spotty metric data might not uncover.
 
 ## Collect application performance data
 
@@ -110,7 +114,7 @@ Collect resource-level performance data to understand how infrastructure compone
 
 Each service exposes platform-specific metrics that reflect its health and performance characteristics. Use [diagnostic setting](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) to export this data so it can be accessed for alerting, dashboards, and longer-term analysis beyond short-lived platform retention.
 
-Collect metrics and logs for all resources. Track compute and storage utilization against expected ranges to confirm under-provisioning isn't introducing latency and degrading performance under load.
+Collect metrics and logs for all resources. Track compute and storage utilization against expected ranges to confirm under-provisioning isn't introducing latency and degrading performance under load. Overprovisioning is also detectable with this data by looking at P99 usage and comparing to remaining headroom on your resources.
 
 Monitor network traffic as part of resource performance. Analyze traffic flow across subnets and service boundaries to understand latency, congestion, and data transfer patterns that may impact workload performance.
 
@@ -166,7 +170,7 @@ Use these signals to identify resource saturation at the operating system level 
 
 **Application monitoring**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) collects application-level telemetry including request rates, response times, and exceptions. Enable [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to correlate performance across distributed components.
 
-**Infrastructure monitoring**: Enable [diagnostic settings](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) on all Azure services to collect platform logs and metrics. Use [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview) for detailed VM performance data.
+**Infrastructure monitoring**: Enable [diagnostic settings](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) on all Azure services to collect platform logs and metrics. Use [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview) for detailed VM performance data. Explore telemetry options for your specific platform. For example, Kubernetes clusters emit rich performance telemetry through [Prometheus](/azure/azure-monitor/metrics/prometheus-metrics-overview) integrations.
 
 **Database and storage**: Azure Monitor provides built-in monitoring for Azure SQL Database, MySQL, PostgreSQL, and storage services. Azure Storage Analytics tracks key performance indicators like throughput and latency across Blob, Table, and Queue Storage.
 
@@ -175,8 +179,8 @@ Use these signals to identify resource saturation at the operating system level 
 ## Examples
 
 - [Baseline highly available zone-redundant app services web application](/azure/architecture/reference-architectures/app-service-web-app/baseline-zone-redundant)
-- [Monitor a microservices application in Azure Kubernetes Service (AKS)](/azure/architecture/microservices/logging-monitoring)
-- [Enterprise monitoring with Azure Monitor](/azure/architecture/example-scenario/monitoring/enterprise-monitoring)
+- [Monitor a microservices application in Azure Kubernetes Service (AKS)](/azure/aks/monitor-aks)
+- [Monitor Azure platforms landing zone components](/azure/cloud-adoption-framework/ready/landing-zone/design-area/management-monitor)
 
 ## Related links
 
