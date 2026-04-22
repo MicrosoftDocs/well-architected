@@ -16,7 +16,7 @@ ms.topic: concept-article
 
 Reliability monitoring is the practice of measuring how well a system meets its business requirements over time. A well-architected monitoring system provides real-time view and trends of system behavior by establishing visibility across platform, infrastructure, and workload layers.
 
-By correlating these signals across components and over time, monitoring enables fast, confident root cause analysis. Create a structured approach so that insights are meaningful, alerts drive the right actions, and learnings feed back into architecture and operations. 
+By correlating these signals across components and over time, monitoring enables fast, confident analysis of incidents and outages. Create a structured approach so that insights are meaningful, alerts drive the right actions, and learnings feed back into architecture and operations. 
 
 The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first.
 
@@ -25,16 +25,16 @@ The key strategies in this article build on the foundational operational practic
 
 | Term | Definition |
 |---------|---------|
-| **SLA (service level agreement)** | External commitments to customers. Failing to meet SLAs can lead to financial penalties, reputational damage, or degraded user experience. |
+| **SLA (service level agreement)** | External commitments you receive from vendors, or that you make to your customers. Failing to meet SLAs can lead to financial penalties, reputational damage, or degraded user experience. |
 | **SLO (service level objectives)** | Internal performance and reliability targets used to define thresholds that trigger alerts and measure system health against business objectives. |
 | **Health model** | A hierarchical representation of system condition using clear health states (healthy, degraded, unhealthy) with real-time signals and drill-down capability from overall system to individual components. |
 | **Stamp** | A deployment unit with defined capacity limits, such as maximum concurrent users, throughput, or resource utilization thresholds. Multiple stamps enable scale-out and regional distribution. |
 | **FMA (failure mode analysis)** | A systematic analysis to identify potential points of failure in a system, used to guide monitoring strategy and reliability improvements. |
 | **RTO (recovery time objective)** | The maximum acceptable time to detect, respond to, and recover from a failure or incident. |
 | **RPO (recovery point objective)** | The maximum acceptable amount of data loss measured in time, representing how much data can be lost during a failure scenario. |
-| **Synthetic transactions** | Automated tests that simulate real user actions and interactions to validate system health and detect issues from a customer perspective, providing external validation of system availability. |
-| **Correlation IDs** | Unique identifiers used to trace transactions and requests across multiple services and components, enabling root cause analysis in distributed systems. |
-| **Transient faults** | Temporary failures in system dependencies that typically resolve themselves, such as network timeouts or temporary service unavailability. |
+| **Synthetic transactions** | Automated tests that simulate real user actions and end-to-end interactions to validate system health and detect issues from a customer perspective, providing external validation of system availability. |
+| **Correlation IDs** | Unique identifiers used to trace transactions and requests across multiple services and components, enabling problem identification and analysis in distributed systems. |
+| **Transient faults** | Temporary failures in system dependencies that typically resolve themselves within a short period of time, such as network timeouts or temporary service unavailability. |
 | **Tail latency** | The response time experienced by the slowest requests, typically measured at high percentiles (p95, p99) where performance issues often surface first. |
 
 
@@ -52,7 +52,7 @@ This visibility helps you identify when a stamp is nearing saturation, well befo
 
 ## Monitor load distribution across redundant instances
 
-When you run the workload across multiple regions or zones, traffic and resource usage should remain balanced across those instances.
+When you run the workload across multiple redundant instances, including when you distribute instances across different regions or zones, traffic and resource usage should remain balanced across those instances.
 
 You want to spot imbalances that often point to routing issues, configuration problems, or dependency constraints. It also ensures that failover targets have sufficient capacity to absorb traffic when needed and confirms that redundancy mechanisms behave as expected during both steady-state operation and failure scenarios.
 
@@ -62,7 +62,7 @@ As part of your failure mode analysis (FMA) exercise, you should have identified
 
 In reliability monitoring practice, keep continuous watch on those points. Start by focusing on simpler signals such as transient faults. Monitor retry behavior and transient fault rates to understand how your dependencies and underlying services behave under real operating conditions. These signals provide an early view into emerging instability. They help you recognize when retry patterns drift from the expected norm, maintain a sense of whether the system is staying healthy under load, and identify when a dependency or external service begins to degrade before it impacts user experience.
 
-Also include bigger impact failures like availability zone outages that impact a subset of infrastructure, service outages, or regional outages that take an entire Azure region offline. Even watch for security scenarios such as DDoS or other malicious activity, component misconfiguration. 
+Also include bigger impact failures like availability zone outages that impact a subset of infrastructure, service outages, or regional outages that take an entire Azure region offline. Even watch for security scenarios such as DDoS or other malicious activity, component misconfiguration, and performance problems, because each of them can affect your solution's overall reliability.
 
 For information about FMA, see [Architecture strategies for failure mode analysis](./failure-mode-analysis.md).
 
@@ -118,7 +118,7 @@ Design alerts so they clearly point to something worth acting on, and ground the
 
 Structure the health model hierarchically, from individual components up to the full system, so you can quickly trace issues to their source. Define thresholds using service level objectives (SLOs), and combine signals such as metrics, logs, traces, and synthetic checks to create a reliable picture of system health. This gives operators a clear view of what's working, what isn't, and where to act without digging through raw data. For more information, see the design guide on [Health modeling](../design-guides/health-modeling.md).
 
-Tune alerts for real conditions by focusing on end-to-end experience and critical transactions, so they reflect actual user impact. Reduce noise by accounting for transient fluctuations and triggering on meaningful health state changes rather than isolated spikes. Combine real-time alerts with trend insights to catch both immediate issues and gradual degradation, helping teams respond quickly and stay focused.
+Tune alerts for real conditions by focusing on end-to-end experience and critical transactions, so they reflect actual user impact. Reduce noise by accounting for transient fluctuations and triggering on meaningful health state changes rather than isolated blips or spikes. Combine real-time alerts with trend insights to catch both immediate issues and gradual degradation, helping teams respond quickly and stay focused.
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk**: Health modeling requires collecting meaningful signals across the system. Relying only on simple metrics like CPU or memory can miss what actually matters. Include user experience data and synthetic checks to get a complete view. Defining “healthy” takes alignment, and poorly tuned thresholds can create noise and reduce effectiveness.
 
