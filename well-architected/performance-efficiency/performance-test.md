@@ -4,7 +4,7 @@ description: Learn best practices for performance testing to help workloads meet
 author: simipaul
 ms.author: simipaul
 ms.reviewer: simipaul
-ms.date: 04/21/2026
+ms.date: 04/23/2026
 ms.topic: concept-article
 ---
 
@@ -19,34 +19,39 @@ Performance testing is a non-functional testing practice used to evaluate how a 
 
 When you measure response times, throughput, resource usage, and stability, you gather evidence that your workload consistently meets defined targets and delivers the level of performance your business requires. 
 
-This article provides strategies for achieving performance targets through realistic testing practices so your workloads remain aligned with evolving business objectives. 
+The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to performance and focus on achieving performance targets so your workloads remain aligned with evolving business objectives. 
 
-## Establish your performance testing strategy
+The following table defines key performance terms used throughout this article.
 
-A performance strategy ensures your testing is consistent, sets clear expectations with stakeholders, and provides a framework for measuring success. A documented strategy gives everyone a shared playbook. 
+| Term | Definition |
+|---|---|
+| **Performance targets** | The specific performance values a workload must meet, such as response time, throughput, or number of concurrent users. |
+| **Performance thresholds** | The boundaries that separate acceptable performance from unacceptable performance for a given metric. |
+| **Performance budget** | The portion of an overall performance target allocated to each layer or component of a workload. |
+| **Error budget** | The allowed level of errors or failures, derived from SLOs. |
+| **Acceptance criteria** | The conditions a test result must satisfy for the workload to pass its performance requirements. |
+| **Hypothesis-driven experimentation** | A testing method where you state a prediction about performance, test it against a baseline, and validate it with measured results. |
+| **Performance baseline** | A set of metrics that represent the behavior of a workload under normal conditions as validated by testing. |
+| **Synthetic transactions** | Scripted requests that simulate real user interactions to measure system performance under controlled conditions. |
+| **Performance regression** | A decline in performance compared to an established baseline, introduced by a change in code, configuration, or infrastructure. |
+| **Performance drift** | A gradual decline in performance over time that goes unnoticed without regular testing against established baselines. |
+ 
+## Set measurable goals for your performance tests
 
-**Define your performance targets and assign budgets.** Define and document specific performance targets, such as how many concurrent users you need to support or which response time thresholds you must meet. Make sure these targets align with your service-level objectives (SLOs), and translate them into measurable test objectives. 
+Measurable performance goals turn subjective expectations into objective criteria that you can test and validate. 
 
-Define metrics and targets for each layer of your workload, such as:
-- API response times
-- Database query execution times
-- Cache hit rates
-- Third-party API latency
+**Define your performance targets and assign budgets.** Define and document specific performance targets, such as how many concurrent users you need to support. Make sure these targets align with your service-level objectives (SLOs), and translate them into measurable test objectives. 
 
-You should define thresholds for each metric using real-world signals. For example, if your SLO is to respond to 95% of requests within 200ms, then your performance target for API response times should reflect that.
+Assign performance and error budgets across different layers of your workload. When performance tests fail, your budgets help you identify which layer is responsible and where to focus optimization efforts. Without budgets, failing tests only tell you that performance targets aren't being met, not where the problem lies.
+
+For example, you might set budgets of 400 ms for API response time, 150 ms for database queries, and a 1% cap on failed requests. When a test fails, you can check each layer's results against its budget to determine whether the issue is slow API responses, slow database queries, or a spike in errors.
 
 > [!NOTE]
-> Avoid defining SLOs before understanding your user flows and performance requirements. SLOs should be based on real user needs and business goals, not arbitrary targets. Collaborate with stakeholders to determine which user journeys and transactions are most important to test from a performance perspective.
+> Avoid defining SLOs before understanding your user flows and performance requirements. SLOs should be based on real user needs and business goals, not arbitrary targets.
 
-Assign performance budget to allocate the performance target across different layers of your workload. For example, if your API response time target is 200ms, you might allocate 50ms for database queries, 30ms for third-party API calls, and 120ms for application processing. When performance issues arise, your budget helps you identify which layer is responsible and where to focus optimization efforts.
+**Define acceptance criteria with clear pass and fail thresholds**. Base your acceptance criteria on performance metrics such as latency, response times, throughput, resource utilization, error rates, and any other performance indicators that align with your performance targets. 
 
-**Set measurable acceptance criteria with clear pass and fail thresholds**. Your acceptance criteria should be based on performance metrics such as latency, response times, throughput, resource utilization, error rates, and any other performance indicators that align with your performance targets. They should be specific thresholds with clear pass and fail criteria. For example, 95% of requests must complete within 200ms under a load of 1000 concurrent users.
-
-**Specify your test environment requirements for performance testing.** Your test environment should mirror production as closely as possible. Document what infrastructure, data characteristics, and network configurations you need to run meaningful tests. Weigh the cost of testing against the cost of performance problems in production.
-
-**Assign clear ownership across teams.** Performance testing requires specific expertise. Assign clear ownership for test planning, execution, and analysis across performance engineers, developers, and operations teams.
-
-**Capture the performance tests you'll run** (load tests, stress tests, spike tests), the tools you'll use, the execution model for each test types, and the constraints you're working within (budget, time, infrastructure limits). Being realistic about your service boundaries helps you set achievable targets.
+Define thresholds for each metric so your tests produce clear pass or fail results. If your SLO requires 95% of requests to complete within 200 ms, set the API response time threshold to 200 ms at the 95th percentile. Any test run where the 95th percentile exceeds 200 ms is a fail.
 
 ## Start early and test continuously
 
@@ -54,11 +59,32 @@ Early performance analysis catches architectural bottlenecks before they become 
 
 Start performance testing as early as possible in the software development lifecycle of your workload. You don't need a complete application to begin. Developers can profile code locally, measure response times, and identify resource intensive operations. Early testing informs design decisions, validates architectural choices against performance goals, and identifies optimization opportunities.
 
-Test continuously as your workload evolves. Each code change might introduce performance regressions. Run tests regularly to catch these changes early. Incorporate performance tests in deployment pipelines and run periodic automated tests to detect performance drift before it reaches production.
+Continuously test your workload as it evolves to meet new requirements. Each code change might introduce performance regressions. Run tests regularly to catch these changes early. Incorporate performance tests in deployment pipelines and run periodic automated tests to detect performance drift before it reaches production.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Early performance testing requires dedicated infrastructure and specialized expertise, which increases operational costs. Balance this investment against the cost of performance problems discovered late and production incidents.
 
-## Validate performance in production
+## Test under real-world conditions
+
+Performance tests should match real-world conditions so your results are meaningful. 
+
+### Mirror your production environment
+
+Your test environment should mirror production as closely as practical. Tailor your approach for the environment based on your workload's risk profile.  
+
+For mission-critical workloads, match production exactly across:
+- Compute SKUs and configurations
+- Autoscaling settings
+- Caching configurations  
+- Network conditions (latency, bandwidth)
+- External dependencies
+
+For non-critical workloads, testing in a scaled-down environment that mimics production can provide useful insights at lower cost.
+
+**Prevent configuration drift.** Configuration drift can lead to misleading test results. Implement automated checks to verify your test environment matches production. Ensure correct versions are deployed before running tests. 
+
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
+
+### Validate performance in production 
 
 Test environments can't fully replicate real-world conditions that affect performance. Production tests expose problems that only surface under actual usage and provide accurate baselines for future optimization. Some performance requirements can only be validated where real users, data, and infrastructure intersect.
 
@@ -70,8 +96,6 @@ Production testing reveals performance characteristics under actual conditions, 
 - Geographic distribution effects
 - Third-party API performance and dependencies
 - Actual caching behavior and infrastructure characteristics
-
-For mission-critical workloads, test in production or a production-like environment to capture real-world performance characteristics.
 
 **Use progressive testing techniques.** Start with small percentages of traffic and gradually increase. Monitor response times, throughput, error rates, and resource utilization at each step. This gradual approach limits risk while identifying the breaking point, revealing bottlenecks, and providing an accurate view of system behavior under increasing demand. 
 
@@ -94,14 +118,10 @@ Start with a focused hypothesis about your workload's performance and define mea
 
 Performance testing covers a range of tests that assess speed, stability, and scalability under various conditions. Each test type targets distinct performance aspects of your workload. It uncovers unique insights and enables a full evaluation that goes beyond functional testing. 
 
-Running multiple test types helps you capture requirements early, understand tradeoffs that influence technical decisions (compute resources, data store selection, scaling strategies), surface bottlenecks that shape your architecture, and guide capacity planning as your business grows.
+Use multiple test types to validate your workload from different angles. For example, stress testing finds the breaking point under peak load, but only endurance testing reveals memory leaks that surface over hours or days. 
 
-Choose tools that support the types of tests you plan to run. As you compare testing tools, think about:
-- Your team's experience with the tool, how steep the learning curve is, and whether there's good documentation, training, or community support.
-- How well the tool integrates with your existing observability setup so you can easily monitor tests and analyze results.
-- Cost and licensing, and whether the tool fits within your budget.
-- Running a small proof of concept to confirm the tool works with your tech stack and meets your performance testing needs.
- 
+Choose test types based on what you need to validate.
+
 The following table shows when to use each test type and what it reveals about your workload. While this table isn't an exhaustive list, it serves as an illustrative example.
 
 | Testing Type | Primary Purpose | When to Apply | What It Reveals | Environment |
@@ -115,42 +135,23 @@ Don't try to implement all test types immediately. Begin with basic load testing
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Performance testing across all test types requires significant time and infrastructure investment. Match your testing investment to your business risk.
 
-## Test with realistic scenarios and data
+## Use real-world usage patterns and data characteristics
 
-Your performance tests should match real-world conditions so your results are meaningful. Testing with realistic data provides accurate insights into resource consumption, system behavior, and hidden performance issues.
-
-### Use real-world usage patterns and data characteristics
-
-Simulate synthetic transactions that mimic real user workflows. Script these transactions and run them repeatedly to generate load that reflects how your workload is actually used.
-
-Your test scenarios should reflect actual usage patterns such as concurrent user access, peak load periods, and specific transaction sequences. Make sure scenarios align with business goals so performance outcomes reflect true user value. When you test with different patterns, you can identify performance bottlenecks, inform resource allocation decisions, and find optimization opportunities. 
-
-Your test data should look like real production data. Use synthetic data that has production data characteristics. Reserve production datasets (properly anonymized) for certain scenarios such as to highlight data management behaviors like transaction consistency, latency, and volume handling.
+Testing with realistic data provides accurate insights into resource consumption, system behavior, and hidden performance problems.
 
 Create diverse test data sets that represent various scenarios, user profiles, and data volumes. Use input variations and randomization to mimic real user diversity. Include edge cases that might cause performance problems, such as large payloads, complex queries, or high concurrency. 
 
+Your test data should look like real production data. Use synthetic data that has production data characteristics. Reserve production datasets (properly anonymized) for certain scenarios such as to highlight data management behaviors like transaction consistency, latency, and volume handling.
+
+Simulate synthetic transactions that mimic real user workflows. Script these transactions and run them repeatedly to generate load that reflects how your workload is actually used.
+
+Your test scenarios should reflect actual usage patterns such as concurrent user access, peak load periods, and specific transaction sequences. Make sure scenarios align with business goals so performance outcomes reflect true user value. 
+
 When testing under load, include actual third-party API calls. Mocking external dependencies makes tests run faster and more predictably, but it hides real-world performance problems. If your app depends on a payment processor API, test with real calls to understand end-to-end latency.
 
-## Mirror your production environment
+## Use test results to guide design decisions
 
-Tailor your approach for the environment based on your workload's risk profile. 
-
-Your test infrastructure should match production:
-- Same compute SKUs and configurations
-- Identical autoscaling settings
-- Production-like caching configurations  
-- Realistic network conditions (latency, bandwidth)
-- All external dependencies your workload needs
-
-For non-critical workloads, testing in a scaled-down environment that mimics production can provide useful insights at lower cost. For mission-critical workloads, testing in an environment that closely replicates production justifies the cost to capture real-world performance characteristics.
-
-**Prevent configuration drift.** Configuration drift can lead to misleading test results. Implement automated checks to verify your test environment matches production. Ensure correct versions are deployed before running tests. 
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Full production replication for performance testing significantly increases infrastructure costs. Evaluate whether the risk of performance problems in production justifies the cost of dedicated performance testing infrastructure for your workload.
-
-## Establish baselines and guide optimization
-
-Performance data shows where to focus your improvement efforts and where optimization has the biggest impact. Use test results to assess whether acceptance criteria are met and guide optimization. 
+Your test results drive design decisions by establishing reliable baselines and guiding optimization efforts. 
 
 **Establish your baseline measurements.** Baselines help you identify trends and anomalies and whether optimization changes deliver improvements. You need reliable baselines to track performance trends over time. 
 
@@ -163,33 +164,9 @@ Record performance metrics during initial tests. This recording is your baseline
 > [!NOTE]
 > Regularly review and update your baselines after significant changes to your workload, such as architectural changes, new features, or scaling adjustments. By doing this action, you make sure that your performance targets remain relevant. 
 
-## Extend observability and automate analysis
+## Keep test assets aligned with current usage patterns
 
-Bring observability into your performance testing so you can understand whether your workload meets performance targets and why it behaves the way it does under load. Without observability, you'd spend significant time investigating test failures to diagnose root causes. 
-
-When tests reveal problems, your instrumentation should help you identify root causes. Distributed tracing, detailed logging, and correlated metrics provide the visibility you need to understand performance issues and guide optimization efforts.
-
-**Instrument performance tests** to capture:
-- Application metrics: response times, throughput, error rates
-- Infrastructure metrics: CPU, memory, network, disk usage
-- Database metrics: query execution times, connection pool status
-- External dependency metrics: Third-party API latency, timeout rates, error responses
-
-**Automate results analysis.** Manual analysis of performance data is slow and error-prone. Set up automated checks that compare current results against baselines, identify anomalies, and alert when performance degrades beyond acceptable thresholds.
-
-**Create performance test reports** that provide visibility into:
-- Performance trends across multiple test runs
-- Comparison of results against established baselines
-- Identification of performance regressions introduced by code changes
-- Distribution of response times at different percentiles
-
-Use Application Performance Monitoring (APM) tools to track trends over time, identify consistently degrading metrics, and enable data-driven decisions about performance improvements.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff.** Performance test runs generate high volumes of telemetry. Plan for the cost of ingesting, storing, and querying this data. Consider sampling strategies during high-load tests.
-
-## Keep test assets current
-
-Your performance test assets contain critical knowledge about your workload's expected behavior, acceptable performance thresholds, and realistic traffic patterns. Keep your test assets in version control and implement strong governance practices. Outdated or poorly maintained test assets produce unreliable performance data that undermines testing value.
+Your performance test assets contain critical knowledge about your workload's expected behavior, acceptable performance thresholds, and realistic traffic patterns. 
 
 **Organize test suites by type.** Keep load tests, stress tests, and endurance tests in separate suites. Don't mix them. Each type has different setup requirements, run durations, and success criteria. Organized suites make it easier to run targeted tests, compare results across runs, and maintain each suite independently.
 
@@ -200,8 +177,6 @@ Your performance test assets contain critical knowledge about your workload's ex
 - Traffic patterns change as your user base grows
 - New features introduce different usage patterns
 - Infrastructure scales to meet new capacity requirements
-
-**Retire obsolete tests.** Remove or archive tests that no longer apply to your workload. Obsolete tests consume maintenance effort and can generate false positives or negatives that distract from real performance issues.
 
 ## Azure facilitation
 
