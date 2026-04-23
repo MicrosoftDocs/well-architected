@@ -18,7 +18,7 @@ Without performance data, underlying issues and optimization opportunities go un
 
 This article describes design strategies for implementing multi-layer performance measurement that captures latency, throughput, and resource behavior to establish baselines and identify performance degradation across the workload.
 
-The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first. Recommendations in this guide are scoped to performance. For information about reliability, see [RE:10 Architecture strategies for Reliability monitoring](../reliability/monitoring.md). 
+The key strategies in this article build on the foundational operational practice of observability, described in [OE:07 Architecture strategies for designing a monitoring system](../operational-excellence/observability.md). Guidance on implementing the monitoring practice is available in the [Monitoring Design Guide](../design-guides/monitoring.md). We recommend reviewing those resources first. Recommendations in this guide are scoped to performance. For information about reliability, see [RE:10 Architecture strategies for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md). 
 
 
 **Definitions**
