@@ -63,8 +63,8 @@
               href: reliability/testing-strategy.md
             - name: RE:09 Disaster recovery  
               href: reliability/disaster-recovery.md
-            - name: RE:10 Monitoring and alerting
-              href: reliability/monitoring-alerting-strategy.md            
+            - name: RE:10 Monitoring
+              href: reliability/monitoring.md            
       - name: Security
         items: 
         - name: Quick links
@@ -212,9 +212,9 @@
             - name: PE:03 Selecting services 
               displayName: paas vs iaas, azure regions, application demands
               href: performance-efficiency/select-services.md
-            - name: PE:04 Metrics and logs
+            - name: PE:04 Performance monitoring
               displayName: application performance monitoring (APM), distributed tracing, code instrumentation
-              href: performance-efficiency/collect-performance-data.md
+              href: performance-efficiency/monitoring.md
             - name: PE:05 Scaling and partitioning
               displayName: horizontal scaling, autoscaling, scale units
               href: performance-efficiency/scale-partition.md

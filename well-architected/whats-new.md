@@ -179,7 +179,7 @@ We [integrated AI opportunities throughout the Operational Excellence pillar's c
 
 - [Architecture strategies for designing and creating a monitoring system](./operational-excellence/observability.md): We expanded the observability guidance with new recommendations for network monitoring, alerting, and diagnostics, and clarified best practices for operational excellence.
 
-- [Architecture strategies for designing a reliable monitoring and alerting strategy](./reliability/monitoring-alerting-strategy.md): We refreshed the monitoring and alerting strategy guidance, added new recommendations for monitoring network traffic to improve reliability, and expanded best practices for using Azure tools in incident response.
+- [Architecture strategies for designing a reliable monitoring and alerting strategy](./reliability/monitoring.md): We refreshed the monitoring and alerting strategy guidance, added new recommendations for monitoring network traffic to improve reliability, and expanded best practices for using Azure tools in incident response.
 
 - [Architecture best practices for Azure Files](./service-guides/azure-files.md): We revised the Azure Files guide to clarify terminology, update redundancy and billing model details, add guidance for SSD file shares and metadata caching, and include total cost of ownership (TCO) resources. We also added guidance about using the Azure File Sync Arc extension for hybrid environments.
 
