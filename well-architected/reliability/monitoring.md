@@ -1,5 +1,5 @@
 ---
-title: Architecture strategies for designing a reliable monitoring and alerting strategy
+title: Architecture strategies for monitoring workload reliability
 description: Learn how to design a reliable monitoring and alerting strategy to ensure that your workload operates reliably and operations teams are aware of changes.
 author: claytonsiemens77 
 ms.author: csiemens
@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:10**| Measure and model the solution's health indicators. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.  |
+|**RE:10**| Continuously measure and track system health using uptime and reliability indicators across components and critical flows. Ensure this data is retained and accessible to support timely detection, response, and post-incident analysis. |
 |---|---|
 
 Reliability monitoring is the practice of measuring how well a system meets its business requirements over time, with respect to  resiliency and recoverability. A well-architected monitoring system provides real-time view and trends of system behavior by establishing visibility across platform, infrastructure, and workload layers.
@@ -38,13 +38,13 @@ The key strategies in this article build on the foundational operational practic
 | **Tail latency** | The response time experienced by the slowest requests, typically measured at high percentiles (p95, p99) where performance issues often surface first. |
 
 
-## Be informed about platfom reliability status
+## Monitor workload functionality
 
-You need clear insight into platform health to manage reliability effectively. That awareness helps you quickly determine whether an issue originates in your workload or in the underlying cloud platform.
+Monitor what your system actually delivers. Start by tracking whether critical workflows complete successfully and produce valid results. A system can appear healthy while still producing incorrect or incomplete outputs, so execution alone is not enough. 
 
-[Azure Service Health](/azure/service-health/) provides visibility into the state of Azure. Configure alerts on Service Health so that you get  notifications when platform conditions change. You receive updates on active outages affecting your resources, planned maintenance events that may introduce disruption, and regional or service-specific degradations.
+For example, if a workload generates reports every six hours, monitoring should confirm two things: that the job ran as scheduled, and that it produced a valid result, such as a non-empty report with expected content and size. This kind of validation helps ensure the system is not only executing, but also delivering functionality that it was designed for.
 
-## Define and monitor stamp capacity
+## Monitor user experience
 
 Define clear capacity limits for each deployment unit, or stamp, and monitor them closely. Every stamp operates within a finite ceiling, whether that's maximum concurrent users, throughput, or resource utilization thresholds. So making those limits explicit will give you a reliable baseline for decision-making.
 
@@ -53,14 +53,14 @@ This visibility helps you identify when a stamp is nearing saturation, well befo
 Defining these limits isn't always straightforward. Capacity can be difficult to measure, especially when it depends on multiple underlying services with different scaling characteristics. You should use platform guidance, such as quotas and limits from Microsoft Azure, as a starting point. In practice, capacity is often determined through load testing, observation, and iterative tuning rather than precise upfront modeling.
 
 
-## Monitor load distribution across redundant instances
+## Track availability targets
 
 When you run the workload across multiple redundant instances, including when you distribute instances across different regions or zones, traffic and resource usage should remain balanced across those instances.
 
 You want to spot imbalances that often point to routing issues, configuration problems, or dependency constraints. It also ensures that failover targets have sufficient capacity to absorb traffic when needed and confirms that redundancy mechanisms behave as expected during both steady-state operation and failure scenarios.
 
 
-## Detect failure modes
+## Track recoverability targets
 
 As part of your failure mode analysis (FMA) exercise, you should have identified the potential points of failure. 
 
@@ -71,7 +71,7 @@ Also include bigger impact failures like availability zone outages that impact a
 For information about FMA, see [Architecture strategies for failure mode analysis](./failure-mode-analysis.md).
 
 
-## Monitor all layers of the system
+## Make alerts actionable with a health model
 
 Monitor each layer of the system, application, data/storage, and network, to maintain a complete view of reliability signals.
 
@@ -93,13 +93,13 @@ Operational logs help diagnose issues, track performance, and understand system 
 
 What to monitor in detail for each layer is covered in the [Monitoring Design Guide](../design-guides/monitoring.md).
 
-## Monitor workload functionality
+## Monitor all layers of the system
 
-Monitor what your system actually delivers. Start by tracking whether critical workflows complete successfully and produce valid results. A system can appear healthy while still producing incorrect or incomplete outputs, so execution alone is not enough. 
+You need clear insight into platform health to manage reliability effectively. That awareness helps you quickly determine whether an issue originates in your workload or in the underlying cloud platform.
 
-For example, if a workload generates reports every six hours, monitoring should confirm two things: that the job ran as scheduled, and that it produced a valid result, such as a non-empty report with expected content and size. This kind of validation helps ensure the system is not only executing, but also delivering functionality that it was designed for.
+[Azure Service Health](/azure/service-health/) provides visibility into the state of Azure. Configure alerts on Service Health so that you get  notifications when platform conditions change. You receive updates on active outages affecting your resources, planned maintenance events that may introduce disruption, and regional or service-specific degradations.
 
-## Monitor user experience
+## Define and monitor stamp capacity
 
 Monitor reliability from a business and user perspective. As part of your failure mode analysis (FMA), you should already have identified key user flows. For each flow, track how failures in any component or dependency affect the user experience and what the expected outcome becomes. For example, in an e-commerce checkout flow, a service outage or overload in payment or inventory systems may prevent customers from completing purchases.
 
@@ -109,7 +109,7 @@ Reliability also reflects quality of service. In a checkout flow, users should b
 >
 > Performance monitoring provides a view of how your system behaves under real load by breaking down end-to-end latency across system layers. It connects performance changes so you can understand what influenced a shift in behavior. That could be due to deployments, configuration updates, and scaling events. Together, reliability and performance monitoring provide a complete picture of system behavior and highlight where focused attention will have the most impact. For information about performance monitoring, see [Monitor Performance](../performance-efficiency/collect-performance-data.md).
 
-## Track availability targets
+## Monitor load distribution across redundant instances
 
 Track how well your system meets its defined targets for availability, throughput, and response times. These targets are often formalized as service level agreements (SLAs) and service level objectives (SLOs) and reflect the expectations you've set with your users. Monitoring against them keeps reliability aligned with real business outcomes. For more information, see [Reliability targets](./metrics.md) and [Service Level Agreements](/azure/reliability/concept-service-level-agreements).
 
@@ -123,7 +123,7 @@ Focus on the key indicators that contribute to those targets and track them over
 Combine real-time awareness with historical context. Real-time signals help you respond quickly when targets are at risk, while trends over time reveal patterns and recurring issues. Classifying the causes of target misses and aggregating these metrics also supports clear SLA reporting and helps guide ongoing improvements.
 
 
-## Track recoverability targets
+## Detect failure modes
 
 Track recoverability by treating every test and real incident as a measurable event. Use monitoring data to validate that your system and team can meet defined recovery objectives under real conditions.
 
@@ -138,7 +138,7 @@ These metrics also highlight operational gaps, such as unclear procedures, decis
 > - Application bugs causing data loss or corruption
 > - Security incidents
 
-## Make alerts actionable with a health model
+## Be informed about platform reliability status
 
 Design alerts so they clearly point to something worth acting on, and ground them in a health model that represents the system using simple states like healthy, degraded, and unhealthy. 
 

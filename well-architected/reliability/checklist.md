@@ -29,7 +29,7 @@ Approach your design with a focus on reliability to help ensure that you design 
 | &#9744; |[RE:07](self-preservation.md)        |  **Strengthen the resiliency of your workload by implementing self-preservation and self-healing measures**. Use built-in features and well-established cloud patterns to help your workload remain functional during and recover from incidents.   |
 | &#9744; |[RE:08](testing-strategy.md)      |  **Test for resiliency and availability scenarios by applying the principles of chaos engineering**. Ensure that your graceful degradation implementation and scaling strategies are effective by performing active malfunction and simulated load testing.       |
 | &#9744; |[RE:09](disaster-recovery.md)     |  **Implement structured, tested, and documented disaster recovery (DR) plans** that align with the recovery targets. Plans must cover all components and the system as a whole.       |
-| &#9744; |[RE:10](monitoring.md)     |  **Measure and model the solution's health signals**. Continuously capture uptime and other reliability data from across the workload and also from individual components and key flows.       |
+| &#9744; |[RE:10](monitoring.md)     |  **Continuously measure and track system health using uptime and reliability indicators** across components and critical flows. Ensure this data is retained and accessible to support timely detection, response, and post-incident analysis.      |
 
 ## Next steps
 

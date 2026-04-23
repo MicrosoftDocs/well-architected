@@ -63,7 +63,7 @@
               href: reliability/testing-strategy.md
             - name: RE:09 Disaster recovery  
               href: reliability/disaster-recovery.md
-            - name: RE:10 Monitoring and alerting
+            - name: RE:10 Monitoring
               href: reliability/monitoring.md            
       - name: Security
         items: 
