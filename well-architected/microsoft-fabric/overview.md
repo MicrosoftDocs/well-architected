@@ -9,13 +9,13 @@ ms.topic: concept-article
 
 # Microsoft Fabric workloads
 
-Microsoft Fabric is a unified analytics platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. Teams can build complete analytics solutions from raw data handling to business insights on a shared platform and storage layer.
+Microsoft Fabric is a unified data platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. Teams can build complete analytics solutions from raw data handling to business insights on a shared platform and storage layer.
 
 Because Fabric combines many analytics capabilities in one platform, architectural decisions have wide impact. Capacity sizing affects both pipelines and queries. Data design influences refresh times and report performance. Security configuration determines how teams collaborate and how data is governed.
 
 Across these workloads, architects face the same challenge: building solutions that remain reliable, secure, performant, and cost-efficient while operating smoothly at scale.
 
-This guide provides design guidance to solution architects who want to design and optimize their workloads on Microsoft Fabric. The guidance is organized by the five pillars of the Well-Architected Framework that help architects design balanced, production-ready systems.
+This document provides design guidance to solution architects who want to design and optimize their workloads on Microsoft Fabric. The guidance is organized by the five pillars of the Well-Architected Framework that help architects design balanced, production-ready systems.
 
 ## Architecture pattern
 
@@ -23,7 +23,7 @@ This guide provides design guidance to solution architects who want to design an
 
 | Pillar | Focus |
 |---|---|
-| [**Reliability**](./reliability.md) | Design workloads in Fabric that recover gracefully from platform or workload failures, leverage capacities, multi-region replication, and failover strategies, and maintain predictable availability for users. |
+| [**Reliability**](./reliability.md) | Design workloads in Fabric that maintain predictable availability for users and recover gracefully from platform or workload failures, while leveraging multi-region capacities, data replication, and failover strategies. |
 | [**Security**](./security.md) | Protect data, identities, and workloads in Fabric through workspace isolation, role-based access, managed identities, encryption, secure networking, and continuous monitoring. |
 | [**Cost Optimization**](./cost-optimization.md) | Control Fabric spending by aligning capacity sizing to workloads, sharing resources strategically, automating scaling and pauses, monitoring utilization, and governing retention and workloads across environments. |
 | [**Operational Excellence**](./operational-excellence.md) | Deploy and operate Fabric workloads with confidence by combining Deployment Pipelines, version control, automated testing, progressive rollouts, logging, and proactive monitoring. |
@@ -31,18 +31,17 @@ This guide provides design guidance to solution architects who want to design an
 
 ## Common architectural challenges
 
-Microsoft Fabric supports multi-workload architecture and that complexity can introduce challenges. Here are some common ones:
+Microsoft Fabric supports multi-workload architecture and that breadth can introduce challenges. Here are some common ones:
 
-- It's easy for teams to create and share data across Lakehouse, Warehouse, Real-Time Analytics, and semantic models. Without strong governance, this flexibility can lead to uncontrolled data growth and inconsistent usage.
+- It's easy for teams to create and share data across Lakehouse, Warehouse, Real-Time Analytics, and semantic models. Without strong governance, this flexibility can lead to unchecked data growth and uncontrolled usage.
 
--  You can run multiple workloads on shared capacity in Microsoft Fabric, but this also means those workloads compete for the same compute resources. Without careful planning, this can lead to unpredictable performance.
+- Microsoft Fabric brings together multiple compute engines on a single data foundation. While this unification is powerful, it also requires careful design to ensure consistent performance across different workloads.
 
-- Microsoft Fabric brings together multiple execution engines on a single data foundation. While this unification is powerful, it also requires careful design to ensure consistent performance across different workloads.
+- You can run multiple workloads on shared capacity in Microsoft Fabric, but this also means those workloads compete for the same compute resources. Without careful planning, this can lead to unpredictable performance.
 
-    There's also changes to team structure, roles, and ways of working. Without a well-defined operating model, adoption can slow and usage can become inconsistent across teams.
+- When integrating Microsoft Fabric with on-premises systems, SaaS applications, and other cloud platforms, there's complexity in how data is ingested and managed. Selecting suboptimal integration patterns may result in higher operational overhead and maintenance difficulties.
 
-- When integrating Microsoft Fabric with on-premises systems, SaaS applications, and other cloud platforms, there's complexity in how data is ingested and managed. There might be higher operational overhead and difficult-to-maintain data pipelines.
-
+- There's also a need to adapt team structures, roles, and ways of working. Without a well-defined operating model, adoption can slow and usage can become inconsistent across teams.
 
 ## Design methodology
 
@@ -50,15 +49,15 @@ Use a simple design methodology that keeps decisions aligned with business requi
 
 #### Focus on critical workflows
 
-Begin by identifying the main workflows in the system. In analytics platforms, these typically include data ingestion, transformation pipelines, semantic model refreshes, and interactive queries.
+Begin by identifying the main workflows in the system. In analytics platforms, these typically include data ingestion, transformation, and serving.
 
 Understanding these flows helps determine where latency matters, where failures have the greatest impact, and where compute demand will concentrate.
 
 #### Design for shared capacity
 
-Fabric workloads run on shared capacity resources. Spark jobs, pipelines, queries, and refresh operations all consume compute from the same pool.
+Fabric workloads run on capacities, which can share their resources across multiple workload types. Spark jobs, pipelines, queries, and refresh operations all consume compute from the same pool.
 
-Architectures should prevent heavy workloads from starving interactive operations. Isolation, scheduling, and workload separation across workspaces or capacities help maintain predictable performance.
+Architectures should prevent heavy workloads from starving interactive operations. Isolation, scheduling, and workload separation across capacities and workspaces help maintain predictable performance.
 
 #### Keep workloads modular
 
