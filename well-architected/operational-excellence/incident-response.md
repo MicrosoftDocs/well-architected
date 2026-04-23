@@ -121,6 +121,8 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 
 Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
 
+[Azure SRE Agent](https://aka.ms/sreagent/ga) is an AI-powered operations agent that accelerates incident diagnosis and automates routine responses. It supports configurable autonomy levels, from advisory mode to automated response within defined guardrails. Start with advisory mode and progressively enable automation as trust builds. For high-severity scenarios, implement approval workflows and guardrails to control automated actions.
+
 
 ## Azure facilitation
 
@@ -151,3 +153,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
+
+<!-- Updated: 2026-03-21 for Azure Update 558321 -->

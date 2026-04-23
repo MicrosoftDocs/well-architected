@@ -140,6 +140,8 @@ The [Operational Excellence design principles](/azure/well-architected/operation
 | Schedule [custom maintenance windows](/azure/postgresql/flexible-server/how-to-configure-scheduled-maintenance) to apply service updates. | You can define a custom schedule for each Azure Database for PostgreSQL in your Azure subscription. With a custom schedule, you can specify your maintenance window for the server by choosing the day of the week and the start time of the one-hour maintenance window. |
 | [Monitor your server](/azure/postgresql/flexible-server/concepts-monitoring) to ensure that it's healthy and performing as expected. | Azure Database for PostgreSQL has various metrics that provide insight into the behavior of the resources that support the Azure Database for PostgreSQL instance. You can also enable enhanced metrics to get fine-grained monitoring and alerting on databases. |
 
+Azure Database for PostgreSQL offers [built-in Grafana dashboards](https://aka.ms/azure-postgres-dashboards-grafana) in the Azure portal through native Azure Monitor integration. Prebuilt dashboards show CPU usage, storage, active connections, and query throughput with log correlation. These dashboards reduce observability stack complexity by providing zero-setup monitoring for the PostgreSQL data tier. For workloads where PostgreSQL is a critical data tier, use these dashboards to get essential health signals without deploying separate monitoring infrastructure.
+
 ## Performance Efficiency
 
 Performance Efficiency is about **maintaining user experience even when there's an increase in load** by managing capacity. The strategy includes scaling resources, identifying and optimizing potential bottlenecks, and optimizing for peak performance.
@@ -196,3 +198,4 @@ Foundational architecture that demonstrates the key recommendations: [Reliable W
 - [Multitenancy and Azure Database for PostgreSQL](/azure/architecture/guide/multitenant/service/postgresql)
 
 <!-- Updated: October 13, 2025 for Azure Update 500795 -->
+<!-- Updated: 2026-03-21 for Azure Update 558140 -->
