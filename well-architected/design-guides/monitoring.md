@@ -87,7 +87,7 @@ While instrumentation is about what operational signals should be tracked, this 
 
 It's common to use data collection services or monitoring agents that pull data and write the information directly to common storage. 
 
-Or, the agents can act as a passive receiver that wait for the data to be sent from the application.
+Or, the agents can act as a passive receiver that waits for the data to be sent from the application.
 
 :::image type="content" source="_images/monitor-write-shared-storage.png" alt-text="Direct collection architecture diagram showing two application instances, each with monitoring agents that collect ETL files, OS event logs, application trace logs, and custom trace logs, then write directly to shared storage." lightbox="_images/monitor-write-shared-storage.png" border="false":::
 
@@ -115,14 +115,14 @@ Create a matrix that clearly highlights the use case, requirements, and technolo
 |Interactive querying and troubleshooting|	[Azure Log Analytics](../service-guides/azure-log-analytics.md)|
 |Real-time analytics|[Azure Databricks](../service-guides/azure-databricks.md)|
 |Long-term archival|	[Azure Blob Storage](../service-guides/azure-blob-storage.md)|
-|SIEM or security integration| [Event Hub](../service-guides/azure-event-hubs.md)|
+|SIEM or security integration| [Event Hubs](../service-guides/azure-event-hubs.md)|
 |Aggregation and analysis for exploring trends and advanced analytics|	[Azure Data Explorer](/azure/data-explorer)|
 
 In some cases, you might send the same telemetry to multiple destinations for different purposes.
 
 #### Telemetry performance and reliability considerations
 
-A single application can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system making sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
+A single application can generate massive volumes of telemetry from multiple web and worker roles, database shards, and supporting Azure services. Sending all of this data to a single central store can quickly overwhelm available I/O bandwidth and create a bottleneck. The monitoring system must scale with the system to make sure critical data isn't lost. A practical way to achieve this is by introducing queuing.
 
 :::image type="content" source="_images/service-instrumentation-data.png" alt-text="Queuing architecture diagram showing two application instances with data collection services that gather ETL files, OS event logs, application trace logs, and custom trace logs, then publish to a message queue. A storage writing service consumes from the queue, followed by consolidation and cleanup service, before storing in shared storage." lightbox="_images/service-instrumentation-data.png" border="false":::
 
@@ -233,7 +233,7 @@ Visualization converts complex telemetry into actionable insights using dashboar
 
 #### Best practices for visualization
 
-- **Align with your [health model](./health-modeling.md)** that show components should be labeled as Healthy, Degraded, or Unhealthy according your service level objectives (SLOs).
+- **Align with your [health model](./health-modeling.md)** that show components should be labeled as Healthy, Degraded, or Unhealthy according to your service level objectives (SLOs).
 
 - **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
 
