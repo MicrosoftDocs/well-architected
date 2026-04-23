@@ -7,7 +7,7 @@ ms.date: 04/17/2026
 ms.topic: concept-article
 ---
 
-# Architecture strategies for designing a reliable monitoring and alerting strategy
+# Architecture strategies for monitoring workload reliability
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
