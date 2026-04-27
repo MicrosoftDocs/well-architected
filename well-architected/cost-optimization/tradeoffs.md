@@ -3,7 +3,7 @@ title: Cost Optimization tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for cost optimization.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/10/2024
+ms.date: 04/27/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 
 When you design a workload to maximize return on investment (ROI) under financial constraints, you first need clearly defined functional and nonfunctional requirements. A work and effort prioritization strategy is essential. The foundation is a team that has a strong sense of financial responsibility. The team should have a strong understanding of available technologies and their billing models.
 
-After you understand the ROI of a workload, you can start improving it. To improve the ROI, consider how decisions based on the [Cost Optimization design principles](./principles.md) and the recommendations in the [design review checklist for Cost Optimization](./checklist.md) might influence the goals and optimizations of other Azure Well-Architected Framework pillars. For cost optimization, it's important to avoid focusing on a cheaper solution. Choices that focus only on minimizing spending can increase the risk of undermining your workload's business goals and reputation. This article describes example tradeoffs that a workload team might encounter when considering the target setting, design, and operations for cost optimization.
+After you understand the ROI of a workload, you can start improving it. Consider how decisions based on the [Cost Optimization design principles](./principles.md) and the recommendations in the [Design review checklist for Cost Optimization](./checklist.md) might influence the goals and optimizations of other Well-Architected Framework pillars. For cost optimization, it's important to avoid focusing on a cheaper solution. Choices that focus only on minimizing spending can undermine your workload's business goals and reputation. This article describes example tradeoffs that a workload team might encounter when setting targets, designing, and planning operations for cost optimization.
 
 ## Cost Optimization tradeoffs with Reliability
 
@@ -54,19 +54,19 @@ The cost of a service disruption must be measured against the cost of preventing
 
 ## Cost Optimization tradeoffs with Security
 
-The cost of a compromise to confidentiality, integrity, and availability in a workload must always be balanced against the cost of the effort to prevent that compromise. A security incident can have a wide range of financial and legal impacts and harm a company's reputation. Investing in security is a risk mitigation activity. The cost of experiencing the risks must be balanced against the investment. As a rule, don't compromise on security to gain cost optimizations that are below the point of responsible and agreed upon risk mitigation. Optimizing security costs by rightsizing solutions is an important optimization practice, but be aware of tradeoffs like the following when doing so.
+The cost of a compromise to confidentiality, integrity, or availability must always be balanced against the cost of preventing it. A security incident can cause significant financial, legal, and reputational harm. Investing in security mitigates risk, and that investment must be measured against the cost of experiencing the risk. As a rule, don't compromise on security to gain cost optimizations that are below the point of responsible and agreed upon risk mitigation. Optimizing security costs by rightsizing solutions is an important optimization practice, but be aware of tradeoffs like the following when doing so.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide defense in depth.
 
 One cost optimization tactic is to look for ways to remove components or processes that accrue unit or operational costs. Removing security components like the following examples for the sake of saving money impacts security. You need to carefully perform a risk analysis on this impact.
 
-- Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of Zero-Trust architecture. Examples of these simplifications include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
+- Reducing or simplifying authentication and authorization techniques compromises the *verify explicitly* principle of Zero Trust architecture. Examples of these simplifications include using a basic authentication scheme like preshared keys rather than investing time to learn industry OAuth approaches, or using simplified role-based access control assignments to reduce management overhead.
 
 - Removing encryption in transit or at rest to reduce costs on certificates and their operational processes exposes data to potential integrity or confidentiality breaches.
 
-- Removing or reducing security scanning or inspection tooling or security testing because of the associated cost and time investment can directly impact the confidentiality, integrity, or availability that the tooling and testing is intended to protect.
+- Removing or reducing security scanning, inspection tooling, or security testing because of the associated cost and time investment can directly affect the confidentiality, integrity, or availability that those tools and tests are intended to protect.
 
-- Reducing the frequency of security patching because of the operational time invested in cataloging and performing the patching affects a workload's ability to address evolving threats.
+- Reducing the frequency of security patching to save operational time on cataloging and applying patches affects a workload's ability to address evolving threats.
 
 - Removing network controls like firewalls might lead to a failure to block malicious inbound and outbound traffic.
 

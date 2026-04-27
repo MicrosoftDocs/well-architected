@@ -3,7 +3,7 @@ title: Reliability tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for reliability.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/10/2024
+ms.date: 04/27/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -12,23 +12,23 @@ ms.update-cycle: 1095-days
 
 A reliable workload consistently meets its defined reliability objectives. It should reach established resiliency targets, ideally by circumventing events that affect reliability. Realistically, however, a workload must tolerate and control the impact of such events and maintain operations at a predetermined level during active malfunction. Even during a disaster, a reliable workload must recover to a specific state within a given period of time, both of which are agreed upon among the stakeholders. An incident response plan that enables you to achieve rapid detection and recovery is vital.
 
-During the design phase of a workload, you need to consider how decisions based on the [Reliability design principles](./principles.md) and the recommendations in the [Design review checklist for Reliability](./checklist.md) might influence the goals and optimizations of other pillars. Certain decisions might benefit some pillars but constitute a tradeoff for others. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations for reliability.
+When you design a workload, consider how decisions based on the [Reliability design principles](./principles.md) and the recommendations in the [Design review checklist for Reliability](./checklist.md) might influence the goals and optimizations of other pillars. Some reliability decisions benefit one pillar but constitute tradeoffs for another. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations for reliability.
 
 ## Reliability tradeoffs with Security
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased workload surface area.** The Security pillar prioritizes a reduced and contained surface area to minimize attack vectors and reduce the management of security controls.
 
-- Reliability is often obtained through replication. Replication can occur at the component level, at the data level, or even at a geographic level. Replicas, by design, increase the surface area of a workload. From a security perspective, a reduced and contained surface area is preferred to minimize potential attack vectors and streamline the management of security controls.
+- Reliability is often obtained through replication at the component level, the data level, or even the geographic level. Replicas, by design, increase the workload's surface area. From a security perspective, a reduced and contained surface area is preferred to minimize potential attack vectors and streamline the management of security controls.
 
 - Similarly, disaster recovery solutions, like backups, increase a workload's surface area. However, they're often isolated from the workload's runtime. These solutions require the implementation of additional security controls, which might be specific to the disaster recovery approach.
 
-- For the sake of reliability goals, additional components might be needed for the architecture, which increases the surface area. For example, a message bus might be added to make requests resilient through decoupling. This increased complexity increases the surface area of the workload by adding new components that need to be secured, possibly in ways that aren't already used in the system. Typically, these components are accompanied by additional code and libraries to support their use or general reliability patterns, which also increases application surface area.
+- Reliability goals can require additional architectural components, like a message bus added to make requests resilient through decoupling. Each new component must be secured, possibly in ways that aren't already used in the system. The supporting code and libraries also expand the application's surface area.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Security control bypass.** The Security pillar recommends that all controls remain active in both normal and stressed systems.
 
 - When a workload is experiencing a reliability event that's being addressed under active incident response, urgency might create pressure for workload teams to bypass security controls that are optimized for routine access.
 
-- Troubleshooting activities can cause the team to temporary disable security protocols, leaving an already stressed system potentially exposed to additional security risks. There's also a risk that the security protocols won't be reestablished promptly.
+- Troubleshooting activities can cause the team to temporarily disable security protocols, leaving an already stressed system potentially exposed to additional security risks. There's also a risk that the security protocols won't be reestablished promptly.
 
 - Granular implementations of security controls, like custom role-based access control assignments or narrow firewall rules, introduce configuration complexity and sensitivity, increasing the chance for misconfiguration. Mitigating this potential reliability impact by using broad rules erodes all three Zero Trust architecture principles.
 
@@ -74,7 +74,7 @@ During the design phase of a workload, you need to consider how decisions based 
 
 - As a workload becomes more robust through the addition of reliability components and patterns, it takes more time to maintain operational procedures and artifact documentation.
 
-- Training becomes more complex as the number of components in the workload increases. This complexity affects the time required for onboarding. The complexity also increases the knowledge that's needed to track product roadmaps and  the latest service-level guidance.
+- Training becomes more complex as the number of components in the workload increases. This complexity affects onboarding time. The complexity also increases the knowledge needed to track product roadmaps and the latest service-level guidance.
 
 ## Reliability tradeoffs with Performance Efficiency
 
