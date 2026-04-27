@@ -98,7 +98,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - Security benefits from high fidelity logging that supports baseline-deviation alerting and incident response. The volume can crowd out insights targeted at reliability or performance.
 
-- Data masking compliance redacts log segments, or even large amounts of tabular data, to protect confidentiality. The team must evaluate how that observability gap affects alerting and hinder incident response.
+- Data masking compliance redacts log segments, or even large amounts of tabular data, to protect confidentiality. The team must evaluate how that observability gap affects alerting and hinders incident response.
 
 - Strong resource segmentation complicates observability. It requires additional cross-service distributed tracing and correlation to capture flow traces. The segmentation also increases the compute and data surface to protect.
 
