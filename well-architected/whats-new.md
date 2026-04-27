@@ -3,13 +3,47 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 03/13/2026
+ms.date: 04/27/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## March 2026
+
+### New articles
+
+- [Build a monitoring system for Azure workloads](./design-guides/monitoring.md): Learn how to design and implement monitoring solutions through four phases: instrumentation, collection, analysis, and visualization. This guidance helps you build monitoring as a core architectural capability that connects technical signals to operational outcomes.
+
+- [Architecture strategies for testing](./operational-excellence/testing.md): Learn how to adopt testing practices that align with business objectives and maintain quality standards throughout the development life cycle. This guidance helps prevent defects, reduce rework, and build confidence in your workload through effective test strategies and planning.
+
+- [High-performance computing (HPC) workloads on Azure](./hpc/get-started-overview.md): This article is the overview for the new HPC workload documentation set. Learn about architectural considerations for building and operating HPC workloads on Azure. This guidance addresses common HPC challenges and provides design strategies based on Well-Architected Framework principles for compute-intensive operations that require massive parallelism and specialized hardware. This new workload includes the following articles:
+
+  - [Architecture pattern for HPC workloads on Azure](./hpc/hpc-architecture-pattern.md): Learn about a foundational architecture pattern for HPC on Azure that covers user access, job scheduling, compute clusters, high-performance interconnects, and storage systems. This guidance helps you select components that align with your workload type, scale requirements, and performance needs.
+
+  - [Design methodology for HPC workloads on Azure](./hpc/hpc-design-methodology.md): Learn about a systematic design methodology for defining and refining HPC requirements based on workload coupling and communication patterns. This guidance helps you make informed decisions about compute, network, and placement choices while optimizing for scalability and cost.
+
+  - [Design principles for HPC workloads on Azure](./hpc/hpc-design-principles.md): Learn about design principles grounded in Well-Architected Framework pillars for HPC environments. This guidance helps you design systems that balance performance, reliability, and cost while managing operational complexity across compute, storage, networking, and job orchestration.
+
+### Updated articles
+
+- [Architecture best practices for Azure SQL Managed Instance](./service-guides/azure-sql-managed-instance.md): We rewrote the SQL Managed Instance service guide to provide comprehensive guidance across all five Well-Architected Framework pillars. We added guidance for Security, Cost Optimization, and Performance Efficiency, including recommendations for Transparent Data Encryption (TDE) with customer-managed keys, Microsoft Defender for SQL, cost modeling for always-provisioned compute, instance pools, Azure Hybrid Benefit, Query Store, and in-memory online transaction processing (OLTP).
+
+- [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We corrected minor typos and punctuation in the observability guidance.
+
+- [Architecture strategies for enabling and implementing automation in a workload](./operational-excellence/enable-automation.md): We consolidated and expanded content from multiple automation guides. We added guidance for automation services, including Azure Functions, GitHub Actions, Azure Automation, Azure Update Manager, Azure Deployment Environments, Azure Logic Apps, and Power Automate.
+
+- [Architecture strategies for securing a development life cycle](./security/secure-development-lifecycle.md): We consolidated content from two articles into one comprehensive secure development life cycle guide. We added guidance for developer environment security, including integrated development environment (IDE) extensions for real-time code monitoring, credential managers for secret protection, isolated workspaces like GitHub Codespaces and Microsoft Dev Box, and golden images for production deployments. We added recommendations for security exercises, including tabletop simulations and red-teaming.
+
+- [Architecture best practices for Azure Container Apps](./service-guides/azure-container-apps.md): We refreshed the Container Apps service guide with updated guidance for GPU workloads, premium ingress, private endpoints, dynamic sessions, and the managed OpenTelemetry agent. We also updated recommendations for Reliability, Cost Optimization, and Performance Efficiency.
+
+- We clarified zonal redundancy terminology and made its usage consistent throughout several articles, such as [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md) and [Reliability design principles](./reliability/principles.md).
+
+- We added a terminology table to design guides that previously didn't include one, such as [Recommendations for developing background jobs](./design-guides/background-jobs.md) and [Recommendations for handling transient faults](./design-guides/handle-transient-faults.md).
+
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture best practices for Azure Databricks](./service-guides/azure-databricks.md) and [Architecture best practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md).
 
 ## February 2026
 
@@ -325,10 +359,3 @@ This month, we made significant updates to some of our service guides. Here are 
 
 - [Architecture Best Practices for Azure Virtual Machines and Scale Sets](./service-guides/virtual-machines.md): We made updates to the guidance about Azure Virtual Machines and Scale Sets. Explore the fully updated content including new recommendations for configuring automatic recovery options to protect your workloads.
 
-## March 2025
-
-### Updated articles
-
-- [Architecture Best Practices for Azure Front Door](./service-guides/azure-front-door.md): We added details on deployment strategies and the importance of caching static content to the design checklist. Recommendations were updated to include new links and advice on managing traffic, health probes, and optimizing caching.
-
-- [Design review checklist for Operational Excellence](./operational-excellence/checklist.md): We simplified the design review checklist for Operational Excellence to make the recommendations more concise, focused, and actionable.
