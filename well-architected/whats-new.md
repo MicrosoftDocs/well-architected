@@ -3,7 +3,7 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 04/24/2026
+ms.date: 04/27/2026
 ms.topic: whats-new
 ---
 
@@ -29,7 +29,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
-- [Architecture best practices for Azure SQL Managed Instance](./service-guides/azure-sql-managed-instance.md): We rewrote the SQL Managed Instance service guide by using the latest templates to provide comprehensive guidance across all five Well-Architected Framework pillars. We added guidance for Security, Cost Optimization, and Performance Efficiency, including recommendations for Transparent Data Encryption (TDE) with customer-managed keys, Microsoft Defender for SQL, cost modeling for always-provisioned compute, instance pools, Azure Hybrid Benefit, Query Store, and in-memory online transaction processing (OLTP).
+- [Architecture best practices for Azure SQL Managed Instance](./service-guides/azure-sql-managed-instance.md): We rewrote the SQL Managed Instance service guide to provide comprehensive guidance across all five Well-Architected Framework pillars. We added guidance for Security, Cost Optimization, and Performance Efficiency, including recommendations for Transparent Data Encryption (TDE) with customer-managed keys, Microsoft Defender for SQL, cost modeling for always-provisioned compute, instance pools, Azure Hybrid Benefit, Query Store, and in-memory online transaction processing (OLTP).
 
 - [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We corrected minor typos and punctuation in the observability guidance.
 
@@ -37,7 +37,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for securing a development life cycle](./security/secure-development-lifecycle.md): We consolidated content from two articles into one comprehensive secure development life cycle guide. We added guidance for developer environment security, including integrated development environment (IDE) extensions for real-time code monitoring, credential managers for secret protection, isolated workspaces like GitHub Codespaces and Microsoft Dev Box, and golden images for production deployments. We added recommendations for security exercises, including tabletop simulations and red-teaming.
 
-- [Architecture best practices for Azure Container Apps](./service-guides/azure-container-apps.md): We refreshed the Container Apps service guide with updated guidance for GPU workloads, premium ingress, private endpoints, dynamic sessions, and the managed OpenTelemetry agent. We also updated recommendations for reliability, cost optimization, and performance efficiency.
+- [Architecture best practices for Azure Container Apps](./service-guides/azure-container-apps.md): We refreshed the Container Apps service guide with updated guidance for GPU workloads, premium ingress, private endpoints, dynamic sessions, and the managed OpenTelemetry agent. We also updated recommendations for Reliability, Cost Optimization, and Performance Efficiency.
 
 - We clarified zonal redundancy terminology and made its usage consistent throughout several articles, such as [Data platform considerations for mission-critical workloads on Azure](./mission-critical/mission-critical-data-platform.md) and [Reliability design principles](./reliability/principles.md).
 
