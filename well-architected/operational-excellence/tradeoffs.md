@@ -3,7 +3,7 @@ title: Operational Excellence tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for operational excellence.
 author: ferantivero
 ms.author: chkittel
-ms.date: 10/10/2024
+ms.date: 04/27/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 
 Operational Excellence provides workload quality through the implementation of clear team standards, understood responsibility and accountability, attention to customer outcomes, and team cohesion. The implementation of these goals is rooted in DevOps, which recommends minimizing process variance, reducing human error, and ultimately increasing the return of value for the workload. That value isn't just measured against the functional requirements served by the components of the workload. It's also measured by the value that the team delivers in striving for improvement.
 
-During the design phase of a workload and over its lifecycle, as continuous improvement steps are taken, it's important to consider how decisions based on the [Operational Excellence design principles](./principles.md) and the recommendations in the [Design review checklist for Operational Excellence](./checklist.md) might influence the goals and optimizations of other pillars. Certain decisions might benefit some pillars but constitute tradeoffs for others. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations.
+When you design a workload and improve it across its lifecycle, consider how decisions based on the [Operational Excellence design principles](./principles.md) and the recommendations in the [Design review checklist for Operational Excellence](./checklist.md) might influence the goals and optimizations of other pillars. Some operational decisions benefit one pillar but constitute tradeoffs for another. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations.
 
 ## Operational Excellence tradeoffs with Reliability
 
@@ -50,7 +50,7 @@ During the design phase of a workload and over its lifecycle, as continuous impr
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased desire for transparency.** A secure workload is based on designs that protect the confidentiality of data that flows through the components of the system.
 
-Observability platforms ingest data of all types to gain insights into a workload's health and behavior. As teams try to attain higher fidelity in observability data, there's an increased risk that data classification controls, like data masking, of the source systems don't extend to the logs and log sinks of the observability platform.
+Observability platforms ingest data of all types to surface insights into a workload's health and behavior. As teams pursue higher fidelity in observability data, they risk that data classification controls in source systems, like data masking, don't extend to the logs and log sinks of the observability platform.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced segmentation.** A key security approach for isolating access and function is to design a strong segmentation strategy. This design is implemented through resource isolation and identity controls.
 
@@ -78,13 +78,13 @@ The Operational Excellence pillar never recommends activities that reduce produc
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Decreased focus on delivery activities.** Workload team members deliver increased workload value by efficiently performing tasks that are aligned to their capabilities.
 
-- Workload teams that spend time creating and refining a healthy and responsible support structure and incident response are providing a valuable service to the workload's users. As the support effort increases (for example, formal on-call rotations), usually because of a change in business criticality, the costs of these activities increase. This cost increase can be the result of an increase in staff or can be incurred indirectly in the form of attention that's shifted from delivery activities to supporting functions.
+- Workload teams provide valuable service to users by building a healthy support structure and incident response process. As that effort grows (for example, formal on-call rotations) due to changes in business criticality, costs grow too, either through extra staff or through attention shifted away from delivery.
 
 - Training is a critical part of a workload team's personal continuous improvement process. This training can be formal or self-directed during personal enrichment time. As the amount of training time increases, the amount of time available for direct development of the workload decreases. Investment in training is diminished when the training isn't role-based or specifically relevant to the workload or its future.
 
 - Standardized routine operational tasks for protecting the reliability, security, and performance efficiency of a workload take time to define, refine, and perform. This time isn't directly spent on delivery. Some examples of these tasks are comprehensive change impact analysis, change control processes, thorough testing, and increased patch management. As the frequency, comprehensiveness, or operational burden of these tasks increases, the time invested also increases.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff:  Increased tooling demands and diversity.** The Cost Optimization pillar recommends the reduction of tooling sprawl, consolidation of vendors, and a right-sized approach to all tooling purchases.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased tooling demands and diversity.** The Cost Optimization pillar recommends the reduction of tooling sprawl, consolidation of vendors, and a right-sized approach to all tooling purchases.
 
 A workload team purchases tools and hardware to support activities that are performed during the entire software development lifecycle (SDLC), including planning and design, development and testing, and monitoring. The marketplace for tooling in this space is growing. Tools are offered at various price points that usually correspond to the tools' features and capabilities. Except for free offerings, these tools incur initial licensing costs, which might be per-user, per-device, or site-wide. They often also require ongoing maintenance contracts. New vendor relationships might need to be established. Here are some examples of expected tooling or hardware spending that's associated with the principles of operational excellence:
 
@@ -111,7 +111,7 @@ A workload team purchases tools and hardware to support activities that are perf
 
 - Many deployment models require the use of gateway routing access patterns, which can introduce latency. This latency draws against the performance target budget for the related flows.
 
-- Some Architecture design patterns that support "independent change over time" approaches to support the ideals of incremental improvement can introduce latency due to the traversal of additional components. This latency can be introduced by gateways, messaging brokers, or anti-corruption layers.
+- Architecture patterns that enable incremental improvement by letting components change independently over time, like gateways, messaging brokers, and anti-corruption layers, introduce latency from the additional component traversal.
 
 ## Related links
 
