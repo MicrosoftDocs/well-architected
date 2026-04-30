@@ -162,32 +162,32 @@
 		},
 		{
 			"source_path": "well-architected/sap/cost-optimization.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/sap/operational-excellence.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/sap/overview.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/sap/performance-efficiency.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/sap/reliability.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/sap/security.md",
-			"redirect_url": "/azure/architecture/framework/sap/get-started",
+			"redirect_url": "/azure/sap/",
 			"redirect_document_id": false
 		},
 		{
@@ -884,6 +884,51 @@
 			"source_path": "well-architected/services/messaging/event-grid/reliability.md",
 			"redirect_url": "/azure/well-architected/service-guides/event-grid/reliability",
 			"redirect_document_id": true
+		},
+		{
+			"source_path": "well-architected/sap/get-started.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-principles.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/quick-links.yml",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/application-design.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/application-platform.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/data-platform.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/networking-and-connectivity.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/operational-procedures.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sap/design-areas/security.md",
+			"redirect_url": "/azure/sap/",
+			"redirect_document_id": false
 		},
 		{
 			"source_path": "well-architected/services/messaging/event-hubs/operational-excellence.md",
