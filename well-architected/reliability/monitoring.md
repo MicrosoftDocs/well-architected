@@ -164,6 +164,8 @@ You need clear insight into platform health to manage reliability effectively. T
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
 
+- [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) enables you to define, measure, and visualize the health state of Azure resources and workload components based on operational metrics and dependencies.
+
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that's used to edit and run log queries against data in the Log Analytics workspace.
 
 - [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extension of Azure Monitor. It provides application performance monitoring (APM) features.

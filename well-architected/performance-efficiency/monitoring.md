@@ -171,6 +171,8 @@ To address this, use synthetic transactions, which sends automated requests thro
 
 **Data collection and storage**: Use [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-workspace-overview) to centralize your performance data with configurable [retention policies](/azure/azure-monitor/logs/data-retention-archive). Create multiple workspaces to segment data by environment or compliance requirements.
 
+**Health modeling**: [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) enables you to define, measure, and visualize the health state of Azure resources and workload components based on operational metrics and dependencies.
+
 **Application monitoring**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) collects application-level telemetry including request rates, response times, and exceptions. Enable [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to correlate performance across distributed components.
 
 **Infrastructure monitoring**: Enable [diagnostic settings](/azure/azure-monitor/essentials/monitor-azure-resource#monitoring-data-from-azure-resources) on all Azure services to collect platform logs and metrics. Use [Azure Diagnostics extension](/azure/azure-monitor/agents/diagnostics-extension-overview) for detailed VM performance data. Explore telemetry options for your specific platform. For example, Kubernetes clusters emit rich performance telemetry through [Prometheus](/azure/azure-monitor/metrics/prometheus-metrics-overview) integrations.

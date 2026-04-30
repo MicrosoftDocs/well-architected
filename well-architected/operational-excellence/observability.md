@@ -160,6 +160,8 @@ We recommend reading this section in the companion implementation guide: [Antipa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a  monitoring solution for collecting, analyzing, and responding to monitoring data from your cloud and on-premises environments. 
 
+- [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) is a feature in Azure Monitor that models and tracks the health state of Azure resources, enabling workload-level health visibility.
+
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that you can use to edit and run log queries against data in the Log Analytics workspace.
 
    If you're using multiple workspaces, see the Log Analytics workspace [architecture guide](/azure/azure-monitor/logs/workspace-design) for best practices.

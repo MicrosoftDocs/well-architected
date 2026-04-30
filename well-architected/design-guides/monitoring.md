@@ -290,6 +290,8 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is the central platform for collecting, analyzing, and acting on telemetry data from cloud and on-premises environments. It provides unified metrics, logs, and application monitoring.
 
+   - [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) enables you to define, measure, and visualize the health state of Azure resources and workload components based on operational metrics and dependencies.
+
   - [Azure Monitor Metrics](/azure/azure-monitor/platform/metrics-supported) collects time-series data from monitored resources and supports real-time analysis and alerting.
 
   - [Azure Monitor Logs](/azure/azure-monitor/logs/data-platform-logs) provides Log Analytics with KQL for analyzing log data and creating custom insights.
