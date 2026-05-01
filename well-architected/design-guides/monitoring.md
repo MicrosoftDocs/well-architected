@@ -205,7 +205,7 @@ Analysis can also generate alerts to notify you when action is needed. Here are 
 - Integrate with automated workflows like your support ticketing. systems, auto-remediation, scaling actions.
 - Assign ownership to the responsible team.
 - Set prioritization indicators like severity, which separate critical issues from informational notifications.
-- Alert on health state transitions rather than isolated metric thresholds. A health model aggregates multiple correlated signals into a single health state per entity (healthy, degraded, unhealthy), so alerting on a state change captures compound conditions that no single metric would trigger alone. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to define entities with parent-child relationships, configure signals from resource metrics or Log Analytics queries, and generate alerts when health degrades across the hierarchy.
+- Use a health model that aggregates multiple correlated signals into health states, then alert on state transitions, not isolated metric thresholds.
 
 #### Example: Correlation, aggregation, analysis
 
@@ -234,7 +234,7 @@ Visualization converts complex telemetry into actionable insights using dashboar
 
 #### Best practices for visualization
 
-- **Align with your [health model](./health-modeling.md)**. Label each component as Healthy, Degraded, or Unhealthy based on your service level objectives (SLOs). Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to define health state rules for each resource entity and its dependencies, then surface those states in dashboards. The platform provides built-in graphical and tabular visualizations with drill-down from overall system health to individual entities, plus query and API access for integration with tools like Grafana.
+- **Align with your [health model](./health-modeling.md)** and visualise components using a traffic-light colour scheme based on your service level objectives (SLOs) and additional health signals; Healthy (green), Degraded (amber), and Unhealthy (red). Define what it means for the workload and each component to be healthy, degraded, or unhealthy. This quantified baseline lets you detect movement away from expected behavior. Visualize those states in dashboards with drill-down from system-level health to individual entities.
 
 - **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
 
@@ -291,7 +291,7 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is the central platform for collecting, analyzing, and acting on telemetry data from cloud and on-premises environments. It provides unified metrics, logs, and application monitoring.
 
-   - [Azure Monitor health models](/azure/azure-monitor/health-models/overview) enables you to define, measure, and visualize the health state of Azure resources and workload components based on operational metrics and dependencies.
+   - [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
   - [Azure Monitor Metrics](/azure/azure-monitor/platform/metrics-supported) collects time-series data from monitored resources and supports real-time analysis and alerting.
 

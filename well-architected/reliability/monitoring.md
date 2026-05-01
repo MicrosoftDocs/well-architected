@@ -50,7 +50,7 @@ Monitor reliability from a business and user perspective. As part of your failur
 
 Reliability also reflects quality of service. In a checkout flow, users should be able to complete purchases end-to-end without interruption. Use percentile-based latency metrics such as p50, p95, and p99 to understand real user experience, with special attention to tail latency where performance issues often surface first.
 
-Incorporate user-facing reliability signals into your health model so that degraded user experience is reflected as a health state change. Model the resources that support each critical user flow as entities with dependency relationships, so when an underlying component degrades, the health of the parent entity reflects that impact. This connects user impact directly to system-level visibility and ensures operators see the business consequence, not just the technical symptom. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to define these entities, configure signals from metrics and logs, and propagate health states upward through dependency chains.
+Incorporate user-facing signals into your health model so degraded quality of service triggers health state changes. Model critical user flows so that component degradation propagates upward, linking user impact to system visibility. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to assess the reliability of your Azure workloads.
 
 > [!IMPORTANT]
 >
@@ -103,7 +103,7 @@ Tune alerts for real conditions by focusing on end-to-end experience and critica
 
 Monitor each layer of the system, application, data/storage, and network, to maintain a complete view of reliability signals.
 
-Use a health model to unify signals across layers into a single hierarchical view. Rather than monitoring application, data, and network independently, model resources from each layer as entities with parent-child relationships that reflect your actual dependency chains. Health states propagate upward through these relationships, so when a lower-layer resource degrades, the entities that depend on it reflect that impact. This enables operators to identify whether degradation originates from infrastructure constraints, dependency failures, or application-level issues without manually correlating separate dashboards. [Azure Monitor health models](/azure/azure-monitor/health-models/overview) supports this pattern with multi-source signal evaluation (metrics, logs, and Prometheus queries), hierarchical propagation with configurable impact levels, and auto-discovery of resources via Azure Resource Graph.
+Use a health model to unify signals across system layers, representing Azure resources and application components within user and system flows.
 
 At the application layer, track success, failure, and latency using logs, metrics, and health probes. Use correlation IDs to follow requests across services and make troubleshooting easier. Collect logs asynchronously so they don't impact request performance, and keep diagnostic and audit logs separate for clarity. Add synthetic transactions and endpoint probes to confirm what customers actually experience.
 
@@ -168,7 +168,7 @@ You need clear insight into platform health to manage reliability effectively. T
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
 
-- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) enables you to define, measure, and visualize the health state of Azure resources and workload components based on operational metrics and dependencies.
+- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that's used to edit and run log queries against data in the Log Analytics workspace.
 
