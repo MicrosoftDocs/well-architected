@@ -42,7 +42,7 @@ Define workload health indicators, KPIs, and performance metrics so that telemet
 
 Tie telemetry to system and user flows. This helps correlate flow health with collected data in addition to overall workload health.
 
-Implement a health model that maps collected telemetry to defined health states. Use [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) to model resources as entities with parent-child dependency relationships. Configure signals from Azure resource metrics, Log Analytics queries, or Prometheus to evaluate each entity's health. When a dependency degrades, health propagates upward through the hierarchy so that consuming components reflect the impact. This approach turns raw telemetry into structured, actionable system state rather than leaving teams to interpret disconnected signals.
+Implement a health model that maps collected telemetry to defined health states. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to model resources as entities with parent-child dependency relationships. Configure signals from Azure resource metrics, Log Analytics queries, or Azure Monitor workspace Prometheus to evaluate each entity's health. When a dependency degrades, health propagates upward through the hierarchy so that consuming components reflect the impact. This approach turns raw telemetry into structured, actionable system state rather than leaving teams to interpret disconnected signals.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Teams spend time manually defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure-as-code templates. Make sure there's human oversight to ensure AI-driven observability stays accurate and aligned with standards.
 
@@ -116,7 +116,7 @@ Align telemetry with system and user flows to correlate flow health with overall
 
 Design dashboards and reports around operational health models. Visualizations should allow teams to quickly identify issues, understand trends, and prioritize responses.
 
-A health model provides the semantic layer between raw telemetry and operational decisions. Rather than building dashboards around individual metrics, structure visualization around health states with drill-down capability from system-level health to individual resource entities. [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) supports this pattern with built-in graphical and tabular visualizations of health state across the entity hierarchy, plus query and API access for integrating health data into tools like Grafana.
+A health model provides the semantic layer between raw telemetry and operational decisions. Rather than building dashboards around individual metrics, structure visualization around health states with drill-down capability from system-level health to individual resource entities. [Azure Monitor health models](/azure/azure-monitor/health-models/overview) supports this pattern with built-in graphical and tabular visualizations of health state across the entity hierarchy, plus query and API access for integrating health data into tools like Grafana.
 
 Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
 
@@ -128,7 +128,7 @@ For database workloads, evaluate built-in monitoring dashboards that cloud servi
 
 Set alerts based on workload health, not arbitrary values. Alerts should be actionable and provide context. Establish a clear, accountable alerting process that defines owners, actions, and scope, and configure alerts with appropriate granularity and verbosity to minimize noise while ensuring critical issues are promptly detected.
 
-Define alerts on health state transitions rather than individual metric thresholds where possible. A health model aggregates multiple signals into a single health state per entity, so alerting on a transition from healthy to degraded captures compound conditions that no single metric would trigger alone. Use [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) to configure entity-level alerts that fire when health states change, reducing alert noise while maintaining coverage across dependencies.
+Define alerts on health state transitions rather than individual metric thresholds where possible. A health model aggregates multiple signals into a single health state per entity, so alerting on a transition from healthy to degraded captures compound conditions that no single metric would trigger alone. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to configure entity-level alerts that fire when health states change, reducing alert noise while maintaining coverage across dependencies.
 
 Validate thresholds using past experience and regular testing. Use fast storage for alert-generating data to enable rapid notification. Configure alerts for well-defined scopes and adjust verbosity to minimize noise.
 
@@ -166,7 +166,7 @@ We recommend reading this section in the companion implementation guide: [Antipa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a  monitoring solution for collecting, analyzing, and responding to monitoring data from your cloud and on-premises environments. 
 
-- [Azure Monitor Health Models](/azure/azure-monitor/health-models/overview) is a feature in Azure Monitor that models and tracks the health state of Azure resources, enabling workload-level health visibility.
+- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) is a feature in Azure Monitor that models and tracks the health state of Azure resources, enabling workload-level health visibility.
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that you can use to edit and run log queries against data in the Log Analytics workspace.
 
