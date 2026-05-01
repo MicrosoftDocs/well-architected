@@ -234,7 +234,7 @@ Visualization converts complex telemetry into actionable insights using dashboar
 
 #### Best practices for visualization
 
-- **Align with your [health model](./health-modeling.md)** that show components should be labeled as Healthy, Degraded, or Unhealthy according to your service level objectives (SLOs). Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to define health state rules for each resource entity and its dependencies, then surface those states in dashboards. The platform provides built-in graphical and tabular visualizations with drill-down from overall system health to individual entities, plus query and API access for integration with tools like Grafana.
+- **Align with your [health model](./health-modeling.md)**. Label each component as Healthy, Degraded, or Unhealthy based on your service level objectives (SLOs). Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to define health state rules for each resource entity and its dependencies, then surface those states in dashboards. The platform provides built-in graphical and tabular visualizations with drill-down from overall system health to individual entities, plus query and API access for integration with tools like Grafana.
 
 - **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
 
