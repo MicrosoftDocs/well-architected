@@ -18,8 +18,6 @@ It's also important to note that there are often significant trade-offs associat
 > [!IMPORTANT]
 > This article is part of the [Azure Well-Architected mission-critical workload](index.yml) series. If you aren't familiar with this series, we recommend you start with [what is a mission-critical workload?](mission-critical-overview.md#what-is-a-mission-critical-workload)
 >
-> ![GitHub logo](./../_images/github.svg) [Mission-Critical open source project](https://github.com/azure/alwayson)
->
 
 ## Alignment with the Zero Trust model
 
@@ -60,7 +58,7 @@ As you assess the security posture of the application, start with these question
 
 ### Design recommendations
 
-- Use Azure Policy to enforce security and reliability configurations for all service, ensuring that any deviation is either remediated or prohibited by the control plane at configuration-time, helping to mitigate threats associated with 'malicious admin' scenarios.
+- Use Azure Policy to enforce security and reliability configurations. For details, see [Policy-driven governance](mission-critical-security.md#policy-driven-governance).
 
 - Use Microsoft Entra Privileged Identity Management (PIM) within production subscriptions to revoke sustained control plane access to production environments. This will significantly reduce the risk posed from 'malicious admin' scenarios through additional 'checks and balances'.
 
@@ -85,7 +83,7 @@ As you assess the security posture of the application, start with these question
 
 - Enable Microsoft Defender for Cloud (formerly known as Azure Security Center) for all subscriptions that contain the resources for a mission-critical workload.
   - Use Azure Policy to enforce compliance.
-  - Enable Azure Defender for all services that support the capability.
+  - Enable [Microsoft Defender for Cloud plans](/azure/defender-for-cloud/defender-for-cloud-introduction) for all services that support the capability.
 
 - Embrace [DevSecOps](/azure/devops/devsecops/) and implement security testing within CI/CD pipelines.
   - Test results should be measured against a compliant security posture to inform release approvals, be they automated or manual.
@@ -146,6 +144,9 @@ To help navigate these challenges, a layered defense-in-depth approach should be
 
 ## Network intrusion protection
 
+> [!NOTE]
+> For detailed Azure Virtual Network configuration guidance, see the [Virtual Network service guide](../service-guides/virtual-network.md).
+
 Preventing unauthorized access to a mission-critical application and encompassed data is vital to maintain availability and safeguard data integrity.
 
 ### Design considerations
@@ -153,16 +154,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 - Zero Trust assumes a breached state and verifies each request as though it originates from an uncontrolled network.
   - An advanced zero-trust network implementation employs micro-segmentation and distributed ingress/egress micro-perimeters.
 
-- Azure PaaS services are typically accessed over public endpoints. Azure provides capabilities to secure public endpoints or even make them entirely private.
-  - Azure Private Link/Private Endpoints provide dedicated access to an Azure PaaS resource using private IP addresses and private network connectivity.
-  - Virtual Network Service Endpoints provide service-level access from selected subnets to selected PaaS services.
-  - Virtual Network Injection provides dedicated private deployments for supported services, such as App Service through an App Service Environment.
-    - Management plane traffic still flows through public IP addresses.
-  
-- For supported services, Azure Private Link using Azure Private Endpoints addresses [data exfiltration risks associated with Service Endpoints](/azure/private-link/private-link-faq#what-is-the-difference-between-service-endpoints-and-private-endpoints-), such as a malicious admin writing data to an external resource.
-
-- When restricting network access to Azure PaaS services using Private Endpoints or Service Endpoints, a secure network channel will be required for deployment pipelines to access both the Azure control plane and data plane of Azure resources in order to deploy and manage the application.
-  - [Private self-hosted build agents](/azure/devops/pipelines/agents/agents?tabs=browser#install) deployed onto a private network as the Azure resource can be used as a proxy to execute CI/CD functions over a private connection. A separate virtual network should be used for build agents.
+- Use private connectivity for Azure PaaS services where supported, and account for CI/CD access to private data planes. For details, see [Virtual network integration](mission-critical-networking-connectivity.md#virtual-network-integration).
     - Connectivity to the private build agents from CI/CD tooling is required.
   - An alternative approach is to modify the firewall rules for the resource on-the-fly within the pipeline to allow a connection from an Azure DevOps agent public IP address, with the firewall subsequently removed after the task is completed.
     - However, this approach is only applicable for a subset of Azure services. For example, this isn't feasible for private AKS clusters.
@@ -180,7 +172,7 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 ### Design recommendations
 
-- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface.
+- Limit public network access to the absolute minimum required for the application to fulfill its business purpose to reduce the external attack surface. 
   - Use [Azure Private Link](/azure/private-link/private-endpoint-overview#private-link-resource) to establish [private endpoints](/azure/private-link/private-endpoint-overview) for Azure resources that require secure network integration.
   - Use [hosted private build agents](/azure/devops/pipelines/agents/agents#install) for CI/CD tooling to deploy and configure Azure resources protected by Azure Private Link.
     - [Microsoft-hosted agents](/azure/devops/pipelines/agents/agents#microsoft-hosted-agents) won't be able to directly connect to network integrated resources.
@@ -190,16 +182,13 @@ Preventing unauthorized access to a mission-critical application and encompassed
 
 - Use a DDoS standard protection plan to secure all public IP addresses within the application.
 
-- Use Azure Front Door with web application firewall policies to deliver and help protect global HTTP/S  applications that span multiple Azure regions.
-  - Use Header ID validation to lock down public application endpoints so they only accept traffic originating from the Azure Front Door instance.
+- Use Azure Front Door with web application firewall policies for global HTTP/S workloads. For details, see [Application delivery services](mission-critical-networking-connectivity.md#application-delivery-services).
 
 - If additional in-line network security requirements, such as deep packet inspection or TLS inspection, mandate the use of Azure Firewall Premium or Network Virtual Appliance (NVA), ensure it's configured for maximum high availability and redundancy.
 
 - If packet capture requirements exist, use Network Watcher packets to capture despite the limited capture window.
 
-- Use Network Security Groups and Application Security Groups to micro-segment application traffic.
-  - Avoid using a security appliance to filter intra-application traffic flows.
-  - Consider the use of Azure Policy to enforce specific NSG rules are always associated with application subnets.
+- Use Network Security Groups and Application Security Groups to micro-segment application traffic. For details, see [Micro-segmentation and Kubernetes network policies](mission-critical-networking-connectivity.md#micro-segmentation-and-kubernetes-network-policies).
 
 - Enable NSG flow logs and feed them into Traffic Analytics to gain insights into internal and external traffic flows.
 
@@ -252,9 +241,7 @@ Encryption is a vital step toward ensuring data integrity and is ultimately one 
 - Use service-managed keys for data protection where possible, removing the need to manage encryption keys and handle operational tasks such as key rotation.
   - Only use customer-managed keys when there's a clear regulatory requirement to do so.
 
-- Use [Azure Key Vault](/azure/key-vault/general/overview) as a secure repository for all secrets, certificates, and keys if additional encryption mechanisms or customer-managed keys need considered.
-  - Provision Azure Key Vault with the soft delete and purge policies enabled to allow retention protection for deleted objects.
-  - Use HSM backed Azure Key Vault SKU for application production environments.
+- Use Azure Key Vault for secrets, certificates, and keys when you need customer-managed cryptographic material or other secrets. For details, see [Secret management](mission-critical-operational-procedures.md#secret-management).
 
 - Deploy a separate Azure Key Vault instance within each regional deployment stamp, providing fault isolation and performance benefits through localization, as well as navigating the scale limits imposed by a single Key Vault instance.
   - Use a dedicated Azure Key Vault instance for application global resources.
@@ -334,24 +321,7 @@ This section will therefore explore key considerations and recommendations surro
 
 ## IaaS specific considerations when using Virtual Machines
 
-In scenarios where the use of IaaS Virtual Machines is required, some specifics have to be taken into consideration.
-
-### Design considerations
-
-- Images are not updated automatically once deployed.
-- Updates are not installed automatically to running VMs.
-- Images and individual VMs are typically not hardened out-of-the-box.
-
-### Design recommendations
-
-- Do not allow direct access via the public Internet to Virtual Machines by providing access to SSH, RDP or other protocols. Always use Azure Bastion and jumpboxes with limited access to a small group of users.
-- Restrict direct internet connectivity by using Network Security Groups, (Azure) Firewall or Application Gateways (Level 7) to filter and restrict egress traffic.
-- For multi-tier applications consider using different subnets and use Network Security Groups to restrict access in between.
-- Prioritize the use of Public Key authentication, when possible. Store secrets in a secure place like Azure Key Vault.
-- Protect VMs by using authentication and access control.
-- Apply the same security practices as described for mission-critical application scenarios.
-
-Follow and apply security practices for mission-critical application scenarios as described above, when applicable, as well as the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
+Follow the operational and security practices for IaaS VMs when VMs are required, including enabling [Microsoft Defender for Cloud](/azure/defender-for-cloud/defender-for-cloud-introduction) for all services that support the capability. For details, see [IaaS-specific considerations when using VMs](mission-critical-operational-procedures.md#iaas-specific-considerations-when-using-vms).
 
 ## Next step
 

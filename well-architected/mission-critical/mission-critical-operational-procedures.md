@@ -27,7 +27,7 @@ The DevOps team for a mission-critical application must be responsible for these
   - Network management for application components.
   - Cost management for application resources.
 
-*DevSecOps* expands the DevOps model by integrating security monitoring, application audits, and quality assurance with development and operations throughout the application lifecycle. DevOps teams are needed for security-sensitive and highly regulated scenarios to ensure that security is incorporated throughout the development lifecycle rather than at a specific release stage or gate.
+*DevSecOps* integrates security monitoring, audits, and quality assurance into the DevOps lifecycle. For details, see [Alignment with the Zero Trust model](mission-critical-security.md#alignment-with-the-zero-trust-model).
 
 ### Design considerations
 
@@ -39,11 +39,9 @@ The DevOps team for a mission-critical application must be responsible for these
 
 ### Design recommendations
 
-- Define configuration settings and updates as code. Apply change management through  code to enable consistent release and update processes, including tasks like key or secret rotation and permissions management. Use pipeline-managed update processes, like scheduled pipeline runs, rather than built-in auto-update mechanisms.
+- Manage configuration settings and updates as code. For details, see [Infrastructure as code deployments](mission-critical-deployment-testing.md#infrastructure-as-code-deployments). Enforce change management through code for routine operations like key or secret rotation and permissions management. Use scheduled pipeline runs for recurring updates, rather than built-in auto-update mechanisms, to maintain operational auditability.
 
-- Don't use central processes or provisioning pipelines for the instantiation or management of application resources. Doing so introduces external application dependencies and additional risk vectors, like those associated with noisy neighbor scenarios.
-
-  If you need to use centralized provisioning processes, ensure that the availability requirements of the dependencies are fully aligned with mission-critical requirements. Central teams must provide transparency so that holistic operationalization of the end-to-end application is achieved.
+- Avoid centralized provisioning dependencies that can introduce noisy neighbor risk. For details, see [Scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture). If centralized provisioning dependencies are unavoidable, align the dependency's availability requirements with mission-critical requirements. Require transparency from central teams on their change management and incident response processes.
 
 - Dedicate a proportion of engineering capacity during each sprint to driving fundamental platform improvements and bolstering reliability. We recommend that you allocate 20-40 percent of capacity to these improvements. 
 
@@ -61,7 +59,7 @@ The DevOps team for a mission-critical application must be responsible for these
 
 ## Application operations
 
-The [application design](mission-critical-application-design.md) and [platform](mission-critical-application-platform.md) recommendations influence operational procedures. There are also operational capabilities provided by various Azure services, particularly for high availability and recovery.
+The [application design](mission-critical-application-design.md) and [platform](mission-critical-application-platform.md) recommendations influence operational procedures. There are also operational capabilities provided by various Azure services, particularly for high availability and recovery. For configuration details, many services provide detailed guidance, e.g. see the [Cosmos DB service guide](../service-guides/cosmos-db.md).
 
 ### Design considerations
 
@@ -89,7 +87,7 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 - Identify critical alerts and define target audiences and systems. Define clear channels to reach appropriate stakeholders. Send only actionable alerts to avoid white noise and prevent operational stakeholders from ignoring alerts and missing important information. Implement continuous improvement to optimize alerting and remove observed white noise.
 
-- Apply policy-driven governance and Azure Policy to ensure the appropriate use of operational capabilities and a reliable configuration baseline across all application services.
+- Apply Azure Policy to enforce operational capabilities and a reliable configuration baseline. For details, see [Policy-driven governance](mission-critical-security.md#policy-driven-governance).
 
 - Avoid the use of resource locks on ephemeral regional resources. Instead, rely on the appropriate use of RBAC and CI/CD pipelines to control operational updates. You can apply resource locks to prevent the deletion of long-lived global resources.
 
@@ -103,7 +101,7 @@ Mission-critical design strongly endorses the principle of ephemeral stateless a
 
 - **Automatic detection of updates**. Set up processes to monitor and automatically detect updates. Use tools like [GitHub Dependabot](https://github.com/dependabot).
 
-- **Testing and validation**. Test and validate new versions of packages, components, and dependencies in a production context before any release. New versions might contain breaking changes. 
+- **Testing and validation**. Test and validate new versions of packages, components, and dependencies in a production context before any release. New versions might contain breaking changes.
 
 - **Runtime dependencies**. Treat runtime dependencies like you would any other change to the application. Older versions might introduce security vulnerabilities and might have a negative effect on performance. Monitor the application runtime environment and keep it up to date.
 
@@ -113,7 +111,7 @@ Mission-critical design strongly endorses the principle of ephemeral stateless a
 
 - Monitor these resources and keep them up to date:
 
-   - The application hosting platform. For example, you need to update the Kubernetes version in Azure Kubernetes Service (AKS) regularly, especially given that support for older versions isn't sustained. You also need to update components that run on Kubernetes, like cert-manager and the Azure Key Vault CSI, and align them with the Kubernetes version in AKS.
+   - The application hosting platform. For example, you need to update the Kubernetes version in Azure Kubernetes Service (AKS) regularly, especially given that support for older versions isn't sustained. You also need to update components that run on Kubernetes, like cert-manager and the Azure Key Vault CSI, and align them with the Kubernetes version in AKS. For configuration details, see the [Kubernetes Service service guide](../service-guides/azure-kubernetes-service.md).
   - External libraries and SDKs (.NET, Java, Python). 
   - Terraform providers.
 
@@ -129,7 +127,7 @@ Many Azure services support Microsoft Entra authentication instead of relying on
 
 ### Design considerations
 
-There are three common approaches to secret management. Each approach reads secrets from the secret store and injects them into the application at a different time.
+There are three common approaches to secret management. Each approach reads secrets from the secret store and injects them into the application at a different time. For configuration details, see the [Kubernetes Service service guide](../service-guides/azure-kubernetes-service.md).
 
 - **Deployment-time retrieval**. The advantage to this approach is that the secret management solution needs to be available only at deployment time because there aren't direct dependencies after that time. Examples include injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
 
@@ -141,7 +139,7 @@ There are three common approaches to secret management. Each approach reads secr
 
 - **Application-startup retrieval**. In this approach, secrets are retrieved and injected at application startup. The benefit is that you can easily update or rotate secrets. You don't need to store secrets on the application platform. A restart of the application is required to fetch the latest value. 
   
-   Common storage choices include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [akv2k8s](https://akv2k8s.io). A native Azure solution, [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references), is also available.
+   Common storage choices include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [akv2k8s](https://akv2k8s.io). A native Azure solution, [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references), is also available. For configuration details, see the [App Service service guide](../service-guides/app-service-web-apps.md).
 
   A disadvantage of this approach is that it creates a runtime dependency on the secret management solution. If the secret management solution experiences an outage, application components already running *might* be able to continue serving requests. Any restart or scale-out operation would likely result in failure.
 
