@@ -33,7 +33,7 @@ The following image shows the possible scopes for scale units. The scopes range 
 
 - **Scope**. The scope of a scale unit, the relationship between scale units, and their components should be defined according to a capacity model. Take into consideration non-functional requirements for performance.
 
-- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale units. Scale units can help you bypass the scale limits of a service. For example, if an AKS cluster in one unit can have only 1,000 nodes, you can use two units to increase that limit to 2,000 nodes.
+- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale units. Scale units can help you bypass the scale limits of a service. For example, if an AKS cluster in one unit can have only [5,000 nodes](/azure/aks/quotas-skus-regions), you can use two units to increase that limit to 10,000 nodes.
 
 - **Expected load**. Use the number of requests for each user flow, the expected peak request rate (requests per second), and daily/weekly/seasonal traffic patterns to inform core scale requirements. Also factor in the expected growth patterns for both traffic and data volume.
 
@@ -70,7 +70,7 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/reliability/availability-zones-overview) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty for interzone data transfer.
+- **Redundancy**. Deploy across multiple regions, and account for zone-level fault tolerance where relevant. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity).
 
 - **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
 
@@ -154,7 +154,7 @@ Here are some additional recommendations:
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 
-- Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/well-architected/devops/monitor-collection-data-storage).
+- Use structured logging and a unified operational data sink. For details, see [Unified data sink for correlated analysis](mission-critical-health-modeling.md#unified-data-sink-for-correlated-analysis).
 
 - Ensure that operational data is used together with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
 
