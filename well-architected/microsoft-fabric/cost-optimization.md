@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 Managing costs in Microsoft Fabric requires architectural foresight, operational discipline, and smart automation. Have a clear understanding of how capacities, storage, and data movement drive expenses to help you enforce effective cost governance.
 
-This article provides architects and engineers with a practical framework to control costs without compromising performance or reliability. You'll learn how to estimate costs, forecast total ownership, and apply optimization strategies through automation, environment management, and governance, ensuring cost control scales alongside your workloads.
+This article provides architects and engineers with a practical framework to control costs without compromising performance or reliability. You'll learn how to estimate costs, forecast total cost of ownership, and apply optimization strategies through automation, environment management, and governance, ensuring cost control scales alongside your workloads.
 
 ## Identify key cost drivers
 
@@ -22,7 +22,7 @@ Organizations can purchase Fabric compute in two primary ways:
 - Pay-as-you-go (PAYG) - capacities are billed per minute while active.
 - Reserved capacity - discounted pricing for one- or three-year commitments.
 
-These options can be combined to support different usage patterns. For example, a reservation can cover predictable baseline workloads while pay-as-you-go capacity supports temporary spikes. Storage costs are billed separately based on the amount of data stored in OneLake.
+These options can be combined to support different usage patterns. For example, a reservation can cover predictable baseline workloads while pay-as-you-go capacity supports temporary spikes. Storage costs are billed separately based on the amount of data stored in OneLake or other Fabric data stores.
 
 Once the pricing model is understood, the next step is identifying what actually drives costs in a Fabric environment.
 
@@ -36,11 +36,15 @@ Once the pricing model is understood, the next step is identifying what actually
 
 Because compute capacity is provisioned ahead of time, costs are tied to the size of the capacity available, not the actual workload utilization. This means underutilized capacities can still generate significant cost.
 
+For bursty, unpredictable jobs, such as certain Spark or data warehousing workloads, consider using autoscale billing model where you pay only for active jobs while your compute resources are running.
+
+Similarly, consider using the throttling protection feature as a safety net for your capacities that may occasionally experience spikes in activities. Throttling protection allow you to operate capacities at a higher level of utilization without the risk of disruptions when capacity resources are exceeded.
+
 #### Recognize hidden and indirect costs
 
 Some costs are not immediately visible during initial deployment but can grow over time if not managed carefully.
 
-For example, storage continues to accumulate charges even if compute capacities are paused. Long data retention periods, cached query results, or soft-deleted data can increase storage consumption. Certain workloads may also require additional licensing, for instance, **Power BI Pro licenses** for report authors and publishers in environments using specific Fabric SKUs.
+For example, storage continues to accumulate charges even if compute capacities are paused. Long data retention periods, cached query results, or soft-deleted data can increase storage consumption. Certain workloads may also require additional licensing, for instance, **Power BI Pro licenses** for report authors and publishers or report consumers on small Fabric SKUs.
 
 Consider indirect costs related to inefficient capacity utilization. Because Fabric billing depends on provisioned capacity rather than workload volume, oversizing capacities or leaving them active unnecessarily can quickly increase operational expenses.
 
@@ -71,10 +75,9 @@ Modeling both scale-up scenarios (larger capacities) and scale-out architectures
 Before deploying large workloads, use available tools to estimate and validate projected costs:
 
 -  [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) - estimates required capacity for expected workloads.
-- [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) - models compute and storage costs across scenarios.
+- [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) - models compute and storage costs.
 - [Microsoft Cost Management and Billing](/azure/cost-management-billing/) - monitors and analyzes actual spending after deployment.
-- [Fabric cost analysis tools](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) from the Microsoft Fabric Toolbox
-
+- [Fabric cost analysis tools](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) - an open-source solution for comprehensive cost analysis and usage insights.
 
 ## Monitor costs and implement governance
 
@@ -87,8 +90,8 @@ A practical way to manage Fabric spending is to treat cost governance as a simpl
 | Step        | Goal                         | Examples                                                     |
 | ----------- | ---------------------------- | ------------------------------------------------------------ |
 | **Observe** | Understand usage patterns    | Monitor CU usage, storage growth, workload activity          |
-| **Control** | Apply governance policies    | Assign workspaces to capacities, enforce tagging, set limits |
 | **Account** | Ensure teams own their usage | Allocate costs, set budgets, review spending                 |
+| **Control** | Apply governance policies    | Assign workspaces to capacities, enforce tagging, set limits |
 
 Start by making capacity usage visible. Fabric workloads often run on shared capacities, which can make it difficult to determine which teams or workloads are driving costs. Monitoring tools help attribute consumption and provide transparency.
 
@@ -97,13 +100,15 @@ Start by making capacity usage visible. Fabric workloads often run on shared cap
 | Cost tracking        | Monitor actual spending          | [Azure Cost Management](/azure/cost-management-billing/)     |
 | Capacity utilization | Identify compute-heavy workloads | [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app) |
 | Cost allocation      | Attribute usage to teams         | [Fabric Chargeback App](/fabric/enterprise/chargeback-app)   |
-| Custom reporting     | Build dashboards and forecasts   | [Fabric Cost Analysis solution accelerator](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) |
+| Custom reporting     | Build dashboards                 | [Fabric Cost Analysis solution accelerator](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) |
 
 Effective cost reporting should provide both operational insight and financial transparency. Useful dashboards typically include capacity utilization trends, storage growth patterns, cost breakdown by workspace or team, and forecasted spending based on historical usage. These insights help architects understand how workloads evolve over time and determine whether capacity sizing and architecture decisions remain appropriate.
 
 Governance policies should guide how resources are used. Common practices include assigning workspaces to specific capacities, pausing development environments when idle, separating dev/test/prod workloads, and investigating sudden spikes in capacity usage. Storage governance is equally important; review retention policies and cached datasets periodically to prevent unnecessary storage growth.
 
-To prevent runaway costs, set clear guardrails on workloads that support autoscaling. Define reasonable scaling limits to prevent compute usage from growing unchecked, and leverage [Fabric's surge protection](/fabric/enterprise/surge-protection) for background operations to smooth demand spikes. These controls let workloads scale as needed while keeping costs predictable and under control.
+To prevent runaway costs, set clear guardrails on workloads that support autoscaling. Define reasonable scaling limits to prevent compute usage from growing unchecked. These controls let workloads scale as needed while keeping costs predictable and under control.
+
+Leverage [Fabric's surge protection](/fabric/enterprise/surge-protection) to apply granular guardrails on the amount of compute resources that specific workloads and workspaces can consume ensuring that sufficient resources remain available for other workloads to run efficiently.
 
 Establish clear ownership and responsibility for Fabric resources. In shared environments, costs can be distributed across teams using tools like the [Fabric Chargeback App](/fabric/enterprise/chargeback-app). Tag capacities and workspaces with owner information and review spending regularly to maintain accountability.
 
@@ -134,7 +139,7 @@ Another strategy is to create temporary environments for testing or validation. 
 
 #### Consider multi-tenant environment factors
 
-Some Fabric solutions support multiple tenants or customers. In these cases, environment design also affects cost allocation. Common isolation models include:
+Some Fabric solutions support multiple tenants or customers (the term "tenant" in this context refers to an instance of a solution supporting a customer, rather than a Fabric Tenant). In these cases, environment design also affects cost allocation. Common isolation models include:
 
 | Isolation model                        | Description                                 | Cost implication                                 |
 | -------------------------------------- | ------------------------------------------- | ------------------------------------------------ |
@@ -151,8 +156,7 @@ Automation can be a powerful lever for reducing Fabric costs. Consider these str
 - Monitor and right-size capacities: Use Fabric Activator or custom scripts to track capacity utilization, identify idle resources, and recommend smaller SKUs when appropriate.
 - Lifecycle management: Automatically provision, scale, or delete environments and capacities based on usage schedules, expiration dates, or workload priorities.
 
-Automation must respect the pricing model in use. For instance, pausing a capacity under a **reserved SKU** may not lower costs, so planning automation around your billing model is essential.
-
+Automation must respect the billing model in use. For instance, pausing a capacity under a reservation may not lower costs, so planning automation around your billing model is essential.
 
 ## Consolidate costs effectively
 
