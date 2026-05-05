@@ -45,7 +45,7 @@ Infrastructure-level failures including regional outages are rare because of Fab
 
 ## Define reliability goals for your workloads
 
-**Measure reliability against your goals**. Start by defining Service Level Objectives (SLO) that make sense for your business. Fabric guarantees 99.9% uptime, but your pipelines, Spark jobs, and Power BI reports might need tighter operational targets. Focus on SLIs like pipeline success rates, job completion times, execution latency, and capacity utilization.
+**Measure reliability against your goals**. Start by defining service level objectives (SLOs) that make sense for your business. Fabric guarantees 99.9% uptime, but your pipelines, Spark jobs, and Power BI reports might need tighter operational targets. Focus on SLIs like pipeline success rates, job completion times, execution latency, and capacity utilization.
 
 Remember external dependencies. A unreliable upstream API reduces your effective availability. Mitigate these risks with caching, queuing, or backup sources. 
 
