@@ -72,7 +72,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - *Log storage*: High fidelity security monitoring and audit data that provide broad coverage increase storage costs. Security observability data is also typically retained longer than operational insights.
 
-- *Increased resource consumption*: In-process and on-host security controls add demand for compute and memory. Encryption in transit and at rest adds demand too. Both can require higher instance counts or larger SKUs.
+- *Increased resource consumption*: In-process and on-host security controls add demand for competing resources such as CPU cycles, memory, disk I/O, and network bandwidth. Encryption in transit and at rest adds demand too. Both can require higher instance counts or larger SKUs.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased process and operational costs.** Personnel process costs are part of the overall total cost of ownership and are factored into a workload's return on investment. Optimizing these costs is a recommendation of the Cost Optimization pillar.
 
