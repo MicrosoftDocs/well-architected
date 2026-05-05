@@ -16,7 +16,7 @@ Use this architecture pattern as a baseline when designing AI workloads. Start w
 
 For example, an organization wants to build an enterprise AI assistant application that lets employees ask questions about internal documents and operational data. When a user asks a question, the application figures out what data is needed, retrieves relevant context, and calls the right model to generate a grounded response. For this, a data pipeline is needed that cleans, enriches, and indexes internal documents so the assistant can retrieve trusted, up-to-date context. Like with any application, use Well-Architected practices to keep the application reliable, secure, and cost optimized.
 
-While this AI assistant represents a specific business scenario, the architecture pattern that follows is generic enough to adapt to many AI use cases with similar characteristics.
+While this AI assistant represents a specific business scenario, the architecture pattern that it follows is generic enough to adapt to many AI use cases with similar characteristics.
 
 This article guides you through that generic pattern that establishes a baseline knowledge of the core components, their functions, and interactions in an AI workload. With this foundation, you can make informed design decisions to build robust AI solutions as you customize the architecture to fit your specific use case.
 
