@@ -21,7 +21,7 @@ Before you can make your workloads resilient, you need to know the limits of you
 
 Subscription quotas can add additional limits to factor into your approach. Not all tenants are created equal; some regions may cap capacities differently. **Plan ahead and request quota increases before you hit hard limits.** 
 
-Your workspace design matters because it acts as isolation boundaries. Some behaviors, especially with preview features or private endpoints, can differ depending on the workspace, so test and design with those nuances in mind.
+Your workspace design matters because workspaces act as isolation boundaries. Some behaviors, especially with preview features or private endpoints, can differ depending on the workspace, so test and design with those nuances in mind.
 
 Fabric is SaaS, so low-level infrastructure tweaks aren't in your hands. You still have some options. You can move workloads across capacities, separate critical pipelines, or use multi-capacity patterns to work around platform quirks. Always map dependencies and constraints visually to help your team anticipate where failures might appear.
 
@@ -45,9 +45,9 @@ Infrastructure-level failures including regional outages are rare because of Fab
 
 ## Define reliability goals for your workloads
 
-**Measure reliability against your goals**. Start by defining SLOs that make sense for your business. Fabric guarantees 99.9% uptime, but your pipelines, Spark jobs, and Power BI reports might need tighter operational targets. Focus on SLIs like pipeline success rates, job completion times, execution latency, and capacity utilization.
+**Measure reliability against your goals**. Start by defining Service Level Objectives (SLO) that make sense for your business. Fabric guarantees 99.9% uptime, but your pipelines, Spark jobs, and Power BI reports might need tighter operational targets. Focus on SLIs like pipeline success rates, job completion times, execution latency, and capacity utilization.
 
-Remember external dependencies. A slow upstream API reduces your effective availability. Mitigate these risks with caching, queuing, or backup sources. 
+Remember external dependencies. A unreliable upstream API reduces your effective availability. Mitigate these risks with caching, queuing, or backup sources. 
 
 Be realistic with recovery targets. Localized failures (compute node issues) might resolve in minutes, regional outages take longer. Document all this in runbooks, dashboards, and architecture diagrams so your team knows what "reliable" really means.
 
@@ -64,36 +64,37 @@ Redundancy exists at multiple layers, and understanding which layer affects your
 
 | Level              | How it works                                                                         | What you control                                                                                           |
 | ------------------ | ------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------- |
-| **Instance-level** | Individual node failover happens automatically.                                      | Mostly managed by Fabric; ensure workloads can resume without manual intervention.                         |
-| **Zone-level**     | Azure Availability Zones spread workloads across physical locations within a region. | Design your workloads to tolerate zone-level failover; no extra setup needed, but test failover scenarios. |
-| **Region-level**   | Geo-replication moves data to a secondary region for disaster recovery.              | You decide which capacities or workspaces are active in each region and how failover is triggered.         |
+| **Instance-level** | Individual node failover happens automatically.                                      | Managed by Fabric; ensure workloads can resume without manual intervention.                         |
+| **Zone-level**     | Azure Availability Zones spread workloads across physical locations within a region. | Fabric uses Azure Availability Zones when they are supported by region and workload, without requiring any customer configuration. |
+| **Region-level**   | Geo-replication moves data to a secondary region for disaster recovery.              | You decide which capacities enable the Disaster Recovery feature for OneLake data, which capacities or workspaces are active in each region, and how failover is orchestrated.         |
 
-Traffic distribution and failover happen automatically: requests are load-balanced across healthy nodes and zones, and in a regional outage, Microsoft manages failover to secondary regions for data access. But the real power comes when you use **redundancy intentionally to support self-healing at the workload level**. By deploying multiple capacities or workspaces as independent deployment stamps, you can isolate failures, contain the blast radius, and ensure users or jobs can be routed to healthy replicas without manual intervention.
+Traffic distribution and failover for local failures happen automatically as requests are load-balanced across healthy nodes. In a regional outage, Microsoft manages failover to a secondary region for data access, while you execute the rest of your disaster recovery plan. By deploying multiple capacities or workspaces as independent deployment stamps, you can isolate failures, contain the blast radius, and ensure users or jobs can be routed to healthy replicas without manual intervention.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Zone-level redundancy is nearly invisible, but cross-region strategies require intentional design. For latency-sensitive workloads, weigh the trade-off: asynchronous replication can add a few milliseconds of delay, but it gives you a safety net in case an entire region fails.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Zone-level redundancy is nearly invisible, but cross-region strategies require intentional design. 
 
-Fabric heals itself, but your architecture can enhance it. Dedicate capacities to critical workloads, modularize pipelines and datasets, design idempotent operations, implement retries with exponential backoff, and use circuit breakers where necessary.
+Fabric heals itself from common failures, but disaster recovery requires shared responsibility - your architecture can enhance it. Dedicate capacities to critical workloads, modularize pipelines and datasets, design idempotent operations, implement retries with exponential backoff, and use circuit breakers where necessary.
 
 Graceful degradation ensures partial failures don't stop everything. Pipelines can skip optional steps, reports can show read-only results with warnings. Health checks should tie to recovery actions like restarting pipelines, switching to backup sources, or scaling capacities automatically. Isolation is key: failures should remain local, preventing cascading effects across your environment.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: More redundancy reduces downtime and improves self-healing, but it comes at the cost of additional resources and operational complexity. Align your approach with the criticality of your workloads and your recovery expectations.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There's a trade-off between immediate availability and resource efficiency. Maintaining redundant capacities or regions ensures minimal downtime but increases cost and operational overhead. Relying on Fabric's built-in resiliency in a single region reduces cost but can introduce delays while failover or recovery processes complete. Your redundancy strategy should reflect the criticality of workloads and your recovery expectations.
 
 ## Scale vertically and horizontally with reliability
 
-Scaling is about keeping your workloads running smoothly as demand grows. For predictable workloads, allocate capacities that meet peak demand. For spikes, **rely on Fabric's elasticity features like bursting and temporary smoothing**. Scaling operations are generally fast. Still, communicating scaling events prevents surprises for dependent teams and avoids transient slowdowns.
+Scaling is about keeping your workloads running smoothly as demand grows. For predictable workloads, allocate capacities that meet peak demand. For spikes, **rely on Fabric's elasticity features like bursting and smoothing**. Scaling operations are generally fast. Still, communicating scaling events prevents surprises for dependent teams and avoids transient slowdowns.
 
-Treat each capacity as a self-contained unit. If one saturates, others continue running. Base auto-scaling on sustained utilization, not short spikes. Distribute heavy workloads across multiple capacities or workspaces to reduce contention. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scale events.
+Treat each capacity as a self-contained unit. If one saturates, others continue running. Distribute heavy workloads across multiple workspaces and capacities to reduce contention. Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing. Apply surge protection at capacity and workspace level. Enable the throttling protection feature as a safety net for unanticipated spikes. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scaling events.
 
 > [!IMPORTANT]
 >
-> Don't wait until a capacity is maxed out. Maintain a buffer of extra resources to absorb spikes smoothly. Track usage trends and anticipate growth, proactively adding capacity or distributing workloads across multiple units ensures scaling events are seamless and workloads remain reliable as demand grows.
+> Don't wait until a capacity is maxed out. Maintain a buffer of extra resources and enable the throttling protection feature to absorb spikes smoothly. Track usage trends and anticipate growth, proactively adding capacity or distributing workloads across multiple units ensures scaling events are seamless and workloads remain reliable as demand grows.
 
 ## Monitor metrics and observe proactively
 
 Your monitoring strategy should focus on the places where failures are likely. Track service availability, pipeline success, job runtimes, and capacity usage. Don't ignore dependencies: on-prem gateways, APIs, and internal services can silently become points of failure.
 
-**Fabric provides rich telemetry, but pair it with your own health probes and dashboards**. Integrate  with Azure Monitor. Early alerts give your team time to act before users notice anything. Correlate logs and metrics across systems to spot the root cause quickly, not just the symptom.
+**Fabric provides rich telemetry, but pair it with your own health probes and dashboards**. Integrate  with Azure Monitor. Early alerts give your team time to act before users notice anything. Correlate logs and metrics across systems to spot the root cause, not just the symptom.
 
 For more information about what to monitor, see [What is workspace monitoring?](/fabric/fundamentals/workspace-monitoring-overview)
 
@@ -102,12 +103,13 @@ For more information about what to monitor, see [What is workspace monitoring?](
 Fabric's built-in resilience is strong, but you can strengthen it further:
 
 - Dedicated capacities: Keep critical workloads isolated from "noisy neighbors".
+- Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing.
+- Apply surge protection at capacity and workspace level.
+- Enable the throttling protection feature as a safety net for unanticipated spikes.
 - Modular workloads: Break large pipelines or datasets into smaller, independent pieces. If one fails, the rest keep running.
 - Idempotent operations: Make sure retries don't cause duplicate writes or processing errors.
 - Retry logic: Combine exponential backoff with alerting to recover gracefully from transient failures.
 - Circuit breakers: Pause requests to a failing dependency to prevent cascading failures.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: There's a trade-off between immediate availability and resource efficiency. Maintaining redundant capacities or regions ensures minimal downtime but increases cost and operational overhead. Relying on Fabric's built-in resiliency in a single region reduces cost but can introduce delays while failover or recovery processes complete. Your redundancy strategy should reflect the criticality of workloads and your recovery expectations.
 
 Implement graceful degradation so that even if some dependencies are unavailable. For example, pipelines can skip non-critical steps or use cached data, and reports can display read-only results with warnings instead of failing completely.
 
@@ -117,9 +119,9 @@ It's important to emphasize the idea of isolation. Deploy multiple workspaces or
 
 ## Plan for disaster recovery
 
-Fabric relies on continuous replication and regional redundancy instead of traditional backups. OneLake keeps multiple copies and can geo-replicate to paired regions, but asynchronous replication may lead to minor data loss in catastrophic events.
+Most Fabric items rely on continuous replication of data instead of traditional backups. OneLake keeps multiple copies and can geo-replicate to paired regions, but asynchronous replication may lead to minor data loss in catastrophic events.
 
-Manual backups are still necessary for critical assets outside OneLake, such as pipelines or archived datasets. Geo-redundancy enables secondary environments ready to take over if the primary region fails. Understand your RTO/RPO and simulate failovers regularly. Practice restores in non-production environments so your team can respond confidently when it matters.
+Manual backups are still necessary for critical assets outside OneLake, such as pipelines or archived datasets. Geo-redundancy enables secondary environments ready to take over if the primary region fails. Understand your recovery point objectives (RPO) and recovery time objectives (RTO) and simulate failovers regularly. Practice restores in non-production environments so your team can respond confidently when it matters.
 
 > [!IMPORTANT]
 >
