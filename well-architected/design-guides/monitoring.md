@@ -27,6 +27,7 @@ This guide explores the process of building those phases and provides best pract
 | **Activity ID** | A unique identifier assigned to each request and propagated across services, threads, queues, and dependencies to enable correlation of related telemetry data. |
 | **Activity logs** | Platform logs that track subscription-level operations such as resource creation, updates, and deletions. |
 | **Aggregation** | The process of combining and consolidating telemetry data from multiple sources to create meaningful insights and reduce storage footprint. |
+| **AHM (Azure Health Models)** | Structured representations of workload health that combine metrics, logs, and traces to assess the overall state of a system and its components. |
 | **APM (Application Performance Management)** | Tools that automatically capture telemetry from applications, including request rates, failure rates, dependency duration, and distributed traces. |
 | **Cold analysis** | Analysis that works with large volumes of historical telemetry data and usually runs on a scheduled or ad-hoc basis. This is useful for identifying trends over a long period. |
 | **Distributed tracing** | A technique for tracking requests across multiple services or machines in distributed systems, using unique activity IDs propagated across components. |

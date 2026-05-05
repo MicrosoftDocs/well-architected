@@ -33,6 +33,7 @@ This guide describes key strategies for designing a monitoring stack that suppor
 | **Instrumentation** | Adding monitoring capabilities to applications and infrastructure to capture telemetry. This includes logging, metrics collection, and tracing. |
 | **Health model** | A framework for measuring workload health using indicators, KPIs, and metrics that reflect business and operational objectives. |
 | **KPIs (Key Performance Indicators)** | Measurable values showing how effectively a workload achieves business and operational objectives. KPIs guide telemetry collection and analysis. |
+| **AHM (Azure Health Models)** | Structured representations of workload health that combine metrics, logs, and traces to assess the overall state of a system and its components. |
 | **APM (Application Performance Management)** | Tools and practices for monitoring application performance, availability, and user experience. APM tools provide real-time and historical visibility into important metrics. |
 | **Traces** | Records showing the path of requests through distributed systems. Traces help diagnose issues that span multiple services. |
 
