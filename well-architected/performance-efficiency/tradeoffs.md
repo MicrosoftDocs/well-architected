@@ -3,7 +3,7 @@ title: Performance Efficiency tradeoffs
 description: Learn about tradeoffs that you might encounter when you design workload architectures and operations for performance efficiency.
 author: ckittel
 ms.author: chkittel
-ms.date: 10/10/2024
+ms.date: 04/27/2026
 ms.topic: concept-article
 ms.update-cycle: 1095-days
 ---
@@ -12,7 +12,7 @@ ms.update-cycle: 1095-days
 
 A workload that meets its performance targets without overprovisioning is efficient. The goal of performance efficiency is to have just enough supply to handle demand at all times. Key strategies for performance efficiency include proper use of code optimizations, design patterns, capacity planning, and scaling. Clear performance targets and testing underpin this pillar.
 
-During the process of negotiating a workload's performance targets and designing a workload for performance efficiency, it's important to be aware of how the [Performance Efficiency design principles](./principles.md) and the recommendations in the [Design review checklist for Performance Efficiency](./checklist.md) might affect the optimization goals of other pillars. Certain performance efficiency decisions might benefit some pillars but constitute tradeoffs for others. This article lists example tradeoffs that a workload team might encounter when designing workload architecture and operations for performance efficiency.
+When you negotiate performance targets and design a workload for performance efficiency, consider how decisions based on the [Performance Efficiency design principles](./principles.md) and the recommendations in the [Design review checklist for Performance Efficiency](./checklist.md) might influence the goals and optimizations of other pillars. Some performance efficiency decisions benefit one pillar but constitute tradeoffs for another. This article describes example tradeoffs that a workload team might encounter when designing workload architecture and operations for performance efficiency.
 
 ## Performance Efficiency tradeoffs with Reliability
 
@@ -28,7 +28,7 @@ During the process of negotiating a workload's performance targets and designing
 
 - Using autoscaling to balance workload supply against demand introduces variability in the workload's topology and adds a component that must work correctly for the system to be reliable. Autoscaling leads to triggering more application lifecycle events, like starting and stopping.
 
-- Data partitioning and sharding help avoid performance issues in large or frequently accessed datasets. However, the implementation of these patterns increases complexity because (eventual) consistency needs to be maintained across additional resources.
+- Data partitioning and sharding help avoid performance issues in large or frequently accessed datasets, but they increase complexity because (eventual) consistency must be maintained across additional resources.
 
 - Denormalizing data for optimized access patterns can improve performance, but it introduces complexity because multiple representations of data need to be kept synchronized.
 
@@ -47,7 +47,7 @@ During the process of negotiating a workload's performance targets and designing
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduction of security controls.** Security controls are established across multiple layers, sometimes redundantly, to provide defense in depth.
 
-One performance optimization strategy is to remove or bypass components or processes that contribute to delays in a flow, especially when their processing time isn't justified. However, this strategy can compromise security and should be accompanied by a thorough risk analysis. Consider the following examples:
+One performance optimization strategy is to remove or bypass components or processes that delay a flow when their processing time isn't justified. This strategy can compromise security and requires a thorough risk analysis. Consider the following examples:
 
 - Removing encryption in transit or at rest to improve transfer speeds exposes the data to potential integrity or confidentiality breaches.
 
@@ -87,6 +87,14 @@ Sharing resources through increased density is an approach for improving efficie
 
 - Co-locating disparate components leading to more components in scope for compliance because of their shared host.
 
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Stale security state.** The Security pillar requires authorization, content, and trust decisions to reflect the current state of the system.
+
+Caching, precomputation, and edge distribution improve performance by serving responses from a copy rather than recomputing or revalidating them. The further that copy lives from the source of truth, and the longer its time to live, the more likely it is to reflect a security state that no longer holds.
+
+- Cached authentication tokens, authorization decisions, or session data can permit access after a user is disabled, a role is revoked, or a token is rotated. The window between revocation and cache expiry is a window of unauthorized access.
+
+- Content delivered from a CDN or browser cache can continue to serve data that has been retracted or reclassified at the origin. This persistence can violate data-handling, retention, or privacy requirements.
+
 ## Performance Efficiency tradeoffs with Cost Optimization
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Too much supply for demand.** Both Cost Optimization and Performance Efficiency prioritize having just enough supply to serve demand.
@@ -124,12 +132,12 @@ Sharing resources through increased density is an approach for improving efficie
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Reduced observability.** Observability is necessary to provide a workload with meaningful alerting and help ensure successful incident response.
 
-- Reducing log and metric volume to reduce the processing time spent on collecting telemetry instead of other tasks reduces the overall observability of the system. Some examples of the resulting reduced observability include:
-  - It limits the data points that are used to build meaningful alerts.
-  - It leads to gaps in coverage for incident response activities.
-  - It limits observability in security-sensitive or compliance-sensitive interactions and boundaries.
+- Reducing log and metric volume to spend less processing time on telemetry collection reduces overall observability. Examples include:
+  - Fewer data points for building meaningful alerts.
+  - Coverage gaps in incident response activities.
+  - Limited observability in security-sensitive or compliance-sensitive interactions and boundaries.
 
-- When performance design patterns are implemented, the complexity of the workload often increases. Components are added to critical flows. The workload monitoring strategy and performance monitoring must include those components. When a flow spans multiple components or application boundaries, the complexity of monitoring the performance of that flow increases. Flow performance needs to be correlated across all the interconnected components.
+- Performance design patterns often add complexity by introducing components into critical flows. The workload monitoring strategy must include those components. When a flow spans multiple components or application boundaries, performance must be correlated across all of them.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff: Increased complexity in operations.** A complex environment has more complex interactions and a higher likelihood of a negative impact from routine, ad hoc, and emergency operations.
 
