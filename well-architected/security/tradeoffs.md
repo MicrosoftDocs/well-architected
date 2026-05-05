@@ -90,7 +90,7 @@ The preceding items often also exist outside of production environments, in prep
 
 - Security validation in the SDLC usually requires specialized tools. Your organization might need to pay for those tools, and remediating findings also takes time.
 
-- Hiring third-party security practitioners to perform penetration testing incurs costs.
+- Hiring third-party practitioners to perform security testing, including penetration testing, incurs costs.
 
 ## Security tradeoffs with Operational Excellence
 
