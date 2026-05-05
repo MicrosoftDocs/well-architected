@@ -91,7 +91,7 @@ Sharing resources through increased density is an approach for improving efficie
 
 Caching and edge distribution improve performance by serving responses from a copy rather than revalidating them. The longer a copy's time to live and the weaker its invalidation controls, the more likely it is to reflect a security state that no longer holds. Precomputed results carry a similar risk, but unlike caches they typically have no built-in TTL or invalidation mechanism and remain stale until the next computation trigger fires.
 
-- Cached authentication tokens, authorization decisions, or session data can permit access after a user is disabled, a role is revoked, or a token is rotated. The window between revocation and cache expiry is a window of unauthorized access.
+- Cached authentication tokens, authorization decisions, or session data can permit access after a user is disabled, a role is revoked, a token is rotated, or claims have drifted due to group membership changes, conditional access policy updates, or permission scope narrowing. The window between revocation and cache expiry is a window of unauthorized access.
 
 - Content delivered from a CDN or browser cache can continue to serve data that has been retracted or reclassified at the origin. This persistence can violate data-handling, retention, or privacy requirements.
 
