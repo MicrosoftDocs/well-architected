@@ -20,7 +20,7 @@ While this AI assistant represents a specific business scenario, the architectur
 
 ## High-level AI workload architecture
 
-This diagram shows the key components you need in your AI workload design.
+This diagram shows the key components you could have in your AI workload design.
 
 :::image type="content" source="./images/ai-workload-architecture-pattern.png" alt-text="Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools." lightbox="./images/ai-workload-architecture-pattern.png":::
 
