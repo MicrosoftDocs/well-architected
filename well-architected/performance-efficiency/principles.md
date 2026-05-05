@@ -8,6 +8,7 @@ ms.topic: concept-article
 ms.update-cycle: 1095-days  
 ---
 
+
 # Performance Efficiency design principles
 
 Performance efficiency is about effective use of workload resources. Without a good strategy, you might not be able to anticipate and meet user demands. You might have to resort to an approach of pre-provisioning capacity based on your long-term forecasting, which doesn't let you take full advantage of your cloud platform.
