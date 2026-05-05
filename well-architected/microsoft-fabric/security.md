@@ -9,7 +9,7 @@ ms.topic: concept-article
 
 # Security considerations for Microsoft Fabric workloads
 
-As a cloud solution architect, make intentional decisions about security in Microsoft Fabric. Think how your workloads operate, who can access them, and how you contain risks. As an architect, your role is to build security resilience.
+Make intentional decisions about security in Microsoft Fabric. Think how your workloads operate, who can access them, and how you contain risks. As an architect, your role is to build security resilience.
 
 This article describes how to apply practical, actionable security controls within Fabric, using its built-in features like workspaces, workspace identities, managed virtual networks, and customer-managed keys. 
 
@@ -30,23 +30,23 @@ Compare your current tenant configuration against the baseline. Are identity pol
 
 One of the most powerful levers for protecting your workloads is segmentation. In Fabric, workspaces are your first line of defense. Map them to teams, projects, or environments. For example, create separate workspaces for Finance and HR. Finance analysts collaborate in the Finance workspace without visibility into HR datasets. HR users work only within the HR workspace.
 
-Within those boundaries, item-level permissions let you control access to tables, pipelines, or reports, so no one sees more than they need to.
+Within those boundaries, item-level or even more granular permissions let you control access to tables, pipelines, or reports, so no one sees more than they need to.
 
-Capacities can be another isolation tool. Dedicated capacities for sensitive workloads reduce the risk that a noisy neighbor consumes resources or introduces failure. Tenancy isolation in OneLake ensures that even if someone misconfigures access, your data isn't exposed outside intended boundaries.
+Capacities can be another isolation tool. Fabric capacities can be deployed in specific geographic regions to fulfill your data residency requirements. Similarly, separating capacities allows for isolation of capacity settings and administrative responsibilities.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Adding more workspaces and dedicated increases operational complexity and management overhead. But the payoff is localized failures, predictable access, and clear accountability.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Adding more workspaces and capacities increases operational complexity and management overhead. But the payoff is localized failures, predictable access, and clear accountability.
 
 There are identity and networking capabilities that ensure segmentation. They are described in the sections below. 
 
 > Refer to: [Manage workspaces in Microsoft Fabric](/fabric/fundamentals/workspaces)
 
-## Use identity as the primary security perimeter
+## Use identity as the foundation for Zero Trust security controls
 
 Everything in Fabric flows through Microsoft Entra ID. Users, services, and automation all authenticate through it. Your job is to enforce least privilege everywhere.  There are built-in roles to support that. Viewers only read reports. Contributors modify content. Admins manage settings and assignments.
 
-When workloads need to access external resources or APIs, use Fabric _workspace identity_. It's a managed service principal created for a workspace that can securely authenticate to external resources without embedding credentials. Service principals can also be used when external applications or automation interact with Fabric APIs.
+When workloads need to access external resources or APIs, use Fabric _workspace identity_ whenever possible. It's a managed service principal created for a workspace that can securely authenticate to external resources without embedding credentials. Service principals can also be used when external applications or automation interact with Fabric APIs.
 
-Examine who's accessing what. For example, review control plane operations like, creating workspaces, assigning roles, and provisioning capacity. Those should be restricted to administrators or authorized service principals. Similarly, data plane permissions should also be granted to individuals who need them. These typically include running queries, editing notebooks, and executing pipelines.
+Examine who's accessing what. For example, review tenant settings to understand who can create workspaces. Review workspace role assignments to understand who can access or collaborate on a workspace. Similarly, data access permissions should be granted to authorized individuals or service principals to allow them to run queries or view reports and dashboards.
 
 Use conditional access policies to enforce security requirements such as multi-factor authentication, compliant devices, or location restrictions. Administrative roles should require privileged identity management (PIM) so elevated privileges are activated only when needed.
 
@@ -72,6 +72,8 @@ Workspace-level IP firewall rules can restrict which client IP addresses are all
 
 If workloads require access to on-premises systems, use the on-premises data gateway, which establishes an encrypted outbound connection between Fabric and on-premises data sources.
 
+- Use workspace outbound access protection to secure the outbound data connections to external resources. With this feature, admins can block all outbound connections, and then allow only approved, secure connections to external resources.
+
 Monitor network-related activity through private link logs and on-premises data gateway logs. These logs record connection attempts, successes, failures, and throughput, which can help identify unexpected connection patterns or misconfigured access paths.
 
 > Refer to these articles: 
@@ -89,7 +91,7 @@ Fabric encrypts data at rest and in transit by default. Network communication be
 Fabric does not provide built-in encryption for data being processed in memory. If encryption-in-use is required, use extra encryption techniques. For example, sensitive values could be encrypted by your application before ingestion, so Fabric processes only encrypted data that your application can decrypt. This approach is user-managed and requires careful design to maintain usability and performance.
 Microsoft manages TLS certificates for Fabric endpoints, including certificate renewal and validation. Data stored in **OneLake or associated analytical stores** is encrypted using **AES-256 with Microsoft-managed keys**. 
 
-For organizations with stricter requirements, Customer-Managed Keys (CMK) can provide additional control over key rotation and revocation. Note that not all Fabric artifacts currently support CMK, so you may need workspace segmentation to separate supported and unsupported items. Double encryption is also supported where data is encrypted with the platform's key, and that key is itself encrypted using your Azure Key Vault key.
+For organizations with stricter requirements, Customer-Managed Keys (CMK) can provide additional control over key rotation and revocation. Note that not all Fabric artifacts currently support CMK, so you may need workspace segmentation to separate supported and unsupported items. Customer managed keys implement double encryption where data is encrypted with the platform's key, and that key is itself encrypted using your Customer-Managed Keys, which is stored in your Azure Key Vault.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Using CMK introduces operational dependencies. The key vault must remain available and accessible. If the key is disabled or deleted, workspace data becomes inaccessible until the key is restored. Key rotation, access policies, and audit controls also become your responsibility.
 
