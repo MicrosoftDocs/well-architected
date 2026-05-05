@@ -150,7 +150,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Configure the application platform ingress points to [validate incoming requests through header based filtering](/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) using the *X-Azure-FDID* to ensure all traffic is flowing through the configured Front Door instance. Consider also configuring IP ACLing using Front Door Service Tags to validate traffic originates from the Azure Front Door backend IP address space and Azure infrastructure services. This will ensure traffic flows through Azure Front Door at a service level, but header based filtering will still be required to ensure the use of a configured Front Door instance.
 
-- Define a custom TCP health endpoint to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Azure Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
+- Define a [custom TCP health endpoint](mission-critical-health-modeling.md#signal-and-data-collection-guidance) to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Azure Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
 
 - Ensure health probe responses are logged and ingest all operational data exposed by Azure Front Door into the global Log Analytics workspace to facilitate a unified data sink and single operational view across the entire application. For configuration details, see the [Azure Front Door service guide](../service-guides/azure-front-door.md).
 
@@ -167,7 +167,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Configure a suitably low TTL value to optimize the time required to remove an unhealthy backend endpoint from circulation in the event that backend becomes unhealthy.
 
-- Similar to with Azure Front Door, a custom TCP health endpoint should be defined to validate critical downstream dependencies within a regional deployment stamp, which should be reflected in the response provided by health endpoints. 
+- Similar to with Azure Front Door, a [custom TCP health endpoint](mission-critical-health-modeling.md#signal-and-data-collection-guidance) should be defined to validate critical downstream dependencies within a regional deployment stamp, which should be reflected in the response provided by health endpoints.
 
   However, for Traffic Manager additional consideration should be given to service level regional fail over. such as 'dog legging', to mitigate the potential delay associated with the removal of an unhealthy backend due to dependency failures, particularly if it's not possible to set a low TTL for DNS records.
 

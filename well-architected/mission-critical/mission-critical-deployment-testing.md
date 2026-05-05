@@ -90,7 +90,7 @@ These environments are used for testing and validation. Many test cycles are per
 
 ##### Design considerations
 
-- **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable health modeling input.
+- **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable [health modeling](mission-critical-health-modeling.md#mission-critical-guidance) input.
 
 - **Lifecycle**. These environments are short lived. They should be destroyed after test validations are complete.
 
@@ -150,7 +150,7 @@ Azure Mission-Critical recommends a blue/green deployment approach where infrast
 
 - Use a global load balancer, like Azure Front Door, to orchestrate the automated transition of user traffic between the blue and green environments.
 
-- To transition traffic, add a green back-end endpoint that uses a low traffic to volume weight, like 10 percent. After you verify that the low traffic volume on the green deployment works and provides the expected application health, gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that might not immediately be apparent.
+- To transition traffic, add a green back-end endpoint that uses a low traffic to volume weight, like 10 percent. After you verify that the low traffic volume on the green deployment works and provides the expected [application health](mission-critical-health-modeling.md), gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that might not immediately be apparent.
 
   After all traffic is transitioned, remove the blue back end from existing connections. For instance, remove the back end from the global load balancer service, drain queues, and detach other associations. Doing so helps to optimize the cost of maintaining secondary production infrastructure and ensure that new environments are free of configuration drift.
 

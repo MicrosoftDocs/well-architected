@@ -35,11 +35,11 @@ The DevOps team for a mission-critical application must be responsible for these
 
 - **Dependencies on central IT teams**. DevOps processes can be difficult to apply when there are hard dependencies on centralized functions because these dependencies prevent end-to-end operations.
 
-- **Identity and access management**. DevOps teams can consider granular Azure RBAC roles for various technical functions, like AppDataOps for database management. Apply a zero-trust model across DevOps roles.
+- **Identity and access management**. DevOps teams can consider granular Azure RBAC roles for distinct technical functions. Apply a zero-trust model across DevOps roles.
 
 ### Design recommendations
 
-- Manage configuration settings and updates as code. For details, see [Infrastructure as code deployments](mission-critical-deployment-testing.md#infrastructure-as-code-deployments). Enforce change management through code for routine operations like key or secret rotation and permissions management. Use scheduled pipeline runs for recurring updates, rather than built-in auto-update mechanisms, to maintain operational auditability.
+- Manage configuration settings and updates as code. For details, see [Infrastructure as code deployments](mission-critical-deployment-testing.md#infrastructure-as-code-deployments). Enforce change management through code for routine operations like key or secret rotation and permissions management. Use auditable update mechanisms for recurring updates.
 
 - Avoid centralized provisioning dependencies that can introduce noisy neighbor risk. For details, see [Scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture). If centralized provisioning dependencies are unavoidable, align the dependency's availability requirements with mission-critical requirements. Require transparency from central teams on their change management and incident response processes.
 
@@ -55,7 +55,7 @@ The DevOps team for a mission-critical application must be responsible for these
 
 - Define emergency processes for just-in-time access to production environments. Ensure that break glass accounts exist in case of serious problems with the authentication provider.
 
-- Consider using AIOps to continually improve operational procedures and triggers.
+- Use the [health model](mission-critical-health-modeling.md) to continually improve operational procedures and triggers.
 
 ## Application operations
 
@@ -65,7 +65,7 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 - **Built-in operations of Azure services**. Azure services provide built-in (enabled by default) and configurable platform capabilities, like zone redundancy and geo-replication. An application's reliability depends on these operations. Certain configurable capabilities incur an additional cost, like the multi-write deployment configuration for Azure Cosmos DB. Avoid building custom solutions unless you absolutely need to.
 
-- **Operational access and execution time**. Most required operations are exposed and accessible through the Azure Resource Manager API or the Azure portal. However, certain operations require assistance from support engineers. For example, a restore from a periodic backup of an Azure Cosmos DB database, or the recovery of a deleted resource, can be performed only by Azure support engineers via a support case. This dependency might affect the downtime of the application. For stateless resources, we recommend that you redeploy instead of waiting for support engineers to try to recover deleted resources.
+- **Operational access and execution time**. Most required operations are exposed and accessible through the Azure Resource Manager API or the Azure portal. However, certain operations require assistance from support engineers. For example, some Azure Cosmos DB periodic backup restore scenarios require Azure support via a support case. This dependency might affect the downtime of the application. For stateless resources, we recommend that you redeploy instead of waiting for support engineers to try to recover deleted resources.
 
 - **Policy enforcement**. Azure Policy provides a framework for enforcing and auditing security and reliability baselines to ensure compliance with common engineering criteria for mission-critical applications. More specifically, Azure Policy forms a key part of the Azure Resource Manager control plane, supplementing RBAC by restricting the actions that authorized users can perform. You can use Azure Policy to enforce vital security and reliability conventions across platform services.
 
@@ -73,19 +73,19 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 ### Design recommendations
 
-- Automate failover procedures. For an active/active model, use a health model and automated scale operations to ensure that no failover intervention is required. For an active/passive model, ensure that failover procedures are automated or at least codified within pipelines.
+- Automate failover procedures. For an active/active model, use a [health model](mission-critical-health-modeling.md) and automated scale operations to ensure that no failover intervention is required. For an active/passive model, ensure that failover procedures are automated or at least codified within pipelines.
 
 - Prioritize the use of Azure-native autoscaling for services that support it. For services that don't support native autoscaling, use automated operational processes to scale services. Use scale units with multiple services to achieve scalability.
 
 - Use platform-native capabilities for backup and restore, ensuring that they're aligned with your RTO/RPO and data retention requirements. Define a strategy for long-term backup retention as needed.
 
-- Use built-in capabilities for SSL certificate management and renewal, like those provided by Azure Front Door.
+- Use built-in capabilities for SSL certificate management and renewal, like those provided by [Azure Front Door](../service-guides/azure-front-door.md).
 
 - For external teams, establish a recovery process for resources that require assistance. For example, if the data platform is incorrectly modified or deleted, the recovery methods should be well understood, and a recovery process should be in place. Similarly, establish procedures to manage decommissioned container images in the registry.
 
 - Practice recovery operations in advance, on non-production resources and data, as part of standard business continuity preparations.
 
-- Identify critical alerts and define target audiences and systems. Define clear channels to reach appropriate stakeholders. Send only actionable alerts to avoid white noise and prevent operational stakeholders from ignoring alerts and missing important information. Implement continuous improvement to optimize alerting and remove observed white noise.
+- Identify critical alerts and define target audiences and systems. Define clear channels to reach appropriate stakeholders. Send only actionable alerts to avoid white noise and prevent operational stakeholders from ignoring alerts and missing important information. Implement continuous improvement to optimize alerting and remove observed white noise. For observability guidance, see the [Application Insights](../service-guides/application-insights.md) and [Log Analytics](../service-guides/azure-log-analytics.md) service guides.
 
 - Apply Azure Policy to enforce operational capabilities and a reliable configuration baseline. For details, see [Policy-driven governance](mission-critical-security.md#policy-driven-governance).
 
@@ -131,15 +131,15 @@ There are three common approaches to secret management. Each approach reads secr
 
 - **Deployment-time retrieval**. The advantage to this approach is that the secret management solution needs to be available only at deployment time because there aren't direct dependencies after that time. Examples include injecting secrets as environment variables into a Kubernetes deployment or into a Kubernetes secret.
 
-  Only the deployment service principal needs to be able to access secrets, which simplifies RBAC permissions within the secret management system. 
+  Only the deployment identity needs to be able to access secrets, which simplifies RBAC permissions within the secret management system.
 
-  There are, however, disadvantages to this approach. It introduces RBAC complexity in DevOps tooling with regard to controlling service principal access and in the application with regard to protecting retrieved secrets. Also, the security benefits of the secret management solution aren't applied because this approach relies only on access control in the application platform.
+  There are, however, disadvantages to this approach. It introduces RBAC complexity in DevOps tooling for controlling deployment identity access and in the application for protecting retrieved secrets. Also, the security benefits of the secret management solution aren't applied because this approach relies only on access control in the application platform.
 
   To implement secret updates or rotation, you need to perform a full redeployment.
 
 - **Application-startup retrieval**. In this approach, secrets are retrieved and injected at application startup. The benefit is that you can easily update or rotate secrets. You don't need to store secrets on the application platform. A restart of the application is required to fetch the latest value. 
   
-   Common storage choices include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [akv2k8s](https://akv2k8s.io). A native Azure solution, [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references), is also available. For configuration details, see the [App Service service guide](../service-guides/app-service-web-apps.md).
+  Common integration options include [Azure Key Vault Provider for Secrets Store CSI Driver](https://azure.github.io/secrets-store-csi-driver-provider-azure) and [Key Vault referenced app settings](/azure/app-service/app-service-key-vault-references). For configuration details, see the [App Service service guide](../service-guides/app-service-web-apps.md).
 
   A disadvantage of this approach is that it creates a runtime dependency on the secret management solution. If the secret management solution experiences an outage, application components already running *might* be able to continue serving requests. Any restart or scale-out operation would likely result in failure.
 
@@ -155,7 +155,7 @@ There are three common approaches to secret management. Each approach reads secr
 
 - Deploy Key Vault instances as part of a regional stamp to mitigate the potential effect of a failure to a single deployment stamp. Use a separate instance for global resources. For information about those resources, see the typical [architecture pattern](mission-critical-architecture-pattern.md) for mission-critical workloads. 
 
-- To avoid the need to manage service principal credentials or API keys, use managed identities instead of service principals to access Key Vault whenever possible.
+- To avoid the need to manage credentials or API keys, use managed identities to access Key Vault whenever possible.
 
 - Implement coding patterns to ensure that secrets are re-retrieved when an authorization failure occurs at runtime.
 
@@ -165,12 +165,12 @@ There are three common approaches to secret management. Each approach reads secr
 
 ## IaaS-specific considerations when using VMs
 
-If you need to use IaaS VMs, some of the procedures and practices described earlier in this document might differ. The use of VMs provides more flexibility in configuration options, operating systems, driver access, low-level operating system access, and the kinds of software that you can install. The disadvantages are increased operational costs and the responsibility for tasks that are usually performed by the cloud provider when you use PaaS services.
+If you need to use [IaaS VMs](../service-guides/virtual-machines.md), some of the procedures and practices described earlier in this document might differ. The use of VMs provides more flexibility in configuration options, operating systems, driver access, low-level operating system access, and the kinds of software that you can install. The disadvantages are increased operational costs and the responsibility for tasks that are usually performed by the cloud provider when you use PaaS services.
 
 ### Design considerations
 
 - Individual VMs don't provide high availability, zone redundancy, or geo-redundancy.
-- Individual VMs aren't automatically updated after you deploy them. For example, a deployed SQL Server 2019 on Windows Server 2019, won't automatically get updated to a newer release. 
+- Individual VMs aren't automatically updated after you deploy them.
 - Services running in a VM need special treatment and additional tooling if you want to deploy and configure them via infrastructure as code.
 - Azure periodically updates its platform. These updates might require VM reboots. Updates that require a reboot are usually announced in advance. See [Maintenance for virtual machines in Azure](/azure/virtual-machines/maintenance-and-updates) and [Handling planned maintenance notifications](/azure/virtual-machines/maintenance-notifications).
 
@@ -185,11 +185,11 @@ If you need to use IaaS VMs, some of the procedures and practices described earl
 
 - Create frequent backups for stateful workloads, ensure that backup tasks work effectively, and implement alerts for failed backup processes.
 
-- Monitor VMs and detect for failures. The raw data for monitoring can come from a variety of sources. Analyze the causes of problems.
+- Monitor VMs for failures. The raw data for monitoring can come from a variety of sources. Analyze the causes of problems.
 
 - Ensure that scheduled backups run as expected and that periodic backups are created as needed. You can use [Backup center](/azure/backup/backup-center-overview) to get insights.
 
-- Prioritize the use of Virtual Machine Scale Sets rather than VMs to enable capabilities like scale, autoscale, and zone redundancy.
+- Prioritize the use of [Virtual Machine Scale Sets](../service-guides/virtual-machines.md) rather than VMs to enable capabilities like scale, autoscale, and zone redundancy.
 
 - Prioritize the use of standard images from Azure Marketplace rather than custom images that need to be maintained.
 
