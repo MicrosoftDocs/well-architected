@@ -14,13 +14,15 @@ ms.topic: concept-article
 
 |**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Ensure that your graceful degradation implementation and scaling strategies are effective by performing reliability testing. 
 
-Enhance your workloads reliability by testing for resiliency and availability in your workload.|
+Enhance your workload's reliability by testing for resiliency and availability in your workload.|
 |---|---|
 
 This guide describes the recommendations for designing a reliability testing strategy to validate and optimize the reliability of your workload. Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. This guide provides general testing guidance and guidance that's specific to fault injection and chaos engineering.
 
 Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. 
 This guide provides guidance on how to validate and optimize the reliability of your workload through testing practices. 
+
+The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to reliability and focus on achieving resiliency and availability of critical flows in your workload.
 
 **Definitions**
 
@@ -35,7 +37,7 @@ This guide provides guidance on how to validate and optimize the reliability of 
 
 ## Formalize your reliability testing strategy
 
-When you have a formalized reliability testing strategy, you can align your testing with your reliability goals and make sure that there is a consistent approach to reliability testing. Your test strategy keeps your testing consistent and test plan makes it actionable and measureable. 
+When you have a formalized reliability testing strategy, you can align your testing with your reliability goals and make sure that there is a consistent approach to reliability testing. Your test strategy keeps your testing consistent and your test plan makes it actionable and measurable. 
 
 It’s important to have a clear strategy for reliability testing that includes the following elements:
 - Bring everyone on board with the most critical user and system flows, as well as your Service Level Objectives (SLOs), Service Level Agreements (SLAs), Recovery Point Objectives (RPOs), and Recovery Time Objectives (RTOs). Make sure to manage expectations by clearly documenting any known limitations in your workload’s design and architecture.
