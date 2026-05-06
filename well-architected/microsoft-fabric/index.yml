@@ -58,7 +58,7 @@ landingContent:
           - text: Design isolation boundaries
             url: security.md#design-isolation-boundaries
           - text: Use identity as the primary security perimeter
-            url: security.md#use-identity-as-the-primary-security-perimeter
+            url: security.md#use-identity-as-the-foundation-for-zero-trust-security-controls
           - text: Secure network communications
             url: security.md#secure-network-communications
           - text: Harden workload assets
