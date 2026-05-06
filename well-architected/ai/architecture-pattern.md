@@ -4,7 +4,7 @@ ms.reviewer: simipaul
 description: Learn how to design, deploy, and govern AI workloads on Azure with architectural patterns, baseline references, and best practices for secure, scalable systems.
 author: simipaul
 ms.author: simipaul
-ms.date: 05/05/2026
+ms.date: 05/06/2026
 ms.topic: concept-article
 ---
 
