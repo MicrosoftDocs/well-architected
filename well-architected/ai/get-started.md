@@ -87,15 +87,9 @@ When you choose between a custom model, a prebuilt model, or a service, consider
 
 **&#10004;** Use the [Assessment Review Tool](./assessment.md) to evaluate the readiness of your optimized AI workload in production.
 
-## Typical architecture pattern and design areas
+### AI workload design areas
 
-The following diagram illustrates how data flows through the system from initial collection to final user interaction.
-
-:::image type="content" source="./images/ai-architecture-pattern.png" alt-text="Diagram that shows the typical architecture pattern of an AI workload." lightbox="./images/ai-architecture-pattern.png":::
-
-The architecture highlights the integration of different components to enable efficient data processing, model optimization, and real-time application deployment in AI-driven solutions. It includes modules such as data sources, data processing, model training, model deployment, and user interfaces. 
-
-The following table describes some key design areas related to that pattern.
+The following table describes some key design areas related to AI workloads.
 
 |Design areas|
 |---|
