@@ -136,11 +136,7 @@ sections:
       - componentType: summary-card
         title: Oracle on IaaS
         summary: Host Oracle workloads on Azure, which includes not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards. 
-        url: ./oracle-iaas/overview.md
-      - componentType: summary-card
-        title: SAP
-        summary: Evaluate, design, and optimize an SAP workload from premigration to operations. 
-        url: ./sap/quick-links.yml    
+        url: ./oracle-iaas/overview.md  
       - componentType: summary-card
         title: Mission-critical
         summary: Design and operationalize workloads that are expected to be always available and resilient to failures.

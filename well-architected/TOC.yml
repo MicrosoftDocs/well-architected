@@ -255,9 +255,7 @@
       - name: HPC
         href: hpc/index.yml     
       - name: Software as a service (SaaS)
-        href: saas/index.yml        
-      - name: SAP
-        href: sap/quick-links.yml        
+        href: saas/index.yml            
       - name: Sustainability
         href: sustainability/index.yml       
     - name: Service guides
