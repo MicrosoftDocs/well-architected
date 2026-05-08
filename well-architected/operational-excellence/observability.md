@@ -33,7 +33,7 @@ This guide describes key strategies for designing a monitoring stack that suppor
 | **Instrumentation** | Adding monitoring capabilities to applications and infrastructure to capture telemetry. This includes logging, metrics collection, and tracing. |
 | **Health model** | A framework for measuring workload health using indicators, KPIs, and metrics that reflect business and operational objectives. |
 | **KPIs (Key Performance Indicators)** | Measurable values showing how effectively a workload achieves business and operational objectives. KPIs guide telemetry collection and analysis. |
-| **AHM (Azure Health Models)** | Structured representations of workload health that combine metrics, logs, and traces to assess the overall state of a system and its components. |
+| **Azure Monitor health models** | Structured representations of workload health that combine metrics, logs, and traces to assess the overall state of a system and its components. |
 | **APM (Application Performance Management)** | Tools and practices for monitoring application performance, availability, and user experience. APM tools provide real-time and historical visibility into important metrics. |
 | **Traces** | Records showing the path of requests through distributed systems. Traces help diagnose issues that span multiple services. |
 
@@ -41,7 +41,7 @@ This guide describes key strategies for designing a monitoring stack that suppor
 
 Define workload health indicators, KPIs, and performance metrics so that telemetry collection strategies reflect these targets. Those indicators are then tracked to detect anomalies to make decisions on corrective action.
 
-Tie telemetry to system and user flows, and model those flows as entities in your health model. This connects flow-level health to resource-level signals and overall workload health, so degradation in a dependency surfaces at the flow level where business impact is visible.
+Tie telemetry to system and user flows, and model those flows as entities in your health model. This connects application-level health to resource-level signals and overall workload health, so degradation in a dependency surfaces at the level where business impact is visible.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Teams spend time manually defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure-as-code templates. Make sure there's human oversight to ensure AI-driven observability stays accurate and aligned with standards.
 
