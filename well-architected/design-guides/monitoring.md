@@ -235,7 +235,10 @@ Visualization converts complex telemetry into actionable insights using dashboar
 
 #### Best practices for visualization
 
-- **Align with your [health model](./health-modeling.md)** and visualise components using a traffic-light colour scheme based on your service level objectives (SLOs) and additional health signals; Healthy (green), Degraded (amber), and Unhealthy (red). Define what it means for the workload and each component to be healthy, degraded, or unhealthy. This quantified baseline lets you detect movement away from expected behavior. Visualize those states in dashboards with drill-down from system-level health to individual entities.
+- **Align with your health model and visualise components using a traffic-light colour scheme based on your service level objectives (SLOs) and additional health signals; Healthy (green), Degraded (amber), and Unhealthy (red). Define what it means for the workload and each component to be healthy, degraded, or unhealthy. This quantified baseline lets you detect movement away from expected behavior. Visualize those states in dashboards with drill-down from system-level health to individual entities.
+
+:::image type="content" source="_images/azure-monitor-health-models-traffic-light-system-demo.png" alt-text="Health model diagram using a traffic-light color scheme. Root entity (amber) branches into five user flows consisting of unknown, degraded and unhealthy health states. Each flow connects to dependent services and infrastructure resources, with unhealthy states (red) propagating upward from component-level failures to affect parent user flows." lightbox="_images/azure-monitor-health-models-traffic-light-system-demo.png" border="false":::
+
 
 - **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
 

@@ -50,7 +50,7 @@ Monitor reliability from a business and user perspective. As part of your failur
 
 Reliability also reflects quality of service. In a checkout flow, users should be able to complete purchases end-to-end without interruption. Use percentile-based latency metrics such as p50, p95, and p99 to understand real user experience, with special attention to tail latency where performance issues often surface first.
 
-Incorporate user-facing signals into your health model so degraded quality of service triggers health state changes. Model critical user flows so that component degradation propagates upward, linking user impact to system visibility. Use [Azure Monitor health models](/azure/azure-monitor/health-models/overview) to assess the reliability of your Azure workloads.
+Incorporate user-facing signals into your health model so degraded quality of service triggers health state changes. Model critical user flows so that component degradation propagates upward, linking user impact to system visibility. Use Azure Monitor health models to assess the reliability of your Azure workloads.
 
 > [!IMPORTANT]
 >
@@ -67,6 +67,7 @@ Combine real-time awareness with historical context. Real-time signals help you 
 
 Monitor the key SLAs provided by your suppliers and platform services (from Microsoft and others). You should:
 
+- Use a health model to reflect SLA attainment, enabling measurement of overall workload health across all quality attributes, not just availability/uptime
 - Track indicators of potential SLA violations in real time
 - Capture and retain the evidence required to support an SLA claim if a breach occurs
 
