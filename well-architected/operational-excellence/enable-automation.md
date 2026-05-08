@@ -86,7 +86,7 @@ For incident response and operational diagnostics, consider AI-powered automatio
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
-> For high-value workloads, use large language models (LLMs) to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
+> For high-value workloads, use LLMs to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
 
 ## Revisit automation design during the lifecycle
 
