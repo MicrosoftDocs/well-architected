@@ -15,9 +15,11 @@ ms.topic: concept-article
 |**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Ensure that your graceful degradation implementation and scaling strategies are effective by performing reliability testing. |
 |---|---|
 
-Reliability testing focuses on the resiliency and availability of your workload, specifically the critical flows that you identify when you design your solution. This guide provides guidance on how to validate and optimize the reliability of your workload through testing practices including fault injection and chaos engineering.
+When you start testing with unit, integration, and security tests, you provide a foundation for reliability. You extend this foundation to validate and optimize the resiliency and availability of the critical flows in your workload by applying reliability testing strategies.
 
-The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to reliability and focus on achieving resiliency and availability of critical flows in your workload.
+The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to reliability and focus on achieving resilience and availability targets. 
+
+The following table defines key reliability terms used throughout this article.
 
 **Definitions**
 
@@ -25,17 +27,24 @@ The key strategies in this article build on the foundational testing practices d
 |---------|---------|
 | Availability | The amount of time that an application workload runs in a healthy state without significant downtime. |
 | Chaos engineering | The practice of subjecting applications and services to real-world stresses and failures. The goal of chaos engineering is to build and validate resilience to unreliable conditions and missing dependencies. |
+| Chaos testing | A testing technique that involves injecting failure to see how the system behaves. |
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
 | Recoverability | The ability to restore normal operations after a disruption within agreed recovery time (RTO) and recovery point (RPO) targets. |
 | Resiliency | The ability of a workload to withstand faults (transient errors, infrastructure outages, demand spikes) and continue operating within an acceptable user experience. |
+| Failover |  |
+| Failback |  |
 
+//TODO: Chaos engineering, fault injection testing and chaos testing clarification
+ 
 ## Define reliability testing scope based on service types
 
-Reliability testing should be structured based on your service types. Consider the scope of testing based on responsibility and service type. 
+Your reliability testing strategy should account for the shared responsibility model. The level of testing you need depends on how much control you have over each component's reliability behavior.
 
-For infrastructure services, teams are responsible for most decisions and thus require thorough validation. Infrastructure services might include chaos engineering and fault injection testing. For Platform-As-A-Service (PaaS) and Software-As-A-Service (SaaS) services, much of the reliability is managed by the provider, reducing the need for direct chaos testing. You might focus on testing your workload's ability to respond to changes in load patterns and spikes in usage.
+**Match testing depth to your responsibility.** For infrastructure services (IaaS), your team owns most reliability decisions, so invest in thorough validation through chaos engineering and fault injection. For platform (PaaS) and software (SaaS) services, the provider manages much of the underlying reliability. Focus your testing on how your workload interacts with those services, such as how it responds to throttling, service degradation, or changes in load patterns.
 
-Consider reliability testing at both the broader level and at the component level. When you have a workload with mixed service types, the responsibility and testing requirements can vary across different parts of your solution. For example, for an availability zone outage, you might test the failover of your infrastructure components, but you might not have the same level of testing for a PaaS database that is designed to be highly available by the provider.
+**Test at multiple levels.** Design your testing strategy to cover both individual components and end-to-end flows. A component might be highly available on its own, but the interaction between components can introduce reliability risks that only surface at the system level.
+
+**Account for mixed-service workloads.** When your workload spans multiple service types, testing responsibilities vary across components. For example, you might test failover of your infrastructure components during an availability zone outage, but rely on provider guarantees for a PaaS database that's designed for high availability. Identify where those boundaries are and make sure your testing strategy covers the gaps between them.
 
 ## Validate core reliability scenarios
 
@@ -43,83 +52,67 @@ Your reliability testing should cover each critical scenario that can affect you
 
 ### Backup and restore
 
-Create a regular testing cadence for your backups. Restore data to isolated systems to verify that backups are valid and restores complete within your RPO and RTO targets. Validate that backup retention policies align with your data recovery requirements. Don't assume backups work — prove it through regular restore drills.
+Your backup and restore testing strategy should validate that your data protection approach meets your recovery objectives.
 
-### Transient fault handling
+**Establish a testing cadence.** Determine how frequently you need to test restores based on how often your backup configuration, data schema, or infrastructure changes. More frequent changes require more frequent restore testing.
 
-Test your workload's ability to withstand transient failures such as momentary network interruptions, brief service unavailability, and connection timeouts. Verify that retry policies, circuit breakers, and timeout configurations behave as expected under realistic failure conditions. For more information, see [Recommendations for handling transient faults](handle-transient-faults.md).
+**Set recovery targets.** Design tests to measure actual restore times against the RPO and RTO targets which can make sure that your backup strategy meets your recovery objectives.
+
+**Don't assume backup completeness.** Backups can be misconfigured to capture only a subset of your data. Your testing strategy should include validation of data integrity and completeness, not just whether a restore operation succeeds.
+
+**Test in isolation.** Plan to validate restores in an environment separate from production so you can run thorough checks without causing interuptions to live workloads.
+
+### Transient faults
+
+Transient failures, such as momentary network interruptions, brief service unavailability, and connection timeouts, are common reliability risks. Your transient fault testing should validate that your workload handles these failures without impacting users. For more information, see [Recommendations for handling transient faults](handle-transient-faults.md).
+
+**Focus on what you own.** Scope your testing to components that you build and control. If your SDKs or platform services handle retries and circuit breaking automatically, focus your testing on how your application behaves when those built-in mechanisms are exhausted, such as when all retries fail or a circuit breaker opens.
+
+**Validate fault-handling configurations.** Your testing strategy should verify that retry policies, circuit breaker thresholds, and timeout values configurations produce the expected behavior under realistic failure conditions.
+
+**Test the boundary between transient and persistent failure.** Your tests should validate that your workload transitions gracefully from retry behavior to fallback or degradation when a failure persists beyond expected thresholds.
+
+**Account for transient faults from resiliency features.** Good resiliency design, such as zone redundancy, often produces transient faults during normal failover operations. For example, if you have a zone-redundant database and one zone experiences an outage, your workload might see transient connection failures as traffic shifts to a healthy zone.
 
 ### Load and scaling response
 
-Test your workload's ability to respond to changes in load patterns and sudden spikes in usage. Validate that auto-scaling rules trigger at the right thresholds, that new instances come online fast enough, and that your workload handles scale-in gracefully without dropping requests. Use this information to refine your [scaling strategy](scaling.md). For load and stress testing guidance, see [Recommendations for testing](../performance-efficiency/performance-test.md).
+Your scaling testing strategy should validate that your workload maintains reliability during demand changes, both sudden spikes and gradual increases. For more information, see [scaling strategy](scaling.md). For load and stress testing guidance, see [Recommendations for testing](../performance-efficiency/performance-test.md).
+
+**Test both scale-out and scale-in.** Your testing should cover both scale-out and scale-in scenarios. With this approach, you can verify that new capacity comes online quickly enough and that scaling down doesn't drop requests or leave orphaned resources.
+
+**Account for scaling lag.** There's always a delay between a scaling trigger and new capacity being ready. Your testing should determine whether your workload can handle demand during that gap, or whether you need to pre-provision additional capacity.
 
 ### Dependency failures
 
-Test how your workload handles failures in dependent services, third-party APIs, and internal dependencies by using fault injection. Simulate slow responses, complete outages, and partial degradation of dependencies. Verify that your workload isolates dependency failures and continues to serve customers through alternative paths or graceful degradation.
+Your workload likely depends on services outside your direct control, such as third-party APIs, managed platform services, or shared internal services. Your testing should validate that your workload can handle failures in those dependencies without significant disruption to users.
+
+**Categorize dependencies by criticality.** Not all dependencies warrant the same testing investment. Prioritize testing for dependencies that are in your critical flows and that lack built-in redundancy or fallback paths.
+
+**Define acceptable degradation boundaries.** Determine which capabilities your workload must preserve during a dependency failure versus which can be temporarily unavailable. These boundaries inform what your tests should validate.
+
+**Account for partial and cascading failures.** Dependencies rarely fail in binary ways. Don't just test complete outages. Your testing strategy should cover latency increases, intermittent errors, and partial data availability.
+
+**Validate isolation and blast radius containment.** Make sure your testing verifies that a single dependency failure doesn't cascade to unrelated functionality. 
 
 ### Self-healing and recovery
 
-Test and validate how your [self-healing and self-preservation design](self-preservation.md) responds to malfunctions. Verify that automated recovery operations detect failures and restore healthy state without manual intervention. Also test manual recovery runbooks to ensure that operators can execute them under pressure.
+Your test should validate how your [self-healing and self-preservation design](self-preservation.md) responds to malfunctions. 
 
-### Disaster recovery
+**Test automated recovery end-to-end.** Verify that health checks detect failures accurately, that automated remediation triggers as expected, and that the system restores to a healthy state within acceptable timeframes. 
 
-Test your [disaster recovery plan](disaster-recovery.md) to respond to catastrophic failures and major incidents. Validate failover to secondary regions, data replication consistency, and DNS switchover timing. Measure actual recovery times against your RTO and RPO targets and adjust your plan based on the results.
+**Validate manual recovery runbooks.** Automated recovery won't cover every scenario. Test manual runbooks under realistic conditions to make sure operators can execute them under pressure and within your recovery time targets.
 
-### Graceful degradation
+### Disaster recovery (DR)
 
-Test your workload's ability to degrade gracefully and minimize the blast radius of component malfunctions. Use fault injection to disable individual components and verify that remaining functionality stays available. Confirm that users receive appropriate feedback when features are temporarily unavailable rather than experiencing unhandled errors.
+You should test your disaster recovery plans to respond to catastrophic failures and other major incidents that can cause significant downtime. Use a dedicated environment for DR testing to avoid impacting production workloads. For more information, see [disaster recovery plan](disaster-recovery.md).
 
-## Start early at each layer of your workload
+**Test full failover and failback.** Validate the complete failover sequence, including DNS switchover, data replication consistency, and client reconnection. Testing individual pieces in isolation can miss coordination failures that only appear during a real switchover. Also test failback to the primary region, which is often more complex than the initial switchover. 
 
-- Testing informs the incident mitigation playbook. Cover table top exercises and FMA - is it relevant for testing strategy or FMA? Consider the overlap of incident management and disaster recovery and link to the details on other guide.
+**Measure against your targets.** Use your RTO and RPO as pass and fail criteria for every DR test. If you don't meet your targets, analyze the gaps and update your DR plan accordingly.
 
-- Choose the right environment for your reliability testing.  Because Different types of reliability testing to conduct  soak testing (staging long running environment), chaos testing (staging or specific environment),  failover testing, DR testing (dedicated environment isolated staging),
+**Validate people and process.** DR testing should confirm that operators understand the recovery procedures, can locate runbooks quickly, and have the necessary access and permissions to execute them. 
 
-- conduct reliability testing in every layer of your workload: Because Code/ Component level
-Service / application level
-Infrastructure level
-System / e2e level
-
-- testing shuld help create failure mitigation playbooks and disaster recovery plans, so you’re ready to respond quickly when issues arise. 
-
-- early testing cna test self-preservation techniques, confirm that your system is designed to handle and recover from failures, identify whether your current design, resources, and data need optimization before production, proactively detect bottlenecks and risks in your infrastructure or dependencies, and build failure mitigation playbooks based on your early test results. 
-
--  Because start with unit test and simple test cases that can be run in the pipeline - functionality and configuration
-
-
-
-Structuring Reliability Testing Across Service Types: 
-John and Simi discussed the importance of structuring reliability testing by considering the differences between infrastructure, platform, and software as a service, emphasizing the need to define the scope of testing based on responsibility and service type.
-	Scope of Reliability Testing: John explained that the scope of reliability testing should be determined by the level of responsibility the team has over the service, highlighting that for infrastructure services, teams are responsible for most decisions and thus require comprehensive validation, while for PaaS and SaaS services, much of the reliability is managed by the provider, reducing the need for direct chaos testing.
-	Component Versus System-Level Testing: John and Simi agreed that reliability testing should be considered both at the component level and at the broader system or flow level, using examples such as availability zone outages to illustrate how responsibility and testing requirements can vary across different parts of a solution.
-	Timing of Reliability Considerations: Simi asked whether reliability considerations should be addressed at the start of product development or evolve over time, to which John responded that while ideally some planning should occur early, in practice, detailed reliability testing often happens later, and teams should avoid letting testability drive architectural decisions.
-Types and Methods of Reliability Testing: 
-John provided Simi with a detailed overview of various reliability testing methods, including chaos engineering, fault injection, disaster recovery drills, and the importance of testing both technical and human processes.
-	Chaos Engineering and Fault Injection: John described how chaos engineering and fault injection are primarily applicable to infrastructure-heavy workloads, noting that Azure's Chaos Studio is evolving but still limited for PaaS and SaaS, and emphasized the need to decide early what is in scope for chaos testing based on service responsibility.
-	Disaster Recovery and Backup Testing: John and Simi discussed the importance of disaster recovery plans, including regular backup and restore testing, with John recommending that backup testing frequency should be determined by organizational needs and the risk of data loss, and that backup health and restore capability must be regularly validated.
-	Testing Human Processes: John highlighted that reliability testing should also cover human processes, such as disaster recovery plans and response criteria, and that these should be tested through drills and exercises to ensure readiness and clarity of roles.
-	Transient Fault and Resiliency Testing: John explained the need for explicit testing of transient faults, especially in cloud environments, and clarified that good resiliency design, such as zone redundancy, often surfaces as transient faults, which should be included in the reliability testing strategy.
-Role and Evolution of Failure Mitigation Playbooks: 
-Simi and John explored the purpose and development of failure mitigation playbooks, clarifying their relationship to reliability testing and how they evolve through experience and analysis.
-	Failure Mode Analysis and Playbook Validation: John explained that failure mitigation playbooks are living documents that catalog known failure modes, responses, and validation methods, and that testing is one way to verify that mitigations are effective, though some aspects may be validated through configuration review rather than direct testing.
-	Tabletop Exercises and Use Case Discovery: John described how tabletop exercises, such as simulated retrospectives, can help teams identify potential failure scenarios and gaps in preparedness, which can then inform the creation of new test cases or areas for further investigation.
-Best Practices for Running Reliability Tests in Different Environments: 
-John and Simi discussed the considerations for running reliability and chaos tests in staging versus production environments, emphasizing a risk-based, incremental approach.
-	Staging Versus Production Testing: John advised that chaos and reliability testing should begin in non-production environments to minimize risk, and only be considered for production once all possible insights have been gained from lower-risk environments, noting that even advanced organizations like Netflix use safeguards when testing in production.
-	Combining Chaos and Load Testing: John suggested that running chaos tests alongside load or stress tests in staging environments can be an effective way to uncover additional reliability issues, as the infrastructure and test harnesses are already in place.
-Integrating Reliability Testing Throughout the Development Lifecycle: 
-Simi and John discussed how reliability testing can be integrated from early development stages through to deployment, starting with unit and integration tests and expanding to environment and component validation.
-	Early Lifecycle Testing: Simi asked about starting reliability testing early, and John confirmed that beginning with unit and integration tests provides a strong foundation for reliability, which can then be extended to environment and component-level validation as the system evolves.
-Follow-up tasks:
-Reliability Testing Guidance Updates: 
-Add guidance to explicitly consider scope of reliability testing based on responsibility for infrastructure, PaaS, and SaaS services, including acknowledgment of what should and should not be tested. (Simi)
-Reliability Testing Guidance Updates: 
-Include guidance to distinguish between component-level and broader flow-level reliability testing in the documentation. (Simi)
-Reliability Testing Guidance Updates: 
-Mention in the guidance that chaos testing can and should be performed in non-production environments before considering production, and clarify that running chaos testing in production is not mandatory. (Simi)
-
-
-
+### ToDo table top excercises
 
 ## Take advantage of planned and unplanned outages
 
@@ -198,67 +191,11 @@ Integrate the following recommendations and considerations to optimize your chao
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Fault-injection testing in production can be disruptive and can potentially cause downtime. Be transparent with stakeholders about this possibility and ensure that you have safeguards in place to terminate experiments and roll back plans to quickly reverse the failures that you introduce. To guard against unintended outages in production, ensure that you plan for sufficient [redundancy](redundancy.md) and that your stakeholders understand the cost tradeoff.
 
-
-
-
-
-## Formalize your reliability testing strategy
-
-When you have a formalized reliability testing strategy, you can align your testing with your reliability goals and make sure that there is a consistent approach to reliability testing. Your test strategy keeps your testing consistent and your test plan makes it actionable and measurable. 
-
-It’s important to have a clear strategy for reliability testing that includes the following elements:
-- Bring everyone on board with the most critical user and system flows, as well as your Service Level Objectives (SLOs), Service Level Agreements (SLAs), Recovery Point Objectives (RPOs), and Recovery Time Objectives (RTOs). Make sure to manage expectations by clearly documenting any known limitations in your workload’s design and architecture.
-- Think about what types of reliability testing your workload needs. Identify the key reliability risks and failure modes for your workload, and prioritize them based on their potential impact on your customers and business. Use this information to guide your testing efforts. Consider the environment, who owns the process, how often tests should run, and what tools you’ll use.
-- Keep stakeholders informed by setting up clear reporting practices that highlight any trade-offs or limitations uncovered during your testing. Set up dashboards and metrics to track your test outcomes, and put a defect management process in place to catch and address any issues early.
-- Use your testing results to build failure mitigation playbooks and disaster recovery plans, so you’re ready to respond quickly when issues arise.
-- Define entry and exit criteria for every stage of reliability testing, so everyone knows when a phase starts and finishes.
-- Finally, create your test plans from your overall strategy for each release. This means covering test data, environments, the metrics you want to gather, expected results, risks, mitigation plans, and making sure everyone knows their role.
-
-> [!NOTE]
-> Tailor your reliability testing strategy to your specific workload characteristics. Consider factors such as the complexity of your workload, the criticality of your services, and the potential impact of failures on your customers and business. For example, a mission-critical workload that serves a large number of customers might require more extensive reliability testing than a less critical workload with fewer users.
-
-## Test early and test often
-
-Start testing for reliability as early as possible in your development lifecycle. The earlier you catch and fix reliability issues, the faster and cheaper it is to address them.
-
-During the design phase, think through failure scenarios by adding resilience patterns like retries, timeouts, circuit breakers, and graceful degradation into your architecture. 
-
-Focus your early testing on the critical flows and components that you identified during your design phase. These are the areas where reliability issues can have the biggest impact on your customers and business.
-
-Validate that your design includes enough observability. Make sure you're capturing the right metrics to identify and debug outages across your application, data, and infrastructure layers.
-
-Make sure you're also testing your monitoring and alerting systems early to validate that you'll have visibility when failures occur in production.
-
-During development, validate your resilience mechanisms right away. Test retry logic, validate timeout behaviors, and simulate exceptions and failures in unit tests. 
-
-Align your tests with your reliability objectives and make sure they run automatically as part of your build and deployment processes. This continuous validation ensures that new changes don't introduce regressions in your workload's reliability posture.
-
-When you start testing early and continuously, you can: 
-- Verify self-preservation techniques are properly implemented
-- Confirm that your system is designed to handle and recover from failures
-- Identify whether your current design, resources, and data need optimization before production
-- Proactively detect bottlenecks and risks in your infrastructure or dependencies
-- Build failure mitigation playbooks based on your early test results
-
-## Validate reliability in production
-
-If your workload demands the highest level of resilience, production testing is where you’ll really see the impact of critical user and system flows. But be mindful—there’s always a risk of customer disruption, so keep tests controlled and low risk.
-Running reliability tests in production builds confidence in your recovery mechanisms, validates real-world resilience, and helps you catch issues early. Traffic patterns and data are never quite the same as in test environments, and hidden dependencies often appear. That’s why specific tests in production can reveal opportunities for SKU optimisation and inform key architectural decisions. You’ll also see firsthand how things like geo-location affect your workload.
-Any failures you encounter in production can be added to your failure mitigation playbook, making your recovery plans stronger over time. Starting with basic recovery plans is a great way to begin, and as you test dependency flows, you can spot tight coupling or hidden dependencies and see how redundancy strategies perform. Graceful degradation testing lets you evaluate how your system operates with reduced functionality during failures. Simulating third-party failures—by disabling or throttling calls to external APIs—shows whether your fallbacks and retry logic are up to scratch.
-Don’t forget about availability monitoring. Measuring uptime, error rates, latency, and tracking SLAs and SLOs will help you spot real reliability issues early. Controlled failover testing, such as switching traffic between instances, zones, or regions and triggering backup systems, should be done during low-traffic windows or gradually to minimise risk.
-Chaos experiments can also be valuable—injecting failures, killing instances, adding latency, or dropping requests in a small, controlled way exposes hidden dependencies and verifies your system’s resilience in real-world conditions. Auto-scaling validation lets you observe how your system responds to real traffic spikes, ensuring your scaling policies actually work. And finally, canary releases allow you to observe behaviour before rolling out changes fully, giving you an extra layer of confidence.
-
-
-## Apply layered test approach
-## Incorporate different types of testing
-## simulate realistic conditions
-
-
 ## Azure facilitation
 
-[Azure Test Plans](/azure/devops/test/overview) is an easy-to-use, browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
+[Azure Test Plans](/azure/devops/test/overview) is a browser-based test management solution that provides all the capabilities required for planned manual testing, user acceptance testing, exploratory testing, and gathering feedback from stakeholders.
 
-[Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience. Azure Chaos Studio reached general availability at Ignite 2023 and has lots of features to help you get started with Fault injection and resiliency testing for your application using Azure infrastructure.
+[Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) is a managed service that uses chaos engineering to help you measure, understand, and improve your cloud application and service resilience. 
 
 [Connection monitor](/azure/network-watcher/connection-monitor-overview) is a feature of [Azure Network Watcher](/azure/network-watcher/network-watcher-overview) that you can use for synthetic monitoring and real-time testing of network connectivity across both Azure and hybrid environments. In chaos engineering scenarios, connection monitor can be used to inject faults into targeted network components and continuously measure key metrics such as latency and packet loss. This capability allows teams to observe how disruptions affect network reliability, both for individual flow components and across end-to-end network paths. To assess the impact of faults and identify areas for improvement, compare connection monitor telemetry with baseline metrics.
 
