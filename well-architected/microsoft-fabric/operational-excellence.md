@@ -71,7 +71,7 @@ Parameterize settings like capacity SKUs and environment-specific endpoints alon
 
 Deployment pipelines orchestrate these IaC assets and Fabric solutions across environments. Use GitHub Actions, Azure DevOps, or Fabric Deployment Pipelines to promote content from development to test to production. Validate deployments with pre-deployment checks along with unit and integration tests and environment-specific validations. Pipelines should enforce approvals for production deployments and capture logs while triggering alerts on failures.
 
-Automation within pipelines also manages configuration differences across environments. Variable libraries and parameterization adjust item settings, while auxiliary logic or the Fabric-CICD library handles more complex adjustments. Staging deployments, standard naming, and tagging simplify artifact management and make rollbacks safe using Git or pipeline checkpoints.
+Automation within pipelines also manages configuration differences across environments. Variable libraries and parameterization adjust item settings, while auxiliary logic or the Fabric-CICD library handles more complex configuration changes across environments.
 
 ## Monitor your environment
 
@@ -93,7 +93,7 @@ Correlate logs across systems to understand not just what failed, but why. Sever
 | [Workspace Monitoring](/fabric/data-factory/workspace-monitoring) | Provide workload-level observability          | Capture logs and metrics for supported Fabric workloads within a workspace                          |
 | [OneLake Diagnostics](/fabric/onelake/onelake-diagnostics-overview) | Monitor data access activity                  | Analyze how data is accessed within a workspace and investigate storage-related issues              |
 | [Fabric Activator](/fabric/real-time-intelligence/data-activator/activator-introduction)                      | Event-driven monitoring and automation        | Trigger alerts or automated actions when Fabric events or capacity signals occur                    |
-| [Fabric Unified Admin Monitoring (FUAM)](https://blog.robsewell.com/blog/fuam-fabric-unified-admin-monitoring) | Consolidated tenant-wide monitoring           | Aggregate monitoring data across the Fabric tenant for centralized operational insights             |
+| [Fabric Unified Admin Monitoring (FUAM)](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-unified-admin-monitoring) | Consolidated tenant-wide monitoring           | Aggregate monitoring data across the Fabric tenant for centralized operational insights             |
 | [Azure Monitor / Log Analytics](/azure/azure-monitor/overview) | External monitoring and long-term analysis    | Store, query, and visualize exported Fabric logs and metrics                                        |
 | [Microsoft 365 Audit Logs](/fabric/admin/service-admin-portal-audit-logs) | Track user activity and administrative events | Capture Fabric audit logs and forward them to external monitoring systems                           |
 
@@ -161,7 +161,7 @@ Validate every layer: artifact, pipeline, data quality, and user experience.
 | Artifact tests          | Validate individual components  | Test a notebook transformation or pipeline logic        |
 | Integration tests       | Validate the full data workflow | Ensure ingestion → transformation → model refresh works |
 | Data quality validation | Detect data issues early        | Validate schema changes or missing values               |
-| Load testing            | Understand performance limits   | Run pipelines with production-scale data                |
+| Load testing            | Understand performance limits   | Run pipelines or queries with production-scale data                |
 | User acceptance testing | Confirm business requirements   | Business users validate reports and outputs             |
 
 Have dedicated test workspaces and capacities that represent production. Test environments should use sample or anonymized data sources to avoid impacting production systems. To control costs, test capacities are often smaller than production and temporarily scaled up during load tests.

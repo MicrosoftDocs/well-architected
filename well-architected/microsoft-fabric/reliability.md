@@ -84,11 +84,11 @@ Graceful degradation ensures partial failures don't stop everything. Pipelines c
 
 Scaling is about keeping your workloads running smoothly as demand grows. For predictable workloads, allocate capacities that meet peak demand. For spikes, **rely on Fabric's elasticity features like bursting and smoothing**. Scaling operations are generally fast. Still, communicating scaling events prevents surprises for dependent teams and avoids transient slowdowns.
 
-Treat each capacity as a self-contained unit. If one saturates, others continue running. Distribute heavy workloads across multiple workspaces and capacities to reduce contention. Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing. Apply surge protection at capacity and workspace level. Enable the throttling protection feature as a safety net for unanticipated spikes. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scaling events.
+Treat each capacity as a self-contained unit. If one saturates, others continue running. Distribute heavy workloads across multiple workspaces and capacities to reduce contention. Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing. Apply surge protection at capacity and workspace level. Enable the capacity overage billing feature as a safety net for unanticipated spikes. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scaling events.
 
 > [!IMPORTANT]
 >
-> Don't wait until a capacity is maxed out. Maintain a buffer of extra resources and enable the throttling protection feature to absorb spikes smoothly. Track usage trends and anticipate growth, proactively adding capacity or distributing workloads across multiple units ensures scaling events are seamless and workloads remain reliable as demand grows.
+> Don't wait until a capacity is maxed out. Maintain a buffer of extra resources and enable the capacity overage billing feature to absorb spikes smoothly. Track usage trends and anticipate growth, proactively adding capacity or distributing workloads across multiple units ensures scaling events are seamless and workloads remain reliable as demand grows.
 
 ## Monitor metrics and observe proactively
 
@@ -105,7 +105,7 @@ Fabric's built-in resilience is strong, but you can strengthen it further:
 - Dedicated capacities: Keep critical workloads isolated from "noisy neighbors".
 - Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing.
 - Apply surge protection at capacity and workspace level.
-- Enable the throttling protection feature as a safety net for unanticipated spikes.
+- Enable the capacity overage billing feature as a safety net for unanticipated spikes.
 - Modular workloads: Break large pipelines or datasets into smaller, independent pieces. If one fails, the rest keep running.
 - Idempotent operations: Make sure retries don't cause duplicate writes or processing errors.
 - Retry logic: Combine exponential backoff with alerting to recover gracefully from transient failures.

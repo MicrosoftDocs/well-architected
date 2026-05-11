@@ -9,9 +9,9 @@ ms.topic: concept-article
 
 # Performance efficiency for Microsoft Fabric workloads
 
-From a design perspective, every choice you make directly affects how your users experience your solution. As an architect, your goal is to make those user flows predictable, efficient, and scalable.
+From a design perspective, every choice you make directly affects how the platform operates and how your users experience your solution. As an architect, your goal is to make the user and data flows predictable, efficient, and scalable.
 
-This guide gives your best practices that you can apply through the lifecycle of your workload. Key concepts covered are: planning capacity, monitoring performance, testing, tuning for efficiency, and scaling confidently. 
+This guide gives you best practices that you can apply through the lifecycle of your workload. Key concepts covered are: planning capacity, monitoring performance, testing, tuning for efficiency, and scaling confidently. 
 
 ## Plan capacity intentionally
 
@@ -24,7 +24,7 @@ A good starting point is the [Microsoft Fabric Capacity Estimator](https://www.m
 During this baseline phase, focus on metrics such as:
 
 - CU consumption across workloads
-- CPU and memory utilization
+- CPU and memory utilization (which can be monitored for certain workload types, but may be abstracted away for other workloads)
 - Concurrency levels
 - Response times for critical operations
 
@@ -32,7 +32,7 @@ Tools like the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app) hel
 
 Capacity planning must also account for service limits and quotas. Each Fabric SKU has defined constraints including total CUs, Spark vCore limits, memory availability, and throughput ceilings. If too many workloads run simultaneously, these limits can create contention.
 
-One common mitigation strategy is workload isolation. Heavy jobs can be scheduled during off-peak hours, separated across workspaces, or placed on different capacities. Breaking large operations into smaller parallel tasks can also help distribute compute demand more efficiently.
+One common mitigation strategy is workload isolation. Heavy jobs can be separated across workspaces or placed on different capacities. Note that capacity smoothing automatically distributes background workloads over a 24-hour period, which facilitates parallel task execution and eliminates the need to schedule heavy workloads during off-peak hours.
 
 Dependencies can introduce performance bottlenecks as well. Many Fabric workloads rely on external systems or shared platform components such as:
 
@@ -46,7 +46,7 @@ These dependencies should be evaluated early in the design process because they 
 
 For larger solutions, isolating architectural layers across workspaces or capacities can reduce contention. For example, you might separate data preparation workloads, orchestration pipelines, and presentation workloads so one layer cannot starve another of compute resources.
 
-Load testing and validation are critical. Simulate realistic workloads, gradually increasing concurrency to identify performance breakpoints. Test across all workload types: Spark jobs, Power BI refreshes, and data integration pipelines. Monitor CU usage, throttling, and response times using the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app). Keep in mind that Fabric smooths background operations over 24 hours, so short stress tests may not reflect sustained usage.
+Load testing and validation are critical. Simulate realistic workloads, gradually increasing data volumes and concurrency to identify performance breakpoints. Test across all workload types: Spark jobs, Power BI refreshes, and data integration pipelines. Monitor CU usage, throttling, and response times using the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app). Keep in mind that Fabric smooths background operations over 24 hours, so short stress tests may not reflect sustained usage. Longer test windows may reveal issues that quick tests miss. Consider using Fabric Workspace Monitoring to collect logs and metrics from Fabric items during stress testing. Additional open-source monitoring tools are available in [Fabric Toolbox](https://github.com/microsoft/fabric-toolbox).
 
 Validate your capacity assumptions through load testing. Simulate realistic workloads with increasing concurrency levels to identify performance breakpoints. Monitor CU usage, throttling events, and response times while running Spark jobs, Power BI refreshes, and pipeline executions together. Because Fabric smooths background operations over a 24-hour period, short stress tests may not accurately represent sustained demand. Longer test windows often reveal issues that quick tests miss. Certain load testing tools are available in [Fabric Toolbox](https://github.com/microsoft/fabric-toolbox).
 
@@ -79,7 +79,7 @@ Horizontal scaling, on the other hand, distributes workloads across multiple cap
 
 Fabric's separation of compute and storage supports this model effectively. Data prepared in one capacity can be shared through OneLake without physically copying it, enabling architectures such as data mesh patterns where multiple domains publish and consume shared datasets.
 
-As your architecture scales, maintain modular components wherever possible. Pipelines, datasets, warehouses, and analytical models should be able to scale independently. Partitioning large datasets, by date, region, or another logical key, helps keep queries focused on smaller slices of data and improves performance.
+As your architecture scales, maintain modular components wherever possible. Pipelines, datasets, warehouses, and analytical models should be able to scale independently.
 
 Signals that it may be time to scale include:
 
@@ -90,18 +90,18 @@ Signals that it may be time to scale include:
 
 When these signals appear, scaling decisions should be validated with testing. Simulate realistic workloads, measure response times, and confirm that partitioning or architectural changes reduce the amount of data each query must process.
 
-Fabric features such as bursting and autoscale can absorb short-term spikes in demand, but they should complement deliberate capacity planning rather than replace it.
+Fabric features such as bursting, smoothing, capacity overage billing and autoscale billing can absorb short-term spikes in demand, but they should complement deliberate capacity planning rather than replace it.
 
 ## Monitor performance issues
 
 To keep your workloads running smoothly, you need visibility into the right metrics:
 
-- Capacity utilization reveals how much of the available compute your workloads are consuming. Sustained high utilization on interactive workloads often leads to slower query responses for users.
+- Capacity utilization reveals how much of the available compute your workloads are consuming.
 - Memory usage is another important signal, especially for Power BI semantic models and Spark jobs. Large models or inefficient queries can exhaust available memory and degrade performance across the capacity.
 - Concurrency levels show how many operations are running simultaneously compared to the capacity's limits. High concurrency can increase queue times even when individual workloads are efficient.
 - Job execution metrics, such as query duration, dataset refresh times, pipeline execution time, and Spark job runtime.
-- Real-time workloads, ingestion latency and queries per second are key indicators of system health.
-- Errors and throttling events, including Spark "capacity exceeded" messages or throttling events.
+- Ingestion latency and event throughput per second are key indicators of system health for real-time workloads.
+- Capacity-related errors and throttling events.
 
 Fabric provides several tools that help monitor these signals. Use the [Capacity Metrics App](/fabric/enterprise/metrics-app) for a top-level view, the [Real-Time Hub for Capacity Events](/fabric/real-time-hub/explore-fabric-capacity-overview-events) for live monitoring of capacity-level events, and workspace/item-specific monitoring for detailed insight into Spark jobs, pipelines, and Semantic Models. Fabric lets you add custom tracking too - capture step durations or data processed if Fabric doesn't automatically provide it.
 
@@ -135,7 +135,7 @@ Caching plays an important role in performance as well. Fabric uses multiple cac
 - In-memory dataset caches
 - Result-set caching for queries
 
-Some caching layers require configuration, such as enabling DirectQuery caching in Power BI or warming caches for real-time intelligence workloads. When tuned appropriately, caching can dramatically reduce query latency.
+Most caching capabilities are enabled automatically. Yet, some caching layers are configurable, such as defining data retention policies for real-time intelligence workloads. When tuned appropriately, caching can dramatically reduce query latency.
 
 Fabric also includes platform features that support efficient execution. Autoscale and bursting can absorb temporary spikes in demand, while automatic statistics generation improves query optimization for analytical workloads.
 
