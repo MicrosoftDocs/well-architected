@@ -4,7 +4,7 @@ description: Learn how to design a reliability testing strategy that focuses on 
 author: simipaul
 ms.author: simipaul
 ms.reviewer: simipaul
-ms.date: 04/13/2026
+ms.date: 05/11/2026
 ms.topic: concept-article
 ---
 
@@ -12,12 +12,12 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Reliability checklist recommendation:**
 
-|**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Ensure that your graceful degradation implementation and scaling strategies are effective by performing reliability testing. |
+|**RE:08**| **Test for resiliency and availability scenarios by applying the principles of chaos engineering.** Use reliability testing to verify that your workload can withstand faults, scale under demand, and recover within your defined targets. |
 |---|---|
 
-When you start testing with unit, integration, and security tests, you provide a foundation for reliability. You extend this foundation to validate and optimize the resiliency and availability of the critical flows in your workload by applying reliability testing strategies.
+When you start testing with unit, integration, and security tests, you provide a foundation for reliability. By applying a reliability testing strategy, you extend this foundation to validate the resiliency and availability of the critical flows in your workload. 
 
-The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to reliability and focus on achieving resilience and availability targets. 
+The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). We recommend reviewing that article first. The recommendations in this guide are scoped to reliability and focus on achieving resiliency and availability targets. 
 
 The following table defines key reliability terms used throughout this article.
 
@@ -31,24 +31,42 @@ The following table defines key reliability terms used throughout this article.
 | Fault injection | The act of introducing an error to a system to test the resiliency of the system. |
 | Recoverability | The ability to restore normal operations after a disruption within agreed recovery time (RTO) and recovery point (RPO) targets. |
 | Resiliency | The ability of a workload to withstand faults (transient errors, infrastructure outages, demand spikes) and continue operating within an acceptable user experience. |
-| Failover |  |
-| Failback |  |
-
-//TODO: Chaos engineering, fault injection testing and chaos testing clarification
+| Failover | The process of switching to a secondary instance upon the failure of the primary instance. |
+| Failback | The process in which you restore operations in the primary region after it's recovered. |
  
 ## Define reliability testing scope based on service types
 
-Your reliability testing strategy should account for the shared responsibility model. The level of testing you need depends on how much control you have over each component's reliability behavior.
+When you define the scope of your reliability testing, consider the shared responsibility model of the services you use. Each service type (IaaS, PaaS, SaaS) has different reliability guarantees and different levels of control over failure handling. Your testing strategy should reflect these differences to focus on validating the aspects of reliability that you own.
 
 **Match testing depth to your responsibility.** For infrastructure services (IaaS), your team owns most reliability decisions, so invest in thorough validation through chaos engineering and fault injection. For platform (PaaS) and software (SaaS) services, the provider manages much of the underlying reliability. Focus your testing on how your workload interacts with those services, such as how it responds to throttling, service degradation, or changes in load patterns.
 
-**Test at multiple levels.** Design your testing strategy to cover both individual components and end-to-end flows. A component might be highly available on its own, but the interaction between components can introduce reliability risks that only surface at the system level.
-
 **Account for mixed-service workloads.** When your workload spans multiple service types, testing responsibilities vary across components. For example, you might test failover of your infrastructure components during an availability zone outage, but rely on provider guarantees for a PaaS database that's designed for high availability. Identify where those boundaries are and make sure your testing strategy covers the gaps between them.
+
+## Test against your reliability targets end-to-end
+
+Your reliability targets, such as SLOs, RTOs, and RPOs, define the expected behavior of your workload under failure conditions. Use reliability targets as pass and fail criteria across complete critical flows, not just individual components.
+
+**Validate recovery across the full flow.** A single component might restore within its RTO, but the overall recovery time of the flow can exceed your target when downstream dependencies also need to be restored. Your testing should account for the cumulative recovery time across all components in a critical flow to confirm that end-to-end recovery meets your targets.
+
+## Build reliability scenarios from critical flows and failure modes
+
+Reliability testing requires you to focus on the critical flows in your workload and the failure modes that can affect them. 
+
+Structure your reliability tests around complete critical flows rather than individual components. Use your [failure mode analysis](failure-mode-analysis.md) to identify the most impactful failure scenarios and design tests that validate your resiliency and recovery strategies. 
+
+**Prioritize by impact and likelihood.** Not every failure mode warrants the same testing investment. Focus first on scenarios that have the highest potential impact on your customers and the highest likelihood of occurring. Your failure mode analysis should inform this prioritization.
+
+## Build reliability testing into your development process
+
+Reliability issues are cheapest to fix when you catch them early. Embed reliability-focused testing into your development lifecycle so that failure handling is validated continuously, not just during dedicated testing phases.
+
+**Design for failure scenarios upfront.** During the design phase, identify potential failure scenarios, such as retries, timeouts, circuit breakers, and graceful degradation, and incorporate them into your architecture. When these patterns are part of the design, developers can write targeted tests from the start rather than retrofitting them later.
+
+**Test failure-handling logic in unit tests.** Validate retry logic, timeout behaviors, and exception handling within unit tests that run in your pipeline. These tests give fast feedback on whether your reliability patterns work as expected, before the code reaches higher environments.
 
 ## Validate core reliability scenarios
 
-Your reliability testing should cover each critical scenario that can affect your workload's availability and recoverability. Prioritize these scenarios based on your [failure mode analysis](failure-mode-analysis.md) and the potential impact on your customers.
+Your reliability testing should cover the scenarios that are most likely to cause downtime or degrade the user experience. The following sections help you think through each scenario and decide what your testing strategy should validate.
 
 ### Backup and restore
 
@@ -56,7 +74,7 @@ Your backup and restore testing strategy should validate that your data protecti
 
 **Establish a testing cadence.** Determine how frequently you need to test restores based on how often your backup configuration, data schema, or infrastructure changes. More frequent changes require more frequent restore testing.
 
-**Set recovery targets.** Design tests to measure actual restore times against the RPO and RTO targets which can make sure that your backup strategy meets your recovery objectives.
+**Set recovery targets.** Measure actual restore times against your RPO and RTO targets to confirm your backup strategy meets your recovery objectives.
 
 **Don't assume backup completeness.** Backups can be misconfigured to capture only a subset of your data. Your testing strategy should include validation of data integrity and completeness, not just whether a restore operation succeeds.
 
@@ -94,25 +112,33 @@ Your workload likely depends on services outside your direct control, such as th
 
 **Validate isolation and blast radius containment.** Make sure your testing verifies that a single dependency failure doesn't cascade to unrelated functionality. 
 
-### Self-healing and recovery
+### Self-preservation and recovery
 
-Your test should validate how your [self-healing and self-preservation design](self-preservation.md) responds to malfunctions. 
+Your testing should validate how your [self-healing and self-preservation design](self-preservation.md) responds to malfunctions, including whether your workload can continue operating in a reduced capacity when full recovery isn't immediate.
 
 **Test automated recovery end-to-end.** Verify that health checks detect failures accurately, that automated remediation triggers as expected, and that the system restores to a healthy state within acceptable timeframes. 
 
 **Validate manual recovery runbooks.** Automated recovery won't cover every scenario. Test manual runbooks under realistic conditions to make sure operators can execute them under pressure and within your recovery time targets.
 
+**Validate graceful degradation behavior.** When a component fails, your workload should degrade gracefully rather than fail completely. Test that your workload can operate in a reduced mode, such as queuing requests for manual review and that the degraded experience is acceptable to users. Confirm that your team knows how to operate the workload in this state and how to restore full functionality.
+
 ### Disaster recovery (DR)
 
 You should test your disaster recovery plans to respond to catastrophic failures and other major incidents that can cause significant downtime. Use a dedicated environment for DR testing to avoid impacting production workloads. For more information, see [disaster recovery plan](disaster-recovery.md).
 
-**Test full failover and failback.** Validate the complete failover sequence, including DNS switchover, data replication consistency, and client reconnection. Testing individual pieces in isolation can miss coordination failures that only appear during a real switchover. Also test failback to the primary region, which is often more complex than the initial switchover. 
+**Test full failover and failback.** Testing individual pieces in isolation can miss coordination failures that only appear during a real switchover. Validate the complete failover sequence, including DNS switchover, data replication consistency, and client reconnection. Also test failback to the primary region, which is often more complex than the initial switchover. 
 
-**Measure against your targets.** Use your RTO and RPO as pass and fail criteria for every DR test. If you don't meet your targets, analyze the gaps and update your DR plan accordingly.
+**Measure against your targets.** If a DR test doesn't meet your RTO or RPO, analyze the gaps and update your DR plan accordingly.
 
 **Validate people and process.** DR testing should confirm that operators understand the recovery procedures, can locate runbooks quickly, and have the necessary access and permissions to execute them. 
 
-### ToDo table top excercises
+#### Use tabletop exercises to discover testing gaps
+
+Tabletop exercises help you find gaps in your reliability testing strategy before a real incident exposes them. By simulating failure scenarios with your team, you can identify untested conditions and validate that your response procedures work as expected.
+
+**Simulate realistic incidents.** Walk through a failure scenario, such as a regional outage or a corrupted deployment, and have your team describe the steps they'd take to detect, respond to, and recover from it. These discussions often reveal assumptions about system behavior that haven't been validated through testing.
+
+**Turn findings into test cases.** Use the gaps and unknowns that surface during the exercise to create new reliability tests. If the team discovers that no one knows how the workload behaves when a specific dependency fails, that's a scenario to add to your testing strategy.
 
 ## Take advantage of planned and unplanned outages
 
@@ -132,64 +158,37 @@ Use every outage incident as an opportunity to learn more about your workload an
 
 - If applicable, look for the same issue, or configuration weaknesses that might be affected by similar issues, across all the components in your workload. Use this opportunity to proactively address those components. Consult your incident history to detect patterns of similar issues across your workload.
 
-- Use your findings to improve your testing strategy. Ensure that you have successfully addressed the root cause and similar problems by directly testing the same failure.
+## Turn incidents and drills into regression test cases 
+
+Every production incident and DR drill is an opportunity to learn about how your workload fails and to improve your testing strategy. Use the specific failure scenarios you experienced to create regression test cases. When you fix a reliability issue, add a test that reproduces the original failure so you can confirm the fix holds over time and catch regressions early. 
+
+## Combine different types of tests
+
+When you run different types of tests together, you can reveal reliability issues that aren't visible when each test runs in isolation. A workload might handle a specific load under normal conditions, but the same load causes failures when you introduce a fault. 
+
+**Reuse existing test infrastructure.** If you already have infrastructure and a test harness for load testing, use it to run chaos tests simultaneously. Combining load and fault injection in the same test run shows how your workload behaves under realistic conditions, where demand and failures occur at the same time.
+
+**Start in non-production environments.** Reliability testing should begin in lower-risk environments where you can safely explore failure modes. Move to production testing only after you've exhausted the insights available from non-production environments and have appropriate safeguards in place to limit blast radius and roll back quickly.
 
 ## Use fault injection and chaos engineering
 
-Fault-injection testing follows the principles of chaos engineering by highlighting the workload's ability to react to component failures. Perform fault-injection testing in pre-production and production environments. Apply testing to infrastructure and application layers. Apply the information that you learned [Recommendations for performing failure mode analysis](failure-mode-analysis.md) to ensure that you test only faults that you prioritize and that you have mitigation strategies that address faults. The key guidelines of chaos engineering are:
+Fault injection and chaos engineering build confidence in your workload's resiliency by deliberately introducing failures and observing how the system responds. Ensure you have mitigation strategies in place before running experiments.
 
-- **Be proactive.** Don't wait for failures to happen. Try to anticipate failures by conducting chaos experiments to discover and fix issues before they affect your production environment.
+**Treat chaos engineering as an ongoing practice.** Chaos engineering is a cultural commitment, not a one-time response to an outage. Build it into your team's regular cadence so that experiments run continuously as your workload evolves. Periodically revisit your architecture choices and test assumptions to detect regressions, new dependencies, and technical debt.
 
-- **Embrace failure.** Accept and learn from the failures that occur in your system. See failures as a natural part of complex systems and use them as opportunities to learn and improve your system's reliability.
+**Challenge assumptions about reliable components.** Look for opportunities to inject faults into components and flows that you assume are reliable based on past experience. Those assumptions might not hold in your current workload or after recent changes. Topology changes, platform updates, and new resource configurations can introduce dependencies or break existing ones in ways that aren't immediately apparent.
 
-- **Break the system.** Deliberately inject faults or stress into your system to test its resilience. Simulate real-world failures or disruptions to test and improve your workload's recovery capabilities.
+**Use your failure mode analysis to focus experiments.** Each experiment should target a specific fault from your failure mode analysis and have a clear hypothesis, such as testing a given flow's ability to withstand the loss of a particular component. As experiments reveal new failure modes or undiscovered dependencies, update your failure mode analysis to keep it current.
 
-- **Identify and address single points of failure early.** As you test, consult and update your [failure mode analysis](failure-mode-analysis.md) to validate and address faults in your documentation. Apply reliability approaches, like redundancy and segmentation, to increase your workload's availability and minimize downtime.
+**Scope experiments using SLA buffers and error budgets.** Limit chaos testing to stay within your SLAs and avoid reputation or financial effects from outages. Your error budget, the difference between 100 percent of the SLO and the agreed-upon SLO, represents the investment you can make in fault injection. Use your flow and component recovery targets to define the boundaries of each experiment.
 
-- **Install guardrails and graceful mitigation.** Implement safety measures, like the Circuit Breaker pattern or the Throttling pattern, to increase availability. Implement graceful degradation approaches that enable business continuity during failures.
+**Contain blast radius during experiments.** Target specific components that can be recovered quickly and set informed expectations about the effect of each fault injection. If an experiment goes beyond scope or produces unexpected results, stop it. Balance collecting meaningful data with minimizing the effect on users.
 
-- **Minimize the blast radius.** Implement fault isolation strategies to help ensure that, even if a failure occurs, its scope is limited. The system continues to function with minimal effect on your customers.
+**Measure against baselines.** Establish consistent reliability and performance metrics for the flows and components involved in each experiment. Compare degraded-state metrics against these baselines to understand the full effect of the fault and determine whether your resiliency design meets its targets.
 
-- **Build immunity.** Use chaos engineering experiments to improve your workload's ability to prevent and recover from failures.
+**Feed results back into your testing strategy.** Use experiment outcomes to drive new tests, update recovery plans, and inform remediation backlog items. As unexpected behaviors arise, create targeted tests for those behaviors and design remediation strategies.
 
-Chaos engineering is an integral part of workload team culture and an ongoing practice, not a short-term tactical effort in response to a single outage. Follow this standard method when you design your chaos experiments:
-
-1. Start with a hypothesis. Each experiment should have a clear goal, like testing a given flow's ability to withstand the loss of a particular component.
-1. Measure baseline behavior. Ensure that you have consistent reliability and performance metrics for the flow and components involved in a given experiment to compare with the degraded state when running your experiment.
-1. Inject a fault or faults. The experiment should intentionally target specific components that can be recovered quickly and you should have an informed expectation of the effect that the fault injection will cause to help control the experiment's blast radius.
-1. Monitor the resulting behavior. Gather telemetry about the individual flow components and the end-to-end flow behavior that the experiment targets to properly understand the effects of the fault. Compare the metrics that you gather with the baseline metrics for a full picture of the fault injection results.
-1. Document the process and observations. Keeping detailed records of your experiments will inform the future decisions about the workload design, ensuring that you address the gaps that have been revealed over time.
-1. Identify and act on the result. Plan for remediation steps that can be added to your workload backlog as improvements. Ensure that design improvement plans are reviewed and tested in nonproduction environments according to the same processes as other deployments.
-
-Periodically validate your process, architecture choices, and code to quickly detect technical debt, integrate new technologies, and adapt to changing requirements.
-
-When you conduct fault-injection experiments, you:
-
-- Confirm that monitoring is in place and alerts are set up.
-- Validate your process of assigning a directly responsible individual (DRI) to take ownership of an incident.
-- Ensure that your documentation and investigation processes are up to date.
-
-Integrate the following recommendations and considerations to optimize your chaos testing strategy:
-
-- Challenge system assumptions. With testing, you try to improve the resiliency of your workload and your workload design strategies. Look for opportunities to inject faults into components and flows that you assume are reliable based on past experiences. They might not be reliable in your new workload.
-
-- Validate change, such as the topology, platform, and resources. Without thorough testing, including fault-injection testing, you might have an incomplete picture of your workload after changes are made. For example, you might inadvertently introduce new dependencies or broken existing dependencies in ways that aren't immediately apparent.
-
-- Use SLA buffers. Limit chaos testing to stay within your SLAs and avoid potential reputation or financial effects from outages. Your flow and component recovery targets help define the scope of your testing.
-
-- Establish an error budget as an investment in chaos and fault injection. Your error budget is the difference between achieving 100 percent of the SLO and achieving the agreed upon SLO.
-
-- Stop the experiment if it goes beyond scope. Unknown results are an expected outcome of chaos experiments. Strive to achieve balance between collecting substantial result data and affecting as few production users as possible.
-
-- Work closely with development teams to ensure the relevance of the injected failures. Use past incidents or issues as a guide. Examine dependencies and evaluate the results when you remove those dependencies.
-
-- Identify and document previously undiscovered dependencies between different components within your workload that are revealed through chaos testing.
-
-- Adjust recovery plans as necessary to account for dependencies that are discovered during chaos testing.
-
-- Use the results from your experiments and tests as the basis for new experiments and tests. As unexpected behaviors arise, new tests might target those behaviors directly and give you the opportunity to design remediation strategies for them.
-
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Fault-injection testing in production can be disruptive and can potentially cause downtime. Be transparent with stakeholders about this possibility and ensure that you have safeguards in place to terminate experiments and roll back plans to quickly reverse the failures that you introduce. To guard against unintended outages in production, ensure that you plan for sufficient [redundancy](redundancy.md) and that your stakeholders understand the cost tradeoff.
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Fault-injection testing in production can be disruptive and can potentially cause downtime. Be transparent with stakeholders about this possibility and ensure that you have safeguards in place to terminate experiments and roll back quickly. To guard against unintended outages, plan for sufficient [redundancy](redundancy.md) and make sure your stakeholders understand the cost tradeoff.
 
 ## Azure facilitation
 
