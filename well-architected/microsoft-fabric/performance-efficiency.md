@@ -48,8 +48,6 @@ For larger solutions, isolating architectural layers across workspaces or capaci
 
 Load testing and validation are critical. Simulate realistic workloads, gradually increasing data volumes and concurrency to identify performance breakpoints. Test across all workload types: Spark jobs, Power BI refreshes, and data integration pipelines. Monitor CU usage, throttling, and response times using the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app). Keep in mind that Fabric smooths background operations over 24 hours, so short stress tests may not reflect sustained usage. Longer test windows may reveal issues that quick tests miss. Consider using Fabric Workspace Monitoring to collect logs and metrics from Fabric items during stress testing. Additional open-source monitoring tools are available in [Fabric Toolbox](https://github.com/microsoft/fabric-toolbox).
 
-Validate your capacity assumptions through load testing. Simulate realistic workloads with increasing concurrency levels to identify performance breakpoints. Monitor CU usage, throttling events, and response times while running Spark jobs, Power BI refreshes, and pipeline executions together. Because Fabric smooths background operations over a 24-hour period, short stress tests may not accurately represent sustained demand. Longer test windows often reveal issues that quick tests miss. Certain load testing tools are available in [Fabric Toolbox](https://github.com/microsoft/fabric-toolbox).
-
 Ongoing capacity management relies on continuous monitoring. Use the [Fabric Capacity Metrics App](/fabric/enterprise/metrics-app), [Workspace Monitoring](/fabric/data-factory/workspace-monitoring), and workload-specific tools to track utilization trends, detect spikes, and identify bottlenecks. Incorporate real-time alerts or automated responses for proactive capacity management and regularly review telemetry from dependent components like pipelines or Spark jobs to refine scaling strategies.
 
 
@@ -57,14 +55,6 @@ Ongoing capacity management relies on continuous monitoring. Use the [Fabric Cap
 
 
 Selecting the right [Microsoft Fabric SKU](/fabric/enterprise/licenses#capacity) determines how much compute and memory your workloads can use. Each capacity tier provides a fixed number of CUs, which affects concurrency limits, query throughput, and the responsiveness of interactive workloads.
-
-| SKU / Capacity  | Compute and memory (CUs)      | Typical workloads                                                     | Performance characteristics                                                                       |
-| --------------- | ----------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| **F2–F8**       | Small compute, minimal memory | Development environments, light ETL, small reports                    | Handles limited concurrency and smaller datasets; suitable for experimentation or small workloads |
-| **F16–F64**     | Moderate compute and memory   | Standard ETL pipelines, moderate Power BI usage, smaller ML workloads | Supports mixed workloads and moderate concurrency                                                 |
-| **F128–F512**   | Large compute and memory      | High-volume ETL, large datasets, real-time analytics                  | Higher concurrency and faster query responses                                                     |
-| **F1024–F2048** | Very large compute and memory | Mission-critical analytics, large Spark workloads, AI/ML processing   | Designed for heavy workloads and strict performance expectations                                  |
-
 
 Larger capacities provide more headroom for concurrency and memory-intensive workloads, but efficient architecture often matters more than raw capacity size. Even smaller SKUs can perform well when workloads are optimized, for example by pre-aggregating data in OneLake, enabling query folding in Power BI, and pushing heavy transformations into distributed Spark processing.
 
