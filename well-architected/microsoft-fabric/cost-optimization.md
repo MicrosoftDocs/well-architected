@@ -38,7 +38,7 @@ Because compute capacity is provisioned ahead of time, costs are tied to the siz
 
 For bursty, unpredictable jobs, such as certain Spark or data warehousing workloads, consider using autoscale billing model where you pay only for active jobs while your compute resources are running.
 
-Similarly, consider using the throttling protection feature as a safety net for your capacities that may occasionally experience spikes in activities. Throttling protection allow you to operate capacities at a higher level of utilization without the risk of disruptions when capacity resources are exceeded.
+Similarly, consider using the capacity overage billing feature as a safety net for your capacities that may occasionally experience spikes in activities. Overage billing allows you to operate capacities at a higher level of utilization without the risk of disruptions when capacity resources are exceeded.
 
 #### Recognize hidden and indirect costs
 

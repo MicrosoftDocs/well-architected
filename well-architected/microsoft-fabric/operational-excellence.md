@@ -18,11 +18,11 @@ This article provides practical guidance on team readiness, safe deployment prac
 
 Your first task as an architect is to understand the people and skills around you. Fabric may automate infrastructure management, but operating it effectively still requires a combination of technical, operational, and collaborative skills. 
 
-Data engineers need to be fluent in Spark transformations, Lakehouse design, and Power BI semantic models. Capacity admins must understand the limits of compute units, storage, and workspace boundaries. DevOps skills including shared ownership, CI/CD pipelines, and incident response aren't optional.
+Data engineers need to be fluent in Spark transformations, Lakehouse design, Power BI semantic models (or other workloads included in your solution). Capacity admins must understand capacity units, storage, and workspace boundaries. DevOps skills including shared ownership, CI/CD pipelines, and incident response aren't optional.
 
 Take the time to map roles and responsibilities. Who owns capacity monitoring? Who can approve a production deployment? Who is on call when a critical pipeline fails? Document these boundaries clearly. 
 
-Formalize skills through certifications like DP-600 or DP-700. Also, learn through Microsoft Official guidance on Fabric. Pay attention to Microsoft Entra ID knowledge because it's essential for integrated governance and identity management.
+Formalize skills through certifications like Microsoft Certified: Fabric Analytics Engineer Associate (DP-600) or Microsoft Certified: Fabric Data Engineer Associate (DP-700). Also, learn through Microsoft Official guidance on Fabric. Pay attention to Microsoft Entra ID and networking knowledge because it's essential for governance, identity management and integration.
 
 ## Deploy changes safely
 
@@ -51,7 +51,8 @@ Focus on automating repetitive or high-touch tasks so your team can spend time o
 
 Fabric includes native automation features such as job scheduling and deployment pipelines, capacity monitoring, and Fabric Activator for event-driven workflows. You can also use external tools like REST APIs and CLI, Terraform, and Git integration to orchestrate more complex or custom automation.
 
-Automation also supports architecture-wide consistency. For example, deployments can be validated against Git or templates to detect accidental or unauthorized changes. Even small but practical automations, like pausing dev capacities overnight, triggering dataset updates, or scaling Spark pools during peak workloads, quickly add up to significant operational efficiency gains.
+Automation also supports architecture-wide consistency. For example, deployments can be validated against Git or templates to detect accidental or unauthorized changes. Even small but practical automations, like pausing dev capacities overnight, triggering dataset updates, or Delta table compaction, quickly add up to significant operational efficiency gains.
+``
 
 ### Drive deployment through code
 
@@ -69,7 +70,7 @@ Templates should account for dependencies and should be designed in layers.
 
 Parameterize settings like capacity SKUs and environment-specific endpoints along with security roles and refresh schedules. Use Git as the source of truth to detect drift and maintain version control.
 
-Deployment pipelines orchestrate these IaC assets and Fabric solutions across environments. Use GitHub Actions, Azure DevOps, or Fabric Deployment Pipelines to promote content from development to test to production. Validate deployments with pre-deployment checks along with unit and integration tests and environment-specific validations. Pipelines should enforce approvals for production deployments and capture logs while triggering alerts on failures.
+Deployment pipelines orchestrate these IaC assets and Fabric solutions across environments. Use GitHub Actions, Azure DevOps, or Fabric Deployment Pipelines to promote content from development to test to production. Validate deployments with pre/post-deployment checks along with unit and integration tests and environment-specific validations. Pipelines should enforce approvals for production deployments and capture logs while triggering alerts on failures.
 
 Automation within pipelines also manages configuration differences across environments. Variable libraries and parameterization adjust item settings, while auxiliary logic or the Fabric-CICD library handles more complex configuration changes across environments.
 
