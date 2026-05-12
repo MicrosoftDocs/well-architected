@@ -66,7 +66,7 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Configuration management and other operational tasks**: Use orchestration and policy tooling to ensure that all of your resources run the same configuration and that compliance requirements are enforced across your workload. Automate repetitive tasks associated with onboarding new application users or employees, like database updates, credential creation or DNS updates.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with observability data so that teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical observability data to forecast and adjust parameter values in real time.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so that teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time.
 
 ## Choose an appropriate automation tool
 
@@ -86,7 +86,7 @@ For incident response and operational diagnostics, consider AI-powered automatio
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
-> For high-value workloads, use language models to analyze and correlate code, observability data, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
+> For high-value workloads, use language models to analyze and correlate code, telemetry, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
 
 ## Revisit automation design during the lifecycle
 
