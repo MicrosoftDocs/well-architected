@@ -175,7 +175,7 @@ To address this, use synthetic transactions, which sends automated requests thro
 
 **Data collection and storage**: Use [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-workspace-overview) to centralize your performance data with configurable [retention policies](/azure/azure-monitor/logs/data-retention-archive). Create multiple workspaces to segment data by environment or compliance requirements.
 
-**Health modeling**: [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
+**Health modeling**: [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 **Application monitoring**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) collects application-level telemetry including request rates, response times, and exceptions. Enable [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to correlate performance across distributed components.
 
