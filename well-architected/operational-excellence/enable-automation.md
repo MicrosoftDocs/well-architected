@@ -1,6 +1,6 @@
 ---
 title: Architecture Strategies for Enabling and Implementing Automation in a Workload
-description: Learn how to design your workload to enable automation that eliminates repetitive, error-prone tasks. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
+description: Learn how to design your workload to enable automation that removes repetitive, error-prone tasks and simplifies maintenance for faster, more reliable updates.
 author: simipaul
 ms.author: simipaul
 ms.date: 02/11/2026
@@ -86,7 +86,7 @@ For incident response and operational diagnostics, consider AI-powered automatio
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: As your automation environment grows, AI can make data-driven decisions about which automations deliver real value and proactively surface conflicts before they cause incidents. You boost productivity, reduce costs, and keep automation maintained instead of neglected.
 >
-> For high-value workloads, use LLMs to analyze and correlate code, observability data, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
+> For high-value workloads, use language models to analyze and correlate code, observability data, and incident data. Detect patterns, measure effectiveness, track existing automations, and automatically discover new opportunities across your codebase.
 
 ## Revisit automation design during the lifecycle
 
