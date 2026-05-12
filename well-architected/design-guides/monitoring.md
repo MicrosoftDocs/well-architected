@@ -74,7 +74,7 @@ When adding instrumentation, follow these simple principles: Maintain consistenc
 
 Consider an ecommerce application. When a customer places an order, a business transaction begins. The API processes the payment, the database records the order, and a confirmation email is sent. When the system works as expected, everything completes within the expected timeframe. But suppose something breaks.
 
-Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time out? Is the payment provider experiencing issues?
+Without instrumentation, you might only see: "Checkout failed." There's no context, no clear cause, while the user experience quietly deteriorates. Troubleshooting becomes guesswork. Is the database down? Did the email service time-out? Is the payment provider experiencing issues?
 
 :::image type="content" source="_images/order-failure-diagnosis.png" alt-text="Order failure diagnosis diagram showing an eCommerce checkout process flow from customer order through payment API, database, and email service ending in failure. Below shows three telemetry types for diagnosis: application logs showing payment API 500 error, distributed trace highlighting high latency in payment service, and metrics showing checkout failure rate increasing from 1% to 8% in 10 minutes." lightbox="_images/order-failure-diagnosis.png" border="false":::
 
@@ -234,12 +234,12 @@ Visualization converts complex telemetry into actionable insights using dashboar
 
 #### Best practices for visualization
 
-- **Align with your health model and visualize components using a color scheme that reflects your service level objectives (SLOs) based on health signals. For example, Healthy (green), Degraded (amber), and Unhealthy (red). Your health dashboards should have the capability of drill-down from system-level health to individual entities.
+- **Align with your health model and visualize components using a color scheme that reflects your service level objectives (SLOs) based on health signals**. For example, Healthy (green), Degraded (amber), and Unhealthy (red). Your health dashboards should have the capability of drill-down from system-level health to individual entities.
 
 :::image type="content" source="_images/azure-monitor-health-models-traffic-light-system-demo.png" alt-text="Health model diagram using a traffic-light color scheme. Root entity (amber) branches into five user flows consisting of unknown, degraded and unhealthy health states. Each flow connects to dependent services and infrastructure resources, with unhealthy states (red) propagating upward from component-level failures to affect parent user flows." lightbox="_images/azure-monitor-health-models-traffic-light-system-demo.png" border="false":::
 
 
-- **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions. For example, environment, service, region
+- **Prioritize the display of actionable data**. Avoid cluttering dashboards with non-critical details. Focus on information or trends that support decisions, such as environment, service, and region.
 
 - **Support interactive exploration**. Allow filtering by time range, service, or deployment. Enable ad-hoc queries to investigate anomalies.
 
@@ -294,7 +294,7 @@ The following antipatterns commonly undermine what monitoring can do for workloa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is the central platform for collecting, analyzing, and acting on telemetry data from cloud and on-premises environments. It provides unified metrics, logs, and application monitoring.
 
-   - [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
+   - [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
   - [Azure Monitor Metrics](/azure/azure-monitor/platform/metrics-supported) collects time-series data from monitored resources and supports real-time analysis and alerting.
 
