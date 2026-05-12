@@ -33,7 +33,6 @@ This guide describes key strategies for designing a monitoring stack that suppor
 | **Instrumentation** | Adding monitoring capabilities to applications and infrastructure to capture telemetry. This includes logging, metrics collection, and tracing. |
 | **Health model** | A framework for measuring workload health using indicators, KPIs, and metrics that reflect business and operational objectives. |
 | **KPIs (Key Performance Indicators)** | Measurable values showing how effectively a workload achieves business and operational objectives. KPIs guide telemetry collection and analysis. |
-| **Azure Monitor health models** | Structured representations of workload health that combine metrics, logs, and traces to assess the overall state of a system and its components. |
 | **APM (Application Performance Management)** | Tools and practices for monitoring application performance, availability, and user experience. APM tools provide real-time and historical visibility into important metrics. |
 | **Traces** | Records showing the path of requests through distributed systems. Traces help diagnose issues that span multiple services. |
 
@@ -115,7 +114,7 @@ Align telemetry with system and user flows to correlate flow health with overall
 
 Design dashboards and reports around operational health models. Visualizations should allow teams to quickly identify issues, understand trends, and prioritize responses.
 
-A health model provides the semantic layer between telemetry and operational decisions. Instead of metric-based dashboards, visualise health states which drill-down from workload-level health to individual resources. Azure Monitor health models provides built-in visualizations of health state across the entity hierarchy and API access for integrating health data into tools like Grafana.
+A health model provides the semantic layer between telemetry and operational decisions. Instead of metric-based dashboards, visualize health states which drill-down from workload-level health to individual resources. Take advantage of Azure Monitor health models to get built-in visualizations of health state across the entity hierarchy and API access for integrating health data into tools like Grafana.
 
 Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
 
