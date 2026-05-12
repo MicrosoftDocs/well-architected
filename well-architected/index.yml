@@ -71,10 +71,10 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/ai-operations.png
+        src: ./ai/images/ai-workload-architecture-pattern.png
         alt: "Diagram that shows AI opportunities in the maturity model."
-      - title: Featured update - Boost your operations by using AI
-        summary: "Apply AI opportunities across the Operational Excellence pillar by aligning AI adoption with the full maturity journey—from foundational practices and standardization through production operations and optimization at scale. Use AI to automate and optimize deployment, monitoring, testing, and operational workflows. Evaluate where AI fits at each maturity level by balancing potential ROI with security, reliability, and operational trade‑offs."
+      - title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
+        summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
         componentType: text
         links:
           - componentType: link
