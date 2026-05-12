@@ -65,9 +65,9 @@ Focus on the key indicators that contribute to those targets and track them over
 
 Combine real-time awareness with historical context. Real-time signals help you respond quickly when targets are at risk, while trends over time reveal patterns and recurring issues. Classifying the causes of target misses and aggregating these metrics also supports clear SLA reporting and helps guide ongoing improvements.
 
-Monitor the key SLOs provided by your suppliers and platform services (from Microsoft and others). You should:
+Monitor the key SLAs provided by your suppliers and platform services (from Microsoft and others). You should:
 
-- Use a health model to reflect SLA attainment, enabling measurement of overall workload health across all quality attributes, not just availability/uptime
+- Use a health model to reflect SLO attainment, enabling measurement of overall workload health across all quality attributes, not just availability/uptime
 - Track indicators of potential SLA violations in real time
 - Capture and retain the evidence required to support an SLA claim if a breach occurs
 
