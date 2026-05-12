@@ -48,14 +48,14 @@ Tie telemetry to system and user flows, and model those flows as entities in you
 
 Capture meaningful signals from application, infrastructure, and operations. Log critical exceptions with sufficient detail, but allow verbosity to be adjusted to control noise. 
 
-Prefer structured telemetry so that the data is queryable and searchable. Use consistent schemas and include contexual information like the source component, timestamps, and so on. 
+Prefer structured telemetry so that the data is queryable and searchable. Use consistent schemas and include contextual information like the source component, timestamps, and so on. 
 Strive for consistency because that enables more accurate analysis of events and clearer correlation with user requests. To achieve this, adopt a configurable logging framework that standardizes how information is captured across the system.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Increase logging detail to improve debuggability and traceability, but be aware that there's higher storage and processing costs. To manage this tradeoff, use verbose logging in development and reduced verbosity in production, and rely on correlation IDs to preserve end-to-end transaction visibility without excessive log volume.
 
 Have a way to classify telemetry by operational concern, such as audit, security, debugging, and performance, to simplify filtering and enforce proper access controls. Make sure workload data doesn't get mixed with telemetry. Scrub sensitive system or user information before logging, while preserving enough context for diagnostics.
 
-Ensure instrumentation practices is operationally safe. Logging should be fire-and-forget so it doesn't block business operations, except for critical auditing scenarios. Keep instrumentation extensible and decoupled from specific backends, and ensure failures in telemetry do not cascade into application failures.
+Ensure that instrumentation practices are operationally safe. Logging should be fire-and-forget so it doesn't block business operations, except for critical auditing scenarios. Keep instrumentation extensible and decoupled from specific backends, and ensure failures in telemetry do not cascade into application failures.
 
 Treat instrumentation as an iterative discipline. Regularly review and refine telemetry to maintain clarity, relevance, and performance as the system evolves.
 
@@ -164,7 +164,7 @@ We recommend reading this section in the companion implementation guide: [Antipa
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a  monitoring solution for collecting, analyzing, and responding to monitoring data from your cloud and on-premises environments. 
 
-- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
+- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that you can use to edit and run log queries against data in the Log Analytics workspace.
 
