@@ -94,7 +94,7 @@ After your workload is running, prioritize continuous improvement. Observe usage
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify and improve automations that are regularly bypassed or manually overridden. Integrate automation logs, IcM systems, and monitoring data with AI tools to find patterns that trigger exceptions or bypasses. Agent-based solutions grounded in your project data can evaluate the effectiveness of your automations and recommend updates or retirement.
 
-The following sections provide recommendations for specific areas of automation that can help design and implement your workload.
+The following sections provide recommendations for specific areas of automation that can help you design and implement your workload.
 
 ## Automate bootstrapping
 
