@@ -169,7 +169,7 @@ You need clear insight into platform health to manage reliability effectively. T
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
 
-- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualise workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
+- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that's used to edit and run log queries against data in the Log Analytics workspace.
 
