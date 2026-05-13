@@ -71,8 +71,8 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./ai/images/ai-workload-architecture-pattern.png
-        alt: "Diagram that shows AI opportunities in the maturity model."
+        src: ./_images/ai-workload-architecture-pattern.png
+        alt: "Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
       - title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
         summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
         componentType: text
