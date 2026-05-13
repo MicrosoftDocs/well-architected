@@ -64,29 +64,29 @@ sections:
     size: small
     summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
     image:
-      componentType: image
-      src: ./_images/well-architected-hub.png
-      alt: Azure Well-Architected Framework overview
-      style: |
-        max-width: 700px;
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-        display: block;
+      componentType: markdown
+      markdown: |
+        <div align="center">
+          <img
+            src="./_images/well-architected-hub.png"
+            alt="Azure Well-Architected Framework overview"
+            style="max-width:800px;width:100%;height:auto;"
+          />
+        </div>
 
   # bifold with image and text blocks
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: image
-        src: ./_images/ai-workload-architecture-pattern.png
-        alt: Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools.
-        style: |
-          max-width: 500px;
-          width: 100%;
-          height: auto;
-          margin: 0 auto;
-          display: block;
+      - componentType: markdown
+        markdown: |
+          <div align="center">
+            <img
+              src="./_images/ai-workload-architecture-pattern.png"
+              alt="Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
+              style="max-width:600px;width:100%;height:auto;"
+            />
+          </div>
 
       - componentType: text
         title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
