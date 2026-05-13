@@ -64,29 +64,19 @@ sections:
     size: small
     summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
     image:
-      componentType: markdown
-      markdown: |
-        <div align="center">
-          <img
-            src="./_images/well-architected-hub.png"
-            alt="Azure Well-Architected Framework overview"
-            style="max-width:800px;width:100%;height:auto;"
-          />
-        </div>
+      componentType: image
+      src: ./_images/well-architected-hub.png
+      alt: Azure Well-Architected Framework overview
+      size: medium
 
   # bifold with image and text blocks
   - componentType: bifold
     alignment: center
     blocks:
-      - componentType: markdown
-        markdown: |
-          <div align="center">
-            <img
-              src="./_images/ai-workload-architecture-pattern.png"
-              alt="Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
-              style="max-width:600px;width:100%;height:auto;"
-            />
-          </div>
+      - componentType: image
+        src: ./_images/ai-workload-architecture-pattern.png
+        alt: Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools.
+        size: small
 
       - componentType: text
         title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
@@ -99,8 +89,8 @@ sections:
           to build reliable, secure, and scalable AI solutions.
         links:
           - componentType: link
-            url: operational-excellence/maturity-model.md
-            text: Operational Excellence maturity model
+            url: ai/get-started.md
+            text: Get started with AI workloads
   # cards section (4)
   - componentType: grid
     title: Pillars
