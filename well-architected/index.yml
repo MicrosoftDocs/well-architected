@@ -66,13 +66,16 @@ sections:
     image:
       componentType: image
       src: ./_images/well-architected-hub.png
-  # Featured update card
-  - componentType: cards
+  # bifold with image and text blocks
+  - componentType: bifold
+    alignment: center
     blocks:
-      - componentType: card
-        title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
+      - componentType: image
+        src: ./_images/ai-workload-architecture-pattern.png
+        alt: "Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
+      - title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
         summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
-        imageUrl: ./_images/ai-workload-architecture-pattern.png
+        componentType: text
         links:
           - componentType: link
             url: operational-excellence/maturity-model.md
