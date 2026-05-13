@@ -63,23 +63,17 @@ sections:
     title: Design workloads that achieve business value over time.
     size: small
     summary: As solution architects, you want to build reliable, secure, and performant workloads that maximize the value of investment in Azure infrastructure. Start with the Pillars, and align your design choices with the principles. Then, build a strong foundation for your workload based on technical design areas. Finally, use review tools to assess your readiness in deploying to production.
-    image:
+    background:
       componentType: image
-      src: ./_images/well-architected-hub.png   
-  # bifold with image and text blocks
-  - componentType: bifold
-    alignment: center
-    blocks:
-      - componentType: image
-        src: ./_images/ai-workload-architecture-pattern.png
-        alt: "Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
-      - title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
-        summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
-        componentType: text
-        links:
-          - componentType: link
-            url: operational-excellence/maturity-model.md
-            text: Operational Excellence maturity model
+      src: ./_images/well-architected-hub.png
+  # Featured update (compact text block in place of large bifold image)
+  - componentType: text
+    title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
+    summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
+    links:
+      - componentType: link
+        url: operational-excellence/maturity-model.md
+        text: Operational Excellence maturity model
 # cards section (4)
   - componentType: grid
     title: Pillars
