@@ -20,9 +20,9 @@ This guide provides recommendations for adopting DevOps practices that enable te
 
 ## Foster mutual respect
 
-Teams should operate with a shared code of ethics grounded in mutual respect. Every team member brings valuable expertise, and recognizing this establishes a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that their input will be treated with respect.
+Teams should operate with a shared code of ethics that's grounded in mutual respect. Every team member brings valuable expertise, and recognizing that value establishes a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that their input will be treated with respect.
 
-Mutual respect enables a blameless culture. When issues arise, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
+Mutual respect enables a blameless culture. When problems arise, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
 
 ## Establish clear roles and responsibilities
 
@@ -39,21 +39,21 @@ When disagreements arise, a designated person must make the final call based on 
 
 ## Commit to continuous learning
 
-Leverage enablement teams to strengthen your team's skills. Platform teams, architecture review boards, and similar groups provide standards and guidance for consistency. Ensure your workload team communicates openly with them, collaborates on process improvements, and shares knowledge.
+Use enablement teams to strengthen your team's skills. Platform teams, architecture review boards, and similar groups provide standards and guidance for consistency. Ensure that your workload team communicates openly with these teams, collaborates on process improvements, and shares knowledge.
 
-Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so they can support each other and understand the workload end-to-end. This builds collaboration, knowledge sharing, and overall team capability.
+Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so they can support each other and understand the workload from end to end. This cross-functional approach builds collaboration, knowledge sharing, and overall team capability.
 
 ## Dedicate efforts towards continuous optimization
 
 Understand the business, regulatory, and regional requirements that apply to your workload. Ensure the team knows these rules and the consequences of non-compliance.
 
-Integrate compliance into your practices. Use testing and governance mechanisms to verify that all required functions are met, treating organizational standards as guardrails for safe and proper operation.
+Integrate compliance into your practices. Use testing and governance mechanisms to verify that all required functions are met. Treat organizational standards as guardrails for safe and proper operation.
 
 Continuously review and improve procedures. Regularly examine standard operating procedures with the team, encourage feedback, and identify areas for improvement. Foster a culture where team members can propose changes at any time, but dedicate structured time for focused discussions.
 
 Enable safe experimentation. Provide sandbox environments and time in sprints for experimentation. Document standards for integrating new functionality, ensuring it aligns with [safe deployment practices](safe-deployments.md) and delivers tangible benefits.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can assist in implementing targeted automations. Solutions that leverage interactive AI assitants like Copilot, once integrated with the right data sources, require low effort, minimal maintenance, and can deliver high cumulative ROI.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can assist in implementing targeted automations. Solutions that take advantage of interactive AI assitants like Copilot, when they're integrated with the right data sources, require low effort and minimal maintenance and can deliver high cumulative ROI.
 
 ## Azure facilitation
 
