@@ -109,7 +109,7 @@ High availability and optimal user experience for Azure Virtual Desktop (AVD) of
 | Minimize cross-region traffic unless required for business continuity or global user base | Reduces unnecessary expenditure from data transfer between virtual networks |
 | Your session hosts should be placed in the same region as your host pool; not mixed | For more information, see [Business Continuity and Disaster Recovery (BCDR) for Azure Virtual Desktop](/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop-multi-region-bcdr) |
 
-<!--  Don't mix session hosts in single host pool. Session host update is not supported for session hosts with multiple regions An existing pooled host pool with a session host configuration with session hosts that are all in the same Azure region and resource group. Personal host pools aren't supported. https://learn.microsoft.com/en-us/azure/virtual-desktop/session-host-update-configure?tabs=portal#prerequisites --> 
+<!--  Don't mix session hosts in single host pool. Session host update is not supported for session hosts with multiple regions An existing pooled host pool with a session host configuration with session hosts that are all in the same Azure region and resource group. Personal host pools aren't supported. /azure/virtual-desktop/session-host-update-configure?tabs=portal#prerequisites --> 
 
 <!--  Worth mentioning about costs incurred between virtual networks especially considering if you're replicating services across regions  -->
 

@@ -126,6 +126,10 @@ sections:
     title: Workloads
     blocks:
       - componentType: summary-card
+        title: Microsoft Fabric
+        summary:  Build analytics workloads on Microsoft Fabric at-scale.
+        url: ./ai/index.yml
+      - componentType: summary-card
         title: Artificial Intelligence (AI)
         summary: Incorporate discriminative or generative AI models in your workload for predictive analysis, generating content, and other AI use cases.
         url: ./ai/index.yml
