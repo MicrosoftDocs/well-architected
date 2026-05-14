@@ -66,7 +66,7 @@ Templates should account for dependencies and should be designed in layers.
 4. Deploy solution components like Lakehouses and pipelines, notebooks, and semantic models.
 5. Promote artifacts across environments using deployment pipelines.
 
-![Deployment model](./images/fabric-deployment-model.png)
+![Diagram depicting the deployment model for Microsoft Fabric workloads](./images/fabric-deployment-model.png)
 
 Parameterize settings like capacity SKUs and environment-specific endpoints along with security roles and refresh schedules. Use Git as the source of truth to detect drift and maintain version control.
 
