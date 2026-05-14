@@ -47,7 +47,7 @@ Infrastructure-level failures including regional outages are rare because of Fab
 
 **Measure reliability against your goals**. Start by defining service level objectives (SLOs) that make sense for your business. Fabric guarantees 99.9% uptime, but your pipelines, Spark jobs, and Power BI reports might need tighter operational targets. Focus on SLIs like pipeline success rates, job completion times, execution latency, and capacity utilization.
 
-Remember external dependencies. A unreliable upstream API reduces your effective availability. Mitigate these risks with caching, queuing, or backup sources. 
+Remember external dependencies. An unreliable upstream API reduces your effective availability. Mitigate these risks with caching, queuing, or backup sources. 
 
 Be realistic with recovery targets. Localized failures (compute node issues) might resolve in minutes, regional outages take longer. Document all this in runbooks, dashboards, and architecture diagrams so your team knows what "reliable" really means.
 
@@ -84,7 +84,7 @@ Graceful degradation ensures partial failures don't stop everything. Pipelines c
 
 Scaling is about keeping your workloads running smoothly as demand grows. For predictable workloads, allocate capacities that meet peak demand. For spikes, **rely on Fabric's elasticity features like bursting and smoothing**. Scaling operations are generally fast. Still, communicating scaling events prevents surprises for dependent teams and avoids transient slowdowns.
 
-Treat each capacity as a self-contained unit. If one saturates, others continue running. Distribute heavy workloads across multiple workspaces and capacities to reduce contention. Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing. Apply surge protection at capacity and workspace level. Enable the capacity overage billing feature as a safety net for unanticipated spikes. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scaling events.
+Treat each capacity as a self-contained unit. If one saturates, others continue running. Distribute heavy workloads across multiple workspaces and capacities to reduce contention. Use autoscale billing for highly elastic workloads, such as Spark and data warehousing. Apply surge protection at capacity and workspace level. Enable the capacity overage billing feature as a safety net for unanticipated spikes. And implement graceful shutdowns and retry logic to keep long-running jobs resilient during scaling events.
 
 > [!IMPORTANT]
 >
