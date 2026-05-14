@@ -46,7 +46,11 @@ Data collection is essential for identifying cost-saving opportunities, accounti
 - Use APIs to programmatically retrieve cost data and integrate with existing management systems for automated reporting.
 - Pull from all sources — APIs, manual entry, and financial system syncs — to build a centralized and comprehensive cost overview.
 
-**Centralize cost data**. Use **Azure Cost Management** as your primary cost data platform. For long-term storage and advanced analytics, configure **Cost Management exports** to write cost data — preferably in [FOCUS](/cloud-computing/finops/focus/what-is-focus) format — to an **Azure Data Lake Storage Gen2** account on a daily or monthly schedule. Enable file compression (Parquet or CSV with gzip) on exports to reduce storage costs. Engage your organization's **central cloud team**, **Cloud Center of Excellence (CCoE)**, or **centralized FinOps team** to manage the centralized data platform and establish governance standards using the [Cloud Adoption Framework](/azure/cloud-adoption-framework/).
+Centralize cost data. Establish a single, primary platform for collecting and analyzing cost information across your environment. For long-term storage and more advanced analytics, configure regular exports of cost data to a centralized data repository on a daily or monthly schedule. Store the data in a standardized, structured format (such as an open FinOps-aligned schema) to ensure consistency and usability across teams.
+
+Optimize storage efficiency by using compressed file formats (for example, columnar formats or compressed text files) to reduce storage costs.
+
+Assign ownership of the centralized cost data platform to a dedicated team, such as a cloud governance. As a workload owner follow organizational standards to ensure consistency, accountability, and scalability in how cost data is managed and used across the organization.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. Azure Cost Management retains cost data for 13 months. To preserve historical data beyond that window, schedule Cost Management exports to a storage account. Use lifecycle management policies on the storage account to move older data to cool or archive tiers.
 
