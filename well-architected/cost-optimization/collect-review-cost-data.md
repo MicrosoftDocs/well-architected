@@ -113,7 +113,7 @@ Regularly review spending against the budget and cost model with stakeholders. R
 
 Examine your workload's architectural decisions for cost implications. When reviewing architecture design choices, compare the **total cost of ownership (TCO)** of competing approaches — not just the unit price. Factor in management overhead, licensing, scaling behavior, and commitment-based discount eligibility. Managed services (PaaS/SaaS) often reduce operational labor costs but may have higher unit prices. IaaS gives pricing flexibility but shifts operational costs to your team. Use the Azure Pricing Calculator and cost modeling from [CO:02](cost-model.md) to quantify tradeoffs before deciding.
 
-Engage your organization's **central cloud team**, **Cloud Center of Excellence (CCoE)**, or **centralized FinOps team** when reviewing major architectural decisions. A mature FinOps practice provides benchmarking data, rate optimization insights, and commitment-based discount strategies that inform architecture tradeoffs. The [FinOps Framework management guidance](/cloud-computing/finops/framework/manage/manage-finops) covers establishing and scaling a centralized FinOps function. The [Cloud Adoption Framework](/azure/cloud-adoption-framework/) provides cost governance guidance that complements workload-level reviews with organizational policies, landing zone configurations, and shared service cost allocation.
+Engage your organization's centralized cost management team when reviewing major architectural decisions. Benchmark data, rate optimization insights, and commitment-based discount strategies that inform architecture tradeoffs. 
 
 ## Automate cost alerts
 
