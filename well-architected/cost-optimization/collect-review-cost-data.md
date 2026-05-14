@@ -143,7 +143,6 @@ Implement automated processes to identify and address cost variances in real-tim
 
 **Automating alerts**: Use [budget alerts](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) as action groups to trigger notifications, Azure Automation runbooks, or Logic Apps workflows when thresholds are breached. Use Cost analysis [anomaly detection](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies.
 
-**Assessing FinOps maturity**: Use the [FinOps assessment](/assessments/60c02533-b280-4dec-ac5f-3f10cdd238b9/) to evaluate your organization's FinOps capabilities and identify areas for improvement across cost visibility, optimization, and governance.
 
 **Optimize log analytics costs**: For high-traffic services generating significant log volumes, implement [ingestion-time transformation](/azure/azure-monitor/data-collection/data-collection-transformations) to selectively process and store relevant data. Configure filtering rules to retain critical events while reducing routine traffic logs in high-volume environments.
 
