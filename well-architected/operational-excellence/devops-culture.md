@@ -32,7 +32,7 @@ Define roles and decision-making authority. Decisions should be made efficiently
 
 > :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to step outside their usual responsibilities. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
 
-When disagreements arise, a designated person must make the final call based on the evidence. Team members should feel heard and respected, even if they do not agree with the outcome.
+When disagreements arise, a designated person must make the final call based on the evidence. Team members should feel heard and respected, even if they don't agree with the outcome.
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. Based on the work being done, AI can identify responsibilities and route questions to the right people, reducing manual work and delays. Tools like Copilot can leverage existing infrastructure with moderate effort and low maintenance, while maintaining secure access to all project artifacts.
 
@@ -45,7 +45,7 @@ Develop a cross-functional team. Encourage members to specialize in their areas 
 
 ## Dedicate efforts towards continuous optimization
 
-Understand the business, regulatory, and regional requirements that apply to your workload. Ensure the team knows these rules and the consequences of non-compliance.
+Understand the business, regulatory, and regional requirements that apply to your workload. Ensure the team knows these rules and the consequences of noncompliance.
 
 Integrate compliance into your practices. Use testing and governance mechanisms to verify that all required functions are met. Treat organizational standards as guardrails for safe and proper operation.
 
