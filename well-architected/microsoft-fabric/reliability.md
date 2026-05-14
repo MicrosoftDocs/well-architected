@@ -103,7 +103,7 @@ For more information about what to monitor, see [What is workspace monitoring?](
 Fabric's built-in resilience is strong, but you can strengthen it further:
 
 - Dedicated capacities: Keep critical workloads isolated from "noisy neighbors".
-- Use autoscale billing for highly-elastic workloads, such as Spark and data warehousing.
+- Use autoscale billing for highly elastic workloads, such as Spark and data warehousing.
 - Apply surge protection at capacity and workspace level.
 - Enable the capacity overage billing feature as a safety net for unanticipated spikes.
 - Modular workloads: Break large pipelines or datasets into smaller, independent pieces. If one fails, the rest keep running.
