@@ -20,9 +20,9 @@ This guide provides recommendations for adopting DevOps practices that enable te
 
 ## Foster mutual respect
 
-Teams should operate with a shared code of ethics that's grounded in mutual respect. Every team member brings valuable expertise, and recognizing that value establishes a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that their input will be treated with respect.
+Teams should operate with a shared code of ethics that's grounded in mutual respect. Every team member brings valuable expertise, and recognizing that value creates a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that others will treat their input with respect.
 
-Mutual respect enables a blameless culture. When problems arise, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
+Mutual respect enables a blameless culture. When problems occur, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
 
 ## Establish clear roles and responsibilities
 
@@ -30,18 +30,18 @@ The workload team owns the operation end to end. Even when outside teams provide
 
 Define roles and decision-making authority. Decisions should be made efficiently, with input from the team. 
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to extend their usual responsibilities. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to take on responsibilities that are outside their usual scope. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
 
-When disagreements arise, a designated person must make final resolutions based on evidence. Team members should feel heard and respected, even if they don't agree with the outcome.
+When disagreements occur, a designated person must make final resolutions based on evidence. Team members should feel heard and respected, even if they don't agree with the outcome.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. AI can identify responsibilities and route questions to the right people, based on the work that's being done, to reduce manual work and delays. Tools like Copilot can take advantage of existing infrastructure with moderate effort and low maintenance, and it maintains secure access to all project artifacts while doing so.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. AI can identify responsibilities and route questions to the right people, based on the work that's being done, to reduce manual work and delays. Tools like Copilot can take advantage of existing infrastructure with moderate effort and low maintenance, and it maintains secure access to all project artifacts while doing so.
 
 
 ## Commit to continuous learning
 
 Use enablement teams to strengthen your team's skills. Platform teams, architecture review boards, and similar groups provide standards and guidance for consistency. Ensure that your workload team communicates openly with these teams, collaborates on process improvements, and shares knowledge.
 
-Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so they can support each other and understand the workload from end to end. This cross-functional approach builds collaboration, knowledge sharing, and overall team capability.
+Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so that they can support each other and understand the workload from end to end. This cross-functional approach builds collaboration, knowledge sharing, and overall team capability.
 
 ## Dedicate efforts towards continuous optimization
 
@@ -53,7 +53,7 @@ Continuously review and improve procedures. Regularly examine standard operating
 
 Enable safe experimentation. Provide sandbox environments and time in sprints for experimentation. Document standards for integrating new functionality, ensuring it aligns with [safe deployment practices](safe-deployments.md) and delivers tangible benefits.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can assist in implementing targeted automations. Solutions that take advantage of interactive AI assitants like Copilot, when they're integrated with the right data sources, require low effort and minimal maintenance and can deliver high cumulative ROI.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Small, repetitive, and error-prone steps across DevOps processes can combine to cause major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can help implement targeted automations. Solutions that take advantage of interactive AI assistants like Copilot, when they're integrated with the right data sources, require low effort and minimal maintenance and can deliver high cumulative ROI.
 
 ## Azure facilitation
 
