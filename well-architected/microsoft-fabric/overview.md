@@ -3,7 +3,7 @@ title: Microsoft Fabric workloads
 description: Overview of architectural considerations for workloads running on Microsoft Fabric.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 04/10/2026
+ms.date: 05/13/2026
 ms.topic: concept-article
 ---
 

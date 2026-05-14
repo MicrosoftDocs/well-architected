@@ -3,7 +3,7 @@ title: Operational excellence for Microsoft Fabric workloads
 description: Overview of workload operations running on Microsoft Fabric.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 03/14/2026
+ms.date: 05/13/2026
 ms.topic: concept-article
 ---
 
@@ -52,7 +52,6 @@ Focus on automating repetitive or high-touch tasks so your team can spend time o
 Fabric includes native automation features such as job scheduling and deployment pipelines, capacity monitoring, and Fabric Activator for event-driven workflows. You can also use external tools like REST APIs and CLI, Terraform, and Git integration to orchestrate more complex or custom automation.
 
 Automation also supports architecture-wide consistency. For example, deployments can be validated against Git or templates to detect accidental or unauthorized changes. Even small but practical automations, like pausing dev capacities overnight, triggering dataset updates, or Delta table compaction, quickly add up to significant operational efficiency gains.
-``
 
 ### Drive deployment through code
 
@@ -66,7 +65,7 @@ Templates should account for dependencies and should be designed in layers.
 4. Deploy solution components like Lakehouses and pipelines, notebooks, and semantic models.
 5. Promote artifacts across environments using deployment pipelines.
 
-![Diagram depicting the deployment model for Microsoft Fabric workloads](./images/fabric-deployment-model.png)
+![Diagram depicting the deployment model for Microsoft Fabric workloads.](./images/fabric-deployment-model.png)
 
 Parameterize settings like capacity SKUs and environment-specific endpoints along with security roles and refresh schedules. Use Git as the source of truth to detect drift and maintain version control.
 

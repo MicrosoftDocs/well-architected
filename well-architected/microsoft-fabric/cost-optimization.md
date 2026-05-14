@@ -3,7 +3,7 @@ title: Cost considerations for Microsoft Fabric workloads
 description: Overview of cost considerations for workloads running on Microsoft Fabric.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 04/10/2026
+ms.date: 05/13/2026
 ms.topic: concept-article
 ---
 
@@ -74,7 +74,7 @@ Modeling both scale-up scenarios (larger capacities) and scale-out architectures
 
 Before deploying large workloads, use available tools to estimate and validate projected costs:
 
--  [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) - estimates required capacity for expected workloads.
+- [Microsoft Fabric Capacity Estimator](https://www.microsoft.com/microsoft-fabric/capacity-estimator) - estimates required capacity for expected workloads.
 - [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) - models compute and storage costs.
 - [Microsoft Cost Management and Billing](/azure/cost-management-billing/) - monitors and analyzes actual spending after deployment.
 - [Fabric cost analysis tools](https://github.com/microsoft/fabric-toolbox/tree/main/monitoring/fabric-cost-analysis) - an open-source solution for comprehensive cost analysis and usage insights.
@@ -85,7 +85,7 @@ Cost optimization requires continuous visibility into how Fabric resources are u
 
 A practical way to manage Fabric spending is to treat cost governance as a simple loop:
 
-![A diagram the presents the concept of Fabric cost governance](./images/fabric-cost-governance.png)
+![A diagram the presents the concept of Fabric cost governance.](./images/fabric-cost-governance.png)
 
 | Step        | Goal                         | Examples                                                     |
 | ----------- | ---------------------------- | ------------------------------------------------------------ |
