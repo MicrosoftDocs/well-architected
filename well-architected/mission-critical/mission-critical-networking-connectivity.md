@@ -35,13 +35,13 @@ This section explores the key differences Azure routing services to define how e
 
 ### Design considerations
 
-- A routing service bound to a single region represents a single-point-of-failure and a significant risk with regard to regional outages.
+- A routing service bound to a single region represents a single-point-of-failure and a significant risk to regional outages.
 
 - If the application workload encompasses client control, such as with mobile or desktop client applications, it's possible to provide service redundancy within client routing logic.
   - Multiple global routing technologies, such as Azure Front Door and Azure Traffic Manager, can be considered in parallel for redundancy, with clients configured to fail over to an alternative technology when certain failure conditions are met. The introduction of multiple global routing services introduces significant complexities around edge caching and Web Application Firewall capabilities, and certificate management for SSL offload and application validation for ingress paths.
   - Third-party technologies can also be considered, providing global routing resiliency to all levels of Azure platform failures.
 
-- Capability disparity between Azure Front Door and Traffic Manager means that if the two technologies are positioned alongside one another for redundancy, a different ingress path or design changes would be required to ensure a consistent and acceptable level of service is maintained.
+- If Azure Front Door and Traffic Manager are used together for redundancy, a different ingress path or design changes would be required to ensure a consistent and acceptable level of service.
 
 - Azure Front Door and Azure Traffic Manager are globally distributed services with built-in multi-region redundancy and availability.
   - Hypothetical failure scenarios of a scale large enough to threaten the global availability of these resilient routing services presents a broader risk to the application in terms of cascading and correlated failures.
