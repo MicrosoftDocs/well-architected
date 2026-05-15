@@ -159,7 +159,7 @@ Preventing unauthorized access to a mission-critical application and its data is
   - Connectivity to the private build agents from CI/CD tooling is required.
   - Use jump boxes for developer and administrative tasks that require data-plane connectivity.
   
-- Use Azure DevOps [service connections with workload identity federation](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) to apply Azure RBAC without storing secrets.
+- Use Azure DevOps [service connections with workload identity federation](/azure/devops/pipelines/library/connect-to-azure) to apply Azure RBAC without storing secrets.
 
 - Service Tags can be applied to Network Security Groups to facilitate connectivity with Azure PaaS services. For details, see the [Virtual Network service guide](../service-guides/virtual-network.md).
 
