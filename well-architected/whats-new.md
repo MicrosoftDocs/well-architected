@@ -3,13 +3,47 @@ title: What's New in the Azure Well-Architected Framework
 description: Find out about recent updates and new documentation in the Azure Well-Architected Framework.
 author: ckittel
 ms.author: chkittel
-ms.date: 04/27/2026
+ms.date: 05/18/2026
 ms.topic: whats-new
 ---
 
 # What's new in the Azure Well-Architected Framework
 
 Find out about recent changes in the Azure Well-Architected Framework.
+
+## April 2026
+
+### Updated articles
+
+- [Cost Optimization trade-offs](./cost-optimization/tradeoffs.md): We improved clarity by simplifying language and sentence structures throughout. We also corrected terminology from *Zero-Trust* to *Zero Trust* for consistency.
+  
+- [Operational Excellence trade-offs](./operational-excellence/tradeoffs.md): We clarified how observability platforms can expose classified data in logs and log sinks. We also simplified explanations about how support activities, training, and architecture patterns affect costs and performance.
+
+- [Performance Efficiency trade-offs](./performance-efficiency/tradeoffs.md): We added a new trade-off about how cache and edge distribution can lead to stale security state, which creates windows where revoked access or retracted content remains available. We also improved clarity throughout.
+
+- [Reliability trade-offs](./reliability/tradeoffs.md): We clarified how reliability decisions create trade-offs with other pillars. We simplified explanations about how replication, disaster recovery (DR), and extra architectural components increase workload surface area and security complexity. We also improved guidance about security control bypass during incident response and training complexity as components increase.
+
+- [Security trade-offs](./security/tradeoffs.md): We clarified how security decisions create trade-offs with other pillars. We simplified explanations about how security controls affect reliability through increased surface area and dependencies, increase costs through infrastructure and operational overhead, and affect performance through latency and resource consumption.
+
+- [Architect collaboration with workload teams](./architect-role/collaboration.md): We emphasized that architects should remain engaged throughout implementation. We clarified that proof-of-concept (POC) code is disposable and shouldn't be copied into production codebases. We also simplified language throughout to make collaboration tasks more direct and actionable.
+
+- [Maintain an architecture decision record (ADR)](./architect-role/architecture-decision-record.md): We added guidance to treat the ADR as an append-only log. When a decision changes, create a new record that supersedes the original rather than edit the existing record. We also added status tracking as a recommended characteristic and emphasized the importance of always recording context and rationale.
+
+- [Solution architect's responsibilities and guiding principles](./architect-role/fundamentals.md): We added guidance to emphasize that architecture is the accumulation of decisions and that architects are responsible for both individual choices and how they combine. We clarified that reasonable decisions can still produce poor outcomes if their interactions aren't considered.
+
+- We updated Microsoft branding from *Azure AI Foundry* to *Microsoft Foundry* across the repo, such as [Workload team personas for AI workloads](./ai/personas.md) and [Architecture strategies for designing an incident management (IcM) process](./operational-excellence/incident-response.md).
+
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture strategies for getting the best rates from providers](./cost-optimization/get-best-rates.md), [Architecture strategies for optimizing flow costs](./cost-optimization/optimize-flow-costs.md), [Architecture best practices for Azure Virtual Machines and scale sets](./service-guides/virtual-machines.md), [Architecture strategies for designing an IcM process](./operational-excellence/incident-response.md), [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Operational procedure considerations for sustainable workloads on Azure](./sustainability/sustainability-operational-procedures.md), and [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md).
+
+#### Monitoring guidance refresh
+
+- We updated the monitoring recommendation guides across three pillars to align with the recently released monitoring guide [Build a monitoring system for Azure workloads](./design-guides/monitoring.md):
+
+  - [Architecture strategies for monitoring workload reliability](./reliability/monitoring.md): We added guidance to use health models for tracking service-level objective (SLO) attainment and measuring overall workload health across all quality attributes. We simplified explanations about how health models unify signals across system layers and connect user impact to system visibility. We also streamlined references to Azure Monitor health models.
+
+  - [Architecture strategies for monitoring workload performance](./performance-efficiency/monitoring.md): We added guidance to use health models for entity-level alerting that surfaces compound performance degradation as single actionable alerts. We expanded alert guidance to create scoped thresholds based on performance outcomes. We also added recommendations to monitor elasticity, separate performance metrics from business metrics, and use synthetic transactions for consistent performance data.
+
+  - [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md): We added guidance to use health models as a semantic layer that turns raw telemetry into structured system state with health state transitions for alert noise reduction. We expanded data retention guidance to balance short-term high-resolution data with long-term aggregates for cost optimization. We also added examples for AI-powered operations tools and built-in cloud service monitoring dashboards.
 
 ## March 2026
 
@@ -334,28 +368,3 @@ This month, we made significant updates to some of our service guides. Here are 
 - [Architecture Best Practices for Azure Database for PostgreSQL](./service-guides/postgresql.md): Find recommendations for features like high availability, geo-redundant backup, private networking, Microsoft Entra ID integration, cost modeling, automation, monitoring, and intelligent performance tuning.
 
 - [Architecture Best Practices for Azure Cosmos DB for NoSQL](./service-guides/cosmos-db.md): Explore guidance updated to reflect current Azure Cosmos DB best practices, including new features, policy links, and recommendations for using Microsoft Entra ID, private endpoints, Azure Policy, and Azure Advisor.
-
-## April 2025
-
-### New articles
-
-- [Architecture Best Practices for Azure Container Apps](./service-guides/azure-container-apps.md): Explore key recommendations and design checklists for implementing Azure Container apps effectively and securely. This guide covers design principles, strategies, and recommendations for achieving architectural goals, including security, performance, and cost optimization.
-
-### Updated articles
-
-- [Application Delivery Considerations for Azure Virtual Desktop Workloads](./azure-virtual-desktop/application-delivery.md): We made significant updates to refactor and refresh the guidance about Azure Virtual Desktop including updated recommendations and best practices.
-
-- [Recommendations for designing a disaster recovery strategy](./reliability/disaster-recovery.md): We added a new section on Azure Backup facilitation and updated the content to include new Azure Backup features.
-
-#### Service guides
-
-This month, we made significant updates to some of our service guides. Here are the highlights:
-
-- [Architecture Best Practices for Azure API Management](./service-guides/azure-api-management.md): We refactored the guidance for Azure API Management to improve clarity and usability. The updated content includes refreshed design principles, strategies, and recommendations for achieving architectural goals.
-
-- [Architecture Best Practices for Azure NetApp Files](./service-guides/azure-netapp-files.md): We added new recommendations for cost optimization and operational excellence. Explore the fully updated content including new recommendations for configuring Azure NetApp Files to protect your workloads.
-
-- [Architecture Best Practices for Azure SQL Database](./service-guides/azure-sql-database.md): We refreshed and expanded this guide to introduce new design considerations and recommendations, including guidance on using Azure SQL Database for secure data storage, managing database performance, and optimizing costs.
-
-- [Architecture Best Practices for Azure Virtual Machines and Scale Sets](./service-guides/virtual-machines.md): We made updates to the guidance about Azure Virtual Machines and Scale Sets. Explore the fully updated content including new recommendations for configuring automatic recovery options to protect your workloads.
-
