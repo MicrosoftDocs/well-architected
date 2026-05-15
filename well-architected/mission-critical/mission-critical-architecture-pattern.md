@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a *north star* design approach and includes other examples with common technology components.
 
-We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
+We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#mission-critical-design-areas), define the critical user and system flows that use the underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
 |Characteristic|Considerations|
 |---|---|
@@ -128,7 +128,7 @@ These baseline examples serve as a recommended north star architecture for missi
 
 ## Design areas
 
-We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
+We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/well-architected/mission-critical/mission-critical-overview#mission-critical-design-areas)
 
 ## Next step
 

@@ -125,7 +125,7 @@ AKS, a managed Kubernetes service, enables quick cluster provisioning without re
 
 Kubernetes is natively built to handle failure at scale across large deployments. With AKS, Azure manages the native Kubernetes control plane and is designed to keep workloads running even with temporary outtage of the control plane. 
 
-- Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
+- Deploy [AKS clusters across different Azure regions](/azure/aks/reliability-multi-region-deployment-models) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
 
 ###### Scalability
 
@@ -212,7 +212,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 - Azure provides capabilities to increase the availability of VMs:
   - [Availability zones](/azure/reliability/availability-zones-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of VMs in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
-  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
+  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration-recommended) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
 
 ### Design recommendations
 
@@ -224,7 +224,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 - Deploy three or more VMs across [availability zones](/azure/reliability/availability-zones-overview) to achieve datacenter-level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
-- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
+- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration-recommended) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone redundancy. This point is particularly important for workloads that have varying loads. For example, if the number of active users or requests per second is a varying load.
   

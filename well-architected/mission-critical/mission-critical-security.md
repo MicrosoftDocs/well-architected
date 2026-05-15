@@ -53,7 +53,7 @@ As you assess the security posture of the application, start with these question
   - *Can service-managed keys be used for data integrity protection?*
   - *If customer-managed keys are required, what is the secure and reliable key lifecycle?*
 
-- CI/CD tooling should use [workload identity federation](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops) or managed identities with least-privilege Azure RBAC for control plane access.
+- CI/CD tooling should use [workload identity federation](/azure/devops/pipelines/library/connect-to-azure) or managed identities with least-privilege Azure RBAC for control plane access.
   - *When application resources are locked down within private networks, is there a private data-plane connectivity path so that CI/CD tooling can perform application-level deployments and maintenance?*
     - This introduces additional complexity and requires a sequence within the deployment process through requisite private build agents.
 
