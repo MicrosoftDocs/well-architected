@@ -117,7 +117,7 @@ Use automated testing when possible to ensure consistency. Include the following
 
 ## Implement quality gates in code promotion processes
 
-**Implement quality gates throughout your code promotion process via testing.** Promote your code through lower environments, such as development and testing, before you advance to higher environments like staging and production. Define clear quality gates and targets for each stage and only promote changes to production after they meet those criteria. Your business requirements determine the focus of your quality gates. Also consider the fundamental Well-Architected Framework principles: [Reliability](../reliability/testing-strategy.md), [Security](../security/test.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
+**Implement quality gates throughout your code promotion process via testing.** Promote your code through lower environments, such as development and testing, before you advance to higher environments like staging and production. Define clear quality gates and targets for each stage and only promote changes to production after they meet those criteria. Your business requirements determine the focus of your quality gates. Also consider the fundamental Well-Architected Framework principles: [Reliability](../reliability/testing-strategy.md), [Security](../security/test.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
 
 Integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation so that you can move through your gates efficiently and safely.
 
