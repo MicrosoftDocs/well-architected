@@ -165,11 +165,11 @@ The guidance includes an assessment to help you pinpoint the recommendations tha
 
 ## Adopt AI in your operations
 
-The Well-Architected Framework includes guidance for intentionally and incrementally adopting AI in operational workflows. It helps teams understand the costs, risks, and organizational friction associated with AI when they use it for planning, development processes, and runtime operations.
+The Well-Architected Framework includes guidance for intentionally and incrementally adopting AI in operational workflows. It helps teams understand the costs, risks, and organizational friction associated with AI when they consider it for planning, development processes, and runtime operations.
 
-We recommend that you start with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). It provides a practical entry point to explore AI usage patterns and understand trade-offs while maintaining human oversight to drive efficiency.
+We recommend that you start with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). It provides a practical entry point for exploring AI usage patterns and understanding trade-offs while maintaining human oversight to drive efficiency.
 
-Within the recommendation guides, look for `:::image type="icon" source="./_images/ai.svg":::` syntax. It highlights examples where AI can augment tasks such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked in [Operational Excellence checklist](./operational-excellence/checklist.md).
+In the recommendation guides, look for `:::image type="icon" source="./_images/ai.svg":::` icons. They highlight examples where AI can augment tasks such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked to in the checklist in [Operational Excellence checklist](./operational-excellence/checklist.md).
 
 ## Take a pragmatic approach
 
