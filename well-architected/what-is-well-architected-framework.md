@@ -169,7 +169,7 @@ The Well-Architected Framework includes guidance for intentionally and increment
 
 We recommend that you start with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). It provides a practical entry point for exploring AI usage patterns and understanding trade-offs while maintaining human oversight to drive efficiency.
 
-In the recommendation guides, look for `:::image type="icon" source="./_images/ai.svg":::` icons. They highlight examples where AI can augment tasks such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked to in the checklist in [Operational Excellence checklist](./operational-excellence/checklist.md).
+In the recommendation guides, look for `:::image type="icon" source="./_images/ai.svg":::` icons. They highlight examples where AI can augment tasks such as workflow setup, process automation, monitoring, and enforcement. For more information, see [Operational Excellence checklist](./operational-excellence/checklist.md).
 
 ## Take a pragmatic approach
 
