@@ -50,6 +50,8 @@ Monitor reliability from a business and user perspective. As part of your failur
 
 Reliability also reflects quality of service. In a checkout flow, users should be able to complete purchases end-to-end without interruption. Use percentile-based latency metrics such as p50, p95, and p99 to understand real user experience, with special attention to tail latency where performance issues often surface first.
 
+Incorporate user-facing signals into your health model so degraded quality of service triggers health state changes. Model critical user flows so that component degradation propagates upward, linking user impact to system visibility. Use Azure Monitor health models to assess the reliability of your Azure workloads.
+
 > [!IMPORTANT]
 >
 > Performance monitoring provides a view of how your system behaves under real load by breaking down end-to-end latency across system layers. It connects performance changes so you can understand what influenced a shift in behavior. That could be due to deployments, configuration updates, and scaling events. Together, reliability and performance monitoring provide a complete picture of system behavior and highlight where focused attention will have the most impact. For information about performance monitoring, see [Monitor Performance](../performance-efficiency/collect-performance-data.md).
@@ -65,6 +67,7 @@ Combine real-time awareness with historical context. Real-time signals help you 
 
 Monitor the key SLAs provided by your suppliers and platform services (from Microsoft and others). You should:
 
+- Use a health model to reflect SLO attainment, enabling measurement of overall workload health across all quality attributes, not just availability/uptime
 - Track indicators of potential SLA violations in real time
 - Capture and retain the evidence required to support an SLA claim if a breach occurs
 
@@ -100,6 +103,8 @@ Tune alerts for real conditions by focusing on end-to-end experience and critica
 ## Monitor all layers of the system
 
 Monitor each layer of the system, application, data/storage, and network, to maintain a complete view of reliability signals.
+
+Use a health model to unify signals across system layers, representing Azure resources and application components within user and system flows.
 
 At the application layer, track success, failure, and latency using logs, metrics, and health probes. Use correlation IDs to follow requests across services and make troubleshooting easier. Collect logs asynchronously so they don't impact request performance, and keep diagnostic and audit logs separate for clarity. Add synthetic transactions and endpoint probes to confirm what customers actually experience.
 
@@ -163,6 +168,8 @@ You need clear insight into platform health to manage reliability effectively. T
   - Resource-level health, like [Azure Resource Health](/azure/service-health/resource-health-overview).
 
 - [Azure Monitor](/azure/azure-monitor/overview) is a comprehensive monitoring solution that's used to collect, analyze, and respond to monitoring data from your cloud and on-premises environments.
+
+- [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 - [Log Analytics](/azure/azure-monitor/logs/log-analytics-overview) is a tool in the Azure portal that's used to edit and run log queries against data in the Log Analytics workspace.
 
