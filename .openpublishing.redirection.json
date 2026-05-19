@@ -1791,13 +1791,13 @@
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/reliability/testing-strategy.md#general-testing-guidance",
-			"redirect_url": "/azure/well-architected/reliability/testing-strategy#test-reliability-preparedness",
+			"source_path": "well-architected/reliability/reliability-test.md#general-testing-guidance",
+			"redirect_url": "/azure/well-architected/reliability/reliability-test#test-reliability-preparedness",
 			"redirect_document_id": false
 		},
 		{
-			"source_path": "well-architected/reliability/testing-strategy.md#fault-injection-and-chaos-engineering-guidance",
-			"redirect_url": "/azure/well-architected/reliability/testing-strategy#use-fault-injection-and-chaos-engineering",
+			"source_path": "well-architected/reliability/reliability-test.md#fault-injection-and-chaos-engineering-guidance",
+			"redirect_url": "/azure/well-architected/reliability/reliability-test#use-fault-injection-and-chaos-engineering",
 			"redirect_document_id": false
 		},
 		{

@@ -49,21 +49,19 @@ When you define the scope of your reliability testing, consider the shared respo
 
 Your reliability targets, such as SLOs, RTOs, and RPOs, define the expected behavior of your workload under failure conditions. Use reliability targets as pass and fail criteria across complete critical flows, not just individual components.
 
-- **Validate recovery across the full flow.** A single component might restore within its RTO, but the overall recovery time of the flow can exceed your target when downstream dependencies also need to be restored. Your testing should account for the cumulative recovery time across all components in a critical flow to confirm that end-to-end recovery meets your targets.
+- **Validate recovery across the full flow.** A single component might restore within its RTO, but the overall recovery time of the flow can exceed your target when downstream dependencies also need to be restored. Your testing should account for the cumulative recovery time across all components.
 
-- **Scope testing using SLA buffers and error budgets.** Limit chaos testing to stay within your SLAs. Your error budget represents the investment you can make in fault injection. Use your flow and component recovery targets to define the boundaries of each test.
+- **Define test scope with SLOs and error budgets.** Limit chaos testing to stay within your SLOs. Your error budget represents the investment you can make in fault injection. Use your flow recovery targets to define the boundaries of each test.
 
 ## Build reliability scenarios from critical flows and failure modes
 
-Reliability testing requires you to focus on the critical flows in your workload and the failure modes that can affect them. 
-
-Structure your reliability tests around complete critical flows rather than individual components. Use your [failure mode analysis](failure-mode-analysis.md) to identify the most impactful failure scenarios and design tests that validate your resiliency and recovery strategies. 
+Reliability testing requires you to focus on the critical flows in your workload and the failure modes that can affect them. Use your [failure mode analysis](failure-mode-analysis.md) to identify the most impactful failure scenarios and create tests that validate your resiliency and recovery strategies. 
 
 **Prioritize by impact and likelihood.** Not every failure mode warrants the same testing investment. Focus first on scenarios that have the highest potential impact on your customers and the highest likelihood of occurring. Your failure mode analysis should inform this prioritization.
 
-## Validate core reliability scenarios
+## Validate your fault-tolerance and recovery mechanisms
 
-Your reliability testing should cover the scenarios that are most likely to cause downtime or degrade the user experience. The following sections help you think through each scenario and decide what your testing strategy should validate.
+Your reliability testing should cover the scenarios that are most likely to cause downtime or degrade the user experience. Use these sections to identify the testing strategies for fault-tolerance and recovery.
 
 ### Backup and restore
 
@@ -129,7 +127,7 @@ Test your disaster recovery plans to ensure they address catastrophic failures a
 
 - **Validate people and process.** DR testing should confirm that operators have the necessary access and permissions to execute recovery procedures and can locate DR-specific runbooks quickly under pressure.
 
-#### Use tabletop exercises to discover testing gaps
+#### Test and assess your DR plan with tabletop exercises
 
 Tabletop exercises help you find gaps in your reliability testing strategy before a real incident exposes them. By simulating failure scenarios with your team, you can identify untested conditions and validate that your response procedures work as expected.
 
@@ -175,7 +173,7 @@ Fault injection and chaos engineering help you build confidence in your workload
 
 - **Contain blast radius during experiments.** Target specific components that you can recover quickly and set informed expectations about the effect of each fault injection. If an experiment goes beyond scope or produces unexpected results, stop it. Balance collecting meaningful data with minimizing the effect on users.
 
-- **Measure against baselines.** Establish consistent reliability and performance metrics for the flows and components involved in each experiment. Compare degraded-state metrics against these baselines to understand the full effect of the fault and determine whether your resiliency design meets its targets.
+- **Measure against baselines.** Establish consistent reliability and performance metrics for the flows and components involved in each experiment. Compare degraded state metrics against these baselines to understand the full effect of the fault and determine whether your resiliency design meets its targets.
 
 - **Feed results back into your testing strategy.** Use experiment outcomes to drive new tests, update recovery plans, and inform remediation backlog items. As unexpected behaviors arise, create targeted tests for those behaviors and design remediation strategies.
 

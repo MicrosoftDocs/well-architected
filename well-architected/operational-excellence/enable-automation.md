@@ -241,7 +241,7 @@ When deployed, the deployment script runs PowerShell or Azure CLI commands and s
 - [Cloud-init support for VMs in Azure](/azure/virtual-machines/linux/using-cloud-init)
 - [GitOps Flux v2 configurations with AKS and Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-gitops-flux2)
 - [Microsoft.Resources deploymentScripts](/azure/templates/microsoft.resources/deploymentscripts?pivots=deployment-language-bicep)
-- [Recommendations for designing a reliability testing strategy](../reliability/testing-strategy.md)
+- [Recommendations for designing a reliability testing strategy](../reliability/reliability-test.md)
 - [Recommendations for designing a reliable scaling strategy](../reliability/scaling.md)
 - [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
