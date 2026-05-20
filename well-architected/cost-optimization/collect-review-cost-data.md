@@ -3,8 +3,10 @@ title: Architecture strategies for collecting and reviewing cost data
 description: Learn how to collect and review cost data for a workload.
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 11/15/2023
+ms.date: 03/06/2026
 ms.topic: concept-article
+contributors: 
+    - arclares
 ---
 
 # Architecture strategies for collecting and reviewing cost data
@@ -14,17 +16,20 @@ ms.topic: concept-article
 |**CO:03**| Collect and review cost data. Data collection should capture daily costs. In cost reports, include incurred costs (metered), prepaid costs (amortized), trends, and forecasts. Stakeholders should regularly review spending against the budget and cost model. Automate alerts to trigger notifications at key thresholds and detect anomalies to indicate deviations from trend baselines.| 
 |---|---| 
 
-This guide describes the recommendations for collecting and reviewing cost data for your workload. Gather cost data to paint a holistic picture of your workload and ensure spending is optimized. Data collection includes all indicators of cost optimization, like billing data, resource utilization, and usage patterns.
+Collect cost data to build a holistic picture of your workload spending. Data collection covers all cost indicators — billing data, usage patterns, and spending trends.
 
-Collected data allows you to understand the cost of architecture decisions and business drivers like costs per user or unit. This data gives you a clearer understanding of where money goes and how to optimize spending. Failure to collect and review cost data can lead to budget overruns, no baseline for spending, and a lack of understanding of the financial health of your cloud workloads.
+Cost data reveals the true cost of architecture decisions and business drivers like cost per user. Without it, you risk budget overruns, missing baselines, and poor visibility into your workload's financial health.
 
 **Definitions**
 
 |Term  |Definition  |
 |---------|---------|
+|Actual costs     | A cost metric that shows purchases as they appear on your bill. For example, a one-year reservation purchased for $1,200 in January shows the full $1,200 in January and zero reservation cost in subsequent months. If you group actual costs by VM, a VM that received a reservation benefit shows zero cost for that month.      |
+|Amortized costs     | A cost metric that splits a reservation or savings plan purchase across the commitment term. For example, the same $1,200 reservation shows a proportional cost each month based on the number of days. Costs are attributed to the VMs that received the benefit. Unused reservation or savings plan costs aren't attributed to any specific resource or subscription.      |
 |Billing boundary     |   The scope of what a bill includes.      |
 |Chargeback     |  An accounting model in which you charge departments for their workload usage and receive payments from them.       |
-|Resource utilization     | The amount of resource capacity a workload uses.        |
+|Commitment-based discounts     | Reduced rates earned by committing to a specific amount of usage or spending over a period of time. Examples include Azure reservations, Azure savings plans, and prepaid software subscriptions.      |
+|FOCUS     | The FinOps Open Cost and Usage Specification, a provider-agnostic schema for cost and usage data. Azure Cost Management supports FOCUS-formatted exports.      |
 |Showback     |  An accounting model in which you show departments the cost of their workload usage, and you don't receive payment from them.       |
 
 
@@ -32,65 +37,63 @@ Data collection is essential for identifying cost-saving opportunities, accounti
 
 ## Collect cost data
 
-Effective cost management of cloud workloads requires a comprehensive grasp of associated expenses, from computing to network usage. Data collected provides a granular view of where and how resources are being consumed. It allows you to identify inefficiencies, make informed decisions about resource allocation, and ultimately optimize costs to ensure you're getting the best value for your investment.
+**Enable data collection**. Data collection should include all sources of workload cost, such as compute, storage, network usage, and any other services or features the workload uses. The data should include both **actual costs** and **amortized costs**. Actual costs reflect charges as billed — what appears on your invoice. Amortized costs distribute commitment-based charges (such as reservations and savings plans) evenly across their term, providing a normalized daily cost view. Actual cost data typically has a 24–72 hour ingestion delay. Collecting both views lets you reconcile invoices while also understanding the effective cost of committed resources.
 
-**Enable data collection**. Data collection should include all sources of workload cost, such as compute, storage, network usage, and any other services or features the workload uses. The data should include invoiced and metered data. Invoiced data is *real*. It reflects actual billed expenses. Metered data is a predictive form of data based on the billing plans for services. While still valuable, daily slices of metered data are considered *good estimates* rather than precise figures. Recognizing the distinctions between invoiced and metered data in these components can provide more accuracy in financial planning and analysis.
+**Use all available collection methods**. To collect cost data, use all available tools and methods at your disposal:
 
-**Use all available collection methods**. To collect cost data, use all available tools and methods at your disposal like service provider's cost monitoring and utilities to monitor workload expenses. While these tools typically offer detailed insights into cost breakdowns, usage trends, and optimization suggestions, they might not capture everything. Understand their default capabilities, like data dictionaries and taxonomies.
+- Use your cloud provider's native cost monitoring tools for detailed cost breakdowns, usage trends, and optimization suggestions.
+- Design custom views for workload-specific needs when default capabilities don't capture everything.
+- Use APIs to programmatically retrieve cost data and integrate with existing management systems for automated reporting.
+- Pull from all sources — APIs, manual entry, and financial system syncs — to build a centralized and comprehensive cost overview.
 
-Design custom views if they're required for your specific workload. Beyond native tools, if your service provider offers APIs, tap into them to programmatically retrieve cost data. APIs facilitate automated cost reporting and seamlessly integrate with your existing management systems. Remember, the goal is to gather cost details from every possible source. Whether that means pulling data via an API, manually entering costs, or syncing with your financial systems, it's vital to ensure a centralized and comprehensive cost overview.
+Centralize cost data. Establish a single, primary platform for collecting and analyzing cost information across your environment. For long-term storage and more advanced analytics, configure regular exports of cost data to a centralized data repository on a daily or monthly schedule. Store the data in a standardized, structured format (such as an open FinOps-aligned schema) to ensure consistency and usability across teams.
 
-**Centralize cost data**. Centralized cost data allows for easier management and analysis of that data. It ensures you have a unified view, through a common data schema, of all workload costs and enables better cost optimization strategies. You need to combine usage data, and the data should flow into a central analytical sink. You can use a cost management tool provided by your cloud provider or integrate the data with third-party cost management solutions. The goal is to have a low-cost solution that's easily accessible by authorized stakeholders and provides robust data analysis capabilities.
+Optimize storage efficiency by using compressed file formats (for example, columnar formats or compressed text files) to reduce storage costs.
 
-> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. To minimize cost, store older data as aggregated data points without the granularity of newer data. Also, determine the best retention period based on your analysis needs.
+Assign ownership of the centralized cost data platform to a dedicated team, such as a cloud governance. As a workload owner, follow organizational standards to ensure consistency, accountability, and scalability in how cost data is managed and used across the organization.
 
-## Group data
+> :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. Azure Cost Management retains cost data for 13 months. To preserve historical data beyond that window, schedule Cost Management exports to a storage account. Use lifecycle management policies on the storage account to move older data to cool or archive tiers.
 
-Grouping data allows you to gain better insights to manage costs effectively. You can break down costs based on different dimensions, such as departments or projects, allowing you to accurately allocate costs to the respective stakeholders. Grouping data promotes transparency, accountability, and cost awareness.
+## Group and categorize cost data
 
- Group cost data into meaningful categories such as resources, services, environments, regions, departments, projects, or teams. For example, understanding the cost breakdown at the resource and service level can help you make informed decisions about resource allocation, scaling, or even decommissioning. When you group cost data by environment, such as production, disaster recovery, or quality assurance, it can help you identify cost discrepancies and optimize resource usage based on the specific needs of each environment. When you group workload data, consider the following recommendations:
+Grouping data allows you to gain better insights to manage costs effectively. Break down costs based on different dimensions, such as departments or projects, to accurately allocate costs to the respective stakeholders. Grouping data promotes transparency, accountability, and cost awareness.
 
-- *Collect usage and component data.* Collect detailed information about the usage and cost of each component in your workload. You can analyze costs from different angles and gain insights into the cost breakdown by capturing this data.
+Group cost data into meaningful categories such as resources, services, environments, regions, departments, projects, or teams. For example, understanding the cost breakdown at the resource and service level helps you make informed decisions about resource allocation, scaling, or decommissioning. When you group cost data by environment, such as production, disaster recovery, or quality assurance, it helps you identify cost discrepancies and optimize resource usage based on the specific needs of each environment. When you group workload data, consider the following recommendations:
 
-- *See different dimensions.* Break down your daily expenses by technical dimensions (for example, resource types or service categories), resource organization dimensions (for example, departments or teams), and business model dimensions (for example, projects or cost centers). This breakdown allows you to analyze costs based on the dimensions that matter the most to your specific problem or scenario.
+- *Collect usage and component data.* Collect detailed information about the usage and cost of each component in your workload. Analyze costs from different angles and gain insights into the cost breakdown by capturing this data.
 
-- *Apply metadata.* Metadata can be used to group data and help generate meaningful cost reports. It enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Using metadata, you can design a mechanism to group costs in a way that reflects your application's core business model. For example, tagging resources with tenant identifiers instead of shared resources in a multitenant solution. The ability to pivot cost data based on your application's pricing model can deliver key insights.
+- *See different dimensions.* Break down your daily expenses by technical dimensions (for example, resource types or service categories), resource organization dimensions (for example, departments or teams), and business model dimensions (for example, projects or cost centers).
+
+- *Apply metadata.* Use metadata to group data and generate meaningful cost reports. Metadata enables you to identify areas of high cost and implement accountability measures or cost optimization strategies at the department or project level. Design a mechanism to group costs in a way that reflects your application's core business model, such as tagging resources with tenant identifiers in a multitenant solution.
+
+
+Enable **tag inheritance** in Cost Management to automatically apply subscription and resource group tags to child resources that lack them. Tag inheritance helps fill gaps without requiring every resource to be individually tagged. For shared resources that can't be directly tagged to a single owner, use **cost allocation rules** in Cost Management to redistribute costs based on custom logic.
 
 ## Generate cost reports
 
-After collecting cost data, you need to use it to generate cost reports. Cost reports provide visibility into spending and facilitate the analysis of your workload spending patterns. You can identify areas where cost optimization is needed and make informed decisions to optimize your spending. Cost reports enable you to allocate costs to different teams, departments, or projects. This allocation helps in understanding distribution and facilitates accurate chargeback or showback.
+After collecting cost data, use it to generate cost reports. Cost reports provide visibility into spending and facilitate the analysis of your workload spending patterns. Identify areas where cost optimization is needed and make informed decisions to optimize your spending. Cost reports enable you to allocate costs to different teams, departments, or projects. This allocation helps in understanding cost distribution and facilitates accurate chargeback or showback.
 
-**Address common scenarios**. When generating cost reports for workload costs, you want to be able to address common cost concerns. Gathering data in common concern areas helps ensure that the necessary data sets, such as costs, metrics, and usage, are interpreted cooperatively. Common concern areas include:
+**Address common scenarios**. When generating cost reports, address common cost concerns. Gathering data in common concern areas helps ensure that the necessary data sets — costs, metrics, and usage — are interpreted cooperatively. Common concern areas include:
 
-- *Granular costs*: Cost reports should provide information on the amount allocated per user and the cost per device.
+- *Granular costs*: Report the amount allocated per department and the cost per project.
 
-- *Resource utilization*: Cost reports should help assess if current resources are fully utilized and identify potential savings.
+- *Return on investment*: Determine what percentage of revenue goes into system operation. If the system doesn't boost revenue, measure other ROI metrics.
 
-- *Alternative solutions*: Cost reports should compare the costs and potential savings of transitioning to a new solution. They should also evaluate the feasibility of switching to a dynamic solution.
-
-- *Return on investment*: Cost reports should help determine what percentage of revenue goes into system operation. If the system doesn't boost revenue, other ROI metrics should be measured.
-
-- *Spending patterns*: Cost reports should analyze spending patterns to identify trends and patterns in costs over time. Spending patterns help in making informed decisions about cost optimization and budget planning.
+- *Spending patterns*: Analyze spending patterns to identify trends and patterns in costs over time. Use spending patterns to make informed decisions about cost optimization and budget planning.
 
 **Align to accounting standards**. Cost reports should accommodate your internal accounting standards. Common systems are showback and chargeback. Showback is about visibility, and chargeback is about accountability.
 
-- *Showback* refers to providing cost visibility throughout an organization without charging individual teams or departments for their cloud costs. You can use cost reports to generate showback statements that showcase the costs incurred by each team or department. For example, the marketing team utilized $15,000, while the engineering department incurred costs of $25,000 for a combined workload expenditure of $40,000. Showback provides each department with a breakdown of costs, allowing each team to review and optimize their resource consumption. These reports provide transparency and enable stakeholders to understand their usage and associated costs.
+- *Showback*: Use cost reports to generate showback statements. For example, the marketing team utilized $15,000, while the engineering department incurred costs of $25,000 for a combined workload expenditure of $40,000. Showback provides each department with a breakdown of costs, allowing each team to review and optimize their resource consumption.
 
-- *Chargeback* involves billing internal teams or departments for their respective cloud costs based on their actual usage. Chargeback is dual-faceted. You can charge others and others can charge you based on resource consumption and services rendered. For example, your workload uses centralized security services. For one month, the security team billed you $10,000 for their services. But you charged the sales and marketing departments $7,000 and $8,000, respectively, for using your workload. All chargeback transactions, both credits and debits, are integrated into your centralized cost data sink. Chargeback ensures every expense is accounted for and incorporated into your organization's financial management. It provides a holistic view and promoting optimization of interdepartmental costs.
+- *Chargeback*: Chargeback is dual-faceted — you charge others and others charge you based on resource consumption and services rendered. For example, your workload uses centralized security services. The security team billed you $10,000 for their services. But you charged the sales and marketing departments $7,000 and $8,000, respectively, for using your workload. All chargeback transactions, both credits and debits, are integrated into your centralized cost data sink.
 
-**Provide comprehensive reports**. Cost reports should include the cost of cloud services and vendors. The report should include costs incurred (invoiced), prepaid costs (amortized), trends, forecasts, credits, and cost variance. In both showback and chargeback systems, cost reports should include the following elements:
+**Provide comprehensive reports**. Cost reports should include the cost of cloud services and vendors. The report should include **actual costs**, **amortized costs**, trends, forecasts, credits, and cost variance. Refer to the definitions table for actual and commitment-based cost metrics. In both showback and chargeback systems, cost reports should also include:
 
-- *Incurred costs*: Incurred costs refer to the actual costs accrued based on metered usage. These costs are calculated based on the consumption of resources or services within a specific billing period.
+- *Trends*: Examine historical data to identify patterns and changes in spending over time. This analysis helps you understand how costs fluctuate and identify underlying factors.
 
-- *Prepaid costs*: Prepaid costs are expenses paid in advance and are spread out over a specific period of time. These costs are typically amortized or allocated evenly over the duration of the prepaid period.
+- *Forecasts*: Predict future spending based on historical data and trends, allowing you to estimate future costs and plan accordingly. Forecasts can be generated using various techniques such as machine learning algorithms.
 
-- *Trends*: Analyzing cost trends involves examining the historical data to identify patterns and changes in spending over time. This analysis helps you understand how costs fluctuate and identify any underlying factors.
-
-- *Forecasts*: Cost forecasts predict future spending based on historical data and trends, allowing you to estimate future costs and plan accordingly. Forecasts can be generated using various techniques such as machine learning algorithms.
-
-- *Credits*: Service providers often provide credits (free utilization) on services. Cost reports should include credit balances and usage to properly understand spending needs.
-
-- *Cost variance*: Cost variance in a cost report refers to the difference between the actual costs incurred and the expected or budgeted costs. It helps you identify deviations from the planned costs and understand the reasons behind them.
+- *Cost variance*: Compare the actual costs incurred against the expected or budgeted costs. Cost variance helps you identify deviations from the plan and understand the reasons behind them.
 
 ## Assign resource owners
 
@@ -100,19 +103,17 @@ Each cost item should have a directly responsible individual (DRI) as the *resou
 
 - *Communication*: Assigning resource owners promotes effective communication and collaboration within a workload team and organization. It facilitates discussions about cost management, encourages sharing of best practices, and enables resource owners to work together to optimize costs collectively.
 
-- *Decision-making*: Resource owners play a crucial role in decision-making related to resource provisioning, scaling, and optimization. They have the necessary insights and ownership to make informed decisions that align with business objectives and cost optimization goals. Resource owners can actively monitor and analyze the costs associated with their resources. They can identify cost-saving opportunities, optimize resource usage, and make decisions to control and reduce costs.
+- *Decision-making*: Resource owners play a crucial role in decision-making related to resource provisioning, scaling, and optimization. They have the necessary insights and ownership to make informed decisions that align with business objectives and cost optimization goals.
 
 ## Review cost data
 
 Regularly review spending against the budget and cost model with stakeholders. Regular reviews help in identifying cost trends, outliers, and areas for optimization. It's important to involve stakeholders such as finance teams, operations teams, and decision-makers in these reviews to drive cost optimization initiatives. Reviews ensure that costs are aligned with expectations and allow for adjustments if necessary. Monitor changes in usage patterns, adjust resource allocations as needed, and implement cost-saving measures based on ongoing analysis of cost data.
 
-### Analyze cost data
-
-Review the cost data collected from your workload to gain insights into your spending patterns. Reviews can include analyzing resource utilization, identifying cost drivers, and understanding the distribution of costs across different components of your workload. You should also notice increases and decreases in costs, for example, in compute usage and network transfer costs. Look for areas where you can optimize costs without sacrificing performance or functionality. For example, identify underutilized resources, rightsizing instances, or cost-saving features provided by your cloud provider.
-
 ### Review architectural choices
 
-When examining the architectural decisions of your workload, it's essential to focus on cost implications. Utilizing alternative patterns or cloud-native offerings can lead to significant cost savings. Opting for platform as a service (PaaS) or software as a service (SaaS) over infrastructure as a service (IaaS) can be more economical. With PaaS, not only are infrastructure expenses part of the service's pricing, but the platform also simplifies the provisioning and management of these resources under a unified cost. For instance, deploying a lower tier virtual machine as a jump box might introduce extra costs for storage, server management, and public IP configuration. In contrast, PaaS handles these complexities, offering a consolidated cost that often encompasses enhanced security.
+Examine your workload's architectural decisions for cost implications. When reviewing architecture design choices, compare the **total cost of ownership (TCO)** of competing approaches — not just the unit price. Factor in management overhead, licensing, scaling behavior, and commitment-based discount eligibility. Managed services (PaaS/SaaS) often reduce operational labor costs but may have higher unit prices. IaaS gives pricing flexibility but shifts operational costs to your team. Use the Azure Pricing Calculator and cost modeling from [CO:02](cost-model.md) to quantify tradeoffs before deciding.
+
+Engage your organization's centralized cost management team when reviewing major architectural decisions. Benchmark data, rate optimization insights, and commitment-based discount strategies that inform architecture tradeoffs. 
 
 ## Automate cost alerts
 
@@ -132,35 +133,34 @@ Implement automated processes to identify and address cost variances in real-tim
 
 ## Azure facilitation
 
-**Collecting and grouping cost data**: Azure provides services like [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) and Azure Advisor that help track and analyze your Azure spending and usage. These services capture the necessary data to calculate costs accurately. Use Azure tags to group costs to align with different business units, engineering environments, and cost departments. Tags provide the visibility needed for businesses to manage and allocate costs across different groups.
+**Collecting and grouping cost data**: Use [Cost Management](/azure/cost-management-billing/costs/overview-cost-management) as the primary tool for tracking and analyzing Azure spending. Configure [Cost Management exports](/azure/cost-management-billing/costs/tutorial-improved-exports) to write cost data to an Azure Data Lake Storage Gen2 account on a daily schedule — use the **FOCUS** (FinOps Open Cost and Usage Specification) template for provider-agnostic, standardized cost data. Apply [Azure tags](/azure/azure-resource-manager/management/tag-resources) to resources and enable [tag inheritance](/azure/cost-management-billing/costs/enable-tag-inheritance) in Cost Management to fill tagging gaps. Use [cost allocation rules](/azure/cost-management-billing/costs/allocate-costs) to redistribute shared resource costs.
 
-**Generating cost reports**: [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis)  offers customizable reports that provide insights into your incurred costs, prepaid costs, trends, and forecasts. These reports can be tailored to your specific requirements and provide a comprehensive view of your costs.
+**Generating cost reports and dashboards**: Use [Cost analysis](/azure/cost-management-billing/costs/quick-acm-cost-analysis) for interactive exploration of actual and amortized costs with built-in views for resources, services, and tag dimensions. For advanced analytics, create a [Microsoft Fabric workspace for FinOps](/cloud-computing/finops/fabric/create-fabric-workspace-finops) by connecting a Fabric lakehouse to your ADLS Gen2 export storage via shortcuts, then build Power BI dashboards on the ingested cost data. This pipeline — **Cost Management exports → ADLS Gen2 → Fabric Lakehouse → Power BI** — scales to large datasets and enables custom FOCUS-based reporting. 
 
-**Reviewing cost data**: [Microsoft Power BI](/azure/cost-management-billing/costs/manage-automation#suggestions-for-handling-large-datasets) can help with collecting and reviewing cost data. Power BI provides a comprehensive solution for collecting, reviewing, and analyzing cost data. It enables you to gain insights, track trends, and optimize costs effectively. It integrates with Cost Management and allows you to import cost data into Power BI.
+**Reviewing cost data**: Set [budgets](/azure/cost-management-billing/costs/tutorial-acm-create-budgets) at the subscription or resource group level with threshold-based alerts at 90%, 100%, and 110% of target spend. Use [anomaly detection](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) in Cost analysis to surface unexpected cost spikes. For programmatic access, use the [Cost Details API](/azure/cost-management-billing/automate/usage-details-best-practices) for raw cost data retrieval and automation.
 
-For smaller cost data sets, you can use [Usage Details API](/azure/cost-management-billing/costs/manage-automation#automate-retrieval-with-usage-details-api) to get programmatic retrieval of raw, unaggregated cost data that corresponds to your Azure bill.
+**Reviewing architecture design choices**: Use the [Azure Pricing Calculator](https://azure.microsoft.com/pricing/calculator/) to model costs for competing design approaches. Compare total cost of ownership across IaaS, PaaS, and SaaS options — include operational labor, licensing, and commitment-discount eligibility. The [Cloud Adoption Framework cost governance guidance](/azure/cloud-adoption-framework/govern/cost-management/) complements workload-level reviews with organizational policies.
 
-**Reviewing architecture design choices**: Azure provides a wide range of PaaS resources. Here are some examples of when you might consider PaaS options:
+**Automating alerts**: Use [budget alerts](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) as action groups to trigger notifications, Azure Automation runbooks, or Logic Apps workflows when thresholds are breached. Use Cost analysis [anomaly detection](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies.
 
-|Task|Use|
-|---|---|
-|Host a web server| [Azure App Service](/azure/app-service/) instead of setting up IIS servers.|
-|Indexing and querying heterogenous data|[Azure Cognitive Search](/azure/search/search-what-is-azure-search) instead of ElasticSearch.|
-|Host a database server|Azure offers many SQL and no-SQL options such as Azure SQL Database and Azure Cosmos DB.|
-|Secure access to virtual machine|[Azure Bastion](/azure/bastion) instead of virtual machines as jump boxes.|
-|Network security|[Azure Firewall](/azure/firewall/) instead of virtual network appliances.|
 
-**Automating alerts**: Cost Management enables you to set up [automated alerts and actions](/azure/cost-management-billing/costs/manage-automation#automate-alerts-and-actions-with-budgets) based on spending thresholds or budgets. These alerts can trigger notifications to stakeholders when costs exceed predefined limits or deviate from expected patterns. You should use [Cost analysis](/azure/cost-management-billing/understand/analyze-unexpected-charges#identify-cost-anomalies) to view and respond to cost anomalies. This feature can highlight unexpected spikes or drops in costs, allowing for timely investigation and action.
-
-**Optimize log analytics costs**: For high-traffic services generating significant log volumes, implement [ingestion-time transformation](/azure/azure-monitor/data-collection/data-collection-transformations) to selectively process and store relevant data. For example, Azure Firewall supports advanced filtering and data transformation before log storage, enabling cost reductions in log analytics expenses while preserving security-relevant events for analysis. Configure filtering rules to retain critical security events while reducing routine traffic logs in high-volume environments.
+**Optimize log analytics costs**: For high-traffic services generating significant log volumes, implement [ingestion-time transformation](/azure/azure-monitor/data-collection/data-collection-transformations) to selectively process and store relevant data. Configure filtering rules to retain critical events while reducing routine traffic logs in high-volume environments.
 
 ## Related links
 
+- [CO:01 Create a culture of financial responsibility](create-culture-financial-responsibility.md)
+- [CO:02 Cost model](cost-model.md)
+- [CO:04 Set spending guardrails](set-spending-guardrails.md)
+- [CO:05 Get the best rates](get-best-rates.md)
 - [Group and filter options in cost analysis and budgets](/azure/cost-management-billing/costs/group-filter)
 - [Monitor usage and spending with cost alerts in Cost Management](/azure/cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending)
 - [Azure billing and cost management budget scenario](/azure/cost-management-billing/manage/cost-management-budget-scenario)
-- [Group and allocate costs using tag inheritance](/azure/cost-management-billing/costs/enable-tag-inheritance).
+- [Group and allocate costs using tag inheritance](/azure/cost-management-billing/costs/enable-tag-inheritance)
 - [Allocate Azure costs](/azure/cost-management-billing/costs/allocate-costs)
+- [Create a Fabric workspace for FinOps](/cloud-computing/finops/fabric/create-fabric-workspace-finops)
+- [FinOps hubs overview](/cloud-computing/finops/toolkit/hubs/finops-hubs-overview)
+- [What is FOCUS?](/cloud-computing/finops/focus/what-is-focus)
+- [Cloud Adoption Framework — Cost Management discipline](/azure/cloud-adoption-framework/govern/cost-management/)
 
 ## Cost Optimization checklist  
 

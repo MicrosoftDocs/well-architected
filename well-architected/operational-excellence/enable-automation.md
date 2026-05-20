@@ -1,6 +1,6 @@
 ---
-title: Architecture strategies for enabling and implementing automation in a workload
-description: Learn how to design your workload to enable automation that eliminates repetitive, error-prone tasks. Automation simplifies maintenance tasks, allowing you to update, patch, and upgrade your systems more efficiently and reliably.
+title: Architecture Strategies for Enabling and Implementing Automation in a Workload
+description: Learn how to design your workload to enable automation that removes repetitive, error-prone tasks and simplifies maintenance for faster, more reliable updates.
 author: simipaul
 ms.author: simipaul
 ms.date: 02/11/2026
@@ -66,7 +66,7 @@ Adopt automation throughout your entire workload lifecycle, from development to 
 
 - **Configuration management and other operational tasks**: Use orchestration and policy tooling to ensure that all of your resources run the same configuration and that compliance requirements are enforced across your workload. Automate repetitive tasks associated with onboarding new application users or employees, like database updates, credential creation or DNS updates.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Optimize low-risk production settings like cache sizes or timeout values as workloads evolve. Pair AI agents with telemetry so that teams can safely adjust settings within human-defined limits, monitor results, and improve performance and reliability. Teams can build hybrid solutions that use predictive models trained on historical telemetry to forecast and adjust parameter values in real time.
 
 ## Choose an appropriate automation tool
 
@@ -94,7 +94,7 @@ After your workload is running, prioritize continuous improvement. Observe usage
 
 > :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Identify and improve automations that are regularly bypassed or manually overridden. Integrate automation logs, IcM systems, and monitoring data with AI tools to find patterns that trigger exceptions or bypasses. Agent-based solutions grounded in your project data can evaluate the effectiveness of your automations and recommend updates or retirement.
 
-The following sections of this guide offer recommendations on specific areas of automation that can help you in your workload design and implementation.
+The following sections provide recommendations for specific areas of automation that can help you design and implement your workload.
 
 ## Automate bootstrapping
 
