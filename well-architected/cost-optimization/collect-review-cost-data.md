@@ -50,7 +50,7 @@ Centralize cost data. Establish a single, primary platform for collecting and an
 
 Optimize storage efficiency by using compressed file formats (for example, columnar formats or compressed text files) to reduce storage costs.
 
-Assign ownership of the centralized cost data platform to a dedicated team, such as a cloud governance. As a workload owner follow organizational standards to ensure consistency, accountability, and scalability in how cost data is managed and used across the organization.
+Assign ownership of the centralized cost data platform to a dedicated team, such as a cloud governance. As a workload owner, follow organizational standards to ensure consistency, accountability, and scalability in how cost data is managed and used across the organization.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Retaining cost data for longer periods enables historical analysis and trend identification. However, storing data can be costly. Azure Cost Management retains cost data for 13 months. To preserve historical data beyond that window, schedule Cost Management exports to a storage account. Use lifecycle management policies on the storage account to move older data to cool or archive tiers.
 
