@@ -54,7 +54,7 @@ Fast failure detection starts with a well-defined health model. Because failures
 
 This means clearly identifying what _healthy_ and _unhealthy_ look like for each component, based on real user flows and business thresholds for performance and availability. These definitions should guide the metrics you monitor and help trace issues back to their root cause. 
 
-> Refer to [Health modeling and observability](mission-critical-health-modeling.md) for mission-critical workload guidance.
+> Refer to [Health modeling for workloads](../design-guides/health-modeling.md) for health modeling guidance applicable to mission-critical workloads.
 
 ## Evolve with Azure
 

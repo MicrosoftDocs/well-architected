@@ -63,54 +63,25 @@ This section explores the key differences Azure routing services to define how e
 
 **Azure Front Door**
 
-- Azure Front Door provides global HTTP/S load balancing and optimized connectivity using the Anycast protocol with split TCP to take advantage of the Microsoft global backbone network.
-  - Many connections are maintained for each of the backend endpoints.
-  - Incoming client requests are first terminated at the edge node closest to the originating client.
-  - After any required traffic inspection, requests are either forwarded over the Microsoft backbone to the appropriate backend using existing connections, or served from the internal cache of an edge node.
-  - This approach is efficient in spreading high traffic volumes over the backend connections.
+For detailed configuration guidance, see the [Azure Front Door service guide](../service-guides/azure-front-door.md).
 
-- Provides a built-in cache that serves static content from edge nodes. In many use cases, this can also eliminate the need for a dedicated Content Delivery Network (CDN).
+Azure Front Door provides global HTTP/S load balancing using the Anycast protocol with split TCP over the Microsoft global backbone network. For mission-critical workloads, key capabilities include:
 
-- Azure Web Application Firewall (WAF) can be used on Azure Front Door, and since it's deployed to Azure network edge locations around the globe, every incoming request delivered by Front Door is inspected at the network edge.
-
-- Azure Front Door protects application endpoints against DDoS attacks using [Azure DDoS protection Basic](/azure/frontdoor/front-door-ddos#integration-with-azure-ddos-protection-basic). Azure DDoS Standard provides more advanced protection and detection capabilities and can be added as a layer on top of Azure Front Door.
-
-- Azure Front Door offers a fully managed certificate service. Enables TLS connection security for endpoints without having to manage the certificate lifecycle.
-
-- Azure Front Door Premium supports private endpoints, enabling traffic to flow from the internet directly onto Azure virtual networks. This would eliminate the need of using public IPs on the VNet for making the backends accessible via Azure Front Door Premium.
-
-- Azure Front Door relies on health probes and backend health endpoints (URLs) that are called at regular intervals to return an HTTP status code reflecting if the backend is operating normally, with an HTTP 200 (OK) response reflecting a healthy status. As soon as a backend reflects an unhealthy status, from the perspective of a certain edge node, that edge node stops sending requests there. Unhealthy backends are therefore transparently removed from traffic circulation without any delay.
-
-- Supports HTTP/S protocols only.
-
-- The Azure Front Door WAF and Application Gateway WAF provide a slightly different feature set, though both support built-in and custom rules and can be set to operate in either detection mode or prevention mode.
-
-- The Front Door backend IP space may change, but Microsoft will ensure integration with [Azure IP Ranges and Service Tags](https://www.microsoft.com/download/details.aspx?id=56519). It's possible to subscribe to Azure IP Ranges and Service Tags to receive notifications about any changes or updates.
-
-- Azure Front Door supports various [load distribution configurations](/azure/frontdoor/front-door-routing-methods):
-  - Latency-based: the default setting that routes traffic to the "closest" backend from the client; based on request latency.
-  - Priority-based: useful for active-passive setups, where traffic must always be sent to a primary backend unless it's not available.
-  - Weighted: applicable for canary deployments in which a certain percentage of traffic is sent to a specific backend. If multiple backends have the same weights assigned, latency-based routing is used. For configuration details, see the [Azure Front Door service guide](../service-guides/azure-front-door.md).
-
-- By default Azure Front Door uses latency-based routing that can lead to situations where some backends get a lot more incoming traffic than others, depending on where clients originate from.
-
-- If a series of client requests must be handled by the same backend, [Session Affinity](/azure/frontdoor/front-door-routing-methods#session-affinity) can be configured on the frontend. It uses a client-side cookie to send subsequent requests to the same backend as the first request, provided the backend is still available.
+- Built-in edge caching, WAF, and DDoS protection at the network edge.
+- Azure Front Door Premium supports private endpoints, enabling traffic to flow from the internet directly onto Azure virtual networks without public IPs.
+- Health probes that transparently remove unhealthy backends from traffic circulation without delay.
+- Multiple [load distribution configurations](/azure/frontdoor/front-door-routing-methods) including latency-based, priority-based, and weighted routing for canary deployments.
+- A fully managed certificate service that removes the need to manage the TLS certificate lifecycle.
 
 **Azure Traffic Manager**
 
-- Azure Traffic Manager is a DNS redirection service.
-  - The actual request payload isn't processed, but instead Traffic Manager returns the DNS name of one of the backends it the pool, based on configured rules for the selected traffic routing method.
-  - The backend DNS name is then resolved to its final IP address that is subsequently directly called by the client.
+For detailed configuration guidance, see the [Azure Traffic Manager service guide](../service-guides/azure-traffic-manager.md).
 
-- The DNS response is cached and reused by the client for a specified Time-To-Live (TTL) period, and requests made during this period go directly to the backend endpoint without Traffic Manager interaction. Eliminates the extra connectivity step that provides cost benefits compared to Front Door.
-
-- Since the request is made directly from the client to the backend service, any protocol supported by the backend can be used.
-
-- Similar to Azure Front Door, Azure Traffic Manager also relies on health probes to understand if a backend is healthy and operating normally. If another value is returned or nothing is returned, the routing service recognizes ongoing issues and stops routing requests to that specific backend.
-  - However, unlike with Azure Front Door this removal of unhealthy backends isn't instantaneous since clients continue to connect to the unhealthy backend until the DNS TTL expires and a new backend endpoint is requested from the Traffic Manager service.
-  - In addition, even when the TTL expires, there's no guarantee that public DNS servers honor this value, so DNS propagation can take much longer to occur. This means that traffic may continue to be sent to the unhealthy endpoint for a sustained period of time.  
+Azure Traffic Manager is a DNS-based routing service. Unlike Azure Front Door, Traffic Manager doesn't process request payloads. Instead, it returns a DNS name that the client resolves and connects to directly. This supports any protocol but means unhealthy backend removal depends on DNS TTL expiration, which can cause delays.
 
 **Azure Standard Load Balancer**
+
+For detailed configuration guidance, see the [Azure Load Balancer service guide](../service-guides/azure-load-balancer.md).
 
 > [!IMPORTANT]
 > [Cross-Region Standard Load Balancer](/azure/load-balancer/cross-region-overview) is generally available with technical limitations.
@@ -150,7 +121,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Configure the application platform ingress points to [validate incoming requests through header based filtering](/azure/frontdoor/front-door-faq#how-do-i-lock-down-the-access-to-my-backend-to-only-azure-front-door-) using the *X-Azure-FDID* to ensure all traffic is flowing through the configured Front Door instance. Consider also configuring IP ACLing using Front Door Service Tags to validate traffic originates from the Azure Front Door backend IP address space and Azure infrastructure services. This will ensure traffic flows through Azure Front Door at a service level, but header based filtering will still be required to ensure the use of a configured Front Door instance.
 
-- Define a [custom TCP health endpoint](mission-critical-health-modeling.md#signal-and-data-collection-guidance) to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Azure Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
+- Define a [custom TCP health endpoint](../design-guides/health-modeling.md#use-health-probes) to validate critical downstream dependencies within a regional deployment stamp, including data platform replicas, such as Azure Cosmos DB in the example provided by the foundational reference implementation. If one or more dependencies becomes unhealthy, the health probe should reflect this in the response returned so that the entire regional stamp can be taken out of circulation.
 
 - Ensure health probe responses are logged and ingest all operational data exposed by Azure Front Door into the global Log Analytics workspace to facilitate a unified data sink and single operational view across the entire application. For configuration details, see the [Azure Front Door service guide](../service-guides/azure-front-door.md).
 
@@ -167,7 +138,7 @@ It's recommended to consider a third-party global routing service in place of tw
 
 - Configure a suitably low TTL value to optimize the time required to remove an unhealthy backend endpoint from circulation in the event that backend becomes unhealthy.
 
-- Similar to with Azure Front Door, a [custom TCP health endpoint](mission-critical-health-modeling.md#signal-and-data-collection-guidance) should be defined to validate critical downstream dependencies within a regional deployment stamp, which should be reflected in the response provided by health endpoints.
+- Similar to with Azure Front Door, a [custom TCP health endpoint](../design-guides/health-modeling.md#use-health-probes) should be defined to validate critical downstream dependencies within a regional deployment stamp, which should be reflected in the response provided by health endpoints.
 
   However, for Traffic Manager additional consideration should be given to service level regional failover. such as 'dog legging', to mitigate the potential delay associated with the removal of an unhealthy backend due to dependency failures, particularly if it's not possible to set a low TTL for DNS records.
 
@@ -268,63 +239,19 @@ Special treatment of static content like images, JavaScript, CSS and other files
 > [!NOTE]
 > For detailed Azure Kubernetes Service configuration guidance, see the [Kubernetes Service service guide](../service-guides/azure-kubernetes-service.md).
 
-A mission-critical application typically encompasses requirements for integration with other applications or dependent systems, which could be hosted on Azure, another public cloud, or on-premises data centers. This application integration can be accomplished using public-facing endpoints and the internet, or private networks through network-level integration. The method by which application integration is achieved has a significant impact on the security, performance, and reliability of the solution, and strongly impacts design decisions within other design areas.
+For general virtual network guidance, see the [Virtual Network service guide](../service-guides/virtual-network.md) and [Networking security guidance](../security/networking.md).
 
-A mission-critical application can be deployed within one of three overarching network configurations, which determines how application integration can occur at a network level.
+A mission-critical application typically requires integration with other applications or dependent systems. The method by which application integration is achieved has a significant impact on the security, performance, and reliability of the solution.
 
-1. **Public** application **without** corporate network connectivity.
-1. **Public** application **with** corporate network connectivity.
-1. **Private** application **with** corporate network connectivity.
-
-> [!CAUTION]
-> When deploying within an Azure landing zone, configuration 1. should be deployed within an Online Landing Zone, while both 2) and 3) should be deployed within a Corp. Connected Landing Zone to facilitate network-level integration.
-
-This section explores these network integration scenarios, layering in the appropriate use of Azure Virtual Networks and surrounding Azure networking services to ensure integration requirements are optimally satisfied.
+Mission-critical workloads should be deployed within Azure virtual networks wherever possible to remove unnecessary public endpoints and limit the attack surface. Use Private Endpoints for connectivity to Azure platform services.
 
 ### Design Considerations
 
-#### No virtual networks
+- When deploying within an [Azure landing zone](/azure/cloud-adoption-framework/ready/landing-zone/design-area/network-topology-and-connectivity), public applications without corporate connectivity should use an Online Landing Zone, while applications with corporate connectivity should use a Corp. Connected Landing Zone.
 
-- The simplest design approach is to not deploy the application within a virtual network.
-  - Connectivity between all considered Azure services is provided entirely through public endpoints and the Microsoft Azure backbone. Connectivity between public endpoints hosted on Azure only traverses the Microsoft backbone and doesn't go over the public internet.
-  - Connectivity to any external systems outside Azure is provided by the public internet.
+- The use of application virtual networks introduces deployment complexities in CI/CD pipelines, since both data plane and control plane access to resources on private networks is required. Private build agents can be deployed within application virtual networks to proxy access.
 
-- This design approach adopts "identity as a security perimeter" to provide access control between the various service components and dependent solution. This may be an acceptable solution for scenarios that are less sensitive to security. All application services and dependencies are accessible through a public endpoint leaves them vulnerable to additional attack vectors orientated around gaining unauthorized access.
-
-- This design approach is also not applicable for all Azure services, since many services, such as AKS, have a hard requirement for an underlying virtual network.
-
-#### Isolated virtual networks
-
-- To mitigate the risks associated with unnecessary public endpoints, the application can be deployed within a standalone network that isn't connected to other networks.
-
-- Incoming client requests still require a public endpoint to be exposed to the internet, however, all subsequent communication can be within the virtual network using private endpoints. When using Azure Front Door Premium, it's possible to route directly from edge nodes to private application endpoints.
-
-- While private connectivity between application components occurs over virtual networks, all connectivity with external dependencies still relies on public endpoints.
-  - Connectivity to Azure platform services can be established with Private Endpoints if supported. If other external dependencies exist on Azure, such as another downstream application, connectivity will be  provided through public endpoints and the Microsoft Azure backbone.
-  - Connectivity to any external systems outside Azure would be provided by the public internet.
-  
-- For scenarios where there are no network integration requirements for external dependencies, deploying the solution within an isolated network environment provides maximum design flexibility. No addressing and routing constraints associated with broader network integration.
-
-- Azure Bastion is a fully platform-managed PaaS service that can be deployed on a virtual network and provides secure RDP/SSH connectivity to Azure VMs. When you connect via Azure Bastion, virtual machines don't need a public IP address.
-
-- The use of application virtual networks introduces significant deployment complexities within CI/CD pipelines, since both data plane and control plane access to resources hosted on private networks is required to facilitate application deployments.
-  - Secure private network path must be established to allow CI/CD tooling to perform requisite actions.
-  - Private build agents can be deployed within application virtual networks to proxy access to resources secured by the virtual network.
-
-#### Connected virtual networks
-
-- For scenarios with external network integration requirements, application virtual networks can be connected to other virtual networks within Azure, another cloud provider, or on-premises networks using a variety of connectivity options. For example, some application scenarios might consider application-level integration with other line-of-business applications hosted privately within an on-premises corporate network.
-
-- The application network design must align with the broader network architecture, particularly concerning topics such as addressing and routing.
-
-- Overlapping IP address spaces across Azure regions or on-premises networks create major contention when network integration is considered.
-  - A virtual network resource can be updated to consider additional address space, however, when a virtual network address space of a peered network changes a [sync on the peering link is required](https://azure.microsoft.com/blog/how-to-resize-azure-virtual-networks-that-are-peered-now-in-preview/), which temporarily disables peering.
-  - Azure reserves five IP addresses within each subnet, which should be considered when determining appropriate sizes for application virtual networks and encompassed subnets.
-  - Some Azure services require dedicated subnets, such as Azure Bastion, Azure Firewall, or Azure Virtual Network Gateway. The size of these service subnets is important, since they should be large enough to support all current instances of the service considering future scale requirements, but not so large as to unnecessarily waste addresses.
-
-- When on-premises or cross-cloud network integration is required, Azure offers two different solutions to establish a secure connection.
-  - An ExpressRoute circuit can be sized to provide bandwidths up to 100 Gbps.
-  - A Virtual Private Network (VPN) can be sized to provide [aggregate gateway throughput up to 10 Gbps](/azure/vpn-gateway/about-gateway-skus) in hub and spoke networks, and up to 20 Gbps in Azure Virtual WAN.
+- For scenarios with external network integration requirements, application virtual networks can be connected to other networks using ExpressRoute (up to 100 Gbps) or VPN (up to 20 Gbps in Azure Virtual WAN). The application network design must align with the broader network architecture, particularly concerning addressing and routing.
 
 > [!NOTE]
 > When deploying within an Azure landing zone, be aware that any required connectivity to on-premises networks should be provided by the landing zone implementation. The design can use ExpressRoute and other virtual networks in Azure using either Virtual WAN or a hub-and-spoke network design.
@@ -364,15 +291,9 @@ This section explores these network integration scenarios, layering in the appro
 ## Internet egress
 
 > [!NOTE]
-> For detailed Azure Firewall configuration guidance, see the [Firewall service guide](../service-guides/azure-firewall.md).
+> For general ingress, egress, and edge networking guidance, see [Networking security guidance](../security/networking.md). For detailed Azure Firewall configuration guidance, see the [Firewall service guide](../service-guides/azure-firewall.md).
 
-Internet egress is a foundational network requirement for a mission-critical application to facilitate external communication in the context of:
-
-1. Direct application user interaction.
-1. Application integration with external dependencies outside Azure.
-1. Access to external dependencies required by the Azure services used by the application.
-
-This section explores how internet egress can be achieved while ensuring security, reliability, and sustainable performance are maintained, highlighting key egress requirements for services recommended in a  mission-critical context.
+Internet egress is a foundational network requirement for a mission-critical application. For mission-critical workloads, the key concerns are SNAT port exhaustion at scale and the reliability of the egress path itself.
 
 ### Design Considerations
 
@@ -512,4 +433,4 @@ This section explores the optimal use of these capabilities, providing key consi
 Review the considerations for quantifying and observing application health.
 
 > [!div class="nextstepaction"]
-> [Health modeling and observability](./mission-critical-health-modeling.md)
+> [Health modeling for workloads](../design-guides/health-modeling.md)

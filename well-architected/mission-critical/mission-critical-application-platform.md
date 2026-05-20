@@ -35,10 +35,7 @@ The following image shows the high-level design. A user accesses the application
 
 For mission-critical workloads, strongly prefer an active/active multi-region model. For details, see [Global distribution](/azure/well-architected/mission-critical/mission-critical-application-design#global-distribution).
 
-Not every workload supports or requires running multiple regions simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
-
-
-Use [Availability zones](/azure/reliability/availability-zones-overview) for regional fault tolerance where supported. For details, see [Inter-zone and inter-region connectivity](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#inter-zone-and-inter-region-connectivity).
+Use [Availability zones](/azure/reliability/availability-zones-overview) for regional fault tolerance where supported. For details, see the [Regions and availability zones design guide](/azure/well-architected/design-guides/regions-availability-zones) and [Inter-zone and inter-region connectivity](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#inter-zone-and-inter-region-connectivity).
 
 ### Design considerations
 
@@ -85,7 +82,7 @@ A container includes application code and the related configuration files, libra
 
 ### Design considerations
   
-- **Monitoring**. Azure supports modern container monitoring with Azure Managed Prometheus and Azure Monitor for containers. Also there are a multiple supported ways for applications to send telemetry and metrics to Azure. The most prominent is OpenTelemtry.
+- **Monitoring**. Azure supports modern container monitoring with Azure Managed Prometheus and Azure Monitor for containers. For detailed monitoring guidance, see the [monitoring design guide](/azure/well-architected/design-guides/monitoring#phase-2---telemetry-data-collection-and-storage). The most prominent application telemetry approach is OpenTelemetry.
 
 - **Security**. The hosting platform OS kernel is shared across multiple containers, creating a single point of attack. However, the risk of host virtual machine (VM) access is limited because containers are isolated from the underlying operating system.
 
@@ -99,7 +96,7 @@ A container includes application code and the related configuration files, libra
 
 - Make containers immutable and replaceable, with short lifecycles.
 
-- Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a [unified data sink](mission-critical-health-modeling.md#signal-and-data-collection-guidance) for further processing and analysis.
+- Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a [unified data sink](../design-guides/monitoring.md) for further processing and analysis.
 
 - Store container images in Azure Container Registry. For geo-replication and registry resilience details, see [Container registry](/azure/well-architected/mission-critical/mission-critical-application-platform#container-registry).
 
@@ -119,7 +116,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
-AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and a high degree of automation. For a complete set of recommendations, see the [Azure Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
+AKS is the recommended application platform for mission-critical workloads because Kubernetes is natively built to handle failure at scale, AKS provides a managed control plane with built-in availability zone support, and the ecosystem offers mature patterns for self-healing, automated scaling, and blue/green deployments that align well with the Mission Critical principles. For a complete set of recommendations, see the [Azure Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
 
 ###### Reliability
 
@@ -240,7 +237,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 
 - Implement chaos experiments to inject application faults into VM components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
-- Monitor VMs and ensure that diagnostic logs and metrics are ingested into a [unified data sink](mission-critical-health-modeling.md#signal-and-data-collection-guidance).
+- Monitor VMs and ensure that diagnostic logs and metrics are ingested into a [unified data sink](../design-guides/monitoring.md).
 
 - Implement security practices for mission-critical application scenarios, when applicable, and the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 

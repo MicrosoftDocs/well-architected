@@ -70,11 +70,8 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Deploy across multiple regions, and account for zone-level fault tolerance where relevant. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity).
+- **Redundancy**. Active-active model might be a natural choice for multi-region deployments for mission critical. However, this can introduce challenges. For example, data synchronization and consistency requires extra measures. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity) and [Recovery strategy for active-active deployments](../design-guides/disaster-recovery#recovery-strategy-for-active-active-deployments).
 
-- **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
-
-  An active/active deployment across multiple cloud providers is a way to potentially mitigate dependency on global resources within a single cloud provider. However, a multicloud active/active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities among cloud providers, you'd need specialized deployment stamps for each cloud.
 
 - **Geographical distribution**. The workload might have compliance requirements for geographical data residency, data protection, and data retention. Consider whether there are specific regions where data must reside or where resources need to be deployed. 
 
@@ -120,7 +117,7 @@ A mission-critical application must be designed to be resilient so that it addre
 
 For non-transient failures that you can't fully mitigate in application logic, the health model and operational wrappers need to take corrective action. Application code must incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis as required. You need to implement [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) to provide the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
-A [health model](mission-critical-health-modeling.md) can help you understand application health across regions and service boundaries by evaluating degradations and dependencies.
+A [health model](../design-guides/health-modeling.md) can help you understand application health across regions and service boundaries by evaluating degradations and dependencies.
 
 Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) can help you query, correlate, and visualize application traces.
 
@@ -158,17 +155,17 @@ Here are some additional recommendations:
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 
-- Use structured logging and a unified operational data sink. For details, see [Signal and data collection guidance](mission-critical-health-modeling.md#signal-and-data-collection-guidance).
+- Use structured logging and a unified operational data sink. For mission-critical workloads, ensure that logs, metrics, and traces from all components feed into a single operational view so operators can correlate failures across regional stamps. For general monitoring guidance, see [How to build a monitoring system](../design-guides/monitoring.md#best-practices-for-instrumentation).
 
-- Ensure that operational data is used together with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
+- Ensure that operational data is used together with business requirements to inform an [application health model](../design-guides/health-modeling.md).
 
-## Programming language selection
+## Programming language selection and uptime impact
 
-It's important to select the right programming languages and frameworks. These decisions are often driven by the skill sets or standardized technologies in the organization. However, it's essential to evaluate the performance, resilience, and overall capabilities of various languages and frameworks.
+The choice of programming languages and frameworks directly affects your workload's uptime. SDK maturity, feature coverage, and update cadence determine whether your application can use the latest platform resilience features. These decisions are often driven by the skill sets or standardized technologies in the organization, but for mission-critical workloads it's essential to evaluate how language choice impacts availability.
 
 ### Design considerations
 
-- **Development kit capabilities**. There are differences in the capabilities that are offered by Azure service SDKs in various languages. These differences might influence your choice of an Azure service or programming language. Verify that the [Azure SDK](/azure/developer/intro/azure-developer-overview) for your language supports the services and features you need (for example, the [Azure Cosmos DB Go SDK](/azure/cosmos-db/nosql/sdk-go) supports the NoSQL API but not all other Cosmos DB APIs).
+- **Development kit capabilities and uptime**. Not every Azure service SDK offers the same features across languages. If the SDK for your chosen language lacks retry policies, circuit breakers, or advanced connection modes, you'll need custom code that's harder to maintain and more prone to failure. Verify that the [Azure SDK](/azure/developer/intro/azure-developer-overview) for your language supports the services and features you need (for example, the [Azure Cosmos DB Go SDK](/azure/cosmos-db/nosql/sdk-go) supports the NoSQL API but not all other Cosmos DB APIs).
 
 - **Feature updates**. Consider how often the SDK is updated with new features for the selected language and evaluate the open issues and update cadence.
 

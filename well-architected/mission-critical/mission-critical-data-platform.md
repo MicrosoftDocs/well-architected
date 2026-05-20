@@ -186,7 +186,7 @@ Evaluate data requirements across capacity, throughput, data model, consistency,
 
 - Monitor application data read and write throughput against P50/P99 latency requirements and align to an application capacity model.
 
-- Excess throughput should be gracefully handled by the data platform or application layer and captured by the [health model](mission-critical-health-modeling.md) for operational representation.
+- Excess throughput should be gracefully handled by the data platform or application layer and captured by the [health model](../design-guides/health-modeling.md) for operational representation.
 
 - Implement caching for 'hot' data scenarios to minimize response times.
   - Apply appropriate policies for cache expiration and housekeeping to avoid runaway data growth.
@@ -254,159 +254,15 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 
 **Azure Cosmos DB**
 
-- Azure Cosmos DB stores data within Containers, which are indexed, row-based transactional stores designed to allow fast transactional reads and writes with response times on the order of milliseconds.
+Azure Cosmos DB is the recommended primary datastore for mission-critical workloads that require a globally distributed, multi-region write data platform. It provides multi-region writes and tunable consistency out-of-the-box, a 99.999% read/write availability SLA when configured with multiple writable regions, automatic failover, and availability zone redundancy. These capabilities directly support the active/active deployment model that mission-critical workloads require. For the complete feature set, configuration guidance, and best practices, see the [Cosmos DB service guide](../service-guides/cosmos-db.md).
 
-- Azure Cosmos DB supports multiple different APIs with differing feature sets, such as NoSQL, Apache Cassandra, and MongoDB.
-  - The first-party Azure Cosmos DB for NoSQL provides the richest feature set and is typically the API where new capabilities will become available first.
+Key mission-critical considerations:
 
-- Azure Cosmos DB supports [Gateway and Direct connectivity modes](/azure/cosmos-db/sdk-connection-modes), where Direct facilitates connectivity over TCP to backend Azure Cosmos DB replica nodes for improved performance with fewer network hops, while Gateway provides HTTPS connectivity to frontend gateway nodes.
-  - Direct mode is only available when using the Azure Cosmos DB for NoSQL and is currently only supported on .NET and Java SDK platforms.
-
-- Within Availability Zone enabled regions, Azure Cosmos DB offers [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) support for high availability and resiliency to zone failures within a region.
-
-- Azure Cosmos DB maintains four replicas of data within a single region, and when Availability Zone (AZ) redundancy is enabled, Azure Cosmos DB ensures data replicas are placed across multiple AZs to protect against zone failures.
-  - The Paxos consensus protocol is applied to achieve quorum across replicas within a region.
-
-- An Azure Cosmos DB account can easily be configured to replicate data across multiple regions to mitigate the risk of a single region becoming unavailable.
-  - Replication can be configured with either single-region writes or multi-region writes.
-    - With single region writes, a primary 'hub' region is used to serve all writes and if this 'hub' region becomes unavailable, a failover operation must occur to promote another region as writable.
-    - With multi-region writes, applications can write to any configured deployment region, which will replicate changes between all other regions. If a region is unavailable then the remaining regions will be used to serve write traffic.
-
-- In a multi-region write configuration, [update (insert, replace, delete) conflicts](/azure/cosmos-db/conflict-resolution-policies) can occur where writers concurrently update the same item in multiple regions.
-
-- Azure Cosmos DB provides two conflict resolution policies, which can be applied to automatically address conflicts.
-  - Last Write Wins (LWW) applies a time-synchronization clock protocol using a system-defined timestamp `_ts` property as the conflict resolution path. If of a conflict the item with the highest value for the conflict resolution path becomes the winner, and if multiple items have the same numeric value then the system selects a winner so that all regions can converge to the same version of the committed item.
-    - With delete conflicts, the deleted version always wins over either insert or replace conflicts regardless of conflict resolution path value.
-    - Last Write Wins is the default conflict resolution policy.
-    - When using Azure Cosmos DB for NoSQL, a custom numerical property such as a custom timestamp definition can be used for conflict resolution.
-  - Custom resolution policies allow for application-defined semantics to reconcile conflicts using a registered merge stored procedure that is automatically invoked when conflicts are detected.
-    - The system provides exactly once guarantee for the execution of a merge procedure as part of the commitment protocol.
-    - A custom conflict resolution policy is only available with Azure Cosmos DB for NoSQL and can only be set at container creation time.
-
-- In a multi-region write configuration, there's a dependency on a single Azure Cosmos DB 'hub' region to perform all conflict resolutions, with the Paxos consensus protocol applied to achieve quorum across replicas within the hub region.
-  - The platform provides a message buffer for write conflicts within the hub region to load level and provide redundancy for transient faults.
-    - The buffer is capable of storing a few minutes worth of write updates requiring consensus.
-
-- The primary 'hub' region is determined by the first region that Azure Cosmos DB is configured within.
-  - A priority ordering is configured for additional satellite deployment regions for failover purposes.
-
-- The data model and partitioning across logical and physical partitions plays an important role in achieving optimal performance and availability.
-
-- When deployed with a single write region, Azure Cosmos DB can be configured for [service-managed failover](/azure/reliability/reliability-cosmos-db-nosql#service-managed-failover) based on a defined failover priority considering all read region replicas.
-
-- Azure Cosmos DB offers a [99.999% SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/) for both read and write availability for Database Accounts configured with multiple Azure regions as writable.
-  - The SLA is represented by the Monthly Uptime Percentage, which is calculated as 100% - Average Error Rate.
-  - The Average Error Rate is defined as the sum of Error Rates for each hour in the billing month divided by the total number of hours in the billing month, where the Error Rate is the total number of Failed Requests divided by Total Requests during a given one-hour interval.
-
-- Azure Cosmos DB offers a 99.99% SLA for throughput, consistency, availability, and latency for Database Accounts scoped to a single Azure region when configured with any of the five Consistency Levels.
-  - A 99.99% SLA also applies to Database Accounts spanning multiple Azure regions configured with any of the four relaxed Consistency Levels.
-
-- There are two types of throughput that can be provisioned in Azure Cosmos DB, standard and [autoscale](/azure/cosmos-db/provision-throughput-autoscale), which are measured using Request Units per second (RU/s).
-  - Standard throughput allocates resources required to guarantee a specified RU/s value.
-    - Standard is billed hourly for provisioned throughput.
-  - Autoscale defines a maximum throughput value, and Azure Cosmos DB will automatically scale up or down depending on application load, between the maximum throughput value and a minimum of 10% of the maximum throughput value.
-    - Autoscale is billed hourly for the maximum throughput consumed.
-
-- Static provisioned throughput with a variable workload may result in throttling errors, which will impact perceived application availability.
-  - Autoscale protects against throttling errors by enabling Azure Cosmos DB to scale up as needed, while maintaining cost protection by scaling back down when load decreases.
-
-- When Azure Cosmos DB is replicated across multiple regions, the provisioned Request Units (RUs) are billed per region.
-
-- There's a significant cost delta between a multi-region-write and single-region-write configuration which in many cases may make a multi-master Azure Cosmos DB data platform cost prohibitive.
-
-| Single Region Read/Write | Single Region Write - Dual Region Read | Dual Region Read/Write |
-|---|---|---|
-| 1 RU | 2 RU | 4 RU |
-
-> The delta between single-region-write and multi-region-write is actually less than the 1:2 ratio reflected in the table above. More specifically, there's a cross-region data transfer charge associated with write updates in a single-write configuration, which isn't captured within the RU costs as with the multi-region write configuration.  
-
-- Consumed storage is billed as a flat rate for the total amount of storage (GB) consumed to host data and indexes for a given hour.
-
-- `Session` is the default and most widely used [consistency level](/azure/cosmos-db/consistency-levels) since data is received in the same order as writes.
-
-- Azure Cosmos DB supports authentication via either a Microsoft Entra identity or Azure Cosmos DB keys and resource tokens, which provide overlapping capabilities.
-
-![Azure Cosmos DB Access Capabilities](/azure/cosmos-db/media/how-to-restrict-user-data/operations.png "Azure Cosmos DB Access Capabilities")
-
-- It's possible to disable resource management operations using keys or resource tokens to limit keys and resource tokens to data operations only, allowing for fine-grained resource access control using Microsoft Entra role-based access control (RBAC).
-  - Restricting control plane access via keys or resource tokens will disable control plane operations for clients using Azure Cosmos DB SDKs and should therefore be thoroughly [evaluated and tested](/azure/cosmos-db/how-to-connect-role-based-access-control#validate-that-key-based-authentication-is-disabled).
-  - The `disableKeyBasedMetadataWriteAccess` setting can be configured via [ARM Template](/azure/cosmos-db/how-to-connect-role-based-access-control#disable-key-based-authentication) IaC definitions, or via a [Built-In Azure Policy](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5).
-
-- Azure Cosmos DB supports control plane and data plane role-based access control with Microsoft Entra ID.
-  - Application administrators can create role assignments for users, groups, or managed identities to grant or deny access to resources and operations on Azure Cosmos DB resources.
-  - For control plane operations, there are several [Built-in RBAC Roles](/azure/cosmos-db/how-to-connect-role-based-access-control#grant-control-plane-role-based-access) available for role assignment, and [custom RBAC roles](/azure/cosmos-db/how-to-connect-role-based-access-control#grant-control-plane-role-based-access) can also be used to form specific [privilege combinations](/azure/role-based-access-control/resource-provider-operations#microsoftdocumentdb).
-    - [Cosmos DB Account Reader](/azure/role-based-access-control/built-in-roles#cosmos-db-account-reader-role) enables read-only access to the Azure Cosmos DB resource.
-    - [DocumentDB Account Contributor](/azure/role-based-access-control/built-in-roles#documentdb-account-contributor) enables management of Azure Cosmos DB accounts including keys and role assignments, but doesn't enable data-plane access.
-    - [Cosmos DB Operator](/azure/role-based-access-control/built-in-roles#cosmos-db-operator), which is similar to DocumentDB Account Contributor, but doesn't provide the ability to manage keys or role assignments.
-
-- Azure Cosmos DB resources (accounts, databases, and containers) can be protected against incorrect modification or deletion using [Resource Locks](/azure/cosmos-db/resource-locks).
-  - Resource Locks can be set at the account, database, or container level.
-  - A Resource Lock set at on a resource will be inherited by all child resources. For example, a Resource Lock set on the Azure Cosmos DB account will be inherited by all databases and containers within the account.
-  - Resource Locks **only** apply to control plane operations and do **not** prevent data plane operations, such as creating, changing, or deleting data.
-  - If control plane access isn't restricted with `disableKeyBasedMetadataWriteAccess`, then clients will be able to perform control plane operations using account keys.
-
-- The [Azure Cosmos DB change feed](/azure/cosmos-db/change-feed) provides a time-ordered feed of changes to data in an Azure Cosmos DB container.
-  - Latest version mode includes insert and update operations; [all versions and deletes mode](/azure/cosmos-db/change-feed-modes#all-versions-and-deletes-change-feed-mode-preview) can include deletes and TTL expirations.
-
-- The change feed can be used to maintain a separate data store from the primary Container used by the application, with ongoing updates to the target data store fed by the change feed from the source Container.
-  - The change feed can be used to populate a secondary store for additional data platform redundancy or for subsequent analytical scenarios.
-
-- If you use latest version mode and delete operations routinely affect the data within the source Container, then the store fed by the change feed will be inaccurate and unreflective of deleted data.
-  - A [Soft Delete](/azure/cosmos-db/change-feed-design-patterns#deletes) pattern can be implemented so that data records are included in the change feed.
-    - Instead of explicitly deleting data records, data records are *updated* by setting a flag (e.g. `IsDeleted`) to indicate that the item is considered deleted.
-    - Any target data store fed by the change feed will need to detect and process items with a deleted flag set to True; instead of storing soft-deleted data records, the *existing* version of the data record in the target store will need to be deleted.
-  - A short Time-To-Live (TTL) is typically used with the soft-delete pattern so that Azure Cosmos DB automatically deletes expired data, but only after it's reflected within the change feed with the deleted flag set to True.
-    - This preserves the original delete intent while also propagating the delete through the change feed.
-
-- Azure Cosmos DB can be configured as an [analytical store](/azure/cosmos-db/analytical-store-introduction), which applies a column format for optimized analytical queries to address the complexity and latency challenges that occur with the traditional ETL pipelines.
-
-- Azure Cosmos DB automatically backs up data at regular intervals without affecting the performance or availability, and without consuming RU/s.
-
-- Azure Cosmos DB can be configured according to two distinct backup modes.
-  - [Periodic](/azure/cosmos-db/configure-periodic-backup-restore) is the default backup mode for all accounts, where backups are taken at a periodic interval and the data is restored by creating a request with the support team.
-    - The default periodic backup retention period is eight hours and the default backup interval is four hours, which means only the latest two backups are stored by default.
-    - The backup interval and retention period are configurable within the account.
-      - The maximum retention period extends to a month with a minimum backup interval of one hour.
-      - A role assignment to the Azure "Cosmos DB Account Reader Role" is required to configure backup storage redundancy.
-    - Two backup copies are included at no extra cost, but additional backups incur additional costs.
-    - By default, periodic backups are stored within separate Geo-Redundant Storage (GRS) that isn't directly accessible.
-      - Backup storage exists within the primary 'hub' region and is replicated to the paired region through underlying storage replication.
-      - The redundancy configuration of the underlying backup storage account is configurable to [Zone-Redundant Storage or Locally-Redundant Storage](/azure/cosmos-db/periodic-backup-restore-introduction#how-azure-cosmos-db-performs-data-backup).
-    - Performing a **restore operation requires a [Support Request](/azure/cosmos-db/periodic-backup-request-data-restore)** since customers can't directly perform a restore.
-      - Before opening a support ticket, the backup retention period should be increased to at least seven days within eight hours of the data loss event.
-    - A restore operation creates a new Azure Cosmos DB account where data is recovered.
-      - An existing Azure Cosmos DB account can't be used for Restore
-      - By default, a new Azure Cosmos DB account named `<Azure_Cosmos_account_original_name>-restored<n>` will be used.
-        - This name can be adjusted, such as by reusing the existing name if the original account was deleted.
-    - If throughput is provisioned at the database level, backup and restore will happen at the database level
-      - It's not possible to select a subset of containers to restore.
-  - [Continuous](/azure/cosmos-db/continuous-backup-restore-introduction) backup mode allows for a restore to any point of time within a 7-day or 30-day retention window, depending on the selected tier.
-    - Restore operations can be performed to return to a specific point in time (PITR) with a one-second granularity.
-    - The available window for restore operations is up to 30 days.
-      - It's also possible to restore to the resource instantiation state.
-    - Continuous backups are taken within every Azure region where the Azure Cosmos DB account exists.
-      - Continuous backups are stored within the same Azure region as each Azure Cosmos DB replica, using Locally-Redundant Storage (LRS) or Zone Redundant Storage (ZRS) within regions that support Availability Zones.
-    - A self-service restore can be performed using the [Azure portal, Azure CLI, Azure PowerShell, or ARM templates](/azure/cosmos-db/continuous-backup-restore-introduction).
-    - There are several [limitations](/azure/cosmos-db/continuous-backup-restore-introduction#current-limitations) with Continuous Backup.
-      - If a container has TTL configured, restored data that has exceeded its TTL may be *immediately deleted*
-    - A restore operation can restore into a new Azure Cosmos DB account, and some scenarios support restore into an existing account.
-    - There's an [additional storage cost](/azure/cosmos-db/continuous-backup-restore-introduction#continuous-backup-pricing) for Continuous backups and restore operations.
-
-- Existing Azure Cosmos DB accounts can be migrated from Periodic to Continuous, but not from Continuous to Periodic; migration is one-way and not reversible.
-
-- Azure Cosmos DB backups don't include all account configuration. Redeploy configuration settings and capabilities after restore.
-- It's possible to implement a custom backup and restore capability for scenarios where Periodic and Continuous approaches aren't a good fit.
-  - A custom approach introduces significant costs and additional administrative overhead, which should be understood and carefully assessed.
-    - Common restore scenarios should be modeled, such as the corruption or deletion of an account, database, container, or data item.
-    - Housekeeping procedures should be implemented to prevent backup sprawl.
-  - [Azure Blob Storage](../service-guides/azure-blob-storage.md) or an alternative data technology can be used, such as an alternative Azure Cosmos DB container.
-    - Azure Blob Storage and Azure Cosmos DB provide native integrations with Azure services such as [Azure Functions](../service-guides/azure-functions.md) and Azure Data Factory.
-
-- Custom backups can use two options.
-  - [Azure Cosmos DB change feed](/azure/cosmos-db/change-feed) to write data to a separate storage facility.
-    - An [Azure Function](/azure/cosmos-db/change-feed-functions) or equivalent application process uses the [change feed processor](/azure/cosmos-db/change-feed-processor) to bind to the change feed and process items into storage.
-  - Both continuous or periodic (batched) custom backups can be implemented using the change feed.
-  - The Azure Cosmos DB change feed latest version mode doesn't reflect deletes, so a soft-delete pattern must be applied using a boolean property and TTL.
+- The multi-region write configuration comes at a significant cost because RU/s are provisioned and billed per region. Two write regions cost 2x, three cost 3x, and so on. Prioritize multi-region writes only for workload scenarios that require maximum reliability.
+- In a multi-region write configuration, [update conflicts](/azure/cosmos-db/conflict-resolution-policies) can occur. Azure Cosmos DB provides Last Write Wins (default) and custom conflict resolution policies.
+- The data model and partitioning strategy across logical and physical partitions plays a critical role in achieving optimal performance and availability.
+- Autoscale throughput protects against throttling errors by scaling automatically, which is important for unpredictable mission-critical workloads.
+- Continuous backup mode allows self-service point-in-time restore (PITR) with one-second granularity and up to 30 days retention, which is preferred over periodic backups for mission-critical scenarios.
   - [Azure Data Factory Connector for Azure Cosmos DB](/azure/data-factory/connector-azure-cosmos-db) ([Azure Cosmos DB for NoSQL](/azure/data-factory/connector-azure-cosmos-db) or [MongoDB API](/azure/data-factory/connector-azure-cosmos-db-mongodb-api) connectors) to copy data.
     - Azure Data Factory (ADF) supports manual execution and [Schedule](/azure/data-factory/concepts-pipeline-execution-triggers#schedule-trigger), [Tumbling window](/azure/data-factory/concepts-pipeline-execution-triggers#tumbling-window-trigger), and [Event-based](/azure/data-factory/concepts-pipeline-execution-triggers#event-based-trigger) triggers.
       - Provides support for both Storage and [Event Grid](../service-guides/azure-event-grid.md).
@@ -489,118 +345,36 @@ Azure Cosmos DB provides a globally distributed and highly available NoSQL datas
 ## Relational data technologies
 
 > [!NOTE]
-> For detailed Azure Database for PostgreSQL configuration guidance, see the [Database for PostgreSQL service guide](../service-guides/postgresql.md).
+> For detailed Azure SQL Database configuration guidance, see the [SQL Database service guide](../service-guides/azure-sql-database.md).
 
 > [!NOTE]
-> For detailed Azure SQL Database configuration guidance, see the [SQL Database service guide](../service-guides/azure-sql-database.md).
+> For detailed Azure Database for PostgreSQL configuration guidance, see the [Database for PostgreSQL service guide](../service-guides/postgresql.md).
 
 For scenarios with a highly relational data model or dependencies on existing relational technologies, the use of Azure Cosmos DB in a multi-region write configuration might not be directly applicable. In such cases, it's vital that used relational technologies are designed and configured to uphold the multi-region active-active aspirations of an application design.
 
-Azure provides many managed relational data platforms, including Azure SQL Database and Azure Database for common OSS relational solutions, including [MySQL](../service-guides/azure-database-for-mysql.md), PostgreSQL, and MariaDB. The design considerations and recommendations within this section will therefore focus on the optimal usage of Azure SQL Database and Azure Database OSS flavors to maximize reliability and global availability.
+Mission-critical workloads benefit from polyglot persistence: use the best data store for each workload scenario rather than forcing all data through a single technology. Azure Cosmos DB handles globally distributed writes, while relational databases like Azure SQL Database and Azure Database for PostgreSQL serve scenarios with strongly relational models, complex transactions, or regulatory constraints that require ACID guarantees.
 
 ### Design considerations
 
-- Relational data technologies can be configured to easily scale read operations, but writes are typically constrained to go through a single primary instance, which places a significant constraint on scalability and performance.
+- Relational data technologies can scale read operations easily, but writes are typically constrained to a single primary instance, which limits scalability and performance for globally distributed workloads.
 
-- [Sharding](/azure/sql-database/sql-database-elastic-scale-introduction) can be applied to distribute data and processing across multiple identical structured databases, partitioning databases horizontally to navigate platform constraints.
-  - For example, sharding is often applied in multi-tenant SaaS platforms to isolate groups of tenants into distinct data platform constructs.
+- [Sharding](/azure/sql-database/sql-database-elastic-scale-introduction) can distribute data and processing across multiple databases to navigate platform constraints. This is particularly relevant when the application design considers three or more Azure regions.
 
-**Azure SQL Database**
+- Azure SQL Database provides auto-failover groups, geo-replication across up to four regions, availability zone redundancy, and a 99.995% SLA on Business Critical tiers. These capabilities make it suitable for mission-critical scenarios where relational requirements exist. For complete capabilities, see the [SQL Database service guide](../service-guides/azure-sql-database.md).
 
-- Azure SQL Database provides a fully managed database engine that is always running on the latest stable version of the SQL Server database engine and underlying Operating System.
-  - Provides intelligent features such as performance tuning, threat monitoring, and vulnerability assessments.
+- Azure Database for PostgreSQL Flexible Server with [Elastic Clusters (Citus)](/azure/postgresql/flexible-server/concepts-elastic-clusters) provides dynamic scalability through sharding. Use Flexible Server for mission-critical workloads that require availability zone support and the 99.95% SLA guarantee. For complete capabilities, see the [Database for PostgreSQL service guide](../service-guides/postgresql.md).
 
-- Azure SQL Database provides built-in regional high availability and turnkey geo-replication to distribute read-replicas across Azure regions.
-  - With geo-replication, secondary database replicas remain read-only until a failover is initiated.
-  - Up to four secondaries are supported in the same or different regions.
-  - Secondary replicas can also be used for read-only query access to optimize read performance.
-  - Failover must be initiated manually but can be wrapped in automated operational procedures.
+### Design recommendations
 
-- Azure SQL Database provides [Auto Failover Groups](/azure/azure-sql/database/auto-failover-group-overview?tabs=azure-powershell), which replicates databases to a secondary server and allows for transparent failover if a failure.
-  - Auto-failover groups support geo-replication of all databases in the group to only one secondary server or instance in a different region.
-  - Secondary databases can be used to offload read traffic.
-
-- Premium, Business Critical, General Purpose, and Hyperscale service tier database replicas can be [distributed across Availability Zones](/azure/azure-sql/database/high-availability-sla) where supported.
-  - The control ring is also duplicated across multiple zones as three gateway rings (GW).
-    - The routing to a specific gateway ring is controlled by Azure Traffic Manager.
-
-- Azure SQL Database offers a baseline 99.99% availability SLA across all of its service tiers, but provides a higher 99.995% SLA for the Business Critical or Premium tiers in regions that support availability zones.
-  
-
-- Compute costs associated with Azure SQL Database can be reduced using a [Reservation Discount](/azure/cost-management-billing/reservations/understand-reservation-charges).
-  - It's not possible to apply reserved capacity for DTU-based databases.
-
-- [Point-in-time restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) can be used to return a database and contained data to an earlier point in time.
-
-- [Geo-restore](/azure/sql-database/sql-database-recovery-using-backups) can be used to recover a database from a geo-redundant backup.
-
-**Azure Database For PostgreSQL**
-
-- Azure Database for PostgreSQL is offered as [Flexible Server](/azure/postgresql/single-server/whats-happening-to-postgresql-single-server). Single Server is retired, and Hyperscale (Citus) capabilities are now part of Flexible Server.
-
-- [Elastic Clusters (Citus)](/azure/postgresql/flexible-server/concepts-elastic-clusters) provides dynamic scalability through sharding.
-  - Distributing table rows across multiple PostgreSQL servers is key to ensure scalable queries in Elastic Clusters (Citus).
-  - Multiple nodes can collectively hold more data than a traditional database, and in many cases can use worker CPUs in parallel to optimize costs.
-
-- Flexible server provides cost efficiencies for non-production workloads through the ability to stop/start the server, and a burstable compute tier that is suitable for workloads that don't require continuous compute capacity.
-
-- There's no additional charge for backup storage for up to 100% of total provisioned server storage.
-  - Additional consumption of backup storage is charged according to consumed GB/month.
-
-- Compute costs associated with Azure Database for PostgreSQL can be reduced using [Flexible Server Reserved Pricing](/azure/postgresql/flexible-server/concept-reserved-pricing).
-
-### Design Recommendations
-
-- Consider sharding to partition relational databases based on different application and data contexts, helping to navigate platform constraints, maximize scalability and availability, and fault isolation.
-  - This recommendation is particularly prevalent when the application design considers three or more Azure regions since relational technology constraints can significantly hinder globally distributed data platforms.
+- Consider sharding to partition relational databases based on different application and data contexts, helping navigate platform constraints, maximize scalability and availability, and fault isolation.
   - Sharding isn't appropriate for all application scenarios, so a contextualized evaluation is required.
 
 - Prioritize the use of Azure SQL Database where relational requirements exist due to its maturity on the Azure platform and wide array of reliability capabilities.
 
-**Azure SQL Database**
-
-- Use the Business-Critical service tier to maximize reliability and availability, including access to critical resiliency capabilities.
-
-- Use the vCore based consumption model to facilitate the independent selection of compute and storage resources, tailored to workload volume and throughput requirements.
-  - Ensure a defined capacity model is applied to inform compute and storage resource requirements.
-    - Consider [Reserved Capacity](/azure/azure-sql/database/reserved-capacity-overview) to provide potential cost optimizations.
-
-- Configure the Zone-Redundant deployment model to spread Business Critical database replicas within the same region across Availability Zones.
-
-- Use [Active Geo-Replication](/azure/azure-sql/database/active-geo-replication-overview) to deploy readable replicas within all deployment regions (up to four).
-
-- Use Auto Failover Groups to provide [transparent failover](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery) to a secondary region, with geo-replication applied to provide replication to additional deployment regions for read optimization and database redundancy.
-  - For application scenarios limited to only two deployment regions, the use of Auto Failover Groups should be prioritized.
-
-- Consider automated operational triggers, based on alerting aligned to the [application health model](mission-critical-health-modeling.md#analyze-and-alert-on-health), to conduct failovers to geo-replicated instances if a failure impacting the primary and secondary within the Auto Failover Group.
+- Use Auto Failover Groups to provide [transparent failover](/azure/azure-sql/database/designing-cloud-solutions-for-disaster-recovery) to a secondary region. Consider automated operational triggers, based on alerting aligned to the [application health model](../design-guides/health-modeling.md#set-actionable-alerts), to conduct failovers if a failure impacts the primary and secondary.
 
 >[!IMPORTANT]
-> For applications considering more than four deployment regions, serious consideration should be given to application scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB. However, if this isn't feasible within the application workload scenario, it's advised to elevate a region within a single geography to a primary status encompassing a geo-replicated instance to more evenly distributed read access.
-
-  - Ensure CD pipelines consider load testing under representative load levels to validate appropriate data platform behavior.
-
-- Calculate a health metric for database components to observe health relative to business requirements and resource utilization, using  [monitoring and alerts](/azure/azure-sql/database/monitor-tune-overview) to drive automated operational action where appropriate.
-  - Ensure key query performance metrics are incorporated so swift action can be taken when service degradation occurs.
-
-- Optimize queries, tables, and databases using [Query Performance Insights](/azure/azure-sql/database/query-performance-insight-use) and common [performance recommendations](/azure/azure-sql/database/database-advisor-find-recommendations-portal) provided by Microsoft.
-
-- [Implement retry logic](/azure/azure-sql/database/troubleshoot-common-connectivity-issues) using the SDK to mitigate transient errors impacting Azure SQL Database connectivity.
-
-- Prioritize the use of service-managed keys when applying server-side Transparent Data Encryption (TDE) for at-rest encryption.
-  - If customer-managed keys or client-side (AlwaysEncrypted) encryption is required, ensure keys are appropriately resilient with backups and automated rotation facilities.
-
-- Consider the use of [point-in-time restore](/azure/azure-sql/database/recovery-using-backups#point-in-time-restore) as an operational playbook to recover from severe configuration errors.
-
-**Azure Database For PostgreSQL**
-
-- Use Flexible Server for business-critical workloads that require Availability Zone support.
-
-- When using Elastic Clusters (Citus) for business critical workloads, enable High Availability mode to receive the 99.95% SLA guarantee.
-
-- Use the [Elastic Clusters (Citus)](/azure/postgresql/flexible-server/concepts-elastic-clusters) server configuration to maximize availability across multiple nodes.
-
-- Define a capacity model for the application to inform compute and storage resource requirements within the data platform.
-  - Consider [Flexible Server Reserved Pricing](/azure/postgresql/flexible-server/concept-reserved-pricing) to provide potential cost optimizations.
+> For applications considering more than four deployment regions, serious consideration should be given to application-scoped sharding or refactoring the application to support multi-region write technologies, such as Azure Cosmos DB.
 
 ## Caching for Hot Tier Data
 
@@ -611,6 +385,8 @@ Azure provides several services with applicable capabilities for caching key dat
 ### Design Considerations
 
 - A caching layer provides additional data access durability since even if an outage impacting the underlying data technologies, an application data snapshot can still be accessed through the caching layer.
+
+- However, a caching layer is also another point of failure for mission-critical workloads. Evaluate whether the read performance benefit outweighs the added operational complexity and failure surface.
 
 - In certain workload scenarios, in-memory caching can be implemented within the application platform itself.
 
@@ -637,7 +413,7 @@ Azure provides several services with applicable capabilities for caching key dat
 - Ensure replica instances are deployed across Availability Zones within each considered Azure region.
 
 - Use Azure Monitor to evaluate cache instances.
-  - Calculate a [health score](mission-critical-health-modeling.md) for regional cache components to observe health relative to business requirements and resource utilization.
+  - Calculate a [health score](../design-guides/health-modeling.md) for regional cache components to observe health relative to business requirements and resource utilization.
   - Observe and alert on key metrics such as high CPU, high memory usage, high server load, and evicted keys for insights when to scale the cache.
 
 ## Analytical Scenarios
