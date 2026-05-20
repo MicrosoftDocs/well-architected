@@ -42,13 +42,13 @@ Another common deployment model is a blue-green approach. In this model, two ide
 
 In both of these models, the time between each phase of the rollout should be long enough to enable you to monitor the health metrics of the workload. You should provide ample *bake time*, time between rollout groups, to help ensure that users from different regions or users who perform different tasks have time to use the workload in their normal capacity. Bake times should be measured in hours and days rather than minutes. Bake times should also increase for each rollout group so that you can account for different time zones and usage patterns over the course of the day.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Manual rollout tuning creates friction and slows deployment. AI accelerates rollouts and reduces incidents by replacing subjective decision-making with data-driven recommendations.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Manual rollout tuning creates friction and slows deployment. AI accelerates rollouts and reduces incidents because it replaces subjective decision-making with data-driven recommendations.
 > 
-> Start with a low to medium GenAI approach. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
+> Start with a limited generative AI implementation. Give the models secure access to deployment documentation, code reviews, and incident history to analyze and suggest rollout strategies and parameters.
 >
 > Advanced agentic solutions can predict canary percentages, rollout timing, and target segments. When integrated with deployment tools, they automatically update rollout configurations. These solutions require deeper integration, governed write access, and platform support.
 >
-> Custom predictive models offer higher accuracy but need significant investment in training infrastructure and ML expertise. They may not be practical for most teams.
+> Custom predictive models provide higher accuracy but need significant investment in training infrastructure and machine learning expertise. They might not be practical for most teams.
 
 ## Develop robust workload health models
 
@@ -112,7 +112,7 @@ Removing or deprecating a component is one of the highest risk changes you can m
 
 ## Considerations
 
-Building and maintaining safe deployment practices is complex. Your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development.  Use of automation, IaC-only for infrastructure changes, consistency in branching strategies, use of feature flags, and many other practices can help to ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
+Building and maintaining safe deployment practices is complex. Your success in fully implementing robust standards depends on the maturity of your practices across many areas of software development. Automation, IaC-only infrastructure changes, consistent branching strategies, feature flags, and other practices can help ensure safe deployment. Use this guide to optimize your workload and inform your plans for improvement as your practices evolve.
 
 ## Azure facilitation
 
