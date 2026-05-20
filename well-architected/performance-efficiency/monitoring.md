@@ -68,6 +68,8 @@ Use a single, consistent dataset within each environment for both targets and al
 
 Create alerts that are actionable and clearly tied to performance outcomes. Each alert should indicate what threshold had a sustained breach, the potential impact, and the components involved so it's clear where to investigate and what is affected. Start with standard, well-known thresholds, then refine them over time based on observed system behavior and workload characteristics.
 
+Consider grounding performance alerts in a health model. Instead of alerting on individual metrics, use a health model to represent performance-critical resources with multiple performance signals. Alert on health state transitions so compound performance issues surface as a single actionable alert rather than a flood of threshold breaches. Azure Monitor health models supports this pattern with entity-level alerting and hierarchical propagation across dependencies.
+
 When direct alerting on an external dependency is not possible, use indirect signals such as dependency call duration, error rates, or timeout behavior to approximate its impact on system performance.
 
 ## Monitor elasticity
@@ -81,6 +83,8 @@ Track cold start and initialization latency to understand how startup overhead a
 Track how performance evolves with changes in your design and external factors. 
 
 Establish baselines that represent expected system performance, then compare current behavior against them to detect drift, including regressions and improvements.
+
+Use a health model to represent performance baselines and clearly quantify what constitutes healthy, degraded, and unhealthy states for performance-critical resources. Azure Monitor health models supports static thresholds and dynamic baselines that adapt over time, automating drift detection.
 
 Connect performance changes to operational events such as deployments, configuration updates, and scaling actions. Annotate timelines with these events so shifts in behavior have clear context and can be traced back to likely causes.
 
@@ -170,6 +174,8 @@ To address this, use synthetic transactions, which sends automated requests thro
 [Azure Monitor](/azure/azure-monitor/overview) provides a unified platform for collecting, analyzing, and responding to performance data across your entire workload. It aggregates data from applications, infrastructure, and external sources into a common data platform.
 
 **Data collection and storage**: Use [Log Analytics workspaces](/azure/azure-monitor/logs/log-analytics-workspace-overview) to centralize your performance data with configurable [retention policies](/azure/azure-monitor/logs/data-retention-archive). Create multiple workspaces to segment data by environment or compliance requirements.
+
+**Health modeling**: [Azure Monitor health models](/azure/azure-monitor/health-models/overview) help you define, measure, and visualize workload health by correlating metrics, logs, and traces into actionable health states across Azure resources and components.
 
 **Application monitoring**: [Application Insights](/azure/azure-monitor/app/app-insights-overview) collects application-level telemetry including request rates, response times, and exceptions. Enable [distributed tracing](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) to correlate performance across distributed components.
 

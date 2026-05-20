@@ -14,7 +14,7 @@ The [Azure Well-Architected Framework AI workload assessment](/assessments/ea306
 
 For best results, the team that completes the assessment should be well-versed in the architecture of your workload. That team should also have a strong understanding of cloud principles and patterns. These roles include but aren't limited to cloud architects, operators, and DevOps engineers.
 
-The assessment is a set of questions that are based on the [AI workload design areas](./get-started.md#typical-architecture-pattern-and-design-areas). It's a method for checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
+The assessment is a set of questions that are based on the [AI workload design areas](./get-started.md#ai-workload-design-areas). It's a method for checking the foundational design choices of your workload's architecture and your end-to-end operational approach.
 
 :::image type="content" source="./images/assessment-question.png" alt-text="Screenshot that shows a question in the AI workload assessment. A few answers are selected. On the left side, an outline of the assessment is visible." lightbox="./images/assessment-question.png":::
 
