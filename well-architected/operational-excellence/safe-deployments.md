@@ -82,7 +82,7 @@ Rolling back changes, especially database, schema, or other stateful component c
 
 - Establish predeployment checks, including code review, security scans, and compliance checks, to help ensure that changes are safe to deploy.
 
-  Diversify these test gates. For example, add tests that exercise both contract stability and behavior. Your automated schema checks prove that the API surface stays consistent, while a behavior test proves that what the API returns or does through that surface also stays consistent.
+  Don’t rely on just one type of test. Different tests catch different classes of failures. For example, contract stability tests validate whether the API shape stays compatible, while behavior tests validate whether API functionality is correct.
 
 - Implement circuit breakers to automatically halt traffic to a service that's experiencing issues. Doing so can help to prevent further degradation of the system.
 

@@ -157,7 +157,7 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
    > [!IMPORTANT]
    > Ensure that mitigation decisions follow predefined authorization rules. The Incident Manager should handle all mitigation actions. Require authorized personnel to approve high-impact steps and document every action. Keep the actions controlled, safe, and accountable while you restore the system.
 
-   The time it takes you to select the mitigation strategy is a component of your mean time to recovery (MTTR). When the onset of a user-facing report aligns with the rollout window of a change your team owns, the default response shouldn't be debating whether the new behavior is correct, but instead taking mitigation action. The cost of a rollback is one extra release cycle. The cost of delayed action is the entire remaining impact window for every user.
+   When a user-impacting issue starts at the approximately the same time your team deployed a change, assume the change is the likely cause and roll it back immediately instead of spending a long time investigating first. The time it takes you to select the mitigation strategy is accounted in your mean time to recovery (MTTR). Optimize that time by taking mitigation action immediately.
 
 1. Apply the resolution. This step focuses on restoring the system to full operational state while preventing recurrence. Engineering teams apply verified fixes that follow team-specific, scripted procedures. They use log analysis and monitoring tools to guide investigation. Rollback steps undo ineffective changes to ensure that every action drives the system steadily toward complete recovery.
 
