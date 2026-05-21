@@ -66,7 +66,7 @@ When your deployment causes an issue in one of the rollout groups, the rollout m
 
 Rolling back changes, especially database, schema, or other stateful component changes, can be complex. Your SDP guidelines should provide clear instructions on how to deal with data changes according to the data estate design for your workload. Similarly, rolling forward must be handled carefully to ensure that SDP isn't neglected and that the hotfix or other minimizing efforts are performed safely.
 
-## Establish protocols for emergency deployments
+## Establish deployment safety guardrails
 
 - Implement versioning across your build artifacts to help ensure that you can roll back and roll forward when necessary.
 
@@ -81,6 +81,8 @@ Rolling back changes, especially database, schema, or other stateful component c
 - Deploy changes to staging environments that mirror your production environment. Practice environments allow you to test changes in a controlled setting before deploying to the live environment.
 
 - Establish predeployment checks, including code review, security scans, and compliance checks, to help ensure that changes are safe to deploy.
+
+  Diversify these test gates. For example, add tests that exercise both contract stability and behavior. Your automated schema checks prove that the API surface stays consistent, while a behavior test proves that what the API returns or does through that surface also stays consistent.
 
 - Implement circuit breakers to automatically halt traffic to a service that's experiencing issues. Doing so can help to prevent further degradation of the system.
 

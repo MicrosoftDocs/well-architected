@@ -124,6 +124,12 @@ Operational logs help diagnose issues, track performance, and understand system 
 
 What to monitor in detail for each layer is covered in the [Monitoring Design Guide](../design-guides/monitoring.md).
 
+### Monitor administrative dashboards and status APIs
+
+Extend monitoring to the dashboards, status APIs, and reports that operators and downstream tooling depend on for system state. Incorrect or stale value is a reliability issue in those scenarios even when user flows continue to succeed.
+
+For example, in an order management application, an admin dashboard might show pending order counts from a summary table refreshed by a background job. If the refresh fails silently, orders still flow but operations staff act on a stale backlog. A fixed-interval comparison of the dashboard count against a live query of the order table catches the gap before it turns into customer impact.
+
 ## Define and monitor stamp capacity
 
 Define clear capacity limits for each deployment unit, or stamp, and monitor them closely. Every stamp operates within a finite ceiling, whether that's maximum concurrent users, throughput, or resource utilization thresholds. So making those limits explicit will give you a reliable baseline for decision-making.
