@@ -15,7 +15,6 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### Updated articles
 
-- [Cost Optimization trade-offs](./cost-optimization/tradeoffs.md): We improved clarity by simplifying language and sentence structures throughout. We also corrected terminology from *Zero-Trust* to *Zero Trust* for consistency.
   
 - [Operational Excellence trade-offs](./operational-excellence/tradeoffs.md): We clarified how observability platforms can expose classified data in logs and log sinks. We also simplified explanations about how support activities, training, and architecture patterns affect costs and performance.
 
@@ -33,7 +32,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - We updated Microsoft branding from *Azure AI Foundry* to *Microsoft Foundry* across the repo, in articles like [Workload team personas for AI workloads](./ai/personas.md) and [Architecture strategies for designing an incident management (IcM) process](./operational-excellence/incident-response.md).
 
-- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture strategies for getting the best rates from providers](./cost-optimization/get-best-rates.md), [Architecture strategies for optimizing flow costs](./cost-optimization/optimize-flow-costs.md), [Architecture best practices for Azure Virtual Machines and scale sets](./service-guides/virtual-machines.md), [Architecture strategies for designing an IcM process](./operational-excellence/incident-response.md), [Architecture best practices for Azure Database for PostgreSQL](./service-guides/postgresql.md), [Operational procedure considerations for sustainable workloads on Azure](./sustainability/sustainability-operational-procedures.md), and [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md).
+- This month, we incorporated newly released Azure features from the [Azure updates feed](https://azure.microsoft.com/updates/) into our guidance. Check out the updates in [Architecture strategies for getting the best rates from providers](./cost-optimization/get-best-rates.md), and [Design methodology for sustainability workloads on Azure](./sustainability/sustainability-design-methodology.md).
 
 #### Monitoring guidance refresh
 
