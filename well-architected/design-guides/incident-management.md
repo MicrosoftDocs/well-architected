@@ -157,6 +157,8 @@ Phase 2 focuses on detecting and responding to incidents quickly and effectively
    > [!IMPORTANT]
    > Ensure that mitigation decisions follow predefined authorization rules. The Incident Manager should handle all mitigation actions. Require authorized personnel to approve high-impact steps and document every action. Keep the actions controlled, safe, and accountable while you restore the system.
 
+   When a user-impacting issue starts at the approximately the same time your team deployed a change, assume the change is the likely cause and roll it back immediately instead of spending a long time investigating first. The time it takes you to select the mitigation strategy is accounted in your mean time to recovery (MTTR). Optimize that time by taking mitigation action immediately.
+
 1. Apply the resolution. This step focuses on restoring the system to full operational state while preventing recurrence. Engineering teams apply verified fixes that follow team-specific, scripted procedures. They use log analysis and monitoring tools to guide investigation. Rollback steps undo ineffective changes to ensure that every action drives the system steadily toward complete recovery.
 
 1. Generate an RCA report. After you resolve an incident, generate the RCA report within the SLA timeframe. The incident owner, or a closely involved team member if the owner is unavailable, should create the report to ensure accuracy. Follow a defined RCA template that has clear guidelines about what information to include and share, or create and approve a new template through stakeholder review.
