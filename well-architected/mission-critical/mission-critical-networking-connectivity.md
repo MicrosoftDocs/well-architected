@@ -156,36 +156,11 @@ This section builds on [global routing recommendations](#design-recommendations)
 
 - A **Web Application Firewall** provides protection against common web exploits and vulnerabilities, such as SQL injection or cross site scripting, and is essential to achieve the maximum reliability aspirations of a mission-critical application.
 
-- Azure WAF provides out-of-the-box protection against the top 10 OWASP vulnerabilities using managed rule sets.
-  - Azure WAF can be enabled within either [Azure Front Door](../service-guides/azure-front-door.md) or [Azure Application Gateway](../service-guides/azure-application-gateway.md). Both integrations share a common WAF policy model with managed rule sets, custom rules, geo-filtering, bot protection (Bot Manager), anomaly scoring, and detection or prevention modes.
-  - Some capabilities remain specific to one integration. The Azure Front Door WAF runs at the global Microsoft network edge and uniquely provides rate limiting, the `Redirect` action, and JS Challenge. The Application Gateway WAF runs regionally inside the virtual network and uniquely supports per-site, per-listener, and per-URI policy associations.
+- Azure WAF can be enabled within [Azure Front Door](../service-guides/azure-front-door.md) or [Azure Application Gateway](../service-guides/azure-application-gateway.md). For detailed WAF, DDoS, TLS, and certificate management capabilities, see the respective service guides and [Networking security guidance](../security/networking.md).
 
 - Third-party WAF technologies such as NVAs and advanced ingress controllers within Kubernetes can also be considered to provide requisite vulnerability protection.
 
 - Optimal WAF configuration typically requires fine tuning, regardless of the technology used.
-
-  **Azure Front Door**
-
-- Azure Front Door only accepts HTTP and HTTPS traffic, and only processes requests with a known `Host` header. This protocol blocking helps to mitigate volumetric attacks spread across protocols and ports, and DNS amplification and TCP poisoning attacks.
-
-- Azure Front Door is a global Azure resource so configuration is deployed globally to all [edge locations](/azure/frontdoor/edge-locations-by-region).
-  - Resource configuration can be distributed at a massive scale to handle hundreds of thousands of requests per second.
-  - Updates to configuration, including routes and backend pools, are seamless and won't cause any downtime during deployment.
-
-- Azure Front Door provides both a fully managed certificate service and a bring-your-own-certificate method for the client-facing SSL certificates. The fully managed certificate service provides a simplified operational approach and helps to reduce complexity in the overall design by performing certificate management within a single area of the solution.
-
-- Azure Front Door auto-rotates "Managed" certificates at least 60 days ahead of certificate expiration to protect against expired certificate risks. If self-managed certificates are used, updated certificates should be deployed no later than 24 hours prior to expiration of the existing certificate, otherwise clients may receive expired certificate errors.
-
-- Certificate updates will only result in downtime if Azure Front Door is switched between "Managed" and "Use Your Own Certificate".
-
-- Azure Front Door is protected by Azure DDoS Protection Basic, which is integrated into Front Door by default. This provides always-on traffic monitoring, real-time mitigation, and also defends against common Layer 7 DNS query floods or Layer 3/4 volumetric attacks.
-  - These protections help to maintain Azure Front Door availability even when faced with a DDoS attack.  Distributed Denial of Service (DDoS) attacks can render a targeted resource unavailable by overwhelming it with illegitimate traffic.
-
-- Azure Front Door also provides WAF capabilities at a global traffic level, while Application Gateway WAF must be provided within each regional deployment stamp. Capabilities include firewall rulesets to protect against common attacks, geo-filtering, address blocking, rate limiting, and signature matching.
-
-  **Azure Load Balancer**
-
-- The Azure Basic Load Balancer SKU isn't backed by an SLA and has several capability constraints compared to the Standard SKU.
 
 ### Design recommendations
 
@@ -297,15 +272,7 @@ Internet egress is a foundational network requirement for a mission-critical app
 
 ### Design Considerations
 
-- Many Azure services require access to public endpoints for various management and control plane functions to operate as intended.
-
-- Azure provides different direct internet outbound [connectivity methods](/azure/load-balancer/load-balancer-outbound-connections#scenarios), such as Azure NAT gateway or Azure Load Balancer, for virtual machines or compute instances on a virtual network.
-
-- When traffic from inside a virtual network travels out to the Internet, Network Address Translation (NAT) must take place. This is a compute operation that occurs within the networking stack and that can therefore impact system performance.
-
-- When NAT takes place at a small scale the performance impact should be negligible, however, if there are a large number of outbound requests network issues may occur. These issues typically come in the form of 'Source NAT (or SNAT) port exhaustion'.
-
-- In a multitenant environment, such as Azure App Service, there's a limited number of outbound ports available to each instance. If these ports run out, no new outbound connections can be initiated. This issue can be mitigated by reducing the number of private/public edge traversals or by using a more scalable NAT solution such as the [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview).
+- At mission-critical scale, SNAT port exhaustion is a key risk. When a large number of outbound requests occur, 'Source NAT (or SNAT) port exhaustion' can prevent new outbound connections. Use a scalable NAT solution such as [Azure NAT Gateway](/azure/virtual-network/nat-gateway/nat-overview) to mitigate this risk.
 
 - In addition to NAT limitations, outbound traffic may also be subject to requisite security inspections.
   - Azure Firewall provides appropriate security capabilities to secure network egress.
@@ -313,14 +280,6 @@ Internet egress is a foundational network requirement for a mission-critical app
   - [Azure Firewall](/azure/firewall/protect-azure-kubernetes-service) (or an equivalent NVA) can be used to secure Kubernetes egress requirements by providing granular control over outbound traffic flows.
 
 - Large volumes of internet egress will incur [data transfer charges](https://azure.microsoft.com/pricing/details/bandwidth/).
-
-**Azure NAT Gateway**
-
-- Azure NAT Gateway supports 64,000 connections for TCP and UDP per assigned outbound IP address.
-  - Up to 16 IP addresses can be assigned to a single NAT gateway.
-  - A default TCP idle timeout of 4 minutes. If idle timeout is altered to a higher value, flows will be held for longer, which will increase the pressure on the SNAT port inventory.
-
-- NAT gateway can't provide zone isolation out-of-the-box. To get zone redundancy, a subnet containing zonal resources must be aligned with corresponding zonal NAT gateways.
 
 ### Design recommendations
 

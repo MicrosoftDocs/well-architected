@@ -263,12 +263,6 @@ Key mission-critical considerations:
 - The data model and partitioning strategy across logical and physical partitions plays a critical role in achieving optimal performance and availability.
 - Autoscale throughput protects against throttling errors by scaling automatically, which is important for unpredictable mission-critical workloads.
 - Continuous backup mode allows self-service point-in-time restore (PITR) with one-second granularity and up to 30 days retention, which is preferred over periodic backups for mission-critical scenarios.
-  - [Azure Data Factory Connector for Azure Cosmos DB](/azure/data-factory/connector-azure-cosmos-db) ([Azure Cosmos DB for NoSQL](/azure/data-factory/connector-azure-cosmos-db) or [MongoDB API](/azure/data-factory/connector-azure-cosmos-db-mongodb-api) connectors) to copy data.
-    - Azure Data Factory (ADF) supports manual execution and [Schedule](/azure/data-factory/concepts-pipeline-execution-triggers#schedule-trigger), [Tumbling window](/azure/data-factory/concepts-pipeline-execution-triggers#tumbling-window-trigger), and [Event-based](/azure/data-factory/concepts-pipeline-execution-triggers#event-based-trigger) triggers.
-      - Provides support for both Storage and [Event Grid](../service-guides/azure-event-grid.md).
-    - ADF is primarily suitable for periodic custom backup implementations due to its batch-oriented orchestration.
-      - It's less suitable for continuous backup implementations with frequent events due to the orchestration execution overhead.
-    - ADF supports [Azure Private Link](/azure/data-factory/data-factory-private-link) for high network security scenarios
 
 ### Design Recommendations
 
@@ -288,41 +282,7 @@ Key mission-critical considerations:
 
 - Configure Azure Cosmos DB with [Availability Zone (AZ) redundancy](/azure/cosmos-db/high-availability#availability-zone-support) in all deployment regions with AZ support, to ensure resiliency to zone failures within a region.
 
-- Use Azure Cosmos DB for NoSQL since it offers the most comprehensive feature set, particularly where performance tuning is concerned.
-  - Alternative APIs should primarily be considered for migration or compatibility scenarios.
-    - When using alternative APIs, validate that required capabilities are available with the selected language and SDK to ensure optimal configuration and performance.
-
-- Use the Direct connection mode to optimize network performance through direct TCP connectivity to backend Azure Cosmos DB nodes, with a reduced number of network 'hops'.
-
 > The Azure Cosmos DB SLA is calculated by averaging failed requests, which may not directly align with a 99.999% reliability tier error budget. When designing for 99.999% SLO, it's therefore vital to plan for regional and multi-region Azure Cosmos DB write unavailability, ensuring a fallback storage technology is positioned if a failure, such as a persisted message queue for subsequent replay.
-
-- Define a partitioning strategy across both logical and physical partitions to optimize data distribution according to the data model.
-  - Minimize cross-partition queries.
-  - Iteratively [test and validate](/azure/cosmos-db/how-to-model-partition-example) the partitioning strategy to ensure optimal performance.
-
-- [Select an optimal partition key](/azure/cosmos-db/partitioning#choose-a-partition-key).
-  - The partition key can't be changed after it has been created within the container.
-  - The partition key should be a property value that doesn't change.
-  - Select a partition key that has a high cardinality, with a wide range of possible values.
-  - The partition key should spread RU consumption and data storage evenly across all logical partitions to ensure even RU consumption and storage distribution across physical partitions.
-  - Run read queries against the partitioned column to reduce RU consumption and latency.
-
-- [Indexing](/azure/cosmos-db/index-overview) is also crucial for performance, so ensure index exclusions are used to reduce RU/s and storage requirements.
-  - Only index those fields that are needed for filtering within queries; design indexes for the most-used predicates.
-
-- Leverage the built-in error handling, retry, and broader reliability capabilities of the [Azure Cosmos DB SDK](/azure/cosmos-db/best-practice-dotnet#checklist).
-  - Implement [retry logic](/azure/cosmos-db/nosql/conceptual-resilient-sdk-applications) within the SDK on clients.
-
-- **Use service-managed encryption keys** to reduce management complexity. If there's a specific security requirement for customer-managed keys, use [Azure Key Vault Managed HSM](/azure/key-vault/managed-hsm/overview) with FIPS 140 Level 3 compliance.
-  - Ensure appropriate key management procedures are applied, such as backup and rotation.
-
-- Disable [Azure Cosmos DB key-based metadata write access](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4750c32b-89c0-46af-bfcb-2e4541a818d5) by applying the built-in Azure Policy.
-
-- Enable [Azure Monitor](/azure/cosmos-db/monitor-cosmos-db) to gather key metrics and diagnostic logs, such as provisioned throughput (RU/s).
-  - Route Azure Monitor operational data into a [Log Analytics workspace](../service-guides/azure-log-analytics.md) dedicated to Azure Cosmos DB and other global resources within the application design.
-
-- Evaluate application traffic patterns to select an optimal option for [provisioned throughput types](/azure/cosmos-db/how-to-choose-offer).
-  - Consider auto-scale provisioned throughput to automatically level-out workload demand.
 
 - When using [AKS](../service-guides/azure-kubernetes-service.md) as the compute platform: For query-intensive workloads, select an AKS node SKU that has accelerated networking enabled to reduce latency and CPU jitters.
 
@@ -330,17 +290,6 @@ Key mission-critical considerations:
 
 - Load-level through the use of asynchronous non-blocking messaging within system flows, which write updates to Azure Cosmos DB.
   - Consider patterns such as [Command and Query Responsibility Segregation](/azure/architecture/patterns/cqrs) and [Event Sourcing](/azure/architecture/patterns/event-sourcing) with [Azure Service Bus](../service-guides/azure-service-bus.md) or [Azure Event Hubs](../service-guides/azure-event-hubs.md).
-
-- It's strongly recommended to practice recovery procedures on non-production resources and data, as part of standard business continuity operation preparation.
-
-- Define IaC artifacts to re-establish configuration settings and capabilities of an Azure Cosmos DB backup restore.
-
-- Evaluate and apply the [Azure Security Baseline](/security/benchmark/azure/baselines/cosmos-db-security-baseline#backup-and-recovery) control guidance for Azure Cosmos DB Backup and Recovery.
-  - [BR-1: Ensure regular automated backups](/security/benchmark/azure/baselines/cosmos-db-security-baseline#br-1-ensure-regular-automated-backups)
-  - [BR-3: Monitor backups](/security/benchmark/azure/security-controls-v3-backup-recovery#br-3-monitor-backups)
-  - [BR-4: Regularly test backup](/security/benchmark/azure/security-controls-v3-backup-recovery#br-4-regularly-test-backup)
-
-- For new zero-ETL analytics projects, use [Azure Cosmos DB Mirroring for Microsoft Fabric](/fabric/database/mirrored-database/azure-cosmos-db).
 
 ## Relational data technologies
 
