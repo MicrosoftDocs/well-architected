@@ -27,7 +27,7 @@ This design area explores various network topology topics at an application leve
 
 The use of multiple active regional deployment stamps requires a global routing service to distribute traffic to each active stamp.
 
-[Azure Front Door](https://azure.microsoft.com/services/frontdoor/), [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), and [Azure Standard Load Balancer](/azure/load-balancer/cross-region-overview) provide the needed routing capabilities to manage global traffic across a multi-region application.
+[Azure Front Door](../service-guides/azure-front-door.md), [Azure Traffic Manager](../service-guides/azure-traffic-manager.md), and [Azure Standard Load Balancer](../service-guides/azure-load-balancer.md) provide the needed routing capabilities to manage global traffic across a multi-region application.
 
 Alternatively, third-party globally routing technologies can be considered. These options can almost seamlessly be swapped in to replace or extend the use of Azure-native global routing services. Popular choices include routing technologies by CDN providers.
 
