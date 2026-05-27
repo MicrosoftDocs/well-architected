@@ -241,7 +241,7 @@ View the following video to see how resiliency testing can be integrated with Az
   - Run chaos experiments and failure injection tests at the same time as load tests.
   
   > [!TIP]
-  > [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a native  suite of chaos experimentation tools. The tools make it easy to conduct chaos experiments and inject faults within Azure services and application components.
+  > [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) is a native  suite of chaos experimentation tools. The tools make it easy to conduct chaos experiments and inject faults within Azure services and application components.
   >
   > Chaos Studio provides built-in chaos experiments for common fault scenarios and supports custom experiments that target infrastructure and application components.
 
@@ -340,7 +340,7 @@ You can apply AIOps methodologies in CI/CD pipelines to supplement traditional t
 - Define the DevOps process data to collect and how to analyze it. Telemetry, like test execution metrics and time series data of changes within each deployment, is important.
   - Expose application observability data from staging, test, and production environments for analysis and correlation within AIOps models.
 
-- Adopt the [MLOps workflow](https://azure.microsoft.com/solutions/machine-learning-ops/).
+- Adopt the [MLOps workflow](/azure/architecture/ai-ml/guide/machine-learning-operations-v2).
 
 - Develop analytical models that are context-aware and dependency-aware to provide predictions with automated feature engineering to address schema and behavior changes.
 

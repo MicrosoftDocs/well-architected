@@ -195,7 +195,7 @@ Special treatment of static content like images, JavaScript, CSS and other files
 - Caching can be implemented natively within Azure using either Azure Front Door or Azure Content Delivery Network (CDN).
   - [Azure Front Door](/azure/frontdoor/front-door-caching) provides Azure-native edge caching capabilities and routing features to divide static and dynamic content.
     - By creating the appropriate routing rules in Azure Front Door, `/static/*` traffic can be transparently redirected to static content.
-  - More complex caching scenarios can be implemented using the [Azure CDN](https://azure.microsoft.com/services/cdn) service to establish a full-fledged content delivery network for significant static content volumes.
+  - More complex caching scenarios can be implemented using the [Azure CDN](/azure/cdn/cdn-overview) service to establish a full-fledged content delivery network for significant static content volumes.
     - The Azure CDN service will likely be more cost effective, but doesn't provide the same advanced routing and Web Application Firewall (WAF) capabilities which are recommended for other areas of an application design. It does, however, offer further flexibility to integrate with similar services from third-party solutions, such as Akamai and Verizon.
   - When comparing the Azure Front Door and Azure CDN services, the following decision factors should be explored:
     - Can required caching rules be accomplished using the rules engine?

@@ -112,7 +112,7 @@ There are advantages and disadvantages associated with each of these platforms. 
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
+> [Azure Kubernetes Service (AKS)](/azure/well-architected/service-guides/azure-kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](/azure/well-architected/service-guides/app-service-web-apps) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
@@ -164,7 +164,7 @@ Serverless computing provides resources on demand and eliminates the need to man
 
 - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Logic Apps is best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 
-- [Azure API Management](https://azure.microsoft.com/services/api-management). You can use API Management to publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
+- [Azure API Management](/azure/well-architected/service-guides/azure-api-management). You can use API Management to publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
 
 - [Power Apps and Power Automate](/powerapps/powerapps-overview). These tools provide a low-code or no-code development experience, with simple workflow logic and integrations that are configurable through connections in a user interface.
 
