@@ -140,7 +140,7 @@ Resiliency of your compute layer plays a large part in your overall resiliency s
 | Choose stateless applications. If your application needs to be stateful, use an external state storage mechanism like a cache to store the state.| You prevent state loss that's caused by an instance being unavailable, such as during erroneous load balancing or during an outage.|
 | Use availability zones.| You increase your resiliency by mitigating localized datacenter outages. |
 | Design a multiregional architecture when there's business justification to do so. | You meet high uptime requirements and support users in different regions. |
-| Perform [chaos engineering](../reliability/reliability-test.md). | You better understand where your points of failure are and can correct them before an outage occurs.|
+| Perform [chaos testing](../reliability/reliability-test.md). | You better understand where your points of failure are and can correct them before an outage occurs.|
 | Limit the use of components that multiple stamps share. | You eliminate single points of failure and reduce the potential area of impact for an outage.|
 
 ## Additional resources
