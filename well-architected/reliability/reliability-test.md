@@ -17,11 +17,9 @@ ms.topic: concept-article
 
 Reliability testing catches architectural weaknesses before they cause outages. Without deliberate testing against failure scenarios, you can't know whether your resiliency patterns actually work or whether your workload recovers within its defined targets.
 
-Use the strategies in this article to establish a testing cadence that regularly validates your workload against its failure modes. Evolve your testing as your architecture changes and incidents reveal new weaknesses.
+You strengthen your workload’s reliability when you test for security risks that affect availability, performance issues that make the system unusable, and operational gaps that limit your incident response. Use the strategies in this article to establish a testing cadence that regularly validates your workload against its failure modes. Evolve your tests as the architecture changes and incidents reveal new weaknesses. Build confidence that your workload can withstand faults, scale to meet demand, and recover within your RTO and RPO targets while creating a feedback loop that strengthens your reliability posture over time.
 
-By applying these strategies, you build confidence that your workload can withstand faults, scale under demand, and recover within your RTO and RPO targets. You also create a feedback loop that strengthens your reliability posture over time. 
-
-You strengthen your workload’s reliability when you test for security risks that affect availability, performance issues that make the system unusable, and operational gaps that limit your incident response. The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). Review that article first. The recommendations in this guide are scoped to reliability and focus on achieving confidence in your workload's ability to withstand faults and recover within your targets. 
+The key strategies in this article build on the foundational testing practices described in [OE:09 Architecture strategies for testing](../operational-excellence/testing.md). Review that article first. The recommendations in this guide are scoped to reliability and focus on achieving confidence in your workload's ability to withstand faults and recover within your targets. 
 
 The following table defines key reliability terms used throughout this article.
 
