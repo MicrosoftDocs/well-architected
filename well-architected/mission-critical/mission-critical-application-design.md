@@ -70,7 +70,7 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Active-active model might be a natural choice for multi-region deployments for mission critical. However, this can introduce challenges. For example, data synchronization and consistency requires extra measures. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity) and [Recovery strategy for active-active deployments](../design-guides/disaster-recovery#recovery-strategy-for-active-active-deployments).
+- **Redundancy**. Active-active model might be a natural choice for multi-region deployments for mission critical. However, this can introduce challenges. For example, data synchronization and consistency requires extra measures. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity) and [Recovery strategy for active-active deployments](../design-guides/disaster-recovery.md#recovery-strategy-for-active-active-deployments).
 
 
 - **Geographical distribution**. The workload might have compliance requirements for geographical data residency, data protection, and data retention. Consider whether there are specific regions where data must reside or where resources need to be deployed. 
