@@ -191,7 +191,7 @@ Fault injection and chaos engineering help you build confidence in your workload
 
 [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) is a managed service that uses chaos testing to help you measure, understand, and improve your cloud application and service resilience. 
 
-[Azure App Testing](/azure/app-testing/overview-what-is-azure-app-testingg) is a service that allows you to run functional tests with Playwright Workspaces and performance tests using Azure Load Testing to identify issues in their applications.
+[Azure App Testing](/azure/app-testing/overview-what-is-azure-app-testing) is a service that allows you to run functional tests with Playwright Workspaces and performance tests using Azure Load Testing to identify issues in their applications.
 
 [Azure Service Health](/azure/service-health/service-health-planned-maintenance) has a planned maintenance pane which is a dedicated section in the Azure portal that keeps you informed about upcoming maintenance activities. It highlights events that can affect your Azure resources, helping you prepare in advance.
 
