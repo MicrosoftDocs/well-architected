@@ -92,7 +92,7 @@ The [application design](mission-critical-application-design.md) and [platform](
 
 Mission-critical workloads require a unified observability strategy that spans global, regional, and stamp-level resources. Collect all observability data from  application and infrastructure components into a [unified data sink](../design-guides/monitoring.md), which can be a [Log Analytics workspace](../service-guides/azure-log-analytics.md), so the operations team can correlate how the workload is performing and identify issues failures across the entire environment. Use [Application Insights](../service-guides/application-insights.md) with [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) for end-to-end request tracking.
 
-There might not be a single team that knows what "healthy" means for ever involved component. So it's crucial to define health models covering the mission criticial areas of you workload. A [health model](../design-guides/health-modeling.md) will map signal from your monitring sources into a combined health status. It translates the deep technical details into a simple status of "healthy", "degraded", or "unhealthy" and allows to set up alerts for when health degrades.
+There might not be a single team that knows what "healthy" means for ever involved component. So it's crucial to define health models covering the mission critical areas of your workload. A [health model](../design-guides/health-modeling.md) will map signal from your monitoring sources into a combined health status. It translates the deep technical details into a simple status of "healthy", "degraded", or "unhealthy" and allows you to set up alerts for when health degrades.
 
 ## Update management
 

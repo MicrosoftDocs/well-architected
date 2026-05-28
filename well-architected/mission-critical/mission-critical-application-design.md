@@ -127,7 +127,7 @@ Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing-t
 
 - **Retry and circuit breaker**. In a large scale system it's important to differentiate between transient and more permanent errors. For a transient error, it might be worth to do staggered and limited retries. For a more permanent error, it's better to degrade. Sometimes the line between transient and permanent is blurry, that's when circuit breakers come in, help to degrade the system at a point where it prevents further pressure from getting in.
 
-- **Dependencies and health checks**. If a health check of a service is reporting on the compounded health, it's not possible to understand which service is causing the issue. That's why health checks should signal if it's service is able to function (this might include e.g. database, but should not include decoupled dependencies). Even in a decoupled system, model dependencies required to provide the expected functionality expliceitly and use e.g. Azure Service Health to evaluate the systems overall health. 
+- **Dependencies and health checks**. If a health check of a service is reporting on the compounded health, it's not possible to understand which service is causing the issue. That's why health checks should signal if its service is able to function (this might include e.g. database, but should not include decoupled dependencies). Even in a decoupled system, model dependencies required to provide the expected functionality explicitly and use e.g. Azure Service Health to evaluate the systems overall health. 
 
 ### Design recommendations
 

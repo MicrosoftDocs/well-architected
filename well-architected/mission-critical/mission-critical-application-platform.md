@@ -117,7 +117,7 @@ AKS is the recommended application platform for mission-critical workloads becau
 
 ###### Reliability
 
-Kubernetes is natively built to handle failure at scale across large deployments. With AKS, Azure manages the native Kubernetes control plane and is designed to keep workloads running even with temporary outtage of the control plane. 
+Kubernetes is natively built to handle failure at scale across large deployments. With AKS, Azure manages the native Kubernetes control plane and is designed to keep workloads running even with temporary outage of the control plane. 
 
 - Deploy [AKS clusters across different Azure regions](/azure/aks/reliability-multi-region-deployment-models) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
 
@@ -127,7 +127,7 @@ Take into account AKS [scale limits](/azure/azure-resource-manager/management/az
 
 - If scale limits are a constraint, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture), and deploy more units with clusters.
 
-- With the avaialability of the [Node Autoprovisioner (NAP)](/azure/aks/node-autoprovision), [KEDA](/azure/aks/keda-about), [Horizontal Pod Autoscaler (HPA)](/azure/aks/concepts-scale#horizontal-pod-autoscaler) and [Vertical Pod Autoscaler (VPA)](/azure/aks/vertical-pod-autoscaler) you can achieve a high application density and fast scale without losing stability for workloads that don't take disruptions well.
+- With the availability of the [Node Autoprovisioner (NAP)](/azure/aks/node-autoprovision), [KEDA](/azure/aks/keda-about), [Horizontal Pod Autoscaler (HPA)](/azure/aks/concepts-scale#horizontal-pod-autoscaler) and [Vertical Pod Autoscaler (VPA)](/azure/aks/vertical-pod-autoscaler) you can achieve a high application density and fast scale without losing stability for workloads that don't take disruptions well.
 
 For deeper insights into Isolation, Security, Upgrades, Networking and  Monitoring for AKS, see the [Azure Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
 
