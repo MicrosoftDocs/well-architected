@@ -35,27 +35,18 @@
       - name: Azure Virtual Desktop
         tocHref: /azure/well-architected/azure-virtual-desktop/
         topicHref: /azure/well-architected/azure-virtual-desktop/index
-      - name: Azure VMware Solution
-        tocHref: /azure/well-architected/azure-vmware/
-        topicHref: /azure/well-architected/azure-vmware/index
+      - name: HPC
+        tocHref: /azure/well-architected/hpc/
+        topicHref: /azure/well-architected/hpc/index
+      - name: Microsoft Fabric
+        tocHref: /azure/well-architected/microsoft-fabric/
+        topicHref: /azure/well-architected/microsoft-fabric/index
       - name: Mission-critical
         tocHref: /azure/well-architected/mission-critical/
         topicHref: /azure/well-architected/mission-critical/index
-      - name: Hybrid
-        tocHref: /azure/well-architected/hybrid/
-        topicHref: /azure/well-architected/hybrid/hybrid-overview
-      - name: IoT
-        tocHref: /azure/well-architected/iot/
-        topicHref: /azure/well-architected/iot/iot-overview
-      - name: Oracle on IaaS
-        tocHref: /azure/well-architected/oracle/
-        topicHref: /azure/well-architected/oracle-iaas/overview
       - name: SaaS
         tocHref: /azure/well-architected/saas/
         topicHref: /azure/well-architected/saas/index        
-      - name: SAP
-        tocHref: /azure/well-architected/sap/
-        topicHref: /azure/well-architected/sap/quick-links
       - name: Sustainability
         tocHref: /azure/well-architected/sustainability/
         topicHref: /azure/well-architected/sustainability/index

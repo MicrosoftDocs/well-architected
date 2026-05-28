@@ -69,18 +69,13 @@
         "performance-efficiency/**/*.*": "waf-pillar-efficiency",
         "operational-excellence/**/*.*": "waf-pillar-excellence",
         "mission-critical/**/*.*": "waf-workload-mission-critical",
-        "carrier-grade/**/*.*": "waf-workload-carrier-grade",
-        "hybrid/**/*.*": "waf-workload-hybrid",
         "azure-virtual-desktop/**/*.*": "waf-workload-azure-virtual-desktop",
-        "azure-vmware/**/*.*": "waf-workload-azure-vmware",        
-        "hybrid/**/*.*": "waf-workload-hybrid",        
-        "iot/**/*.*": "waf-workload-iot",
-        "oracle-iaas/**/*.*": "waf-workload-oracle",        
-        "sap/**/*.*": "waf-workload-sap",
         "sustainability/**/*.*": "waf-workload-sustainability",
         "service-guides/**/*.*": "waf-service-guide",
         "ai/**/*.*": "waf-workload-ai",
-        "saas/**/*.*": "waf-workload-saas"
+        "saas/**/*.*": "waf-workload-saas",
+        "hpc/**/*.*": "waf-workload-hpc",
+        "microsoft-fabric/**/*.*": "waf-workload-fabric"
       },
       "ms.collection": {
         "ai/**/*.*": "ce-skilling-ai-copilot",
