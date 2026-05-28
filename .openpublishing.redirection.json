@@ -2555,7 +2555,7 @@
 			"redirect_url": "/azure/well-architected/reliability/monitoring",
 			"redirect_document_id": true
 		},
-    {
+        {
 			"source_path": "well-architected/performance-efficiency/collect-performance-data.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/monitoring",
 			"redirect_document_id": true
@@ -2614,6 +2614,11 @@
 			"source_path": "well-architected/azure-vmware/security.md",
 			"redirect_url": "/azure/well-architected/workloads",
 			"redirect_document_id": false
-		}
+		},
+		{
+			"source_path": "well-architected/mission-critical/mission-critical-health-modeling.md",
+			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
+			"redirect_document_id": false
+		}																	
 	]
 }

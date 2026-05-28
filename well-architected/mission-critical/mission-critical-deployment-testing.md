@@ -90,7 +90,7 @@ These environments are used for testing and validation. Many test cycles are per
 
 ##### Design considerations
 
-- **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable health modeling input.
+- **Capabilities**. These environments should reflect the production environment for reliability, capacity, and security. In the absence of a production load, use a synthetic user load to provide realistic metrics and valuable [health modeling](../design-guides/health-modeling.md) input.
 
 - **Lifecycle**. These environments are short lived. They should be destroyed after test validations are complete.
 
@@ -130,11 +130,11 @@ Have a clear governance boundary for production and lower environments. Place ea
 A blue/green deployment model requires at least two identical deployments. The blue deployment is the active one that serves user traffic in production. The green deployment is the new one that's prepared and tested to receive traffic.
 After the green deployment is completed and tested, traffic is gradually directed from blue to green. If the load transfer is successful, the green deployment becomes the new active deployment. The old blue deployment can then be decommissioned via a phased process. However, if there are problems in the new deployment, it can be aborted, and traffic can either remain in the old blue deployment or be redirected to it.
 
-Azure Mission-Critical recommends a blue/green deployment approach where infrastructure *and applications* are deployed together as part of a deployment stamp. So rolling out a change to the infrastructure or application always results in a green deployment that contains both layers. This approach enables you to fully test and validate the effect of the change against the infrastructure and application end-to-end before you redirect user traffic to it. The approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated.
+Mission-critical design recommends a blue/green deployment approach where infrastructure *and applications* are deployed together as part of a deployment stamp. So rolling out a change to the infrastructure or application always results in a green deployment that contains both layers. This approach enables you to fully test and validate the effect of the change against the infrastructure and application end-to-end before you redirect user traffic to it. The approach increases confidence in releasing changes and enables zero-downtime upgrades because compatibilities with downstream dependencies like the Azure platform, resource providers, and IaC modules can be validated. For configuration details, see the [Kubernetes Service service guide](../service-guides/azure-kubernetes-service.md).
 
 ### Design considerations
 
-- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after a deployment. With Azure Kubernetes Service (AKS), you can use a separate pod deployment on each node and update the service definition.
+- **Technology capabilities**. Take advantage of the built-in deployment features in Azure services. For example, Azure App Service provides secondary deployment slots that can be swapped after a deployment. For configuration details, see the [App Service service guide](../service-guides/app-service-web-apps.md). With Azure Kubernetes Service (AKS), you can use a separate pod deployment on each node and update the service definition.
 
 - **Deployment duration**. The deployment might take longer to complete because the stamp contains the infrastructure and application rather than just the changed component. This, however, is acceptable because the risk of all components not working as expected overrides the time concerns.
 
@@ -150,7 +150,7 @@ Azure Mission-Critical recommends a blue/green deployment approach where infrast
 
 - Use a global load balancer, like Azure Front Door, to orchestrate the automated transition of user traffic between the blue and green environments.
 
-- To transition traffic, add a green back-end endpoint that uses a low traffic to volume weight, like 10 percent. After you verify that the low traffic volume on the green deployment works and provides the expected application health, gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that might not immediately be apparent.
+- To transition traffic, add a green back-end endpoint that uses a low traffic to volume weight, like 10 percent. After you verify that the low traffic volume on the green deployment works and provides the expected [application health](../design-guides/health-modeling.md), gradually increase traffic. While doing so, apply a short ramp-up period to catch faults that might not immediately be apparent.
 
   After all traffic is transitioned, remove the blue back end from existing connections. For instance, remove the back end from the global load balancer service, drain queues, and detach other associations. Doing so helps to optimize the cost of maintaining secondary production infrastructure and ensure that new environments are free of configuration drift.
 
@@ -241,7 +241,7 @@ View the following video to see how resiliency testing can be integrated with Az
   - Run chaos experiments and failure injection tests at the same time as load tests.
   
   > [!TIP]
-  > [Azure Chaos Studio](https://azure.microsoft.com/services/chaos-studio) is a native  suite of chaos experimentation tools. The tools make it easy to conduct chaos experiments and inject faults within Azure services and application components.
+  > [Azure Chaos Studio](/azure/chaos-studio/chaos-studio-overview) is a native  suite of chaos experimentation tools. The tools make it easy to conduct chaos experiments and inject faults within Azure services and application components.
   >
   > Chaos Studio provides built-in chaos experiments for common fault scenarios and supports custom experiments that target infrastructure and application components.
 
@@ -340,7 +340,7 @@ You can apply AIOps methodologies in CI/CD pipelines to supplement traditional t
 - Define the DevOps process data to collect and how to analyze it. Telemetry, like test execution metrics and time series data of changes within each deployment, is important.
   - Expose application observability data from staging, test, and production environments for analysis and correlation within AIOps models.
 
-- Adopt the [MLOps workflow](https://azure.microsoft.com/solutions/machine-learning-ops/).
+- Adopt the [MLOps workflow](/azure/architecture/ai-ml/guide/machine-learning-operations-v2).
 
 - Develop analytical models that are context-aware and dependency-aware to provide predictions with automated feature engineering to address schema and behavior changes.
 
@@ -351,4 +351,4 @@ You can apply AIOps methodologies in CI/CD pipelines to supplement traditional t
 Review the security considerations.
 
 > [!div class="nextstepaction"]
-> [Security](./mission-critical-Security.md)
+> [Security](./mission-critical-security.md)

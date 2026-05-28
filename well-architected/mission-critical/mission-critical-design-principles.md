@@ -3,7 +3,7 @@ title: Design principles of a mission-critical workload
 description: Key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas.
 author: nielsb
 ms.author: nielsb
-ms.date: 06/20/2025
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
@@ -43,9 +43,9 @@ The mission-critical design methodology is underpinned by five key design princi
 |[**Loosely coupled components**](/azure/well-architected/devops/principles#use-loosely-coupled-architecture)|Loose coupling enables independent and on-demand testing, deployments, and updates to components of the application while minimizing inter-team dependencies for support, services, resources, or approvals.|
 |[**Automate build and release processes**](/azure/well-architected/devops/principles#optimize-build-and-release-processes)|Fully automated build and release processes reduce the friction and increase the velocity of deploying updates, bringing repeatability and consistency across environments. Automation shortens the feedback loop from developers pushing changes to getting insights on code quality, test coverage, resiliency, security, and performance, which increases developer productivity.|
 |**Developer agility**|Continuous Integration and Continuous Deployment (CI/CD) automation enables the use of short-lived development environments with lifecycles tied to that of an associated feature branch, which promotes developer agility and drives validation as early as possible within the engineering cycle to minimize the engineering cost of bugs.|
-|[**Quantify operational health**](/azure/well-architected/devops/principles#understand-operational-health)|Full diagnostic instrumentation of all components and resources enables ongoing observability of logs, metrics and traces, but also facilitates health modeling to quantify application health in the context to availability and performance requirements.|
+|[**Quantify operational health**](/azure/well-architected/devops/principles#understand-operational-health)|Full diagnostic instrumentation of all components and resources enables ongoing observability of logs, metrics and traces, but also facilitates [health modeling](../design-guides/health-modeling.md) to quantify application health in the context to availability and performance requirements.|
 |[**Rehearse recovery and practice failure**](/azure/well-architected/devops/principles#rehearse-recovery-and-practice-failure)|Business Continuity (BC) and Disaster Recovery (DR) planning and practice drills are essential and should be conducted frequently, since learnings can iteratively improve plans and procedures to maximize resiliency in the event of unplanned downtime.|
-|[**Embrace continuous operational improvement**](/azure/well-architected/devops/principles#embrace-continuous-operational-improvement)|Prioritize routine improvement of the system and user experience, using a health model to understand and measure operational efficiency with feedback mechanisms to enable application teams to understand and address gaps in an iterative manner.|
+|[**Embrace continuous operational improvement**](/azure/well-architected/devops/principles#embrace-continuous-operational-improvement)|Prioritize routine improvement of the system and user experience, using a [health model](../design-guides/health-modeling.md) to understand and measure operational efficiency with feedback mechanisms to enable application teams to understand and address gaps in an iterative manner.|
 
 ## Security
 

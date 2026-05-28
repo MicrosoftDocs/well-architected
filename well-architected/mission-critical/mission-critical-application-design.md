@@ -3,7 +3,7 @@ title: Application design of mission-critical workloads on Azure
 description: This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 author: calcof
 ms.author: prwilk
-ms.date: 01/26/2023
+ms.date: 5/27/2026
 ms.topic: concept-article
 ---
 
@@ -33,7 +33,7 @@ The following image shows the possible scopes for scale units. The scopes range 
 
 - **Scope**. The scope of a scale unit, the relationship between scale units, and their components should be defined according to a capacity model. Take into consideration non-functional requirements for performance.
 
-- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale units. Scale units can help you bypass the scale limits of a service. For example, if an AKS cluster in one unit can have only 1,000 nodes, you can use two units to increase that limit to 2,000 nodes.
+- **Scale limits**. [Azure subscription scale limits and quotas](/azure/azure-resource-manager/management/azure-subscription-service-limits) might have a bearing on application design, technology choices, and the definition of scale units. Scale units can help you bypass the scale limits of a service. For example, if an AKS cluster in one unit can have only [5,000 nodes](/azure/aks/quotas-skus-regions), you can use two units to increase that limit to 10,000 nodes.
 
 - **Expected load**. Use the number of requests for each user flow, the expected peak request rate (requests per second), and daily/weekly/seasonal traffic patterns to inform core scale requirements. Also factor in the expected growth patterns for both traffic and data volume.
 
@@ -51,7 +51,7 @@ The following image shows the possible scopes for scale units. The scopes range 
 
 - Define a regional deployment stamp to unify the provisioning, management, and operation of regional application resources into a heterogenous but interdependent scale unit. As load increases, extra stamps can be deployed, within the same Azure region or different ones, to horizontally scale the solution.
 
-- Use an Azure subscription as the scale unit so that scale limits within a single subscription don't constrain scalability. This approach applies to high-scale application scenarios that have significant traffic volume.
+- Use an [Azure subscription](/azure/azure-resource-manager/management/azure-subscription-service-limits) as the scale unit so that scale limits within a single subscription don't constrain scalability. This approach applies to high-scale application scenarios that have significant traffic volume.
 
 - Model required capacity around identified traffic patterns to make sure sufficient capacity is provisioned at peak times to prevent service degradation. Alternatively, optimize capacity during off-peak hours.
 
@@ -70,17 +70,14 @@ Watch this video to get an overview of how to plan for failures in mission-criti
 
 ### Design considerations
 
-- **Redundancy**. Your application must be deployed to multiple regions. Additionally, within a region, we strongly recommend that you use [availability zones](/azure/reliability/availability-zones-overview) to allow for fault tolerance at the datacenter level. Availability zones have a latency perimeter of less than 2 milliseconds between availability zones. For workloads that are "chatty" across zones, this latency can introduce a performance penalty for interzone data transfer.
+- **Redundancy**. Active-active model might be a natural choice for multi-region deployments for mission critical. However, this can introduce challenges. For example, data synchronization and consistency requires extra measures. For details, see [Inter-zone and inter-region connectivity](mission-critical-networking-connectivity.md#inter-zone-and-inter-region-connectivity) and [Recovery strategy for active-active deployments](../design-guides/disaster-recovery.md#recovery-strategy-for-active-active-deployments).
 
-- **Active/active model**. An active/active deployment strategy is recommended because it maximizes availability and provides a higher composite service-level agreement (SLA). However, it can introduce challenges around data synchronization and consistency for many application scenarios. Address the challenges at a data platform level while considering the trade-offs of increased cost and engineering effort.
-
-  An active/active deployment across multiple cloud providers is a way to potentially mitigate dependency on global resources within a single cloud provider. However, a multicloud active/active deployment strategy introduces a significant amount of complexity around CI/CD. Also, given the differences in resource specifications and capabilities among cloud providers, you'd need specialized deployment stamps for each cloud.
 
 - **Geographical distribution**. The workload might have compliance requirements for geographical data residency, data protection, and data retention. Consider whether there are specific regions where data must reside or where resources need to be deployed. 
 
 - **Request origin.** The geographic proximity and density of users or dependent systems should inform design decisions about global distribution.
 
-- **Connectivity**. How the workload is accessed by users or external systems will influence your design. Consider whether the application is available over the public internet or private networks that use either VPN or Azure ExpressRoute circuits.
+- **Connectivity**. How the workload is accessed by users or external systems will influence your design. Consider whether the application is available over the public internet or [private networks](mission-critical-networking-connectivity.md#virtual-network-integration) that use either VPN or Azure ExpressRoute circuits.
 
 For design recommendations and configuration choices at the platform level, see [Application platform: Global distribution](mission-critical-application-platform.md#global-distribution-of-platform-resources).
 
@@ -120,13 +117,17 @@ A mission-critical application must be designed to be resilient so that it addre
 
 For non-transient failures that you can't fully mitigate in application logic, the health model and operational wrappers need to take corrective action. Application code must incorporate proper instrumentation and logging to inform the health model and facilitate subsequent troubleshooting or root cause analysis as required. You need to implement [distributed tracing](/dotnet/core/diagnostics/distributed-tracing-concepts) to provide the caller with a comprehensive error message that includes a correlation ID when a failure occurs.
 
+A [health model](../design-guides/health-modeling.md) can help you understand application health across regions and service boundaries by evaluating degradations and dependencies.
+
 Tools like [Application Insights](/azure/azure-monitor/app/distributed-tracing-telemetry-correlation) can help you query, correlate, and visualize application traces.
 
 ### Design considerations
 
-- **Proper configurations**. It's not uncommon for transient problems to cause cascading failures. For example, retry without appropriate back-off exacerbates the problem when a service is being throttled. You can space retry delays linearly or increase them exponentially to back off through growing delays.
+- **Graceful degradation**. At scale and under pressure, every system will hit limits. Make degradation boundaries part of the design. Build dependencies so that a service can provide a value when available and dependent workflows and tasks get queued or can be resumed when downstream services are unavailable. E.g. in a shop, even if the order system is not available, the customer might "complete" an order and when the order is up, the order gets processed. The user might not even notice the degradation.
 
-- **Health endpoints**. You can expose functional checks within application code by using health endpoints that external solutions can poll to retrieve application component health status.
+- **Retry and circuit breaker**. In a large scale system it's important to differentiate between transient and more permanent errors. For a transient error, it might be worth to do staggered and limited retries. For a more permanent error, it's better to degrade. Sometimes the line between transient and permanent is blurry, that's when circuit breakers come in, help to degrade the system at a point where it prevents further pressure from getting in.
+
+- **Dependencies and health checks**. If a health check of a service is reporting on the compounded health, it's not possible to understand which service is causing the issue. That's why health checks should signal if its service is able to function (this might include e.g. database, but should not include decoupled dependencies). Even in a decoupled system, model dependencies required to provide the expected functionality explicitly and use e.g. Azure Service Health to evaluate the systems overall health. 
 
 ### Design recommendations
 
@@ -150,35 +151,27 @@ Here are some additional recommendations:
 
 - Define common engineering criteria for all application microservice teams to drive consistency and speed in the use of application-level resiliency patterns.
 
-- Consider implementing resiliency patterns by using proven standardized packages, like Polly for C# or Sentinel for Java. Additionally, messaging frameworks like NServiceBus or MassTransit provide built-in resiliency features, which helps avoid needing additional reliability code.
+- Consider implementing resiliency patterns by using proven standardized packages, like Polly for C#.
 
 - Use correlation IDs for all trace events and log messages to link them to a given request. Return correlation IDs to the caller for all calls, not just failed requests.
 
-- Use structured logging for all log messages. Select a unified operational data sink for application traces, metrics, and logs to enable operators to easily debug problems. For more information, see [Collect, aggregate, and store monitoring data for cloud applications]( /azure/well-architected/devops/monitor-collection-data-storage).
+- Use structured logging and a unified operational data sink. For mission-critical workloads, ensure that logs, metrics, and traces from all components feed into a single operational view so operators can correlate failures across regional stamps. For general monitoring guidance, see [How to build a monitoring system](../design-guides/monitoring.md#best-practices-for-instrumentation).
 
-- Ensure that operational data is used together with business requirements to inform an [application health model](./mission-critical-health-modeling.md).
+- Ensure that operational data is used together with business requirements to inform an [application health model](../design-guides/health-modeling.md).
 
-## Programming language selection
+## Programming language selection and uptime impact
 
-It's important to select the right programming languages and frameworks. These decisions are often driven by the skill sets or standardized technologies in the organization. However, it's essential to evaluate the performance, resilience, and overall capabilities of various languages and frameworks.
+The choice of programming languages and frameworks directly affects your workload's uptime. SDK maturity, feature coverage, and update cadence determine whether your application can use the latest platform resilience features. These decisions are often driven by the skill sets or standardized technologies in the organization, but for mission-critical workloads it's essential to evaluate how language choice impacts availability.
 
 ### Design considerations
 
-- **Development kit capabilities**. There are differences in the capabilities that are offered by Azure service SDKs in various languages. These differences might influence your choice of an Azure service or programming language. For example, if Azure Cosmos DB is a feasible option, Go might not be an appropriate development language because there's no first-party SDK.
+- **Development kit capabilities and uptime**. Not every Azure service SDK offers the same features across languages. If the SDK for your chosen language lacks retry policies, circuit breakers, or advanced connection modes, you'll need custom code that's harder to maintain and more prone to failure. Verify that the [Azure SDK](/azure/developer/intro/azure-developer-overview) for your language supports the services and features you need (for example, the [Azure Cosmos DB Go SDK](/azure/cosmos-db/nosql/sdk-go) supports the NoSQL API but not all other Cosmos DB APIs).
 
-- **Feature updates**. Consider how often the SDK is updated with new features for the selected language. Commonly used SDKs, like .NET and Java libraries, are updated frequently. Other SDKs or SDKs for other languages might be updated less frequently.
+- **Feature updates**. Consider how often the SDK is updated with new features for the selected language and evaluate the open issues and update cadence.
 
-- **Multiple programming languages or frameworks**. You can use multiple technologies to support various composite workloads. However, you should avoid sprawl because it introduces management complexity and operational challenges.
+- **Multiple programming languages or frameworks**. You can use multiple technologies to support various composite workloads. There are languages that have a broad multi-purpose scope, but lack in specific protocols. E.g. you might be better suited with Java when working with a SOAP/XML based protocol.
 
-- **Compute option**. Legacy or proprietary software might not run in PaaS services. Also, you might not be able to include legacy or proprietary software in containers.  
-
-### Design recommendations
-
-- Evaluate all relevant Azure SDKs for the capabilities you need and your chosen programming languages. Verify alignment with non-functional requirements.
-
-- Optimize the selection of programming languages and frameworks at the microservice level. Use multiple technologies as appropriate.
-
-- Prioritize the .NET SDK to optimize reliability and performance. .NET Azure SDKs typically provide more capabilities and are updated frequently.
+- **Compute option**. Be aware of what your services required in terms of memory, IO and compute, what is the most likely bottleneck you face first? This can give you a good understanding of what compute you should look for.
 
 ## Next step
 
