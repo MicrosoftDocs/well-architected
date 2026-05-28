@@ -78,8 +78,8 @@ sections:
         componentType: text
         links:
           - componentType: link
-            url: ai/get-started.md
-            text: Get started with AI workloads
+            url: ai/architecture-pattern.md
+            text: Azure architecture pattern for AI workloads
   # cards section (4)
   - componentType: grid
     title: Pillars
