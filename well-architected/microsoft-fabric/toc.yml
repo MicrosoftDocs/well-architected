@@ -1,0 +1,15 @@
+- name: Microsoft Fabric
+  href: index.yml
+  items:
+    - name: Get started
+      href: overview.md
+    - name: Reliability
+      href: reliability.md
+    - name: Security
+      href: security.md
+    - name: Cost Optimization
+      href: cost-optimization.md
+    - name: Operational Excellence
+      href: operational-excellence.md
+    - name: Performance Efficiency
+      href: performance-efficiency.md

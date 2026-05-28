@@ -19,8 +19,6 @@
         href: mission-critical-data-platform.md
       - name: Networking and connectivity
         href: mission-critical-networking-connectivity.md                  
-      - name: Health modeling
-        href: mission-critical-health-modeling.md
       - name: Deployment and testing
         href: mission-critical-deployment-testing.md
       - name: Security

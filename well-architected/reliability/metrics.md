@@ -262,7 +262,7 @@ The application's core user flows must be available and usably, or even competit
 
 ## Related links
 
-[Health modeling and observability of mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling)
+[Health modeling for workloads](/azure/well-architected/design-guides/health-modeling)
 
 ## Reliability checklist  
 
