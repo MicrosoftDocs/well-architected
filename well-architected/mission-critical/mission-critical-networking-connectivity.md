@@ -3,7 +3,7 @@ title: Networking and connectivity for mission-critical workloads on Azure
 description: Explore various network topology topics at an application level, considering requisite connectivity and redundant traffic management
 author: calcof
 ms.author: calcof
-ms.date: 02/28/2022
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
@@ -18,12 +18,6 @@ This design area explores various network topology topics at an application leve
 >
 
 ## Global traffic routing
-
-> [!NOTE]
-> For detailed Azure Load Balancer configuration guidance, see the [Load Balancer service guide](../service-guides/azure-load-balancer.md).
-
-> [!NOTE]
-> For detailed Azure Front Door configuration guidance, see the [Front Door service guide](../service-guides/azure-front-door.md).
 
 The use of multiple active regional deployment stamps requires a global routing service to distribute traffic to each active stamp.
 
@@ -210,9 +204,6 @@ Special treatment of static content like images, JavaScript, CSS and other files
 - Given the strong recommendation ([Network and connectivity](./mission-critical-networking-connectivity.md) design area) to use Azure Front Door for global routing and Web Application Firewall (WAF) purposes, it's recommended to prioritize the use of Azure Front Door caching capabilities unless gaps exist.
 
 ## Virtual network integration
-
-> [!NOTE]
-> For detailed Azure Kubernetes Service configuration guidance, see the [Kubernetes Service service guide](../service-guides/azure-kubernetes-service.md).
 
 For general virtual network guidance, see the [Virtual Network service guide](../service-guides/virtual-network.md) and [Networking security guidance](../security/networking.md).
 
