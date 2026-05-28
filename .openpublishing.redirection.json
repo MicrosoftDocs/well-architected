@@ -2559,6 +2559,61 @@
 			"source_path": "well-architected/performance-efficiency/collect-performance-data.md",
 			"redirect_url": "/azure/well-architected/performance-efficiency/monitoring",
 			"redirect_document_id": true
-		}																	
+		},
+		{
+			"source_path": "well-architected/azure-vmware/overview.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/index.yml",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/design-principles.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/assessment.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/application-platform.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/infrastructure.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/landing-zone-integration.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/monitoring.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/networking.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/operations.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-vmware/security.md",
+			"redirect_url": "/azure/well-architected/workloads",
+			"redirect_document_id": false
+		}
 	]
 }
