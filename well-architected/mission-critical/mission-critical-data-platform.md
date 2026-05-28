@@ -3,7 +3,7 @@ title: Data platform considerations for mission-critical workloads on Azure
 description: This design area provides key considerations and recommendations to inform the selection of an optimal data platform
 author: calcof
 ms.author: calcof
-ms.date: 02/02/2022
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
@@ -240,9 +240,6 @@ Additional data-platform guidance is available within the Azure Application Arch
 
 ## Globally distributed multi-region write datastore
 
-> [!NOTE]
-> For detailed Azure Cosmos DB configuration guidance, see the [Cosmos DB service guide](../service-guides/cosmos-db.md).
-
 To fully accommodate the globally distributed active-active aspirations of an application design, it's strongly recommended to consider a distributed multi-region write data platform, where changes to separate writeable replicas are synchronized and merged between all replicas, with conflict resolution where required.
 
 >[!IMPORTANT]
@@ -293,15 +290,14 @@ Key mission-critical considerations:
 
 ## Relational data technologies
 
-> [!NOTE]
-> For detailed Azure SQL Database configuration guidance, see the [SQL Database service guide](../service-guides/azure-sql-database.md).
-
-> [!NOTE]
-> For detailed Azure Database for PostgreSQL configuration guidance, see the [Database for PostgreSQL service guide](../service-guides/postgresql.md).
-
 For scenarios with a highly relational data model or dependencies on existing relational technologies, the use of Azure Cosmos DB in a multi-region write configuration might not be directly applicable. In such cases, it's vital that used relational technologies are designed and configured to uphold the multi-region active-active aspirations of an application design.
 
 Mission-critical workloads benefit from polyglot persistence: use the best data store for each workload scenario rather than forcing all data through a single technology. Azure Cosmos DB handles globally distributed writes, while relational databases like Azure SQL Database and Azure Database for PostgreSQL serve scenarios with strongly relational models, complex transactions, or regulatory constraints that require ACID guarantees.
+
+For detailed Azure SQL Database configuration guidance, see the [SQL Database service guide](../service-guides/azure-sql-database.md).
+
+For detailed Azure Database for PostgreSQL configuration guidance, see the [Database for PostgreSQL service guide](../service-guides/postgresql.md).
+
 
 ### Design considerations
 
