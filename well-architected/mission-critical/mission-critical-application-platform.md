@@ -102,9 +102,6 @@ A container includes application code and the related configuration files, libra
 
 ## Container hosting and orchestration
 
-> [!NOTE]
-> For detailed Azure Kubernetes Service configuration guidance, see the [Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
-
 Several Azure application platforms can effectively host containers.
 There are advantages and disadvantages associated with each of these platforms. Compare the options in the context of your business requirements. However, always optimize reliability, scalability, and performance. For more information, see these articles:
 
@@ -136,10 +133,7 @@ For deeper insights into Isolation, Security, Upgrades, Networking and  Monitori
 
 #### Design considerations and recommendations for Azure Container Apps
 
-> [!NOTE]
-> For detailed Azure Container Apps configuration guidance, see the [Container Apps service guide](/azure/well-architected/service-guides/azure-container-apps).
-
-[Azure Container Apps](/azure/container-apps/overview) is a serverless container platform that's a strong alternative to AKS when you don't need direct Kubernetes API access. It removes most cluster operations while preserving the features mission-critical workloads rely on:
+[Azure Container Apps](/azure/well-architected/service-guides/azure-container-apps) is a serverless container platform that's a strong alternative to AKS when you don't need direct Kubernetes API access. It removes most cluster operations while preserving the features mission-critical workloads rely on:
 
 - Built-in [KEDA-based event-driven autoscaling](/azure/container-apps/scale-app), including scale-to-zero for non-critical flows.
 - [Availability zone redundancy](/azure/container-apps/disaster-recovery) and [revision-based blue/green deployments](/azure/container-apps/revisions) for safe rollouts.
@@ -160,7 +154,7 @@ Use [Azure Container Registry](/azure/container-registry/container-registry-intr
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview). When you use Azure Functions, application logic is implemented as distinct blocks of code, or *functions*, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
+- [Azure Functions](/azure/well-architected/service-guides/azure-functions). When you use Azure Functions, application logic is implemented as distinct blocks of code, or *functions*, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
 
 - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Logic Apps is best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 
@@ -174,9 +168,6 @@ The following sections provide design considerations and recommendations for usi
 
 #### Design considerations and recommendations for Azure Functions
 
-> [!NOTE]
-> For detailed Azure Functions configuration guidance, see the [Functions service guide](/azure/well-architected/service-guides/azure-functions).
-
 Mission-critical workloads have critical and non-critical system flows. Azure Functions is a viable choice for non-critical, event-driven flows with short-lived executions. For full guidance, see the [Functions service guide](/azure/well-architected/service-guides/azure-functions).
 
 - Prefer the [Flex Consumption plan](/azure/azure-functions/flex-consumption-plan) for serverless scale with per-instance concurrency control, always-ready instances to mitigate cold starts, and native [VNet integration](/azure/azure-functions/functions-networking-options). See [Performance Efficiency](/azure/well-architected/service-guides/azure-functions#performance-efficiency) in the service guide.
@@ -189,10 +180,6 @@ Like Azure Functions, Logic Apps uses built-in triggers for event-driven process
 Multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) are available. We recommend the Standard mode to ensure a single-tenant deployment and mitigate noisy neighbor scenarios. This mode uses the containerized single-tenant Logic Apps runtime, which is based on Azure Functions. In this mode, the logic app can have multiple stateful and stateless workflows. You should be aware of the configuration limits.
 
 ## Constrained migrations via IaaS
-
-> [!NOTE]
-> For detailed Azure Virtual Machines configuration guidance, see the [Virtual Machines service guide](/azure/well-architected/service-guides/virtual-machines).
-
 Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline [north star design approach](/azure/well-architected/mission-critical/mission-critical-architecture-pattern) that's recommended for mission-critical workloads. That's why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of infrastructure as a service (IaaS) VMs might be required in certain scenarios:
 
 - Available PaaS services don't provide the required performance or level of control.
@@ -210,6 +197,8 @@ This section focuses on the best ways to use Virtual Machines and associated ser
   - [Availability zones](/azure/reliability/availability-zones-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of VMs in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
   - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration-recommended) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
+ 
+For detailed Azure Virtual Machines configuration guidance, see the [Virtual Machines service guide](/azure/well-architected/service-guides/virtual-machines).
 
 ### Design recommendations
 
