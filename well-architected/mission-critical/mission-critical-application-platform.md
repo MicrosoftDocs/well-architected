@@ -3,7 +3,7 @@ title: Application platform considerations for mission-critical workloads on Azu
 description: This design area describes decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission-critical application on Azure.
 author: calcof
 ms.author: prwilk
-ms.date: 07/30/2024
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
