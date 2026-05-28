@@ -4,7 +4,7 @@ description: Learn about the architectural best practices according to the Azure
 ms.topic: concept-article
 author: bwren
 ms.author: bwren
-ms.date: 08/11/2025
+ms.date: 05/27/2026
 ms.reviewer: bwren
 azure.category:
   - management-and-governance
