@@ -3,7 +3,7 @@ title: Application design of mission-critical workloads on Azure
 description: This design area describes architecture patterns and scaling strategies that can help make your application resilient to failures.
 author: calcof
 ms.author: prwilk
-ms.date: 01/26/2023
+ms.date: 5/27/2026
 ms.topic: concept-article
 ---
 
