@@ -3,7 +3,7 @@ title: Mission-critical workloads
 description: Overview of mission-critical workloads on Azure that are highly reliable.
 author: calcof
 ms.author: calcof
-ms.date: 05/30/2025
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
