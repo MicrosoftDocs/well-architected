@@ -3,7 +3,7 @@ title: Design principles of a mission-critical workload
 description: Key design principles that serve as a compass for subsequent design decisions across technical domains and the critical design areas.
 author: nielsb
 ms.author: nielsb
-ms.date: 06/20/2025
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
