@@ -35,7 +35,7 @@ Before you start developing your health model, familiarize yourself with these k
 
 We recommend that you watch this video to get a high-level understanding of health modeling.
 
-> [!VIDEO https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/mission-critical/mission-critical-health-modeling]
+> [!VIDEO https://learn-video.azurefd.net/vod/player?id=fd8c4e50-9d7f-4df0-97cb-d0474b581398&embedUrl=/azure/well-architected/design-guides/health-modeling]
 
 
 ## What is health, health modeling, and a health model?
@@ -288,7 +288,7 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 - For implementing health probes in ASP.NET, see [Health checks in ASP.NET Core](/aspnet/core/host-and-deploy/health-checks).
 - For information on monitoring metrics, see [Azure Monitor Metrics overview](/azure/azure-monitor/essentials/data-platform-metrics).
 - For information on using Application Insights, see [Application Insights](/azure/azure-monitor/app/app-insights-overview).
-- For design considerations and recommendations that pertain to mission-critical workloads, see [Health modeling and observability for mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-health-modeling).
+- For design considerations and recommendations that pertain to mission-critical workloads, see [Mission-critical workloads on Azure](/azure/well-architected/mission-critical/mission-critical-overview).
 - For a hands-on experience, see [Design a health model for your mission critical workload](/training/modules/design-health-model-mission-critical-workload/).
 
 ## Next step
