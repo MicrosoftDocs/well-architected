@@ -1,5 +1,5 @@
 ---
-title: How to use the Azure Well-Architected Framework documentation
+title: How to Use the Azure Well-Architected Framework Documentation
 description: Learn about the Azure Well-Architected Framework, the five pillars of architectural excellence, and how to use the guidance to drive improvements in your workload.
 author: PageWriter-MSFT
 ms.author: prwilk
@@ -67,7 +67,7 @@ The foundation of this framework lies in the pillars. If you don't have a compre
 
 - **Design patterns**. They're mapped to the pillars they directly support. They can help make intentional tradeoffs within workloads and optimize for desired outcomes.
 
-- **Maturity model**. Describes phased approach to adopt the Azure Well-Architected Framework by starting with easy or essential recommendations. As business needs evolve, gradually improve systems—from early-stage workloads to mature, business-critical solutions.
+- **Maturity model**. Describes phased approach to adopt the Well-Architected Framework by starting with easy or essential recommendations. As business needs evolve, gradually improve systems—from early-stage workloads to mature, business-critical solutions.
 
 For more information, see [About the Well-Architected Framework pillars](./pillars.md).
 
@@ -129,13 +129,13 @@ The Well-Architected Framework covers best practices that are applicable to any 
    - [Operational Excellence tradeoffs](./operational-excellence/tradeoffs.md)
    - [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md)
 
-4. **Match workload scenarios**. Find a workload guide that matches your scenario and follow the design methodology across all technical and operational areas. These guides help highlight the most relevant considerations. For more information, see the examples listed under [Azure Well-Architected Framework workloads](./workloads.md).
+4. **Match workload scenarios**. Find a workload guide that matches your scenario and follow the design methodology across all technical and operational areas. These guides help highlight the most relevant considerations. For more information, see the examples listed under [Well-Architected Framework workloads](./workloads.md).
 
 5. **Select the appropriate Azure service and configure it correctly**. These service guides are designed to support your decision-making for each Azure component within a workload.
 
 ## Adopt a maturity model
 
-Consider adopting a phased approach to consuming the Azure Well-Architected Framework. Classify the framework's recommendations by what's easy to achieve or must be achieved initially. Then, as the workload's business requirements change, incrementally evolve production-ready systems. For example, initial phases of adoption could apply to workloads early in their funding and development process, setting a solid foundation for good design. Mature phases of alignment could apply to solutions later in the development cycle, with the highest levels reserved for always-on, business-critical solutions.
+Consider adopting a phased approach to consuming the Well-Architected Framework. Classify the framework's recommendations by what's easy to achieve or must be achieved initially. Then, as the workload's business requirements change, incrementally evolve production-ready systems. For example, initial phases of adoption could apply to workloads early in their funding and development process, setting a solid foundation for good design. Mature phases of alignment could apply to solutions later in the development cycle, with the highest levels reserved for always-on, business-critical solutions.
 
 The Well-Architected Framework includes a maturity model. It provides a structured curriculum and milestones for workload teams to follow. 
 
@@ -161,15 +161,15 @@ In each level, explore the tabbed views that highlight the strategy focus for ea
 - [Operational Excellence maturity model](./operational-excellence/maturity-model.md)
 - [Performance Efficiency maturity model](./performance-efficiency/maturity-model.md)
 
-The guidance includes an assessment to help you pinpoint the recommendations that align with your target maturity level. Take the assessment here: [Azure Well-Architected Framework Maturity Model Assessment](/assessments/af7d9889-8cb2-4b8b-b6bb-e5a2e2f2a59c).
+The guidance includes an assessment to help you pinpoint the recommendations that align with your target maturity level. Take the [Well-Architected Framework maturity model assessment](/assessments/af7d9889-8cb2-4b8b-b6bb-e5a2e2f2a59c).
 
 ## Adopt AI in your operations
 
-The Azure Well-Architected Framework includes guidance for intentionally and incrementally adopting AI in operational workflows. Its purpose is to help teams understand the costs, risks, and organizational friction associated with AI, when thinking about using AI for planning, development processes, and runtime operations. 
+The Well-Architected Framework includes guidance for intentionally and incrementally adopting AI in operational workflows. It helps teams understand the costs, risks, and organizational friction associated with AI when they consider it for planning, development processes, and runtime operations.
 
-We recommend starting with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). This provides a practical entry point for exploring AI usage patterns, understanding trade-offs while maintaining human oversight, to drive efficiency. 
+We recommend that you start with the [Operational Excellence maturity model](./operational-excellence/maturity-model.md). It provides a practical entry point for exploring AI usage patterns and understanding trade-offs while maintaining human oversight to drive efficiency.
 
-Within the recommendation guides, look for :::image type="icon" source="./_images/ai.svg"::: that annotate examples of where AI can augment tasks, such as workflow setup, process automation, monitoring, and enforcement. For more information, see the guides linked in this checklist article: [Operational Excellence checklist](./operational-excellence/checklist.md).
+In the recommendation guides, look for `:::image type="icon" source="./_images/ai.svg":::` icons. These icons highlight examples where AI can augment tasks such as workflow setup, process automation, monitoring, and enforcement. For more information, see [Operational Excellence checklist](./operational-excellence/checklist.md).
 
 ## Take a pragmatic approach
 
@@ -204,6 +204,5 @@ It's important to adopt a pragmatic approach to avoid analysis paralysis. Here a
 
 Here are some resources to get started with using the Well-Architected Framework documentation:
 
-- [Azure Well-Architected Framework](/azure/well-architected/)
+- [Well-Architected Framework](/azure/well-architected/)
 - [Training for the Well-Architected Framework](/training/modules/azure-well-architected-introduction/)
-

@@ -191,7 +191,7 @@ Your performance test assets contain critical knowledge about your workload's ex
 ## Related links
 
 - [Recommendations for security testing](../security/test.md)
-- [Recommendations for designing a reliability testing strategy](../reliability/testing-strategy.md)
+- [Recommendations for designing a reliability testing strategy](../reliability/reliability-test.md)
 
 ## Performance Efficiency checklist
 
