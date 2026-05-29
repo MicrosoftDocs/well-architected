@@ -60,7 +60,7 @@
             - name: RE:07 Self-preservation
               href: reliability/self-preservation.md
             - name: RE:08 Testing
-              href: reliability/testing-strategy.md
+              href: reliability/reliability-test.md
             - name: RE:09 Disaster recovery  
               href: reliability/disaster-recovery.md
             - name: RE:10 Monitoring

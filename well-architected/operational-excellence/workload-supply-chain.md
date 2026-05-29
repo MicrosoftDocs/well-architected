@@ -144,7 +144,7 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
 - [Performance Efficiency pillar](../performance-efficiency/performance-test.md)
-- [Reliability pillar](../reliability/testing-strategy.md)
+- [Reliability pillar](../reliability/reliability-test.md)
 - [Security pillar](../security/test.md)
 
 ## Operation Excellence checklist

@@ -79,7 +79,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Design a testing strategy
-            url: testing-strategy.md
+            url: reliability-test.md
           - text: Design a recovery strategy
             url: disaster-recovery.md
   - title: Explore related resources
