@@ -192,7 +192,7 @@ We [integrated AI opportunities throughout the Operational Excellence pillar's c
 
 - [Architecture strategies for failure mode analysis](./reliability/failure-mode-analysis.md): We clarified that failure mode analysis (FMA) helps workloads recover gracefully within defined recovery objectives and emphasizes alignment with specific targets rather than general recovery only. We also cleaned up formatting inconsistencies throughout the document.
 
-- [Architecture strategies for designing a reliability testing strategy](./reliability/testing-strategy.md): We refined the definitions of recoverability and resiliency to better distinguish between them. Recoverability focuses on restoration within recovery time objective (RTO) and RPO targets while resiliency emphasizes withstanding faults and maintaining acceptable user experience during disruptions.
+- [Architecture strategies for designing a reliability testing strategy](./reliability/reliability-test.md): We refined the definitions of recoverability and resiliency to better distinguish between them. Recoverability focuses on restoration within recovery time objective (RTO) and RPO targets while resiliency emphasizes withstanding faults and maintaining acceptable user experience during disruptions.
 
 - [Data for SaaS workloads on Azure](./saas/data.md): We updated terminology throughout the article. We also refined the discussion of reliability by distinguishing between resiliency (withstanding faults) and recoverability (restoring operations) to clarify how these concepts apply to SaaS data design.
 
