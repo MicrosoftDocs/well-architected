@@ -75,7 +75,7 @@ When you define your deployment method, adopt a standard policy of releasing the
 
 ## Follow a layered approach
 
-**Follow a layered approach to reflect different life cycles.** Keep foundational layers static for most of your workload's life cycle, and change application layers more frequently. Use separate deployment pipelines for each layer so that you can apply changes independently and appropriately.
+**Follow a layered approach to reflect different life cycles.** Workload layers are expected to change throughout the life cycle, but you should keep the life cycle operations static and consistent. Use separate deployment pipelines for each layer so that you can apply changes independently and appropriately.
 
 A landing zone is located at the lowest layer of your architecture. It's a logical grouping of foundational elements, such as subscriptions, management groups, resource groups, governance controls, and network topology, that you can use to deploy and operate workloads consistently. It gives central operations or platform teams a repeatable environment configuration. To ensure consistency, Azure landing zones include common design areas, a reference architecture, a reference implementation, and a process to tailor deployments to your design requirements. The design principles recommend practices based on policy-driven governance alongside subscription democratization. A landing zone should require minimal changes over the course of your workload life cycle. To see an example of a landing zone with recommended practices for Azure, see [Azure landing zone](/azure/cloud-adoption-framework/ready/landing-zone).
 
