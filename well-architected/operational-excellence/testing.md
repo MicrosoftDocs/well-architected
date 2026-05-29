@@ -255,7 +255,7 @@ Azure also provides platform‑native tools that support reliability, performanc
 ## Related links
 
 - [Recommendations for performance testing](../performance-efficiency/performance-test.md)
-- [Recommendations for reliability testing](../reliability/testing-strategy.md)
+- [Recommendations for reliability testing](../reliability/reliability-test.md)
 - [Recommendations for security testing](../security/test.md)
 
 ## Operational Excellence checklist  

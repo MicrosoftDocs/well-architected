@@ -117,7 +117,7 @@ Use automated testing when possible to ensure consistency. Include the following
 
 ## Implement quality gates in code promotion processes
 
-**Implement quality gates throughout your code promotion process via testing**. Promote your code through lower environments—development and testing—before advancing to higher environments like staging and production. Define clear quality gates and targets for each stage and only promote changes to production after they meet those criteria. Your business requirements determine the focus of your quality gates. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/testing-strategy.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
+**Implement quality gates throughout your code promotion process via testing**. Promote your code through lower environments—development and testing—before advancing to higher environments like staging and production. Define clear quality gates and targets for each stage and only promote changes to production after they meet those criteria. Your business requirements determine the focus of your quality gates. Also consider the fundamental Well-Architected Framework principles: [Security](../security/test.md), [Reliability](../reliability/reliability-test.md), and [Performance Efficiency](../performance-efficiency/performance-test.md).
 
 Integrate approval workflows into your quality gates. Clearly define and automate approval workflows when appropriate. Define quality acceptance criteria into your automation, so you can move through your gates efficiently and safely.
 
@@ -144,7 +144,7 @@ For an example that shows how to use Azure Pipelines to build a CI/CD pipeline, 
 - [Deployment Stamps pattern](/azure/architecture/patterns/deployment-stamp)
 - [GitHub Actions for Azure](https://azure.github.io/actions)
 - [Performance Efficiency pillar](../performance-efficiency/performance-test.md)
-- [Reliability pillar](../reliability/testing-strategy.md)
+- [Reliability pillar](../reliability/reliability-test.md)
 - [Security pillar](../security/test.md)
 
 ## Operation Excellence checklist
