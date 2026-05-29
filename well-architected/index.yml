@@ -71,16 +71,16 @@ sections:
     alignment: center
     blocks:
       - componentType: image
-        src: ./_images/ai-operations.png
-        alt: "Diagram that shows AI opportunities in the maturity model."
-      - title: Featured update - Boost your operations by using AI
-        summary: "Apply AI opportunities across the Operational Excellence pillar by aligning AI adoption with the full maturity journey—from foundational practices and standardization through production operations and optimization at scale. Use AI to automate and optimize deployment, monitoring, testing, and operational workflows. Evaluate where AI fits at each maturity level by balancing potential ROI with security, reliability, and operational trade‑offs."
+        src: ./_images/ai-workload-architecture-pattern.png
+        alt: "Diagram of AI workload design with labeled components for AI practices and process, data processing and analytics, model training and fine-tuning, intelligent AI applications, and platform services and tools."
+      - title: Featured update - Build Well-Architected AI workloads by using proven architecture patterns
+        summary: "Apply AI architecture patterns to design Well-Architected intelligent applications and custom AI models with greater confidence. Establish baseline knowledge of core components, their interactions, and key design characteristics (such as lifetime, scalability, security, and Responsible AI) to make informed design decisions. Evaluate and tailor these characteristics for your specific workload to build reliable, secure, and scalable AI solutions."
         componentType: text
         links:
           - componentType: link
-            url: operational-excellence/maturity-model.md
-            text: Operational Excellence maturity model
-# cards section (4)
+            url: ai/architecture-pattern.md
+            text: Azure architecture pattern for AI workloads
+  # cards section (4)
   - componentType: grid
     title: Pillars
     blocks:
@@ -136,11 +136,7 @@ sections:
       - componentType: summary-card
         title: Software as a service (SaaS)
         summary: Key insights for Startups and mature independent software vendors (ISVs) to build scalable, performant, reliable, and secure SaaS solutions. 
-        url: ./saas/index.yml   
-      - componentType: summary-card
-        title: Oracle on IaaS
-        summary: Host Oracle workloads on Azure, which includes not only Oracle Databases, but also applications such as Siebel, Peoplesoft, JD Edwards. 
-        url: ./oracle-iaas/overview.md  
+        url: ./saas/index.yml
       - componentType: summary-card
         title: Mission-critical
         summary: Design and operationalize workloads that are expected to be always available and resilient to failures.
