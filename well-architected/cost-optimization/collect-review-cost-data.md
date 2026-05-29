@@ -3,7 +3,7 @@ title: Architecture strategies for collecting and reviewing cost data
 description: Learn how to collect and review cost data for a workload.
 author: stephen-sumner
 ms.author: ssumner
-ms.date: 03/06/2026
+ms.date: 05/20/2026
 ms.topic: concept-article
 contributors: 
     - arclares
