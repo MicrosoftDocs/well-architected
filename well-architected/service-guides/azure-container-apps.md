@@ -5,8 +5,8 @@ author: igorjnzl
 ms.author: igorjovovic
 ms.topic: concept-article
 ms.date: 03/17/2026
-ms.service: azure-waf
-ms.subservice: waf-service-guide
+products:
+  - azure-container-apps
 azure.category:
   - containers
 ---
