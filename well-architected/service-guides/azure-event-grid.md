@@ -4,7 +4,7 @@ description: "Architecture best practices for Azure Event Grid covering the Well
 author: PageWriter-MSFT
 ms.author: prwilk
 ms.topic: concept-article
-ms.date: 12/16/2024
+ms.date: 01/09/2026
 ms.subservice: waf-service-guide
 products:
  - azure-event-grid

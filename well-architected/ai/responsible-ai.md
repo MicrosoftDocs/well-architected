@@ -127,7 +127,7 @@ Additionally, the level of complexity increases significantly, making it more di
 
 Integrate content safety into every stage of the AI life cycle by using custom solution code, appropriate tools, and effective security practices. Consider the following strategies:
 
-- **Anonymize data.** As data moves from ingestion to training or evaluation, implement checks along the way to minimize the risk of personal information leakage and avoid raw user data exposure. Use intelligent tooling like [Azure AI Language Personally Identifiable Information (PII) detection](/azure/ai-services/language-service/personally-identifiable-information/overview?tabs=text-pii) to automatically detect and redact personal information like phone numbers, email addresses, and other types of personal information. 
+- **Anonymize data.** As data moves from ingestion to training or evaluation, implement checks along the way to minimize the risk of personal information leakage and avoid raw user data exposure. Use intelligent tooling like [Azure Language in Foundry Tools Personally Identifiable Information (PII) detection](/azure/ai-services/language-service/personally-identifiable-information/overview?tabs=text-pii) to automatically detect and redact personal information like phone numbers, email addresses, and other types of personal information. 
 
 - **Moderate content.** Use the content safety API that evaluates requests and responses in real time. Ensure that these APIs are reachable.
 
@@ -160,7 +160,7 @@ Integrate content safety into every stage of the AI life cycle by using custom s
 
  Integrate tools for content safety and data traceability, like [Microsoft Purview](/purview/purview). [Azure AI Content Safety](/azure/ai-services/content-safety/overview) APIs can be called from your testing to facilitate content safety testing.
 
- Azure AI Foundry provides metrics that evaluate the behavior of the model. For more information, see [Evaluation and monitoring metrics for generative AI](/azure/ai-studio/concepts/evaluation-metrics-built-in).
+ Microsoft Foundry provides metrics that evaluate the behavior of the model. For more information, see [Evaluation and monitoring metrics for generative AI](/azure/ai-studio/concepts/evaluation-metrics-built-in).
 
  For training models, see the [metrics that Azure Machine Learning provides](/azure/machine-learning/component-reference/evaluate-model#metrics).
 

@@ -68,8 +68,6 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Automate pragmatically
-            url: automate-tasks.md
           - text: Design for automation
             url: enable-automation.md
   - title: Ship safely and support what you ship

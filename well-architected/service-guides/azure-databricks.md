@@ -255,6 +255,8 @@ Start your design strategy based on the [design review checklist for Cost Optimi
 | Set up cost alerts and budgets by using Cost Management and [Databricks usage monitoring](/azure/databricks/admin/usage/) to proactively manage costs with multiple alert thresholds. <br><br> Set up escalation procedures for different stakeholder groups and implement automated responses for critical cost overruns. Review budgets regularly. | Proactive cost monitoring helps you detect cost anomalies and budget overruns early so that you can prevent surprise expenses and act before costs significantly affect budgets. |
 | Optimize data formats and turn on [Photon acceleration](/azure/databricks/compute/photon) to reduce compute time through efficient data processing with columnar storage formats and compression algorithms. <br><br> Implement partitioning strategies that minimize data scanning requirements and use Photon acceleration for supported workloads to take advantage of vectorized query execution. | Data format optimization and Photon acceleration reduce compute time and costs through columnar storage optimizations and vectorized query execution capabilities. <br><br> These optimizations compound over time as data volumes grow, providing increasing cost benefits for analytical workloads and complex data processing pipelines without requiring architectural changes. |
 
+[Lakeflow Connect Free Tier](https://aka.ms/adblakeflowfree) provides 100 free Databricks Units (DBUs) per workspace per day for data ingestion from SaaS applications and databases. This free tier lowers the entry point for Lakehouse adoption, enabling teams to validate ingestion pipelines and Unity Catalog governance before scaling to production volumes. Factor in the 100 DBU/day limit when sizing initial deployments because standard pricing applies beyond this threshold.
+
 ## Operational Excellence
 
 Operational Excellence primarily focuses on procedures for **development practices, observability, and release management**.
@@ -440,3 +442,4 @@ Balance performance and cost to get the most value from your workloads. Overprov
 - [Introduction to the well-architected data lakehouse](/azure/databricks/lakehouse-architecture/)
 
 <!-- Updated: March 17, 2026 for Azure Update 550845 -->
+<!-- Updated: 2026-03-21 for Azure Update 558810 -->

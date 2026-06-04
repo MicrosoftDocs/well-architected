@@ -3,7 +3,7 @@ title: Application platform considerations for mission-critical workloads on Azu
 description: This design area describes decision factors and provides recommendations related to the selection, design, and configuration of an appropriate application hosting platform for a mission-critical application on Azure.
 author: calcof
 ms.author: prwilk
-ms.date: 07/30/2024
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
@@ -27,19 +27,15 @@ This design area provides recommendations related to compute selection, design, 
 
 A typical pattern for a mission-critical workload includes global resources and regional resources.
 
-Azure services, which aren't constrained to a particular Azure region, are deployed or configured as global resources. Some use cases include distributing traffic across multiple regions, storing permanent state for a whole application, and caching global static data. If you need to accommodate both a [scale-unit architecture](mission-critical-application-design.md#scale-unit-architecture) and [global distribution](mission-critical-application-design.md#global-distribution), consider how resources are optimally distributed or replicated across Azure regions.
-
-Other resources are deployed regionally. These resources, which are deployed as part of a deployment stamp, typically correspond to a scale unit. However, a region can have more than one stamp, and a stamp can have more than one unit. The reliability of regional resources is crucial because they're responsible for running the main workload.
+Plan global and regional platform resources around deployment stamps and scale units. For details, see [Scale-unit architecture](/azure/well-architected/mission-critical/mission-critical-application-design#scale-unit-architecture).
 
 The following image shows the high-level design. A user accesses the application via a central global entry point that then redirects requests to a suitable regional deployment stamp:
 
 ![Diagram that shows a mission-critical architecture.](./images/mission-critical-high-level-architecture.png)
 
-The mission-critical design methodology requires a multi-region deployment. This model ensures regional fault tolerance, so that the application remains available even when an entire region goes down. When you design a multi-region application, consider different deployment strategies, like active/active and active/passive, together with application requirements, because there are significant trade-offs for each approach. For mission-critical workloads, we strongly recommend the active/active model.
+For mission-critical workloads, strongly prefer an active/active multi-region model. For details, see [Global distribution](/azure/well-architected/mission-critical/mission-critical-application-design#global-distribution).
 
-Not every workload supports or requires running multiple regions simultaneously. You should weigh specific application requirements against trade-offs to determine an optimal design decision. For certain application scenarios that have lower reliability targets, active/passive or sharding can be suitable alternatives.
-
-[Availability zones](/azure/reliability/availability-zones-overview) can provide highly available regional deployments across different datacenters within a region. Nearly all Azure services are available in either a zonal configuration, where the service is delegated to a specific zone, or a zone-redundant configuration, where the platform automatically ensures that the service spans across zones and can withstand a zone outage. These configurations provide fault tolerance up to the datacenter level.
+Use [Availability zones](/azure/reliability/availability-zones-overview) for regional fault tolerance where supported. For details, see the [Regions and availability zones design guide](/azure/well-architected/design-guides/regions-availability-zones) and [Inter-zone and inter-region connectivity](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#inter-zone-and-inter-region-connectivity).
 
 ### Design considerations
 
@@ -86,7 +82,7 @@ A container includes application code and the related configuration files, libra
 
 ### Design considerations
   
-- **Monitoring**. It can be difficult for monitoring services to access applications that are in containers. You typically need third-party software to collect and store container state indicators like CPU or RAM usage.
+- **Monitoring**. Azure supports modern container monitoring with Azure Managed Prometheus and Azure Monitor for containers. For detailed monitoring guidance, see the [monitoring design guide](/azure/well-architected/design-guides/monitoring#phase-2---telemetry-data-collection-and-storage). The most prominent application telemetry approach is OpenTelemetry.
 
 - **Security**. The hosting platform OS kernel is shared across multiple containers, creating a single point of attack. However, the risk of host virtual machine (VM) access is limited because containers are isolated from the underlying operating system.
 
@@ -100,9 +96,9 @@ A container includes application code and the related configuration files, libra
 
 - Make containers immutable and replaceable, with short lifecycles.
 
-- Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a unified data sink for further processing and analysis.
+- Be sure to gather all relevant logs and metrics from the container, container host, and underlying cluster. Send the gathered logs and metrics to a [unified data sink](../design-guides/monitoring.md) for further processing and analysis.
 
-- Store container images in [Azure Container Registry](https://azure.microsoft.com/services/container-registry). Use [geo-replication](/azure/aks/operator-best-practices-multi-region#enable-geo-replication-for-container-images) to replicate container images across all regions. Enable [Microsoft Defender for container registries](/azure/security-center/defender-for-container-registries-introduction) to provide vulnerability scanning for container images. Make sure access to the registry is managed by Microsoft Entra ID.
+- Store container images in Azure Container Registry. For geo-replication and registry resilience details, see [Container registry](/azure/well-architected/mission-critical/mission-critical-application-platform#container-registry).
 
 ## Container hosting and orchestration
 
@@ -113,22 +109,17 @@ There are advantages and disadvantages associated with each of these platforms. 
 - [Container option comparisons](/azure/container-apps/compare-options#container-option-comparisons)
 
 > [!IMPORTANT]
-> [Azure Kubernetes Service (AKS)](https://azure.microsoft.com/services/kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](https://azure.microsoft.com/services/app-service/containers) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
+> [Azure Kubernetes Service (AKS)](/azure/well-architected/service-guides/azure-kubernetes-service) and [Azure Container Apps](/azure/container-apps/overview) should be among your first choices for container management depending on your requirements.  Although [Azure App Service](/azure/well-architected/service-guides/app-service-web-apps) isn't an orchestrator, as a low-friction container platform, it's still a feasible alternative to AKS.
 
 #### Design considerations and recommendations for Azure Kubernetes Service
 
-AKS, a managed Kubernetes service, enables quick cluster provisioning without requiring complex cluster administration activities and offers a feature set that includes advanced networking and identity capabilities. For a complete set of recommendations, see [Azure Well-Architected Framework review - AKS](/azure/well-architected/services/compute/azure-kubernetes-service/azure-kubernetes-service).
-
-> [!IMPORTANT]
-> There are some foundational configuration decisions that you can't change without re-deploying the AKS cluster. Examples include the choice between public and private AKS clusters, enabling Azure Network Policy, Microsoft Entra integration, and the use of managed identities for AKS instead of service principals.
+AKS is the recommended application platform for mission-critical workloads because Kubernetes is natively built to handle failure at scale, AKS provides a managed control plane with built-in availability zone support, and the ecosystem offers mature patterns for self-healing, automated scaling, and blue/green deployments that align well with the Mission Critical principles. For a complete set of recommendations, see the [Azure Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
 
 ###### Reliability
 
-AKS manages the native Kubernetes control plane. If the control plane isn't available, the workload experiences downtime. Take advantage of the reliability features offered by AKS:
+Kubernetes is natively built to handle failure at scale across large deployments. With AKS, Azure manages the native Kubernetes control plane and is designed to keep workloads running even with temporary outage of the control plane. 
 
-- Deploy [AKS clusters across different Azure regions](/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
-
-- Use the [AKS Uptime SLA](/azure/aks/uptime-sla) for production clusters to maximize Kubernetes API endpoint availability guarantees.
+- Deploy [AKS clusters across different Azure regions](/azure/aks/reliability-multi-region-deployment-models) as a scale unit to maximize reliability and availability. Use [availability zones](/azure/aks/availability-zones) to maximize resilience within an Azure region by distributing AKS control plane and agent nodes across physically separate datacenters. However, if colocation latency is a problem, you can do AKS deployment within a single zone or use [proximity placement groups](/azure/aks/reduce-latency-ppg) to minimize internode latency.
 
 ###### Scalability
 
@@ -136,167 +127,38 @@ Take into account AKS [scale limits](/azure/azure-resource-manager/management/az
 
 - If scale limits are a constraint, take advantage of the [scale-unit strategy](mission-critical-application-design.md#scale-unit-architecture), and deploy more units with clusters.
 
-- Enable [cluster autoscaler](/azure/aks/cluster-autoscaler) to automatically adjust the number of agent nodes in response to resource constraints.
+- With the availability of the [Node Autoprovisioner (NAP)](/azure/aks/node-autoprovision), [KEDA](/azure/aks/keda-about), [Horizontal Pod Autoscaler (HPA)](/azure/aks/concepts-scale#horizontal-pod-autoscaler) and [Vertical Pod Autoscaler (VPA)](/azure/aks/vertical-pod-autoscaler) you can achieve a high application density and fast scale without losing stability for workloads that don't take disruptions well.
 
-- Use the [horizontal pod autoscaler](/azure/aks/concepts-scale#horizontal-pod-autoscaler) to adjust the number of pods in a deployment based on CPU utilization or other metrics.
+For deeper insights into Isolation, Security, Upgrades, Networking and  Monitoring for AKS, see the [Azure Kubernetes Service service guide](/azure/well-architected/service-guides/azure-kubernetes-service).
 
-- For high scale and burst scenarios, consider using [virtual nodes](/azure/aks/virtual-nodes-cli) for extensive and rapid scale.
+#### Design considerations and recommendations for Azure Container Apps
 
-- Define [pod resource requests and limits](/azure/aks/developer-best-practices-resource-management#define-pod-resource-requests-and-limits) in application deployment manifests. If you don't, you might experience performance problems.
+[Azure Container Apps](/azure/well-architected/service-guides/azure-container-apps) is a serverless container platform that's a strong alternative to AKS when you don't need direct Kubernetes API access. It removes most cluster operations while preserving the features mission-critical workloads rely on:
 
-###### Isolation
-
-Maintain boundaries between the infrastructure used by the workload and system tools. Sharing infrastructure might lead to high-resource utilization and noisy neighbor scenarios.
-
-- Use separate node pools for system and workload services. Dedicated node pools for workload components should be based on requirements for specialized infrastructure resources like high-memory GPU VMs. In general, to reduce unnecessary management overhead, avoid deploying large numbers of node pools.
-
-- Use [taints and tolerations](/azure/aks/operator-best-practices-advanced-scheduler#provide-dedicated-nodes-using-taints-and-tolerations) to provide dedicated nodes and limit resource-intensive applications.
-- Evaluate application affinity and anti-affinity requirements and configure the appropriate colocation of containers on nodes.
-
-###### Security
-
-Default vanilla Kubernetes requires significant configuration to ensure a suitable security posture for mission-critical scenarios. AKS addresses various security risks out of the box. Features include private clusters, auditing and logging into Log Analytics, hardened node images, and managed identities.
-
-- Apply configuration guidance provided in the [AKS security baseline](/security/benchmark/azure/baselines/aks-security-baseline).
-
-- Use AKS features for handling cluster identity and access management to reduce operational overhead and apply consistent access management.
-
-- Use managed identities instead of service principals to avoid management and rotation of credentials. You can add [managed identities](/azure/aks/use-managed-identity) at the cluster level. At the pod level, you can use managed identities via [Microsoft Entra Workload ID](/azure/aks/workload-identity-overview).
-
-- Use [Microsoft Entra integration](/azure/aks/managed-aad) for centralized account management and passwords, application access management, and enhanced identity protection. Use Kubernetes RBAC with Microsoft Entra ID for [least privilege](/azure/aks/azure-ad-rbac), and minimize granting administrator privileges to help protect configuration and secrets access. Also, limit access to the [Kubernetes cluster configuration](/azure/aks/control-kubeconfig-access) file by using Azure role-based access control. Limit access to [actions that containers can perform](/azure/aks/developer-best-practices-pod-security#secure-pod-access-to-resources), provide the least number of permissions, and avoid the use of root privilege escalation.
-
-###### Upgrades
-
-Clusters and nodes need to be upgraded regularly. AKS supports [Kubernetes versions](/azure/aks/supported-kubernetes-versions) in alignment with the release cycle of native Kubernetes.
-
-- Subscribe to the public [AKS Roadmap](https://aka.ms/aks/roadmap) and [Release Notes](https://aka.ms/aks/releasenotes) on GitHub to stay up-to-date on upcoming changes, improvements, and, most importantly, Kubernetes version releases and deprecations.
-
-- Be aware of the various methods supported by AKS for [updating nodes and/or clusters](/azure/aks/upgrade-cluster). These methods can be manual or automated. You can use [Planned Maintenance](/azure/aks/planned-maintenance) to define maintenance windows for these operations. New images are released weekly. AKS also supports [auto-upgrade channels](/azure/aks/upgrade-cluster#set-auto-upgrade-channel) for automatically upgrading AKS clusters to newer versions of Kubernetes and/or newer node images when they're available.
-
-###### Networking
-
-Evaluate the network plugins that best fit your use case. Determine whether you need granular control of traffic between pods. Azure supports kubenet, [Azure CNI](/azure/aks/concepts-network#compare-network-models), and [bring your own CNI](/azure/aks/use-byo-cni) for specific use cases.
-
-Prioritize the use of Azure CNI after assessing network requirements and the size of the cluster. Azure CNI enables the use of [Azure](/azure/aks/use-network-policies) or Calico network policies for controlling traffic within the cluster.
-
-###### Monitoring
-
-Your monitoring tools should be able to capture logs and metrics from running pods. You should also gather information from the Kubernetes Metrics API to monitor the health of running resources and workloads. 
-
-- Use [Azure Monitor and Application Insights](/azure/azure-monitor/insights/container-insights-overview) to collect metrics, logs, and diagnostics from AKS resources for troubleshooting.
-
-- Enable and review [Kubernetes resource logs](/azure/aks/view-master-logs).
-
-- Configure [Prometheus metrics](/azure/azure-monitor/insights/container-insights-prometheus-integration) in Azure Monitor. Container insights in Monitor provides onboarding, enables monitoring capabilities out of the box, and enables more advanced capabilities via built-in Prometheus support.
-
-###### Governance
-
-Use policies to apply centralized safeguards to AKS clusters in a consistent way. Apply policy assignments at a subscription scope or higher to drive consistency across development teams.
-
-- Control which functions are granted to pods, and whether running contradicts policy, by using Azure Policy. This access is defined through built-in policies provided by the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes).
-
-- Establish a consistent reliability and security baseline for AKS cluster and [pod](/azure/aks/use-pod-security-on-azure-policy) configurations by using [Azure Policy](/azure/governance/policy/overview).
-
-- Use the [Azure Policy Add-on for AKS](/azure/governance/policy/concepts/policy-for-kubernetes) to control pod functions, like root privileges, and to disallow pods that don't conform to policy.
-
-> [!NOTE]
->
-> When you deploy into an Azure landing zone, the Azure policies to help you ensure consistent reliability and security should be provided by the landing zone implementation.
-
-#### Design considerations and recommendations for Azure App Service
-
-For web and API-based workload scenarios, [App Service](https://azure.microsoft.com/services/app-service/containers) might be a feasible alternative to AKS. It provides a low-friction container platform without the complexity of Kubernetes. For a complete set of recommendations, see [Reliability considerations for App Service](/azure/well-architected/services/compute/azure-app-service/reliability) and [Operational excellence for App Service](/azure/well-architected/services/compute/azure-app-service/operational-excellence).
-
-###### Reliability
-
-Evaluate the use of TCP and SNAT ports. TCP connections are used for all outbound connections. SNAT ports are used for outbound connections to public IP addresses. SNAT port exhaustion is a common failure scenario. You should predictively detect this problem by load testing while using Azure Diagnostics to monitor ports. If SNAT errors occur, you need to either scale across more or larger workers or implement coding practices to help preserve and reuse SNAT ports. Examples of coding practices that you can use include connection pooling and the lazy loading of resources.
-
-TCP port exhaustion is another failure scenario. It occurs when the sum of outbound connections from a given worker exceeds capacity. The number of available TCP ports depends on the size of the worker. For recommendations, see [TCP and SNAT ports](/azure/well-architected/services/compute/azure-app-service/reliability#tcp-and-snat-ports).
-
-###### Scalability
-
-Plan for future scalability requirements and application growth so that you can apply appropriate recommendations from the start. By doing so, you can avoid technical migration debt as the solution grows.
-
-- Enable autoscale to ensure that adequate resources are available to service requests. Evaluate per-app scaling for high-density hosting on App Service.
-
-- Be aware that App Service has a default, soft limit of [instances per App Service plan](/azure/app-service/overview-hosting-plans#should-i-put-an-app-in-a-new-plan-or-an-existing-plan).
-
-- Apply autoscale rules. An App Service plan scales out if any rule within the profile is met but only scales in if all rules within the profile are met. Use a scale-out and scale-in rule combination to ensure that autoscale can take action to both scale out and scale in. Understand the behavior of multiple scaling rules in a single profile.
-
-- Be aware that you can enable per-app scaling at the level of the App Service plan to allow an application to scale independently from the App Service plan that hosts it. Apps are allocated to available nodes via a best-effort approach for an even distribution. Although an even distribution isn't guaranteed, the platform ensures that two instances of the same app aren't hosted on the same instance.
-
-###### Monitoring
-
-Monitor application behavior and get access to relevant logs and metrics to ensure that your application works as expected.
-
-- You can use diagnostic logging to ingest application-level and platform-level logs into Log Analytics, Azure Storage, or a third-party tool via Azure Event Hubs.
-
-- Application performance monitoring with Application Insights provides deep insights into application performance.
-- Mission-critical applications must have the ability to self-heal if there are failures. Enable [Auto Heal](https://azure.github.io/AppService/2021/04/21/Announcing-Autoheal-for-Azure-App-Service-Linux.html) to automatically recycle unhealthy workers.
-- You need to use appropriate health checks to assess all critical downstream dependencies, which helps to ensure overall health. We strongly recommend that you enable [Health Check](/azure/app-service/monitor-instances-health-check) to identify non-responsive workers.
-
-###### Deployment
-
-To work around the default limit of instances per App Service plan, deploy App Service plans in multiple scale units in a single region. Deploy App Service plans in an [availability zone configuration](https://azure.github.io/AppService/2021/08/25/App-service-support-for-availability-zones.html) to ensure that worker nodes are distributed across zones within a region. Consider opening a support ticket to increase the maximum number of workers to twice the instance count that you need to serve normal peak load.
+- Built-in [KEDA-based event-driven autoscaling](/azure/container-apps/scale-app), including scale-to-zero for non-critical flows.
+- [Availability zone redundancy](/azure/container-apps/disaster-recovery) and [revision-based blue/green deployments](/azure/container-apps/revisions) for safe rollouts.
+- Native [Dapr integration](/azure/container-apps/dapr-overview) for service invocation, state, and pub/sub across microservices.
+- [VNet integration with private endpoints](/azure/container-apps/networking) and managed identity for end-to-end private, passwordless connectivity.
 
 ## Container registry
 
-Container registries host images that are deployed to container runtime environments like AKS. 
-You need to configure your container registries for mission-critical workloads carefully. An outage shouldn't cause delays in pulling images, especially during scaling operations. The following considerations and recommendations focus on Azure Container Registry and explore the trade-offs that are associated with centralized and federated deployment models.
+Use [Azure Container Registry](/azure/container-registry/container-registry-intro) as a global, long-living resource. 
 
-#### Design considerations
-
-- **Format**. Consider using a container registry that relies on the Docker-provided format and standards for both push and pull operations. These solutions are compatible and mostly interchangeable.
-
-- **Deployment model**. You can deploy the container registry as a centralized service that's consumed by multiple applications within your organization. Or you can deploy it as a dedicated component for a specific application workload.
-
-- **Public registries**. Container images are stored in Docker Hub or other public registries that exist outside of Azure and a given virtual network. This isn't necessarily a problem, but it can lead to various issues that are related to service availability, throttling, and data exfiltration. For some application scenarios, you need to replicate public container images in a private container registry to limit egress traffic, increase availability, or avoid potential throttling.
-
-#### Design recommendations
-
-- Use container registry instances that are dedicated to the application workload. Avoid creating a dependency on a centralized service unless organizational availability and reliability requirements are fully aligned with the application.
-
-  In the recommended [core architecture pattern](mission-critical-architecture-pattern.md), container registries are global resources that are long living. Consider using a single global container registry per environment. For example, use a global production registry.
-
-- Ensure that the SLA for public registry is aligned with your reliability and security targets. Take special note of throttling limits for use cases that depend on Docker Hub. 
-
-- Prioritize [Azure Container Registry](https://azure.microsoft.com/services/container-registry) for hosting container images. 
-
-#### Design considerations and recommendations for Azure Container Registry
-
-This native service provides a range of features, including geo-replication, Microsoft Entra authentication, automated container building, and patching via Container Registry tasks.
-
-###### Reliability
-
-Configure geo-replication to all deployment regions to remove regional dependencies and optimize latency. Container Registry supports high availability through [geo-replication](/azure/container-registry/container-registry-geo-replication#considerations-for-high-availability) to multiple configured regions, providing resiliency against regional outages. If a region becomes unavailable, the other regions continue to serve image requests. When the region is back online, Container Registry recovers and replicates changes to it. This capability also provides registry colocation within each configured region, reducing network latency and cross-region data transfer costs. 
-
-In Azure regions that provide availability zone support, the [Premium Container Registry tier supports zone redundancy](/azure/container-registry/zone-redundancy) to provide protection against zone failure. The Premium tier also supports [private endpoints](/azure/container-registry/container-registry-private-link) to help prevent unauthorized access to the registry, which can lead to reliability issues. 
-
-Host images close to the consuming compute resources, within the same Azure regions.
-
-###### Image locking
-
-Images can get deleted, as a result of, for example, manual error. Container Registry supports [locking an image version or a repository](/azure/container-registry/container-registry-image-lock) to prevent changes or deletions. When a previously deployed image *version* is changed in place, same-version deployments might provide different results before and after the change.
-
-If you want to protect the Container Registry instance from deletion, use [resource locks](/azure/azure-resource-manager/management/lock-resources).
-
-###### Tagged images
-
-[Tagged Container Registry images are mutable by default](/azure/container-registry/container-registry-image-lock#scenarios), which means that the same tag can be used on multiple images pushed to the registry. In production scenarios, this can lead to unpredictable behavior that could affect application uptime.
-
-###### Identity and access management
-
- Use Microsoft Entra integrated authentication to push and pull images instead of relying on access keys. For enhanced security, fully disable the use of the admin access key.
+- Use the [Premium tier](/azure/container-registry/container-registry-skus) and enable [geo-replication](/azure/container-registry/container-registry-geo-replication) to every deployment region for redundancy and low-latency pulls.
+- Enable [zone redundancy](/azure/container-registry/zone-redundancy) where availability zones are supported, and restrict access via [private endpoints](/azure/container-registry/container-registry-private-link).
+- Use [Microsoft Entra authentication](/azure/container-registry/container-registry-authentication) and disable the admin account; protect the registry with [resource locks](/azure/azure-resource-manager/management/lock-resources).
+- Avoid mutable tags in production and use [image and repository locks](/azure/container-registry/container-registry-image-lock) to prevent accidental deletion or overwrite.
+- Replicate critical public images (for example, from Docker Hub) into your private registry to avoid throttling and external availability risks.
 
 ## Serverless compute
 
 Serverless computing provides resources on demand and eliminates the need to manage infrastructure. The cloud provider automatically provisions, scales, and manages the resources required to run deployed application code. Azure provides several serverless compute platforms:
 
-- [Azure Functions](/azure/azure-functions/functions-overview). When you use Azure Functions, application logic is implemented as distinct blocks of code, or *functions*, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
+- [Azure Functions](/azure/well-architected/service-guides/azure-functions). When you use Azure Functions, application logic is implemented as distinct blocks of code, or *functions*, that run in response to events, like an HTTP request or queue message. Each function scales as necessary to meet demand.
 
 - [Azure Logic Apps](/azure/logic-apps/logic-apps-overview). Logic Apps is best suited for creating and running automated workflows that integrate various apps, data sources, services, and systems. Like Azure Functions, Logic Apps uses built-in triggers for event-driven processing. However, instead of deploying application code, you can create logic apps by using a graphical user interface that  supports code blocks like conditionals and loops.
 
-- [Azure API Management](https://azure.microsoft.com/services/api-management). You can use API Management to publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
+- [Azure API Management](/azure/well-architected/service-guides/azure-api-management). You can use API Management to publish, transform, maintain, and monitor enhanced-security APIs by using the Consumption tier.
 
 - [Power Apps and Power Automate](/powerapps/powerapps-overview). These tools provide a low-code or no-code development experience, with simple workflow logic and integrations that are configurable through connections in a user interface.
 
@@ -306,15 +168,10 @@ The following sections provide design considerations and recommendations for usi
 
 #### Design considerations and recommendations for Azure Functions
 
-Mission-critical workloads have critical and non-critical system flows. Azure Functions is a viable choice for flows that don't have the same stringent business requirements as critical system flows. It's well suited for event-driven flows that have short-lived processes because functions perform distinct operations that run as fast as possible.
+Mission-critical workloads have critical and non-critical system flows. Azure Functions is a viable choice for non-critical, event-driven flows with short-lived executions. For full guidance, see the [Functions service guide](/azure/well-architected/service-guides/azure-functions).
 
-Choose an [Azure Functions hosting option](/azure/azure-functions/functions-scale) that's appropriate for the application's reliability tier. We recommend the Premium plan because it allows you to configure compute instance size. The Dedicated plan is the least serverless option. It provides autoscale, but these scale operations are slower than those of the other plans. We recommend that you use the Premium plan to maximize reliability and performance.
-
-There are some security considerations. When you use an HTTP trigger to expose an external endpoint, use a web application firewall (WAF) to provide a level of protection for the HTTP endpoint from common external attack vectors.
-
-We recommend the use of private endpoints for restricting access to private virtual networks. They can also mitigate data exfiltration risks, like malicious admin scenarios.
-
-You need to use code scanning tools on Azure Functions code and integrate those tools with CI/CD pipelines.
+- Prefer the [Flex Consumption plan](/azure/azure-functions/flex-consumption-plan) for serverless scale with per-instance concurrency control, always-ready instances to mitigate cold starts, and native [VNet integration](/azure/azure-functions/functions-networking-options). See [Performance Efficiency](/azure/well-architected/service-guides/azure-functions#performance-efficiency) in the service guide.
+- Use [managed identity with identity-based connections](/azure/azure-functions/functions-identity-based-connections-tutorial) for triggers and bindings; avoid storing secrets in app settings. See [Security](/azure/well-architected/service-guides/azure-functions#security) in the service guide.
 
 #### Design considerations and recommendations for Azure Logic Apps
 
@@ -323,8 +180,7 @@ Like Azure Functions, Logic Apps uses built-in triggers for event-driven process
 Multiple [deployment modes](/azure/logic-apps/single-tenant-overview-compare) are available. We recommend the Standard mode to ensure a single-tenant deployment and mitigate noisy neighbor scenarios. This mode uses the containerized single-tenant Logic Apps runtime, which is based on Azure Functions. In this mode, the logic app can have multiple stateful and stateless workflows. You should be aware of the configuration limits.
 
 ## Constrained migrations via IaaS
-
-Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline (North Star) architecture pattern that's recommended for mission-critical workloads. That's why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of infrastructure as a service (IaaS) VMs might be required in certain scenarios:
+Many applications that have existing on-premises deployments use virtualization technologies and redundant hardware to provide mission-critical levels of reliability. Modernization is often hindered by business constraints that prevent full alignment with the cloud-native baseline [north star design approach](/azure/well-architected/mission-critical/mission-critical-architecture-pattern) that's recommended for mission-critical workloads. That's why many applications adopt a phased approach, with initial cloud deployments using virtualization and Azure Virtual Machines as the primary application hosting model. The use of infrastructure as a service (IaaS) VMs might be required in certain scenarios:
 
 - Available PaaS services don't provide the required performance or level of control.
 - The workload requires operating system access, specific drivers, or network and system configurations.
@@ -340,7 +196,9 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 - Azure provides capabilities to increase the availability of VMs:
   - [Availability zones](/azure/reliability/availability-zones-overview) can help you achieve even higher levels of reliability by distributing VMs across physically separated datacenters within a region.
   - [Azure virtual machine scale sets](/azure/virtual-machine-scale-sets/overview) provide functionality for automatically scaling the number of VMs in a group. They also provide capabilities for monitoring instance health and automatically repairing [unhealthy instances](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs).
-  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
+  - [Scale sets with flexible orchestration](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration-recommended) can help protect against network, disk, and power failures by automatically distributing VMs across fault domains.
+ 
+For detailed Azure Virtual Machines configuration guidance, see the [Virtual Machines service guide](/azure/well-architected/service-guides/virtual-machines).
 
 ### Design recommendations
 
@@ -352,14 +210,13 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 - Deploy three or more VMs across [availability zones](/azure/reliability/availability-zones-overview) to achieve datacenter-level fault tolerance.
   - If you're deploying commercial off-the-shelf software, consult the software vendor and test adequately before deploying the software into production.
 
-- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
+- For workloads that you can't deploy across availability zones, use [flexible virtual machine scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes#scale-sets-with-flexible-orchestration-recommended) that contain three or more VMs. For more information about how to configure the correct number of fault domains, see [Manage fault domains in scale sets](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains).
 
 - Prioritize the use of Virtual Machine Scale Sets for scalability and zone redundancy. This point is particularly important for workloads that have varying loads. For example, if the number of active users or requests per second is a varying load.
   
 - Don't access individual VMs directly. Use load balancers in front of them when possible.
 
-- To protect against regional outages, deploy application VMs across multiple Azure regions.
-  - See the [networking and connectivity design area](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#global-traffic-routing) for details about how to optimally route traffic between active deployment regions.
+- Protect against regional outages by deploying application VMs across multiple Azure regions. For details about chaos validation, see [Continuous validation and testing](/azure/well-architected/mission-critical/mission-critical-deployment-testing#continuous-validation-and-testing). For guidance on routing traffic between active regions, see [Networking and connectivity](/azure/well-architected/mission-critical/mission-critical-networking-connectivity#global-traffic-routing).
 
 - For workloads that don't support multi-region active/active deployments, consider implementing active/passive deployments by using hot/warm standby VMs for regional failover.
 
@@ -369,7 +226,7 @@ This section focuses on the best ways to use Virtual Machines and associated ser
 
 - Implement chaos experiments to inject application faults into VM components, and observe the mitigation of faults. For more information, see [Continuous validation and testing](./mission-critical-deployment-testing.md#continuous-validation-and-testing).
 
-- Monitor VMs and ensure that diagnostic logs and metrics are ingested into a [unified data sink](/azure/well-architected/mission-critical/mission-critical-health-modeling#unified-data-sink-for-correlated-analysis).
+- Monitor VMs and ensure that diagnostic logs and metrics are ingested into a [unified data sink](../design-guides/monitoring.md).
 
 - Implement security practices for mission-critical application scenarios, when applicable, and the [Security best practices for IaaS workloads in Azure](/azure/security/fundamentals/iaas).
 

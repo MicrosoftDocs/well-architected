@@ -96,7 +96,7 @@ Treat recommendation engines as decision-support systems rather than black boxes
 
 - [OE:06 Designing a workload supply chain](./workload-supply-chain.md#incorporate-comprehensive-types-of-testing). Find customer-focused edge cases and scenarios that are  hard to detect and often overlooked to include in your test suite.
 - [OE:08 Incident management](./incident-response.md#allocate-sufficient-resources-for-incident-response-infrastructure-processes-and-staff). Validate vendor transition plans by having AI simulate the vendor support team using only the provided documentation, playbooks, health models, and escalation paths. The simulation highlights gaps and hidden dependencies before the handoff.
-- [OE:09 Implementing automation](./automate-tasks.md#integrate-automation-into-your-workload). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
+- [OE:10 Automation design](./enable-automation.md#integrate-automation-into-your-workload). Evaluate automation code, telemetry, and incident data to recommend which automations should be improved, retired, or expanded.
 
 #### &#10003; Artifact generation agents
 
@@ -147,7 +147,7 @@ Implement guardrails that enforce a minimal blast radius, keeping the scope of e
 ##### Examples
 
 - [OE:08 Incident management](./incident-response.md#build-monitoring-capabilities-for-rapid-detection). As soon as an alert fires, automatically gather context, correlate data, and perform initial triage. Engineers start with a clear incident picture instead of manual data collection.
-- [OE:09 Implementing automation](./automate-tasks.md#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
+- [OE:10 Automation design](./enable-automation.md#areas-to-implement-automation). Continuously optimize low‑risk production settings, such as cache sizes and timeout values, within human‑defined boundaries, using values inferred from analysis of monitoring data. 
 - [OE:11 Safe deployment practices](./safe-deployments.md#adopt-a-progressive-exposure-model). Automate your progressive exposure deployment strategy by autonomously identifying the optimum rollout timing, and the right target segment and percentages for your canary deployments.
 
 # [**Level 1: DevOps foundation**](#tab/level1)

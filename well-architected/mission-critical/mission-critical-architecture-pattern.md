@@ -3,7 +3,7 @@ title: Architecture pattern for mission-critical workloads on Azure
 description: The design areas represent the architecturally significant topics that must be discussed and designed for when defining a target architecture
 author: calcof
 ms.author: prwilk
-ms.date: 05/06/2025
+ms.date: 05/27/2026
 ms.topic: concept-article
 ---
 
@@ -11,7 +11,7 @@ ms.topic: concept-article
 
 This article presents a key pattern for mission-critical architectures on Azure. Apply this pattern when you start your design process, and then select components that are best suited for your business requirements. The article recommends a *north star* design approach and includes other examples with common technology components.
 
-We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas), define the critical user and system flows that use the  underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
+We recommend that you evaluate [**the key design areas**](/azure/well-architected/mission-critical/mission-critical-overview#mission-critical-design-areas), define the critical user and system flows that use the underlying components, and develop a matrix of Azure resources and their configuration while keeping in mind the following characteristics.
 
 |Characteristic|Considerations|
 |---|---|
@@ -32,45 +32,46 @@ For information on Microsoft-recommended tags, see [Label mission-critical workl
 
 ### Global resources
 
-Certain resources are globally shared by resources deployed within each region. Common examples are resources that are used to distribute traffic across multiple regions, store permanent state for the whole application, and monitor resources for them.
+Certain resources are globally shared by resources deployed within each region. Common examples are resources that are used to [distribute traffic across multiple regions](../service-guides/azure-front-door.md), [store permanent state for the whole application](../service-guides/cosmos-db.md), and [monitor resources at the global level](../service-guides/azure-log-analytics.md).
 
 |Characteristic|Considerations|
 |---|---|
-|Lifetime|These resources are expected to be long living (non-ephemeral). Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
-|State| Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
-|Reach|The resources should be globally distributed and replicated to the regions that host those resources. It’s recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
+|Lifetime|These resources are expected to be long-lived. Their lifetime spans the life of the system or longer. Often the resources are managed with in-place data and control plane updates, assuming they support zero-downtime update operations.|
+|State|Because these resources exist for at least the lifetime of the system, this layer is often responsible for storing global, geo-replicated state.|
+|Reach|The resources should be globally distributed and replicated to the regions that host those resources. It's recommended that these resources communicate with regional or other resources with low latency and the desired consistency.|
 |Dependencies|The resources should avoid dependencies on regional resources because their unavailability can be a cause for global failure. For example, certificates or secrets kept in a single vault could have global impact if there's a regional failure where the vault is located.|
 |Scale limits|Often these resources are singleton instances in the system, and they should be able to scale such that they can handle throughput of the system as a whole.|
 |Availability/disaster recovery|Regional and stamp resources can use global resources. It's critical that global resources are configured with high availability and disaster recovery for the health of the whole system.|
 
 ### Regional stamp resources
 
-The stamp contains the application and resources that participate in completing business transactions. A stamp typically corresponds to a deployment to an Azure region. Although a region can have more than one stamp.
+The stamp contains the application and resources that participate in completing business transactions. A stamp typically corresponds to a deployment to an Azure region. A region can have more than one stamp.
 
 |Characteristic|Considerations|
 |---|---|
-|Lifetime|The resources are expected to have a short life span (ephemeral) with the intent that they can get added and removed dynamically while regional resources outside the stamp continue to persist. The ephemeral nature is needed to provide more resiliency, scale, and proximity to users. |
-|State| Because stamps are ephemeral and will be destroyed with each deployment, a stamp should be stateless as much as possible.|
-|Reach|Can communicate with regional and global resources. However, communication with other regions or other stamps should be avoided.|
-|Dependencies| The stamp resources must be independent. They're expected to have regional and global dependencies but shouldn't rely on components in other stamps in the same or other regions.  |
-|Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to estimate the high-level of demand caused by a failover to another stamp.|
-|Availability/disaster recovery|Because of the temporary nature of stamps, disaster recovery is done by redeploying the stamp. If resources are in an unhealthy state, the stamp, as a whole, can be destroyed and redeployed.
+|Lifetime|The resources should be replaceable and have a shorter lifecycle than regional or global resources. They can be added and removed dynamically while regional resources outside the stamp continue to persist.|
+|State|Avoid storing long-lived state in a stamp. A stamp should be stateless as much as possible.|
+|Reach|Stamp resources can communicate with regional and global resources. Avoid communication with other regions or other stamps.|
+|Dependencies|The stamp resources must be independent. They're expected to have regional and global dependencies but shouldn't rely on components in other stamps in the same or other regions.|
+|Scale limits|Throughput is established through testing. The throughput of the overall stamp is limited to the least performant resource. Stamp throughput needs to account for failover demand from another stamp.|
+|Availability/disaster recovery|Because stamps are replaceable, recovery can use redeployment when the affected resources don't contain long-lived state.|
 
 ### Regional resources
 
-A system can have resources that are deployed in region but outlive the stamp resources. For example, observability resources that monitor resources at the regional level, including the stamps.
+A system can have resources that are deployed in a region but outlive the stamp resources. For example, [observability resources](../service-guides/application-insights.md) that monitor resources at the regional level, including the stamps.
 
-|Characteristic|Consideration|
+|Characteristic|Considerations|
 |---|---|
-|Lifetime|The resources share the lifetime of the region and out live the stamp resources.|
-|State| State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
-|Reach|The resources don't need to be globally distributed. Direct communication with other regions should be avoided at all cost. |
-|Dependencies| The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short lived. |
+|Lifetime|The resources share the lifetime of the region and outlive the stamp resources.|
+|State|State stored in a region can't live beyond the lifetime of the region. If state needs to be shared across regions, consider using a global data store.|
+|Reach|The resources don't need to be globally distributed. Direct communication with other regions should be minimized.|
+|Dependencies|The resources can have dependencies on global resources, but not on stamp resources because stamps are meant to be short-lived.|
 |Scale limits|Determine the scale limit of regional resources by combining all stamps within the region.|
+|Availability/disaster recovery|Plan recovery at the regional scope so a regional resource failure doesn't become a global failure.|
 
 ## Baseline architectures for mission-critical workloads
 
-These baseline examples serve as the recommended north star architecture for mission-critical applications. The baseline strongly recommends containerization and using a container orchestrator for the application platform. The baseline uses Azure Kubernetes Service (AKS).
+These baseline examples serve as a recommended north star architecture for mission-critical applications. They use containerization and [Azure Kubernetes Service (AKS)](../service-guides/azure-kubernetes-service.md). [Azure Container Apps](../service-guides/azure-container-apps.md) can also fit workloads that don't require direct Kubernetes API access.
 
 > Refer to [Well-Architected mission-critical workloads: Containerization](/azure/well-architected/mission-critical/mission-critical-application-platform#containerization).
 
@@ -102,7 +103,7 @@ These baseline examples serve as the recommended north star architecture for mis
                     <hr>
                 </div>
                 <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                    <p>This architecture builds on the baseline architecture. The design is extended to provide strict network controls to prevent unauthorized public access from the internet to the workload resources.</p>
+                    <p>This architecture builds on the baseline architecture. The design is extended to provide strict <a href="../service-guides/virtual-network.md">network controls</a> to prevent unauthorized public access from the internet to the workload resources.</p>
                 </div>
             </div>
         </article>
@@ -118,35 +119,16 @@ These baseline examples serve as the recommended north star architecture for mis
               <hr>
              </div>
              <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup where integration within a broader organization is required. The workload uses centralized shared services, needs on-premises connectivity, and integrates with other workloads within the enterprise. It's deployed in an Azure landing zone subscription that inherits from the Corp. management group.</p>
+                   <p>This architecture is appropriate if you're deploying the workload in an enterprise setup where integration within a broader organization is required. The workload uses centralized shared services, needs <a href="../service-guides/azure-expressroute.md">on-premises connectivity</a>, and integrates with other workloads within the enterprise. It's deployed in an <a href="/azure/architecture/landing-zones/landing-zone-deploy#application-landing-zone-architectures">application landing zone subscription</a>.</p>
              </div>
           </div>
        </article>
     </li>
-  <li class="column is-one-third has-padding-top-small-mobile has-padding-bottom-small">
-    <article class="card has-outline-hover is-relative is-fullheight">
-        <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-           <a class="is-undecorated is-full-height is-block"
-             href="/azure/architecture/guide/networking/global-web-applications/mission-critical-app-service">
-             <img role="presentation" alt="App Services baseline architecture diagram." src="./images/app-service-architecture.png">
-            </a>
-        </figure>
-        <div class="card-content has-text-overflow-ellipsis">
-            <div class="is-size-7 has-margin-top-none has-margin-bottom-none has-text-primary">
-              Baseline with App Services
-              <hr>                      
-            </div>
-            <div class="is-size-7 has-margin-top-small has-line-height-reset">
-                <p>This architecture extends the baseline reference by considering App Services as the primary application hosting technology, providing an easy to use environment for container deployments.</p>
-            </div>
-        </div>
-    </article>
-</li>
-</ul>
+ </ul>
 
 ## Design areas
 
-We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/well-architected/mission-critical/mission-critical-overview#what-are-the-key-design-areas)
+We recommend that you use the provided design guidance to navigate the key design decisions to reach an optimal solution. For information, see [What are the key design areas?](/azure/well-architected/mission-critical/mission-critical-overview#mission-critical-design-areas)
 
 ## Next step
 

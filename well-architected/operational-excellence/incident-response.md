@@ -121,6 +121,8 @@ Continuously feeding lessons back into the system reduces the chances of repeat 
 
 Incorporate automation throughout the incident response workflow to reduce manual effort and accelerate response. Use tools such as Azure Batch, Runbooks, Functions, and Logic Apps to **automate detection, containment, alerting, and communication**, as much as practical. Maintain a library of scripts and infrastructure-as-code (IaC) templates for recovery, validation, troubleshooting, and root cause analysis. Ensure these automations are documented and accessible so teams can reliably execute them during incidents. The more you automate, more consistent your response will be.
 
+[Azure SRE Agent](https://aka.ms/sreagent/ga) is an AI-powered operations agent that accelerates incident diagnosis and automates routine responses. It supports configurable autonomy levels, from advisory mode to automated response within defined guardrails. Start with advisory mode and progressively enable automation as trust builds. For high-severity scenarios, implement approval workflows and guardrails to control automated actions.
+
 
 ## Azure facilitation
 
@@ -137,12 +139,12 @@ Use [connection monitor](/azure/network-watcher/connection-monitor-overview) in 
 
 Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze virtual network flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in traffic analytics allows teams to monitor live traffic behavior, receive alerts, and use timeline and topology views to quickly identify affected network segments and respond effectively.
 
-Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Azure AI Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
+Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Microsoft Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
 
 ## Related links
 
 - [Recommendations for designing and creating an observability framework](observability.md)
-- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring-alerting-strategy.md)
+- [Recommendations for designing a reliable monitoring and alerting strategy](../reliability/monitoring.md)
 - [Recommendations for self-healing and self-preservation](../reliability/self-preservation.md)
 
 ## Operational Excellence checklist  
@@ -151,3 +153,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"] 
 > [Operational Excellence checklist](checklist.md) 
+
+<!-- Updated: 2026-03-21 for Azure Update 558321 -->
