@@ -5,7 +5,6 @@ author: calcof
 ms.author: calcof
 ms.date: 04/12/2024
 ms.topic: concept-article
-ms.subservice: waf-design-guide
 ms.update-cycle: 1095-days  
 ---
 

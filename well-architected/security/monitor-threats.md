@@ -198,6 +198,8 @@ Review all logs, including raw traffic, from your network devices.
 
 - Use AI-powered security capabilities to improve threat detection. [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/overview) provides AI-powered threat analysis and response capabilities for Web Application Firewall events from both Azure Front Door and Azure Application Gateway. [Azure Firewall also integrates with Security Copilot](/azure/firewall/firewall-copilot) to investigate malicious traffic intercepted by the intrusion detection and prevention system (IDPS) feature.|
 
+- Use the [native Microsoft Sentinel connector for virtual network flow logs](https://aka.ms/TrafficAnalytics-with-Sentinel) to export network telemetry directly into your SIEM. This integration brings flow data into the same analytics plane as identity and endpoint signals, which reduces blind spots and improves correlation during threat investigations. Govern log volume and retention costs as part of the rollout plan, and keep SOC detection rules aligned with the new data source.
+
 ### Identity
 
 Monitor identity-related risk events on potentially compromised identities and remediate those risks. Review the reported risk events in these ways:
@@ -238,3 +240,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Security checklist](checklist.md)
+
+<!-- Updated: 2026-06-04 for Azure Update 564689 -->

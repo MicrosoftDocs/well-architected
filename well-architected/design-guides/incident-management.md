@@ -5,7 +5,6 @@ author: PageWriter-MSFT
 ms.author: prwilk 
 ms.date: 11/18/2025
 ms.topic: concept-article
-ms.subservice: waf-design-guide
 ms.update-cycle: 1095-days  
 ---
 

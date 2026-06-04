@@ -107,6 +107,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >     Use an appropriate Domain Name System (DNS) server for back-end pool resources. When the back-end pool contains a resolvable fully qualified domain name (FQDN), the DNS resolution is based on a private DNS zone or custom DNS server (if configured on the virtual network), or it uses the default Azure-provided DNS.
 > - **Monitor anomalous activity.** Regularly review logs to check for attacks and false positives. Send [WAF logs from Application Gateway](/azure/web-application-firewall/ag/application-gateway-waf-metrics) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. Where possible, use capabilities that perform threat analysis with AI-powered security capabilities. For example, [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/waf-copilot) can expedite threat identification by summarizing contextual insights and threat mitigation suggestions.
+> - **Automate mTLS for service mesh ingress.** If your workload uses a service mesh like Istio, use [Application Gateway for Containers with Istio integration](https://aka.ms/agc/istio) to automate mTLS connectivity, certificate rotation, and trust between the ingress layer and mesh-enabled services. This integration simplifies secure north-south communication and reduces manual certificate management. Plan mesh integration, certificate trust boundaries, and gateway operations before deployment, and monitor the platform coupling that the integrated model introduces.
 
 ### Configuration recommendations
 
@@ -237,3 +238,4 @@ Foundational architecture that demonstrates the key recommendations: [Baseline h
 
 <!-- Updated: August 17, 2025 for Azure Update 497160, 497428, 493296, 498568, 496536, -->
 <!-- Updated: September 22, 2025 for Azure Update 501017, 500991 -->
+<!-- Updated: 2026-06-04 for Azure Update 564714 -->
