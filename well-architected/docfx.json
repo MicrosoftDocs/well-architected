@@ -72,6 +72,7 @@
         "azure-virtual-desktop/**/*.*": "waf-workload-azure-virtual-desktop",
         "sustainability/**/*.*": "waf-workload-sustainability",
         "service-guides/**/*.*": "waf-service-guide",
+        "design-guides/**/*.*": "waf-design-guide",
         "ai/**/*.*": "waf-workload-ai",
         "saas/**/*.*": "waf-workload-saas"
       },
