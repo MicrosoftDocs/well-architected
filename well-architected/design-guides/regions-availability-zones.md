@@ -5,6 +5,7 @@ author: johndowns
 ms.author: jodowns
 ms.date: 09/08/2025
 ms.topic: concept-article
+ms.subservice: waf-design-guide
 ms.update-cycle: 1095-days
 ---
 
