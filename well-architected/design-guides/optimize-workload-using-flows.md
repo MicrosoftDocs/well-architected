@@ -5,6 +5,7 @@ author: stephen-sumner
 ms.author: ssumner
 ms.date: 1/31/2024
 ms.topic: concept-article
+ms.subservice: waf-design-guide
 ms.update-cycle: 1095-days  
 ---
 

@@ -5,6 +5,7 @@ author: ckittel
 ms.author: chkittel
 ms.date: 08/13/2025
 ms.topic: concept-article
+ms.subservice: waf-design-guide
 ms.update-cycle: 1095-days
 ---
 
