@@ -11,49 +11,49 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:**
 
-|**OE:01**| Align team members' specializations to clear practices for designing, deploying, and operating the workload, ensuring accountability, continuous improvement, and a blameless culture that supports learning.|
+|**OE:01**| Align team members' specializations to clear practices for designing, deploying, and operating the workload. Establish accountability and create a culture that promotes continuous improvement and a blameless culture that supports learning.|
 |---|---|
 
 Operating a workload with a DevOps mindset requires more than tools and processes. There are two core components. The first is culture: shared ownership, accountability, continuous learning, and a focus on quality. The second is execution: teams must be able to run their workloads day to day, respond to incidents and changes, and collaborate with other teams while meeting organizational requirements.
 
-This guide provides recommendations for adopting DevOps practices that enable teams to operate with shared ownership, mutual respect, and deliver business impact.
+This guide provides recommendations for adopting DevOps practices that enable teams to operate with shared ownership and mutual respect and deliver business impact.
 
 ## Foster mutual respect
 
-Teams should operate with a shared code of ethics grounded in mutual respect. Every team member brings valuable expertise, and recognizing this establishes a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that their input will be treated with respect.
+Teams should operate with a shared code of ethics that's grounded in mutual respect. Every team member brings valuable expertise, and recognizing that value creates a safe environment for open discussion. Team members should feel comfortable offering honest perspectives on workload operations and trust that others will treat their input with respect.
 
-Mutual respect enables a blameless culture. When issues arise, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
+Mutual respect enables a blameless culture. When problems occur, the team focuses on shared ownership and improvement rather than blame, preserving trust and strengthening long-term cohesion.
 
 ## Establish clear roles and responsibilities
 
-The workload team owns the operation end-to-end. Even when outside teams provide support, the team has shared responsibility for coordinating and ensuring all functions succeed. Every aspect that affects the workload is part of the team's responsibility, reinforcing a shared sense of ownership.
+The workload team owns the operation end to end. Even when outside teams provide support, the team shares responsibility for coordinating efforts and ensuring that all functions succeed. Every aspect of the operation that affects the workload is part of the team's responsibility. This approach reinforces a shared sense of ownership.
 
 Define roles and decision-making authority. Decisions should be made efficiently, with input from the team. 
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to step outside their usual responsibilities. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Strictly defined roles can sometimes feel limiting, especially when team members are asked to take on responsibilities that are outside their usual scope. Encourage open, honest conversations about team structure and be flexible in adjusting roles to support both the team's needs and individual growth.
 
-When disagreements arise, a designated person must make the final call based on the evidence. Team members should feel heard and respected, even if they do not agree with the outcome.
+When disagreements occur, a designated person must make final resolutions based on evidence. Team members should feel heard and respected, even if they don't agree with the outcome.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. Based on the work being done, AI can identify responsibilities and route questions to the right people, reducing manual work and delays. Tools like Copilot can leverage existing infrastructure with moderate effort and low maintenance, while maintaining secure access to all project artifacts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** AI can clarify various roles and speed up decision making and work assignments. Agents can analyze data from backlog systems, shared documents, tickets, team chats, and development tools. AI can identify responsibilities and route questions to the right people, based on the work that's being done, to reduce manual work and delays. Tools like Copilot can take advantage of existing infrastructure with moderate effort and low maintenance, and it maintains secure access to all project artifacts while doing so.
 
 
 ## Commit to continuous learning
 
-Leverage enablement teams to strengthen your team's skills. Platform teams, architecture review boards, and similar groups provide standards and guidance for consistency. Ensure your workload team communicates openly with them, collaborates on process improvements, and shares knowledge.
+Use enablement teams to strengthen your team's skills. Platform teams, architecture review boards, and similar groups provide standards and guidance for consistency. Ensure that your workload team communicates openly with these teams, collaborates on process improvements, and shares knowledge.
 
-Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so they can support each other and understand the workload end-to-end. This builds collaboration, knowledge sharing, and overall team capability.
+Develop a cross-functional team. Encourage members to specialize in their areas while maintaining general knowledge of other functions so that they can support each other and understand the workload from end to end. This cross-functional approach builds collaboration, knowledge sharing, and overall team capability.
 
 ## Dedicate efforts towards continuous optimization
 
-Understand the business, regulatory, and regional requirements that apply to your workload. Ensure the team knows these rules and the consequences of non-compliance.
+Understand the business, regulatory, and regional requirements that apply to your workload. Ensure that the team knows these rules and the consequences of noncompliance.
 
-Integrate compliance into your practices. Use testing and governance mechanisms to verify that all required functions are met, treating organizational standards as guardrails for safe and proper operation.
+Integrate compliance into your practices. Use testing and governance mechanisms to verify that all required functions are met. Treat organizational standards as guardrails for safe and proper operation.
 
 Continuously review and improve procedures. Regularly examine standard operating procedures with the team, encourage feedback, and identify areas for improvement. Foster a culture where team members can propose changes at any time, but dedicate structured time for focused discussions.
 
 Enable safe experimentation. Provide sandbox environments and time in sprints for experimentation. Document standards for integrating new functionality, ensuring it aligns with [safe deployment practices](safe-deployments.md) and delivers tangible benefits.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Small, repetitive, and error-prone steps across DevOps processes can combine to create major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can assist in implementing targeted automations. Solutions that leverage interactive AI assitants like Copilot, once integrated with the right data sources, require low effort, minimal maintenance, and can deliver high cumulative ROI.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Small, repetitive, and error-prone steps across DevOps processes can combine to cause major slowdowns. AI tools like Copilot or custom agents can analyze relevant process data to identify bottlenecks. Tools like Copilot Studio, GitHub Copilot, Claude Code, or custom agents can help implement targeted automations. Solutions that take advantage of interactive AI assistants like Copilot, when they're integrated with the right data sources, require low effort and minimal maintenance and can deliver high cumulative ROI.
 
 ## Azure facilitation
 
