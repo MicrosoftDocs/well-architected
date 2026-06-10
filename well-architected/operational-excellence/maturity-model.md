@@ -115,7 +115,7 @@ Integrate generated artifacts into the standard developer life cycle. This cycle
 
 ##### Examples
 
-- [OE:02 Standardize operations](./formalize-operations-tasks.md#document-standards-and-treat-it-as-a-living-asset). Generate code and document artifacts that adhere to organization standards, and keep standards documentation updated as assets evolve. 
+- [OE:02 Standardize operations](./formalize-operations-tasks.md#document-standards-and-treat-documentation-as-a-living-asset). Generate code and document artifacts that adhere to organization standards, and keep standards documentation updated as assets evolve. 
 - [OE:07 Design a monitoring system](./observability.md#analyze-and-visualize-to-support-actionable-decisions). Generate integrated dashboard configurations that align engineering metrics with business outcomes by automatically selecting the right metrics across sources.
 - [OE:10 Automation design](./enable-automation.md#automate-bootstrapping). Autonomously monitor production environments for configuration drift, infer the intended state, and update bootstrapping definitions to keep systems aligned over time. 
 
