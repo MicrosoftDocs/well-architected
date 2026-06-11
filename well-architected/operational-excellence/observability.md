@@ -1,5 +1,5 @@
 ---
-title: Architecture strategies for designing a monitoring system
+title: Architecture Strategies for Designing a Monitoring System
 description: Learn the recommendations for designing and creating an observability system. The system provides a foundation for monitoring, detection, and alerting.
 author: claytonsiemens77
 ms.author: csiemens
@@ -11,12 +11,12 @@ ms.topic: concept-article
 
 **Applies to this Azure Well-Architected Framework Operational Excellence checklist recommendation:** 
 
-|**OE:07**| Design a monitoring stack that captures operational telemetry, metrics, and logs from both the workload's infrastructure and code to validate design decisions and guide future improvements.
+|**OE:07**| Design a monitoring stack that captures operational telemetry, metrics, and logs from the workload's infrastructure and code to validate design decisions and guide future improvements.
 |---|---| 
 
-Observability or monitoring is a key operational practice that provides the workload team the ability to understand the internal state of a system based on the external data it produces. Unlike the functional stack, which implements business logic and core features, the monitoring stack runs in parallel. It collects and analyzes metrics, logs, traces, and events that show how workloads behave in real conditions.
+Observability, or monitoring, is a key operational practice that gives the workload team the ability to understand the internal state of a system based on the external data it produces. Unlike the functional stack, which implements business logic and core features, the monitoring stack runs in parallel. It collects and analyzes metrics, logs, traces, and events that show how workloads behave under real conditions.
 
-Designing the monitoring stack requires careful planning because it provides visibility into cross-cutting concerns such as reliability, performance, security, and cost. A well-architected monitoring stack enables early issue detection, effective incident response, and informed operational decisions. It forms the foundation for proactive management and continuous improvement.
+Designing the monitoring stack requires careful planning because it provides visibility into cross-cutting concerns like reliability, performance, security, and cost. A well-architected monitoring stack enables early issue detection, effective incident response, and informed operational decisions. It forms the foundation for proactive management and continuous improvement.
 
 This guide describes key strategies for designing a monitoring stack that supports monitoring, detection, and alerting functions. For  implementation guidance, including stepwise processes and playbooks, see the companion article: [Build a monitoring system for Azure workloads](../design-guides/monitoring.md).
 
@@ -25,24 +25,24 @@ This guide describes key strategies for designing a monitoring stack that suppor
 
 | Term | Definition |
 |---|---|
-| **Telemetry** | Collective term for logs, metrics, traces, and events. Telemetry provides the foundation for observability. |
-| **Logs** | Recorded system events that capture what happened in the system. Logs can be structured or free-form text with timestamps. They are useful for detecting and investigating anomalies. |
+| **Telemetry** | A collective term for logs, metrics, traces, and events. Telemetry provides the foundation for observability. |
+| **Logs** | Recorded system events that capture what happened in the system. Logs can be structured or free-form text with timestamps. They're useful for detecting and investigating anomalies. |
 | **Metrics** | Numerical values collected at regular intervals that describe system performance. Metrics help identify trends in workload performance and reliability. |
-| **Observability** |Observability helps teams detect issues, track performance trends, and make operational decisions. |
-| **Correlation IDs** | Unique identifiers that track related events across multiple components, enabling end-to-end tracing of transactions in distributed systems. |
-| **Instrumentation** | Adding monitoring capabilities to applications and infrastructure to capture telemetry. This includes logging, metrics collection, and tracing. |
-| **Health model** | A framework for measuring workload health using indicators, KPIs, and metrics that reflect business and operational objectives. |
-| **KPIs (Key Performance Indicators)** | Measurable values showing how effectively a workload achieves business and operational objectives. KPIs guide telemetry collection and analysis. |
-| **APM (Application Performance Management)** | Tools and practices for monitoring application performance, availability, and user experience. APM tools provide real-time and historical visibility into important metrics. |
-| **Traces** | Records showing the path of requests through distributed systems. Traces help diagnose issues that span multiple services. |
+| **Observability** |A practice that helps teams detect issues, track performance trends, and make operational decisions. |
+| **Correlation IDs** | Unique identifiers that track related events across multiple components to enable end-to-end tracing of transactions in distributed systems. |
+| **Instrumentation** | Adding monitoring capabilities to applications and infrastructure to capture telemetry. Captured telemetry includes logging, metrics collection, and tracing. |
+| **Health model** | A framework for measuring workload health by using indicators, KPIs, and metrics that reflect business and operational objectives. |
+| **Key performance indicators (KPIs)** | Measurable values that show how effectively a workload achieves business and operational objectives. KPIs guide telemetry collection and analysis. |
+| **Application performance management (APM)** | Tools and practices for monitoring application performance, availability, and user experience. APM tools provide real-time and historical visibility into important metrics. |
+| **Traces** | Records that show the paths of requests through distributed systems. Traces help diagnose problems that span multiple services. |
 
 ## Align telemetry with health and KPI models
 
-Define workload health indicators, KPIs, and performance metrics so that telemetry collection strategies reflect these targets. Those indicators are then tracked to detect anomalies to make decisions on corrective action.
+Define workload health indicators, KPIs, and performance metrics so that telemetry collection strategies reflect these targets. Track these indicators to detect anomalies so that you can make decisions on corrective action.
 
-Tie telemetry to system and user flows, and model those flows as entities in your health model. This connects application-level health to resource-level signals and overall workload health, so degradation in a dependency surfaces at the level where business impact is visible.
+Tie telemetry to system and user flows, and model those flows as entities in your health model. This approach connects application-level health to resource-level signals and overall workload health, so degradation in a dependency surfaces at the level where business impact is visible.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Teams spend time manually defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure-as-code templates. Make sure there's human oversight to ensure AI-driven observability stays accurate and aligned with standards.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Teams spend time manually defining KPIs and telemetry. AI-assisted tools can suggest commonly used telemetry based on architecture, service dependencies, and code. Tools like GitHub Copilot or Claude Code can also help add instrumentation and generate queries or infrastructure as code (IaC) templates. Include human oversight to ensure that AI-driven observability stays accurate and aligned with standards.
 
 ## Emit telemetry from workload components
 
@@ -65,36 +65,37 @@ Treat instrumentation as an iterative discipline. Regularly review and refine te
 
 ## Collect telemetry across the workload
 
-There are two fundamental models for collection. In a pull model, telemetry is collected as a querying component, while push telemetry is emitted by components sending data outward. Choose a model based on factors that are applicable to your workload. For instance, are periodic snapshots sufficient, or near real-time data is needed? What's the expected telemetry volume, What's the data type: state-based or logs, events, and traces.
+Telemetry systems use two fundamental collection models. In a pull model, a component collects telemetry by querying a target system. In a push model, components emit telemetry as they send data outward. Choose a model based on factors that apply to your workload. For instance, are periodic snapshots sufficient, or do you need near real-time data? What's the expected telemetry volume? What's the data type: state-based or logs, events, and traces?
 
-It's common to use a combination approach. For example, monitoring agents can use a pull model, running locally alongside each application instance to periodically collect data and write it to shared storage. At the same time, a push model can be used for application telemetry, where each instance emits logs, traces, and metrics to a message queue or eventstream as events occur.
+It's common to use a combined approach. For example, monitoring agents can use a pull model, running locally alongside each application instance to periodically collect data and write it to shared storage. At the same time, you can use a push model for application telemetry, where each instance emits logs, traces, and metrics to a message queue or eventstream as events occur.
 
-Prioritize data transfer based on importance. Less urgent data can be transferred in batches, while time-sensitive information should be sent immediately.
+Prioritize data transfer based on importance. Less urgent data can be transferred in batches, but time-sensitive information should be sent immediately.
 
 ## Standardize data consolidation
 
-Move telemetry out of local silos and consolidate it into a central repository, if that's mandated by the organization. For multi-region solutions, collect and store data regionally first, then aggregate it centrally. However for mission-critical workloads, autonomous storage of data is recommended. 
+Move telemetry out of local silos and consolidate it into a central repository, if that's mandated by the organization. For multiregion solutions, collect and store data regionally first, and then aggregate it centrally. However, for business-critical workloads, we recommend autonomous storage of data. 
 
-Use consistent formats and collection methods so data is accessible for analysis, dashboards, alerting, and reporting. Avoid manual retrieval from components, as it adds overhead and inconsistencies.
+Use consistent formats and collection methods so that data can be accessed for analysis, dashboards, alerting, and reporting. Avoid manual retrieval from components, because it adds overhead and inconsistencies.
 
 Use data consolidation services to:
+
 - Deduplicate data.
-- Merge related events using correlation IDs.
+- Merge related events by using correlation IDs.
 - Filter unnecessary information.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk**: Be aware that there are cost implications to having regional and centralized data stores.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** Be aware that there are cost implications to having regional and centralized data stores.
 
 ## Tailor storage and retention for usage patterns
 
-Select storage solutions primarily based on query needs and access patterns. For instance, dta that generates alerts must be accessed quickly, so it should be held in fast data storage and indexed or structured to optimize the queries 
+Select storage solutions primarily based on query needs and access patterns. For instance, data that generates alerts must be accessed quickly, so it should be held in fast data storage and indexed or structured to optimize the queries. 
 
-Use polyglot persistence to store different data types in technologies suited for their use:
+Use polyglot persistence to store different data types in technologies that are suited for their use:
 
-- SQL databases for performance counters.
-- Azure Monitor Logs or Azure Data Explorer for trace logs.
-- HDFS for security information.
+- SQL databases for performance counters
+- Azure Monitor logs or Azure Data Explorer for trace logs
+- Hadoop Distributed File System (HDFS) for security information
 
-Also, separate data storage by environment. This prevents non-critical environment data from complicating production monitoring.
+Also, separate data storage by environment. This separation prevents noncritical environment data from complicating production monitoring.
 
 Plan retention based on how you'll use the data. Keep high-resolution data for short-term analysis and debugging, and retain lower-resolution aggregates for long-term trends. Move older or infrequently accessed data to cheaper storage, and keep recent data in faster systems for quick analysis. This balances performance with cost. Set retention periods to match operational needs and compliance requirements so data is available when needed without unnecessary storage overhead.
 
@@ -102,47 +103,47 @@ Treat monitoring data like any other critical data. Apply appropriate protection
 
 ## Correlate data for end-to-end insights
 
-Design observability to connect telemetry from metrics, logs, and traces across all components. This enables distributed tracing of operations across services, helping diagnose issues that span multiple tiers.
+Design observability to connect telemetry from metrics, logs, and traces across all components. This design enables distributed tracing of operations across services, which helps you diagnose problems that span multiple tiers.
 
 Use correlation IDs consistently to track transactions through presentation, middle, and data tiers.
 
-Aggregate application-level and resource-level logs to improve troubleshooting and detect issues quickly. Consider a unified solution, like Azure Log Analytics, to query and analyze data across levels.
+Aggregate application-level and resource-level logs to improve troubleshooting and speed up issue detection. Consider a unified solution, like Azure Log Analytics, to query and analyze data across levels.
 
-Align telemetry with system and user flows to correlate flow health with overall workload health. Understanding these flows ensures your observability strategy reflects both component-level and end-to-end system behavior.
+Align telemetry with system and user flows to correlate flow health with overall workload health. Understanding these flows helps you ensure that your observability strategy reflects both component-level and end-to-end system behavior.
 
 ## Analyze and visualize to support actionable decisions
 
-Design dashboards and reports around operational health models. Visualizations should allow teams to quickly identify issues, understand trends, and prioritize responses.
+Design dashboards and reports around operational health models. Visualizations should allow teams to quickly identify problems, understand trends, and prioritize responses.
 
 A health model provides the semantic layer between telemetry and operational decisions. Instead of metric-based dashboards, visualize health states which drill-down from workload-level health to individual resources. Take advantage of Azure Monitor health models to get built-in visualizations of health state across the entity hierarchy and API access for integrating health data into tools like Grafana.
 
-Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure dashboards are meaningful and actionable. Parameterized dashboards allow analysts to explore underlying data.
+Use proven monitoring patterns and architectures rather than custom implementations or ad hoc solutions. Ensure that dashboards are meaningful and actionable. Analysts can use parameterized dashboards to explore underlying data.
 
 For database workloads, evaluate built-in monitoring dashboards that cloud services provide. For example, Azure Database for PostgreSQL offers [built-in Grafana dashboards](https://aka.ms/azure-postgres-dashboards-grafana) in the Azure portal through Azure Monitor integration. These dashboards show CPU usage, storage, active connections, and query throughput with log correlation, reducing the need for separate monitoring deployments.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Dashboards often focus on either business or engineering metrics. AI can analyze data from all relevant sources and help design integrated dashboards with the right configurations and visualization. This reduces manual effort and surfaces insights that might otherwise be overlooked.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Dashboards often focus on either business or engineering metrics. AI can analyze data from all relevant sources and help you design integrated dashboards with the right configurations and visualization. This design reduces manual effort and surfaces insights that might otherwise be overlooked.
 
 ## Define alerts around meaningful operational conditions
 
-Set alerts based on workload health, not arbitrary values. Alerts should be actionable and provide context. Establish a clear, accountable alerting process that defines owners, actions, and scope, and configure alerts with appropriate granularity and verbosity to minimize noise while ensuring critical issues are promptly detected.
+Set alerts based on workload health, not arbitrary values. Alerts should be actionable and provide context. Establish a clear, accountable alerting process that defines owners, actions, and scope. Configure alerts with appropriate granularity and verbosity to minimize noise while ensuring that critical problems are promptly detected.
 
 Use a health model that aggregates multiple correlated signals into health states, then alert on state transitions, not isolated metric thresholds.
 
-Validate thresholds using past experience and regular testing. Use fast storage for alert-generating data to enable rapid notification. Configure alerts for well-defined scopes and adjust verbosity to minimize noise.
+Validate thresholds based on past experience and regular testing. Use fast storage for alert-generating data to enable rapid notification. Configure alerts for well-defined scopes and adjust verbosity to minimize noise.
 
 Automate alerting and link alerts to ticketing systems. Monitor cloud platform service health, outages, maintenance, and advisories.
 
 AI-powered operations tools such as [Azure SRE Agent](https://aka.ms/sreagent/ga) can analyze alert patterns and diagnose common issues like pod crash loops or elevated error rates. These tools support configurable autonomy, starting with recommended actions and progressively enabling automated responses within defined guardrails.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**:  AI can be used to dynamically define "healthy" system behavior by learning patterns across business contexts like peak traffic, promotions, quiet periods, and regional variations. AI can then analyze metrics, logs, and incident data to predict issues and recommend thresholds. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** You can use AI to dynamically define "healthy" system behavior. Use AI to learn patterns across business contexts like peak traffic, promotions, quiet periods, and regional variations. AI can then analyze metrics, logs, and incident data to predict problems and recommend thresholds.
 
 ## Design scalable, durable telemetry pipelines
 
 Observability systems must handle high scale without bottlenecks or data loss. Include buffering, queuing, and scalable ingestion paths to maintain telemetry flow under load.
 
-Use queuing mechanisms for high-scale environments to handle spikes. Implement redundancy to prevent losing important data. Plan for scaling during design to ensure monitoring systems grow with workload demands.
+Use queuing mechanisms for high-scale environments to handle spikes. Implement redundancy to prevent losing important data. Plan for scaling during design to ensure that monitoring systems grow with workload demands.
 
-For complex workloads, use message queues with "at least once" semantics. Run multiple storage-writing services to handle high volumes. Consider Event Hubs to distribute telemetry processing and prevent single-point I/O bottlenecks.
+For complex workloads, use message queues with *at-least-once* semantics. Run multiple storage-writing services to handle high volumes. Consider using Azure Event Hubs to distribute telemetry processing and prevent single-point I/O bottlenecks.
 
 ## Use observability to support continuous improvement
 

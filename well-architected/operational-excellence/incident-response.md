@@ -52,7 +52,7 @@ The plan must also include the **core procedures** the team will follow during d
 
 Plan for enough resources to operate at least two workload configurations simultaneously when fallback is needed to avoid service disruption. Workload teams should be prepared to support both configurations in production when required. This may involve refactoring workloads, such as decoupling components or updating data models.
 
-From a human resourcing perspective, the team needs to balance their regular responsibilities with incident response work. There may be a need to increase headcount or engage external resources. Those can be platform support from Azure, third-party vendors, or central IT teams, who specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
+From a human resourcing perspective, the team needs to balance its regular responsibilities with incident response work. You might need to increase headcount or use external resources. Those resources can be platform support from Azure, external vendors, or central IT teams, which specialize in incident management and have active support contracts in place. The incident response plan should clearly document what each party covers, exclusions, escalation procedures, and expected response times.
 
 > [!NOTE]
 > Work with your organization to prepare those support contracts in advance so that they are readily available during an incident.
@@ -61,7 +61,7 @@ Even with those external dependencies, expect some team members to work directly
 
 Keep contact information for internal and vendor personnel up to date. Establish secure and simple procedures for authenticating and authorizing external or guest access with appropriate permissions for logs and production environments.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: Before transitioning support to external vendors, AI can role-play as a vendor team using only the documentation, playbooks, health models, and escalation paths the vendor has provided. It tests historical incidents to reveal gaps, such as missing knowledge of systems or misconfigured thresholds, or reliance on tribal knowledge. This allows teams to fix gaps proactively, ensuring smooth handoffs.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** Before you transition support to external vendors, AI can role-play as a vendor team using only the documentation, playbooks, health models, and escalation paths the vendor has provided. AI can test historical incidents to reveal gaps, such as missing knowledge of systems, misconfigured thresholds, or reliance on tribal knowledge. This tactic allows teams to fix gaps proactively to ensure smooth handoffs.
 
 ## Build containment and isolation in the architecture
 
@@ -73,7 +73,7 @@ Achieve this through techniques such as segmentation of resources, decoupling co
 
 A strong incident response plan depends on a well-designed monitoring stack. Capabilities such as **structured logging, targeted dashboards, and actionable alerts** help teams respond quickly, minimize noise, and avoid alert fatigue.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** An overly aggressive response or automation strategy such as triggering alerts, escalations, or automatic scaling too frequently can result in false alarms, unnecessary operational disruptions, increased costs due to poorly defined thresholds.
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** An overly aggressive response or automation strategy, such as triggering alerts, escalations, or automatic scaling too frequently, can result in false alarms, unnecessary operational disruptions, and increased costs due to poorly defined thresholds.
 >
 > Mitigate that risk by conducting thorough testing in lower environments and controlled production scenarios to refine alert and scaling thresholds.
 
@@ -81,7 +81,7 @@ Effective monitoring has two key dimensions. First, the response process should 
 
 The key business **workflows should be traceable end-to-end** so incidents can be reconstructed accurately. For example, in an order-processing system, teams should be able to trace when an order was received, when payment authorization was attempted, and where the failure occurred. Design components to facilitate debugging with configurable log verbosity, memory dumps, and secure sharing of diagnostic data across environments. These capabilities provide the visibility and context required for fast, effective incident response.
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's common that investigations have delayed start because of manual data gathering. AI can make incident response faster and easier by automatically collecting context, correlating data, and performing initial triage as soon as an alert fires. Instead of starting from scratch, engineers get a clear picture immediately, incidents are routed to the right experts, and safe, common fixes can be suggested or automated with guardrails. With enough testing, consider building a solution that provides automated initial response with all that correlated context. 
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** It's common for manual data gathering to delay the start of investigations. AI can make incident response faster and easier by automatically collecting context, correlating data, and performing initial triage as soon as an alert fires. Instead of starting from scratch, engineers get a clear picture immediately, incidents are routed to the right experts, and safe, common fixes can be suggested or automated, with guardrails. After thorough testing, consider building a solution that provides automated initial response with that correlated context.
 
 ## Facilitate with  diagnostic data and practices 
 
@@ -113,9 +113,9 @@ After each incident, conduct a thorough RCA to identify underlying causes and co
 
 Continuously feeding lessons back into the system reduces the chances of repeat incidents. Make sure to capture and classify actionable items in three areas: refinement of the incident response plan, enhancement in observability to detect similar issues earlier, and improvement of workload design. 
 
-> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity**: It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
+> :::image type="icon" source="../_images/ai.svg"::: **AI opportunity:** It's not uncommon for incident managers to manually review logs, tickets, and discussions to understand outages, identify root causes, and draft retrospective questions. This repetitive work can be time consuming and take focus away from recovery efforts.
 >
-> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, reducing manual effort. Implementing this capability requires integrating AI with ICM and SDLC tools. Evaluate tools like PowerAutomate and LogicApps to manage the workflows.
+> AI can improve efficiency by automatically generating analysis questions, summarizing incident context, and uncovering patterns across data sources. It can also analyze retrospective notes and past incident data to suggest prioritized backlog items, which reduces manual effort. To implement this capability, you need to integrate AI with IcM and SDLC tools. Evaluate tools like Power Automate and Azure Logic Apps for managing the workflows.
 
 ## Bring agility and consistency through automation 
 
@@ -139,7 +139,7 @@ Use [connection monitor](/azure/network-watcher/connection-monitor-overview) in 
 
 Use [traffic analytics](/azure/network-watcher/traffic-analytics) to analyze virtual network flow logs and surface insights such as blocked traffic, malicious flows, and exposed ports. Creating workbooks in traffic analytics allows teams to monitor live traffic behavior, receive alerts, and use timeline and topology views to quickly identify affected network segments and respond effectively.
 
-Using Microsoft's AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider Microsoft Foundry for AI model operations, Azure DevOps for backlog management, Power Automate or Logic Apps for automation. 
+By using Microsoft AI and DevOps tools, teams can automatically turn retrospective insights into actionable backlog items. Consider using Microsoft Foundry for AI model operations, Azure DevOps for backlog management, and Power Automate or Logic Apps for automation. 
 
 ## Related links
 
