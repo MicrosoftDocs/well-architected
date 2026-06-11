@@ -76,7 +76,7 @@ Another popular practice is building small reports or badges that can be present
 
 The following image shows the integration between GitHub and an Azure DevOps pipeline. In this example, the creation of a pull request triggers an Azure DevOps pipeline. The pipeline status appears in the pull request.
 
-![Screenshot of an Azure DevOps status badge in a GitHub repository.](_images/release-engineering-continuous-integration/azure-devops-github-status.png)
+![Screenshot of an Azure DevOps status badge in a GitHub repository.](images/release-engineering-continuous-integration/azure-devops-github-status.png)
 
 ## Incorporate automated tests
 
@@ -104,7 +104,7 @@ The following code snippet shows a test step from an Azure DevOps pipeline. The 
 
 The following image shows test results that appear in the Azure DevOps portal.
 
-![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](_images/release-engineering-continuous-integration/azure-devops-tests.png)
+![Screenshot of Azure DevOps pipeline tests in the Azure DevOps portal.](images/release-engineering-continuous-integration/azure-devops-tests.png)
 
 #### Failed tests
 
@@ -114,7 +114,7 @@ Failed tests should temporarily block a deployment and lead to a deeper analysis
 
 Many developers show that their code quality is high by displaying a status badge in their repository. The following image shows an Azure Pipelines badge displayed on the readme file for an open-source project in GitHub.
 
-![Screenshot of an Azure Pipelines badge on a readme file in GitHub.](_images/release-engineering-continuous-integration/github-status-badge.png)
+![Screenshot of an Azure Pipelines badge on a readme file in GitHub.](images/release-engineering-continuous-integration/github-status-badge.png)
 
 ## Optimize build times
 

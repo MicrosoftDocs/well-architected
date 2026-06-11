@@ -15,7 +15,7 @@ This article covers the targeted optimization of workloads using flows. Differen
 
 This workload optimization process is iterative and involves three key steps: (1) define the flow structure within your workload, (2) define technical requirements, and (3) design the flow to meet the requirements (*see figure 1*).
 
-:::image type="content" source="./_images/flow-design-process.svg" alt-text="Diagram that shows a three-step process with five actions. The first step is to define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to define the flow requirements. To define flow requirements, you need to establish technical targets. The third step is to design the flow. To design the flow, you need to follow flow design best practices and develop and test the flow. There's an arrow from the build and test action back to the first action (understand prerequisites) that indicates iterations of this process." lightbox="./_images/flow-design-process.svg" border="false"::: *Figure 1: The process to optimize workloads using flows.*
+:::image type="content" source="./images/flow-design-process.svg" alt-text="Diagram that shows a three-step process with five actions. The first step is to define the flow. To define the flow, you need to understand prerequisites and document the flow. The second step is to define the flow requirements. To define flow requirements, you need to establish technical targets. The third step is to design the flow. To design the flow, you need to follow flow design best practices and develop and test the flow. There's an arrow from the build and test action back to the first action (understand prerequisites) that indicates iterations of this process." lightbox="./images/flow-design-process.svg" border="false"::: *Figure 1: The process to optimize workloads using flows.*
 
 ## Terminology
 
@@ -42,7 +42,7 @@ Before you can define flow requirements, you need to understand the business dri
 
 Flows are sequences of actions that support workload functionality. There are two primary types of flows: user flows and system flows. User flows determine user interactions. System flows determine communication between workload components. Flows support business processes and use cases. A workload consists of multiple use cases. You need to identify the business process and use case the flow supports before documenting a flow (*see figure 2*).
 
-:::image type="content" source="./_images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./_images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
+:::image type="content" source="./images/business-workload-process.svg" alt-text="Diagram that shows two boxes, stacked on top of each other. The top box represents a business process with segments marked Stage 1, Stage 2, and Stage n, indicating a sequence of stages in the business process. From each stage, three vertical arrows point downward to a row of three squares representing different use cases. Each square is labeled with Use case, Use case 2, and Use case n respectively. Each square contains a unique flowchart with labeled flows Flow 1, Flow 2, and Flow n. The use cases are all part of a single workload. Each stage of the business process is linked to a specific workload use case and each use case has its own flow." lightbox="./images/business-workload-process.svg" border="false"::: *Figure 2: The relationship between business processes, use cases, flows, and workload.*
 
 #### Identify the business process
 
@@ -152,7 +152,7 @@ Repeat the process defined in this article throughout the lifecycle of the flow.
 
 Here are a few flow examples to help you design your flows. The examples use the [reliable web app pattern reference architecture](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/plan-implementation) as the basis and shows the documentation you should have on each flow.
 
-:::image type="content" source="./_images/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="./_images/relecloud-flow.png":::
+:::image type="content" source="./images/relecloud-flow.png" alt-text="Diagram that shows an example flow based on Relecloud." border="false" lightbox="./images/relecloud-flow.png":::
 
 ### User flow 1: Create upcoming concerts
 
