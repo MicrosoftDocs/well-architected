@@ -71,7 +71,7 @@ The outcome of health modeling is a *model* or a graphical representation of log
 > [!IMPORTANT]
 > *Health modeling* is an abstract concept that you can implement and apply at different scopes if you have a good understanding of the business scenarios.
 
-:::image type="content" source="./_images/health-model.png" alt-text="A diagram that shows the health model definition." lightbox="./_images/health-model.png":::
+:::image type="content" source="./images/health-model.png" alt-text="A diagram that shows the health model definition." lightbox="./images/health-model.png":::
 
 In the image: 
 
@@ -104,7 +104,7 @@ Health modeling was important in the preceding scenario in the following ways:
 
 Health models provide a distinct data schema optimized for observability use cases. This schema takes health modeling from an abstract concept to a measurable solution. By modeling your specific requirements, objectives, and architectural context, you can tailor health data to your unique scenario. 
 
-:::image type="content" source="./_images/health-state-definition.png" alt-text="A diagram that shows health state definition." lightbox="./_images/health-state-definition.png":::
+:::image type="content" source="./images/health-state-definition.png" alt-text="A diagram that shows health state definition." lightbox="./images/health-state-definition.png":::
 
 Health is a relative data concept. Each model represents health data that's unique and prioritized for its contextual scope, even if it uses the same set of entities. What constitutes *healthy* in a specific scenario might differ significantly in other contexts.
 
@@ -122,7 +122,7 @@ The health definitions for these machines are different. CPU utilization metrics
 
 The first step to build a health model is a logical design exercise, which typically involves the activities that are described in the following sections.
 
-:::image type="content" source="./_images/health-model-activities.png" alt-text="A diagram that shows health modeling activities." lightbox="./_images/health-model-activities.png":::
+:::image type="content" source="./images/health-model-activities.png" alt-text="A diagram that shows health modeling activities." lightbox="./images/health-model-activities.png":::
 
 ### Evaluate your workload design
 
@@ -227,7 +227,7 @@ When you visualize your health model, consider adopting a *traffic light* approa
 
 Assign green for healthy, amber for degraded, and red for unhealthy. By quickly identifying the color-coded states, you can efficiently locate the root cause of any application degradation.
 
-:::image type="content" source="_images/health-impact.png" alt-text="The diagram shows a health model that uses a traffic light approach." border="false":::
+:::image type="content" source="images/health-impact.png" alt-text="The diagram shows a health model that uses a traffic light approach." border="false":::
 
 > [!NOTE]
 > We recommend that you consider accessibility requirements for people who have a vision disability when you create a dashboard for your health model. For diagramming best practices, see [Architecture design diagrams](/azure/well-architected/architect-role/design-diagrams).
@@ -281,7 +281,7 @@ Health modeling is a logical exercise that is tooling and technology agnostic. H
 
 [Azure Monitor health models](/azure/azure-monitor/health-models/overview) let you easily create, manage, and interact with health models directly within Azure. They provide a unified data platform that seamlessly integrates with the rest of Azure Monitor, offering built-in alerting and ready-to-use visualizations—both graphical and tabular—for your health data. For advanced scenarios, the query and API data-plane capabilities enable flexible use of health states, making it easy to incorporate health insights into your existing operational tools, such as Grafana dashboards.
 
-:::image type="content" source="./_images/azure-monitor-health-models-designer.png" alt-text="A screenshot showing the Azure Monitor health models." lightbox="./_images/azure-monitor-health-models-designer.png":::
+:::image type="content" source="./images/azure-monitor-health-models-designer.png" alt-text="A screenshot showing the Azure Monitor health models." lightbox="./images/azure-monitor-health-models-designer.png":::
 
 ## Related links
 

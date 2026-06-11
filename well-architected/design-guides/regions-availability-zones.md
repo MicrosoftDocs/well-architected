@@ -62,7 +62,7 @@ Many Azure regions provide *availability zones*, which are separate groups of da
 
 The following diagram shows several example Azure regions. Regions 1 and 2 support availability zones.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions.":::
+:::image type="content" border="false" source="images/regions-availability-zones/regions-availability-zones.png" alt-text="Diagram that shows datacenters, availability zones, and regions.":::
 
 If you deploy into an [Azure region that contains availability zones][azure-regions-with-availability-zone-support], you can use multiple availability zones together. By using multiple availability zones, you can keep separate copies of your application and data within separate physical datacenters in a large metropolitan area.
 
@@ -152,7 +152,7 @@ By providing regions and availability zones, Azure enables you to select a deplo
 
 To illustrate the deployment approaches that you can use, consider an example scenario. Suppose that you want to deploy a new solution that includes an application that writes data to some sort of storage.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/application.png" alt-text="Diagram that shows a user connecting to an application that connects to storage.":::
+:::image type="content" border="false" source="images/regions-availability-zones/application.png" alt-text="Diagram that shows a user connecting to an application that connects to storage.":::
 
 This example isn't specific to any specific Azure services. It's intended to provide an example for illustrating fundamental concepts.
 
@@ -178,7 +178,7 @@ The rest of this article describes each of the approaches listed in the precedin
 
 If you don't specify multiple availability zones or regions when you deploy your resources, Azure doesn't make any guarantees about whether the resources are deployed into a single datacenter or split across multiple datacenters in the region. In some scenarios, Azure might also move your resource between availability zones.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/locally-redundant.png" alt-text="Diagram that shows the solution deployed into a single data center, within a single availability zone.":::
+:::image type="content" border="false" source="images/regions-availability-zones/locally-redundant.png" alt-text="Diagram that shows the solution deployed into a single data center, within a single availability zone.":::
 
 Most Azure resources are highly available by default, with high SLAs and built-in redundancy within a datacenter that the platform manages. However, from a reliability perspective, if any part of the region experiences an outage, there's a chance that your workload might be affected. If it is, your solution might be unavailable, or your data can be lost.
 
@@ -204,7 +204,7 @@ The following table summarizes some of the concerns from an architectural perspe
 
 You can extend a locally redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach adds an extra layer of protection to mitigate against an outage in your primary region.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/locally-redundant-backup-across-regions.png" alt-text="Diagram that shows the solution deployed into a single datacenter, with backups in another region.":::
+:::image type="content" border="false" source="images/regions-availability-zones/locally-redundant-backup-across-regions.png" alt-text="Diagram that shows the solution deployed into a single datacenter, with backups in another region.":::
 
 When you implement this approach, you need to carefully consider your RTO and RPO.
 
@@ -232,11 +232,11 @@ The following table summarizes some of the concerns from an architectural perspe
 
 In a *zonal* deployment, you specify that your resources should be deployed to a specific availability zone. This approach is sometimes known as a *zone-pinned* deployment.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/zonal-single-zone.png" alt-text="Diagram that shows the solution deployed into a specific availability zone. A zonal deployment approach is used.":::
+:::image type="content" border="false" source="images/regions-availability-zones/zonal-single-zone.png" alt-text="Diagram that shows the solution deployed into a specific availability zone. A zonal deployment approach is used.":::
 
 A zonal approach reduces the latency between your components. However, by itself, it doesn't increase the resiliency of your solution. To increase your resiliency, you need to deploy multiple instances of your components into multiple availability zones and decide how to route traffic between each instance. This example shows an *active-passive* traffic routing approach.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/zonal-multiple-zones.png" alt-text="Diagram that shows the solution deployed into multiple availability zones. An active-passive traffic routing approach is used.":::
+:::image type="content" border="false" source="images/regions-availability-zones/zonal-multiple-zones.png" alt-text="Diagram that shows the solution deployed into multiple availability zones. An active-passive traffic routing approach is used.":::
 
 In the previous example, a load balancer is deployed across multiple availability zones. It's important to consider how you route traffic between instances in different availability zones because a zone outage might also affect the networking resources deployed into that zone. You might also consider using a global load balancer, like [Azure Front Door][front-door-global-traffic-acceleration] or [Azure Traffic Manager][traffic-manager], which isn't deployed into a region at all.
 
@@ -281,7 +281,7 @@ When you use this approach, your application tier is spread across multiple avai
 
 Your storage tier is also spread across multiple availability zones. Copies of your application's data are distributed across multiple availability zones via *synchronous replication*. When the application makes a change to data, the storage service writes the change to multiple availability zones. The transaction is considered complete only when all of these changes are complete. This process ensures that each availability zone always has an up-to-date copy of the data. If an availability zone experiences an outage, another availability zone can be used to access the same data.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/zone-redundant.png" alt-text="Diagram that shows the solution deployed into multiple availability zones. A zone-redundant deployment approach is used.":::
+:::image type="content" border="false" source="images/regions-availability-zones/zone-redundant.png" alt-text="Diagram that shows the solution deployed into multiple availability zones. A zone-redundant deployment approach is used.":::
 
 A zone-redundant approach increases your solution's resiliency to problems like datacenter outages. However, because data is replicated synchronously, your application has to wait for the data to be written across multiple separate locations that might be in different parts of a metropolitan area. For most applications, the latency in inter-zone communication is negligible. However, for some highly latency-sensitive workloads, synchronous replication across availability zones might affect the application's performance.
 
@@ -307,7 +307,7 @@ This approach is possible with many Azure services, including Azure Virtual Mach
 
 You can extend a zone-redundant deployment by performing regular backups of your infrastructure and data to a secondary region. This approach gives you the benefits of a zone-redundant approach and adds a layer of protection to mitigate the extremely unlikely event of a full region outage.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/zone-redundant-backup-across-regions.png" alt-text="Diagram that shows the solution deployed into multiple availability zones in a zone-redundant deployment, with backups located in another region.":::
+:::image type="content" border="false" source="images/regions-availability-zones/zone-redundant-backup-across-regions.png" alt-text="Diagram that shows the solution deployed into multiple availability zones in a zone-redundant deployment, with backups located in another region.":::
 
 When you implement this approach, you need to carefully consider your RTO and RPO.
 
@@ -352,7 +352,7 @@ Cross-region network latency can significantly affect your solution design becau
 
 When you implement asynchronous replication across regions, your application doesn't wait for all regions to acknowledge a change. After the change is committed in the primary region, the transaction is considered complete. The change is replicated to the secondary regions at a later time. This approach ensures that inter-region connection latency doesn't directly affect application performance. However, because of the delay in replication, a region-wide outage might result in some data loss. This data loss can occur because a region might experience an outage after a write is completed in the primary region but before the change is replicated to another region.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/multi-region-asynchronous.png" alt-text="Diagram that shows the solution deployed into multiple regions. Data replication occurs asynchronously.":::
+:::image type="content" border="false" source="images/regions-availability-zones/multi-region-asynchronous.png" alt-text="Diagram that shows the solution deployed into multiple regions. Data replication occurs asynchronously.":::
 
 The following table summarizes some of the pillar concerns.
 
@@ -374,7 +374,7 @@ The following table summarizes some of the concerns from an architectural perspe
 
 If you implement a synchronous multi-region solution, your application needs to wait for write operations to complete in each Azure region before the transaction is considered complete. The latency incurred by waiting for write operations depends on the distance between the regions. For many workloads, inter-region latency can make synchronous replication too slow to be useful.
 
-:::image type="content" border="false" source="_images/regions-availability-zones/multi-region-synchronous.png" alt-text="Diagram that shows the solution deployed into multiple regions. Data replication occurs synchronously.":::
+:::image type="content" border="false" source="images/regions-availability-zones/multi-region-synchronous.png" alt-text="Diagram that shows the solution deployed into multiple regions. Data replication occurs synchronously.":::
 
 The following table summarizes some of the pillar concerns.
 

@@ -74,7 +74,7 @@ The most important metrics in DR strategy are Recovery Time Objective (RTO) and 
 
 This article assumes that your SLOs and recovery metrics have already been defined and won't cover how to calculate them. If you need guidance on establishing meaningful SLOs, refer to [Reliability metrics](../reliability/metrics.md).
 
-:::image type="content" source="./_images/disaster-recovery-criticality-tiers.png" alt-text="A diagram that shows multi-region recovery targets." lightbox="./_images/disaster-recovery-criticality-tiers.png":::
+:::image type="content" source="./images/disaster-recovery-criticality-tiers.png" alt-text="A diagram that shows multi-region recovery targets." lightbox="./images/disaster-recovery-criticality-tiers.png":::
 
 #### Tier 0: Mission Critical
 
