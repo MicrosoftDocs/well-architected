@@ -4,7 +4,7 @@ description: Learn how to use Azure Kubernetes Service (AKS) features to boost r
 author: schaffererin
 ms.author: schaffererin
 ms.topic: concept-article
-ms.date: 11/21/2025
+ms.date: 06/16/2026
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products:
@@ -98,7 +98,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 > - (Workload) **Use a web application firewall (WAF) to scan incoming traffic for potential attacks.** WAF can detect and mitigate threats in real time to help block malicious traffic before it reaches your applications. It provides robust protection against common web-based attacks, such as SQL injection, cross-site scripting, and other Open Web Application Security Project vulnerabilities. Some load balancers, such as [Azure Application Gateway](/azure/web-application-firewall/ag/ag-overview) or [Azure Front Door](/azure/web-application-firewall/afds/afds-overview) have an integrated WAF.
 >
-> - (Workload) **Automate mTLS between ingress and mesh services.** If your workload uses a service mesh like Istio, use [Application Gateway for Containers with Istio integration](https://aka.ms/agc/istio) to automate mTLS connectivity, trust, and certificate rotation between the shared ingress layer and mesh-enabled services. This reduces repetitive mTLS configuration and strengthens encrypted traffic paths for container platforms. Plan mesh integration, certificate trust boundaries, and gateway operations before deployment.
+> - (Workload) **Automate mTLS between ingress and mesh services.** If your workload uses a service mesh like Istio, use [Application Gateway for Containers with Istio integration](/azure/application-gateway/for-containers/service-mesh-integration) to automate mTLS connectivity, trust, and certificate rotation between the shared ingress layer and mesh-enabled services. This reduces repetitive mTLS configuration and extends encrypted traffic paths for container platforms. Like with any integration, make sure you test functionality before deployment.
 >
 > - (Workload) **Maintain a hardened workload's software supply chain.**  Ensure that your continuous integration and continuous delivery pipeline is hardened with container-aware scanning.
 >
