@@ -11,6 +11,8 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## May 2026
+
 ## April 2026
 
 ### Updated articles
