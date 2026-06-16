@@ -1,10 +1,10 @@
 ---
 title: Architecture Best Practices for Azure Application Gateway v2
 description: Learn about architectural best practices for the Azure Application Gateway v2 family of SKUs and for WAF on Application Gateway.
-author: lnyswonger
-ms.author: lnyswonger
+author: PageWriter-MSFT
+ms.author: prwilk
 ms.topic: concept-article
-ms.date: 09/22/2025
+ms.date: 06/26/2026
 ms.service: azure-waf
 ms.subservice: waf-service-guide
 products: azure-application-gateway
@@ -107,7 +107,7 @@ Start your design strategy based on the [design review checklist for Security](.
 >
 >     Use an appropriate Domain Name System (DNS) server for back-end pool resources. When the back-end pool contains a resolvable fully qualified domain name (FQDN), the DNS resolution is based on a private DNS zone or custom DNS server (if configured on the virtual network), or it uses the default Azure-provided DNS.
 > - **Monitor anomalous activity.** Regularly review logs to check for attacks and false positives. Send [WAF logs from Application Gateway](/azure/web-application-firewall/ag/application-gateway-waf-metrics) to your organization's centralized security information and event management (SIEM), such as Microsoft Sentinel, to detect threat patterns and incorporate preventative measures in the workload design. Where possible, use capabilities that perform threat analysis with AI-powered security capabilities. For example, [Azure Web Application Firewall integration with Microsoft Security Copilot](/azure/web-application-firewall/waf-copilot) can expedite threat identification by summarizing contextual insights and threat mitigation suggestions.
-> - **Automate mTLS for service mesh ingress.** If your workload uses a service mesh like Istio, use [Application Gateway for Containers with Istio integration](https://aka.ms/agc/istio) to automate mTLS connectivity, certificate rotation, and trust between the ingress layer and mesh-enabled services. This integration simplifies secure north-south communication and reduces manual certificate management. Plan mesh integration, certificate trust boundaries, and gateway operations before deployment, and monitor the platform coupling that the integrated model introduces.
+> - **Automate mTLS for service mesh ingress.** If your workload uses a service mesh like Istio, use [Application Gateway for Containers with Istio integration](/azure/application-gateway/for-containers/service-mesh-integration) to automate mTLS connectivity, certificate rotation, and trust between the ingress layer and mesh-enabled services. This integration simplifies secure north-south communication and reduces manual certificate management. Test mesh integration thoroughly before deployment, and monitor the platform coupling that the integrated model introduces.
 
 ### Configuration recommendations
 
