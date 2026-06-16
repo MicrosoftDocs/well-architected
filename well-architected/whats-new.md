@@ -13,6 +13,10 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ## May 2026
 
+### New articles
+
+- [Microsoft Fabric Well-Architected workloads](./microsoft-fabric/index.yml) 
+
 ## April 2026
 
 ### Updated articles
