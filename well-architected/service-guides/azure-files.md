@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Files
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Files and Azure File Sync.
 author: khdownie
 ms.author: kendownie
-ms.date: 09/08/2025
+ms.date: 06/04/2026
 ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -80,6 +80,8 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Protect sensitive information**: Protect sensitive information, such as storage account keys and passwords. We don't recommend that you use these forms of authorization, but if you do, you should make sure to rotate, expire, and store them securely.
 >
 > - **Detect threats**: Enable [Microsoft Defender for Storage](/azure/storage/common/azure-defender-storage-configure) to detect potentially harmful attempts to access or exploit your Azure file shares over SMB or FileREST protocols. Subscription administrators get email alerts with details of suspicious activity and recommendations about how to investigate and remediate threats. Defender for Storage doesn't support antivirus capabilities for Azure file shares. If you use Defender for Storage, transaction-heavy file shares incur significant costs, so consider opting out of Defender for Storage for specific storage accounts.
+>
+> - **Implement Entra ID for authentication and authorization**: Prefer identity-based SMB access patterns that let workloads and users authenticate without storage account keys or service principal secrets. Azure Files supports managed identities for application and automation access and Entra-only identities for user access, which reduces credential sprawl and removes the need to extend hybrid Active Directory just to authorize file shares. The tradeoff is that you need to validate RBAC, share permissions, and client support together so identity changes don't interrupt persistent mounts or user sessions.
 
 ### Configuration recommendations for SMB file shares
 
@@ -242,3 +244,6 @@ For more information, see [Azure Advisor](/azure/advisor).
 ## Next step
 
 For more information, see [Azure Files documentation](/azure/storage/files/).
+
+<!-- Updated: 2026-05-28 for Azure Update 562350 -->
+<!-- Updated: 2026-05-28 for Azure Update 562359 -->

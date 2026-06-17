@@ -277,6 +277,8 @@ Then consider the following five factors:
 - Destination IP address
 - Destination port
 
+Before you enforce NSG or Azure Virtual Network Manager security admin rule changes, validate the proposed rules against observed production traffic. Azure Network Watcher rule impact analyzer can simulate the effect of planned policy updates on live flows so that you can confirm critical dependencies remain reachable and detect unintended denies before rollout. This practice reduces the risk that security hardening creates an outage, but it depends on representative traffic analytics data and should complement, not replace, least-privilege rule design and staged deployment.
+
 The lack of support for FQDN limits network security group functionality. You need to provide specific IP address ranges for your workload, and they're hard to maintain.
 
 But for Azure services, you can use [service tags](/azure/virtual-network/service-tags-overview#available-service-tags) to summarize source and destination IP address ranges. A security benefit of service tags is that they're **opaque to the user, and the responsibility is offloaded to Azure**. You can also assign an application security group as a destination type to route traffic to. This type of named group contains resources that have similar inbound or outbound access needs.
@@ -452,4 +454,5 @@ Refer to the complete set of recommendations.
 > [Security checklist](checklist.md)
 
 <!-- Updated: August 17, 2025 for Azure Update 496002, 497535 -->
+<!-- Updated: 2026-05-28 for Azure Update 562690 -->
 <!-- Updated: 2026-06-04 for Azure Update 564714 -->

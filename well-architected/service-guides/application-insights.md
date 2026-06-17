@@ -1,9 +1,9 @@
 ---
 title: Architecture Best Practices for Azure Monitor Application Insights
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Application Insights.
-author: kainawroth
-ms.author: v-nawrothkai
-ms.date: 11/26/2024
+author: PageWriter-MSFT
+ms.author: prwilk
+ms.date: 06/04/2026
 ms.topic: concept-article
 ms.subservice: waf-service-guide
 products:

@@ -93,7 +93,6 @@ Plan for post-failover work. Capture all tasks needed after failover, such as DN
 
 Choose backup solutions tailored to each Azure service, define retention periods, and recognize that no single tool covers everything. Consider multi-region storage for cross-region recoverability, and for some resources, use redeployment from highly available repositories. Regularly test restores to validate backups, and review and update plans periodically, storing them securely and making them accessible to relevant teams.
 
-
 ## Practice with regular drills
 
 A DR plan is only meaningful when validated under realistic conditions. Test multiple scenarios, including edge cases, and combine scheduled drills with surprise game days to see how systems and teams respond under pressure.

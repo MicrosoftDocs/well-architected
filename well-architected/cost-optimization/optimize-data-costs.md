@@ -70,7 +70,7 @@ The following considerations are foundational to data lifecycle management:
 
 - *Use data tiering:* The goal of data tiering is to align access and retention with the most cost-effective storage tier. Storage tiers range from frequent/immediate access (hot) to infrequent/delayed access (cold).
 
-  It costs more to use a tier that doesn't align with data access and retention needs. For example, data that your application accesses frequently should be in hot storage. Data that your application accesses infrequently should be in cold storage. Effectively managing these aspects helps ensure efficient data storage.
+It costs more to use a tier that doesn't align with data access and retention needs. For example, data that your application accesses frequently should be in hot storage. Data that your application accesses infrequently should be in cold storage. Effectively managing these aspects helps ensure efficient data storage.
 
 - *Consider compliance requirements:* Implementing data tiering requires careful consideration of compliance requirements and data governance policies. Compliance and legal requirements often drive data access and retention. Establish data retention policies to ensure compliance with legal, regulatory, and business requirements.
 
@@ -79,6 +79,8 @@ The following considerations are foundational to data lifecycle management:
 - *Use automation*: Retention policies can trigger the movement of data between tiers. You should automate policies by using platform features before you build any custom solution.
 
   When the retention period for a particular tier expires, the policy can automatically move the data to the next lower-cost tier. For example, when the retention period for the hot tier ends, the policy can move the data to the cool tier. The policy ensures that data is continuously optimized based on its access patterns and cost requirements.
+
+  Before you automatically move or delete large amounts of data using lifecycle policies, run a test simulation ("mock run") first to see what would happen without actually changing anything.
 
 > :::image type="icon" source="../_images/trade-off.svg"::: **Tradeoff**: Managing data retention policies requires ongoing monitoring and maintenance. It can introduce more overhead for data management processes. It might also affect storage costs. Longer retention periods or the use of higher-cost storage tiers can increase storage expenses.
 
@@ -200,7 +202,9 @@ Here are a few use cases:
 
 **Taking an inventory of data**: [Microsoft Purview](/purview/purview) is a family of data governance, risk, and compliance solutions that can help your organization govern, protect, and manage your entire data estate. Microsoft Purview solutions provide integrated coverage and help address the recent increases in remote user connectivity, the fragmentation of data across organizations, and the blurring of traditional IT management roles.
 
-**Optimizing data management**: Azure Storage and Azure Data Lake Storage have different [data access tiers](/azure/storage/blobs/access-tiers-overview). They also offer [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention.
+**Optimizing data management**: Azure Storage and Azure Data Lake Storage have different [data access tiers](/azure/storage/blobs/access-tiers-overview). They also offer [data lifecycle management policies](/azure/storage/blobs/lifecycle-management-overview) that automate data tiering and retention. 
+
+When you automate data tiering or expiration at large scale, validate lifecycle rules with [mock runs for storage task execution](/azure/storage-actions/storage-tasks/storage-task-mock-run) before you commit the live assignment. The report shows how many blobs would move or be deleted, which helps you confirm that projected storage savings aren't offset by unintended retrieval, transaction, or early deletion costs. Mock runs still incur scan-related charges, but they're a safer way to test cost-optimization policies across large estates than correcting an overly broad production run.
 
 You can use a rule-based policy to transition blob data to the appropriate access tiers or to expire data at the end of its lifecycle. This policy allows you to transition blobs from cool (or cold) to hot immediately when they're accessed, to optimize for performance.
 
@@ -245,3 +249,4 @@ Refer to the complete set of recommendations.
 
 <!-- Updated: August 5, 2025 for Azure Update 498558 -->
 <!-- Updated: 2026-03-21 for Azure Update 558810 -->
+<!-- Updated: 2026-05-28 for Azure Update 559494 -->

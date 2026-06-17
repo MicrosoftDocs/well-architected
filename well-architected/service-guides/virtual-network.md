@@ -110,6 +110,8 @@ Start your design strategy based on the [design review checklist for Security](.
 > - **Apply the principle of least privilege**. Configure role-based access control (RBAC) with a no-access mindset for network-related roles. Make sure that users are only able to modify settings as required by their job function.
 >
 > - **Limit public IP addresses**. Use shared public IP addresses from services like Azure Front Door for better security and initial request checks. Managing a dedicated public IP address requires you to oversee its security, including port management and request validation. When possible, use private connectivity.
+>
+>   Treat NSG and Azure Virtual Network Manager rule updates as design changes that require evidence before deployment. Use Azure Network Watcher rule impact analyzer to evaluate proposed rule changes against live traffic so that you can confirm required flows stay open and identify affected virtual networks before you enforce the new policy. This validation step improves change confidence, but it relies on complete traffic analytics coverage and doesn't remove the need for segmentation and least-privilege rule design.
 
 ### Configuration recommendations
 
@@ -307,4 +309,5 @@ The following articles demonstrate the recommendations that are discussed in thi
 <!-- Azure Update: 496002 - 2025-01-25 -->
 <!-- Azure Update: 484347 - 2025-07-23 -->
 <!-- Azure Update: 491437 - 2025-05-21 -->
+<!-- Updated: 2026-05-28 for Azure Update 562690 -->
 <!-- Updated: 2026-06-04 for Azure Update 564689 -->
