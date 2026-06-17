@@ -82,7 +82,8 @@ Rolling back changes, especially database, schema, or other stateful component c
 
 - Establish predeployment checks, including code review, security scans, and compliance checks, to help ensure that changes are safe to deploy.
 
-  Don’t rely on just one type of test. Different tests catch different classes of failures. For example, contract stability tests validate whether the API shape stays compatible, while behavior tests validate whether API functionality is correct.
+  Don't rely on just one type of test. Different tests catch different classes of failures. For example, contract stability tests validate whether the API shape stays compatible, while behavior tests validate whether API functionality is correct.  If you're about to deploy changes to network security rules, simulate the impact first to make sure you don't accidentally block important traffic and cause an outage.
+  Include network policy simulations in your predeployment checks when a release changes NSGs or Azure Virtual Network Manager security admin rules. Azure Network Watcher rule impact analyzer can validate proposed rule changes against live traffic patterns before enforcement so that critical application and management flows aren't unintentionally blocked. This check lowers the chance of rollout-induced outages. It should be used with staged deployment and rollback plans because the analysis is only as complete as the traffic data available.
 
 - Implement circuit breakers to automatically halt traffic to a service that's experiencing issues. Doing so can help to prevent further degradation of the system.
 
@@ -127,6 +128,8 @@ Building and maintaining safe deployment practices is complex. Your success in f
 - Deploy workload applications in your virtual machine by using [VM Applications](/azure/virtual-machines/vm-applications-how-to).
 
 - Use [Azure load balancers](/azure/architecture/guide/technology-choices/load-balancing-overview) to implement deployment strategies and expose the health of your workload applications by using native resources.
+
+- [Azure Network Watcher rule impact analyzer](/azure/network-watcher/traffic-analytics-rule-impact-analyzer) can validate proposed rule changes against live traffic patterns before enforcement so that critical application and management flows aren't unintentionally blocked. This check lowers the chance of rollout-induced outages. Use it with staged deployment and rollback plans because the analysis is only as complete as the traffic data available.
 
 - Use [Application Health extension](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-health-extension) to report on application health from inside a Virtual Machine Scale Set instance. The extension probes on a local application endpoint and updates the health status based on TCP/HTTP(S) responses received from the application.
 
@@ -178,3 +181,5 @@ Refer to the complete set of recommendations.
 
 > [!div class="nextstepaction"]
 > [Operational Excellence checklist](checklist.md)
+
+<!-- Updated: 2026-05-28 for Azure Update 562690 -->

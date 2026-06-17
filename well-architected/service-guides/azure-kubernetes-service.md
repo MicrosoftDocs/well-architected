@@ -197,6 +197,8 @@ Start your design strategy based on the [design review checklist for Operational
 >    Enable diagnostics settings to ensure that control plane or core API server interactions are logged.
 >
 >    The workload should be designed to emit telemetry that can be collected, which should also include liveness and readiness statuses.
+>
+>    Consider AI-assisted network diagnostic agents like the Container Network Insights Agent as a read-only complement to your AKS monitoring strategy when operators need to investigate intermittent pod-to-service, DNS, or packet-loss failures. These agents can use natural-language problem descriptions to correlate live cluster, flow, and host-network telemetry in a single investigation path, which reduces manual log and metric correlation during incidents. The tradeoff is added operational complexity, so use them to augment established runbooks, queries, and alerts rather than replace foundational observability practices.
 >   
 > - (Cluster and workload) **Implement testing in production strategies.** Testing in production uses real deployments to validate and measure an application's behavior and performance in the production environment. Use chaos engineering practices that target Kubernetes to identify application or platform reliability issues.
 >
@@ -318,6 +320,6 @@ Build implementation expertise by using the following product documentation:
 <!-- Updated: August 17, 2025 for Azure Update 498242 -->
 <!-- Updated: October 13, 2025 for Azure Update 503034 -->
 <!-- Updated: March 17, 2026 for Azure Update 557203 -->
+<!-- Updated: 2026-05-28 for Azure Update 561020 -->
 <!-- Updated: 2026-06-04 for Azure Update 564714 -->
-
 

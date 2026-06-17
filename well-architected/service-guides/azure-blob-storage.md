@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Blob Storage
 description: See Azure Well-Architected Framework design considerations and configuration recommendations that are relevant to Azure Blob Storage.
 author: normesta
 ms.author: normesta
-ms.date: 11/26/2025
+ms.date: 06/04/2026
 ms.topic: concept-article
 ms.service: azure-waf
 ms.subservice: waf-service-guide
@@ -181,6 +181,7 @@ Start your design strategy based on the [design review checklist for Operational
 |Use infrastructure as code (IaC) to define the details of your storage accounts in [Azure Resource Manager templates (ARM templates)](/azure/azure-monitor/logs/resource-manager-workspace), [Bicep](/azure/azure-monitor/logs/resource-manager-workspace), or [Terraform](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/log_analytics_workspace.html). | You can use your existing DevOps processes to deploy new storage accounts, and use [Azure Policy](/azure/governance/policy/overview) to enforce their configuration.|
 |Use Storage insights to track the health and performance of your storage accounts. Storage insights provides a unified view of the failures, performance, availability, and capacity for all your storage accounts. | You can track the health and operation of each of your accounts. Easily create dashboards and reports that stakeholders can use to track the health of your storage accounts.|
 |Take advantage of regional automation capabilities with [Azure Storage Actions](/azure/storage-actions/overview) for unified data lifecycle management that automatically segments data based on access patterns and delete expired content according to retention policies while meeting data residency requirements. | Enables automated storage management and lifecycle policies across more geographic regions, reducing manual operational overhead for global organizations.|
+| Use [mock runs for storage task execution](/azure/storage-actions/storage-tasks/storage-task-mock-run) before you enable Azure Storage Actions assignments that delete, retag, or re-tier blobs at scale. <br><br> The tradeoff is extra scan time, execution charges, and possible queuing with other storage task runs on the account, so use mock runs for high-impact changes rather than every minor adjustment. | Mock runs helps you confirm that lifecycle conditions match the intended data estate before an irreversible action runs in production. |
 
 ## Performance Efficiency
 
@@ -262,3 +263,4 @@ For more information, see [Azure Advisor](/azure/advisor).
 For more information about Blob Storage, see [Blob Storage documentation](/azure/storage/blobs/).
 
 <!-- Updated: August 18, 2025 for Azure Update 498759 -->
+<!-- Updated: 2026-05-28 for Azure Update 559494 -->
