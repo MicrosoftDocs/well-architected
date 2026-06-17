@@ -15,9 +15,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### New articles
 
-This month, we introduced
-
-- [Microsoft Fabric Well-Architected workloads](./microsoft-fabric/index.yml) 
+This month, we introduced a new [Microsoft Fabric workload](./microsoft-fabric/index.yml). Microsoft Fabric is a unified data platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. The Fabric Well-Architected documentation can help you learn about designing workloads on Fabric with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
 
 ## April 2026
 
