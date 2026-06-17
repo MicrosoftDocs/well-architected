@@ -3,7 +3,7 @@ title: Architecture Best Practices for Azure Virtual Network
 description: Learn about Azure Well-Architected Framework design considerations and configuration recommendations that are relevant for Azure Virtual Network and its supported features.
 author: PageWriter-MSFT
 ms.author: prwilk
-ms.date: 08/17/2025
+ms.date: 06/16/2026
 ms.topic: concept-article
 ms.subservice: waf-service-guide
 products:
@@ -213,7 +213,7 @@ Start your design strategy based on the [design review checklist for Operational
 | Recommendation|Benefit|
 |-----------|-------- |
 | Deploy [Virtual Network Manager](/azure/virtual-network-manager/overview). |Instead of configuring each virtual network individually, Virtual Network Manager centrally manages connectivity based on rules. This approach streamlines networking operations.|
-| Use networking monitoring tools. <br><br> Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to identify changes in demand and patterns. <br> Use the [connection monitor feature](/azure/network-watcher/connection-monitor-overview) to analyze and identify problems like connection drops before they affect applications.|You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. |
+| Use networking monitoring tools. <br><br> Regularly use [virtual network flow logs](/azure/network-watcher/vnet-flow-logs-overview) and [traffic analytics](/azure/network-watcher/traffic-analytics) to identify changes in demand and patterns. <br> Use the [connection monitor feature](/azure/network-watcher/connection-monitor-overview) to analyze and identify problems like connection drops before they affect applications. <br><br> Use the [native Microsoft Sentinel connector for virtual network flow logs](/azure/network-watcher/traffic-analytics-sentinel) to bring network telemetry into your organization's SIEM for threat correlation across identity, endpoint, and network data. |You're able to understand how data flows through your network, identify bottlenecks, and identify unusual or unauthorized access attempts. Flow log integration with Sentinel improves threat visibility and investigation speed. |
 |When you define routes, use [service tags](/azure/virtual-network/service-tags-overview) instead of specific IP addresses. <br><br> Similarly, use ASGs when you define traffic rules for NSGs.| This approach ensures reliability because IP addresses can change but the configuration doesn't need to. Also, it helps overcome limits on the number of routes or rules that you can set by using more generic names.|
 |Use [Azure Virtual Network Manager IP address management](/azure/virtual-network-manager/concept-ip-address-management) for centralized IP planning across complex virtual network environments. <br><br> Implement centralized visibility and control over IP allocation to prevent conflicts and simplify network planning across multiple subscriptions.|Prevents IP address conflicts in large enterprise environments with hundreds of virtual networks. Reduces operational overhead through centralized IP management and conflict detection.|
 |Leverage [Network Watcher VM Network Troubleshooter](/azure/network-watcher/network-watcher-monitoring-overview) for integrated network diagnostics in Azure portal. <br><br> Use built-in troubleshooting tools to quickly identify connectivity issues and blocked ports without requiring external diagnostic tools.|Enhances operational efficiency through immediate network diagnostics. Reduces time to resolution for VM connectivity issues and simplifies troubleshooting workflows.|
@@ -307,3 +307,4 @@ The following articles demonstrate the recommendations that are discussed in thi
 <!-- Azure Update: 496002 - 2025-01-25 -->
 <!-- Azure Update: 484347 - 2025-07-23 -->
 <!-- Azure Update: 491437 - 2025-05-21 -->
+<!-- Updated: 2026-06-04 for Azure Update 564689 -->

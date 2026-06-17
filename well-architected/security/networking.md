@@ -418,6 +418,8 @@ This example architecture combines the network controls that are described in th
 
 **Application Gateway is a web traffic load balancer** that you can use to manage traffic to your web applications. You deploy Application Gateway in a dedicated subnet that has network security group controls and web application firewall controls in place.
 
+For container workloads using a service mesh like Istio, [Application Gateway for Containers with Istio integration](/azure/application-gateway/for-containers/service-mesh-integration) automates mTLS connectivity and certificate rotation between the ingress layer and mesh-enabled services. This approach reduces repetitive mTLS configuration and strengthens encrypted trust boundaries. Plan mesh integration and certificate trust models before deployment, and monitor the platform coupling that the integrated model introduces.
+
 Communication with all PaaS services is conducted through **private endpoints**. All endpoints are placed in a dedicated subnet. DDoS Protection helps protect all public IP addresses that are configured for a basic or higher level of firewall protection.
 
 **Management traffic is restricted through Azure Bastion**, which helps provide secure and seamless RDP and SSH connectivity to your VMs directly from the Azure portal over TLS. Build agents are placed in the virtual network so that they have a network view to workload resources such as compute resources, container registries, and databases. This approach helps provide a secure and isolated environment for your build agents, which boosts protection for your code and artifacts.
@@ -450,3 +452,4 @@ Refer to the complete set of recommendations.
 > [Security checklist](checklist.md)
 
 <!-- Updated: August 17, 2025 for Azure Update 496002, 497535 -->
+<!-- Updated: 2026-06-04 for Azure Update 564714 -->

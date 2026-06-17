@@ -5,8 +5,7 @@ author: igorjnzl
 ms.author: igorjovovic
 ms.topic: concept-article
 ms.date: 03/17/2026
-products:
-  - azure-container-apps
+ms.product: azure-container-apps
 azure.category:
   - containers
 ---
