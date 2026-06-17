@@ -187,6 +187,8 @@ We recommend reading this section in the companion implementation guide: [Antipa
 
 - [Traffic analytics](/azure/network-watcher/traffic-analytics) is a traffic analysis solution in Network Watcher. It visualizes traffic distribution, identifies top talkers, and reveals bandwidth utilization trends. These capabilities provide a unified view of network health.
 
+- Virtual network flow logs now have a [native Microsoft Sentinel connector](https://aka.ms/TrafficAnalytics-with-Sentinel) that exports network telemetry to your organization's SIEM. This integration brings flow data into the same analytics plane as identity and endpoint signals, improving correlation during security investigations. Govern log volume and analytics costs as you scale ingestion.
+
 ## Related links
 
 - [Instrumentation guide](../devops/monitor-instrument.md)
@@ -207,3 +209,4 @@ Refer to the complete set of recommendations.
 
 <!-- Updated: 2026-03-21 for Azure Update 558140 -->
 <!-- Updated: 2026-03-21 for Azure Update 558321 -->
+<!-- Updated: 2026-06-04 for Azure Update 564689 -->
