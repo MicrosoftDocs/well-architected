@@ -15,12 +15,29 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 ### New articles
 
-This month, we introduced a new [Microsoft Fabric workload](./microsoft-fabric/index.yml). Microsoft Fabric is a unified data platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. The Fabric Well-Architected documentation can help you learn about designing workloads on Fabric with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
+- [Microsoft Fabric Well-Architected workloads](./microsoft-fabric/index.yml). This month, we introduced a new Fabric workload. Microsoft Fabric is a unified data platform that brings together data movement, ingestion, transformation, real-time processing, and reporting in a single environment. The Fabric Well-Architected documentation can help you learn about designing workloads on Fabric with reliability, security, cost optimization, operational excellence, and performance efficiency in mind to build sustainable, scalable analytics platforms.
+
+- [Architecture pattern for AI workloads on Azure](./ai/architecture-pattern.md). This new article in the AI workload series describes architectural patterns for AI workloads. It covers the core components and key characteristics like lifetime, scalability, security, and responsible AI that cloud solution architects need to consider when they make design decisions.
+
+### Updated articles
+
+- [Architecture strategies for designing a reliability testing strategy](./reliability/reliability-test.md). We completed a thorough revision of this guide to incorporate new guidance and align with the recently updated guide [Architecture strategies for testing](./operational-excellence/testing.md).
+
+- [Architecture strategies for performance testing](./performance-efficiency/performance-test.md). We completed a thorough revision of this guide to incorporate new guidance and align with the recently updated guide [Architecture strategies for testing](./operational-excellence/testing.md).
+
+- [Mission-critical workloads](./mission-critical/mission-critical-overview.md). We completed a thorough update of the mission-critical workload guidance. We updated articles on design principles, application design, platform considerations, data platform considerations, networking and connectivity, operational procedures, security, deployment and testing, and the architecture pattern.
+
+- [Architecture strategies for monitoring workload reliability](./reliability/monitoring.md). We added information about monitoring administrative dashboards and status APIs.
+
+- [Architecture strategies for safe deployment practices](./operational-excellence/safe-deployments.md). We added a new deployment safety guardrail.
+
+- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md). We improved clarity and consistency.
+
+- [Architecture strategies for collecting and reviewing cost data](./cost-optimization/collect-review-cost-data.md)
 
 ## April 2026
 
 ### Updated articles
-
   
 - [Operational Excellence trade-offs](./operational-excellence/tradeoffs.md): We clarified how observability platforms can expose classified data in logs and log sinks. We also simplified explanations about how support activities, training, and architecture patterns affect costs and performance.
 
