@@ -35,7 +35,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for collecting and reviewing cost data](./cost-optimization/collect-review-cost-data.md). We clarified recommendations for what cost data to gather for reviews and made other updates for clarity.
 
-- Monitoring articles for all pillars. We updated monitoring articles for all pillars. Updates include integration of Azure Monitor health model concepts and links to appropriate documentation. Updated articles include [Build a monitoring system for Azure workloads](./design-guides/monitoring.md), [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md), [Architecture strategies for monitoring workload performance](./performance-efficiency/monitoring.md)
+- Monitoring articles for all pillars. We updated monitoring articles for all pillars. Updates include integration of Azure Monitor health model concepts and links to appropriate documentation. Updated articles include [Build a monitoring system for Azure workloads](./design-guides/monitoring.md), [Architecture strategies for designing a monitoring system](./operational-excellence/observability.md), [Architecture strategies for monitoring workload performance](./performance-efficiency/monitoring.md).
 
 ## April 2026
 
