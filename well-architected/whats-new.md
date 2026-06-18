@@ -31,7 +31,7 @@ Find out about recent changes in the Azure Well-Architected Framework.
 
 - [Architecture strategies for safe deployment practices](./operational-excellence/safe-deployments.md): We added a new deployment safety guardrail that recommends using different types of tests to catch different types of failures.
 
-- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md): We updated tradeoff information to clarify that the right choice of strategy varies by workload characteristics and contstraints.
+- [Performance Efficiency tradeoffs](./performance-efficiency/tradeoffs.md): We updated tradeoff information to clarify that the right choice of strategy varies by workload characteristics and constraints.
 
 - [Architecture strategies for collecting and reviewing cost data](./cost-optimization/collect-review-cost-data.md): We clarified recommendations for what cost data to gather for reviews and made other updates for clarity.
 
