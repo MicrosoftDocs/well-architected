@@ -107,7 +107,9 @@ With this approach, application specific tests proactively identify and resolve 
 
 Use various testing methods throughout your workload. Completing unit tests doesn't mean you're done testing. Every aspect of your workload needs a distinct approach. Multiple test types enhance overall quality and build confidence that the system functions as intended.
 
-Choose the right test type based on your workload maturity and risk profile. Start with functional validation through the test pyramid layers, then add non-functional testing like performance, security, and resilience. Align your test type selection with your workload's critical scenarios and risks.
+**Use the right tool for the job.** Identify tools required to conduct various types of testing. If you don't have a tool, buy the tool. Don't build it as it might introduce risks. Research the tools and their features, such as licensing costs and whether the tools integrate directly with your workload requirements. Assess team expertise with each tool and consider compatibility and integration by doing a proof of concept. Take advantage of the support and training available for the tools if the workload team doesn't have that expertise. 
+
+**Choose the right test type based on your workload maturity and risk profile.** Start with functional validation through the test pyramid layers, then add non-functional testing like performance, security, and resilience. Align your test type selection with your workload's critical scenarios and risks.
 
 The following table shows when to apply different test types throughout your testing cycle. Each addresses specific risks. While this table isn't an exhaustive list of all possible test types, it serves as an illustrative example.
 
