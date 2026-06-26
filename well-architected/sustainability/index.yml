@@ -1,14 +1,14 @@
 ### YamlMime:Landing
 
 title: Sustainability workload documentation
-summary: In partnership with the Green Software Foundation, we've developed this set of recommendations for optimizing Azure workloads. This documentation helps you plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
+summary: Learn how to design sustainability into your Azure architecture from the start by making deliberate design and operational choices that balance efficiency with reliability, security, and performance. This guidance shows how everyday architectural decisions influence resource consumption, where inefficiencies typically emerge in real systems, and how to reduce waste without compromising overall system quality.
 metadata: 
   title: Sustainability workload documentation
-  description: Apply the design methodology and approach to building highly reliable applications on Microsoft Azure.
+  description: Apply the design methodology and approach to building Azure workloads that are mindful about carbon emission.
   services: na
-  author: lnyswonger
-  ms.author: lnyswonger
-  ms.date: 01/26/2023
+  author: PageWriter-MSFT
+  ms.author: prwilk
+  ms.date: 06/25/2026
   ms.topic: landing-page
   ms.collection: na
 
@@ -22,32 +22,88 @@ landingContent:
       - linkListType: overview
         links:
           - text: What is sustainability?
-            url: sustainability-get-started.md
+            url: overview.md
           - text: Design methodology
             url: sustainability-design-methodology.md
-          - text: Design principles
-            url: sustainability-design-principles.md         
+          - text: Sustainable Design for AI Workloads
+            url: sustainable-ai-design.md
   # Card
-  - title: Design areas
+  - title: Reliability 
     linkLists:
       - linkListType: concept
         links:
-          - text: Application design
-            url: sustainability-application-design.md
-          - text: Application platform 
-            url: sustainability-application-platform.md
-          - text: Testing
-            url: sustainability-testing.md
-          - text: Operational procedures
-            url: sustainability-operational-procedures.md
-          - text: Networking and connectivity
-            url: sustainability-networking.md
-          - text: Storage
-            url: sustainability-storage.md
-          - text: Security
-            url: sustainability-security.md
-          - text: AI design
-            url: sustainable-ai-design.md
+          - text: Prevent failure amplification
+            url: sustainability-reliability-recommendations.md#prevent-failure-amplification
+          - text: Design resiliency intentionally
+            url: sustainability-reliability-recommendations.md#design-resiliency-intentionally
+          - text: Stabilize demand to reduce waste
+            url: sustainability-reliability-recommendations.md#stabilize-demand-to-reduce-waste
+          - text: Factor in sustainability into platform choices
+            url: sustainability-reliability-recommendations.md#factor-in-sustainability-into-platform-choices
+          - text: Run tests that provide meaningful resiliency validation
+            url: sustainability-reliability-recommendations.md#run-tests-that-provide-meaningful-resiliency-validation
+  # Card
+  - title: Security 
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Prevent malicious activity from driving unnecessary resource consumption
+            url: sustainability-security-recommendations.md#prevent-malicious-activity-from-driving-unnecessary-resource-consumption
+          - text: Security hardening improves sustainability by reducing workload footprint
+            url: sustainability-security-recommendations.md#security-hardening-improves-sustainability-by-reducing-workload-footprint
+          - text: Reduce security data collection and processing overhead
+            url: sustainability-security-recommendations.md#reduce-security-data-collection-and-processing-overhead
+          - text: Improve centralized network security efficiency
+            url: sustainability-security-recommendations.md#improve-centralized-network-security-efficiency
+  # Card
+  - title: Cost Optimization 
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Make cost visible and actionable
+            url: sustainability-cost-optimization-recommendations.md#make-cost-visible-and-actionable
+          - text: Reduce structural waste in the application layer
+            url: sustainability-cost-optimization-recommendations.md#reduce-structural-waste-in-the-application-layer
+          - text: Reduce idle and baseline platform waste
+            url: sustainability-cost-optimization-recommendations.md#reduce-idle-and-baseline-platform-waste
+          - text: Use geography and timing deliberately
+            url: sustainability-cost-optimization-recommendations.md#use-geography-and-timing-deliberately
+          - text: Limit delivery-path amplification
+            url: sustainability-cost-optimization-recommendations.md#limit-delivery-path-amplification
+          - text: Control storage growth over time
+            url: sustainability-cost-optimization-recommendations.md#control-storage-growth-over-time
+          - text: Keep engineering workflows proportionate
+            url: sustainability-cost-optimization-recommendations.md#keep-engineering-workflows-proportionate
+  # Card
+  - title: Operational Excellence 
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Monitor and measure sustainability
+            url: sustainability-operational-excellence-recommendations.md#monitor-and-measure-sustainability
+          - text: Use policy to drive behavior to support sustainability
+            url: sustainability-operational-excellence-recommendations.md#use-policy-to-drive-behavior-to-support-sustainability
+          - text: Build culture around sustainability
+            url: sustainability-operational-excellence-recommendations.md#build-culture-around-sustainability
+  # Card
+  - title: Performance Efficiency 
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Improve application efficiency
+            url: sustainability-performance-efficiency-recommendations.md#improve-application-efficiency
+          - text: Optimize compute resources
+            url: sustainability-performance-efficiency-recommendations.md#optimize-compute-resources
+          - text: Reduce network traversal
+            url: sustainability-performance-efficiency-recommendations.md#reduce-network-traversal
+          - text: Reduce storage footprint
+            url: sustainability-performance-efficiency-recommendations.md#reduce-storage-footprint
+          - text: Balance with scalability needs
+            url: sustainability-performance-efficiency-recommendations.md#balance-with-scalability-needs
+          - text: Drive efficiency in deployments
+            url: sustainability-performance-efficiency-recommendations.md#drive-efficiency-in-deployments
+          - text: Use modern technology
+            url: sustainability-performance-efficiency-recommendations.md#use-modern-technology
   # Card
   - title: Reference examples
     linkLists:
@@ -62,11 +118,38 @@ landingContent:
         links:
           - text: The Principles of Sustainable Software Engineering
             url: /training/modules/sustainable-software-engineering-overview/
- # Card
+  # Card
   - title: Assessment
     linkLists:
       - linkListType: how-to-guide
         links:
           - text: Sustainability assessment tool
-            url: /assessments/a24b1079-29a4-4d22-b678-376e84884f76/
+            url: /assessments/a24b1079-29a4-4d22-b678-376e84884f76/            
+  # Card
+  - title: Additional Microsoft resources
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Microsoft Cloud for Sustainability
+            url: https://www.microsoft.com/sustainability/cloud
+          - text: The Carbon Benefits of Cloud Computing
+            url: https://www.microsoft.com/download/details.aspx?id=56950
+          - text: Emissions Impact Dashboard for Azure
+            url: https://appsource.microsoft.com/en-us/product/power-bi/coi-sustainability.emissions_impact_dashboard
+          - text: Microsoft Sustainability and Azure
+            url: https://www.microsoft.com/sustainability/azure
+          - text: Microsoft Sustainability
+            url: https://www.microsoft.com/sustainability/cloud
+
+  # Card
+  - title: Community resources
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: How do I start a sustainability community in my organization?
+            url: https://devblogs.microsoft.com/sustainable-software/how-do-i-start-a-sustainability-community/
+          - text: Greenhouse Gas Protocol
+            url: https://ghgprotocol.org/
+          - text: Software Carbon Intensity (SCI) Specification
+            url: https://github.com/Green-Software-Foundation/sci
         

@@ -44,7 +44,7 @@ There are multiple decision points during the model design phase. Consider the f
 
   Fine-tuned models require fewer iterations to achieve high accuracy, which makes inference more efficient and lowers energy consumption during deployment.
 
-- **Training region:** Model training is energy intensive. It's important that you choose the correct region. Select [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) powered by renewable energy sources for model training.
+- **Training region:** Model training is energy intensive. It's important that you choose the correct region. Select [low-carbon regions](sustainability-cost-optimization-recommendations.md#use-geography-and-timing-deliberately) powered by renewable energy sources for model training.
 
   Also implement carbon-aware scheduling to shift training workloads to times and regions that have lower carbon intensity. Integrate with [Azure carbon optimization](/azure/carbon-optimization/overview) to access real-time carbon intensity data.
 
@@ -66,7 +66,7 @@ Consider the following factors during the data design phase:
 
 - **Optimized ingestion methods:** Implement optimized data ingestion methods, such as batch processing and streamlined pipelines, to minimize computational overhead and enhance sustainability.
 
-  For more information about data processing and storage, see [Sustainable storage](/azure/well-architected/sustainability/sustainability-storage).  
+  For more information about data processing and storage, see [Cost Optimization recommendations for sustainable workloads](/azure/well-architected/sustainability/sustainability-cost-optimization-recommendations).  
 
 - **Data quality optimization:** Ensure high-quality data for training to avoid wasted cycles. Clean data reduces the computational power required for [data preparation](/azure/well-architected/ai/grounding-data-design) and cleaning and preprocessing. This approach results in lower energy consumption.
 
@@ -76,7 +76,7 @@ Consider the following factors during the data design phase:
 
   Edge devices can be optimized to run AI models efficiently by using less power compared to traditional cloud-based processing. Implement edge security controls and monitoring for distributed data processing.
 
-- **Storage optimization:** Implement storage optimization approaches to minimize environmental impact while meeting business requirements. Apply automated data life cycle management with tiered storage and intelligent archiving to reduce long-term storage needs.
+- **Storage optimization:** Implement storage optimization approaches to minimize environmental impact while meeting business requirements. Apply automated data lifecycle management with tiered storage and intelligent archiving to reduce long-term storage needs.
 
   Use advanced compression algorithms and deduplication techniques to minimize storage footprint and associated energy consumption. Balance retention policies with compliance requirements to avoid unnecessary data storage overhead.
 
@@ -86,7 +86,7 @@ Consider the following factors during the data design phase:
 
   > ![Trade-off icon](../_images/trade-off.svg) *Trade-off:* Balance data residency and compliance requirements with low-carbon region deployment opportunities. Some organizations might need to store data in specific regions because of regulatory requirements.
 
-- **Disaster recovery and backup:** Design [disaster recovery](/azure/well-architected/reliability/disaster-recovery) and backup strategies that balance data protection with energy efficiency. Implement intelligent tiering, cross-region replication optimization, and [life cycle management](/azure/well-architected/sustainability/sustainability-storage) with deduplication. These strategies minimize storage energy consumption while maintaining required recovery objectives.
+- **Disaster recovery and backup:** Design [disaster recovery](/azure/well-architected/reliability/disaster-recovery) and backup strategies that balance data protection with energy efficiency. Implement intelligent tiering, cross-region replication optimization, and life cycle management with deduplication. These strategies minimize storage energy consumption while maintaining required recovery objectives.
 
 ## Operational design recommendations
 
@@ -94,7 +94,7 @@ The operational design phase includes model deployment, inference optimization, 
 
 There are multiple operational design decisions that affect sustainability. Consider the following key factors for maintaining efficient AI workloads while minimizing environmental impact:
 
-- **Carbon-aware deployment:** Deploy models in [low-carbon regions](/azure/well-architected/sustainability/sustainability-application-platform#deploy-to-low-carbon-regions) by using renewable energy sources. Implement dynamic region selection based on real-time carbon intensity data and workload requirements.
+- **Carbon-aware deployment:** Deploy models in [sustainability-cost-optimization-recommendations.md#use-geography-and-timing-deliberately) by using renewable energy sources. Implement dynamic region selection based on real-time carbon intensity data and workload requirements.
 
 - **Retraining frequency:** Retraining orchestration includes automating the retraining models based on new data while balancing accuracy requirements with environmental impact.
 
@@ -106,7 +106,7 @@ There are multiple operational design decisions that affect sustainability. Cons
 
 - **Comprehensive monitoring strategy:** A monitoring strategy is used to track data drift, performance, and sustainability metrics. Track model performance to avoid wasting machine learning operations cycles because of model decay. When models decay, they don't predict correct outcomes but continue to run, which wastes machine learning operations cycles.
 
-  Integrate sustainability metrics into your AI workload monitoring alongside traditional performance, reliability, and security metrics. For more information about implementation guidance, see [Sustainability operational procedures](/azure/well-architected/sustainability/sustainability-operational-procedures).
+  Integrate sustainability metrics into your AI workload monitoring alongside traditional performance, reliability, and security metrics. For more information about implementation guidance, see [Operational Excellence recommendations for sustainable workloads](/azure/well-architected/sustainability/sustainability-operational-excellence-recommendations).
 
 - **Scaling and workload resiliency:** Implement [autoscaling strategies](/azure/well-architected/performance-efficiency/optimize-code-infrastructure) that balance resource allocation with environmental impact. Configure scaling policies to consider both workload requirements and regional carbon intensity. Scale up during low-carbon periods when possible.
 
@@ -123,4 +123,4 @@ Implementing these sustainable practices enables AI developers and data scientis
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Design principles of a sustainable workload](sustainability-design-principles.md)
+> [Design methodology of a sustainable workload](sustainability-design-methodology.md)
