@@ -1816,6 +1816,51 @@
 			"redirect_document_id": false
 		},
 		{
+			"source_path": "well-architected/sustainability/sustainability-operational-procedures.md",
+			"redirect_url": "/azure/well-architected/sustainability/sustainability-operational-excellence-recommendations",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-security.md",
+			"redirect_url": "/azure/well-architected/sustainability/sustainability-security-recommendations",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-application-design.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-application-platform.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-design-principles.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-get-started.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-networking.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-storage.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/sustainability/sustainability-testing.md",
+			"redirect_url": "/azure/well-architected/sustainability/overview",
+			"redirect_document_id": false
+		},
+		{
 			"source_path": "well-architected/security/encryption.md#scope-of-encryption",
 			"redirect_url": "/azure/well-architected/security/encryption#determine-encryption-requirments",
 			"redirect_document_id": false
