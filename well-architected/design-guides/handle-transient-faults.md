@@ -14,9 +14,9 @@ ms.update-cycle: 1095-days
 
 This guide describes the recommendations for handling transient faults in your cloud applications. All applications that communicate with remote services and resources must be sensitive to transient faults. This is especially true for applications that run in the cloud, where, because of the nature of the environment and connectivity over the internet, this type of fault is likely to be encountered more often. 
 
-Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so, if the action is repeated after a suitable delay, it's likely to succeed.
+Transient faults include the momentary loss of network connectivity to components and services, the temporary unavailability of a service, and timeouts that occur when a service is busy. These faults are often self-correcting, so if you repeat the action after a suitable delay, it likely succeeds.
 
-This article provides general guidance for transient fault handling. For information about implementing retries in your application code to handle transient faults, see the [retry pattern](/azure/architecture/patterns/retry) and when you're using Azure services, see the [Retry guidance for Azure services](/azure/architecture/best-practices/retry-service-specific).
+This article provides general guidance for transient fault handling. For information about implementing retries in your application code to handle transient faults, see the [retry pattern](/azure/architecture/patterns/retry). When you're using Azure services, see the [Retry guidance for Azure services](/azure/reliability/overview-reliability-guidance). These guides include a dedicated section that provides service-specific recommendations for retry configuration, timeout tuning, and health monitoring.
 
 ## Terminology
 
@@ -25,20 +25,20 @@ Before you start implementing transient fault handling, familiarize yourself wit
 | Term | Definition |
 |------|------------|
 | **Circuit Breaker pattern** | Design pattern that prevents repeated attempts to an operation that's likely to fail. After a threshold of failures, the circuit *opens* and requests fail immediately without attempting the operation, which allows the service time to recover. |
-| **Dead-letter queue** | Special queue that stores messages that can't process successfully after multiple attempts. Prevents problematic messages from blocking the main processing queue while preserving them for investigation and resolution. |
-| **Exponential back-off** | Retry strategy where the wait time between retry attempts increases exponentially, such as 3 seconds, 12 seconds, 30 seconds. Helps prevent overwhelming a recovering service with repeated requests. |
-| **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs. Essential for retry logic to avoid unintended side effects when operations repeat. |
-| **Jitter** | Random delay added to retry intervals to prevent multiple clients from retrying simultaneously. Helps avoid synchronized retry storms that could overwhelm a recovering service. |
-| **Retry policy** | Combination of all retry strategy elements, including detection mechanism, interval type, actual interval values, and number of retry attempts. Defines how an application responds to transient failures. |
-| **Throttling** | Practice of limiting the rate of requests to a service or resource to protect it from overload. Often triggers transient faults when limits are exceeded, which requires appropriate retry strategies. |
+| **Dead-letter queue** | Special queue that stores messages that can't process successfully after multiple attempts. It prevents problematic messages from blocking the main processing queue while preserving them for investigation and resolution. |
+| **Exponential back-off** | Retry strategy where the wait time between retry attempts increases exponentially, such as 3 seconds, 12 seconds, 30 seconds. It helps prevent overwhelming a recovering service with repeated requests. |
+| **Idempotent** | Property of an operation that produces the same result regardless of how many times it runs. It's essential for retry logic to avoid unintended side effects when operations repeat. |
+| **Jitter** | Random delay added to retry intervals to prevent multiple clients from retrying simultaneously. It helps avoid synchronized retry storms that could overwhelm a recovering service. |
+| **Retry policy** | Combination of all retry strategy elements, including detection mechanism, interval type, actual interval values, and number of retry attempts. It defines how an application responds to transient failures. |
+| **Throttling** | Practice of limiting the rate of requests to a service or resource to protect it from overload. It often triggers transient faults when limits are exceeded, which requires appropriate retry strategies. |
 | **Timeout** | Maximum duration to wait for an operation to complete before considering it failed. Consider timeouts when you design retry strategies to avoid operations exceeding total allowed time. |
 | **Transient fault** | Temporary failure that's self-correcting and likely to succeed if retried after a suitable delay. Examples include momentary network loss, service unavailability, or timeouts because of busy services. |
 
-## Transient Faults
+## Transient faults
 
 Transient faults can occur in any environment, on any platform or operating system, and in any kind of application. 
 
-For solutions that run on local on-premises infrastructure, the performance and availability of the application and its components are typically maintained via expensive and often underused hardware redundancy, and components and resources are located close to each other. This approach makes failure less likely, but transient faults can still occur, as can outages caused by unforeseen events like external power supply or network issues, or by disaster scenarios.
+For solutions that run on local on-premises infrastructure, you typically maintain the performance and availability of the application and its components through expensive and often underused hardware redundancy. You also locate components and resources close to each other. This approach makes failure less likely, but transient faults can still occur. Outages can also happen because of unforeseen events like external power supply or network issues, or by disaster scenarios.
 
 Cloud hosting, including private cloud systems, can offer higher overall availability by using shared resources, redundancy, automatic failover, and dynamic resource allocation across many commodity compute nodes. However, because of the nature of cloud environments, transient faults are more likely to occur. There are several reasons for this:
 
@@ -54,7 +54,7 @@ Cloud hosting, including private cloud systems, can offer higher overall availab
 
 Transient faults can have a significant effect on the perceived availability of an application, even if it's been thoroughly tested under all foreseeable circumstances. 
 
-To ensure that cloud-hosted applications operate reliably, you need to ensure that they can respond to the following challenges:
+To ensure that cloud-hosted applications operate reliably, make sure they can respond to the following challenges:
 
 -   **The application must be able to detect faults** when they occur and determine if the faults are likely to be transient, are long-lasting, or are terminal failures. 
 
@@ -80,8 +80,6 @@ The following guidelines can help you design suitable transient fault handling m
 
 - Azure services each handle transient faults differently. Some services provide SDK-level retry policies that include configurable back-off algorithms. Other services provide platform features like health probes and visibility timeouts that complement application-level retry logic. 
 
-Check the [reliability guide](/azure/reliability/overview-reliability-guidance) for each Azure service that you use. These guides include a dedicated section that provides service-specific recommendations for retry configuration, timeout tuning, and health monitoring.
-
 ### Determine if the operation is suitable for retrying
 
 -   Perform retry operations only when the faults are transient (typically indicated by the nature of the error) and when there's at least some likelihood that the operation will succeed when retried. There's no point in retrying operations that attempt an invalid operation, like a database update to an item that doesn't exist or a request to a service or resource that suffered a fatal error.
@@ -94,11 +92,11 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 -   Optimize the retry count and the interval to the type of use case. If you don't retry enough times, the application can't complete the operation and will probably fail. If you retry too many times, or with too short an interval between tries, the application might hold resources like threads, connections, and memory for long periods, which adversely affects the health of the application.
 
--   Adapt values for the time interval and the number of retry attempts to the type of operation. For example, if the operation is part of a user interaction, the interval should be short and only a few retries should be attempted. By using this approach, you can avoid making users wait for a response, which holds open connections and can reduce availability for other users. If the operation is part of a long running or critical workflow, where canceling and restarting the process is expensive or time-consuming, it's appropriate to wait longer between attempts and retry more times.
+-   Adapt values for the time interval and the number of retry attempts to the type of operation. For example, if the operation is part of a user interaction, use a short interval and only a few retries. By using this approach, you can avoid making users wait for a response, which holds open connections and can reduce availability for other users. If the operation is part of a long running or critical workflow, where canceling and restarting the process is expensive or time-consuming, it's appropriate to wait longer between attempts and retry more times.
 
 -   Keep in mind that determining the appropriate intervals between retries is the most difficult part of designing a successful strategy. Typical strategies use the following types of retry interval:
 
-    -   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on. To further improve this strategy, you can add jitter to the exponential back-off. Jitter introduces a random delay to each retry attempt, which helps to prevent multiple clients from retrying simultaneously and causing a spike in load
+    -   **Exponential back-off**. The application waits a short time before the first retry and then exponentially increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 12 seconds, 30 seconds, and so on. To further improve this strategy, you can add jitter to the exponential back-off. Jitter introduces a random delay to each retry attempt, which helps to prevent multiple clients from retrying simultaneously and causing a spike in load.
 
     -   **Incremental intervals**. The application waits a short time before the first retry, and then incrementally increases the time between each subsequent retry. For example, it might retry the operation after 3 seconds, 7 seconds, 13 seconds, and so on.
 
@@ -114,13 +112,15 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 -   Set timeouts on every outbound call before you implement retry logic. Timeouts, retries, and back-off approaches work together. A retry strategy is only as effective as the timeouts that govern each individual attempt. Timeouts that are too long cause threads and connections to accumulate during outages. Timeouts that are too short cause premature failures on operations that would otherwise succeed. 
 
--   Avoid implementing overly aggressive retry strategies. These are strategies that have intervals that are too short or retries that are too frequent. They can have an adverse effect on the target resource or service. These strategies might prevent the resource or service from recovering from its overloaded state, and it will continue to block or refuse requests. This scenario results in a vicious circle, where more and more requests are sent to the resource or service. Consequently, its ability to recover is further reduced.
+-   Avoid implementing overly aggressive retry strategies. These strategies have intervals that are too short or retries that are too frequent, and they can have an adverse effect on the target resource or service.
+
+> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If many clients retry a struggling downstream service simultaneously, especially with aggressive intervals or no retry budget, the added load can prevent the service from recovering and turn a localized slowdown into a widespread outage. Mitigate this risk with jitter, a circuit breaker, and an aggregate retry budget.
 
 -   Take into account the timeout of the operations when you choose retry intervals in order to avoid launching a subsequent attempt immediately (for example, if the timeout period is similar to the retry interval). Also, consider whether you need to keep the total possible period (the timeout plus the retry intervals) below a specific total time. If an operation has an unusually short or long timeout, the timeout might influence how long to wait and how often to retry the operation.
 
 -   Use the type of the exception and any data it contains, or the error codes and messages returned from the service, to optimize the number of retries and the interval between them. For example, some exceptions or error codes (like the HTTP code 503, Service Unavailable, with a Retry-After header in the response) might indicate how long the error might last, or that the service failed and won't respond to any subsequent attempt. This server-provided signal reflects the service's recovery timeline and takes precedence over your client-side back-off calculation.
 
--   Consider using a dead-letter queue approach to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts have been exhausted.
+-   Consider using a dead-letter queue approach to make sure that all the information from the incoming invocation doesn't get lost after all retry attempts are exhausted.
 
 ### Avoid anti-patterns
 
@@ -132,8 +132,6 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 -   Per-request retry limits alone can't prevent a scenario where many concurrent requests each retry a few times and collectively overwhelm a struggling downstream service. A retry budget limits the aggregate retry load and can make the difference between a localized capacity problem and a cascading failure.
 
-> :::image type="icon" source="../_images/risk.svg"::: **Risk:** If many clients retry a struggling downstream service simultaneously, especially with aggressive intervals or no retry budget, the added load can prevent the service from recovering and turn a localized slowdown into a widespread outage. Mitigate this risk with jitter, a circuit breaker, and an aggregate retry budget.
-
 -   Never perform an immediate retry more than once.
 
 -   Avoid using a regular retry interval when you access services and resources on Azure, especially when you have a high number of retry attempts. The best approach in this scenario is an exponential back-off strategy with a circuit-breaking capability.
@@ -142,19 +140,17 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 ### Test retry strategies and implementation
 
--   Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
+Fully test your retry strategy under as wide a set of circumstances as possible, especially when both the application and the target resources or services that it uses are under extreme load. To check behavior during testing, you can:
 
-    -   Include transient faults in your [chaos engineering and fault injection](../reliability/reliability-test.md#use-fault-injection-and-chaos-engineering) practices by purposely introducing them into your nonproduction and production environments. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
+-   Include transient faults in your [chaos engineering and fault injection](../reliability/reliability-test.md#use-fault-injection-and-chaos-engineering) practices by purposely introducing them into your nonproduction and production environments. For example, send invalid requests or add code that detects test requests and responds with different types of errors.
 
-    -   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
+-   Create a mockup of the resource or service that returns a range of errors that the real service might return. Cover all the types of errors that your retry strategy is designed to detect.
 
-    -   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don't attempt to overload any shared resources or shared services in Azure.)
+-   For custom services that you create and deploy, force transient errors to occur by temporarily disabling or overloading the service. (Don't attempt to overload any shared resources or shared services in Azure.)
 
-    -   Use libraries or solutions that intercept and modify network traffic to replicate unfavorable scenarios from your automated tests. For example, the tests can add extra roundtrip times, drop packets, modify headers, or even change the body of the request itself. Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures.
+-   Use libraries or solutions that intercept and modify network traffic to replicate unfavorable scenarios from your automated tests. For example, the tests can add extra roundtrip times, drop packets, modify headers, or even change the body of the request itself. Doing so enables deterministic testing of a subset of the failure conditions, for transient faults and other types of failures.
 
-    -   When testing a client web application's resiliency to transient faults, use the browser's developer tools or your testing framework's ability to [mock](https://playwright.dev/docs/network#network-mocking) or [block](/microsoft-edge/devtools-guide-chromium/network/#block-requests) network requests.
-
-    -   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
+-   Perform high load factor and concurrent tests to ensure that the retry mechanism and strategy works correctly under these conditions. These tests also help ensure that the retry doesn't have an adverse effect on the operation of the client or cause cross-contamination between requests.
 
 ### Manage retry policy configurations
 
@@ -182,7 +178,7 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 -   Consider how to handle operations that continue to fail at every attempt. Situations like this are inevitable.
 
-    -   Although a retry strategy defines the maximum number of times that an operation should be retried, it doesn't prevent the application from repeating the operation again with the same number of retries. For example, if an order processing service fails with a fatal error that puts it out of action permanently, the retry strategy might detect a connection timeout and consider it to be a transient fault. The code retries the operation a specified number of times and then gives up. However, when another customer places an order, the operation is attempted again, even though it will fail every time.
+    -   Although a retry strategy defines the maximum number of times that an operation should be retried, it doesn't prevent the application from repeating the operation again with the same number of retries. For example, if an order processing service fails with a fatal error that puts it out of action permanently, the retry strategy might detect a connection timeout and consider it to be a transient fault. The code retries the operation a specified number of times and then gives up. However, when another customer places an order, the operation is attempted again, even though it fails every time.
 
     -   To prevent continual retries for operations that continually fail, you should consider implementing the [Circuit Breaker pattern](/azure/architecture/patterns/circuit-breaker). When you use this pattern, if the number of failures within a specified time window exceeds a threshold, requests return to the caller immediately as errors, and there's no attempt to access the failed resource or service.
 
@@ -192,7 +188,7 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 ### Optimize retry implementation
 
--   When you're deciding on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that have already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
+-   When you decide on the values for the number of retries and the retry intervals for a policy, consider whether the operation on the service or resource is part of a long-running or multistep operation. It might be difficult or expensive to compensate all the other operational steps that already succeeded when one fails. In this case, a very long interval and a large number of retries might be acceptable as long as that strategy doesn't block other operations by holding or locking scarce resources.
 
 -   Consider whether retrying the same operation could cause inconsistencies in data. If some parts of a multistep process are repeated and the operations aren't idempotent, inconsistencies might occur. For example, if an operation that increments a value is repeated, it produces an invalid result. Repeating an operation that sends a message to a queue might cause an inconsistency in the message consumer if the consumer can't detect duplicate messages. To prevent these scenarios, design each step as an idempotent operation. For more information, see [Idempotency patterns](/azure/architecture/reference-architectures/containers/aks-mission-critical/mission-critical-data-platform#idempotent-message-processing).
 
@@ -207,29 +203,29 @@ Check the [reliability guide](/azure/reliability/overview-reliability-guidance) 
 
 ## Azure facilitation
 
-Most Azure services and client SDKs provide a retry mechanism. However, these mechanisms differ because each service has different characteristics and requirements, and each retry mechanism is tuned to the specific service. This section summarizes the retry mechanism features for some commonly used Azure services.
+Most Azure services and client SDKs provide a retry mechanism. However, these mechanisms differ because each service has different characteristics and requirements. Each retry mechanism is tuned to the specific service. This section summarizes the retry mechanism features for some commonly used Azure services.
 
-| Service | Retry capabilities | Policy configuration | Scope| Telemetry features|
+| Service | Retry capabilities | Policy configuration | Scope | Telemetry features |
 | --- | --- | --- | --- | --- |
-| [Microsoft Entra ID](/azure/architecture/best-practices/retry-service-specific#azure-active-directory) |Native in the Microsoft Authentication Library (MSAL) |Embedded into the MSAL library |Internal |None |
-| [Azure Cosmos DB](/azure/architecture/best-practices/retry-service-specific#azure-cosmos-db) |Native in the service |Not configurable |Global |TraceSource |
-| [Azure Data Lake Storage](/azure/architecture/best-practices/retry-service-specific#data-lake-store) |Native in the client |Not configurable |Individual operations |None |
-| [Azure Event Hubs](/azure/architecture/best-practices/retry-service-specific#event-hubs) |Native in the client |Programmatic |Client |None |
-| [Azure IoT Hub](/azure/architecture/best-practices/retry-service-specific#iot-hub) |Native in the client SDK |Programmatic |Client |None |
-| [Azure Cognitive Search](/azure/architecture/best-practices/retry-service-specific#azure-search) |Native in the client |Programmatic |Client |ETW or custom |
-| [Azure Service Bus](/azure/architecture/best-practices/retry-service-specific#service-bus) |Native in the client |Programmatic |NamespaceManager, MessagingFactory, and client |ETW |
-| [Azure Service Fabric](/azure/architecture/best-practices/retry-service-specific#service-fabric) |Native in the client |Programmatic |Client |None |
-| [Azure SQL Database with ADO.NET](/azure/architecture/best-practices/retry-service-specific#sql-database-using-adonet) |[Polly](/azure/architecture/best-practices/retry-service-specific#transient-fault-handling-with-polly) |Declarative and programmatic |Single statements or blocks of code |Custom |
-| [SQL Database with Entity Framework](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-6) |Native in the client |Programmatic |Global per AppDomain |None |
-| [SQL Database with Entity Framework Core](/azure/architecture/best-practices/retry-service-specific#sql-database-using-entity-framework-core) |Native in the client |Programmatic |Global per AppDomain |None |
-| [Azure Storage](/azure/architecture/best-practices/retry-service-specific#azure-storage) |Native in the client |Programmatic |Client and individual operations |TraceSource |
+| [Microsoft Entra ID](/entra/msal/dotnet/advanced/exceptions/retry-policy) | Native in the Microsoft Authentication Library (MSAL) | Embedded in MSAL (limited); custom via *RetryAfter* header | Client | *MsalServiceException* headers |
+| [Azure Cosmos DB](/azure/reliability/reliability-cosmos-db#resilience-to-transient-faults) | Native in the SDK | Configurable *(MaxRetryAttemptsOnRateLimitedRequests, MaxRetryWaitTime)* | Global | SDK diagnostics or logs |
+| [Azure Data Lake Storage](/azure/reliability/reliability-storage-blob#resilience-to-transient-faults) | Native in the client | Programmatic *(RetryOptions on client options)*  | Client and individual operations |EventSource/*ILogger* |
+| [Azure Event Hubs](/azure/reliability/reliability-event-hubs#resilience-to-transient-faults) | Native in client |Programmatic *(EventHubsRetryOptions)* | Client | EventSource/*ILogger* |
+| [Azure IoT Hub](/azure/reliability/reliability-iot-hub#resilience-to-transient-faults) | Native in the device or service SDK | Programmatic *(SDK retry policy)* | Client | SDK logs |
+| [Azure AI Search](/azure/architecture/best-practices/retry-service-specific#azure-search) | Native in the client | Programmatic *(retryOptions / SearchClientOptions)* | Client | EventSource/*ILogger* |
+| [Azure Service Bus](/azure/reliability/reliability-service-bus#resilience-to-transient-faults) | Native in the client | Programmatic *(ServiceBusRetryOptions: Mode, MaxRetries=3, Delay, MaxDelay, TryTimeout)* |Client | EventSource/*ILogger* |
+| [Azure Service Fabric](/azure/service-fabric/service-fabric-cross-availability-zones, /azure/service-fabric/service-fabric-disaster-recovery) | Native in the client | Programmatic *(OperationRetrySettings, IExceptionHandler)* | Client | None |
+| [Azure SQL Database](/azure/reliability/reliability-sql-database?pivots=basic-standard#resilience-to-transient-faults) | Configurable | Programmatic | Single statements or blocks of code | Custom |
+| [Azure Storage](/azure/reliability/?product=storage) | Native in the client | Programmatic | Client and individual operations | Custom |
 
 > [!NOTE]
-> For most of the Azure built-in retry mechanisms, there's currently no way to apply a different retry policy for different types of errors or exceptions. You should configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.
+> For most of the Azure built-in retry mechanisms, you can't apply a different retry policy for different types of errors or exceptions. Configure a policy that provides the optimum average performance and availability. One way to fine-tune your policy is to analyze log files to determine the type of transient faults that are occurring.
 
 ## Example
 
-See [Reliable web app pattern for .NET](/azure/architecture/web-apps/guides/reliable-web-app/dotnet/apply-pattern) for an example that uses many of the patterns discussed in this article. There's also a [reference implementation](https://github.com/Azure/reliable-web-app-pattern-dotnet) on GitHub.
+- See [Reliable web app pattern for .NET](/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant) for an example that uses many of the patterns discussed in this article. There's also a [reference implementation](https://github.com/Azure/reliable-web-app-pattern-dotnet) on GitHub.
+
+- When testing a client web application's resiliency to transient faults, use the browser's developer tools or your testing framework's ability to [mock](https://playwright.dev/docs/network#network-mocking) or [block](/microsoft-edge/devtools-guide-chromium/network/#block-requests) network requests.
 
 ## Related links
 
