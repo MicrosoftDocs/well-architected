@@ -32,9 +32,6 @@
       - name: AI
         tocHref: /azure/well-architected/ai/
         topicHref: /azure/well-architected/ai/index      
-      - name: Azure Virtual Desktop
-        tocHref: /azure/well-architected/azure-virtual-desktop/
-        topicHref: /azure/well-architected/azure-virtual-desktop/index
       - name: HPC
         tocHref: /azure/well-architected/hpc/
         topicHref: /azure/well-architected/hpc/index

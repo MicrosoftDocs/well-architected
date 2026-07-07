@@ -2664,11 +2664,71 @@
 			"source_path": "well-architected/reliability/testing-strategy.md",
 			"redirect_url": "/azure/well-architected/reliability/reliability-test",
 			"redirect_document_id": true 
-    },
-    {
+    	},
+    	{
 			"source_path": "well-architected/mission-critical/mission-critical-health-modeling.md",
 			"redirect_url": "/azure/well-architected/design-guides/health-modeling",
 			"redirect_document_id": false
-		}																	
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/overview.md",
+			"redirect_url": "/azure/virtual-desktop/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/index.yml",
+			"redirect_url": "/azure/virtual-desktop/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/design-principles.md",
+			"redirect_url": "/azure/virtual-desktop/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/assessment.md",
+			"redirect_url": "/assessments/1ef67c4e-b8d1-4193-b850-d192089ae33d",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/application-delivery.md",
+			"redirect_url": "/azure/virtual-desktop/autoscale-scenarios",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/business-continuity.md",
+			"redirect_url": "/azure/architecture/example-scenario/azure-virtual-desktop/azure-virtual-desktop-multi-region-bcdr",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/landing-zone-integration.md",
+			"redirect_url": "/azure/cloud-adoption-framework/scenarios/azure-virtual-desktop/ready",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/monitoring.md",
+			"redirect_url": "/azure/virtual-desktop/azure-monitor",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/networking.md",
+			"redirect_url": "/azure/virtual-desktop/network-connectivity",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/operations.md",
+			"redirect_url": "/azure/virtual-desktop/overview",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/security.md",
+			"redirect_url": "/azure/virtual-desktop/security-guide",
+			"redirect_document_id": false
+		},
+		{
+			"source_path": "well-architected/azure-virtual-desktop/storage.md",
+			"redirect_url": "/azure/virtual-desktop/store-fslogix-profile",
+			"redirect_document_id": false
+		}
 	]
 }
