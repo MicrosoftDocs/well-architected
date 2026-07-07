@@ -69,7 +69,6 @@
         "performance-efficiency/**/*.*": "waf-pillar-efficiency",
         "operational-excellence/**/*.*": "waf-pillar-excellence",
         "mission-critical/**/*.*": "waf-workload-mission-critical",
-        "azure-virtual-desktop/**/*.*": "waf-workload-azure-virtual-desktop",
         "sustainability/**/*.*": "waf-workload-sustainability",
         "service-guides/**/*.*": "waf-service-guide",
         "design-guides/**/*.*": "waf-design-guide",
