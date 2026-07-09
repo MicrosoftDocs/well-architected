@@ -149,10 +149,6 @@ sections:
         title: Sustainability
         summary: Plan your path forward, improve your sustainability posture, and create new business value while reducing your operational footprint.
         url: ./sustainability/index.yml
-      - componentType: summary-card
-        title: Azure Virtual Desktop
-        summary: Run Windows desktops and applications on Azure from any device and location.
-        url: ./azure-virtual-desktop/index.yml
     addendum:
       text: See example workloads that apply Well-Architected tenets in the 
       link:

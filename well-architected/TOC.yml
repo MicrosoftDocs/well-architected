@@ -246,8 +246,6 @@
         href: workloads.md
       - name: AI
         href: ai/index.yml        
-      - name: Azure Virtual Desktop
-        href: azure-virtual-desktop/index.yml
       - name: Microsoft Fabric
         href: microsoft-fabric/index.yml                                          
       - name: Mission-critical
