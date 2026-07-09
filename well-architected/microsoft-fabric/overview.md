@@ -21,6 +21,8 @@ This document provides design guidance to solution architects who want to design
 
 :::image type="content" source="./images/fabric-architecture.png" alt-text="This diagram shows a typical architecture for workloads running on Microsoft Fabric." border="false" lightbox="./images/fabric-architecture.png":::
 
+*Download a [Visio file](https://arch-center.azureedge.net/fabric-architecture.vsdx) of this architecture.*
+
 | Pillar | Focus |
 |---|---|
 | [**Reliability**](./reliability.md) | Design workloads in Fabric that maintain predictable availability for users and recover gracefully from platform or workload failures, while leveraging multi-region capacities, data replication, and failover strategies. |
