@@ -11,6 +11,26 @@ ms.topic: whats-new
 
 Find out about recent changes in the Azure Well-Architected Framework.
 
+## June 2026
+
+### New articles
+
+- [Throttling design guide](./design-guides/throttling.md): This month, we introduced a new design guide that brings together practical guidance and proven design strategies to help architects design and implement throttling as a reliability pattern. 
+
+- [Sustainable workloads on Azure](./sustainability/index.yml): We added new recommendations for sustainable workloads with the focus on reliability, security, cost optimization, operational excellence, and performance efficiency pillars. Each article examines sustainability through the lens of these pillars and provides guidance for designing sustainable workloads. As part of this effort, we also updated the existing guidance on design methodology and sustainable AI design.
+
+### Updated articles
+
+- [Architecture strategies for security testing](./security/test.md): We completed a thorough revision of this guide to incorporate new guidance and align with the recently updated guide [Architecture strategies for testing](./operational-excellence/testing.md).
+
+- [Architecture strategies for networking and connectivity](./security/networking.md): We added guidance on the network rule impact analyzer, which validates proposed rule changes against live traffic patterns before enforcement so that critical application and management flows aren't unintentionally blocked. We also made updates to other articles to include this guidance: [Architecture Best Practices for Azure Virtual Network](./service-guides/virtual-network.md), [Architecture strategies for safe deployment practices](./operational-excellence/safe-deployments.md).
+
+- [Architecture Best Practices for Azure Virtual Network](./service-guides/virtual-network.md): We added guidance to use Sentinel connectors for virtual network flow logs to improve threat visibility. We also made updates to other articles to include this guidance: [Architecture Strategies for Designing a Monitoring System](./operational-excellence/observability.md), [Architecture strategies for monitoring and threat detection](./security/monitor-threats.md). 
+
+- [Architecture Best Practices for Azure Kubernetes Service (AKS)](./service-guides/azure-kubernetes-service.md): We made updates to the service guide to include Istio integration, which automates mTLS connectivity between ingress and mesh services. The update also includes guidance to use AI-assisted network diagnostic agents like the Container Network Insights Agent as a read-only complement to your AKS monitoring strategy.
+
+- We updated several articles to reflect new Azure features and capabilities that were launched this month. Check out the updates in [Architecture strategies for optimizing data costs](./cost-optimization/optimize-data-costs.md), [Architecture Best Practices for Azure Blob Storage](./service-guides/azure-blob-storage.md), [Architecture Best Practices for Azure Files](./service-guides/azure-files.md), and [Architecture Best Practices for Azure Application Gateway v2](./service-guides/azure-application-gateway.md).
+
 ## May 2026
 
 ### New articles

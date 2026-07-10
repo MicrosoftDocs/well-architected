@@ -51,7 +51,7 @@ Not all AI workloads require training and fine-tuning components. If you use onl
 
 This diagram shows the key components of the intelligent application workload to include in your design.
 
-:::image type="content" source="./images/gen-ai-workload.png" alt-text="Diagram of intelligent application workload showing clients, intelligence layer, inferencing, knowledge, and tools components." lightbox="./images/gen-ai-workload.png":::
+:::image type="content" source="./images/gen-ai-workload.svg" alt-text="Diagram of intelligent application workload showing clients, intelligence layer, inferencing, knowledge, and tools components." lightbox="./images/gen-ai-workload.svg":::
 
 |Component|Description|
 |---|---|
@@ -123,7 +123,7 @@ The inference layer should only be accessible to operations roles and the orches
 
 This diagram shows the key components of training and fine-tuning workload to include in your design.
 
-:::image type="content" source="./images/model-training-workload.png" alt-text="Diagram of a machine learning workflow showing data sources, processing, model training, and inferencing steps." lightbox="./images/model-training-workload.png":::
+:::image type="content" source="./images/model-training-workload.svg" alt-text="Diagram of a machine learning workflow showing data sources, processing, model training, and inferencing steps." lightbox="./images/model-training-workload.svg":::
 
 |Component|Description|
 |---|---|
@@ -233,11 +233,11 @@ These baseline examples serve as the recommended architecture for AI workloads.
         <a class="is-undecorated is-full-height is-block" href="/azure/architecture/example-scenario/dataplate2e/data-platform-end-to-end">
         <article class="card has-outline-hover is-relative is-fullheight">
             <figure class="image has-margin-right-none has-margin-left-none has-margin-top-none has-margin-bottom-none">
-                <img role="presentation" alt="Diagram shows the Analytics end-to-end with Azure Synapse architecture." src="./images/azure-analytics.svg">
+                <img role="presentation" alt="Diagram shows the Analytics end-to-end with Microsoft Fabric architecture." src="./images/azure-analytics.svg">
             </figure>
             <div>
                 <div>
-                  Analytics end-to-end with Azure Synapse
+                  Analytics end-to-end with Microsoft Fabric
                   <hr>                      
                 </div>
                 <div>
