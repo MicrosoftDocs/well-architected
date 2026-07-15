@@ -49,7 +49,9 @@ Focus on automating repetitive or high-touch tasks so your team can spend time o
 - Access management and security assignments
 - Maintenance activities like detecting obsolete artifacts or underutilized capacities
 
-Fabric includes native automation features such as job scheduling and deployment pipelines, capacity monitoring, and Fabric Activator for event-driven workflows. You can also use external tools like REST APIs and CLI, Terraform, and Git integration to orchestrate more complex or custom automation.
+Fabric includes native automation features for the preceding tasks. For example, the Fabric CI/CD platform is built on the Fabric REST APIs and brings source control, delivery, configuration, and developer tooling together into a single, integrated experience. For more information, see [What is CI/CD in Microsoft Fabric?](/fabric/cicd/cicd-overview).
+
+You can also use external tools like REST APIs and CLI, Terraform, and Git integration to orchestrate more complex or custom automation.
 
 Automation also supports architecture-wide consistency. For example, deployments can be validated against Git or templates to detect accidental or unauthorized changes. Even small but practical automations, like pausing dev capacities overnight, triggering dataset updates, or Delta table compaction, quickly add up to significant operational efficiency gains.
 
