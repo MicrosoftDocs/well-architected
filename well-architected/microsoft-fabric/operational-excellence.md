@@ -49,7 +49,7 @@ Focus on automating repetitive or high-touch tasks so your team can spend time o
 - Access management and security assignments
 - Maintenance activities like detecting obsolete artifacts or underutilized capacities
 
-Fabric includes native automation features for the preceding tasks. For example, the Fabric CI/CD platform is built on the Fabric REST APIs and brings source control, delivery, configuration, and developer tooling together into a single, integrated experience. For more information, see [What is CI/CD in Microsoft Fabric?](/fabric/cicd/cicd-overview).
+Fabric includes native automation features for the preceding tasks. For example, the Fabric CI/CD platform is built on the Fabric REST APIs and brings source control, delivery, configuration, and developer tooling together into a single, integrated experience. For more information, see [What is CI/CD in Microsoft Fabric?](/fabric/cicd/cicd-overview)
 
 You can also use external tools like REST APIs and CLI, Terraform, and Git integration to orchestrate more complex or custom automation.
 
