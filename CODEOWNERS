@@ -1,8 +1,8 @@
 # These owners will be the default owners for everything in the repo. Unless a later match takes precedence
-* @PageWriter-MSFT @josevarela @claytonsiemens77 
+* @PageWriter-MSFT @claytonsiemens77 @johndowns
 
 # Content leads to approve all pull requests opened in the repo
-/well-architected/  @PageWriter-MSFT @josevarela @claytonsiemens77 @jmart1428 @simipaul
+/well-architected/  @PageWriter-MSFT @claytonsiemens77 @jmart1428 @simipaul @johndowns
 
 
 # Owners of the Mission-Critical design methodology for mission-critical workloads.
