@@ -33,7 +33,7 @@ To evaluate the health of a model, a comprehensive overview of its specific qual
 
 - Work with data scientists and engineers to determine quality metrics.
 
-- Build or extend dashboards to assess the overall health of the workload. This approach should include component availability metrics and quality metrics.
+- Build or extend dashboards to assess the overall health of the workload. This approach should include availability metrics, quality metrics, and operational metrics such as response latency (p50, p95, and p99), request throughput, error rates, and, where applicable, token throughput.
 
 - Implement well-designed availability and quality alerts that the operations teams can understand and take action on.
 
